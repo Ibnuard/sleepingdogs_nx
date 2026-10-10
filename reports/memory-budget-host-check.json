@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "checks": [
+    "PASS: actual thread wrapper fails with fragmented normal heap, then recovers from the early reserve; full 1 MiB usable stack, TLS/reent, ownership, close and reuse preserved",
+    "PASS: all 256 page-aligned requests through 1 MiB, actual 128 KiB wrapper, invalid sizes rejected",
+    "PASS: caller stacks, wrong sizes and non-memory errors pass through; ordinary close and diagnostic errno preserved",
+    "PASS: partial initialization and exhausted/empty reserve remain bounded and return the original allocation error",
+    "PASS: failed map/rolled-back creation safely recycle; failed rollback, query failure, split borrowed pages, failed close and live-thread close quarantine backing",
+    "PASS: start-failure cleanup and 2,000 concurrent create/close cycles do not reuse an active stack or allocate reserve backing on the failing path",
+    "PASS: exact GPU arena header: 384-KiB allocation, large alignments, coalescing, exhaustion, invalid free containment and 1024 concurrent lifetime cycles with live contents intact"
+  ],
+  "gpu_arena_bytes": 134217728,
+  "stack_request_sizes": 256,
+  "mixed_stack_lifetime_cycles": 2000,
+  "gpu_lifetime_cycles": 1024,
+  "compiled_sources": {
+    "f1_native_stacks.c": "29e06623d2a5703d709debb5528ebb002b97aa4217e5e9e6aacb56a808055fda",
+    "f1_native_stacks.h": "f2dc0c735240dd86ef5c41e5f986a2b5b48499394b9a1f6f22ee36b6732feb1e",
+    "f1_thread_diagnostics.c": "bd786838deb55605b1e0a5eca5db91a02ea7dd82fec6f1cd008585ba66a76f92",
+    "f1_gpu_arena.h": "097fe7402eba7cf1efb9f7974d3c9c5a28dd8a613769259d670d9cbda1fa3b2f"
+  },
+  "sources": {
+    "tests/memory_native_stacks.c": "9c6c5179de8ae268d29eff98069f43a6ec51d626acd4e2b03371967d0e3452e4",
+    "tests/memory_gpu_arena.c": "d262e633e5decda06d1f3a3f66ac76144beee3c3c52415865ca187d88a48c802",
+    "tests/check_memory_budget.py": "68e1e114133b2268d50a3652c99c830fe543e78a165b6ecf6e0d7460421235ce"
+  },
+  "scope": "Real production C and GPU header; modeled Horizon/libnx boundaries and TLS metadata.",
+  "hardware_tested": false
+}

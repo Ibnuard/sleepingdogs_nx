@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "source_files": {
+    "dlls/ntdll/unix/server.c": "e5eaa35487d02bc05fbb784ccfc4d4d5a3b77a79faa3ed7667f7b815df6714a9",
+    "wine-nx-probe/source/f1_bounded_profile.h": "53ae0c82a78f4c3288c6c9b8ec1fa75db3c58dd1548b243fd14de3af91b10912",
+    "wine-nx-probe/source/runtime.c": "f0599181fd4cb07046148826581b63cb4f44f328427cb2ab2245ef05ce9ca978",
+    "wine-nx-probe/source/sd_frame_diag_core.h": "8152228d7e12cb496d86a5dd4cfe2b0af69a60188bd6618cb2d38d3cf830ef6a",
+    "wine-nx-probe/source/sd_frame_diag_runtime.h": "8f2ba6bf5ae048388b40ee2f4b84720440b5dc995cc038bcfe3694936c7b6985",
+    "wine-nx-probe/source/sd_frame_diag_thread_map.h": "5a72b321bd7a7a5b616c0cb2ed7e1121ea6e94323e46d28a3263082440d91685",
+    "wine-nx-probe/source/thread_profile.c": "c4d4939a3628ba04c6304b9adae72fe7453c7c9f0651a87c21a006d0faf5cf46"
+  },
+  "sources": {
+    "src/low_window/sd_frame_diag_core.h": "8152228d7e12cb496d86a5dd4cfe2b0af69a60188bd6618cb2d38d3cf830ef6a",
+    "src/low_window/sd_frame_diag_runtime.h": "8f2ba6bf5ae048388b40ee2f4b84720440b5dc995cc038bcfe3694936c7b6985",
+    "src/low_window/sd_frame_diag_thread_map.h": "5a72b321bd7a7a5b616c0cb2ed7e1121ea6e94323e46d28a3263082440d91685",
+    "tests/check_frame_diagnostics.py": "62696bd5724c05ac2b42d8deb2f9a9b95ec1e74f0b2ff7040eb6797a271217c2",
+    "tests/direct_sync_client.c": "c042001d7c285b7851ec6c54bb500f377a039ef0df82d02a5f4576e8b9ff36b2",
+    "tests/frame_diagnostics.c": "5fe303f697df078c11bb7d45f7f2793b620c9b41fd5d6f0f9598dc14d611c443",
+    "tools/f1_bounded_profile.h": "53ae0c82a78f4c3288c6c9b8ec1fa75db3c58dd1548b243fd14de3af91b10912",
+    "tools/sleepingdogs_frame_diagnostics.py": "09537fd02a90285e3172511d4588f6217b140980c2ef69704511a15561200680"
+  },
+  "sanitizer": "AddressSanitizer + UndefinedBehaviorSanitizer",
+  "compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "test_output": [
+    "PASS disabled path and slow-window gate: menu/loading do not trigger",
+    "PASS stage/result/route attribution and capture boundary rejection",
+    "PASS frame CPU validity, histogram, error and swapchain reset",
+    "PASS concurrent lifetime rows: 160000 calls, consistent post-join totals",
+    "PASS bounded storage and recycled-handle separation",
+    "PASS automatic stop after 30 seconds: no repeated capture or kernel tick queries",
+    "PASS actual client dispatch: off/direct/fallback, scatter payload, invalid bounds, reply aliasing, counters and disabled-profile clock gate"
+  ],
+  "native_source_verified": true,
+  "hardware_tested": false,
+  "fps_gain_measured": false
+}

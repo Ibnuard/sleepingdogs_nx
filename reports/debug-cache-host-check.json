@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "checks": [
+    "PASS cache layout, six registers, explicit clearing, idempotence, null inputs",
+    "PASS selectors/exit frame/rest of TEB and surrounding guards preserved",
+    "PASS 10000 updates with independent second thread untouched"
+  ],
+  "wine_header_sha256": "1aee97ea9319d9763d2184a1da02b8f0ba109b667c84ab7fd71276daf4d223bd",
+  "sources": {
+    "src/sd_wow64_debug_cache.h": "73fa5f4249c49bed74f2046f05b6a2ac63eec77bb9b6669ff7c81fe9ab4a856c",
+    "tests/debug_cache.c": "cd5ee5e450e7bc243f92ca56ab24df5f3147c2452533be7c7368a593bf7f00b7",
+    "tests/check_debug_cache.py": "8cdbcdf4bd56e40747c1b04cc66803cec162ae588302d4581b1084f497c0b701"
+  },
+  "hardware_tested": false
+}

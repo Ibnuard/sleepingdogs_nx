@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "cases": [
+    "allocation failure remains disabled",
+    "reject backing above 4 GiB",
+    "failed initial protection releases backing",
+    "idle arena inaccessible and initialization idempotent",
+    "bounds alignment overflow and executable access rejected",
+    "three non-overlapping Wine guards preserve surrounding heap",
+    "limits flags size fixed address and alignment preserve ordinary path",
+    "failed activation preserves inaccessible guard",
+    "exact backing identity zero initialized and cannot be double allocated",
+    "read-only protection enforced and unsupported execution leaves metadata intact",
+    "partial decommit recommit zeros only discarded pages; failed decommit preserves data",
+    "failed mixed recommit rolls back each old protection group",
+    "guard access change preserves committed contents",
+    "full release restores guard and rejects stale or partial operations",
+    "reuse zeros all data without releasing neighbour guards"
+  ],
+  "test_arena_bytes": 1048576000,
+  "production_arena_bytes": 1048576000,
+  "sources": {
+    "tests/direct_arena.c": "33b67d978d0f9a499cd04f8ed07eb272aa6636e2a20c4a69cb7734fd6061edc5",
+    "src/sd_guest_arena.c": "335a95e4d58cf634fa1071df9f9e54dc4785c0a782a160af5ad02c85399b1f11",
+    "src/sd_guest_arena.h": "ad49bb139a6a367f27f101af04c5ed2328e2599f3e3356f51a1c2397a9bfb519",
+    "src/sd_guest_view.inc": "c22f7d38e3b67ed9b7e2ba01c7559cd96bf1cae1002cb06d50ae4f450fedb38b"
+  }
+}

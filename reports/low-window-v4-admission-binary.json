@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "Exercise the new linked ARM64 admission helper and its real low-VA probes.\n\nThe native-stack allocator and 1000-MiB arena boundary are modeled here; the\nseparate arena test executes its real protection/alias operations on Linux.\n",
+  "hardware_tested": false,
+  "elf_sha256": "e9519a8cfdabcad70c5a5f16c5054eb64bad0146759f695a7ae006c965070df6",
+  "cases": [
+    "good",
+    "stock39",
+    "old32",
+    "quota2g",
+    "wrong_title",
+    "low_heap",
+    "no_handle",
+    "occupied",
+    "map_fail",
+    "process_perm_fail",
+    "unmap_fail",
+    "arena_fail"
+  ],
+  "test_sha256": "cf7bf2b2c1b489686ab8ce0380681449b10b46def35b845b4acf368cb8618d4e",
+  "harness_sha256": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+}

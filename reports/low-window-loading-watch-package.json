@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-loading-watch.zip",
+    "bytes": 10453943,
+    "sha256": "7d6f58a6ec01e053807d6093b52eceb7f13c737949c9290d0516a213aaf24094",
+    "files": 50
+  },
+  "nro_sha256": "12820073773794f1cf9659695291cedcc12efcf65259efdd81d8f64d756af750",
+  "elf_sha256": "7749eebcd8f222f88c060013e03840fb86ac9ce220d598dc920717c72663e47c",
+  "compatible_forwarder_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "diagnostic_only": true,
+  "hardware_tested": false,
+  "changed_native_files": [
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_loading_report.inc",
+    "wine-nx-probe/source/sd_loading_watch.h",
+    "wine-nx-probe/source/thread_profile.c"
+  ],
+  "fex_adapter_unchanged": true,
+  "v2_release_preserved": true
+}

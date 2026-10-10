@@ -1,0 +1,218 @@
+{
+  "input_sha256": {
+    "fex-runtime.log": "d02bf54b92ed50a260316c411c84651a476e53da055d0612630e6d2ff816d423",
+    "crash.log": "9236bd69fde57cb4a728ab5b07b9a01fa5a3eaa7b62f405319156128ec14f583"
+  },
+  "full_log_snapshot_available": true,
+  "previous_gpu_pressure_fix_active": true,
+  "actual_fex_profile": "fastest",
+  "crash_header_profile_note": "Stable is the legacy renderer/profile label; SD-FEX-MODE and FEX3-PRESET confirm fastest.",
+  "process_limit_bytes": 2147483648,
+  "process_committed_bytes": 2110832640,
+  "normal_heap_capacity_bytes": 2070040576,
+  "last_oom_heap_free_bytes": 42607088,
+  "last_oom_heap_unclaimed_bytes": 20480,
+  "gpu_pool": {
+    "capacity": 268435456,
+    "used": 267321344,
+    "free": 1114112,
+    "largest": 983040
+  },
+  "emergency_borrows": 13,
+  "emergency_borrow_requested_bytes": 24117248,
+  "failed_allocation_bytes": 1048576,
+  "vk_result": -1,
+  "dxvk_allocated_mib": 276,
+  "dxvk_used_mib": 269,
+  "first_fault": {
+    "eip": "0x100d147e",
+    "module": "d3d11.dll",
+    "function": "dxvk::DxvkBuffer constructor",
+    "instruction": "mov ecx, dword ptr [eax + 0x20]",
+    "eax": 0,
+    "target": "0x20",
+    "access": "read",
+    "dll_sha256": "e4049ce5466c36beb8d369dd495f30016abcac0afd45311168ba8915c29b0833"
+  },
+  "finding": "Previous reserve recovery works, but its pool is now almost full. Host-backed Vulkan requests fail, followed by a null allocation dereference in DXVK.",
+  "memory_note": "The free heap total is fragmented; the reported GPU pool and DXVK totals overlap. They are not separate allocations to add together, and the pool is not a hard Vulkan limit.",
+  "change": "Reduce simultaneous compiler leases and protected decoder/IR pairs from four to two. Keep each buffer full-size, retain both reserves permanently, and acquire the lease before compilation buffers and invalidation lock.",
+  "saved_reserve_payload_bytes": 33685504,
+  "tradeoff": "Cold compilation may take longer; all guest execution cores remain available.",
+  "limits": "Extra headroom does not establish that all later 3D scenes fit. Host tests do not reproduce the full hardware allocation trace.",
+  "evidence": [
+    {
+      "line": 7,
+      "text": "[SD-COMPILER-MEM] native=v1 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=4"
+    },
+    {
+      "line": 12,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 28,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 56,
+      "text": "[SD-GPU-PRESSURE] v1 soft_reserve=1; reuse idle GPU space before OOM"
+    },
+    {
+      "line": 57,
+      "text": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0"
+    },
+    {
+      "line": 213,
+      "text": "[SD-SCRATCH] reserve slots=8 bytes=67371008; protected=1; live code unchanged"
+    },
+    {
+      "line": 273,
+      "text": "[FEX3-PRESET] fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack"
+    },
+    {
+      "line": 277,
+      "text": "[SD-COMPILER-MEM] fex=v1 compile_slots=4 decoder=instruction-limit ir_mib=16"
+    },
+    {
+      "line": 348,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 1033,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 2173,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 2176,
+      "text": "[SD-SCRATCH-RESERVE] live=33685504 idle=33685504 released=0 slots_released=0"
+    },
+    {
+      "line": 2530,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 2536,
+      "text": "[SD-SCRATCH-RESERVE] live=33685504 idle=33685504 released=0 slots_released=0"
+    },
+    {
+      "line": 3564,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 4552,
+      "text": "[SD-MEMBUDGET] reason=startup total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 5769,
+      "text": "[SD-MEMBUDGET] reason=rendering total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6327,
+      "text": "[SD-MEMBUDGET] reason=rendering total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6330,
+      "text": "[SD-SCRATCH-RESERVE] live=33685504 idle=33685504 released=0 slots_released=0"
+    },
+    {
+      "line": 6519,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6526,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6531,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6536,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6541,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6546,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6549,
+      "text": "[SD-GPU-HEAP] bytes=2097152 align=65536 recovered=0 largest_examined=655352 scanned=1 attempt=32"
+    },
+    {
+      "line": 6550,
+      "text": "[SD-GPU-ARENA] capacity=268435456 used=267321344 free=1114112 largest=983040 peak=267321344 live=183 takes=197 misses=164 returned=14 invalid=0"
+    },
+    {
+      "line": 6552,
+      "text": "[SD-GPU-PRESSURE-STATS] emergency_borrows=13 requested_bytes=24117248"
+    },
+    {
+      "line": 6555,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6560,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6565,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6570,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6573,
+      "text": "[SD-VKMEM] bytes=1048576 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=11"
+    },
+    {
+      "line": 6574,
+      "text": "[SD-RESOURCE] reason=vulkan-allocation-failed free_threads=195 query_rc=00000000 heap_used=2027413008 arena_free=42607088 heap_arena=2070020096 heap_capacity=2070040576 heap_unclaimed=20480 heap_available=42627568"
+    },
+    {
+      "line": 6575,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6578,
+      "text": "[SD-VKMEM] bytes=1048576 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=12"
+    },
+    {
+      "line": 6579,
+      "text": "[SD-RESOURCE] reason=vulkan-allocation-failed free_threads=195 query_rc=00000000 heap_used=2027413008 arena_free=42607088 heap_arena=2070020096 heap_capacity=2070040576 heap_unclaimed=20480 heap_available=42627568"
+    },
+    {
+      "line": 6580,
+      "text": "[SD-MEMBUDGET] reason=vulkan-allocation-failed total=2147483648 used=2110832640 free=36651008 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000"
+    },
+    {
+      "line": 6587,
+      "text": "[WINE] err:     Size:      1048576"
+    },
+    {
+      "line": 6591,
+      "text": "[WINE] err:    0:     1536         276         269       n/a         n/a"
+    },
+    {
+      "line": 6600,
+      "text": "[SD-FIRSTFAULT] access=0 target=20 flags=00000000"
+    },
+    {
+      "line": 6601,
+      "text": "[SD-FIRSTFAULT] eip=100d147e esp=0166f490 ebp=0166f500 eflags=00000216 context_flags=0001003f"
+    },
+    {
+      "line": 6602,
+      "text": "[SD-FIRSTFAULT] eax=00000000 ebx=0166f548 ecx=0166f17c edx=00000040 esi=0892bbb0 edi=01f3d000"
+    }
+  ],
+  "candidate_hardware_tested": false
+}

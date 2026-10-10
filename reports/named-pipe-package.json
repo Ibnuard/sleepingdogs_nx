@@ -1,0 +1,21 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-named-pipe-fix.zip",
+  "bytes": 11944013,
+  "sha256": "469f507e1290f20300587f7320abd659ebb2f6427eaa8331f78abe70d0a9036f",
+  "files": 184,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-named-pipe-rollback.zip",
+    "bytes": 9733553,
+    "sha256": "4381a1609b22d9b3991b15f847c171e0f0c3057be957529931e0d13759e5a90f",
+    "files": 6
+  },
+  "checksums_verified": true,
+  "cumulative": true,
+  "nsp_reinstall_required": false,
+  "compiled_overlay_reconstruction": "PASS",
+  "unchanged_prior_payloads_verified": true,
+  "nro_sha256": "bbcee4dfc39105a8f40545e5c0e0156ddd9b9eeea7f4c190387090accf705b29",
+  "fex_dll_sha256": "583ac0d48fd5c2e3e92f8844a23f85873064cc2b1f03a2e6b6a96d224d7de130",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

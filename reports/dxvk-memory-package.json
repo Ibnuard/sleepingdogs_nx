@@ -1,0 +1,33 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-dxvk-memory-fix.zip",
+  "bytes": 31286632,
+  "sha256": "8ecb9c7dd6cc5da92382cf3e8e74c552bdb37fb3bb0c203b7c439b6a8d43ba9e",
+  "files": 497,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-dxvk-memory-rollback.zip",
+    "bytes": 17634499,
+    "sha256": "5b60522d657b0f3eb7477e7a1fe11e250aeecb3a7fe63a6f74faf12658a31575",
+    "files": 11
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "interfaces": {
+    "d3d9.dll": {
+      "imports_exports_unchanged": true,
+      "sha256": "9af6f4c693bda716940993fec2894be61054e2ad49950507c91222925edd923b"
+    },
+    "d3d11.dll": {
+      "imports_exports_unchanged": true,
+      "sha256": "c5fbfad3dbe00a814bb7e5ba25350a1ff69cb140b2f3b44e309599d238a3cbd4"
+    },
+    "dxgi.dll": {
+      "imports_exports_unchanged": true,
+      "sha256": "4dbfaec2e967ae3c6e85e4518ae01e681b050e4826ad2611999a67599ce8355a"
+    }
+  },
+  "native_nro_unchanged": "c368f044386a387e3190c2c230bbb586154b0d447046f4d35297f3d0b7e00936",
+  "fex_unchanged": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "original_game_excluded": true,
+  "hardware_tested": false
+}

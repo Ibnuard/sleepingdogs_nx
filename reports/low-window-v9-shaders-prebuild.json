@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "all_native_changes_match_overlay": false,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "results": {
+    "affinity": "PASS: shader affinity off/on, worker renaming, scoped/nested restoration, guest affinity, core-3 coexistence, failure retries, balancer exclusion and handle reuse",
+    "cache": "PASS: cache reuse, alignment, zeroing, realloc failure/lifetime, memory pressure, page fallback, 1 MiB/8-worker bounds, cross-thread frees and 48000 concurrent allocation iterations",
+    "wrapper": "PASS: NAK wrapper forwards all ABI arguments/results and drains cache on success/failure; OFF bypasses scope",
+    "interval": "PASS: disabled and Debug modes do not touch counters; ten-second cadence; startup baseline; unsigned wrap; interval deltas; backwards-clock recovery; observer cost."
+  },
+  "vulkan_thunks_checked": 4,
+  "source_files": {
+    "dlls/winevulkan/make_vulkan": "2929c8e5a8aeee5112087b70936cb07be9c939d646ead346de591d2074ddb9e3",
+    "dlls/winevulkan/vulkan_private.h": "c4b8cc0228a81a4a49789c8d6853b6e4bdf52beb631b3b44fd60e4c246cc5996",
+    "dlls/winevulkan/vulkan_thunks.c": "702ad95ef6e7f651858215930870be41fb8c8c1d69f3781508859f1f51bb5875",
+    "wine-nx-probe/CMakeLists.txt": "ab054fffa03c604fc5d4909a376fccef6d76f55f71d1dac4dde9debae925a9e7",
+    "wine-nx-probe/source/fex_dxvk_core3.h": "cff55770ae3bddcee77cac7ed0d50f638ffd3cf3e40951c53f5e88488e79a636",
+    "wine-nx-probe/source/native_heap/fextendo_mesa_heap.h": "3ae37eb4611cfb6fe408032721e000241bde32673a7a951e7ac93e92ee2484ee",
+    "wine-nx-probe/source/native_heap/fextendo_rust_heap.h": "7b52eae4dbeb31bfdd2fae3966b53ea9f12fd3b813aaae752883c9e2e24524c0",
+    "wine-nx-probe/source/runtime.c": "89043959d437918cd2c0f73d2d7a157d256450e429609dcbb07264d040095454",
+    "wine-nx-probe/source/sd_perf_summary.h": "3889711e23223c0947ea387f5545b38f34351f4b8db1fe380710b674ad36f327",
+    "wine-nx-probe/source/sd_shader_affinity.h": "0bc2dfc1e8b2d3b28cbfa65100ab4d807c56c4f4e6cd0c060ddfd87c0c37d940",
+    "wine-nx-probe/source/sd_shader_cache.c": "2525f30a35018b6d9a32c0d548a7698a1b923f83302b6c96a030e4b34b8aac69",
+    "wine-nx-probe/source/sd_shader_cache.h": "d4d7dac4f4ecc37dfd980a0e33ea62407fa8d6fc3a94b167a682bc4e01ef7437",
+    "wine-nx-probe/source/sd_shader_compile.c": "9f4439889021ecffc3b7f2a12fd9a3a1e44cc79ffad5acdd82f89d96e192ccf6",
+    "wine-nx-probe/source/thread_profile.c": "e6f7c1a63311d4ef3ba311da5d70933b8199b4d8cd7f45a015d4e98fdaf296bf",
+    "wine-nx-probe/source/thread_profile.h": "498d56ca88a7236c6c37a5f38b503a20853ed6ecaf713ea1c89dd36f5349c52c"
+  },
+  "sources": {
+    "src/low_window/fextendo_mesa_shader_heap.h": "3ae37eb4611cfb6fe408032721e000241bde32673a7a951e7ac93e92ee2484ee",
+    "src/low_window/fextendo_rust_shader_heap.h": "7b52eae4dbeb31bfdd2fae3966b53ea9f12fd3b813aaae752883c9e2e24524c0",
+    "src/low_window/sd_shader_affinity.h": "0bc2dfc1e8b2d3b28cbfa65100ab4d807c56c4f4e6cd0c060ddfd87c0c37d940",
+    "src/low_window/sd_shader_cache.c": "2525f30a35018b6d9a32c0d548a7698a1b923f83302b6c96a030e4b34b8aac69",
+    "src/low_window/sd_shader_cache.h": "d4d7dac4f4ecc37dfd980a0e33ea62407fa8d6fc3a94b167a682bc4e01ef7437",
+    "src/low_window/sd_shader_compile.c": "9f4439889021ecffc3b7f2a12fd9a3a1e44cc79ffad5acdd82f89d96e192ccf6",
+    "tests/check_perf_counters.py": "679178dcb6cedc237e73017d7f3e69abfa51ad7c428b397805538a0815cef28a",
+    "tests/check_shader_optimizations.py": "cdac8121c7f7ff23c7b45ff3f24111d82b258d59a03a261449af242aee707f6b",
+    "tests/shader_affinity.c": "feed7a625c0635ecd4bb3f4e8ba9cdc2c90f201606bf0a72ac8c3da8a47de34c",
+    "tests/shader_cache.c": "a93cfe959f5642d42f5128d5447a6db6f8aedb1b926fe6a46fc6cd44a996666c",
+    "tools/sleepingdogs_shader_optimizations.py": "dd3891ca87e89fff57a92916287161f160e53f56f3fed9f3b96bd89b73d97f27"
+  }
+}

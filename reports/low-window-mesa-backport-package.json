@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "build": "sleepingdogs-low-window-v13-mesa-backport",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-mesa-backport.zip",
+    "bytes": 31656725,
+    "sha256": "43e233720d7f48d0ec320a77c836af085917a00cfc0ddc0d23e469b190dee9c5",
+    "files": 306
+  },
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-mesa-backport-rollback.zip",
+    "bytes": 9803300,
+    "sha256": "79defa980243a7af047f5484fa2e18393f24738e48aa6c635a480d95b8699142",
+    "files": 27
+  },
+  "nro_sha256": "635728655ee1fbf11ce7d882882e61b561825567b79f2929cf653691bbf681a6",
+  "elf_sha256": "bf67f1a9e666735cc331b9abd65c49e2c91ad3a26aff75f805fe95063df9eb35",
+  "driver_version": "26.2.2-sdv13-zcull-ubo",
+  "trial": 1,
+  "trial_budget": 2,
+  "baseline_zip_sha256": "108f8a78872b31fba566cf1df70ebb100856f67480818ae2af66ffa70e5f7232",
+  "baseline_preserved": true,
+  "changed_runtime_paths": [
+    "switch/sleepingdogs-fex/launcher/compiler-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/cpu-topology.json",
+    "switch/sleepingdogs-fex/launcher/debug-cache-fix.json",
+    "switch/sleepingdogs-fex/launcher/dep-policy-fix.json",
+    "switch/sleepingdogs-fex/launcher/direct-arena-fix.json",
+    "switch/sleepingdogs-fex/launcher/direct-sync.json",
+    "switch/sleepingdogs-fex/launcher/dxvk-submit-batching.json",
+    "switch/sleepingdogs-fex/launcher/first-fault-trace.json",
+    "switch/sleepingdogs-fex/launcher/frame-diagnostics.json",
+    "switch/sleepingdogs-fex/launcher/gpu-budget-fix.json",
+    "switch/sleepingdogs-fex/launcher/gpu-pressure-fix.json",
+    "switch/sleepingdogs-fex/launcher/launch-order-fix.json",
+    "switch/sleepingdogs-fex/launcher/loading-watch.json",
+    "switch/sleepingdogs-fex/launcher/low-window-fix.json",
+    "switch/sleepingdogs-fex/launcher/memory-budget-fix.json",
+    "switch/sleepingdogs-fex/launcher/mesa-backport.json",
+    "switch/sleepingdogs-fex/launcher/named-pipe-fix.json",
+    "switch/sleepingdogs-fex/launcher/perf-counters.json",
+    "switch/sleepingdogs-fex/launcher/performance-hud.json",
+    "switch/sleepingdogs-fex/launcher/scene-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/shader-optimizations.json",
+    "switch/sleepingdogs-fex/launcher/streaming-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/sync-watch.json",
+    "switch/sleepingdogs-fex/launcher/thread-debug-fix.json",
+    "switch/sleepingdogs-fex/sleepingdogs-fex.nro"
+  ],
+  "rollback_restores_v12": true,
+  "game_files_changed": [],
+  "fex_adapter_unchanged": true,
+  "wine_objects_unchanged": true,
+  "dxvk_unchanged": true,
+  "graphics_presets_unchanged": true,
+  "shared_sdk_unchanged": true,
+  "target_resolution": [
+    1280,
+    720
+  ],
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "reports": {
+    "mesa-v13-host.json": "c20ef2f92660bf09afe840ea9d98f1bce8b6e683d248384c9d4d2669e584383f",
+    "low-window-v13-runtime-binary.json": "19d7b244b1ef10e6b10be652646163f1e61c36dfe52759001f729d6b630bf169",
+    "low-window-v13-diagnostic-binary.json": "c23fdff69a400798f49bc2256d7d701f610d06ff4e703cd26547c296c883c077",
+    "low-window-v13-direct-sync-binary.json": "3260f8efc49f932392393b0ff047c7ad7ebc45a68aa24845846328891d06b3f0",
+    "low-window-v13-binary.json": "4d2fdc71130d18ff3dde5b27249ea616c74d8dd2fd418d735ae90c547a485762",
+    "low-window-v13-shader-binary.json": "960069dc04cccaf7d5379c96e6813f97a4c2b5e829f004ee862f0811c8c02278"
+  }
+}

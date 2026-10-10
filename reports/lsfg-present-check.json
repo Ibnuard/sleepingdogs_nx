@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "output": "[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] configured off; native presentation\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 12.5%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\nPASS: production bridge; off, 2x, recreate, warmup, generated presents; validation_errors=0\n",
+  "bridge_sha256": "6e819270ec584c1937e42672d8c313a09702e82d5b6e29ca0c722d5fd5b64e07",
+  "validation_errors": 0,
+  "hardware_tested": false,
+  "switch_performance_measured": false
+}

@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "scope": "Test the actual v10 handlers/queue with host pthreads and sanitizers.\n\nlibnx condvar member access is adapted to host pthread types only. Wire structs,\nmutex/thread helpers, APC queue and request handlers come from verified sources.\nThe small object table and platform services are fixtures, not a Switch benchmark.\n",
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "sanitizer": "AddressSanitizer + UndefinedBehaviorSanitizer",
+  "compiler": "cc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "test_output": [
+    "PASS modes/dispatch: off, unknown thread, startup, suspend, terminated, payload, unsupported fallback",
+    "PASS direct modes 1/2: events, recursive/abandoned mutex, semaphores, wait-any/all, signal-and-wait retry, deadlines, timer fallback",
+    "PASS targeted wake ignores unrelated object; committed auto-event survives immediate reset",
+    "PASS manual-event wakes all and queued wait-all consumes only complete set",
+    "PASS legacy wait receives direct signal; queued reference survives handle close",
+    "PASS original user-APC queue wakes alertable direct waiter and releases queue/TLS references",
+    "PASS queued mutex uses waiter identity; one semaphore token wakes one waiter; thread termination and object-before-APC ordering",
+    "PASS 3000 threaded event round trips: no lost signals, leaked object references or queued waiters",
+    "PASS sync-mode parser: valid modes, missing/invalid file returns original server mode",
+    "PASS actual client dispatch: off/direct/fallback, scatter payload, invalid bounds, reply aliasing, counters and disabled-profile clock gate"
+  ],
+  "generated_sha256": "709429bee93a317876aaf18cabfd6f8442ff64fd1ac70c177bac514df8b19167",
+  "sources": {
+    "src/low_window/sd_sync_client.h": "d52090b40316fa251d74ac8bf1aa2911469f9b311f4744f2dc45c4baa4d9bf9a",
+    "src/low_window/sd_sync_config.h": "208d6a544eb6e102c9d7f691319f59d5cc50483b7786cae036521272a50fe258",
+    "src/low_window/sd_sync_dispatch.h": "75ab3bf0d72703dc1df39a2ef7e5994e761356ee64b5827fd475646a3845a5cc",
+    "src/low_window/sd_sync_legacy_wait.h": "5cab9b5129fd48b80088d8d1f16ae041e40af69dd371ebf58c3fb6b048920b1c",
+    "src/low_window/sd_sync_queue.h": "90b08c86cfb92ab0e2e12926b5ca349b8cb9145d5fdca484d496cae90c772460",
+    "src/low_window/sd_sync_report.h": "5bcb7e92ccf434752dc72a4990b243ff67b4bd07983969064a21e25e37725304",
+    "src/low_window/sd_sync_state.h": "b3174b72e3529a570c198ddd1cae19d08b4fbe908691298df452cfd275f45df9",
+    "tests/check_direct_sync.py": "9ad3dfb2fbebd8320d580d99de95950f3159aaa794b17d1d05101b49f8a12969",
+    "tests/direct_sync_cases.c": "c6b50b4bef525404b5e5c8bc8e0641774f8ab63b9453d526bbe743a381652f88",
+    "tests/direct_sync_client.c": "c042001d7c285b7851ec6c54bb500f377a039ef0df82d02a5f4576e8b9ff36b2",
+    "tests/direct_sync_fixture.c": "b9c4ff9a26ecf5c9150f7d7b61198037ad51934fc620f3d67becaa2614d317cb",
+    "tools/sleepingdogs_direct_sync.py": "1c84eb54c3ac9ac0a57286f1d3d26bd11c385da1e93a8b717c838b3f699f9e50"
+  },
+  "source_files": {
+    "dlls/ntdll/unix/horizon.c": "c00af950461da2d37106440688ea289d28447580d2e8bb3755fed8f09bd05c5b",
+    "dlls/ntdll/unix/horizon_private.h": "5fae98a4975e4ec247e5ef89e3cf4b7808bb349a468587c9fca70b0fbe12569e",
+    "dlls/ntdll/unix/sd_sync_client.h": "d52090b40316fa251d74ac8bf1aa2911469f9b311f4744f2dc45c4baa4d9bf9a",
+    "dlls/ntdll/unix/sd_sync_dispatch.h": "75ab3bf0d72703dc1df39a2ef7e5994e761356ee64b5827fd475646a3845a5cc",
+    "dlls/ntdll/unix/sd_sync_legacy_wait.h": "5cab9b5129fd48b80088d8d1f16ae041e40af69dd371ebf58c3fb6b048920b1c",
+    "dlls/ntdll/unix/sd_sync_queue.h": "90b08c86cfb92ab0e2e12926b5ca349b8cb9145d5fdca484d496cae90c772460",
+    "dlls/ntdll/unix/sd_sync_router.h": "d9fe0898a40e1b4ae50a801c9d902da829bac8e5c0f779c78b64b2c4ddbb7cbd",
+    "dlls/ntdll/unix/sd_sync_state.h": "b3174b72e3529a570c198ddd1cae19d08b4fbe908691298df452cfd275f45df9",
+    "dlls/ntdll/unix/server.c": "d665debbb441bda274e6e14848f6e7896353b4ced9303c168cb82702ebc93928",
+    "wine-nx-probe/source/runtime.c": "531f4413a1a06eddd420c804a26169bb277bed1fa120b3b451a022af2d460cd5",
+    "wine-nx-probe/source/sd_perf_summary.h": "fae1295028dc4737a8fc08fde0747fbb95fbcaf90c6fe84a005e24982857b347",
+    "wine-nx-probe/source/sd_sync_config.h": "208d6a544eb6e102c9d7f691319f59d5cc50483b7786cae036521272a50fe258",
+    "wine-nx-probe/source/sd_sync_report.h": "5bcb7e92ccf434752dc72a4990b243ff67b4bd07983969064a21e25e37725304",
+    "wine-nx-probe/source/thread_profile.c": "c2753cb28800f3eaaa601452152ad251749501144ea0f7cea7638b9c9cd74740"
+  },
+  "native_source_verified": true
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "diagnostic",
+  "archive": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-first-fault-trace.zip",
+  "bytes": 10192482,
+  "sha256": "cd67712e08ae212e6d0274884ca67fd7f04037d197388ed72af429edfe6a7a73",
+  "files": 49,
+  "checksums_verified": true,
+  "cumulative": true,
+  "hardware_tested": false,
+  "game_boot_confirmed": false,
+  "nsp_reinstall_required": false,
+  "nro_sha256": "5caf68ad45598cc1a3d461eeeec1f043f5c62d9a8da1e43ae4b91d232d68843f",
+  "compiled_overlay_reconstruction": "PASS",
+  "existing_memory_code": "unchanged",
+  "wow64_and_renderer_files": "identical to current runtime",
+  "host_checks": "PASS ASan/UBSan"
+}

@@ -1,0 +1,235 @@
+{
+  "audit_complete": true,
+  "runtime_changed": false,
+  "boot_files_installed": false,
+  "new_switch_build_produced": false,
+  "hardware_tested": false,
+  "input": {
+    "origin": "D:\\Dev\\Personal\\UNDANGAN\\fex-runtime.log",
+    "snapshot": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\reports\\autorun-memory-input\\fex-runtime.log",
+    "sha256": "a37f3b1ab10ddbcde5c5200e85a82b2d99825b026a84f3220b30412e44776253"
+  },
+  "upstream": {
+    "date": "2026-10-05T22:20:25Z",
+    "tree_sha": "5f3731c62dab7aaaee6fed4ae53290335ef39bed",
+    "truncated": false,
+    "commit": "cbb0e4e6e7fa7f47f328d92441f51bfb507f266f",
+    "message": "win32u: keep hidden Horizon OpenGL windows offscreen"
+  },
+  "upstream_verified_files": {
+    "documentation/technical.md": {
+      "git_blob": "2ba69ccb7e0e5592540b2d63ca8e4a1eb8620ea7",
+      "sha256": "0f3d563fbb1a99133409f64350f1ff0957b83ffc2c77e2b1ef852d2dda8b811d"
+    },
+    "horizon-wine/build-boot-bundle.sh": {
+      "git_blob": "637f579e205f89aee55c4e3a4885191af2284954",
+      "sha256": "88f8001247a92f1e35b606a9b7a420972d218932cb1941cabae97ca5cc05703e"
+    },
+    "horizon-wine/build-low-window.sh": {
+      "git_blob": "96a36774e24931f7e72387ad3130767a9359386d",
+      "sha256": "775fe355a6908e10433a310903b5a231ddbf6e2004b95b57cff148dc8138cd9f"
+    },
+    "horizon-wine/check-low-window.sh": {
+      "git_blob": "e0fc408d774a1a2f5366b202ba39673aa04b914c",
+      "sha256": "919f9e26b5c228aba6a67dbffd379009528f2a2bd4b1f2abe4e80a4e363c40c5"
+    },
+    "dlls/ntdll/unix/horizon.c": {
+      "git_blob": "c13eef9e9fbe096db79cd02e0cdbdd4767062ebf",
+      "sha256": "c07e329e3f3f7913c57e94afb832fd97290cbf086571373fc615760719dc5dbe"
+    },
+    "dlls/ntdll/unix/virtual.c": {
+      "git_blob": "0fe84710804d4689338789f8893941439d564780",
+      "sha256": "f94beed6c32a5e942d129286ffaa94822d4e6ece9a9eca976c9872faa2827e41"
+    },
+    "horizon-wine/mesosphere/hoc-low-window.patch": {
+      "git_blob": "7ebbb547be5545298c5783da214a361eb4299e23",
+      "sha256": "c44c3ed95513c30387be9864cdec7f142682e768432facc32fef229a39948e47"
+    },
+    "horizon-wine/mesosphere/low-window.patch": {
+      "git_blob": "45c052f72fbb695f34d881743daa49e4c5cf9f19",
+      "sha256": "51534dc567602d62fbfd678945d843825d5d55c984f612320a0a2683ae196b69"
+    },
+    "horizon-wine/mesosphere/mesosphere-1.12.0-low-window.patch": {
+      "git_blob": "9ec0cd036bf1f67cfe7e8024f376b3cd6dce3840",
+      "sha256": "f93866bac8a4e8cd3d4c57757726327c355d65ce75a00b02a7919557414daa7c"
+    },
+    "horizon-wine/mesosphere/README.txt": {
+      "git_blob": "f2524c08e6b47d3ab2edea056be06af1fcf2853f",
+      "sha256": "99162270f51463bfe4a612258f1f6423d345c3da4f0720fd023b98a2c93de9bb"
+    },
+    "horizon-wine/source/backing_heap.h": {
+      "git_blob": "15130aed122f30b199a35af8ac3513c5d6eeb7eb",
+      "sha256": "31418cc8cd432a8e90a366b8941343050d44ab724e3a45472646ea3472232f49"
+    },
+    "horizon-wine/source/forwarder.c": {
+      "git_blob": "918304845b1d74c117c57cf60276c8a1103f9825",
+      "sha256": "ed16d217148a4aa7d4bae198fde63447cc8c7b88704934b310c51395be58fde8"
+    },
+    "horizon-wine/source/forwarder.h": {
+      "git_blob": "c9e2da6e94fe3c6f990c1b64c54b2bd6b047179d",
+      "sha256": "32d2debb6bb9f03a76b1b4c9a05810fbd099fb717ecdc75a087c62bea1cc5ed7"
+    },
+    "horizon-wine/source/forwarder_launch.h": {
+      "git_blob": "ef8cef2e4e55ff828dfc567226c028bbbfe0e72a",
+      "sha256": "394cdd255a701929775a56c37b008c491de224afc6a24626cc99a78d39b6c5f2"
+    },
+    "horizon-wine/source/game_forwarder.c": {
+      "git_blob": "ed275bee9b5b3400c401ad74117ff987b60cb318",
+      "sha256": "bb23bc4390ca829b0034d69e77721987443691e0c55e5fbba877b63b1fd820ae"
+    },
+    "horizon-wine/source/horizon_virtmem.c": {
+      "git_blob": "3105411cd3c97b64fd5e47db4f22f9b80c1c0947",
+      "sha256": "95b817f2b6418c52cc1f732e871e111325949b8dc399a5bd0d416e6872e9d177"
+    },
+    "horizon-wine/source/launcher.c": {
+      "git_blob": "dc508b376e6814d690572f7b1ac749972faf5f8c",
+      "sha256": "07832c5b150252ab89b6b32a15857d3dbbf068fbeca4f6df0c6a0ffccbed8806"
+    },
+    "horizon-wine/source/launcher_forwarder.c": {
+      "git_blob": "d0018405926e81ef88435e6616f5876d1abe46f3",
+      "sha256": "5b8462e02c4af62fa4aaf71f841a42baff719a9733306762cf1127ce153e9db3"
+    },
+    "horizon-wine/source/low_window.c": {
+      "git_blob": "8ace905d50e9f24ac675d069e5e1dfb83bf6dfca",
+      "sha256": "bf8c8a214d613eb1a0d42876926b35e2e3cbbf6f8343431915c895c235403214"
+    },
+    "horizon-wine/source/low_window.h": {
+      "git_blob": "5c51bfca07dd2b6f70fddcd10f5fb190c28c6533",
+      "sha256": "1381d931abecec955ec4eaa6da602ba410d7e1840c5a8288e03efba915420587"
+    },
+    "horizon-wine/source/native_heap.c": {
+      "git_blob": "11bdcbaf09e0e548833583ec5537e47f8aa76c71",
+      "sha256": "44daed28ecb4293b6f5debf132e3701f4fc33bf2f9ff731bf750424600214913"
+    },
+    "horizon-wine/source/runtime.c": {
+      "git_blob": "806e1b88fe35f9c20e98dcd95ac5ce01d7b201ac",
+      "sha256": "d629d475de06b41a040908afc1bc0ecce7a365e0e9031e17d438df19fbcf9b2c"
+    },
+    "horizon-wine/source/runtime_platform.c": {
+      "git_blob": "5c609b6743d5b6e2e207c88c928f72628a978ced",
+      "sha256": "7c48b1a46ae87f0b84f62f99d4a5c92df5b0c2cd6aeddab7e3178a503282c0ea"
+    },
+    "horizon-wine/source/setup_boot.c": {
+      "git_blob": "a8321fcf4b4d806c74d9ac0640041b3c8eb85d72",
+      "sha256": "6c77eae8c2d99ffb354d1f6f296daaca91e872a21d045d9dbb7624f3d00fe0d7"
+    },
+    "horizon-wine/tests/check_horizon_native_view.py": {
+      "git_blob": "65c4b9b92561f275c6ec94088d8782f434042fef",
+      "sha256": "1aa3f45ffbe92e3ce70ea87a53ac5df5b9fef7ff69535d33d4d762d929e75336"
+    },
+    "horizon-wine/tests/check_low_window_routing.py": {
+      "git_blob": "4cf4f2a4ffcf6d97c4f0fed37ae0b9c551f413fa",
+      "sha256": "ceff7a3c56fcfba3c055c484460feb7a021c1d86841825c5a891ec43daffcbb0"
+    },
+    "horizon-wine/tests/horizon_virtmem.c": {
+      "git_blob": "471684716e2e8d54f4462489118430f794309c01",
+      "sha256": "1412dadfd2c89517cc3265f3b56ca44d9f9fd53b518f7040efe00af6194cb7bf"
+    },
+    "horizon-wine/tests/low_window.c": {
+      "git_blob": "e7ba648aa1394a9fb1c31b08feabec50f7c52108",
+      "sha256": "9671ea8c4b039432e677d48199e9053f4023c77993aee6eb9ea16dfc179d6b81"
+    },
+    "horizon-wine/tools/make-boot-bundle.py": {
+      "git_blob": "a6a9a9e78d2973e1f55f04d98c5ce09cb8d24021",
+      "sha256": "79d9411882c93ea2ee6a969cba8e1368f4ab8b69a2480779fed23caf6b4d15fd"
+    },
+    "horizon-wine/tools/package-low-window.py": {
+      "git_blob": "cee4b5fbff446574c0dfbd20014c86631571a946",
+      "sha256": "b7dde97f49f6356c670d209c56c14bcd6041006c3adb34b5217e447c90c9d482"
+    },
+    "horizon-wine/tests/horizon_virtmem/switch.h": {
+      "git_blob": "ae93e13f6d4397bb6dd8de0bdff2d64b8e1221ab",
+      "sha256": "c48ba967d069a60796d5e76289112941b0d9c4fe8a7d08c4b459fb5df44691cb"
+    },
+    "horizon-wine/tests/low_window/switch.h": {
+      "git_blob": "fd665737487a618a5196adf190a0dcb3384c6081",
+      "sha256": "7f4e0acf5290a7a0fd5f08d7ff40bac2c25d8574c7d39da5a1e054e7eee81f8a"
+    }
+  },
+  "user_environment": {
+    "hos_reported": "22.5",
+    "atmosphere": "1.11.2",
+    "boot": "Hekate",
+    "hoc_or_custom_kernel": "not specified"
+  },
+  "latest_log": {
+    "process_budget_bytes": 2147483648,
+    "last_logged_reuse_hits": 2048,
+    "map_failures_bytes": [
+      4194304,
+      5242880
+    ],
+    "native_heap": {
+      "used": 2024959440,
+      "free_fragments": 44147248,
+      "arena": 2069106688,
+      "capacity": 2070040576,
+      "unclaimed": 933888,
+      "available": 45081136
+    },
+    "fault_target": "0x40",
+    "fex_profile": "fastest"
+  },
+  "game": {
+    "image_base": "0x400000",
+    "large_address_aware": false,
+    "relocations_stripped": true,
+    "sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc"
+  },
+  "finding": "The 32-bit no-alias layout imposes a real 2 GiB process ceiling. Retired-buffer reuse is active but does not prevent this scene OOM.",
+  "upstream_solution": {
+    "host_bits": 39,
+    "native_address_floor": "0x100000000",
+    "guest_window": [
+      "0x00200000",
+      "0x100000000"
+    ],
+    "base_atmosphere_commit": "5388824be146a89619e8d641acd64599cf1c5f62",
+    "base_application_pool_mib_4gb_console": 3285,
+    "full_4gib_physical_heap_promised": false,
+    "guest_non_laa_limit_bytes": 2147483648,
+    "guest_laa_limit_bytes": 4294967296,
+    "note": "Physical memory remains limited by the application pool and overhead. Low guest aliases do not duplicate backing RAM."
+  },
+  "port_requirements": [
+    {
+      "component": "kernel and loader",
+      "reason": "Whitelist the Sleeping Dogs title as well as Autorun; the stock upstream whitelist cannot enable this launcher.",
+      "sleepingdogs_title": "059a3db219b42000",
+      "autorun_title": "0548eabb35576000"
+    },
+    {
+      "component": "forwarder and runtime preflight",
+      "reason": "Select 39-bit NPDM; reserve the guest window before native mappings; require executable 0x00400000 and writable high-edge alias probes."
+    },
+    {
+      "component": "guest data arena",
+      "reason": "Current 1000 MiB arena rejects high backing addresses. Replace or bypass the direct-heap path with high backing mapped into the low guest window, preserving ownership and protection semantics."
+    },
+    {
+      "component": "native/guest allocation routing",
+      "reason": "Keep stacks, JIT/native views and backing high; audit FEX and Vulkan mappings returned to x86 for valid low pointers."
+    }
+  ],
+  "upstream_host_checks": {
+    "status": "PASS",
+    "output": "Low window: stock profiles, reservation, concurrency and failure cleanup passed\nHorizon stacks: compact placement, reservations, guards, reuse, failures and 40 concurrent allocations passed\nLow window: verified forwarder ID and 39-bit capability gating passed\nHorizon native views: Wine reservation, no-access system view, release and failure cleanup passed",
+    "scope": "Unmodified upstream x86_64 host checks; mocked SVCs. AArch64 low-address execution and actual Horizon boot were not run."
+  },
+  "remaining_uncertainty": "More native RAM is plausible and removes this address-mode ceiling; it does not yet demonstrate successful Sleeping Dogs 3D gameplay.",
+  "references": [
+    "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/horizon-wine/mesosphere/README.txt",
+    "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/horizon-wine/mesosphere/low-window.patch",
+    "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/horizon-wine/source/low_window.c",
+    "https://github.com/Atmosphere-NX/Atmosphere/blob/5388824be146a89619e8d641acd64599cf1c5f62/libraries/libmesosphere/source/kern_k_address_space_info.cpp",
+    "https://github.com/Atmosphere-NX/Atmosphere/blob/5388824be146a89619e8d641acd64599cf1c5f62/libraries/libmesosphere/source/board/nintendo/nx/kern_k_system_control.cpp",
+    "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.11.2"
+  ],
+  "local_sources": {
+    "tools/analyze_low_window.py": "4b3af926b29a7afad2c32058e1898b1e0759bccc0510fd861deda19b86cb6e03",
+    "tools/sleepingdogs_overlay.py": "bb737d9a4d91dbcc3abae77de5b1b49c509ff01c02c48f120d4699d539e06946",
+    "src/sd_guest_arena.c": "335a95e4d58cf634fa1071df9f9e54dc4785c0a782a160af5ad02c85399b1f11",
+    "src/sd_guest_view.inc": "c22f7d38e3b67ed9b7e2ba01c7559cd96bf1cae1002cb06d50ae4f450fedb38b",
+    "forwarder/build_forwarder.py": "e0ae202e74ac41f2c76745edcaf085e4e240a04c28d96d6e9be0c48f2f1c2f71"
+  }
+}

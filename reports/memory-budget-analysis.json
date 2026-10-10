@@ -1,0 +1,143 @@
+{
+  "input": {
+    "fex-runtime.log": {
+      "path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08\\fex-runtime.log",
+      "sha256": "50f723b2f48d0ab9c1f9e657acc05d1a55870ed91c20d35872d48e72d74dbe3d",
+      "bytes": 454371,
+      "lines": [
+        {
+          "line": 5,
+          "text": "[SD-THREAD-DEBUG] build=v1 suspended thread debug context"
+        },
+        {
+          "line": 33,
+          "text": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0"
+        },
+        {
+          "line": 2310,
+          "text": "[SD-DB] arm tid=12 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a"
+        },
+        {
+          "line": 4568,
+          "text": "[SD-GPU-ARENA] capacity=268435456 used=112525312 free=155910144 largest=155910144 peak=112525312 live=44 takes=44 misses=0 returned=0 invalid=0"
+        },
+        {
+          "line": 4692,
+          "text": "[THREAD] NtCreateThreadEx tid=76 start=0x549430 param=0x7eed0c30 flags=0x1 stack_reserve=0x0 err=0"
+        },
+        {
+          "line": 5030,
+          "text": "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0"
+        },
+        {
+          "line": 5122,
+          "text": "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0"
+        },
+        {
+          "line": 5127,
+          "text": "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0"
+        },
+        {
+          "line": 5137,
+          "text": "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0"
+        },
+        {
+          "line": 5140,
+          "text": "[THREAD] NtCreateThreadEx tid=108 start=0xdde0a0 param=0xb8db74c8 flags=0x1 stack_reserve=0x0 err=0"
+        },
+        {
+          "line": 5159,
+          "text": "[SD-THREAD] stage=libnx-create rc=00000559 stack=0x0 bytes=131072 priority=59 core=-2"
+        },
+        {
+          "line": 5190,
+          "text": "[SD-THREAD] stage=NtCreateThreadEx status=c0000017 reserve=0 commit=16384 errno=12"
+        },
+        {
+          "line": 5192,
+          "text": "[SD-RESOURCE] reason=NtCreateThreadEx free_threads=197 query_rc=00000000 heap_used=1974787504 arena_free=28156496 heap_arena=2002944000 heap_capacity=2002944000 heap_unclaimed=0 heap_available=28156496"
+        },
+        {
+          "line": 5269,
+          "text": "[SD-THREAD] stage=libnx-create rc=00000559 stack=0x0 bytes=131072 priority=59 core=-2"
+        },
+        {
+          "line": 5281,
+          "text": "[SD-THREAD] stage=NtCreateThreadEx status=c0000017 reserve=0 commit=32768 errno=88"
+        },
+        {
+          "line": 5282,
+          "text": "[SD-RESOURCE] reason=NtCreateThreadEx free_threads=199 query_rc=00000000 heap_used=1972284992 arena_free=30659008 heap_arena=2002944000 heap_capacity=2002944000 heap_unclaimed=0 heap_available=30659008"
+        },
+        {
+          "line": 5285,
+          "text": "[SD-SCRATCH-RECOVER] bytes=16777216 idle_released=0 recovered=0 stage=source-pages rc=00000000"
+        },
+        {
+          "line": 5286,
+          "text": "[FEX3-SCRATCH] native size=16777216 ptr=0x0"
+        },
+        {
+          "line": 5287,
+          "text": "[FEX2-HEAP] STOP compiler scratch failed bytes=0x0000000001000000"
+        }
+      ],
+      "native_fatal_present": false
+    },
+    "crash.log": {
+      "path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08\\crash.log",
+      "sha256": "1521f84b2a17b2d6b8e8e8bc168b15f69a1f9158c47709c9e6e73b967a941e26",
+      "bytes": 32768,
+      "lines": [
+        {
+          "line": 6,
+          "text": "RESOURCE tick=0x15f507f94c free_threads=0xc7 query_rc=0x0"
+        },
+        {
+          "line": 7,
+          "text": "heap_used=0x758eae40 arena_free=0x1d3d1c0 arena=0x77628000 capacity=0x77628000 unclaimed=0x0"
+        },
+        {
+          "line": 40,
+          "text": "event=96 tick=0x15f3632c5f [SD-THREAD] stage=libnx-create rc=00000559 stack=0x0 bytes=131072 priority=59 core=-2"
+        },
+        {
+          "line": 66,
+          "text": "event=122 tick=0x15f52ea74f [SD-SCRATCH-RECOVER] bytes=16777216 idle_released=0 recovered=0 stage=source-pages rc=00000000"
+        }
+      ],
+      "native_fatal_present": false
+    }
+  },
+  "previous_thread_patch_hardware_evidence": "build marker and multiple per-thread breakpoint arms; further workers start beyond the previous failing entry.",
+  "failure": "Native heap exhaustion/fragmentation: 128 KiB libnx server stack cannot allocate despite idle full-size reserve; FEX subsequently cannot allocate another 16 MiB compiler workspace.",
+  "capacity_bytes": 2002944000,
+  "last_gpu_snapshot": {
+    "capacity": 268435456,
+    "used": 112525312,
+    "free": 155910144
+  },
+  "limitation": "GPU snapshot predates final failure; complete hardware allocation sequence is unavailable. Synthetic allocator replay is not a full game boot.",
+  "changes": {
+    "gpu_preallocation_before": 268435456,
+    "gpu_preallocation_after": 134217728,
+    "gpu_total_allocation_limited": false,
+    "stack_recovery": "nonzero page-aligned sizes <=1 MiB use full padded idle 1 MiB slot",
+    "compiler_failure_snapshots": [
+      "general heap",
+      "GPU arena",
+      "native stacks"
+    ]
+  },
+  "preserved": [
+    "FEX Fastest",
+    "1000 MiB guest arena",
+    "8/16 MiB compiler workspace capacities",
+    "PE DLLs",
+    "game files",
+    "save/settings"
+  ],
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

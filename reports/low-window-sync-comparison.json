@@ -1,0 +1,214 @@
+{
+  "fastest": {
+    "log_sha256": "bc83d378715f4e3284feeff39ffea08fda92f74b661605d7e5b8a63a0791b7f3",
+    "bytes": 991468,
+    "profile": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0",
+    "tso": "[FEX3-PRESET] fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack",
+    "plateau_first": {
+      "line": 7315,
+      "seconds": 115,
+      "presents": 3441,
+      "age_ms": 336,
+      "errors": 0
+    },
+    "plateau_last": {
+      "line": 9295,
+      "seconds": 280,
+      "presents": 3441,
+      "age_ms": 165594,
+      "errors": 0
+    },
+    "wait_samples": [
+      {
+        "line": 7323,
+        "seconds": 115,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=238932/239570 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7345,
+        "seconds": 115,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=8334/8335 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7411,
+        "seconds": 130,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=1299196/1299834 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7433,
+        "seconds": 130,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=1106969/1106970 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7705,
+        "seconds": 145,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=2359666/2360304 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7727,
+        "seconds": 145,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=2211182/2211183 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7790,
+        "seconds": 160,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=3434555/3435194 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7812,
+        "seconds": 160,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=3331328/3331328 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8081,
+        "seconds": 175,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=4473010/4473648 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8103,
+        "seconds": 175,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=4413358/4413359 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8169,
+        "seconds": 190,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=5550399/5551038 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8191,
+        "seconds": 190,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=5537610/5537611 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8460,
+        "seconds": 205,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=6586909/6587548 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8482,
+        "seconds": 205,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=6618223/6618224 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8545,
+        "seconds": 220,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=7664008/7664647 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8567,
+        "seconds": 220,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=7741264/7741265 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8839,
+        "seconds": 235,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=8701869/8702508 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8861,
+        "seconds": 235,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=8823557/8823558 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8924,
+        "seconds": 250,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=9777201/9777840 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 8946,
+        "seconds": 250,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=9946088/9946089 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 9218,
+        "seconds": 265,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=10811057/10811696 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 9240,
+        "seconds": 265,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject returned age_ms=0 status=c0000008 calls=11024229/11024229 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 9303,
+        "seconds": 280,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=11894700/11895339 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 9325,
+        "seconds": 280,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=12148818/12148819 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      }
+    ],
+    "invalid_status_directly_sampled": true,
+    "frozen_stacks": [
+      "[SD-STACK] tid=4w round=0 native= 7fda8d2960 7fda9211b8 7fd9879038 7fda922c38 7fd9b78980 7fd98adfdc 7fd98b0a3c 7fd98b0b20 guest= bb6f3b bb7c6a bb7e31 a5f1ac 9e7100 a09270 622e92",
+      "[SD-STACK] tid=72w round=0 native= 7fda8d270c 7fda8e288c 7fd9878e80 7fda921d18 7fd98adea8 7fd98b0a3c 7fd98b0b20 7fd98b6658 guest= bb6f3b bb7c6a bb7e31 bbadd5"
+    ],
+    "last_heap_available_bytes": 1058465264,
+    "vkmem": "[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0"
+  },
+  "fast": {
+    "log_sha256": "5a6918b09c9794a78efe26ed4a4b4a494760ff2f1afe03bca63691328fd12c0b",
+    "bytes": 733400,
+    "profile": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fast profile=1 guest_tests=0",
+    "tso": "[FEX3-PRESET] fast x87=64 scalar_tso=1 vector_tso=1 memcpy_tso=1 multiblock=1 smc=mtrack",
+    "plateau_first": {
+      "line": 7281,
+      "seconds": 105,
+      "presents": 1609,
+      "age_ms": 3642,
+      "errors": 0
+    },
+    "plateau_last": {
+      "line": 7660,
+      "seconds": 135,
+      "presents": 1609,
+      "age_ms": 33559,
+      "errors": 0
+    },
+    "wait_samples": [
+      {
+        "line": 7289,
+        "seconds": 105,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=456791/457390 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7311,
+        "seconds": 105,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=242007/242008 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7374,
+        "seconds": 120,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=1509086/1509685 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7396,
+        "seconds": 120,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=1319583/1319584 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7668,
+        "seconds": 135,
+        "text": "[SD-CALL] tid=4 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=2519829/2520428 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      },
+      {
+        "line": 7690,
+        "seconds": 135,
+        "text": "[SD-CALL] tid=72 NtWaitForSingleObject entered age_ms=0 status=ffffffff calls=2354923/2354924 a0=6d4ffff0 a1=0 a2=0 a3=180065cb0 a4=20000000 a5=7bc4e4e0 a6=0 a7=6d4ffff0"
+      }
+    ],
+    "invalid_status_directly_sampled": false,
+    "frozen_stacks": [
+      "[SD-STACK] tid=4w round=0 native= 2a5a12a960 2a5a1791b8 2a590d1038 2a5a17ac38 2a593d0980 2a59105fdc 2a59108a3c 2a59108b20 guest= bb6f3b bb7c6a bb7e31 a5f1ac 9e7100 a09270 622e92",
+      "[SD-STACK] tid=72w round=0 native= 2a5a12a70c 2a5a13a88c 2a590d0e80 2a5a179d18 2a59105ea8 2a59108a3c 2a59108b20 2a5910e658 guest= bb6f3b bb7c6a bb7e31 bbadd5"
+    ],
+    "last_heap_available_bytes": 1056878064,
+    "vkmem": "[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0"
+  },
+  "user_observation": "Fast is slower and still freezes",
+  "conclusion": "Enabling all three TSO options did not remove the observed stall: same high-valued handle and game wait stacks. Restore Fastest and collect lifecycle/object evidence.",
+  "qualification": "The Fast log samples only entered states for these busy waits; STATUS_INVALID_HANDLE was directly observed in the previous Fastest session. The new hook records the first actual invalid return.",
+  "hardware_freeze_fixed": false
+}

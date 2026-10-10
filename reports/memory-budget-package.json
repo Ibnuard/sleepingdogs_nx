@@ -1,0 +1,21 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-memory-budget-fix.zip",
+  "bytes": 12843365,
+  "sha256": "19dfeb58885977aefa76b0253783ffea937bcaf0321959d270416d9ebf3031e5",
+  "files": 329,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-memory-budget-rollback.zip",
+    "bytes": 9760750,
+    "sha256": "cb170d14d3bf84ce919448cfcc388f8c5e742fb86cc838a1b5d5809747f3743f",
+    "files": 10
+  },
+  "cumulative": true,
+  "source_reconstruction": "PASS",
+  "checksums_verified": true,
+  "prior_payloads_preserved": true,
+  "guest_memory_sources_unchanged": true,
+  "all_pe_dlls_unchanged": true,
+  "nro_sha256": "b2e525d647c583b15432186928a318ebf80efb921fd6f88e94efe978b1b1d79d",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

@@ -1,0 +1,17 @@
+{
+  "dll_sha256": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "actual_dll_emitter_cases": 67,
+  "guard_sha256": "045b7517a8524facd47151e558d3d6adfe73161a9a9ee51cacdc89f04f677db6",
+  "guard_bytes": 172,
+  "imports_unchanged": true,
+  "exports_unchanged": true,
+  "eager_spare_is_ret": true,
+  "production_frame_offsets_match_host": true,
+  "mocked_boundaries": [
+    "alias",
+    "aligned_alloc",
+    "free",
+    "memcpy"
+  ],
+  "hardware_tested": false
+}

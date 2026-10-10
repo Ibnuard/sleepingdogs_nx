@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "log_sha256": "a824b17585f2b3b001a0665116b87041f277c4da92d6ed359aae92b8f4317a49",
+  "log_bytes": 799247,
+  "profile": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0",
+  "low_window": "[SD-LOWVA] v1 host=200000+7fffe00000 quota=3444572160 title=059a3db219b42000 query=00000000/00000000/00000000/00000000",
+  "plateau": [
+    {
+      "line": 7652,
+      "seconds": 100,
+      "presents": 2442,
+      "age_ms": 5495,
+      "present_errors": 0
+    },
+    {
+      "line": 7947,
+      "seconds": 115,
+      "presents": 2442,
+      "age_ms": 20143,
+      "present_errors": 0
+    },
+    {
+      "line": 8033,
+      "seconds": 130,
+      "presents": 2442,
+      "age_ms": 35387,
+      "present_errors": 0
+    }
+  ],
+  "last_heap_available_bytes": 1060842912,
+  "last_heap_available_mib": 1011.7,
+  "vkmem": "[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0",
+  "invalid_captures": [
+    {
+      "seq": 30,
+      "tid": 4,
+      "queue": "0x6d580270",
+      "worker_count": 0,
+      "default_index_signed": -34,
+      "used_index_signed": -34,
+      "index_table": "dededededededededededede",
+      "pointer_array_address_for_bad_index": "0x6d580260",
+      "invalid_wait": "[SD-SYNC] v1 seq=30 kind=invalid-wait tid=4 handle=6d4ffff0 status=c0000008 initial=0 max=0 tick=97158053390 frames=7 stack_read=1"
+    },
+    {
+      "seq": 31,
+      "tid": 72,
+      "queue": "0x6d580270",
+      "worker_count": 0,
+      "default_index_signed": -34,
+      "used_index_signed": -34,
+      "index_table": "dededededededededededede",
+      "pointer_array_address_for_bad_index": "0x6d580260",
+      "invalid_wait": "[SD-SYNC] v1 seq=31 kind=invalid-wait tid=72 handle=6d4ffff0 status=c0000008 initial=0 max=0 tick=97158053519 frames=4 stack_read=1"
+    }
+  ],
+  "original_code_replay": {
+    "report_sha256": "0b75155d1ccb6e39640c1b03a6bb0dd5f38e751f31393cb299e202f997db50a3",
+    "old": {
+      "worker_count": 0,
+      "queue_default_index": 4294967262,
+      "indices": [
+        4294967262
+      ],
+      "queries": [
+        {
+          "input_length": 0,
+          "status": "0xc0000002",
+          "returned_length": null
+        },
+        {
+          "input_length": 0,
+          "status": "0xc0000002",
+          "returned_length": null
+        }
+      ],
+      "table": "dededededededededededede"
+    },
+    "new": {
+      "worker_count": 4,
+      "queue_default_index": 0,
+      "indices": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "queries": [
+        {
+          "input_length": 0,
+          "status": "0xc0000004",
+          "returned_length": 144
+        },
+        {
+          "input_length": 144,
+          "status": "0x0",
+          "returned_length": 144
+        }
+      ],
+      "table": "01000000dededededededede"
+    }
+  },
+  "diagnosis": "Horizon logical-processor API has no backend in v5; HKShip replaces its GetSystemInfo count with zero after the failed topology query. The queue initializer skips the worker map and later sign-extends untouched 0xde to -34, indexing before the semaphore array.",
+  "qualification": "Device queue snapshots are non-atomic. The API/initialization chain is reproduced from original ARM64 Wine and x86 game/kernelbase code with modeled platform boundaries, not a full hardware gameplay test.",
+  "hardware_freeze_fixed": false,
+  "sources": {
+    "tools/analyze_cpu_topology_freeze.py": "985f0a2332db0b3fcc7c5a650f4b973e9834a006232fe457ae8e908274f75214"
+  }
+}

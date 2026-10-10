@@ -1,0 +1,15 @@
+{
+  "input_log": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-startup-memory-fix\\fex-runtime.log",
+  "input_sha256": "311719e2ad03bcb20a2a64440b657f874c8ee1e36e6edd6950c5f0d2bcc3b35a",
+  "memory_allocation_confirmed_on_device": true,
+  "previous_address_space_error_present": false,
+  "fex_fastest_confirmed": true,
+  "first_reported_guest_eip": "fffffffe",
+  "following_reported_guest_eip": "00000000",
+  "guest_stack_delta_bytes": "0x524",
+  "stack_overflow_observed": true,
+  "root_cause_confirmed": false,
+  "game_boot_confirmed": false,
+  "next_evidence": "first guest registers/stack/SEH and WoW exception-dispatch target",
+  "diagnostic_package": "sleepingdogs-fex-first-fault-trace.zip"
+}

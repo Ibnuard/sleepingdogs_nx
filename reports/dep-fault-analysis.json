@@ -1,0 +1,30 @@
+{
+  "log": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-named-pipe-fix\\fex-runtime.log",
+  "log_sha256": "d18ba522a862608572df4715a5aa7aaafa62569622377cd04ecf1982ed3a5886",
+  "bytes": 413302,
+  "observed": {
+    "successful_presents": [
+      1,
+      3,
+      4
+    ],
+    "suboptimal_present": 2,
+    "tid": 4,
+    "host_dispatcher": "0xfad01000",
+    "host_fault": "0xfad012d4",
+    "first_guest_eip": "0x003a4f78",
+    "first_guest_esp": "0x0166f674",
+    "later_guest_eip": "0x00000000",
+    "wine_disables_dep_for": "HKShip.exe",
+    "exe_dll_characteristics": "0x8000",
+    "old_snapshot_quota_consumed_by": "0x80000004 single-step"
+  },
+  "source_confirmed": {
+    "fex_export": "BTCpuNotifyProcessExecuteFlagsChange",
+    "old_wow64_loads_or_calls_export": false,
+    "new_bridge_forces_policy": false
+  },
+  "interpretation": "Missing accepted-policy notification is a confirmed runtime defect consistent with the heap execute fault. Heap contents/caller were not captured; device retest needed.",
+  "prior_device_progress": "First frames reached with named-pipe patch",
+  "new_patch_device_tested": false
+}

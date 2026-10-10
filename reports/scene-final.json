@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "patch": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-scene-memory-fix.zip",
+  "patch_sha256": "95d31c4440fea782f3798b4fd14bb26e5e0b34df96e84c8c57c02a02bf6fb277",
+  "patch_bytes": 35682213,
+  "rollback": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-scene-memory-rollback.zip",
+  "rollback_sha256": "6946a9aa80208073c0749c05e603be5433cf0f56d9a57a9aa2bf2cf3bbb4b76f",
+  "nro_sha256": "de0a9ea83adcdf8e68a1b0cd3d8383af50e911ec99e7e43149ddadb98367b0f7",
+  "fex_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "reserve_payload_saved_bytes": 33685504,
+  "actual_native_heap_saved_bytes": 33685568,
+  "fastest_preserved": true,
+  "forwarder_reinstall_required_for_current_install": false,
+  "checks": {
+    "scene-package": "ba4ea097bf2db62318bc7449cd41b76c67efe6eea3786b5698d9ffe777d1d925",
+    "scene-package-check": "708cbc2c32922bfd95d4da9729e0cea883e064ef52813abdf510baf6cedd7ac0",
+    "scene-launcher-check": "13a5196c42c534465e7cdbcdee192622949f218c9066a960fb01676c9603f6d5",
+    "scene-host-check": "a5234846fd6032352c415506031325ca42b776e4e02852aea260c80052a7b97b",
+    "scene-native-binary-check": "1b8cb3bdfbb79a6b6cfd2c51da8dc9f0e738917fe727fde09749341a6a6e2c08",
+    "scene-gate-binary-check": "283dbeeb7b50d31c77da381ce0d23391cac8f6aa1ffc673da4c3ec4f36c1f23e",
+    "scene-decoder-binary-check": "f96eadcfc171f6109b0598aeff7e4c6cc69e45e6ba5df1861138bec8d2d5dd5c",
+    "scene-debug-regression": "3551fa3bda28a2fdcd3f4b3c5fd7582b02f08cbea3f9b98970eef7ce36033137"
+  },
+  "hardware_tested": false,
+  "limitation": "The synthetic pressure check proves extra headroom and workspace safety, not that all 3D gameplay fits on Switch."
+}

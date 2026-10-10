@@ -1,0 +1,1349 @@
+{
+  "status": "ANALYZED",
+  "input": "D:\\Dev\\Switch\\PES PROJECT\\public_pesnx\\local-debug\\runtime-expansion-v1\\release\\FootballNX-Anfield-Test-v1\\anfield-update\\fex-runtime.log",
+  "sha256": "efbe9428c2adddca87b2d1d111bd1d47c585f30879287ab000d8c6a61138057d",
+  "analyzer_sha256": "e38c166389ccc9bce73debd754b0668aec8d0ca1ff15d5ecf4852eeb95ad0eeb",
+  "preserved_input": "local/performance-v14/efbe9428c2adddca87b2d1d111bd1d47c585f30879287ab000d8c6a61138057d/fex-runtime.log",
+  "capture_report": "reports/gameplay-v14-efbe9428c2ad.json",
+  "user_reported": {
+    "peak_fps": 24,
+    "typical_fps": [
+      15,
+      17
+    ],
+    "clocks_reconfirmed": false,
+    "paired_scene": false
+  },
+  "capture_fps": 17.046962379755946,
+  "capture_average_frame_ms": 58.66147749510763,
+  "capture_duration_ms": 30000,
+  "capture_present_intervals": 511,
+  "submits_per_present_interval": 6.612524461839531,
+  "submit_calls": 3379,
+  "submit_wall_ms": 604.036,
+  "present_thread_cpu_ms": 293.148,
+  "resolution_records": [
+    {
+      "line": 1075,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    {
+      "line": 1076,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  ],
+  "markers": [
+    {
+      "line": 569,
+      "text": "[SD-NVK-V14] shader compiler SM53: texture/global-load priority=200 select_limit=8 FADD.SAT=correct; v13 private GPU memory and ZCULL guards retained"
+    }
+  ],
+  "all_frame_windows": [
+    {
+      "line": 1312,
+      "window_ms": 10072,
+      "frames": 819,
+      "fps_x100": 8131,
+      "present_avg_us": 1047,
+      "lock_avg_us": 0,
+      "driver_avg_us": 643,
+      "errors": 0
+    },
+    {
+      "line": 1380,
+      "window_ms": 10123,
+      "frames": 905,
+      "fps_x100": 8939,
+      "present_avg_us": 1304,
+      "lock_avg_us": 0,
+      "driver_avg_us": 768,
+      "errors": 0
+    },
+    {
+      "line": 1442,
+      "window_ms": 10194,
+      "frames": 825,
+      "fps_x100": 8092,
+      "present_avg_us": 1956,
+      "lock_avg_us": 0,
+      "driver_avg_us": 896,
+      "errors": 0
+    },
+    {
+      "line": 1478,
+      "window_ms": 10066,
+      "frames": 827,
+      "fps_x100": 8215,
+      "present_avg_us": 2222,
+      "lock_avg_us": 0,
+      "driver_avg_us": 918,
+      "errors": 0
+    },
+    {
+      "line": 1523,
+      "window_ms": 10065,
+      "frames": 881,
+      "fps_x100": 8752,
+      "present_avg_us": 1221,
+      "lock_avg_us": 0,
+      "driver_avg_us": 697,
+      "errors": 0
+    },
+    {
+      "line": 1584,
+      "window_ms": 10199,
+      "frames": 884,
+      "fps_x100": 8667,
+      "present_avg_us": 1492,
+      "lock_avg_us": 0,
+      "driver_avg_us": 849,
+      "errors": 0
+    },
+    {
+      "line": 1625,
+      "window_ms": 10062,
+      "frames": 591,
+      "fps_x100": 5873,
+      "present_avg_us": 2168,
+      "lock_avg_us": 0,
+      "driver_avg_us": 943,
+      "errors": 0
+    },
+    {
+      "line": 1685,
+      "window_ms": 10084,
+      "frames": 679,
+      "fps_x100": 6732,
+      "present_avg_us": 1538,
+      "lock_avg_us": 0,
+      "driver_avg_us": 739,
+      "errors": 0
+    },
+    {
+      "line": 1752,
+      "window_ms": 10227,
+      "frames": 603,
+      "fps_x100": 5895,
+      "present_avg_us": 1694,
+      "lock_avg_us": 0,
+      "driver_avg_us": 815,
+      "errors": 0
+    },
+    {
+      "line": 1796,
+      "window_ms": 10124,
+      "frames": 272,
+      "fps_x100": 2686,
+      "present_avg_us": 628,
+      "lock_avg_us": 0,
+      "driver_avg_us": 337,
+      "errors": 0
+    },
+    {
+      "line": 1831,
+      "window_ms": 10092,
+      "frames": 160,
+      "fps_x100": 1585,
+      "present_avg_us": 596,
+      "lock_avg_us": 0,
+      "driver_avg_us": 395,
+      "errors": 0
+    },
+    {
+      "line": 1884,
+      "window_ms": 10183,
+      "frames": 174,
+      "fps_x100": 1708,
+      "present_avg_us": 454,
+      "lock_avg_us": 0,
+      "driver_avg_us": 326,
+      "errors": 0
+    },
+    {
+      "line": 2009,
+      "window_ms": 10262,
+      "frames": 185,
+      "fps_x100": 1802,
+      "present_avg_us": 820,
+      "lock_avg_us": 0,
+      "driver_avg_us": 537,
+      "errors": 0
+    },
+    {
+      "line": 2134,
+      "window_ms": 10264,
+      "frames": 172,
+      "fps_x100": 1675,
+      "present_avg_us": 621,
+      "lock_avg_us": 0,
+      "driver_avg_us": 416,
+      "errors": 0
+    },
+    {
+      "line": 2277,
+      "window_ms": 10395,
+      "frames": 177,
+      "fps_x100": 1702,
+      "present_avg_us": 490,
+      "lock_avg_us": 0,
+      "driver_avg_us": 329,
+      "errors": 0
+    },
+    {
+      "line": 2310,
+      "window_ms": 10067,
+      "frames": 183,
+      "fps_x100": 1817,
+      "present_avg_us": 492,
+      "lock_avg_us": 0,
+      "driver_avg_us": 330,
+      "errors": 0
+    },
+    {
+      "line": 2348,
+      "window_ms": 10071,
+      "frames": 165,
+      "fps_x100": 1638,
+      "present_avg_us": 516,
+      "lock_avg_us": 0,
+      "driver_avg_us": 344,
+      "errors": 0
+    },
+    {
+      "line": 2409,
+      "window_ms": 10220,
+      "frames": 177,
+      "fps_x100": 1731,
+      "present_avg_us": 881,
+      "lock_avg_us": 0,
+      "driver_avg_us": 517,
+      "errors": 0
+    },
+    {
+      "line": 2456,
+      "window_ms": 10080,
+      "frames": 136,
+      "fps_x100": 1349,
+      "present_avg_us": 765,
+      "lock_avg_us": 0,
+      "driver_avg_us": 499,
+      "errors": 0
+    },
+    {
+      "line": 2496,
+      "window_ms": 10081,
+      "frames": 132,
+      "fps_x100": 1309,
+      "present_avg_us": 526,
+      "lock_avg_us": 0,
+      "driver_avg_us": 371,
+      "errors": 0
+    },
+    {
+      "line": 2555,
+      "window_ms": 10184,
+      "frames": 143,
+      "fps_x100": 1404,
+      "present_avg_us": 565,
+      "lock_avg_us": 0,
+      "driver_avg_us": 336,
+      "errors": 0
+    },
+    {
+      "line": 2589,
+      "window_ms": 10070,
+      "frames": 142,
+      "fps_x100": 1410,
+      "present_avg_us": 733,
+      "lock_avg_us": 0,
+      "driver_avg_us": 466,
+      "errors": 0
+    },
+    {
+      "line": 2622,
+      "window_ms": 10058,
+      "frames": 133,
+      "fps_x100": 1322,
+      "present_avg_us": 965,
+      "lock_avg_us": 0,
+      "driver_avg_us": 543,
+      "errors": 0
+    },
+    {
+      "line": 2673,
+      "window_ms": 10194,
+      "frames": 142,
+      "fps_x100": 1392,
+      "present_avg_us": 594,
+      "lock_avg_us": 0,
+      "driver_avg_us": 418,
+      "errors": 0
+    },
+    {
+      "line": 2706,
+      "window_ms": 10071,
+      "frames": 138,
+      "fps_x100": 1370,
+      "present_avg_us": 564,
+      "lock_avg_us": 0,
+      "driver_avg_us": 363,
+      "errors": 0
+    },
+    {
+      "line": 2739,
+      "window_ms": 10051,
+      "frames": 155,
+      "fps_x100": 1542,
+      "present_avg_us": 655,
+      "lock_avg_us": 0,
+      "driver_avg_us": 424,
+      "errors": 0
+    },
+    {
+      "line": 2790,
+      "window_ms": 10198,
+      "frames": 162,
+      "fps_x100": 1588,
+      "present_avg_us": 644,
+      "lock_avg_us": 0,
+      "driver_avg_us": 365,
+      "errors": 0
+    },
+    {
+      "line": 2828,
+      "window_ms": 10071,
+      "frames": 154,
+      "fps_x100": 1529,
+      "present_avg_us": 761,
+      "lock_avg_us": 0,
+      "driver_avg_us": 433,
+      "errors": 0
+    },
+    {
+      "line": 2861,
+      "window_ms": 10055,
+      "frames": 149,
+      "fps_x100": 1481,
+      "present_avg_us": 514,
+      "lock_avg_us": 0,
+      "driver_avg_us": 327,
+      "errors": 0
+    },
+    {
+      "line": 2912,
+      "window_ms": 10187,
+      "frames": 146,
+      "fps_x100": 1433,
+      "present_avg_us": 764,
+      "lock_avg_us": 0,
+      "driver_avg_us": 336,
+      "errors": 0
+    },
+    {
+      "line": 2945,
+      "window_ms": 10073,
+      "frames": 135,
+      "fps_x100": 1340,
+      "present_avg_us": 653,
+      "lock_avg_us": 0,
+      "driver_avg_us": 428,
+      "errors": 0
+    }
+  ],
+  "slow_tail": {
+    "windows": 22,
+    "window_ms": 223051,
+    "frames": 3532,
+    "fps_weighted": 15.834943577926124,
+    "fps_min": 13.09,
+    "fps_max": 26.86,
+    "rows": [
+      {
+        "line": 1796,
+        "window_ms": 10124,
+        "frames": 272,
+        "fps_x100": 2686,
+        "present_avg_us": 628,
+        "lock_avg_us": 0,
+        "driver_avg_us": 337,
+        "errors": 0
+      },
+      {
+        "line": 1831,
+        "window_ms": 10092,
+        "frames": 160,
+        "fps_x100": 1585,
+        "present_avg_us": 596,
+        "lock_avg_us": 0,
+        "driver_avg_us": 395,
+        "errors": 0
+      },
+      {
+        "line": 1884,
+        "window_ms": 10183,
+        "frames": 174,
+        "fps_x100": 1708,
+        "present_avg_us": 454,
+        "lock_avg_us": 0,
+        "driver_avg_us": 326,
+        "errors": 0
+      },
+      {
+        "line": 2009,
+        "window_ms": 10262,
+        "frames": 185,
+        "fps_x100": 1802,
+        "present_avg_us": 820,
+        "lock_avg_us": 0,
+        "driver_avg_us": 537,
+        "errors": 0
+      },
+      {
+        "line": 2134,
+        "window_ms": 10264,
+        "frames": 172,
+        "fps_x100": 1675,
+        "present_avg_us": 621,
+        "lock_avg_us": 0,
+        "driver_avg_us": 416,
+        "errors": 0
+      },
+      {
+        "line": 2277,
+        "window_ms": 10395,
+        "frames": 177,
+        "fps_x100": 1702,
+        "present_avg_us": 490,
+        "lock_avg_us": 0,
+        "driver_avg_us": 329,
+        "errors": 0
+      },
+      {
+        "line": 2310,
+        "window_ms": 10067,
+        "frames": 183,
+        "fps_x100": 1817,
+        "present_avg_us": 492,
+        "lock_avg_us": 0,
+        "driver_avg_us": 330,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10071,
+        "frames": 165,
+        "fps_x100": 1638,
+        "present_avg_us": 516,
+        "lock_avg_us": 0,
+        "driver_avg_us": 344,
+        "errors": 0
+      },
+      {
+        "line": 2409,
+        "window_ms": 10220,
+        "frames": 177,
+        "fps_x100": 1731,
+        "present_avg_us": 881,
+        "lock_avg_us": 0,
+        "driver_avg_us": 517,
+        "errors": 0
+      },
+      {
+        "line": 2456,
+        "window_ms": 10080,
+        "frames": 136,
+        "fps_x100": 1349,
+        "present_avg_us": 765,
+        "lock_avg_us": 0,
+        "driver_avg_us": 499,
+        "errors": 0
+      },
+      {
+        "line": 2496,
+        "window_ms": 10081,
+        "frames": 132,
+        "fps_x100": 1309,
+        "present_avg_us": 526,
+        "lock_avg_us": 0,
+        "driver_avg_us": 371,
+        "errors": 0
+      },
+      {
+        "line": 2555,
+        "window_ms": 10184,
+        "frames": 143,
+        "fps_x100": 1404,
+        "present_avg_us": 565,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2589,
+        "window_ms": 10070,
+        "frames": 142,
+        "fps_x100": 1410,
+        "present_avg_us": 733,
+        "lock_avg_us": 0,
+        "driver_avg_us": 466,
+        "errors": 0
+      },
+      {
+        "line": 2622,
+        "window_ms": 10058,
+        "frames": 133,
+        "fps_x100": 1322,
+        "present_avg_us": 965,
+        "lock_avg_us": 0,
+        "driver_avg_us": 543,
+        "errors": 0
+      },
+      {
+        "line": 2673,
+        "window_ms": 10194,
+        "frames": 142,
+        "fps_x100": 1392,
+        "present_avg_us": 594,
+        "lock_avg_us": 0,
+        "driver_avg_us": 418,
+        "errors": 0
+      },
+      {
+        "line": 2706,
+        "window_ms": 10071,
+        "frames": 138,
+        "fps_x100": 1370,
+        "present_avg_us": 564,
+        "lock_avg_us": 0,
+        "driver_avg_us": 363,
+        "errors": 0
+      },
+      {
+        "line": 2739,
+        "window_ms": 10051,
+        "frames": 155,
+        "fps_x100": 1542,
+        "present_avg_us": 655,
+        "lock_avg_us": 0,
+        "driver_avg_us": 424,
+        "errors": 0
+      },
+      {
+        "line": 2790,
+        "window_ms": 10198,
+        "frames": 162,
+        "fps_x100": 1588,
+        "present_avg_us": 644,
+        "lock_avg_us": 0,
+        "driver_avg_us": 365,
+        "errors": 0
+      },
+      {
+        "line": 2828,
+        "window_ms": 10071,
+        "frames": 154,
+        "fps_x100": 1529,
+        "present_avg_us": 761,
+        "lock_avg_us": 0,
+        "driver_avg_us": 433,
+        "errors": 0
+      },
+      {
+        "line": 2861,
+        "window_ms": 10055,
+        "frames": 149,
+        "fps_x100": 1481,
+        "present_avg_us": 514,
+        "lock_avg_us": 0,
+        "driver_avg_us": 327,
+        "errors": 0
+      },
+      {
+        "line": 2912,
+        "window_ms": 10187,
+        "frames": 146,
+        "fps_x100": 1433,
+        "present_avg_us": 764,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2945,
+        "window_ms": 10073,
+        "frames": 135,
+        "fps_x100": 1340,
+        "present_avg_us": 653,
+        "lock_avg_us": 0,
+        "driver_avg_us": 428,
+        "errors": 0
+      }
+    ]
+  },
+  "tail_excluding_first_transition": {
+    "windows": 21,
+    "window_ms": 212927,
+    "frames": 3260,
+    "fps_weighted": 15.310411549498184,
+    "fps_min": 13.09,
+    "fps_max": 18.17,
+    "rows": [
+      {
+        "line": 1831,
+        "window_ms": 10092,
+        "frames": 160,
+        "fps_x100": 1585,
+        "present_avg_us": 596,
+        "lock_avg_us": 0,
+        "driver_avg_us": 395,
+        "errors": 0
+      },
+      {
+        "line": 1884,
+        "window_ms": 10183,
+        "frames": 174,
+        "fps_x100": 1708,
+        "present_avg_us": 454,
+        "lock_avg_us": 0,
+        "driver_avg_us": 326,
+        "errors": 0
+      },
+      {
+        "line": 2009,
+        "window_ms": 10262,
+        "frames": 185,
+        "fps_x100": 1802,
+        "present_avg_us": 820,
+        "lock_avg_us": 0,
+        "driver_avg_us": 537,
+        "errors": 0
+      },
+      {
+        "line": 2134,
+        "window_ms": 10264,
+        "frames": 172,
+        "fps_x100": 1675,
+        "present_avg_us": 621,
+        "lock_avg_us": 0,
+        "driver_avg_us": 416,
+        "errors": 0
+      },
+      {
+        "line": 2277,
+        "window_ms": 10395,
+        "frames": 177,
+        "fps_x100": 1702,
+        "present_avg_us": 490,
+        "lock_avg_us": 0,
+        "driver_avg_us": 329,
+        "errors": 0
+      },
+      {
+        "line": 2310,
+        "window_ms": 10067,
+        "frames": 183,
+        "fps_x100": 1817,
+        "present_avg_us": 492,
+        "lock_avg_us": 0,
+        "driver_avg_us": 330,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10071,
+        "frames": 165,
+        "fps_x100": 1638,
+        "present_avg_us": 516,
+        "lock_avg_us": 0,
+        "driver_avg_us": 344,
+        "errors": 0
+      },
+      {
+        "line": 2409,
+        "window_ms": 10220,
+        "frames": 177,
+        "fps_x100": 1731,
+        "present_avg_us": 881,
+        "lock_avg_us": 0,
+        "driver_avg_us": 517,
+        "errors": 0
+      },
+      {
+        "line": 2456,
+        "window_ms": 10080,
+        "frames": 136,
+        "fps_x100": 1349,
+        "present_avg_us": 765,
+        "lock_avg_us": 0,
+        "driver_avg_us": 499,
+        "errors": 0
+      },
+      {
+        "line": 2496,
+        "window_ms": 10081,
+        "frames": 132,
+        "fps_x100": 1309,
+        "present_avg_us": 526,
+        "lock_avg_us": 0,
+        "driver_avg_us": 371,
+        "errors": 0
+      },
+      {
+        "line": 2555,
+        "window_ms": 10184,
+        "frames": 143,
+        "fps_x100": 1404,
+        "present_avg_us": 565,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2589,
+        "window_ms": 10070,
+        "frames": 142,
+        "fps_x100": 1410,
+        "present_avg_us": 733,
+        "lock_avg_us": 0,
+        "driver_avg_us": 466,
+        "errors": 0
+      },
+      {
+        "line": 2622,
+        "window_ms": 10058,
+        "frames": 133,
+        "fps_x100": 1322,
+        "present_avg_us": 965,
+        "lock_avg_us": 0,
+        "driver_avg_us": 543,
+        "errors": 0
+      },
+      {
+        "line": 2673,
+        "window_ms": 10194,
+        "frames": 142,
+        "fps_x100": 1392,
+        "present_avg_us": 594,
+        "lock_avg_us": 0,
+        "driver_avg_us": 418,
+        "errors": 0
+      },
+      {
+        "line": 2706,
+        "window_ms": 10071,
+        "frames": 138,
+        "fps_x100": 1370,
+        "present_avg_us": 564,
+        "lock_avg_us": 0,
+        "driver_avg_us": 363,
+        "errors": 0
+      },
+      {
+        "line": 2739,
+        "window_ms": 10051,
+        "frames": 155,
+        "fps_x100": 1542,
+        "present_avg_us": 655,
+        "lock_avg_us": 0,
+        "driver_avg_us": 424,
+        "errors": 0
+      },
+      {
+        "line": 2790,
+        "window_ms": 10198,
+        "frames": 162,
+        "fps_x100": 1588,
+        "present_avg_us": 644,
+        "lock_avg_us": 0,
+        "driver_avg_us": 365,
+        "errors": 0
+      },
+      {
+        "line": 2828,
+        "window_ms": 10071,
+        "frames": 154,
+        "fps_x100": 1529,
+        "present_avg_us": 761,
+        "lock_avg_us": 0,
+        "driver_avg_us": 433,
+        "errors": 0
+      },
+      {
+        "line": 2861,
+        "window_ms": 10055,
+        "frames": 149,
+        "fps_x100": 1481,
+        "present_avg_us": 514,
+        "lock_avg_us": 0,
+        "driver_avg_us": 327,
+        "errors": 0
+      },
+      {
+        "line": 2912,
+        "window_ms": 10187,
+        "frames": 146,
+        "fps_x100": 1433,
+        "present_avg_us": 764,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2945,
+        "window_ms": 10073,
+        "frames": 135,
+        "fps_x100": 1340,
+        "present_avg_us": 653,
+        "lock_avg_us": 0,
+        "driver_avg_us": 428,
+        "errors": 0
+      }
+    ]
+  },
+  "last_seven": {
+    "windows": 7,
+    "window_ms": 70706,
+    "frames": 1039,
+    "fps_weighted": 14.694651090430797,
+    "fps_min": 13.4,
+    "fps_max": 15.88,
+    "rows": [
+      {
+        "line": 2706,
+        "window_ms": 10071,
+        "frames": 138,
+        "fps_x100": 1370,
+        "present_avg_us": 564,
+        "lock_avg_us": 0,
+        "driver_avg_us": 363,
+        "errors": 0
+      },
+      {
+        "line": 2739,
+        "window_ms": 10051,
+        "frames": 155,
+        "fps_x100": 1542,
+        "present_avg_us": 655,
+        "lock_avg_us": 0,
+        "driver_avg_us": 424,
+        "errors": 0
+      },
+      {
+        "line": 2790,
+        "window_ms": 10198,
+        "frames": 162,
+        "fps_x100": 1588,
+        "present_avg_us": 644,
+        "lock_avg_us": 0,
+        "driver_avg_us": 365,
+        "errors": 0
+      },
+      {
+        "line": 2828,
+        "window_ms": 10071,
+        "frames": 154,
+        "fps_x100": 1529,
+        "present_avg_us": 761,
+        "lock_avg_us": 0,
+        "driver_avg_us": 433,
+        "errors": 0
+      },
+      {
+        "line": 2861,
+        "window_ms": 10055,
+        "frames": 149,
+        "fps_x100": 1481,
+        "present_avg_us": 514,
+        "lock_avg_us": 0,
+        "driver_avg_us": 327,
+        "errors": 0
+      },
+      {
+        "line": 2912,
+        "window_ms": 10187,
+        "frames": 146,
+        "fps_x100": 1433,
+        "present_avg_us": 764,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2945,
+        "window_ms": 10073,
+        "frames": 135,
+        "fps_x100": 1340,
+        "present_avg_us": 653,
+        "lock_avg_us": 0,
+        "driver_avg_us": 428,
+        "errors": 0
+      }
+    ]
+  },
+  "driver_cache_hits": 2484,
+  "driver_cache_misses": 0,
+  "completed_nak_compile_scopes_max": 0,
+  "compiled_shader_marker_count": 0,
+  "zcull_active_marker_count": 0,
+  "graphics_pipeline_windows": [
+    {
+      "line": 1155,
+      "n": 672,
+      "total_us": 2809699,
+      "avg_us": 4181,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1353,
+      "n": 40,
+      "total_us": 62479,
+      "avg_us": 1561,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1391,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1454,
+      "n": 16,
+      "total_us": 16629,
+      "avg_us": 1039,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1489,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1535,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1595,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1636,
+      "n": 11,
+      "total_us": 18756,
+      "avg_us": 1705,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1696,
+      "n": 6,
+      "total_us": 35363,
+      "avg_us": 5893,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1763,
+      "n": 33,
+      "total_us": 82467,
+      "avg_us": 2499,
+      "peak_since_launch_us": 34698,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1807,
+      "n": 347,
+      "total_us": 932208,
+      "avg_us": 2686,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1843,
+      "n": 9,
+      "total_us": 12005,
+      "avg_us": 1333,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 1895,
+      "n": 20,
+      "total_us": 34530,
+      "avg_us": 1726,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2020,
+      "n": 33,
+      "total_us": 67542,
+      "avg_us": 2046,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2145,
+      "n": 19,
+      "total_us": 67188,
+      "avg_us": 3536,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2288,
+      "n": 8,
+      "total_us": 12749,
+      "avg_us": 1593,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2324,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2359,
+      "n": 32,
+      "total_us": 85194,
+      "avg_us": 2662,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2420,
+      "n": 23,
+      "total_us": 52061,
+      "avg_us": 2263,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2467,
+      "n": 8,
+      "total_us": 23732,
+      "avg_us": 2966,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2507,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2566,
+      "n": 4,
+      "total_us": 7182,
+      "avg_us": 1795,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2600,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2633,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2684,
+      "n": 8,
+      "total_us": 12770,
+      "avg_us": 1596,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2717,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2750,
+      "n": 4,
+      "total_us": 7503,
+      "avg_us": 1875,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2801,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2839,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2872,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2923,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    },
+    {
+      "line": 2956,
+      "n": 0,
+      "total_us": 0,
+      "avg_us": 0,
+      "peak_since_launch_us": 41684,
+      "over50ms": 0,
+      "errors": 0
+    }
+  ],
+  "jit_after_200_seconds": {
+    "compile_code": {
+      "elapsed_ms": 145183,
+      "completed_wall_us": 1769287,
+      "calls": 2085
+    },
+    "dispatch_compile": {
+      "elapsed_ms": 145183,
+      "completed_wall_us": 4379181,
+      "calls": 58767
+    },
+    "invalidate": {
+      "elapsed_ms": 145183,
+      "completed_wall_us": 211624,
+      "calls": 2694
+    }
+  },
+  "cpu_samples": [
+    {
+      "line": 1314,
+      "cores": 0.71
+    },
+    {
+      "line": 1382,
+      "cores": 0.68
+    },
+    {
+      "line": 1444,
+      "cores": 0.81
+    },
+    {
+      "line": 1480,
+      "cores": 0.83
+    },
+    {
+      "line": 1525,
+      "cores": 0.67
+    },
+    {
+      "line": 1586,
+      "cores": 0.72
+    },
+    {
+      "line": 1627,
+      "cores": 0.69
+    },
+    {
+      "line": 1687,
+      "cores": 0.8
+    },
+    {
+      "line": 1754,
+      "cores": 0.99
+    },
+    {
+      "line": 1798,
+      "cores": 1.53
+    },
+    {
+      "line": 1833,
+      "cores": 1.72
+    },
+    {
+      "line": 1886,
+      "cores": 1.71
+    },
+    {
+      "line": 2011,
+      "cores": 1.71
+    },
+    {
+      "line": 2136,
+      "cores": 1.73
+    },
+    {
+      "line": 2279,
+      "cores": 1.73
+    },
+    {
+      "line": 2312,
+      "cores": 1.71
+    },
+    {
+      "line": 2350,
+      "cores": 1.71
+    },
+    {
+      "line": 2411,
+      "cores": 1.51
+    },
+    {
+      "line": 2458,
+      "cores": 1.51
+    },
+    {
+      "line": 2498,
+      "cores": 1.73
+    },
+    {
+      "line": 2557,
+      "cores": 1.71
+    },
+    {
+      "line": 2591,
+      "cores": 1.73
+    },
+    {
+      "line": 2624,
+      "cores": 1.73
+    },
+    {
+      "line": 2675,
+      "cores": 1.69
+    },
+    {
+      "line": 2708,
+      "cores": 1.74
+    },
+    {
+      "line": 2741,
+      "cores": 1.7
+    },
+    {
+      "line": 2792,
+      "cores": 1.32
+    },
+    {
+      "line": 2830,
+      "cores": 1.68
+    },
+    {
+      "line": 2863,
+      "cores": 1.7
+    },
+    {
+      "line": 2914,
+      "cores": 1.7
+    },
+    {
+      "line": 2947,
+      "cores": 1.72
+    }
+  ],
+  "max_vulkan_oom_counter": 0,
+  "prior_v13": {
+    "report": "reports/gameplay-v13-performance-analysis.json",
+    "sha256": "0b87667dcaf2c7c95e39392d66be14b3bd2b26711f19b6148f687833deec8797",
+    "capture_fps": 17.28699504712545,
+    "capture_frame_ms": 57.84695357833656,
+    "paired_test": false
+  },
+  "interpretation": "v14 is installed, but its retained nvk_instance object still uses v13 driver_build_sha for the Mesa disk-cache namespace. The newer pipelineCacheUUID alone does not isolate that cache. All hits and zero NAK compile scopes are consistent with reuse; the log cannot date individual cached binaries.",
+  "limitations": [
+    "Each snapshot is cumulative; use only the latest snapshot or differences, never sum snapshots.",
+    "Different thread durations overlap; Wine and Vulkan totals are not removable frame cost.",
+    "Thread mappings are observed snapshots; exited or recycled handles may be missing or ambiguous.",
+    "Present CPU ticks cover only that thread, and invalid CPU intervals are excluded.",
+    "Only calls wholly inside the capture are counted; live snapshots may see partial updates.",
+    "No GPU timestamps, measured clocks or temperatures. No definitive CPU/GPU bottleneck verdict.",
+    "Tail selection below 30 FPS is a workload heuristic; scene identity is unverified.",
+    "The first tail window may span a scene transition and is also reported separately.",
+    "Ten-second window averages cannot validate or disprove an instantaneous 24 FPS peak.",
+    "Cache hits are intervals; NAK completed scopes are cumulative and must not be summed.",
+    "No controlled v13/v14 comparison, cache-file contents or hardware render-pass timings."
+  ]
+}

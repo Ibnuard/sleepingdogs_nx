@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "native_elf_sha256": "162d12703562c0a71d9807d690b9f94bb7fbabb01fa9a4c9ec15ca317b35d833",
+  "forwarder_elf_sha256": "21ce22975b7b6ca65591887ed20b950d966247d2a4d8e02758393571f7c7de12",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "checks": [
+    "PASS: 512 full-quota loader cases add exactly 64 MiB and retain >=34 MiB outside heap; smaller quotas unchanged",
+    "PASS: old/absent/malformed loader and short heap retain 128 MiB; verified pair selects 256 MiB",
+    "PASS: exact GPU arena header: 384-KiB allocation, large alignments, coalescing, exhaustion, invalid free containment and 1024 concurrent lifetime cycles with live contents intact"
+  ],
+  "compiled_sources": {
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/forwarder/hbl/source/main.c": "ee3ad5918d6883a2d289da83b945928b3cca88f390d698e0e056f67256d5cc13",
+    "/home/blekjek/sleepingdogs-gpu-forwarder-v1/source/main.c": "2893ba0d5d9ec731fc26775d4e2655300c7444d4ee8d296f49ae2da777992302",
+    "/home/blekjek/sleepingdogs-gpu-budget-v1/native-source/wine-nx-probe/source/sd_gpu_budget.h": "b933b85b5266de197106516aa2d43ce3dbd19fe07d8796d87823564ea1a631d1",
+    "/home/blekjek/sleepingdogs-gpu-budget-v1/native-source/wine-nx-probe/source/f1_gpu_arena.h": "cccf7714856fab5a3d3e985690aad96aa88c534f3a00d3e845d9b4f071a943d7"
+  },
+  "sources": {
+    "tests/check_gpu_budget_host.py": "85b2064d4fd9eb1d5e6fc9d14cfa216768d655f12f2cbdb5405b5d26820e33e1",
+    "tests/gpu_budget_host.c": "ecd1ca767a1f855124d0843c19d016a115fb6153e2a5552e308497324b64a42d",
+    "tests/memory_gpu_arena.c": "d262e633e5decda06d1f3a3f66ac76144beee3c3c52415865ca187d88a48c802"
+  },
+  "hardware_tested": false
+}

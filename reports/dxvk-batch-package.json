@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "build": "sleepingdogs-dxvk-sdbatch1",
+  "update": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-submit-batching.zip",
+    "bytes": 30000521,
+    "sha256": "108f8a78872b31fba566cf1df70ebb100856f67480818ae2af66ffa70e5f7232",
+    "files": 239
+  },
+  "rollback": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-submit-batching-rollback.zip",
+    "bytes": 17647465,
+    "sha256": "2597171eba2523505ea48b12ff2bd55dfc7b70c972b1b8fb817c55d795d4d506",
+    "files": 13
+  },
+  "interfaces": {
+    "d3d9.dll": {
+      "sha256": "5e44fa7c97dcce1c5fddc68a633c8715a49e522b53281ee78bc3e84c8617bcf1",
+      "interfaces_unchanged": true,
+      "stripped_executable_sections_identical": true
+    },
+    "d3d11.dll": {
+      "sha256": "1fb6368e856271d15b7ad8974f7e5af3dea88f3f59ea2374935ae835b8450650",
+      "interfaces_unchanged": true,
+      "stripped_executable_sections_identical": true
+    },
+    "dxgi.dll": {
+      "sha256": "0058cf2e7d6488d1f2f457db7d73a02938eff20e8e2568a9d855d72edbbde3a6",
+      "interfaces_unchanged": true,
+      "stripped_executable_sections_identical": true
+    }
+  },
+  "baseline_zip_sha256": "f753ec3e8b716facbce7740851ffee1c1344e559a4a5aa13bb0979cf5b968cf1",
+  "baseline_preserved": true,
+  "nro_sha256": "91cce20983b88834d9652deb9f5225ec431c300a0440e34370766f9372ecd7d8",
+  "native_runtime_unchanged": true,
+  "fex_adapter_unchanged": true,
+  "shared_sdk_unchanged": true,
+  "game_files_changed": [],
+  "managed_dll_copies": 7,
+  "target_resolution": [
+    1280,
+    720
+  ],
+  "performance_enabled": true,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "reports": {
+    "host": "84a398a8fe637323fb2d68c9b1fab58f712c65ed79bba153f14e3d29d53b0d5f",
+    "binary": "a3233cc4b2f152bc8d66469dd877927dec3de4f6cc54dc1df2c3dad46d11ce6b",
+    "launcher": "c9d847b792ddd5513db2088d114f74fbc97cf56ff1e7870c78de0fc9d915f624"
+  }
+}

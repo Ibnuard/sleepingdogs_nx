@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "scope": "Run direct-dispatch guards in the shipped ARM64 ELF and verify client linkage.\n\nBlocking and concurrent object semantics are covered by the separate sanitizer\nhost test. This test executes real compiled fallback branches with modeled TLS/SVCs.\n",
+  "hardware_tested": false,
+  "elf_sha256": "e8cf0e365a75716d179bcc8e55f41317b87bee3fe7928ca92a50f7339ed70f1e",
+  "linked_route": [
+    "server_call_unlocked",
+    "horizon_sync_call",
+    "horizon_server_sync_call"
+  ],
+  "compiled_cases": [
+    {
+      "mode": 0,
+      "case": "null_tid",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "null_message",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "null_reply",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "mismatched_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "missing_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "missing_reply_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "unsupported_request",
+      "reply_untouched": true
+    },
+    {
+      "mode": 0,
+      "case": "valid_mode_off",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "null_tid",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "null_message",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "null_reply",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "mismatched_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "missing_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "missing_reply_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 1,
+      "case": "unsupported_request",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "null_tid",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "null_message",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "null_reply",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "mismatched_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "missing_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "missing_reply_payload",
+      "reply_untouched": true
+    },
+    {
+      "mode": 2,
+      "case": "unsupported_request",
+      "reply_untouched": true
+    }
+  ],
+  "sources": {
+    "tests/check_direct_sync_binary.py": "139a1a31fc49ccc94490f021e19ef7b813b37e1f65bb6eeb6496fb70e8869747",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  }
+}

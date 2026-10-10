@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "results": [
+    "PASS: 32 threads, 8000 paired lifetimes; peak=2, IR=2, decoder=2, refusals=0; waiting and exception release"
+  ],
+  "threads": 32,
+  "paired_compiler_lifetimes": 8000,
+  "permits": 2,
+  "pool_source_sha256": "cd2c920bb55a59c8029f176436064341597933eacdcea6c6fbf92da6e6911c5e",
+  "header_sha256": "108688fcda4f6d4684e31aedf0d0976463b4e739930ecd136bc7f9739b5e36da",
+  "sources": {
+    "tests/scene_memory_host.cpp": "9d590c5cfc2bf7edc3b74c2fa8fd1e7939765bd54655fb6acee8d1747277c58f",
+    "tests/check_scene_memory_host.py": "41d2054cdddfc1619b9735fa85d1097707247cc508fe179687b2dc883bd28f1a"
+  },
+  "scope": "Production pools/permits with POSIX heap; not a Horizon scheduler test",
+  "hardware_tested": false
+}

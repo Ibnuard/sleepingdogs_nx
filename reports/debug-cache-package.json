@@ -1,0 +1,21 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-debug-cache-fix.zip",
+  "bytes": 12286728,
+  "sha256": "b1de337278859f888e43c6197021c7424f9c5766a40bd259970259191b9b1bcd",
+  "files": 255,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-debug-cache-rollback.zip",
+    "bytes": 9747478,
+    "sha256": "e9ad0f1eda0089a7caaf70f266e748bf7359c7154c4ab59098c20b4378e9ff94",
+    "files": 8
+  },
+  "cumulative": true,
+  "source_reconstruction": "PASS",
+  "checksums_verified": true,
+  "prior_payloads_preserved": true,
+  "memory_sources_unchanged": true,
+  "all_pe_dlls_unchanged": true,
+  "nro_sha256": "8e692c7d2f0f1b1b46c42348eb6bc20ecca4412e4ad55eb36d97909b9057c201",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

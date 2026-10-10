@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "dll_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "actual_decoder_limits": [
+    1,
+    2,
+    31,
+    32,
+    33,
+    127,
+    499,
+    500,
+    501,
+    512,
+    513,
+    1024
+  ],
+  "large_setup_limits": [
+    2048,
+    65535,
+    65536,
+    65537,
+    18446744073709551615
+  ],
+  "fastest_native_request": 65536,
+  "pause_resume": true,
+  "multiblock_and_invalid": true,
+  "prewrite_capacity_guard": true,
+  "buffer_tail_canaries": true,
+  "original_game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "actual_game_code": [
+    {
+      "pc": "0x40bd80",
+      "instructions": 7
+    },
+    {
+      "pc": "0x549430",
+      "instructions": 185
+    },
+    {
+      "pc": "0x5b2e92",
+      "instructions": 3
+    },
+    {
+      "pc": "0x9b2ad0",
+      "instructions": 28
+    }
+  ],
+  "entry_bytes": 128,
+  "hardware_tested": false,
+  "boundaries": "NT memory, container heap, locks, clock and config getters modeled; actual DLL x86 decoder executes",
+  "sources": {
+    "tests/check_scene_fex_binary.py": "91d4ff068b8c704880fdb39492c5e021326f51ba4a9f37dcd4510cc0cdba6ce9",
+    "tests/check_compiler_gate_binary.py": "170560b13c153dde9de2b2c6447fb0104026e144395b0b194e1a41fe16596d27",
+    "tests/check_compiler_decoder_binary.py": "1c547b2e26b56d37a66acdbf550c53b6e8caa8cc151be284a0762b59d06836bb",
+    "../pes13-nx/tests/fex_alloc.py": "d02278ccabaf05122360a1cc273538b3431be4aae7da6ced99d86fdf4472c329",
+    "tests/build_scene_layout.py": "30b2506e08fb0f892eaa2f53274b88239e62606ce2f90d5afa87058fbe04c3eb",
+    "tests/build_compiler_memory_layout.py": "018b3cdaa7efc558712530c37cbb0974a0918affc8f8d263d60df9478db6909e",
+    "tests/compiler_memory_layout.cpp": "1fdba5de56fe0cb456212c5c8ff3dcf8f41cefaefdcdbd084e1530060378b2c2"
+  }
+}

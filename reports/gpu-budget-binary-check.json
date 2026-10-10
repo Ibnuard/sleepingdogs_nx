@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "native_elf_sha256": "162d12703562c0a71d9807d690b9f94bb7fbabb01fa9a4c9ec15ca317b35d833",
+  "forwarder_elf_sha256": "21ce22975b7b6ca65591887ed20b950d966247d2a4d8e02758393571f7c7de12",
+  "previous_native_elf_sha256": "14c589156568fa9e77e9ff3c70e13ef0207754c8a68d4faf6045b6bb70a68b43",
+  "previous_forwarder_elf_sha256": "4c436043149bb7027e964893fc87acf75afaa9d1243a01a2b93786945f53767d",
+  "additional_native_image_bytes": 8192,
+  "memory_pressure": {
+    "old": {
+      "reserved": 134217728,
+      "filler": 609939456,
+      "general_available": 55805536,
+      "five_mib_succeeds": false,
+      "compiler_and_guest_data_preserved": true,
+      "gpu_reuse_cycles": 0
+    },
+    "new": {
+      "reserved": 268435456,
+      "filler": 609939456,
+      "general_available": 71527248,
+      "five_mib_succeeds": true,
+      "compiler_and_guest_data_preserved": true,
+      "gpu_reuse_cycles": 64
+    }
+  },
+  "gates": [
+    {
+      "capacity": 2002944000,
+      "paired_tag": false,
+      "reserved_mib": 128
+    },
+    {
+      "capacity": 2002944000,
+      "paired_tag": true,
+      "reserved_mib": 128
+    },
+    {
+      "capacity": 2070052864,
+      "paired_tag": false,
+      "reserved_mib": 128
+    },
+    {
+      "capacity": 2070052864,
+      "paired_tag": true,
+      "reserved_mib": 256
+    }
+  ],
+  "loader_sizing": [
+    {
+      "total": 2147483648,
+      "used": 12582912,
+      "old": 2032140288,
+      "new": 2099249152
+    },
+    {
+      "total": 2147483648,
+      "used": 32473088,
+      "old": 2011168768,
+      "new": 2078277632
+    },
+    {
+      "total": 2147483648,
+      "used": 28315648,
+      "old": 2015363072,
+      "new": 2082471936
+    },
+    {
+      "total": 536870912,
+      "used": 8388608,
+      "old": 425721856,
+      "new": 425721856
+    },
+    {
+      "total": 1610612736,
+      "used": 33554432,
+      "old": 1474297856,
+      "new": 1474297856
+    }
+  ],
+  "scope": "Execute shipped ARM64 allocators and loader sizing; synthetic heap pressure.\n\nNo hardware allocation timeline is available. This reproduces the essential\nfailure condition (free space split into sub-MiB holes, a 5 MiB GPU request),\nholding the same live CPU/GPU allocations in both versions. Kernel information,\nsbrk and diagnostic boundaries are modeled; allocator results are not mocked.\n",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_gpu_budget_binary.py": "312797edfa5b7ed157db165a6ed72d32cf4bc3c8c8c0518cdf91385ebc38dd8e",
+    "tests/native_heap_binary.py": "ebe7a592f458bd7adda33e001628fddeeb5f1faa245aeb43332b7d84411db140"
+  }
+}

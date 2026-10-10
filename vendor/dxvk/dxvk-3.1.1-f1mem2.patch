@@ -1,0 +1,98 @@
+--- a/src/dxvk/dxvk_memory.cpp
++++ b/src/dxvk/dxvk_memory.cpp
+@@ -1,4 +1,5 @@
+ #include <algorithm>
++#include <atomic>
+ #include <iomanip>
+ #include <sstream>
+ 
+@@ -763,6 +764,7 @@
+       type.heap = &m_memHeaps[type.properties.heapIndex];
+       type.heap->memoryTypes |= 1u << i;
+ 
++      if (!i) Logger::info("[F1-DXVK-MEM] pool cap=8 MiB; exact aligned floor retry enabled");
+       type.devicePool.maxChunkSize = determineMaxChunkSize(type, false);
+       type.mappedPool.maxChunkSize = determineMaxChunkSize(type, true);
+ 
+@@ -1506,22 +1508,60 @@
+     // a smaller size until we reach a point where we cannot service the
+     // allocation.
+     DxvkDeviceMemory chunk = { };
++    constexpr VkDeviceSize f1ChunkCap = 8u << 20;
++    VkDeviceSize recoveryFloor = align(std::max(requiredSize,
++      VkDeviceSize(DxvkPageAllocator::PageSize)), VkDeviceSize(DxvkPageAllocator::PageSize));
++    desiredSize = std::min(desiredSize, std::max(recoveryFloor, f1ChunkCap));
++    VkDeviceSize lastAttempt = 0;
+ 
+     while (!chunk.memory && desiredSize >= std::max(requiredSize, DxvkMemoryPool::MinChunkSize)) {
++      lastAttempt = desiredSize;
+       chunk = allocateDeviceMemory(type, desiredSize, nullptr);
+       desiredSize /= 2u;
+     }
+ 
++    // F1/NVK: a fragmented host heap can reject every chunk down to
++    // several MiB even when the requested resource is only 64 KiB. Keep normal
++    // growth first, then try smaller *real* Vulkan allocations. The page
++    // allocator supports one-page chunks; never go below the aligned request.
++    bool smallChunk = false;
++    while (!chunk.memory && desiredSize >= recoveryFloor) {
++      lastAttempt = desiredSize;
++      chunk = allocateDeviceMemory(type, desiredSize, nullptr);
++      desiredSize /= 2u;
++      smallChunk = !!chunk.memory;
++    }
++
++    // Halving skips a non-power-of-two resource floor (the GP log
++    // needs 1,661,632 bytes, between 1 and 2 MiB). Try its aligned size once.
++    if (!chunk.memory && lastAttempt != recoveryFloor) {
++      chunk = allocateDeviceMemory(type, recoveryFloor, nullptr);
++      smallChunk = !!chunk.memory;
++    }
+     if (!chunk.memory)
+       return false;
+ 
++    if (smallChunk) {
++      static std::atomic<uint32_t> reports { 0u };
++      if (reports.fetch_add(1u, std::memory_order_relaxed) < 16u)
++        Logger::info(str::format("[F1-DXVK-MEM] small chunk recovered: required=",
++          requiredSize, " allocated=", chunk.size, " type=", type.index));
++    }
++
+     mapDeviceMemory(chunk, properties);
+ 
+-    // If we expect the application to require more memory in the
+-    // future, increase the chunk size for subsequent allocations.
+-    if (pool.nextChunkSize < pool.maxChunkSize
+-     && pool.nextChunkSize <= type.stats.memoryAllocated / 2u)
+-      pool.nextChunkSize *= 2u;
++    // Keep subsequent growth modest after recovery instead of retrying all
++    // failed large sizes for every resource. Normal successful growth is intact.
++    if (smallChunk) {
++      // nextChunkSize retains its documented power-of-two invariant even
++      // when the recovered backing contains an arbitrary number of pages.
++      VkDeviceSize next = DxvkPageAllocator::PageSize;
++      while (next < chunk.size) next *= 2u;
++      pool.nextChunkSize = std::min(next, f1ChunkCap);
++    } else if (pool.nextChunkSize < pool.maxChunkSize
++            && pool.nextChunkSize <= type.stats.memoryAllocated / 2u) {
++      pool.nextChunkSize = std::min(pool.nextChunkSize * 2u, f1ChunkCap);
++    }
+ 
+     // Add the newly created chunk to the pool
+     uint32_t chunkIndex = pool.pageAllocator.addChunk(chunk.size);
+@@ -1992,7 +2032,7 @@
+       size /= 2u;
+ 
+     // Always use at least the minimum chunk size
+-    return std::max(size, DxvkMemoryPool::MinChunkSize);
++    return std::min(VkDeviceSize(8u << 20), std::max(size, DxvkMemoryPool::MinChunkSize));
+   }
+ 
+ 
+--- a/version.h.in
++++ b/version.h.in
+@@ -1,3 +1,3 @@
+ #pragma once
+ 
+-#define DXVK_VERSION "@VCS_TAG@"
++#define DXVK_VERSION "@VCS_TAG@-f1mem2"

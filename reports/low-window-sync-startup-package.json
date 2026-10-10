@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-sync-startup-fix.zip",
+    "bytes": 10467549,
+    "sha256": "7ade825f06fa11cadd6204f2f6b2fd8e7e792af1524783611c9e3ababe810816",
+    "files": 58
+  },
+  "rollback": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-v3-recovery.zip",
+    "bytes": 9777455,
+    "sha256": "05ad6957a14c0ded59fc593f5d2565b078478777d9fd424ce58a4e4f2b66d04e",
+    "files": 20
+  },
+  "nro_sha256": "2ddb568038ec028f909070bee54abc50678a8fe7f77d330ec93cf9f7688dc146",
+  "elf_sha256": "1e933b326bdffa9144b9158498083c21c60b81023665d313470c7b93a9652f59",
+  "changed_native_files": [
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_sync_bridge.inc"
+  ],
+  "profile": "fastest",
+  "fex_adapter_unchanged": true,
+  "baseline_preserved": true,
+  "startup_cpu_guard": true,
+  "hardware_tested": false,
+  "freeze_fixed": false,
+  "compatible_forwarder_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929"
+}

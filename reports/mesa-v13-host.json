@@ -1,0 +1,55 @@
+{
+  "changed_sources": {
+    "src/nouveau/horizon/nouveau_horizon.h": "dc6129196ee5e2576f7b9c25741cf900df4cd47e00bed98dc300260698d9eb45",
+    "src/nouveau/horizon/nouveau_horizon_channel.c": "0afa50dc8476d5a9c21435070d7bf767b4743c7c1c0c3229ea0bfd05f004c45f",
+    "src/nouveau/horizon/nouveau_horizon_device.c": "2ceda2a55c2ff7b9a1e8aa4dc877767e042eddf1b1c29be16d0a86705251a1e5",
+    "src/nouveau/horizon/nouveau_horizon_private.h": "b9ba715feb0d2528570746289d05b171104b2a6fb6facaaa890a2d1d209cf40a",
+    "src/nouveau/vulkan/nvk_cmd_buffer.c": "440d74ef8ea42cb038d9b66cf79ddeedb51bb6a15712980e1c5c7150fb510b24",
+    "src/nouveau/vulkan/nvk_cmd_buffer.h": "501394f36b1106773a7239cbc96964fea9a4fc7e380528244e1870672e7b7c74",
+    "src/nouveau/vulkan/nvk_cmd_draw.c": "277754a31aa4aa226003dc18251e0c2bea265318cca56541c19ff2ba332fc7aa",
+    "src/nouveau/vulkan/nvk_descriptor_delta.h": "20b5c9789602f06e13e8b03214cdcf6aef286c88f94100c05d24f68dd7280c1e",
+    "src/nouveau/vulkan/nvk_device.c": "9027c86db4afd1d294329c7f4229cc27f5a279e5f334a8552e38c2ef30eaf448",
+    "src/nouveau/vulkan/nvk_device.h": "2288c98dd3bc911d2563863ad42ef4705619faa1e5336f0e081a12a6042164da",
+    "src/nouveau/vulkan/nvk_device_memory.c": "8eafb4b93a984a815ff67fdea013a2cc66db305b6ffba3bcbf61dc41b1a77424",
+    "src/nouveau/vulkan/nvk_event.c": "b0f08abb9f7393b579d45415579481a2fe5a2d7a2e99dbf2b003c3fa926ccb5c",
+    "src/nouveau/vulkan/nvk_image.c": "6deb6e1c76fe1bd4427eec0b16af651b26cad29c03c43570f633eb3da3c59c91",
+    "src/nouveau/vulkan/nvk_image.h": "ff0b3844d8bba82b3878ad6c79573920338635c78995afd55d98c5f075056a98",
+    "src/nouveau/vulkan/nvk_physical_device.c": "2edd44dd5e3eb1302b218fccb2b59fbabc411e5c3729d341d3fc45db4b08d759",
+    "src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c": "cf99df7b27dc40c0ad48dd3833d5d4fe4f38d9a3951d2f87f1ae127da0a03757",
+    "src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c": "dfddca9aa2e4e9b95aaae0fa02784945836278a6b3f73ef6b4efdc4cf4c148f7"
+  },
+  "generated_harness_sha256": "5b21641080c8f8448e13b9abc2c93f167ea138c2864ee93a0b610238e2124cba",
+  "hardware_tested": false,
+  "production_functions": {
+    "src/nouveau/horizon/nouveau_horizon_channel.c": [
+      "nouveau_horizon_channel_reserve_entries_locked"
+    ],
+    "src/nouveau/horizon/nouveau_horizon_device.c": [
+      "nouveau_horizon_add_zcull_info"
+    ],
+    "src/nouveau/vulkan/nvk_cmd_buffer.c": [
+      "nvk_cmd_image_layout_transition"
+    ],
+    "src/nouveau/vulkan/nvk_cmd_draw.c": [
+      "nvk_get_zcull_image",
+      "nvk_sd_v13_report_zcull"
+    ],
+    "src/nouveau/vulkan/nvk_device_memory.c": [
+      "nvk_GetMemoryHostPointerPropertiesEXT"
+    ],
+    "src/nouveau/vulkan/nvk_image.c": [
+      "nvk_switch_image_has_zcull_layout",
+      "nvk_image_zcull_bind"
+    ]
+  },
+  "result": "PASS 2513167 production guard/delta cases; ZCULL import exclusions and one completion per fill batch retained",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "status": "PASS",
+  "test_sources": {
+    "tests/check_mesa_backport.py": "e2c01edb8149c5df422c6b7897247f7ab291b2dcf84232da5e1e466187cbf099",
+    "tools/build_mesa_backport.py": "b3327e34a4cbe9bddf54ced554afa3efd993b8c64cf0c1b0b1ac77d4ab78a3d9"
+  }
+}

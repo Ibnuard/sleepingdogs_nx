@@ -1,0 +1,90 @@
+{
+  "dll_sha256": "5a6075626dfd743b415edaf1a7ec752d2515147f0d13b32f4a79724dd8400bab",
+  "passed": 4,
+  "game_files_modified": false,
+  "cases": [
+    {
+      "entry_rva": "0x33f0",
+      "api_model_succeeded": false,
+      "caller_returned": 0,
+      "calls": [
+        {
+          "api": "CreateNamedPipeW",
+          "path": "\\\\.\\pipe\\pandora_master_pipe",
+          "arguments": [
+            1073741827,
+            6,
+            255,
+            0,
+            0,
+            0,
+            0
+          ],
+          "return_handle": "0xffffffff"
+        }
+      ]
+    },
+    {
+      "entry_rva": "0x33f0",
+      "api_model_succeeded": true,
+      "caller_returned": 1,
+      "calls": [
+        {
+          "api": "CreateNamedPipeW",
+          "path": "\\\\.\\pipe\\pandora_master_pipe",
+          "arguments": [
+            1073741827,
+            6,
+            255,
+            0,
+            0,
+            0,
+            0
+          ],
+          "return_handle": "0x104"
+        }
+      ]
+    },
+    {
+      "entry_rva": "0x21770",
+      "api_model_succeeded": false,
+      "caller_returned": 0,
+      "calls": [
+        {
+          "api": "CreateFileW",
+          "path": "\\\\.\\pipe\\pandora_master_pipe",
+          "arguments": [
+            3221225472,
+            0,
+            0,
+            3,
+            1073741824,
+            0
+          ],
+          "return_handle": "0xffffffff"
+        }
+      ]
+    },
+    {
+      "entry_rva": "0x21770",
+      "api_model_succeeded": true,
+      "caller_returned": 1,
+      "calls": [
+        {
+          "api": "CreateFileW",
+          "path": "\\\\.\\pipe\\pandora_master_pipe",
+          "arguments": [
+            3221225472,
+            0,
+            0,
+            3,
+            1073741824,
+            0
+          ],
+          "return_handle": "0x104"
+        }
+      ]
+    }
+  ],
+  "limitations": "Imported Win32 APIs and CRT allocation/copy are host models; full SteamAPI_Init and Switch boot are not tested."
+}

@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-shader-optimizations.zip",
+    "bytes": 11192618,
+    "sha256": "06d09aa6eea05cc38158c6a72c5782320c83ea2db4e8815ad272d56375f9063d",
+    "files": 108
+  },
+  "build": "sleepingdogs-low-window-v9-shader-optimizations",
+  "nro_sha256": "51e6f3791ab7f8f98af28d1bfbca1669cddcf63e7e2f3604915fc24b4540907f",
+  "elf_sha256": "21cdf72420d8f4967f61b85ad80ed34c84f8b51bf778972a8c2ce72fca6f8765",
+  "changed_native_files": [
+    "dlls/winevulkan/make_vulkan",
+    "dlls/winevulkan/vulkan_private.h",
+    "dlls/winevulkan/vulkan_thunks.c",
+    "wine-nx-probe/CMakeLists.txt",
+    "wine-nx-probe/source/fex_dxvk_core3.h",
+    "wine-nx-probe/source/native_heap/fextendo_mesa_heap.h",
+    "wine-nx-probe/source/native_heap/fextendo_rust_heap.h",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_perf_summary.h",
+    "wine-nx-probe/source/sd_shader_affinity.h",
+    "wine-nx-probe/source/sd_shader_cache.c",
+    "wine-nx-probe/source/sd_shader_cache.h",
+    "wine-nx-probe/source/sd_shader_compile.c",
+    "wine-nx-probe/source/thread_profile.c",
+    "wine-nx-probe/source/thread_profile.h"
+  ],
+  "baseline_sha256": "b85ca33634a33467b9756f8fa408009add613ab92f3f88d584921f78eae9dd2e",
+  "baseline_preserved": true,
+  "game_files_changed": [],
+  "fex_and_dxvk_unchanged": true,
+  "shader_affinity_enabled": true,
+  "shader_cache_enabled": true,
+  "synchronization_backend_unchanged": true,
+  "hardware_tested": false,
+  "performance_optimization": true,
+  "fps_gain_measured": false,
+  "graphics_undefined_fixed": false,
+  "reports": {
+    "shaders": "228dd3227422d129a9d529cfa60777f1c55ded7c94ed4373b9674dc1fe5e64ae",
+    "shader-abi": "3e8ac2cdffebddd8518171220ac228b48c07a8c0f81f60aeb78827dbaf2b1c80",
+    "shader-binary": "44ae1d440e1e06b18101e17450c40c3f6f0d45adbf21dbcb3cbebc7bf9c9a816",
+    "cpu-topology": "1c355b5580259b558c09388eec0f78e06cda494952a8c8eb079b0ac14206fa34",
+    "sync-startup-binary": "d690a365326542c1b715875edef9a0ccf9d41e7cdf9e22de8722ab10fd9205b7",
+    "binary": "701c0a9c902113d29439c76134ef7ca81ad30e918239a65fb7d8ff069c685099"
+  }
+}

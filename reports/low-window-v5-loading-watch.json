@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "Execute the built-source monitor/handoff/sampler with modeled time and SVCs.",
+  "hardware_tested": false,
+  "cases": [
+    "post-present freeze; exact 600s expiry; resource logging continues",
+    "pause rejected; do not resume an unpaused target",
+    "context read failed; immediately resume target",
+    "resume first attempt rejected; retry once before logging",
+    "registry busy; skip capture without waiting",
+    "profiler busy; release registry and skip capture",
+    "pause/context capability unavailable; preserve call observations",
+    "GUI launch; no detailed diagnostics or thread pauses"
+  ],
+  "no_logging_while_paused": true,
+  "ubsan": true,
+  "source_files": {
+    "wine-nx-probe/source/runtime.c": "dbb42dc33b7fbd32e5f67ad9b2594e13aad81419f2ecc14dd188b570a0893745",
+    "wine-nx-probe/source/thread_profile.c": "96666d6f4c88dbb9736b0ef77fa9bee489865daa7048f3f3ea7b2e6f8b54087a",
+    "wine-nx-probe/source/f1_startup_watch.h": "5b2976144bc0cfe4b235ef5e1d3bb12e273f8771511784f0bd713c19b9ef03ef",
+    "wine-nx-probe/source/sd_loading_watch.h": "cb07a0b94aff36838d3fe0ff6bba8adc64b1671336fc4afbbca7826797cb51da",
+    "wine-nx-probe/source/sd_loading_report.inc": "8b04a780f46e3470e7beaefab16c4f9f0462e7b23ecfb3c71c742cc0b7eebabc"
+  },
+  "sources": {
+    "tests/check_loading_watch.py": "31fecde2e012cac182ed0ce6c030d4b78823af3f1c0f85ce64e35f3cc9d2ae72",
+    "tests/loading_watch.c": "ac681e112a54cd528332f5d6e8821fe68a66b0c49c44d5fb8bc9723c79f63cd6",
+    "tests/check_launch_order.py": "a61247f40069a06d7047e9f028b9aa3b28a6c1dcf33912f64ae5d7f57e05c0ca"
+  },
+  "metrics_sha256": "cffcda59a0a1d102e8bc6850a8e3b756d4a25571f36f36e6cd331aa3915d94bb"
+}

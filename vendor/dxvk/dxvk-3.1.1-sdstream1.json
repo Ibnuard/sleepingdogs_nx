@@ -1,0 +1,59 @@
+{
+  "build": "sleepingdogs-dxvk-sdstream1",
+  "source": {
+    "commit": "b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+    "patch_sha256": "17d816423bfd1bb3f0e41559d780d5369377a358ddae88234a0e4d1136dd754d",
+    "base_patch_sha256": "ab43c9ef25c9b2702cf26cf7133c29d2983365e99ea2ed5810884c4b4b923fec",
+    "small_patch_sha256": "22e3887c5079594564c17a9602700dcc8f865e774bfab99af9309d6c286b930a",
+    "sdmem1_patch_sha256": "2843757c5b4af29a8f0cc5b383756d442c4f7606cb422538cf69939f3ba306dc"
+  },
+  "source_changes": {
+    "src/dxvk/dxvk_memory.cpp": "53127c02d0a015e95b595c3f80018fa174d79532643fe68801ff6a956de6a74d",
+    "version.h.in": "b9042429135914a306e2ce91ad0b760e76a3cc8b10dcb372c3c4b679a85d7153"
+  },
+  "files": {
+    "d3d9.dll": {
+      "sha256": "1cc380fa8d41efa83a67c0bc0d6a5172ee0630f1e130235c7363ca4a35a52171",
+      "bytes": 7475200
+    },
+    "d3d11.dll": {
+      "sha256": "e4049ce5466c36beb8d369dd495f30016abcac0afd45311168ba8915c29b0833",
+      "bytes": 8257536
+    },
+    "dxgi.dll": {
+      "sha256": "c10fa538c3213c18ad91a7d51274f17d895cede109ba2be5c1ae21596b631888",
+      "bytes": 5545984
+    }
+  },
+  "archive_sha256": "29c2de482524cde5366df56131202ec5693998b1dfe597015197c7dc35217eb3",
+  "upstream_archive_sha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+  "previous_archive_sha256": "9a7efccf3825b41a85c4bca97cadf23f5c282c701590ce9a3c0ddd7c3738b08b",
+  "dependencies": {
+    "include/native/directx": {
+      "url": "https://github.com/Joshua-Ashton/mingw-directx-headers",
+      "commit": "9df86f2341616ef1888ae59919feaa6d4fad693d"
+    },
+    "include/vulkan": {
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers",
+      "commit": "8864cdc896bbc2a9b6eb36b3218fc9ef57908d77"
+    },
+    "include/spirv": {
+      "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+      "commit": "04f10f650d514df88b76d25e83db360142c7b174"
+    },
+    "subprojects/libdisplay-info": {
+      "url": "https://github.com/doitsujin/libdisplay-info.git",
+      "commit": "275e6459c7ab1ddd4b125f28d0440716e4888078"
+    },
+    "subprojects/dxbc-spirv": {
+      "url": "https://github.com/doitsujin/dxbc-spirv.git",
+      "commit": "bf14419e5fa7eacb817b7b632f03cb61d61bbad7",
+      "nested": "c8ad050fcb29e42a2f57d9f59e97488f465c436d submodules/spirv_headers (c8ad050)"
+    }
+  },
+  "pool_cap_bytes": 2097152,
+  "dedicated_mapped_threshold_bytes": 2097152,
+  "resource_sizes_unchanged": true,
+  "hardware_tested": false,
+  "note": "Large mapped resources own their backing until the final reference; small allocations stay in separate chunks."
+}

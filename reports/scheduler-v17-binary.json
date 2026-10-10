@@ -1,0 +1,709 @@
+{
+  "status": "PASS",
+  "scope": "Execute the linked v17 scheduler with modeled Horizon and mutex boundaries.\n\nThe real AArch64 registry, exclusion, retry, mask, and failure branches execute.\nKernel placement and FPS are not simulated. Struct offsets come from a separate\nunlinked probe compiled with this exact candidate's recorded compiler command.\n",
+  "elf_sha256": "73a8dfde96b51a7c77da97b8223bf536c20ecee0174ae9319c54b78e8d709cf0",
+  "layout": {
+    "max_threads": 128,
+    "registry_size": 48,
+    "registry_handle": 0,
+    "registry_tid": 4,
+    "registry_kind": 8,
+    "registry_core": 12,
+    "registry_fixed": 16,
+    "registry_teb": 24,
+    "dxvk_size": 88,
+    "dxvk_active": 64,
+    "shader_size": 16,
+    "shader_mode": 0,
+    "shader_core": 4,
+    "shader_mask": 8,
+    "shader_none": 0,
+    "shader_worker": 1,
+    "shader_pipeline": 2,
+    "shader_restore": 3
+  },
+  "abi_probe": {
+    "fields": [
+      "max_threads",
+      "registry_size",
+      "registry_handle",
+      "registry_tid",
+      "registry_kind",
+      "registry_core",
+      "registry_fixed",
+      "registry_teb",
+      "dxvk_size",
+      "dxvk_active",
+      "shader_size",
+      "shader_mode",
+      "shader_core",
+      "shader_mask",
+      "shader_none",
+      "shader_worker",
+      "shader_pipeline",
+      "shader_restore"
+    ],
+    "expressions": {
+      "max_threads": "NX_PROF_MAX_THREADS",
+      "registry_size": "sizeof(struct nx_prof_thread)",
+      "registry_handle": "offsetof(struct nx_prof_thread, handle)",
+      "registry_tid": "offsetof(struct nx_prof_thread, tid)",
+      "registry_kind": "offsetof(struct nx_prof_thread, kind)",
+      "registry_core": "offsetof(struct nx_prof_thread, core)",
+      "registry_fixed": "offsetof(struct nx_prof_thread, fixed)",
+      "registry_teb": "offsetof(struct nx_prof_thread, teb)",
+      "dxvk_size": "sizeof(struct fex_dxvk_slot)",
+      "dxvk_active": "offsetof(struct fex_dxvk_slot, active)",
+      "shader_size": "sizeof(struct sd_shader_slot)",
+      "shader_mode": "offsetof(struct sd_shader_slot, mode)",
+      "shader_core": "offsetof(struct sd_shader_slot, core)",
+      "shader_mask": "offsetof(struct sd_shader_slot, mask)",
+      "shader_none": "SD_SHADER_NONE",
+      "shader_worker": "SD_SHADER_WORKER",
+      "shader_pipeline": "SD_SHADER_PIPELINE",
+      "shader_restore": "SD_SHADER_RESTORE"
+    },
+    "object_sha256": "6c56d2bb1553e1ceb06c961e90b2105fb8b5bbf62f1ebe25a1ece2da38f543b7",
+    "production_sha256": "d2d80cfa53e37f27a1b75979de22c9f7f3edbe45c72e847b5b33281f0ed3037a",
+    "build_elf_sha256": "73a8dfde96b51a7c77da97b8223bf536c20ecee0174ae9319c54b78e8d709cf0",
+    "compile_command": [
+      "/opt/devkitpro/devkitA64/bin/aarch64-none-elf-gcc",
+      "-I/home/blekjek/sleepingdogs-scheduler-v17/native-source/wine-nx-probe/source",
+      "-DPES13_FEX_ISOLATED_EXCEPTIONS=1",
+      "-DWINBASEAPI=",
+      "-DWINE_NO_DEBUG_MSGS",
+      "-DWINE_NO_TRACE_MSGS",
+      "-DWINE_NX_FEX=1",
+      "-DWINE_NX_MESA_SWITCH",
+      "-DWINE_UNIX_LIB",
+      "-D_ACRTIMP=",
+      "-D_NTSYSTEM_",
+      "-D_WIN64",
+      "-D__SWITCH__",
+      "-D__WINESRC__",
+      "-I/home/blekjek/sleepingdogs-low-window-v1/fex-adapter",
+      "-I/home/blekjek/pes13-build/pe/include",
+      "-I/home/blekjek/sleepingdogs-low-window-v1/native-source/wine-nx-probe/syntax",
+      "-I/home/blekjek/sleepingdogs-low-window-v1/native-source/wine-nx-probe/../include",
+      "-I/home/blekjek/sleepingdogs-low-window-v1/native-source/wine-nx-probe/../dlls/ntdll",
+      "-I/home/blekjek/sleepingdogs-low-window-v1/native-source/wine-nx-probe/../dlls/ntdll/unix",
+      "-march=armv8-a+crc+crypto",
+      "-mtune=cortex-a57",
+      "-mtp=soft",
+      "-ftls-model=local-exec",
+      "-fPIE",
+      "-ffixed-x18",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-D__SWITCH__",
+      "-DSWITCH=1",
+      "-DNX",
+      "-D_GNU_SOURCE",
+      "-isystem",
+      "/opt/devkitpro/libnx/include",
+      "-isystem",
+      "/opt/devkitpro/portlibs/switch/include",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu99",
+      "-Wall",
+      "-Wextra",
+      "-Werror=implicit-function-declaration",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-MD",
+      "-MT",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/scheduler-v17/scheduler-layout.o",
+      "-MF",
+      "/home/blekjek/sleepingdogs-scheduler-v17/abi-test/scheduler_layout.d",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/scheduler-v17/scheduler-layout.o",
+      "-c",
+      "/home/blekjek/sleepingdogs-scheduler-v17/abi-test/scheduler_layout.c"
+    ],
+    "probe_sha256": "89aa4da9f3f7aea002208e4830cdc700d837b73663827267426075d67dff03f8",
+    "linked_into_runtime": false
+  },
+  "compiled_cases": [
+    {
+      "name": "broad-mask-preserves-preferred",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "sparse-process-mask",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          5
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          5
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "invalid-preferred-uses-registered",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          1,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "invalid-both-use-lowest",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          0,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "core3-preferred-falls-back",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "single-allowed-core",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          1,
+          2
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          2
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "removed-process-grant",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          1,
+          3
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          3
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "already-correct-confirms-follow",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "already-correct-no-preference",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "already-correct-without-teb",
+      "counts": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "fixed-single-mask",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "fixed-multiple-mask",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "server-thread-excluded",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "empty-registry-slot",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "core3-helper-excluded",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "shader-worker-excluded",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "shader-pipeline-excluded",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "query-failure-does-not-follow",
+      "counts": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "set-failure-does-not-follow",
+      "counts": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          0,
+          7
+        ]
+      ],
+      "follow_calls": [],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "pending-explicit-restore-before-exclusion",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          5
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          5
+        ]
+      ],
+      "queried": []
+    },
+    {
+      "name": "pending-failed-restore-remains-excluded",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          4
+        ]
+      ],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "completed-auto-restore-then-broaden",
+      "counts": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          2,
+          4
+        ],
+        [
+          41,
+          2,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          4
+        ],
+        [
+          77309415424,
+          7
+        ]
+      ],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "no-application-cores-0",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "no-application-cores-8",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "process-query-failure",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "no-balance-disables-registry-update",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": []
+    },
+    {
+      "name": "off-does-not-broaden-without-load",
+      "counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [],
+      "follow_calls": [],
+      "queried": [
+        41
+      ]
+    },
+    {
+      "name": "registry-first-and-last-slot",
+      "counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "set_calls": [
+        [
+          41,
+          0,
+          7
+        ],
+        [
+          42,
+          1,
+          7
+        ]
+      ],
+      "follow_calls": [
+        [
+          77309415424,
+          7
+        ],
+        [
+          77309447936,
+          7
+        ]
+      ],
+      "queried": [
+        41,
+        42
+      ]
+    }
+  ],
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "sources": {
+    "check_scheduler_v17_binary.py": "0b06092a090728008acb1a95ff8ad6ee7370af40f7f3088f2495776988747634",
+    "extract_scheduler_v17_layout.py": "089d2f3e32108e315037065724d5864f52ebd07d343958e5842a4fb47e277d1d",
+    "check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  }
+}

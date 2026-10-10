@@ -1,0 +1,27 @@
+{
+  "input_sha256": {
+    "crash.log": "364bdad393352b620125bd843223986f1c670a224152fd5cacd4412084b65ef7",
+    "fex-runtime.log": "eb52b66363463332e9c2f80425d50b911aa85681ac791b64a1bd504baeddee63"
+  },
+  "input_time": "2026-10-07 22:07:28 Asia/Jakarta",
+  "first_fault": {
+    "module": "d3d11.dll",
+    "rva": "0x73556",
+    "function": "D3D11DeferredContext::MapBuffer",
+    "instruction": "mov eax,[ebx+0x28]",
+    "ebx": 0,
+    "exception": "0xc0000005",
+    "read_address": "0x28"
+  },
+  "gpu_oom_bytes": [
+    8388608,
+    5242880
+  ],
+  "dxvk_allocated_mib": 231,
+  "dxvk_used_mib": 182,
+  "native_heap_available": 40118160,
+  "compiler_memory_markers_present": true,
+  "compiler_oom": false,
+  "hardware_progress": "Sleeping Dogs logo / approaching menu (user report)",
+  "hypothesis": "Reduce DXVK chunk rounding before shared heap exhaustion; handle deferred buffer allocation failure without null dereference. No complete allocation history, so reclaimed total and successful menu are not yet established."
+}

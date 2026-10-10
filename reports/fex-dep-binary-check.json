@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "dll_sha256": "583ac0d48fd5c2e3e92f8844a23f85873064cc2b1f03a2e6b6a96d224d7de130",
+  "scope": "Actual FEX ARM64 DEP interval code; virtual-memory/lock/invalidation endpoints mocked",
+  "before_heap_executable": false,
+  "after_disabled_heap_executable": true,
+  "smc_tracking_retained": true,
+  "readonly_promoted": true,
+  "noaccess_and_reserved_excluded": true,
+  "reenable_revokes_heap": true,
+  "rx_image_preserved": true,
+  "policy_change_invalidates_code": true,
+  "same_policy_no_extra_invalidation": true,
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_fex_dep_binary.py": "39bc973684b6323d2d1a374d15d94cf4bb72393f2c0b2b9cbf1ceadf182ab5df"
+  }
+}

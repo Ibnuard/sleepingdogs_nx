@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "elf_sha256": "28affbe1a66ce6bf293582e7e00aaddb5c4c1063d866216a7a70de264dbb1a2c",
+  "hardware_tested": false,
+  "scope": "Run the compiled ARM64 preflight and native VA allocator with modeled SVCs.\n\nThe tiny code mapped to 0x400000 actually executes in Unicorn. This is not a\nHorizon hardware test; kernel behavior, TLS, heap boundaries and SVC failures\nare explicit fixtures, while the shipped ELF supplies all checked control flow.\n",
+  "preflight_cases": [
+    "good",
+    "stock39",
+    "old32",
+    "quota2g",
+    "wrong_title",
+    "low_heap",
+    "low_tls",
+    "query_fail",
+    "no_handle",
+    "occupied",
+    "no_backing",
+    "map_fail",
+    "process_perm_fail",
+    "data_perm_fail",
+    "unmap_fail"
+  ],
+  "rx_instructions_executed": true,
+  "native_va_floor_and_fallback": true,
+  "sources": {
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "archive": "sleepingdogs-fex-startup-memory-fix.zip",
+  "sha256": "cbf531eca64aa08d2cacb18f4df8f6e54fe9aa1026119faa31c4e8a480c23615",
+  "bytes": 10073134,
+  "files": 35,
+  "checksums_verified": true,
+  "cumulative": true,
+  "hardware_tested": false,
+  "nsp_reinstall_required": false,
+  "nro_sha256": "c9c6e44161517e4c878f4014e6e89b34fc314c3340be6a085251b1a7691fbb7d",
+  "ready_runtime_checksum_entries": 359
+}

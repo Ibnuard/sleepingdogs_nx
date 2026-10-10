@@ -1,0 +1,186 @@
+{
+  "status": "PASS",
+  "elf_sha256": "9b268bc753a7b29946cdef89b7151a584c2bdfb495eff132b12408d5c217e077",
+  "previous_elf_sha256": "cf9a12adda327755903f5ae0d346cd20d249a882f6c5a22bf01cc16edfa5af46",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "game_modified": false,
+  "flows": {
+    "old": {
+      "game_create_thread_calls": [
+        {
+          "api": "CreateThread",
+          "flags": 4
+        },
+        {
+          "api": "GetThreadContext",
+          "status": "0xc0000002",
+          "debug": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "api": "SetThreadContext",
+          "status": "0xc0000002",
+          "debug": [
+            4983434,
+            5975698,
+            6409864,
+            6869850,
+            0,
+            341
+          ]
+        },
+        {
+          "api": "ResumeThread"
+        }
+      ],
+      "debug_delivered": false,
+      "eip": "0x0",
+      "stack_preserved": false,
+      "original_target_executed": true,
+      "checker_return_mocked": false
+    },
+    "new": {
+      "game_create_thread_calls": [
+        {
+          "api": "CreateThread",
+          "flags": 4
+        },
+        {
+          "api": "GetThreadContext",
+          "status": "0x0",
+          "debug": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "api": "SetThreadContext",
+          "status": "0x0",
+          "debug": [
+            4983434,
+            5975698,
+            6409864,
+            6869850,
+            0,
+            341
+          ]
+        },
+        {
+          "api": "ResumeThread"
+        }
+      ],
+      "debug_delivered": true,
+      "eip": "0x54951c",
+      "stack_preserved": true,
+      "original_target_executed": false,
+      "checker_return_mocked": false
+    }
+  },
+  "self_context_group_combinations": 64,
+  "remote_context_group_combinations": 64,
+  "remote_rejection_cases": 14,
+  "concurrent_host_cycles": 1000,
+  "additional_checks": [
+    "alias handles",
+    "separate threads",
+    "explicit clear",
+    "one-shot apply",
+    "initial empty context",
+    "failed create",
+    "caller requests suspension",
+    "length/null",
+    "actual startup resets",
+    "actual x86 RaiseException retains worker debug cache"
+  ],
+  "layout": {
+    "layout": {
+      "object_size": 584,
+      "thread_type": 11,
+      "hash_size": 4096,
+      "object_type": 4,
+      "object_thread": 40,
+      "object_sd_debug": 120,
+      "object_thread_next": 168,
+      "thread_tid": 0,
+      "thread_pid": 4,
+      "thread_teb": 8,
+      "thread_started": 44,
+      "thread_terminated": 48,
+      "thread_suspend": 52,
+      "handle_handle": 0,
+      "handle_object": 8,
+      "handle_hash_next": 32,
+      "handle_size": 40,
+      "context_size": 716,
+      "teb_clientid": 64,
+      "teb_wowoffset": 6156,
+      "init_thread_start": 56
+    },
+    "source_sha256": "6bb6eafd3ecce26a80eb7ba1cb74e508c6e2829f5a1b3338a295d2a08aafef7b",
+    "probe_sha256": "b35370abd063cfebf887503fa1c73bb160a7809189b21089f23b081bb72bfeac",
+    "command": [
+      "/opt/devkitpro/devkitA64/bin/aarch64-none-elf-gcc",
+      "-DPES13_FEX_ISOLATED_EXCEPTIONS=1",
+      "-DWINBASEAPI=",
+      "-DWINE_NO_DEBUG_MSGS",
+      "-DWINE_NO_TRACE_MSGS",
+      "-DWINE_NX_FEX=1",
+      "-DWINE_UNIX_LIB",
+      "-D_ACRTIMP=",
+      "-D_NTSYSTEM_",
+      "-D_WIN64",
+      "-D__SWITCH__",
+      "-D__WINESRC__",
+      "-I/home/blekjek/sleepingdogs-thread-debug-v1/fex-adapter",
+      "-I/home/blekjek/sleepingdogs-thread-debug-v1/native-source/wine-nx-probe/syntax",
+      "-I/home/blekjek/sleepingdogs-thread-debug-v1/native-source/wine-nx-probe/../include",
+      "-I/home/blekjek/sleepingdogs-thread-debug-v1/native-source/wine-nx-probe/../dlls/ntdll",
+      "-I/home/blekjek/sleepingdogs-thread-debug-v1/native-source/wine-nx-probe/../dlls/ntdll/unix",
+      "-march=armv8-a+crc+crypto",
+      "-mtune=cortex-a57",
+      "-mtp=soft",
+      "-ftls-model=local-exec",
+      "-fPIE",
+      "-ffixed-x18",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-D__SWITCH__",
+      "-DSWITCH=1",
+      "-DNX",
+      "-D_GNU_SOURCE",
+      "-isystem",
+      "/opt/devkitpro/libnx/include",
+      "-isystem",
+      "/opt/devkitpro/portlibs/switch/include",
+      "-O3",
+      "-DNDEBUG",
+      "-std=gnu99",
+      "-Wall",
+      "-Wextra",
+      "-Werror=implicit-function-declaration",
+      "-ffunction-sections",
+      "-fdata-sections"
+    ],
+    "scope": "Read ABI constants from an extra object compiled with the real native recipe.\n\nThe actual runtime sources/objects are never edited. This probe is not linked\nor shipped. The instruction replay uses these offsets with the built ELF.\n"
+  },
+  "guest_ntdll_sha256": "9ac8cd9fc36fa48c6c6a2f10876baa1300a6064b26cdfe9c5e8febcc1bd65c8a",
+  "scope": "Replay shipped ARM64 context handling and original x86 worker instructions.\n\nTLS lookup, mutex scheduling, memory library calls, and imported Win32 API\nboundaries are controlled. Native handle-table lookup, context staging, child\nruntime initialization and cache apply execute from the actual built ELF.\nThe original CreateThread hook, DR1 target, worker branch and VEH are unmodified.\nDebug exception delivery at the instruction boundary is supplied by the test;\nthis does not emulate FEX or the Switch scheduler/GPU or prove hardware boot.\n",
+  "sources": {
+    "tests/check_thread_debug_binary.py": "b32e4ef2e44f422c8f97485c1996897767eefbc3b2934aba69b67584ea8f6e06",
+    "tests/extract_thread_layout.py": "6eb50493b9eb816b60c44046f8d0b60a15d40c486aa7fad8fca2f84a9bb7eb07",
+    "tests/check_debug_cache_binary.py": "59b6fa26a07d2f1313bc5def04fa49f68d785b2419cd6c897b0ff59dd2c40208",
+    "tests/check_game_debug_exception.py": "6fda3fe4ec8eeb5fa84d59c803f5d9fa5b6cc052f5cd2df74c27949cdf0cc63d"
+  },
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

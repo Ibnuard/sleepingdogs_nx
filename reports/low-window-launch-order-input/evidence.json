@@ -1,0 +1,11 @@
+{
+  "inputs": {
+    "fex-runtime.log": "216da67b9cc000b20ea721c2fecb019a10ce379697c981397688f2ba44469deb",
+    "crash.log": "d4fd32783b3ca02b528b3c90389a45d9f227a1b3a6434c5853a4d7774aba8ffb"
+  },
+  "heap_capacity_bytes": 3349303296,
+  "process_quota_bytes": 3444572160,
+  "preflight_called": false,
+  "crash_log_matches_previous_session": true,
+  "root_cause": "launcher checks readiness before main can reach memory initialization"
+}

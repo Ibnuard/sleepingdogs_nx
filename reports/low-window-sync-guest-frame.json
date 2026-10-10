@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "kernelbase_sha256": "972a55bf3fc8e7f7f6fa9ac62c9c8ec44cb5463bb891f71a0358f2eb03c60a9f",
+  "game_modified": false,
+  "hardware_tested": false,
+  "test_sha256": "a3ecc95487bd888d1b90848a6f9fb39a6cd57a21b15d546ce624c16932961092",
+  "signatures": {
+    "0xbb6f30": "8b016aff50ff15c4110e01c3",
+    "0xbb8730": "8b4cbe7851",
+    "0x7b05e420": "66905589e556"
+  },
+  "observation": "Original game queue -> semaphore wrapper -> original kernelbase WaitForSingleObject: EBP-4 preserves queue ESI, EDI preserves slot; invalid handle is loaded from the semaphore object.",
+  "limitation": "Fixture supplies the already-invalid object value. It validates capture layout, not the origin of corruption or a freeze fix."
+}

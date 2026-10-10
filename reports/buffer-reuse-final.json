@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "patch": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-buffer-reuse-fix.zip",
+    "sha256": "6a9cdfcb39abe3682909057befcdb0b7a0e38c9e960ec2326b49b9f833d457d2",
+    "bytes": 35944487
+  },
+  "rollback": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-buffer-reuse-rollback.zip",
+    "sha256": "3936aa60405e01572ae78cd7b8a09b55d200a8f48fe14c3661d6bfef6dc2ccf8",
+    "bytes": 17641202
+  },
+  "checks": {
+    "buffer-reuse-package": {
+      "status": "PASS",
+      "sha256": "133637d7d8230f16142eb23aefd642ad619e55e7049717f7a40799d1424b85e3"
+    },
+    "recycle-host-check": {
+      "status": "PASS",
+      "sha256": "5fb0d26aa6a62237e19f2b240e1ede1f05423e80f9224413280dc9f3fac8b7e2"
+    },
+    "recycle-binary-check": {
+      "status": "PASS",
+      "sha256": "3ce449277768d2550fd67209b46dd1b7fbd5d3b8055c9c5ec235182cd18dd780"
+    },
+    "buffer-reuse-package-check": {
+      "status": "PASS",
+      "sha256": "efac045e2977fcb8af061aaad32fc6235c6cb33a6a35f6fd0ca27671996f26e5"
+    },
+    "buffer-reuse-launcher-check": {
+      "status": "PASS",
+      "sha256": "d647d0d966e482724b86659519cba01a8fbb1c8cec952e902755c98148caa956"
+    }
+  },
+  "renderer": {
+    "d3d9.dll": {
+      "sha256": "a29bc56249bdedcdd6c304befe9c5f2da45463d09d3aa8c24d2140f8e408a951",
+      "bytes": 7475200
+    },
+    "d3d11.dll": {
+      "sha256": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+      "bytes": 8261632
+    },
+    "dxgi.dll": {
+      "sha256": "dcc3e79731bcc3c379cfbb0813bac7690f9c2a5578eac07c9e295559b406035c",
+      "bytes": 5550080
+    }
+  },
+  "input_logs": {
+    "crash.log": "0e289085650b1b22fa9ba69367ac497b1a6fe08897dd2ba4f346ced91ba32a55",
+    "fex-runtime.log": "660b2f3edca3e7d0ac5b06bfbaaaec920664c3a427f5d10d00d0f396b38b17d2"
+  },
+  "fastest_preserved": true,
+  "native_fex_and_forwarder_unchanged": true,
+  "hardware_tested": false,
+  "scope": "Host ASan/UBSan, actual x86 allocation/Map replay with modeled OS/Vulkan boundaries, source reconstruction and archive install/rollback. The full Switch allocation trace and gameplay are not reproduced."
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-sync-watch.zip",
+    "bytes": 10518294,
+    "sha256": "396877ad3697e0a11bb6d575af3da967b55cb07b05a9b187f0216afc13b13278",
+    "files": 63
+  },
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-sync-watch-rollback.zip",
+    "bytes": 9777313,
+    "sha256": "56f9613532ae9a34e271ee5842be16786081ee476a88a7884042ac62b66fd054",
+    "files": 20
+  },
+  "nro_sha256": "82d4201b2e2a29d35d7b6e550033e6381e5a29cb9dff72df364ba41d0386dfe0",
+  "elf_sha256": "e9519a8cfdabcad70c5a5f16c5054eb64bad0146759f695a7ae006c965070df6",
+  "changed_native_files": [
+    "dlls/ntdll/unix/signal_arm64.c",
+    "dlls/ntdll/unix/sync.c",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_sync_bridge.inc",
+    "wine-nx-probe/source/sd_sync_watch.h",
+    "wine-nx-probe/source/sd_sync_watch.inc"
+  ],
+  "profile": "fastest",
+  "fex_adapter_unchanged": true,
+  "baseline_preserved": true,
+  "compatible_forwarder_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "diagnostic_only": true,
+  "hardware_tested": false,
+  "freeze_fixed": false
+}

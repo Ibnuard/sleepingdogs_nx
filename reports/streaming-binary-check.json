@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "native_elf_sha256": "f1e90670902458b265878aa6ffa408c59eb0da333b594c258924ef36e896bd25",
+  "previous_native_elf_sha256": "162d12703562c0a71d9807d690b9f94bb7fbabb01fa9a4c9ec15ca317b35d833",
+  "dll_sha256": "e4049ce5466c36beb8d369dd495f30016abcac0afd45311168ba8915c29b0833",
+  "pressure": {
+    "old": {
+      "five_mib_succeeds": false,
+      "recycled_large_allocations": 0,
+      "game_and_four_compiler_buffers_preserved": true,
+      "general_heap_before": [
+        1384587264,
+        11,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1384423552,
+        163712,
+        40960
+      ]
+    },
+    "new": {
+      "five_mib_succeeds": true,
+      "recycled_large_allocations": 64,
+      "game_and_four_compiler_buffers_preserved": true,
+      "general_heap_before": [
+        1453797376,
+        35,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1434792448,
+        19004928,
+        32
+      ]
+    }
+  },
+  "borrowing": {
+    "loaned_bytes": 50331648,
+    "retained_contiguous_bytes": 16777216,
+    "three_full_five_mib_requests": true
+  },
+  "map_oom_sizes": [
+    1,
+    65536,
+    5242880,
+    9437184
+  ],
+  "map_command_ownership": true,
+  "scope": "Real ARM64 heap/segregation and real x86 deferred Map regression checks.\n\nHeap workload is synthetic: exhaust ordinary backing, release separated small\nGPU blocks, then request 5 MiB. It is not a full hardware allocation replay.\nVulkan creation and diagnostic boundaries are modeled in the x86 Map checks.\n",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_streaming_binary.py": "d1e2ab68e3556c01ce88bde425de954b64c1b64b06617cb2ac69b93a1ac3eead",
+    "tests/check_gpu_budget_binary.py": "312797edfa5b7ed157db165a6ed72d32cf4bc3c8c8c0518cdf91385ebc38dd8e",
+    "tests/native_heap_binary.py": "ebe7a592f458bd7adda33e001628fddeeb5f1faa245aeb43332b7d84411db140",
+    "tests/check_dxvk_map_binary.py": "2fc5cd7ea600037029deccfeb4029254266d6f6d384079460f3ad9d015115dce",
+    "tests/check_wow64_context_binary.py": "425bdf4247b16b50ef5e3e30e95729bddbc0dedb8f5022834531a2d845705516"
+  }
+}

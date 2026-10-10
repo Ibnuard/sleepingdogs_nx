@@ -1,0 +1,29 @@
+{
+  "passed": 185,
+  "dr7_decode_cases_in_cpp": 257,
+  "guard_sha256": "99e084167db94a0d8cfe0c3ce8ac47ac1827631481a6825ed6081d7087689789",
+  "layout": {
+    "frame_size": 3904,
+    "address": 3824,
+    "enabled": 3840,
+    "hit": 3844,
+    "resume_rip": 3848,
+    "rf": 1024,
+    "rip": 24,
+    "fault": 1496,
+    "signal": 3008,
+    "bytes": 172
+  },
+  "checks": [
+    "DR0-DR3",
+    "enable/disable/reprogram",
+    "simultaneous hits",
+    "RF once at resume RIP",
+    "shared code with different thread states",
+    "guest registers and NZCV preserved",
+    "only allowed frame writes",
+    "spill stack unwind on trap only",
+    "pre-instruction #DB metadata"
+  ],
+  "hardware_tested": false
+}

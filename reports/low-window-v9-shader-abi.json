@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "library_sha256": "f56fc46711c90330a9d68ff78cf00fd31a2525f922b6a90b77366d044542381f",
+  "nak_header_sha256": "af327541a88c71080cd6032a9f04d1752bfd17bab97bbdaf7ef32d0ee534503e",
+  "rust_dealloc_is_plain_free": true,
+  "rust_alloc_uses_malloc_or_posix_memalign": true,
+  "nak_signature": "nak_compile_shader(nir_shader *nir, bool dump_asm,\n                   const struct nak_compiler *nak,\n                   nir_variable_mode robust2_modes,\n                   const struct nak_fs_key *fs_key,\n                   bool has_task_shader);",
+  "evidence_sha256": "7ce740119f320fd2e696b55f8a4732c687f888712a67b3feea7ac853ca5951f1",
+  "sources": {
+    "tools/verify_shader_abi.py": "0346e3f2c770f0b3819de163a2f8844aeb27ea7775aba15e4d1970968e4f29cc"
+  }
+}

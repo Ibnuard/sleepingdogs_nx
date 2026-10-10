@@ -1,0 +1,19 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-compiler-memory-fix.zip",
+  "bytes": 13434816,
+  "sha256": "b8266ff9853f5d2368fdb5fc07df551f7399f259e5d4c1aaf4a227f93dd82dbf",
+  "files": 456,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-compiler-memory-rollback.zip",
+    "bytes": 10862139,
+    "sha256": "b3805272369feed2b6930fd1122da3e9c78165334433b6fcdfe0a1a2fcc30b70",
+    "files": 14
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "nro_sha256": "c368f044386a387e3190c2c230bbb586154b0d447046f4d35297f3d0b7e00936",
+  "dll_sha256": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "dll_sha256": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+  "actual_x86_reuse_cycles": 256,
+  "exact_size_and_type": true,
+  "live_allocation_refused": true,
+  "cache_bounds_and_destruction": true,
+  "allocation_accounting": true,
+  "map_failure_and_success_ownership": true,
+  "scope": "Execute shipping x86 DXVK cache, allocation dispatch and retirement code.\n\nSRW locks, diagnostics, fresh Vulkan allocation and final Vulkan destruction\nare modeled. Reference-count transitions at the caller boundary are explicit.\n",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_recycle_binary.py": "f94171e0e44d023dfe295fa997d982f0d6c2525fdf35319186717178656e9891",
+    "tests/recycle_layout.cpp": "80a23142576da67742f22b1e77a3acc956c3f1beed8eb62857255be3ea248c0e",
+    "tests/build_recycle_layout.py": "0a4b257e8bb25fd4d680826bd34afb842832473f292285159b3d8ca5421184fe",
+    "tests/check_dxvk_map_binary.py": "2fc5cd7ea600037029deccfeb4029254266d6f6d384079460f3ad9d015115dce",
+    "tests/check_wow64_context_binary.py": "425bdf4247b16b50ef5e3e30e95729bddbc0dedb8f5022834531a2d845705516",
+    "local/recycle-layout.json": "f25c4fb31ec381fae66f909dfc5fdd3d4b1a5035dee74d52f779a27d72e09837"
+  }
+}

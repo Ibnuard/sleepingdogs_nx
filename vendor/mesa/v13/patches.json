@@ -1,0 +1,57 @@
+[
+  {
+    "commit": "ed2b4dd00d06a60b233a6fb3b1397689eb4e80a3",
+    "title": "nvk: enable safe persistent and transient ZCULL on Horizon",
+    "filename": "ed2b4dd00d06a60b233a6fb3b1397689eb4e80a3.patch",
+    "sha256": "33b7529d639cc6baff051d70bca458e483ea44d492d7f024fecd45ba9550d842",
+    "files": [
+      "src/nouveau/horizon/nouveau_horizon.h",
+      "src/nouveau/horizon/nouveau_horizon_device.c",
+      "src/nouveau/vulkan/nvk_cmd_buffer.c",
+      "src/nouveau/vulkan/nvk_cmd_buffer.h",
+      "src/nouveau/vulkan/nvk_cmd_draw.c",
+      "src/nouveau/vulkan/nvk_event.c",
+      "src/nouveau/vulkan/nvk_image.c",
+      "src/nouveau/vulkan/nvk_image.h",
+      "src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c",
+      "src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c"
+    ],
+    "url": "https://github.com/danfromtico/mesa-switch/commit/ed2b4dd00d06a60b233a6fb3b1397689eb4e80a3"
+  },
+  {
+    "commit": "1b03eff0ad5c882b392abbf2b9ac7142295d32bc",
+    "title": "nvk: avoid redundant dynamic UBO updates on Horizon",
+    "filename": "1b03eff0ad5c882b392abbf2b9ac7142295d32bc.patch",
+    "sha256": "cea4adf4e600b3d82d66c345c99a60271b9cfac5e72424724b4802fbc069473f",
+    "files": [
+      "src/nouveau/vulkan/nvk_cmd_buffer.c",
+      "src/nouveau/vulkan/nvk_cmd_buffer.h",
+      "src/nouveau/vulkan/nvk_cmd_draw.c",
+      "src/nouveau/vulkan/nvk_descriptor_delta.h",
+      "src/nouveau/vulkan/nvk_device.c",
+      "src/nouveau/vulkan/nvk_device.h"
+    ],
+    "url": "https://github.com/danfromtico/mesa-switch/commit/1b03eff0ad5c882b392abbf2b9ac7142295d32bc"
+  },
+  {
+    "commit": "f68a41350dbc0b380dcb1462898d8bed48dfdb5e",
+    "title": "horizon: fix GPFIFO submission capacity accounting",
+    "filename": "f68a41350dbc0b380dcb1462898d8bed48dfdb5e.patch",
+    "sha256": "a39d061f43f0e3d467b5c5a19665f6e2e645bb43d2c5ba533ede6a591f61ff25",
+    "files": [
+      "src/nouveau/horizon/nouveau_horizon_channel.c",
+      "src/nouveau/horizon/nouveau_horizon_private.h"
+    ],
+    "url": "https://github.com/danfromtico/mesa-switch/commit/f68a41350dbc0b380dcb1462898d8bed48dfdb5e"
+  },
+  {
+    "commit": "a72f9551e79e7881ba67940f41df2b115d360600",
+    "title": "nvk: fix Horizon depth-stencil memory bindings",
+    "filename": "a72f9551e79e7881ba67940f41df2b115d360600.patch",
+    "sha256": "556597bde1b44a9d30c0394d5331f33a02a88ddb72fb55ae02c153678154d26e",
+    "files": [
+      "src/nouveau/vulkan/nvk_device_memory.c"
+    ],
+    "url": "https://github.com/danfromtico/mesa-switch/commit/a72f9551e79e7881ba67940f41df2b115d360600"
+  }
+]

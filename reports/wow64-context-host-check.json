@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "cases": 9,
+  "original_self_suspend_reproduced": true,
+  "fixed_function_sha256": "812e163bbef47686dbedb613b4469a1b22e4452e719223fceef9fd374255ab0b",
+  "sanitizers": [
+    "AddressSanitizer",
+    "UndefinedBehaviorSanitizer"
+  ],
+  "hardware_tested": false
+}

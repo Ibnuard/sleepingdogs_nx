@@ -1,0 +1,8 @@
+{
+  "input_sha256": "d4fd32783b3ca02b528b3c90389a45d9f227a1b3a6434c5853a4d7774aba8ffb",
+  "native_anchor": "0x29e18510",
+  "heap_capacity": "0x7b625000",
+  "interpretation": "Runtime log records a prior low-native-address game session, not the HOME forwarder failure.",
+  "forwarder_v1_abort_reproduced": "0x515b before first svcMapProcessCodeMemory",
+  "hardware_crash_report_available": false
+}

@@ -1,0 +1,70 @@
+{
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-fix.zip",
+    "bytes": 37970211,
+    "sha256": "08a3263f9d452140a9768bfb043a5e0b97453b0991de67ae5fd250338befbb56",
+    "files": 909
+  },
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-rollback.zip",
+    "bytes": 9985300,
+    "sha256": "6385443c9f8894cf869a988c85175f82f2b5eb4ad843966cd570cef341b55d73",
+    "files": 19
+  },
+  "nro_sha256": "767cf6b973f3686d77b67b81e8cc0271b34b081e0513b4d81e54190b261f6487",
+  "forwarder_sha256": "6da7966c5bfefd7a04f55a3c00f098222bce5aa758c7a8288891916fa8fd46ce",
+  "boot": {
+    "ams_revision": "5388824be146a89619e8d641acd64599cf1c5f62",
+    "hoc_release": "a6f1732e1d96577a8009d47c9b98e018080f3fe7",
+    "hoc_source": "d9906a794c6015a892c60744d520faf793d22549",
+    "autorun_revision": "cbb0e4e6e7fa7f47f328d92441f51bfb507f266f",
+    "title_ids": [
+      "0548eabb35576000",
+      "059a3db219b42000"
+    ],
+    "hos": "22.5.0",
+    "ams": "1.11.2",
+    "hoc": "2.5.1",
+    "hoc_input_sha256": "457fe2e44547c59cf3b3f7ebd62e91730ca7b224462475df3fe930d22f49c5aa",
+    "hoc_settings_offset_original": 325900,
+    "hoc_settings_offset_patched": 338796,
+    "hoc_settings_bytes": 26824,
+    "hoc_settings_sha256": "7f2ecdbb11bd27cedd1c49d2086cd006cab18087f945272178292254bdbfdf3f",
+    "files": {
+      "LICENSE.Atmosphere": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "LICENSE.HOC": "415913d27a54bd495e0b7f5ab84cac74ced0ac33f891c2805ee0ed480d1bcdd4",
+      "loader-hoc-low-window.kip": "df04e42da91d5cc9e061298e3bcb25d0315670f2e1b558bd10660c5f92875bbd",
+      "loader-stock-low-window.kip": "eddc19c2dbd1aa6322dd06da46cd77dbb8dddbb82d8cd9e4625d6d997ae8353a",
+      "mesosphere-low-window.bin": "2173d92b18048f7676e6fe5e018756e417a03333095b0e7bbb9a969980ebefec",
+      "sleepingdogs-low-window.patch": "c513190ff7e8f359c68f695a122711edc47a5b91d181e3beb31a89620312cc47"
+    },
+    "hardware_tested": false
+  },
+  "changed_existing_files": [
+    "README-INSTALL.txt",
+    "forwarder/FEXTendo-SleepingDogs-32bit.nsp",
+    "forwarder/build.json",
+    "switch/sleepingdogs-fex/launcher/compiler-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/debug-cache-fix.json",
+    "switch/sleepingdogs-fex/launcher/dep-policy-fix.json",
+    "switch/sleepingdogs-fex/launcher/direct-arena-fix.json",
+    "switch/sleepingdogs-fex/launcher/first-fault-trace.json",
+    "switch/sleepingdogs-fex/launcher/gpu-budget-fix.json",
+    "switch/sleepingdogs-fex/launcher/gpu-pressure-fix.json",
+    "switch/sleepingdogs-fex/launcher/memory-budget-fix.json",
+    "switch/sleepingdogs-fex/launcher/named-pipe-fix.json",
+    "switch/sleepingdogs-fex/launcher/scene-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/streaming-memory-fix.json",
+    "switch/sleepingdogs-fex/launcher/thread-debug-fix.json",
+    "switch/sleepingdogs-fex/sleepingdogs-fex.nro"
+  ],
+  "baseline_payload_preserved": true,
+  "hardware_tested": false,
+  "launcher_check": "PASS: LF/CRLF/mixed lines/spacing/no final newline; wrong options, comments, missing config and missing DLL still rejected.\nPASS: unchanged renderer selection still replaces stale installed DLLs from the complete new set.\nPASS: 14 archive preflight checks, both renderer installations, all 8 presets using byte-exact ZIP files and Horizon rename semantics.",
+  "pre_existing_renderer_files": {
+    "switch/sleepingdogs-fex/launcher/renderers/dxvk-2.7.1-async/d3d9.dll": "a2cd6841e102f37189527c118ec416fa5071ac4d3120762973d9a0c6c5fd067e",
+    "switch/sleepingdogs-fex/launcher/renderers/dxvk-2.7.1-async/d3d11.dll": "ddf904b00801add1d299a3da0e02319ca16e75595c3fd8d47262565ad45e09e1",
+    "switch/sleepingdogs-fex/launcher/renderers/dxvk-2.7.1-async/dxgi.dll": "b871cbe7d59ba92d1a7add831d3691eaf6ea6fa2f7f0a3f7473e9fd2eb081653"
+  },
+  "status": "PASS"
+}

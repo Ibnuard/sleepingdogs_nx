@@ -1,0 +1,60 @@
+{
+  "input_sha256": "6d45ef9e46ed4e91552e04bb96fa1e3eb735ba5b4cb67222d14f009c89b77d2f",
+  "input_bytes": 567033,
+  "user_observation": "Frozen picture; waited less than three minutes",
+  "build": "sleepingdogs-fextendo-0.1.0-low-window-v2-dx11",
+  "low_rx_probe_passed": true,
+  "low_rw_probe_passed": true,
+  "arena_1000_mib_ready": true,
+  "last_heap_available_bytes": 1058279648,
+  "last_heap_available_mib": 1009.2541198730469,
+  "last_resource": "[SD-RESOURCE] reason=rendering free_threads=195 query_rc=00000000 heap_used=2291023648 arena_free=257405152 heap_arena=2548428800 heap_capacity=3349303296 heap_unclaimed=800874496 heap_available=1058279648",
+  "compile_plateau": [
+    {
+      "phase": "compile_code",
+      "uptime_ms": 101519,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 106520,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 111521,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 116535,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 121536,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 126538,
+      "calls": 48267,
+      "total_us": 23307610
+    },
+    {
+      "phase": "compile_code",
+      "uptime_ms": 132679,
+      "calls": 48267,
+      "total_us": 23307610
+    }
+  ],
+  "last_fex_uptime_ms": 132679,
+  "last_vkmem": "[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0",
+  "diagnosis": "Root cause unconfirmed; old monitor disables syscall/file/thread observations at launcher handoff",
+  "hardware_progress": "Menu and New Game loading reached on v2; no 3D success confirmed"
+}

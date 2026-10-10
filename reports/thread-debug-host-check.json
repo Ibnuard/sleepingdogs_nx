@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "checks": [
+    "PASS pre-TEB staging, initial zeros, alias handles, debug-only writes, startup reset/cache, one-shot apply",
+    "PASS all 64 groups; running, unsuspended, foreign-process, terminated, closed, bad-type/width/architecture/null rejected",
+    "PASS overwrite and explicit clear; invalid/early startup does not consume pending state",
+    "PASS 1000 concurrent child TEB publication / parent SetContext / resume / post-reset apply cycles"
+  ],
+  "wine_header_sha256": "1aee97ea9319d9763d2184a1da02b8f0ba109b667c84ab7fd71276daf4d223bd",
+  "thread_header_sha256": "407d43efa59078ffbe92559fb1413287c343e4986126b4b317db3b441bc55765",
+  "sources": {
+    "src/sd_thread_debug.h": "c0cd29d7018a1cd1ebc3bee23d14360c3fe999cfee56c40e36db3ca53f78eb72",
+    "src/sd_thread_debug.inc": "42b5d06f16aa92506d7011c72882efcb65fa24e79db7db08d4a3dfb7efefeed0",
+    "src/sd_wow64_debug_cache.h": "73fa5f4249c49bed74f2046f05b6a2ac63eec77bb9b6669ff7c81fe9ab4a856c",
+    "tests/thread_debug.c": "293276b4c8045722eef04feeb6a6bd25e4353ddf45bf78ffe699307699f413ec",
+    "tests/check_thread_debug.py": "5a40f5a84037ccf4020c0672d0b894dee93952f13e62c9cb288a696ce2ff6771"
+  },
+  "scope": "Production handlers, stub handle table; native binary test covers actual table lookup.",
+  "hardware_tested": false
+}

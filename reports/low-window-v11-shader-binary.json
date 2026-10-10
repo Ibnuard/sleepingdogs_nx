@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "scope": "Check linked ARM64 shader paths and execute the NAK wrapper's real machine code.",
+  "hardware_tested": false,
+  "elf_sha256": "e8cf0e365a75716d179bcc8e55f41317b87bee3fe7928ca92a50f7339ed70f1e",
+  "nak_wrapper_callers": [
+    "nvk_compile_shaders",
+    "nvk_compile_nir_shader"
+  ],
+  "linked_edges": {
+    "thunk32_vkCreateComputePipelines": [
+      "wine_nx_thread_pipeline_begin",
+      "wine_nx_thread_pipeline_end"
+    ],
+    "thunk32_vkCreateGraphicsPipelines": [
+      "wine_nx_thread_pipeline_begin",
+      "wine_nx_thread_pipeline_end"
+    ],
+    "pes13_mesa_malloc": [
+      "sd_shader_cache_take"
+    ],
+    "pes13_mesa_free": [
+      "sd_shader_cache_put"
+    ],
+    "pes13_rust_alloc": [
+      "sd_shader_cache_take"
+    ],
+    "pes13_rust_dealloc": [
+      "sd_shader_cache_put"
+    ]
+  },
+  "compiled_wrapper_cases": [
+    {
+      "enabled": 0,
+      "result": 0,
+      "events": [
+        "nak_compile_shader"
+      ]
+    },
+    {
+      "enabled": 0,
+      "result": 1250999894016,
+      "events": [
+        "nak_compile_shader"
+      ]
+    },
+    {
+      "enabled": 1,
+      "result": 0,
+      "events": [
+        "sd_shader_cache_begin",
+        "nak_compile_shader",
+        "sd_shader_cache_end"
+      ]
+    },
+    {
+      "enabled": 1,
+      "result": 1250999894016,
+      "events": [
+        "sd_shader_cache_begin",
+        "nak_compile_shader",
+        "sd_shader_cache_end"
+      ]
+    }
+  ],
+  "sources": {
+    "tests/check_shader_binary.py": "8e8ecc2be8fee101751c58337868716a89f12b157ce7969a2a84db3531635277"
+  }
+}

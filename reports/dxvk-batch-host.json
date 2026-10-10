@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "result": "PASS grid=31488 stateful=200000 readback=progress explicit=preserved bound=12 defaults=off",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "hardware_tested": false,
+  "candidate_sources": {
+    "src/d3d11/d3d11_context_imm.cpp": "4909c2a952d2f8aaab888738917358bdc3682737d42f1ae1e4194b155051e4c5",
+    "src/d3d11/d3d11_context_imm.h": "6bbc21d14b5c5eeedb0cdf0441308d7603a346aba1793707f3b1344a4c700216",
+    "src/d3d11/d3d11_options.cpp": "c7eacfd49b125f06e6ded222f0ec48ecc2905ece6efe4d7cff1dbbfb1a2d0d7e",
+    "src/d3d11/d3d11_options.h": "35ca20f5f15f5be56d0c24684df395006da0031989ad3f3b16f7278aec71fe91",
+    "src/util/util_flush.cpp": "5aaafceeba3b6120b1bd2536ca1f5a8c6627f736d31093b4edcd0c2beeb57284",
+    "src/util/util_flush.h": "e21dcc360962072ead5128cfefdf2f43ba95298a1368cb120a8870fa8fd1c8b6",
+    "version.h.in": "2a1832b2179ccf30027c6548f4108532f6d8084be07804d63ded7f1b9a8f8967"
+  },
+  "baseline_tracker_sources": {
+    "src/util/util_flush.h": "934aec00c3bd7702d9808a8660d4d4e234ba47ba117fd2b31e9bac6e35bf0eae",
+    "src/util/util_flush.cpp": "5e09453e1bfa79a9e21041f14c6efcb7a3e0a4cceb83e8563a90c52c59db7f07"
+  },
+  "sources": {
+    "tests/check_dxvk_batch.py": "ca8bcbb6954e3a8da8208bbeb7f8b6520b06013f7737fddf45005c293ce17559",
+    "tests/dxvk_batch.cpp": "4c70a99baa74330b0ef4da62a222beeea6b3365bdc7422faa8debc8d6daa812b",
+    "tools/sleepingdogs_dxvk_batch.py": "50c37ffe28b2a66db13748b9efb1e733aa34b743c7106fdf32d91220573ae8d6",
+    "tools/build_dxvk_batch.py": "500ff00d9746879af9cffa5131f0ffd0983da0ebb25213d25cb80933b90a4821"
+  }
+}

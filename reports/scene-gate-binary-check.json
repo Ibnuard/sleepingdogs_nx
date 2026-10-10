@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "dll_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "permits": 2,
+  "simultaneous_compilers": 3,
+  "third_waits_before_invalidation_lock": true,
+  "released_permit_reused": true,
+  "all_early_cache_returns_unlock": true,
+  "sources": {
+    "tests/check_scene_fex_binary.py": "91d4ff068b8c704880fdb39492c5e021326f51ba4a9f37dcd4510cc0cdba6ce9",
+    "tests/check_compiler_gate_binary.py": "170560b13c153dde9de2b2c6447fb0104026e144395b0b194e1a41fe16596d27",
+    "tests/check_compiler_decoder_binary.py": "1c547b2e26b56d37a66acdbf550c53b6e8caa8cc151be284a0762b59d06836bb",
+    "../pes13-nx/tests/fex_alloc.py": "d02278ccabaf05122360a1cc273538b3431be4aae7da6ced99d86fdf4472c329",
+    "tests/build_scene_layout.py": "30b2506e08fb0f892eaa2f53274b88239e62606ce2f90d5afa87058fbe04c3eb",
+    "tests/build_compiler_memory_layout.py": "018b3cdaa7efc558712530c37cbb0974a0918affc8f8d263d60df9478db6909e",
+    "tests/compiler_memory_layout.cpp": "1fdba5de56fe0cb456212c5c8ff3dcf8f41cefaefdcdbd084e1530060378b2c2"
+  },
+  "boundaries": "NT, std::mutex scheduler and cache result modeled; actual CompileBlock, selection and RAII execute",
+  "hardware_tested": false
+}

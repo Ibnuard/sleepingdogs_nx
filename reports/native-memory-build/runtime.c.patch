@@ -1,0 +1,18 @@
+--- a/wine-nx-probe/source/runtime.c
++++ b/wine-nx-probe/source/runtime.c
+@@ -117,6 +117,7 @@
+ static uint64_t f1_guest_exit_state;
+ #include "f1_relaunch.h"
+ #include "f1_native_stacks.h"
++#include "sd_guest_arena.h"
+ extern void wine_nx_f1_gpu_heap_init(void);
+ static int fx_debug_live;
+ static pthread_mutex_t fx_debug_file_lock=PTHREAD_MUTEX_INITIALIZER;
+@@ -4664,6 +4665,7 @@
+     else if (!fx_launcher_start()) return 0;
+ 
+     wine_nx_f1_native_stacks_init();
++    sd_guest_arena_init();
+     wine_nx_f1_gpu_heap_init();
+     const unsigned fex_profile = f1_select_fex_profile(guest_tests);
+     pes13_fex_set_performance_profile(fex_profile);

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "patch_sha256": "8ecb9c7dd6cc5da92382cf3e8e74c552bdb37fb3bb0c203b7c439b6a8d43ba9e",
+  "patch_bytes": 31286632,
+  "rollback_sha256": "5b60522d657b0f3eb7477e7a1fe11e250aeecb3a7fe63a6f74faf12658a31575",
+  "checks": {
+    "dxvk-memory-host-check": "cae59388309016977688b646b46c644e003b45fc99e757c4f555ee0bde221e52",
+    "dxvk-map-binary-check": "3c971d896c204ea20c975dc52795ac2873e9f565304baae52b3e7b4938c16a15",
+    "dxvk-memory-package": "d013a2a1b32468563195e011c98a8586b33706a69b57faad3f1c8b4f32d7a543",
+    "dxvk-memory-package-check": "b2c16d03815107824de58ef02524e29da61f87a692c89d5b28ebdf6bd68994e7",
+    "dxvk-memory-launcher-check": "cb91618a1b212c4571f7d5ba3a8b3b9222b568ea95803200a0e6376c47244c51"
+  },
+  "fastest_preserved": true,
+  "hardware_menu_confirmed": false
+}

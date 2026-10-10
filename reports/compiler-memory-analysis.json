@@ -1,0 +1,40 @@
+{
+  "files": {
+    "crash.log": "26b766fe5830b1cafdc280554aade6e0f3eb30a97e810a8075460037508a3712",
+    "fex-runtime.log": "13f5a5b14cbdc4cc2b4ffbc55575755a8edb15ace20c8a7ad4ec7a6c0fc31ca7"
+  },
+  "observations": [
+    "[SD-MEMORY-BUDGET] build=v1 gpu_reserve_mib=128 stack_reserve_max_kib=1024",
+    "[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0",
+    "[SD-GPU-ARENA] init requested=134217728 reserved=134217728 unit=65536 source=ordinary-heap",
+    "[SD-GPU-ARENA] capacity=134217728 used=0 free=134217728 largest=134217728 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0",
+    "[SD-GPU-ARENA] capacity=134217728 used=12451840 free=121765888 largest=121765888 peak=12451840 live=12 takes=12 misses=0 returned=0 invalid=0",
+    "[SD-GPU-ARENA] capacity=134217728 used=12451840 free=121765888 largest=121765888 peak=12451840 live=12 takes=12 misses=0 returned=0 invalid=0",
+    "[SD-GPU-ARENA] capacity=134217728 used=91553792 free=42663936 largest=42663936 peak=91553792 live=41 takes=41 misses=0 returned=0 invalid=0",
+    "[SD-GPU-ARENA] capacity=134217728 used=91553792 free=42663936 largest=42663936 peak=91553792 live=41 takes=41 misses=0 returned=0 invalid=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=131072 backing=1052672 result=00000000 reusable=0",
+    "[SD-SCRATCH-RECOVER] bytes=1048576 idle_released=0 recovered=1 stage=ok rc=00000000",
+    "[SD-GPU-ARENA] capacity=134217728 used=134217728 free=0 largest=0 peak=134217728 live=86 takes=89 misses=45 returned=3 invalid=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0",
+    "[SD-SCRATCH-RECOVER] bytes=1048576 idle_released=0 recovered=1 stage=ok rc=00000000",
+    "[SD-NATIVE-STACK-RECOVER] requested=131072 backing=1052672 result=00000000 reusable=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=131072 backing=1052672 result=00000000 reusable=0",
+    "[SD-NATIVE-STACK-RECOVER] requested=1048576 backing=1052672 result=00000000 reusable=0",
+    "[SD-RESOURCE] reason=compiler-scratch-failed free_threads=196 query_rc=00000000 heap_used=1976548864 arena_free=26391040 heap_arena=2002939904 heap_capacity=2002944000 heap_unclaimed=4096 heap_available=26395136",
+    "[SD-MEMBUDGET] reason=compiler-scratch-failed total=2147483648 used=2043723776 free=103759872 sysres_total=0 sysres_used=0 rc=00000000/00000000/00000000/00000000",
+    "[SD-MEMMAP] reason=compiler-scratch-failed wine_backing=257433600 backing_peak=259661824 pooled=66985984 sections=20480 sections_peak=24576 page_arenas=67108864 sd_cache=2490368 reported_total=2147483648 reported_used=2043723776",
+    "[SD-GPU-ARENA] capacity=134217728 used=126222336 free=7995392 largest=7995392 peak=134217728 live=86 takes=90 misses=45 returned=4 invalid=0",
+    "[SD-SCRATCH-RECOVER] bytes=16777216 idle_released=0 recovered=0 stage=source-pages rc=00000000",
+    "[FEX2-HEAP] STOP compiler scratch failed bytes=0x0000000001000000"
+  ],
+  "terminal_failure": "16 MiB compiler scratch allocation failed after four reserved IR buffers were allocated",
+  "root_cause_scope": "Four CPU cores do not limit the number of preempted compiler lifetimes. Current pool can demand a fifth buffer while heap is exhausted. Logs do not identify every buffer owner.",
+  "proposed_fix": "Bound complete compiler lifetimes to four and size decoder storage to its instruction limit. Preserve 16 MiB IR size and Fastest.",
+  "old_scratch_reserve_bytes": 100663296,
+  "new_scratch_reserve_bytes": 67371008,
+  "native_heap_bytes_saved": 33292288,
+  "hardware_boot_confirmed": false
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-perf-counters.zip",
+    "bytes": 10463930,
+    "sha256": "b85ca33634a33467b9756f8fa408009add613ab92f3f88d584921f78eae9dd2e",
+    "files": 63
+  },
+  "build": "sleepingdogs-low-window-v8-perf-counters",
+  "nro_sha256": "b92813f92ca87c2be82519dda4804020de7e6888f7b1eef5c938400dba8bd2eb",
+  "elf_sha256": "a8463c057256e23a6b7e67a4ce3b02705875f3e666defe793cae5475e255bf58",
+  "changed_native_files": [
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_perf_summary.h"
+  ],
+  "baseline_sha256": "85f5eacfbc88d295440a3aea93d7564f2211c7457ced3217546e48a318ddea09",
+  "baseline_preserved": true,
+  "game_files_changed": [],
+  "fex_and_dxvk_unchanged": true,
+  "cpu_gpu_scheduling_unchanged": true,
+  "config_added": "performance-counters.txt=1",
+  "hardware_tested": false,
+  "performance_optimization": false,
+  "fps_gain_measured": false,
+  "graphics_undefined_fixed": false,
+  "reports": {
+    "low-window-v8-counters": "5adbe16d1bd1c4cc79dffe2adeb43ce9c904c34acf40dabc7e56a8f567ffa3f5",
+    "low-window-v8-cpu-topology": "07ee62f70d17752949eb5f473a535817eb87b8b5dcd6839ad5553c9be3af43c6",
+    "low-window-v8-sync-startup-binary": "00c06ef61399de541daf27a8494359c19a928c974e8cf9fa751a7a985fc02c08",
+    "low-window-v8-binary": "12a0dd1ead6d948835e3c9b3c6014102ae4e029d44e591f354229bfa1185ad48",
+    "gameplay-v7-performance-analysis": "82d5b60a0d75ae9b3e0737f7b6c0875adb166a11293b795cbd879700d2226ee1"
+  }
+}

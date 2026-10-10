@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "asan": true,
+  "ubsan": true,
+  "hardware_tested": false,
+  "cases": [
+    "PASS GUI/expired observation does no capture",
+    "PASS lifecycle, failed close, untracked close, handle reuse",
+    "PASS duplicate handle does not consume a second registry slot",
+    "PASS failed create cannot reuse stale output handle",
+    "PASS invalid-wait object capture, no mutation, retry flood deduplicated",
+    "PASS inaccessible memory, mismatched code, bad index and address overflow",
+    "PASS bounded ring, explicit dropped/registry counters, drain once",
+    "PASS global invalid snapshot cap",
+    "PASS concurrent producers and bounded history"
+  ],
+  "sources": {
+    "src/low_window/sd_sync_watch.h": "bace5ef4ddd73006e8571dd923eac90d1f98139f5f50d8f53859d3e2b733e0ad",
+    "src/low_window/sd_sync_watch.inc": "f1956bb5996e2187de4a2edce088afcccd533806f0d4cb455afc4abec1948443",
+    "src/low_window/sd_sync_bridge.inc": "46d561169f62efe5324d702e9318097ec3c81470faaa99a95d49df26acef745e",
+    "tests/sync_watch.c": "ad6c65162822e8d3053aeaf9bc4ae6b04a3c605604ccc0ce968e2e0e9c97fd37",
+    "tests/check_sync_watch.py": "38f532ef88dc89d0afe665d25e8242cc0ec31fa2bdcf80901210503fe3454283"
+  }
+}

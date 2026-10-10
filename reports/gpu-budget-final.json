@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "deliverable": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-gpu-budget-fix.zip",
+  "sha256": "bca038f391c972eeb82b16e52fa3c373cca5fb0d67a704f987470fe87548cec8",
+  "bytes": 31649632,
+  "nro_sha256": "3c22b793e5c367158ee019af66732a1f2c332d87a2aa7ec0790bf9887016241f",
+  "forwarder_sha256": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "rollback": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-gpu-budget-rollback.zip",
+  "checks": {
+    "gpu-budget-host-check": "PASS",
+    "gpu-budget-binary-check": "PASS",
+    "gpu-budget-package": "PASS",
+    "gpu-budget-package-check": "PASS"
+  },
+  "source_reconstruction": "PASS",
+  "install_rollback_reinstall": "PASS",
+  "forwarder_reinstall_required": true,
+  "fastest_preserved": true,
+  "hardware_tested": false,
+  "latest_user_confirmed_progress": "Previous sdmem1 build reaches main menu and crashes on START",
+  "expected_marker": "[SD-GPU-BUDGET] v1 paired_loader=1 ... target_mib=256 reserved_mib=256",
+  "validation_prefix": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\gpu-budget-validate-wufm7osr\\switch\\sleepingdogs-fex"
+}

@@ -1,0 +1,20 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-gpu-pressure-fix.zip",
+  "bytes": 32415995,
+  "sha256": "5e638baccba90ea1a62a7542753b810602c422a60e7865af01c4de5bc9ef8e6b",
+  "files": 653,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-gpu-pressure-rollback.zip",
+    "bytes": 9771254,
+    "sha256": "7ca9d9d5f150cecaa07d26ba326fd1a5b32b37593952ab0f44ebf820ac869be7",
+    "files": 14
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "nro_sha256": "6b1c87d99b5182af103dde9495ebae033774ad9cd02b4b2f6c930434c7742905",
+  "dlls_unchanged": true,
+  "forwarder_unchanged": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "inherited_launcher_gate": "Identical runtime.c and renderer/preset payloads to the validated streaming archive",
+  "hardware_tested": false
+}

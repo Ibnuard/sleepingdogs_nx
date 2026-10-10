@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "package": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-v3-recovery.zip",
+    "bytes": 9777455,
+    "sha256": "05ad6957a14c0ded59fc593f5d2565b078478777d9fd424ce58a4e4f2b66d04e",
+    "files": 20
+  },
+  "nro_sha256": "12820073773794f1cf9659695291cedcc12efcf65259efdd81d8f64d756af750",
+  "reconstructed_byte_identical": true,
+  "source_package_sha256": "396877ad3697e0a11bb6d575af3da967b55cb07b05a9b187f0216afc13b13278"
+}

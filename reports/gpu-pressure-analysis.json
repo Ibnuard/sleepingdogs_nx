@@ -1,0 +1,86 @@
+{
+  "input_sha256": {
+    "crash.log": "94391f308699a9fbd82c7994db567b397732f135ad44dcba92ffdf986c19720e",
+    "fex-runtime.log": "c3d0e8ee379535300cc6652743f4b9afb8a07f055509f21314f406f235539d47"
+  },
+  "original_log_directory": "E:\\switch\\sleepingdogs-fex",
+  "full_log_snapshot_available": false,
+  "evidence_basis": "Hashes and excerpts read successfully in this investigation before the SD disconnected",
+  "installed_nro_sha256": "9a5ef65f646fef4582bb0493573aaadc6c1e51c167de86bff2090f38cb0d0a8f",
+  "installed_d3d11_sha256": "e4049ce5466c36beb8d369dd495f30016abcac0afd45311168ba8915c29b0833",
+  "latest_patch_confirmed": true,
+  "mode": "debug",
+  "process_limit_bytes": 2147483648,
+  "process_committed_bytes": 2110832640,
+  "normal_heap_capacity_bytes": 2070040576,
+  "last_oom_heap_free_bytes": 43715632,
+  "last_oom_heap_unclaimed_bytes": 8192,
+  "gpu_pool": {
+    "capacity": 268435456,
+    "used": 250478592,
+    "free": 17956864,
+    "largest": 9437184
+  },
+  "normal_heap_examined_aligned_fit_bytes": 61688,
+  "guard_bytes": 16777216,
+  "dxvk_allocated_mib": 259,
+  "dxvk_used_mib": 252,
+  "failed_image_bytes": 196608,
+  "first_fault": {
+    "eip": "0x101345d0",
+    "module": "d3d11.dll",
+    "function": "dxvk::DxvkImage::assignStorageWithUsage",
+    "instruction": "mov ecx, dword ptr [ecx + 0x6c]",
+    "ecx": "0x0",
+    "access": "read",
+    "target": "0x6c"
+  },
+  "finding": "The normal heap cannot satisfy aligned GPU backing requests. The GPU reserve still has free runs but its hard 16 MiB post-allocation guard rejects all small borrowing when its largest free run is only 9 MiB.",
+  "inference": "The failed image allocation leads to a null storage dereference; the CS thread also reports failure ending its command buffer. Removing avoidable reserve refusals addresses a proven allocator defect, but does not prove all later gameplay fits the process budget.",
+  "pc_requirements": {
+    "ram": "2 GB",
+    "vram": "512 MB",
+    "source": "https://support.eu.square-enix.com/faqarticle.php?id=5421&kid=64273&la=2"
+  },
+  "budget_note": "The 256 MiB pool is a reservation within ordinary process heap, not a hard Vulkan limit. Overflow already uses ordinary newlib. Vulkan allocation totals are not additive to pool occupancy.",
+  "change": "Keep normal allocation preferences; after guarded borrowing and both ordinary newlib paths fail, allocate best-fit from any free GPU run. Preserve live objects, resource sizes, Fastest and the existing process quota.",
+  "evidence": [
+    {
+      "line": null,
+      "text": "[SD-GPU-STREAM] v1 total_mib=256 large_mib=64 threshold_mib=2 borrow_guard_mib=16"
+    },
+    {
+      "line": null,
+      "text": "[SD-GPU-HEAP] bytes=65536 align=65536 recovered=0 largest_examined=61688 scanned=62 attempt=256"
+    },
+    {
+      "line": null,
+      "text": "[SD-GPU-ARENA] capacity=268435456 used=250478592 free=17956864 largest=9437184 peak=267255808 live=174 takes=192 misses=380 returned=18 invalid=0"
+    },
+    {
+      "line": null,
+      "text": "[SD-GPU-STREAM-STATS] general_largest=0 large_largest=9437184 heap_free=43747328 heap_unclaimed=8192"
+    },
+    {
+      "line": null,
+      "text": "[SD-RESOURCE] reason=vulkan-allocation-failed free_threads=195 query_rc=00000000 heap_used=2026316752 arena_free=43715632 heap_arena=2070032384 heap_capacity=2070040576 heap_unclaimed=8192 heap_available=43723824"
+    },
+    {
+      "line": null,
+      "text": "[WINE] err:   DxvkCommandList: Failed to end command buffer"
+    },
+    {
+      "line": null,
+      "text": "[WINE] err:     Size:      196608"
+    },
+    {
+      "line": null,
+      "text": "[SD-FIRSTFAULT] access=0 target=6c flags=00000000"
+    },
+    {
+      "line": null,
+      "text": "[SD-FIRSTFAULT] eip=101345d0 esp=0166f398 ebp=06a063a8 eflags=00000256 context_flags=0001003f"
+    }
+  ],
+  "candidate_hardware_tested": false
+}

@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "old": {
+    "recovered_sizes": [],
+    "live_game_compiler_gpu_data_preserved": true,
+    "newlib_accounting_unchanged": true
+  },
+  "new": {
+    "recovered_sizes": [
+      65536,
+      131072,
+      196608,
+      262144,
+      524288,
+      1048576,
+      2097152
+    ],
+    "live_game_compiler_gpu_data_preserved": true,
+    "newlib_accounting_unchanged": true
+  },
+  "native_elf_sha256": "73bb81ad6f1dee33319ecf99bc9b5e5faecab299f2f4bf5ca7b0cd894614ec35",
+  "previous_native_elf_sha256": "f1e90670902458b265878aa6ffa408c59eb0da333b594c258924ef36e896bd25",
+  "scope": "Execute old/new native ARM64 allocators with exhausted newlib and live resources.\n\nThe synthetic pool layout matches the log's capacity, used and largest-free\nvalues, not its unknown complete lifetime trace. Kernel/sbrk/log I/O are modeled.\n",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_gpu_pressure_binary.py": "0977a24360fff5fbef6df2c238e522ba48abecb96c8e19b5e717966c6f63a3db",
+    "tests/check_gpu_budget_binary.py": "312797edfa5b7ed157db165a6ed72d32cf4bc3c8c8c0518cdf91385ebc38dd8e",
+    "tests/native_heap_binary.py": "ebe7a592f458bd7adda33e001628fddeeb5f1faa245aeb43332b7d84411db140"
+  }
+}

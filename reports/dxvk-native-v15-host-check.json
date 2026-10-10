@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "output": "PASS grid=31488 stateful=200000 readback=progress explicit=preserved bound=24 defaults=off\n",
+  "candidate_sources": {
+    "src/d3d11/d3d11_context_imm.cpp": "12fe0c55681fefff55a7a7af71928ab7e2fc918df0fadfb699035eeca483e13c",
+    "src/util/util_flush.cpp": "6bbe53c86081054cee3d930db9b72b7819f84d843c8c1a976863f78843f0d82c",
+    "version.h.in": "b3f896185a9ca859afbefae50b294219fa5335c54aad933d8b63c647f7463a8c"
+  },
+  "source_sha256": "6bbe53c86081054cee3d930db9b72b7819f84d843c8c1a976863f78843f0d82c",
+  "estimated_cost_limit": 1500,
+  "hardware_tested": false,
+  "fps_gain_measured": false
+}

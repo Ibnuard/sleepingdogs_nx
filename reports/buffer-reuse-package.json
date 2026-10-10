@@ -1,0 +1,38 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-buffer-reuse-fix.zip",
+  "bytes": 35944487,
+  "sha256": "6a9cdfcb39abe3682909057befcdb0b7a0e38c9e960ec2326b49b9f833d457d2",
+  "files": 795,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-buffer-reuse-rollback.zip",
+    "bytes": 17641202,
+    "sha256": "3936aa60405e01572ae78cd7b8a09b55d200a8f48fe14c3661d6bfef6dc2ccf8",
+    "files": 14
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "managed_dll_copies": 7,
+  "interfaces": {
+    "d3d9.dll": {
+      "sha256": "a29bc56249bdedcdd6c304befe9c5f2da45463d09d3aa8c24d2140f8e408a951",
+      "imports_exports_unchanged": true,
+      "stripped_executable_sections_identical": true
+    },
+    "d3d11.dll": {
+      "sha256": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+      "imports_exports_unchanged": true,
+      "stripped_executable_sections_identical": true
+    },
+    "dxgi.dll": {
+      "sha256": "dcc3e79731bcc3c379cfbb0813bac7690f9c2a5578eac07c9e295559b406035c",
+      "imports_exports_unchanged": true,
+      "stripped_executable_sections_identical": true
+    }
+  },
+  "nro_sha256": "de0a9ea83adcdf8e68a1b0cd3d8383af50e911ec99e7e43149ddadb98367b0f7",
+  "fex_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "forwarder_unchanged": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "original_game_excluded": true,
+  "hardware_tested": false
+}

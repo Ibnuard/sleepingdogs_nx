@@ -1,0 +1,11 @@
+--- a/wine-nx-probe/source/f1_gpu_arena.h
++++ b/wine-nx-probe/source/f1_gpu_arena.h
+@@ -7,7 +7,7 @@
+ #include <stdint.h>
+ #include <string.h>
+ #define F1_GPU_UNIT (64u * 1024u)
+-#define F1_GPU_ARENA_BYTES (640u * 1024u * 1024u)
++#define F1_GPU_ARENA_BYTES (256u * 1024u * 1024u)
+ #define F1_GPU_UNITS (F1_GPU_ARENA_BYTES / F1_GPU_UNIT)
+ struct f1_gpu_arena {
+     uintptr_t base;

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "result": "PASS: old guard starvation reproduced; 192 KiB recovered, smallest-hole reuse, full exhaustion, 1024 concurrent lifetimes, alignment and legacy fallback",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "compiled_native": {
+    "f1_gpu_arena.h": "cccf7714856fab5a3d3e985690aad96aa88c534f3a00d3e845d9b4f071a943d7",
+    "sd_gpu_stream.h": "7c74e6c87288efbd02b64267aadfca6f5512c5d846d58218228141e148e6f649",
+    "sd_gpu_pressure.h": "e88cf55349fc610e567c84518e18785c9316adcf84358935599139bb75ee183f"
+  },
+  "sources": {
+    "tests/check_gpu_pressure_host.py": "8cdffaec38796cc05291b9c861354834f0d5c5dccd66b5977884ebc4a9310d17",
+    "tests/gpu_pressure.c": "3dde7a3c61878ccbcf75cae3596a42c9f30f51ba9285183bc5b93e4b3901f857"
+  },
+  "scope": "Production helper with synthetic arrangement matching the logged occupancy/free/largest values; pthread mutex models arena locking.",
+  "hardware_tested": false
+}

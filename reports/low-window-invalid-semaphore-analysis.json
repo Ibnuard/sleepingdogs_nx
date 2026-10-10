@@ -1,0 +1,209 @@
+{
+  "input_sha256": "bc83d378715f4e3284feeff39ffea08fda92f74b661605d7e5b8a63a0791b7f3",
+  "input_bytes": 991468,
+  "build": "sleepingdogs-fextendo-0.1.0-low-window-v3-load-watch",
+  "profile": "fastest",
+  "scalar_tso": 0,
+  "vector_tso": 0,
+  "memcpy_tso": 0,
+  "present_plateau": {
+    "first": {
+      "line": 7315,
+      "seconds": 115,
+      "count": 3441,
+      "delta": 684,
+      "seen": 1,
+      "age_ms": 336,
+      "errors": 0
+    },
+    "last": {
+      "line": 9295,
+      "seconds": 280,
+      "count": 3441,
+      "delta": 0,
+      "seen": 1,
+      "age_ms": 165594,
+      "errors": 0
+    },
+    "samples": 12
+  },
+  "invalid_wait": {
+    "handle": "0x6d4ffff0",
+    "status": "0xc0000008",
+    "status_name": "STATUS_INVALID_HANDLE",
+    "alertable": false,
+    "timeout": "infinite",
+    "threads": {
+      "4": {
+        "first": {
+          "line": 7323,
+          "seconds": 115,
+          "tid": 4,
+          "state": "returned",
+          "status": "c0000008",
+          "age_ms": 0,
+          "completed": 238932,
+          "total_calls": 239570
+        },
+        "last": {
+          "line": 9303,
+          "seconds": 280,
+          "tid": 4,
+          "state": "entered",
+          "status": "ffffffff",
+          "age_ms": 0,
+          "completed": 11894700,
+          "total_calls": 11895339
+        },
+        "call_growth": 11655769,
+        "invalid_handle_returns_observed": 4
+      },
+      "72": {
+        "first": {
+          "line": 7345,
+          "seconds": 115,
+          "tid": 72,
+          "state": "entered",
+          "status": "ffffffff",
+          "age_ms": 0,
+          "completed": 8334,
+          "total_calls": 8335
+        },
+        "last": {
+          "line": 9325,
+          "seconds": 280,
+          "tid": 72,
+          "state": "entered",
+          "status": "ffffffff",
+          "age_ms": 0,
+          "completed": 12148818,
+          "total_calls": 12148819
+        },
+        "call_growth": 12140484,
+        "invalid_handle_returns_observed": 2
+      }
+    }
+  },
+  "last_resource": {
+    "line": 9277,
+    "free_threads": 195,
+    "heap_available": 1058465264
+  },
+  "last_heap_available_mib": 1009.4311370849609,
+  "last_vkmem": "[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0",
+  "completed_driver_calls_after_130_seconds": 0,
+  "native_runtime_base": "0x7fd97da000",
+  "elf_sha256": "7749eebcd8f222f88c060013e03840fb86ac9ce220d598dc920717c72663e47c",
+  "representative_stacks": [
+    {
+      "line": 7465,
+      "text": "[SD-STACK] tid=4w round=0 native= 7fda8e2850 7fd9879160 7fda922c38 7fd9b78980 7fd98adfdc 7fd98b0a3c 7fd98b0b20 7fd98b6658 guest= bb6f3b bb7c6a bb7e31 a5f1ac 9e7100 a09270 622e92",
+      "native_symbols": [
+        "__syscall_cond_signal+0x10",
+        "horizon_pipe_write_r+0x190",
+        "_write_r+0x78",
+        "__wrap_write+0x20",
+        "server_call_unlocked+0x1bc",
+        "server_select.constprop.0+0x1ac",
+        "server_wait+0x60",
+        "NtWaitForSingleObject+0x218"
+      ]
+    },
+    {
+      "line": 7529,
+      "text": "[SD-STACK] tid=72w round=0 native= 7fda8d270c 7fda8e288c 7fd9878e80 7fda921d18 7fd98adea8 7fd98b0a3c 7fd98b0b20 7fd98b6658 guest= bb6f3b bb7c6a bb7e31 bbadd5",
+      "native_symbols": [
+        "condvarWaitTimeout+0x2c",
+        "__syscall_cond_wait+0xc",
+        "horizon_pipe_read_r+0x80",
+        "_read_r+0x78",
+        "server_call_unlocked+0x88",
+        "server_select.constprop.0+0x1ac",
+        "server_wait+0x60",
+        "NtWaitForSingleObject+0x218"
+      ]
+    }
+  ],
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "game_modified": false,
+  "semaphore_constructor": [
+    {
+      "address": "0xbb6f00",
+      "instruction": "mov eax, dword ptr [esp + 8]"
+    },
+    {
+      "address": "0xbb6f04",
+      "instruction": "push esi"
+    },
+    {
+      "address": "0xbb6f05",
+      "instruction": "push 0"
+    },
+    {
+      "address": "0xbb6f07",
+      "instruction": "mov esi, ecx"
+    },
+    {
+      "address": "0xbb6f09",
+      "instruction": "mov ecx, dword ptr [esp + 0xc]"
+    },
+    {
+      "address": "0xbb6f0d",
+      "instruction": "push eax"
+    },
+    {
+      "address": "0xbb6f0e",
+      "instruction": "push ecx"
+    },
+    {
+      "address": "0xbb6f0f",
+      "instruction": "push 0"
+    },
+    {
+      "address": "0xbb6f11",
+      "instruction": "call dword ptr [0x10e111c]"
+    },
+    {
+      "address": "0xbb6f17",
+      "instruction": "mov dword ptr [esi], eax"
+    },
+    {
+      "address": "0xbb6f19",
+      "instruction": "mov eax, esi"
+    },
+    {
+      "address": "0xbb6f1b",
+      "instruction": "pop esi"
+    }
+  ],
+  "wait_wrapper": [
+    {
+      "address": "0xbb6f30",
+      "instruction": "mov eax, dword ptr [ecx]"
+    },
+    {
+      "address": "0xbb6f32",
+      "instruction": "push -1"
+    },
+    {
+      "address": "0xbb6f34",
+      "instruction": "push eax"
+    },
+    {
+      "address": "0xbb6f35",
+      "instruction": "call dword ptr [0x10e11c4]"
+    },
+    {
+      "address": "0xbb6f3b",
+      "instruction": "ret "
+    }
+  ],
+  "diagnosis": "Two game job-queue threads repeatedly retry an invalid semaphore handle while Present stops. The origin of the invalid value is unproven.",
+  "limits": [
+    "Available native heap is not a proof of sufficient space inside every game suballocator.",
+    "Completed driver-call counters alone do not rule out all GPU problems.",
+    "Relaxed memory ordering, stale/freed storage and other guest/runtime corruption are hypotheses, not established causes."
+  ],
+  "next_experiment": "Same v3 runtime and assets; launcher/fex-mode.txt changes from fastest to fast, enabling scalar/vector/memcpy TSO. No game or binary changes.",
+  "hardware_fix_confirmed": false
+}

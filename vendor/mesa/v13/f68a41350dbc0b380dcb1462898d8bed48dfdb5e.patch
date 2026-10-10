@@ -1,0 +1,92 @@
+From f68a41350dbc0b380dcb1462898d8bed48dfdb5e Mon Sep 17 00:00:00 2001
+From: naga <38852591+NaGaa95@users.noreply.github.com>
+Date: Thu, 1 Oct 2026 18:19:57 +0200
+Subject: [PATCH] horizon: fix GPFIFO submission capacity accounting
+
+---
+ src/nouveau/horizon/nouveau_horizon_channel.c | 31 ++++++-------------
+ src/nouveau/horizon/nouveau_horizon_private.h |  3 +-
+ 2 files changed, 12 insertions(+), 22 deletions(-)
+
+diff --git a/src/nouveau/horizon/nouveau_horizon_channel.c b/src/nouveau/horizon/nouveau_horizon_channel.c
+index e0fa51f6bcd..512a3f77c78 100644
+--- a/src/nouveau/horizon/nouveau_horizon_channel.c
++++ b/src/nouveau/horizon/nouveau_horizon_channel.c
+@@ -810,10 +810,12 @@ nouveau_horizon_channel_reserve_entries_locked(
+ {
+    const uint32_t total_order_entry =
+       channel->device->total_order_channels ? 1 : 0;
++   const uint32_t completion_entries =
++      channel->mapped_completion_enabled ? 2 : 1;
+    const uint64_t required =
+       (uint64_t)channel->gpu_channel.num_entries + entries + tail_entries +
+-      NOUVEAU_HORIZON_GPFIFO_FINAL_SKID + total_order_entry;
+-   if (required > GPFIFO_QUEUE_SIZE)
++      completion_entries + total_order_entry;
++   if (required > NOUVEAU_HORIZON_GPFIFO_SUBMIT_CAPACITY)
+       return NOUVEAU_HORIZON_ERROR_NO_SPACE;
+    return NOUVEAU_HORIZON_SUCCESS;
+ }
+@@ -837,7 +839,7 @@ nouveau_horizon_channel_append_locked(
+ 
+    if (consume_reserved) {
+       status = channel->gpu_channel.num_entries + 1 + tail_entries <=
+-                  GPFIFO_QUEUE_SIZE ?
++                  NOUVEAU_HORIZON_GPFIFO_SUBMIT_CAPACITY ?
+                   NOUVEAU_HORIZON_SUCCESS :
+                   NOUVEAU_HORIZON_ERROR_NO_SPACE;
+    } else {
+@@ -1257,13 +1259,11 @@ nouveau_horizon_channel_submit_locked(
+          (uint64_t)NOUVEAU_HORIZON_GM20B_REPORT_WORDS *
+             sizeof(uint32_t) : 0);
+ 
+-   /* Reserve the full tail and reclaim a ledger slot before writing its
+-    * report slice. Older accepted work may still fetch that storage.
+-    */
+-   status = nouveau_horizon_channel_reserve_entries_locked(
+-      channel, tail_entries, 0);
+-   if (status != NOUVEAU_HORIZON_SUCCESS)
++   /* Consume the tail space reserved while recording commands. */
++   if (incoming_entries > NOUVEAU_HORIZON_GPFIFO_SUBMIT_CAPACITY) {
++      status = NOUVEAU_HORIZON_ERROR_NO_SPACE;
+       goto done;
++   }
+    status = nouveau_horizon_channel_throttle_inflight_locked(
+       channel, incoming_entries, incoming_command_bytes);
+    if (status != NOUVEAU_HORIZON_SUCCESS)
+@@ -1989,20 +1989,9 @@ nouveau_horizon_channel_exec_submit(
+    const uint32_t acquire_entries =
+       exec_count > 0 && !channel->cache_acquire_emitted ? 2 : 0;
+    const uint32_t barrier_entries = full_barrier ? 3 : 0;
+-   const uint32_t completion_entries =
+-      channel->mapped_completion_enabled ? 2 : 1;
+-   /* Reserve an extra slot for submit_locked's tail check after its
+-    * possible total-order wait; it must not reject an already-appended
+-    * prefix.
+-    */
+-   const uint32_t second_order_reservation =
+-      channel->device->total_order_channels ? 1 : 0;
+    if (exec_count > 0 || full_barrier) {
+       status = nouveau_horizon_channel_reserve_entries_locked(
+-         channel,
+-         exec_count + acquire_entries + barrier_entries +
+-            completion_entries + second_order_reservation,
+-         0);
++         channel, exec_count + acquire_entries + barrier_entries, 0);
+    }
+    if (exec_count > 0) {
+       if (status == NOUVEAU_HORIZON_SUCCESS) {
+diff --git a/src/nouveau/horizon/nouveau_horizon_private.h b/src/nouveau/horizon/nouveau_horizon_private.h
+index 1af98bb9962..29a56a64f72 100644
+--- a/src/nouveau/horizon/nouveau_horizon_private.h
++++ b/src/nouveau/horizon/nouveau_horizon_private.h
+@@ -26,7 +26,8 @@
+    (NOUVEAU_HORIZON_WAIT_SLICE_COUNT - 1u)
+ #define NOUVEAU_HORIZON_WAIT_SLICE_WORDS 128u
+ #define NOUVEAU_HORIZON_BUILTIN_SIZE_B 0x10000u
+-#define NOUVEAU_HORIZON_GPFIFO_FINAL_SKID 4u
++/* Native pre/post fences and the ring's empty slot. */
++#define NOUVEAU_HORIZON_GPFIFO_SUBMIT_CAPACITY (GPFIFO_QUEUE_SIZE - 3u)
+ #define NOUVEAU_HORIZON_INFLIGHT_SUBMISSION_COUNT 512u
+ #define NOUVEAU_HORIZON_REPORT_SLICE_COUNT \
+    NOUVEAU_HORIZON_INFLIGHT_SUBMISSION_COUNT

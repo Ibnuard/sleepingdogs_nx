@@ -1,0 +1,63 @@
+{
+  "archive": "sleepingdogs-fex-0.1.0-sd.zip",
+  "sha256": "b2e19d4f71994a9a0fd80be51f045ee3a5c4711780aa752667497d3b88eeddfa",
+  "bytes": 86848628,
+  "files": 360,
+  "nro_sha256": "c9c6e44161517e4c878f4014e6e89b34fc314c3340be6a085251b1a7691fbb7d",
+  "forwarder": {
+    "nsp": "FEXTendo-SleepingDogs-32bit.nsp",
+    "sha256": "445faf7b83ea1adb06cf0c2e156a29d870b4fa2d1a1ad0688caeb984b2ffd4b2",
+    "bytes": 263896,
+    "title": "Sleeping Dogs - FEXTendo",
+    "version": "0.1.0",
+    "title_id": "059a3db219b42000",
+    "target": "sdmc:/switch/sleepingdogs-fex/sleepingdogs-fex.nro",
+    "address_space": "32-bit no-alias",
+    "capabilities": {
+      "ACI0": {
+        "cpu_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "priority_range": [
+          28,
+          63
+        ],
+        "svc_debug": false,
+        "allow_debug": false,
+        "force_debug": false,
+        "force_debug_prod": true,
+        "kernel_flags": "0x30073f7",
+        "debug_descriptor": "0x4ffff"
+      },
+      "ACID": {
+        "cpu_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "priority_range": [
+          28,
+          63
+        ],
+        "svc_debug": false,
+        "allow_debug": false,
+        "force_debug": false,
+        "force_debug_prod": true,
+        "kernel_flags": "0x30073f7",
+        "debug_descriptor": "0x4ffff"
+      }
+    },
+    "nro_sha256": "c9c6e44161517e4c878f4014e6e89b34fc314c3340be6a085251b1a7691fbb7d",
+    "packer_commit": "745b16ecfc9ce055743067d200572204cb2aac6c",
+    "loader_commit": "72a94b905816de24817594109fb012a8f7107d8c",
+    "packed_payload_verified": true,
+    "hardware_tested": false
+  },
+  "game_included": false,
+  "checksums_verified": true,
+  "hardware_tested": false
+}

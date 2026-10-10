@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-performance-hud.zip",
+    "bytes": 10456504,
+    "sha256": "85f5eacfbc88d295440a3aea93d7564f2211c7457ced3217546e48a318ddea09",
+    "files": 60
+  },
+  "build": "sleepingdogs-low-window-v7-performance-hud",
+  "nro_sha256": "913f9426d5e1da20c35bb6d5651835e3052ba683f0a68092541f1d45b1262c8a",
+  "elf_sha256": "73512b76c0d0fe5d1d2a859d11f63a491c9ac88dc5af0f2f8b01ca0ef430e4b2",
+  "changed_native_files": [
+    "wine-nx-probe/source/f1_crash.c",
+    "wine-nx-probe/source/f1_dx_hud.h",
+    "wine-nx-probe/source/f1_settings.h",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_frame_summary.h"
+  ],
+  "hud": [
+    "None",
+    "FPS",
+    "Full"
+  ],
+  "normal_launch_detailed_watch": false,
+  "performance_optional": true,
+  "user_choice_files_changed": [],
+  "game_files_changed": [],
+  "fex_and_dxvk_unchanged": true,
+  "baseline_sha256": "3cd1e3f0070eacde87e3fa9953dc7f83c3b12d9d1ab744d4c49816afebd303b4",
+  "baseline_preserved": true,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "graphics_undefined_fixed": false,
+  "reports": {
+    "low-window-v7-launcher": "8a7dd0910a9f733beda604ab7eac0b4b89b422829ab588c6b3ab4c08926f41de",
+    "low-window-v7-cpu-topology": "92ebc2421d1c76c93834843e58d2b91f8071bdb979681b71bbcb4fd8ee440479",
+    "low-window-v7-sync-startup-binary": "37edda679f3eddbd39ad25fc853a970d4ca54d30ddca622b6df26886d49ee58f",
+    "low-window-v7-binary": "f969ba460d793c206ca5f2f6f5475e33a11a07e924b5de24b450a83b116b3dde",
+    "gameplay-v6-performance-analysis": "e3f48f3aa339c047ab6b220e14c72de543070ee502183d5836a676110ebe56a7"
+  }
+}

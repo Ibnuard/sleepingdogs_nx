@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "backend_library_sha256": "01bf66ca23fabf2a853a69c8f5637e0af8b7e3f6af50f0d98df573f848b9c205",
+  "pack_sha256": "2f6b1292290b264c812ff54585b9af9bb123bb1321026f34c9f3d4f3a75a26d2",
+  "output": "Device: llvmpipe (LLVM 21.1.8, 256 bits)\nRGB center=51,102,178 mean error=0.0009 bad_channels=0\nOutput 256x256 performance motion=25.0%: max RGB error=3 interior=0 validation_errors=0\nRGB center=51,102,178 mean error=0.0001 bad_channels=0\nOutput 1280x720 performance motion=25.0%: max RGB error=3 interior=0 validation_errors=0\nRGB center=51,102,178 mean error=0.0001 bad_channels=0\nOutput 1280x720 performance motion=12.5%: max RGB error=3 interior=0 validation_errors=0\nRGB center=51,102,178 mean error=0.0000 bad_channels=0\nOutput 1280x720 performance motion=50.0%: max RGB error=1 interior=0 validation_errors=0\nPASS: real LSFG compute on software Vulkan; this is not a Switch performance measurement\n",
+  "validation_errors": 0,
+  "hardware_tested": false,
+  "switch_performance_measured": false
+}

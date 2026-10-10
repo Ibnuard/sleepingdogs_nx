@@ -1,0 +1,3421 @@
+{
+  "status": "ANALYZED",
+  "sha256": "776cae2f15006253f85dea089db6912fdaf555799c29fa0ef6815f9b83dbf6ae",
+  "input": "D:\\Dev\\Switch\\SwitchHub\\F1\\dist\\f1-fex-diagnostic-0.1.44-cpu2\\fex-runtime.log",
+  "preserved_input": "local/performance-feedback/776cae2f15006253f85dea089db6912fdaf555799c29fa0ef6815f9b83dbf6ae/fex-runtime.log",
+  "analyzer_sha256": "c753625a163672e637fa17027d731bef9b9e23259c084482527c5673cd0330fd",
+  "user_reported": {
+    "frequent_fps": 20,
+    "crowded_scene_fps": [
+      11,
+      14
+    ],
+    "cache_fix_copied_and_closed_from_HOME": true,
+    "measured_clocks_available": false
+  },
+  "runtime_identity": {
+    "v141_marker_count": 0,
+    "markers": [
+      {
+        "line": 582,
+        "text": "[SD-NVK-V14] shader compiler SM53: texture/global-load priority=200 select_limit=8 FADD.SAT=correct; v13 private GPU memory and ZCULL guards retained"
+      }
+    ],
+    "installed_nro_sha256": null,
+    "verified_v141": false,
+    "conclusion": "Installation was confirmed by user, but the v14.1 marker is absent. No conclusion that the wrong build is installed from this absence alone. The NRO actually stored on the SD is needed to resolve the discrepancy."
+  },
+  "resolutions": [
+    {
+      "line": 1065,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    {
+      "line": 1067,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  ],
+  "capture_fps": 17.131524288894802,
+  "capture_average_frame_ms": 58.37192202729045,
+  "capture_duration_ms": 30000,
+  "present_thread_cpu_ms": 315.298,
+  "submits_per_present_interval": 6.754385964912281,
+  "submit_wall_ms": 926.229,
+  "slow_tail": {
+    "windows": 17,
+    "window_ms": 172525,
+    "frames": 2693,
+    "fps_weighted": 15.609331980872337,
+    "fps_min": 12.05,
+    "fps_max": 18.64,
+    "rows": [
+      {
+        "line": 1610,
+        "window_ms": 10282,
+        "frames": 124,
+        "fps_x100": 1205,
+        "present_avg_us": 613,
+        "lock_avg_us": 0,
+        "driver_avg_us": 440,
+        "errors": 0
+      },
+      {
+        "line": 1646,
+        "window_ms": 10058,
+        "frames": 170,
+        "fps_x100": 1690,
+        "present_avg_us": 789,
+        "lock_avg_us": 0,
+        "driver_avg_us": 410,
+        "errors": 0
+      },
+      {
+        "line": 1681,
+        "window_ms": 10059,
+        "frames": 182,
+        "fps_x100": 1809,
+        "present_avg_us": 736,
+        "lock_avg_us": 0,
+        "driver_avg_us": 434,
+        "errors": 0
+      },
+      {
+        "line": 1823,
+        "window_ms": 10386,
+        "frames": 171,
+        "fps_x100": 1646,
+        "present_avg_us": 753,
+        "lock_avg_us": 0,
+        "driver_avg_us": 501,
+        "errors": 0
+      },
+      {
+        "line": 1949,
+        "window_ms": 10269,
+        "frames": 177,
+        "fps_x100": 1723,
+        "present_avg_us": 817,
+        "lock_avg_us": 0,
+        "driver_avg_us": 529,
+        "errors": 0
+      },
+      {
+        "line": 2074,
+        "window_ms": 10258,
+        "frames": 187,
+        "fps_x100": 1822,
+        "present_avg_us": 908,
+        "lock_avg_us": 0,
+        "driver_avg_us": 560,
+        "errors": 0
+      },
+      {
+        "line": 2135,
+        "window_ms": 10189,
+        "frames": 190,
+        "fps_x100": 1864,
+        "present_avg_us": 941,
+        "lock_avg_us": 0,
+        "driver_avg_us": 600,
+        "errors": 0
+      },
+      {
+        "line": 2171,
+        "window_ms": 10060,
+        "frames": 162,
+        "fps_x100": 1610,
+        "present_avg_us": 747,
+        "lock_avg_us": 0,
+        "driver_avg_us": 465,
+        "errors": 0
+      },
+      {
+        "line": 2220,
+        "window_ms": 10066,
+        "frames": 159,
+        "fps_x100": 1579,
+        "present_avg_us": 674,
+        "lock_avg_us": 0,
+        "driver_avg_us": 441,
+        "errors": 0
+      },
+      {
+        "line": 2279,
+        "window_ms": 10213,
+        "frames": 168,
+        "fps_x100": 1644,
+        "present_avg_us": 488,
+        "lock_avg_us": 0,
+        "driver_avg_us": 341,
+        "errors": 0
+      },
+      {
+        "line": 2315,
+        "window_ms": 10057,
+        "frames": 140,
+        "fps_x100": 1392,
+        "present_avg_us": 482,
+        "lock_avg_us": 0,
+        "driver_avg_us": 292,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10051,
+        "frames": 153,
+        "fps_x100": 1522,
+        "present_avg_us": 727,
+        "lock_avg_us": 0,
+        "driver_avg_us": 515,
+        "errors": 0
+      },
+      {
+        "line": 2401,
+        "window_ms": 10202,
+        "frames": 149,
+        "fps_x100": 1460,
+        "present_avg_us": 545,
+        "lock_avg_us": 0,
+        "driver_avg_us": 319,
+        "errors": 0
+      },
+      {
+        "line": 2435,
+        "window_ms": 10059,
+        "frames": 134,
+        "fps_x100": 1332,
+        "present_avg_us": 550,
+        "lock_avg_us": 0,
+        "driver_avg_us": 404,
+        "errors": 0
+      },
+      {
+        "line": 2474,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 839,
+        "lock_avg_us": 0,
+        "driver_avg_us": 574,
+        "errors": 0
+      },
+      {
+        "line": 2526,
+        "window_ms": 10190,
+        "frames": 135,
+        "fps_x100": 1324,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2558,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 778,
+        "lock_avg_us": 0,
+        "driver_avg_us": 539,
+        "errors": 0
+      }
+    ]
+  },
+  "tail_without_first_transition": {
+    "windows": 16,
+    "window_ms": 162243,
+    "frames": 2569,
+    "fps_weighted": 15.834273281435872,
+    "fps_min": 13.24,
+    "fps_max": 18.64,
+    "rows": [
+      {
+        "line": 1646,
+        "window_ms": 10058,
+        "frames": 170,
+        "fps_x100": 1690,
+        "present_avg_us": 789,
+        "lock_avg_us": 0,
+        "driver_avg_us": 410,
+        "errors": 0
+      },
+      {
+        "line": 1681,
+        "window_ms": 10059,
+        "frames": 182,
+        "fps_x100": 1809,
+        "present_avg_us": 736,
+        "lock_avg_us": 0,
+        "driver_avg_us": 434,
+        "errors": 0
+      },
+      {
+        "line": 1823,
+        "window_ms": 10386,
+        "frames": 171,
+        "fps_x100": 1646,
+        "present_avg_us": 753,
+        "lock_avg_us": 0,
+        "driver_avg_us": 501,
+        "errors": 0
+      },
+      {
+        "line": 1949,
+        "window_ms": 10269,
+        "frames": 177,
+        "fps_x100": 1723,
+        "present_avg_us": 817,
+        "lock_avg_us": 0,
+        "driver_avg_us": 529,
+        "errors": 0
+      },
+      {
+        "line": 2074,
+        "window_ms": 10258,
+        "frames": 187,
+        "fps_x100": 1822,
+        "present_avg_us": 908,
+        "lock_avg_us": 0,
+        "driver_avg_us": 560,
+        "errors": 0
+      },
+      {
+        "line": 2135,
+        "window_ms": 10189,
+        "frames": 190,
+        "fps_x100": 1864,
+        "present_avg_us": 941,
+        "lock_avg_us": 0,
+        "driver_avg_us": 600,
+        "errors": 0
+      },
+      {
+        "line": 2171,
+        "window_ms": 10060,
+        "frames": 162,
+        "fps_x100": 1610,
+        "present_avg_us": 747,
+        "lock_avg_us": 0,
+        "driver_avg_us": 465,
+        "errors": 0
+      },
+      {
+        "line": 2220,
+        "window_ms": 10066,
+        "frames": 159,
+        "fps_x100": 1579,
+        "present_avg_us": 674,
+        "lock_avg_us": 0,
+        "driver_avg_us": 441,
+        "errors": 0
+      },
+      {
+        "line": 2279,
+        "window_ms": 10213,
+        "frames": 168,
+        "fps_x100": 1644,
+        "present_avg_us": 488,
+        "lock_avg_us": 0,
+        "driver_avg_us": 341,
+        "errors": 0
+      },
+      {
+        "line": 2315,
+        "window_ms": 10057,
+        "frames": 140,
+        "fps_x100": 1392,
+        "present_avg_us": 482,
+        "lock_avg_us": 0,
+        "driver_avg_us": 292,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10051,
+        "frames": 153,
+        "fps_x100": 1522,
+        "present_avg_us": 727,
+        "lock_avg_us": 0,
+        "driver_avg_us": 515,
+        "errors": 0
+      },
+      {
+        "line": 2401,
+        "window_ms": 10202,
+        "frames": 149,
+        "fps_x100": 1460,
+        "present_avg_us": 545,
+        "lock_avg_us": 0,
+        "driver_avg_us": 319,
+        "errors": 0
+      },
+      {
+        "line": 2435,
+        "window_ms": 10059,
+        "frames": 134,
+        "fps_x100": 1332,
+        "present_avg_us": 550,
+        "lock_avg_us": 0,
+        "driver_avg_us": 404,
+        "errors": 0
+      },
+      {
+        "line": 2474,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 839,
+        "lock_avg_us": 0,
+        "driver_avg_us": 574,
+        "errors": 0
+      },
+      {
+        "line": 2526,
+        "window_ms": 10190,
+        "frames": 135,
+        "fps_x100": 1324,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2558,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 778,
+        "lock_avg_us": 0,
+        "driver_avg_us": 539,
+        "errors": 0
+      }
+    ]
+  },
+  "last_seven": {
+    "windows": 7,
+    "window_ms": 70685,
+    "frames": 1003,
+    "fps_weighted": 14.18971493244677,
+    "fps_min": 13.24,
+    "fps_max": 15.22,
+    "rows": [
+      {
+        "line": 2315,
+        "window_ms": 10057,
+        "frames": 140,
+        "fps_x100": 1392,
+        "present_avg_us": 482,
+        "lock_avg_us": 0,
+        "driver_avg_us": 292,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10051,
+        "frames": 153,
+        "fps_x100": 1522,
+        "present_avg_us": 727,
+        "lock_avg_us": 0,
+        "driver_avg_us": 515,
+        "errors": 0
+      },
+      {
+        "line": 2401,
+        "window_ms": 10202,
+        "frames": 149,
+        "fps_x100": 1460,
+        "present_avg_us": 545,
+        "lock_avg_us": 0,
+        "driver_avg_us": 319,
+        "errors": 0
+      },
+      {
+        "line": 2435,
+        "window_ms": 10059,
+        "frames": 134,
+        "fps_x100": 1332,
+        "present_avg_us": 550,
+        "lock_avg_us": 0,
+        "driver_avg_us": 404,
+        "errors": 0
+      },
+      {
+        "line": 2474,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 839,
+        "lock_avg_us": 0,
+        "driver_avg_us": 574,
+        "errors": 0
+      },
+      {
+        "line": 2526,
+        "window_ms": 10190,
+        "frames": 135,
+        "fps_x100": 1324,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2558,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 778,
+        "lock_avg_us": 0,
+        "driver_avg_us": 539,
+        "errors": 0
+      }
+    ]
+  },
+  "registered_cpu_samples": [
+    {
+      "line": 1304,
+      "registered_cores": 0.74
+    },
+    {
+      "line": 1373,
+      "registered_cores": 0.68
+    },
+    {
+      "line": 1439,
+      "registered_cores": 0.76
+    },
+    {
+      "line": 1516,
+      "registered_cores": 0.75
+    },
+    {
+      "line": 1554,
+      "registered_cores": 1.32
+    },
+    {
+      "line": 1612,
+      "registered_cores": 1.66
+    },
+    {
+      "line": 1648,
+      "registered_cores": 1.73
+    },
+    {
+      "line": 1683,
+      "registered_cores": 1.79
+    },
+    {
+      "line": 1825,
+      "registered_cores": 1.77
+    },
+    {
+      "line": 1951,
+      "registered_cores": 1.78
+    },
+    {
+      "line": 2076,
+      "registered_cores": 1.78
+    },
+    {
+      "line": 2137,
+      "registered_cores": 1.66
+    },
+    {
+      "line": 2173,
+      "registered_cores": 1.48
+    },
+    {
+      "line": 2222,
+      "registered_cores": 1.72
+    },
+    {
+      "line": 2281,
+      "registered_cores": 1.78
+    },
+    {
+      "line": 2317,
+      "registered_cores": 1.76
+    },
+    {
+      "line": 2350,
+      "registered_cores": 1.75
+    },
+    {
+      "line": 2403,
+      "registered_cores": 1.75
+    },
+    {
+      "line": 2437,
+      "registered_cores": 1.41
+    },
+    {
+      "line": 2476,
+      "registered_cores": 1.44
+    },
+    {
+      "line": 2528,
+      "registered_cores": 1.52
+    },
+    {
+      "line": 2560,
+      "registered_cores": 1.56
+    }
+  ],
+  "driver_cache_hits": 2490,
+  "driver_cache_misses": 0,
+  "max_completed_nak_compiles": 0,
+  "max_vulkan_oom": 0,
+  "jit_after_200_seconds": {
+    "compile_code": {
+      "elapsed_ms": 45070,
+      "calls": 293,
+      "completed_wall_us": 148282
+    },
+    "dispatch_compile": {
+      "elapsed_ms": 45070,
+      "calls": 15942,
+      "completed_wall_us": 310353
+    },
+    "invalidate": {
+      "elapsed_ms": 45070,
+      "calls": 802,
+      "completed_wall_us": 67053
+    }
+  },
+  "io_intervals": [
+    {
+      "line": 1115,
+      "reads": 0,
+      "sd_reads": 0,
+      "cache_hits": 0,
+      "sd_ms": 0,
+      "syscalls": 0,
+      "qpc": 0,
+      "delay": 0,
+      "fast_qpc": 0,
+      "fast_delay": 0
+    },
+    {
+      "line": 1358,
+      "reads": 212,
+      "sd_reads": 338,
+      "cache_hits": 73,
+      "sd_ms": 1306,
+      "syscalls": 104221,
+      "qpc": 65787,
+      "delay": 2057,
+      "fast_qpc": 65787,
+      "fast_delay": 1926
+    },
+    {
+      "line": 1394,
+      "reads": 37,
+      "sd_reads": 37,
+      "cache_hits": 0,
+      "sd_ms": 188,
+      "syscalls": 149795,
+      "qpc": 21442,
+      "delay": 1397,
+      "fast_qpc": 21442,
+      "fast_delay": 1292
+    },
+    {
+      "line": 1463,
+      "reads": 108,
+      "sd_reads": 144,
+      "cache_hits": 2,
+      "sd_ms": 506,
+      "syscalls": 110489,
+      "qpc": 25317,
+      "delay": 13057,
+      "fast_qpc": 25317,
+      "fast_delay": 12916
+    },
+    {
+      "line": 1540,
+      "reads": 138,
+      "sd_reads": 166,
+      "cache_hits": 17,
+      "sd_ms": 917,
+      "syscalls": 91061,
+      "qpc": 55536,
+      "delay": 10804,
+      "fast_qpc": 55536,
+      "fast_delay": 10634
+    },
+    {
+      "line": 1575,
+      "reads": 505,
+      "sd_reads": 484,
+      "cache_hits": 79,
+      "sd_ms": 5445,
+      "syscalls": 95771,
+      "qpc": 30445,
+      "delay": 1146,
+      "fast_qpc": 30445,
+      "fast_delay": 999
+    },
+    {
+      "line": 1635,
+      "reads": 171,
+      "sd_reads": 1334,
+      "cache_hits": 32,
+      "sd_ms": 1228,
+      "syscalls": 143435,
+      "qpc": 48137,
+      "delay": 1050,
+      "fast_qpc": 48137,
+      "fast_delay": 925
+    },
+    {
+      "line": 1669,
+      "reads": 35,
+      "sd_reads": 82,
+      "cache_hits": 6,
+      "sd_ms": 134,
+      "syscalls": 158080,
+      "qpc": 6357,
+      "delay": 1039,
+      "fast_qpc": 6357,
+      "fast_delay": 942
+    },
+    {
+      "line": 1704,
+      "reads": 24,
+      "sd_reads": 207,
+      "cache_hits": 4,
+      "sd_ms": 204,
+      "syscalls": 133604,
+      "qpc": 6575,
+      "delay": 1023,
+      "fast_qpc": 6575,
+      "fast_delay": 922
+    },
+    {
+      "line": 1846,
+      "reads": 16,
+      "sd_reads": 16,
+      "cache_hits": 3,
+      "sd_ms": 52,
+      "syscalls": 116937,
+      "qpc": 5823,
+      "delay": 981,
+      "fast_qpc": 5823,
+      "fast_delay": 892
+    },
+    {
+      "line": 1972,
+      "reads": 15,
+      "sd_reads": 45,
+      "cache_hits": 3,
+      "sd_ms": 91,
+      "syscalls": 107347,
+      "qpc": 5985,
+      "delay": 951,
+      "fast_qpc": 5985,
+      "fast_delay": 858
+    },
+    {
+      "line": 2097,
+      "reads": 52,
+      "sd_reads": 96,
+      "cache_hits": 4,
+      "sd_ms": 345,
+      "syscalls": 99661,
+      "qpc": 7344,
+      "delay": 989,
+      "fast_qpc": 7344,
+      "fast_delay": 888
+    },
+    {
+      "line": 2160,
+      "reads": 68,
+      "sd_reads": 189,
+      "cache_hits": 17,
+      "sd_ms": 576,
+      "syscalls": 107763,
+      "qpc": 10885,
+      "delay": 1085,
+      "fast_qpc": 10885,
+      "fast_delay": 972
+    },
+    {
+      "line": 2195,
+      "reads": 107,
+      "sd_reads": 132,
+      "cache_hits": 13,
+      "sd_ms": 734,
+      "syscalls": 126908,
+      "qpc": 9566,
+      "delay": 997,
+      "fast_qpc": 9566,
+      "fast_delay": 864
+    },
+    {
+      "line": 2246,
+      "reads": 25,
+      "sd_reads": 35,
+      "cache_hits": 7,
+      "sd_ms": 82,
+      "syscalls": 159000,
+      "qpc": 9275,
+      "delay": 1093,
+      "fast_qpc": 9275,
+      "fast_delay": 977
+    },
+    {
+      "line": 2303,
+      "reads": 19,
+      "sd_reads": 34,
+      "cache_hits": 5,
+      "sd_ms": 59,
+      "syscalls": 166450,
+      "qpc": 6098,
+      "delay": 1026,
+      "fast_qpc": 6098,
+      "fast_delay": 927
+    },
+    {
+      "line": 2338,
+      "reads": 10,
+      "sd_reads": 51,
+      "cache_hits": 4,
+      "sd_ms": 49,
+      "syscalls": 152977,
+      "qpc": 7615,
+      "delay": 933,
+      "fast_qpc": 7615,
+      "fast_delay": 801
+    },
+    {
+      "line": 2371,
+      "reads": 15,
+      "sd_reads": 10,
+      "cache_hits": 5,
+      "sd_ms": 42,
+      "syscalls": 154638,
+      "qpc": 5779,
+      "delay": 1037,
+      "fast_qpc": 5779,
+      "fast_delay": 916
+    },
+    {
+      "line": 2424,
+      "reads": 11,
+      "sd_reads": 7,
+      "cache_hits": 4,
+      "sd_ms": 31,
+      "syscalls": 152519,
+      "qpc": 6695,
+      "delay": 971,
+      "fast_qpc": 6695,
+      "fast_delay": 841
+    },
+    {
+      "line": 2458,
+      "reads": 22,
+      "sd_reads": 31,
+      "cache_hits": 4,
+      "sd_ms": 96,
+      "syscalls": 135000,
+      "qpc": 5634,
+      "delay": 907,
+      "fast_qpc": 5634,
+      "fast_delay": 781
+    },
+    {
+      "line": 2498,
+      "reads": 80,
+      "sd_reads": 81,
+      "cache_hits": 5,
+      "sd_ms": 400,
+      "syscalls": 123699,
+      "qpc": 5215,
+      "delay": 1003,
+      "fast_qpc": 5215,
+      "fast_delay": 887
+    },
+    {
+      "line": 2549,
+      "reads": 11,
+      "sd_reads": 21,
+      "cache_hits": 3,
+      "sd_ms": 49,
+      "syscalls": 112898,
+      "qpc": 5330,
+      "delay": 925,
+      "fast_qpc": 5330,
+      "fast_delay": 790
+    },
+    {
+      "line": 2581,
+      "reads": 17,
+      "sd_reads": 14,
+      "cache_hits": 3,
+      "sd_ms": 42,
+      "syscalls": 115906,
+      "qpc": 5257,
+      "delay": 921,
+      "fast_qpc": 5257,
+      "fast_delay": 789
+    }
+  ],
+  "capture": {
+    "status": "COMPLETE",
+    "start_line": 1676,
+    "final_snapshot": {
+      "line": 2030,
+      "phase": "complete",
+      "elapsed_ms": 30000,
+      "capacity_drops": 0,
+      "reported_rows": 18,
+      "rows": {
+        "0": {
+          "handle": 4030869,
+          "stages": {
+            "wine_event": {
+              "row": 0,
+              "handle": 4030869,
+              "n": 5724,
+              "total_us": 106884,
+              "avg_us": 18,
+              "peak_us": 628,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 5724,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "100w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "1": {
+          "handle": 2818487,
+          "stages": {
+            "vk_acquire": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 514,
+              "total_us": 184456,
+              "avg_us": 358,
+              "peak_us": 39473,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 0
+            },
+            "vk_submit": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 3465,
+              "total_us": 926229,
+              "avg_us": 267,
+              "peak_us": 7721,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 0
+            },
+            "vk_fence": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 514,
+              "total_us": 67085,
+              "avg_us": 130,
+              "peak_us": 3979,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 0
+            }
+          },
+          "frame": {
+            "row": 1,
+            "handle": 2818487,
+            "n": 513,
+            "gap_total_us": 29944796,
+            "gap_peak_us": 104491,
+            "cpu_valid_n": 513,
+            "thread_cpu_total_us": 315298,
+            "over33": 501,
+            "over50": 386,
+            "over100": 1
+          },
+          "observed_thread_labels": [
+            "32w"
+          ],
+          "mapping_unambiguous": true,
+          "present_gap_average_ms": 58.37192202729045,
+          "presenting_thread_cpu_average_ms": 0.6146159844054581,
+          "cpu_tick_coverage": 1.0
+        },
+        "2": {
+          "handle": 4096403,
+          "stages": {
+            "wine_select": {
+              "row": 2,
+              "handle": 4096403,
+              "n": 5398,
+              "total_us": 29599595,
+              "avg_us": 5483,
+              "peak_us": 20343,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 5398,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "104w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "3": {
+          "handle": 2294216,
+          "stages": {
+            "wine_select": {
+              "row": 3,
+              "handle": 2294216,
+              "n": 1295,
+              "total_us": 26722985,
+              "avg_us": 20635,
+              "peak_us": 65963,
+              "timeouts": 536,
+              "errors": 508,
+              "direct": 1295,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 3,
+              "handle": 2294216,
+              "n": 2295,
+              "total_us": 545200,
+              "avg_us": 237,
+              "peak_us": 9989,
+              "timeouts": 0,
+              "errors": 508,
+              "direct": 0,
+              "pipe": 2295
+            }
+          },
+          "observed_thread_labels": [
+            "8w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "4": {
+          "handle": 33279,
+          "stages": {
+            "wine_select": {
+              "row": 4,
+              "handle": 33279,
+              "n": 10904,
+              "total_us": 13704691,
+              "avg_us": 1256,
+              "peak_us": 20971,
+              "timeouts": 0,
+              "errors": 507,
+              "direct": 10904,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 4,
+              "handle": 33279,
+              "n": 53153,
+              "total_us": 1432133,
+              "avg_us": 26,
+              "peak_us": 9371,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 53153,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 4,
+              "handle": 33279,
+              "n": 6570,
+              "total_us": 1389410,
+              "avg_us": 211,
+              "peak_us": 11554,
+              "timeouts": 0,
+              "errors": 507,
+              "direct": 5556,
+              "pipe": 1014
+            }
+          },
+          "observed_thread_labels": [
+            "4w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "5": {
+          "handle": 2556351,
+          "stages": {
+            "wine_select": {
+              "row": 5,
+              "handle": 2556351,
+              "n": 25985,
+              "total_us": 20691553,
+              "avg_us": 796,
+              "peak_us": 57153,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 25985,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 5,
+              "handle": 2556351,
+              "n": 17122,
+              "total_us": 1090816,
+              "avg_us": 63,
+              "peak_us": 13277,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 17122,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "24w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "6": {
+          "handle": 2490817,
+          "stages": {
+            "wine_select": {
+              "row": 6,
+              "handle": 2490817,
+              "n": 23483,
+              "total_us": 20903346,
+              "avg_us": 890,
+              "peak_us": 57285,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 23483,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 6,
+              "handle": 2490817,
+              "n": 13885,
+              "total_us": 942134,
+              "avg_us": 67,
+              "peak_us": 11807,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 13885,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "20w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "7": {
+          "handle": 2884021,
+          "stages": {
+            "vk_semaphore": {
+              "row": 7,
+              "handle": 2884021,
+              "n": 2437,
+              "total_us": 25104829,
+              "avg_us": 10301,
+              "peak_us": 35703,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "36w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "8": {
+          "handle": 3473829,
+          "stages": {
+            "wine_select": {
+              "row": 8,
+              "handle": 3473829,
+              "n": 5555,
+              "total_us": 27275194,
+              "avg_us": 4910,
+              "peak_us": 110213,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 5555,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 8,
+              "handle": 3473829,
+              "n": 4997,
+              "total_us": 1817918,
+              "avg_us": 363,
+              "peak_us": 12312,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 4997,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "72w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "9": {
+          "handle": 2425283,
+          "stages": {
+            "wine_select": {
+              "row": 9,
+              "handle": 2425283,
+              "n": 12080,
+              "total_us": 20040613,
+              "avg_us": 1658,
+              "peak_us": 57187,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 12080,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 9,
+              "handle": 2425283,
+              "n": 10070,
+              "total_us": 1349821,
+              "avg_us": 134,
+              "peak_us": 13632,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 10070,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "16w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "10": {
+          "handle": 4161937,
+          "stages": {
+            "wine_select": {
+              "row": 10,
+              "handle": 4161937,
+              "n": 2405,
+              "total_us": 24437755,
+              "avg_us": 10161,
+              "peak_us": 31876,
+              "timeouts": 1651,
+              "errors": 0,
+              "direct": 2405,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 10,
+              "handle": 4161937,
+              "n": 1290,
+              "total_us": 513385,
+              "avg_us": 397,
+              "peak_us": 9878,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 1290,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "108w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "11": {
+          "handle": 2621885,
+          "stages": {
+            "wine_select": {
+              "row": 11,
+              "handle": 2621885,
+              "n": 5383,
+              "total_us": 21520128,
+              "avg_us": 3997,
+              "peak_us": 24060,
+              "timeouts": 757,
+              "errors": 0,
+              "direct": 5383,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 11,
+              "handle": 2621885,
+              "n": 3081,
+              "total_us": 2286552,
+              "avg_us": 742,
+              "peak_us": 12471,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 3081,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 11,
+              "handle": 2621885,
+              "n": 521,
+              "total_us": 12734,
+              "avg_us": 24,
+              "peak_us": 696,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 521
+            }
+          },
+          "observed_thread_labels": [
+            "28w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "12": {
+          "handle": 3015129,
+          "stages": {
+            "wine_select": {
+              "row": 12,
+              "handle": 3015129,
+              "n": 481,
+              "total_us": 29901448,
+              "avg_us": 62165,
+              "peak_us": 73072,
+              "timeouts": 481,
+              "errors": 0,
+              "direct": 481,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "44w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "13": {
+          "handle": 4227471,
+          "stages": {
+            "wine_event": {
+              "row": 13,
+              "handle": 4227471,
+              "n": 276,
+              "total_us": 122666,
+              "avg_us": 444,
+              "peak_us": 6577,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 276,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "112w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "14": {
+          "handle": 3670431,
+          "stages": {
+            "wine_select": {
+              "row": 14,
+              "handle": 3670431,
+              "n": 61,
+              "total_us": 28527983,
+              "avg_us": 467671,
+              "peak_us": 3021642,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 61,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 14,
+              "handle": 3670431,
+              "n": 31,
+              "total_us": 11803,
+              "avg_us": 380,
+              "peak_us": 3199,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 31,
+              "pipe": 0
+            }
+          },
+          "observed_thread_labels": [
+            "84w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "15": {
+          "handle": 3735965,
+          "stages": {
+            "wine_select": {
+              "row": 15,
+              "handle": 3735965,
+              "n": 12,
+              "total_us": 24516496,
+              "avg_us": 2043041,
+              "peak_us": 7158270,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 12,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 15,
+              "handle": 3735965,
+              "n": 15,
+              "total_us": 42262,
+              "avg_us": 2817,
+              "peak_us": 9995,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 15,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 15,
+              "handle": 3735965,
+              "n": 3,
+              "total_us": 4251,
+              "avg_us": 1417,
+              "peak_us": 3266,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 3
+            }
+          },
+          "observed_thread_labels": [
+            "88w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "16": {
+          "handle": 2359749,
+          "stages": {
+            "wine_select": {
+              "row": 16,
+              "handle": 2359749,
+              "n": 49,
+              "total_us": 26929704,
+              "avg_us": 549585,
+              "peak_us": 3454644,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 49,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 16,
+              "handle": 2359749,
+              "n": 14,
+              "total_us": 22632,
+              "avg_us": 1616,
+              "peak_us": 7840,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 14,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 16,
+              "handle": 2359749,
+              "n": 100,
+              "total_us": 25231,
+              "avg_us": 252,
+              "peak_us": 8909,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 100
+            }
+          },
+          "observed_thread_labels": [
+            "12w"
+          ],
+          "mapping_unambiguous": true
+        },
+        "17": {
+          "handle": 3604897,
+          "stages": {
+            "wine_select": {
+              "row": 17,
+              "handle": 3604897,
+              "n": 49,
+              "total_us": 24308088,
+              "avg_us": 496083,
+              "peak_us": 4280510,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 49,
+              "pipe": 0
+            },
+            "wine_event": {
+              "row": 17,
+              "handle": 3604897,
+              "n": 20,
+              "total_us": 27825,
+              "avg_us": 1391,
+              "peak_us": 9877,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 20,
+              "pipe": 0
+            },
+            "wine_other": {
+              "row": 17,
+              "handle": 3604897,
+              "n": 3,
+              "total_us": 190,
+              "avg_us": 63,
+              "peak_us": 134,
+              "timeouts": 0,
+              "errors": 0,
+              "direct": 0,
+              "pipe": 3
+            }
+          },
+          "observed_thread_labels": [
+            "80w"
+          ],
+          "mapping_unambiguous": true
+        }
+      },
+      "missing_rows": 0
+    },
+    "snapshots": [
+      {
+        "line": 1762,
+        "phase": "sample",
+        "elapsed_ms": 10063,
+        "capacity_drops": 0,
+        "reported_rows": 18,
+        "rows": {
+          "0": {
+            "handle": 4030869,
+            "stages": {
+              "wine_event": {
+                "row": 0,
+                "handle": 4030869,
+                "n": 1947,
+                "total_us": 32968,
+                "avg_us": 16,
+                "peak_us": 460,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1947,
+                "pipe": 0
+              }
+            }
+          },
+          "1": {
+            "handle": 2818487,
+            "stages": {
+              "vk_acquire": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 168,
+                "total_us": 40867,
+                "avg_us": 243,
+                "peak_us": 3119,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_submit": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 1159,
+                "total_us": 297213,
+                "avg_us": 256,
+                "peak_us": 5434,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_fence": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 168,
+                "total_us": 20809,
+                "avg_us": 123,
+                "peak_us": 3305,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            },
+            "frame": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 167,
+              "gap_total_us": 10155585,
+              "gap_peak_us": 97723,
+              "cpu_valid_n": 167,
+              "thread_cpu_total_us": 104876,
+              "over33": 165,
+              "over50": 136,
+              "over100": 0
+            }
+          },
+          "2": {
+            "handle": 4096403,
+            "stages": {
+              "wine_select": {
+                "row": 2,
+                "handle": 4096403,
+                "n": 1830,
+                "total_us": 10053979,
+                "avg_us": 5493,
+                "peak_us": 19616,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1830,
+                "pipe": 0
+              }
+            }
+          },
+          "3": {
+            "handle": 2294216,
+            "stages": {
+              "wine_select": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 424,
+                "total_us": 9115323,
+                "avg_us": 21498,
+                "peak_us": 64143,
+                "timeouts": 174,
+                "errors": 168,
+                "direct": 424,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 755,
+                "total_us": 162021,
+                "avg_us": 214,
+                "peak_us": 7460,
+                "timeouts": 0,
+                "errors": 168,
+                "direct": 0,
+                "pipe": 755
+              }
+            }
+          },
+          "4": {
+            "handle": 33279,
+            "stages": {
+              "wine_select": {
+                "row": 4,
+                "handle": 33279,
+                "n": 3899,
+                "total_us": 4810688,
+                "avg_us": 1233,
+                "peak_us": 20971,
+                "timeouts": 0,
+                "errors": 167,
+                "direct": 3899,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 4,
+                "handle": 33279,
+                "n": 19717,
+                "total_us": 398657,
+                "avg_us": 20,
+                "peak_us": 8264,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 19717,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 4,
+                "handle": 33279,
+                "n": 2141,
+                "total_us": 474119,
+                "avg_us": 221,
+                "peak_us": 11554,
+                "timeouts": 0,
+                "errors": 167,
+                "direct": 1806,
+                "pipe": 335
+              }
+            }
+          },
+          "5": {
+            "handle": 2556351,
+            "stages": {
+              "wine_select": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 9783,
+                "total_us": 7033162,
+                "avg_us": 718,
+                "peak_us": 48130,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 9783,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 6324,
+                "total_us": 386927,
+                "avg_us": 61,
+                "peak_us": 13277,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 6324,
+                "pipe": 0
+              }
+            }
+          },
+          "6": {
+            "handle": 2490817,
+            "stages": {
+              "wine_select": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 8879,
+                "total_us": 7095183,
+                "avg_us": 799,
+                "peak_us": 48052,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 8879,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 5014,
+                "total_us": 339031,
+                "avg_us": 67,
+                "peak_us": 9984,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 5014,
+                "pipe": 0
+              }
+            }
+          },
+          "7": {
+            "handle": 2884021,
+            "stages": {
+              "vk_semaphore": {
+                "row": 7,
+                "handle": 2884021,
+                "n": 826,
+                "total_us": 8456365,
+                "avg_us": 10237,
+                "peak_us": 35703,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            }
+          },
+          "8": {
+            "handle": 3473829,
+            "stages": {
+              "wine_select": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 1805,
+                "total_us": 9237409,
+                "avg_us": 5117,
+                "peak_us": 71547,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1805,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 1690,
+                "total_us": 592229,
+                "avg_us": 350,
+                "peak_us": 10305,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1690,
+                "pipe": 0
+              }
+            }
+          },
+          "9": {
+            "handle": 2425283,
+            "stages": {
+              "wine_select": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 4707,
+                "total_us": 6830082,
+                "avg_us": 1451,
+                "peak_us": 48151,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 4707,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 3716,
+                "total_us": 423014,
+                "avg_us": 113,
+                "peak_us": 5241,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3716,
+                "pipe": 0
+              }
+            }
+          },
+          "10": {
+            "handle": 4161937,
+            "stages": {
+              "wine_select": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 806,
+                "total_us": 8231459,
+                "avg_us": 10212,
+                "peak_us": 27549,
+                "timeouts": 551,
+                "errors": 0,
+                "direct": 806,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 435,
+                "total_us": 136847,
+                "avg_us": 314,
+                "peak_us": 8215,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 435,
+                "pipe": 0
+              }
+            }
+          },
+          "11": {
+            "handle": 2621885,
+            "stages": {
+              "wine_select": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 1790,
+                "total_us": 7503344,
+                "avg_us": 4191,
+                "peak_us": 23718,
+                "timeouts": 278,
+                "errors": 0,
+                "direct": 1790,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 1008,
+                "total_us": 661984,
+                "avg_us": 656,
+                "peak_us": 11095,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1008,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 170,
+                "total_us": 3736,
+                "avg_us": 21,
+                "peak_us": 60,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 170
+              }
+            }
+          },
+          "12": {
+            "handle": 3015129,
+            "stages": {
+              "wine_select": {
+                "row": 12,
+                "handle": 3015129,
+                "n": 163,
+                "total_us": 10161928,
+                "avg_us": 62343,
+                "peak_us": 71160,
+                "timeouts": 163,
+                "errors": 0,
+                "direct": 163,
+                "pipe": 0
+              }
+            }
+          },
+          "13": {
+            "handle": 4227471,
+            "stages": {
+              "wine_event": {
+                "row": 13,
+                "handle": 4227471,
+                "n": 98,
+                "total_us": 54341,
+                "avg_us": 554,
+                "peak_us": 6577,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 98,
+                "pipe": 0
+              }
+            }
+          },
+          "14": {
+            "handle": 3670431,
+            "stages": {
+              "wine_select": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 21,
+                "total_us": 9794454,
+                "avg_us": 466402,
+                "peak_us": 2508573,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 21,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 11,
+                "total_us": 7616,
+                "avg_us": 692,
+                "peak_us": 3199,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 11,
+                "pipe": 0
+              }
+            }
+          },
+          "15": {
+            "handle": 3735965,
+            "stages": {
+              "wine_select": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 2,
+                "total_us": 3303136,
+                "avg_us": 1651568,
+                "peak_us": 3206921,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 2,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 3,
+                "total_us": 219,
+                "avg_us": 73,
+                "peak_us": 202,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 1,
+                "total_us": 485,
+                "avg_us": 485,
+                "peak_us": 485,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 1
+              }
+            }
+          },
+          "16": {
+            "handle": 2359749,
+            "stages": {
+              "wine_select": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 13,
+                "total_us": 5261872,
+                "avg_us": 404759,
+                "peak_us": 1239246,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 13,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 2,
+                "total_us": 12378,
+                "avg_us": 6189,
+                "peak_us": 7840,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 2,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 28,
+                "total_us": 11007,
+                "avg_us": 393,
+                "peak_us": 5943,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 28
+              }
+            }
+          },
+          "17": {
+            "handle": 3604897,
+            "stages": {
+              "wine_select": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 15,
+                "total_us": 2932989,
+                "avg_us": 195532,
+                "peak_us": 1785156,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 15,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 6,
+                "total_us": 3317,
+                "avg_us": 552,
+                "peak_us": 2819,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 6,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 1,
+                "total_us": 25,
+                "avg_us": 25,
+                "peak_us": 25,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 1
+              }
+            }
+          }
+        }
+      },
+      {
+        "line": 1905,
+        "phase": "sample",
+        "elapsed_ms": 20452,
+        "capacity_drops": 0,
+        "reported_rows": 18,
+        "rows": {
+          "0": {
+            "handle": 4030869,
+            "stages": {
+              "wine_event": {
+                "row": 0,
+                "handle": 4030869,
+                "n": 3923,
+                "total_us": 68936,
+                "avg_us": 17,
+                "peak_us": 469,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3923,
+                "pipe": 0
+              }
+            }
+          },
+          "1": {
+            "handle": 2818487,
+            "stages": {
+              "vk_acquire": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 341,
+                "total_us": 118583,
+                "avg_us": 347,
+                "peak_us": 39473,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_submit": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 2342,
+                "total_us": 560916,
+                "avg_us": 239,
+                "peak_us": 5434,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_fence": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 341,
+                "total_us": 34145,
+                "avg_us": 100,
+                "peak_us": 3305,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            },
+            "frame": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 340,
+              "gap_total_us": 20516604,
+              "gap_peak_us": 104491,
+              "cpu_valid_n": 340,
+              "thread_cpu_total_us": 210052,
+              "over33": 334,
+              "over50": 276,
+              "over100": 1
+            }
+          },
+          "2": {
+            "handle": 4096403,
+            "stages": {
+              "wine_select": {
+                "row": 2,
+                "handle": 4096403,
+                "n": 3677,
+                "total_us": 20314480,
+                "avg_us": 5524,
+                "peak_us": 20343,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3677,
+                "pipe": 0
+              }
+            }
+          },
+          "3": {
+            "handle": 2294216,
+            "stages": {
+              "wine_select": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 866,
+                "total_us": 18357742,
+                "avg_us": 21198,
+                "peak_us": 65963,
+                "timeouts": 356,
+                "errors": 342,
+                "direct": 866,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 1541,
+                "total_us": 378661,
+                "avg_us": 245,
+                "peak_us": 9989,
+                "timeouts": 0,
+                "errors": 342,
+                "direct": 0,
+                "pipe": 1541
+              }
+            }
+          },
+          "4": {
+            "handle": 33279,
+            "stages": {
+              "wine_select": {
+                "row": 4,
+                "handle": 33279,
+                "n": 7608,
+                "total_us": 9540574,
+                "avg_us": 1254,
+                "peak_us": 20971,
+                "timeouts": 0,
+                "errors": 341,
+                "direct": 7608,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 4,
+                "handle": 33279,
+                "n": 37961,
+                "total_us": 938763,
+                "avg_us": 24,
+                "peak_us": 8946,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 37961,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 4,
+                "handle": 33279,
+                "n": 4343,
+                "total_us": 968228,
+                "avg_us": 222,
+                "peak_us": 11554,
+                "timeouts": 0,
+                "errors": 341,
+                "direct": 3661,
+                "pipe": 682
+              }
+            }
+          },
+          "5": {
+            "handle": 2556351,
+            "stages": {
+              "wine_select": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 18611,
+                "total_us": 14308119,
+                "avg_us": 768,
+                "peak_us": 57153,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 18611,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 12068,
+                "total_us": 747426,
+                "avg_us": 61,
+                "peak_us": 13277,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 12068,
+                "pipe": 0
+              }
+            }
+          },
+          "6": {
+            "handle": 2490817,
+            "stages": {
+              "wine_select": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 17012,
+                "total_us": 14468114,
+                "avg_us": 850,
+                "peak_us": 57285,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 17012,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 9726,
+                "total_us": 655320,
+                "avg_us": 67,
+                "peak_us": 9984,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 9726,
+                "pipe": 0
+              }
+            }
+          },
+          "7": {
+            "handle": 2884021,
+            "stages": {
+              "vk_semaphore": {
+                "row": 7,
+                "handle": 2884021,
+                "n": 1661,
+                "total_us": 17141213,
+                "avg_us": 10319,
+                "peak_us": 35703,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            }
+          },
+          "8": {
+            "handle": 3473829,
+            "stages": {
+              "wine_select": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 3660,
+                "total_us": 18682200,
+                "avg_us": 5104,
+                "peak_us": 110213,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3660,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 3403,
+                "total_us": 1262757,
+                "avg_us": 371,
+                "peak_us": 12312,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3403,
+                "pipe": 0
+              }
+            }
+          },
+          "9": {
+            "handle": 2425283,
+            "stages": {
+              "wine_select": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 8788,
+                "total_us": 13946763,
+                "avg_us": 1587,
+                "peak_us": 57187,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 8788,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 7083,
+                "total_us": 837285,
+                "avg_us": 118,
+                "peak_us": 7574,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 7083,
+                "pipe": 0
+              }
+            }
+          },
+          "10": {
+            "handle": 4161937,
+            "stages": {
+              "wine_select": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 1620,
+                "total_us": 16536388,
+                "avg_us": 10207,
+                "peak_us": 31876,
+                "timeouts": 1109,
+                "errors": 0,
+                "direct": 1620,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 886,
+                "total_us": 332040,
+                "avg_us": 374,
+                "peak_us": 8433,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 886,
+                "pipe": 0
+              }
+            }
+          },
+          "11": {
+            "handle": 2621885,
+            "stages": {
+              "wine_select": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 3615,
+                "total_us": 14976134,
+                "avg_us": 4142,
+                "peak_us": 24060,
+                "timeouts": 545,
+                "errors": 0,
+                "direct": 3615,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 2049,
+                "total_us": 1449205,
+                "avg_us": 707,
+                "peak_us": 11095,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 2049,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 347,
+                "total_us": 7903,
+                "avg_us": 22,
+                "peak_us": 79,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 347
+              }
+            }
+          },
+          "12": {
+            "handle": 3015129,
+            "stages": {
+              "wine_select": {
+                "row": 12,
+                "handle": 3015129,
+                "n": 330,
+                "total_us": 20530155,
+                "avg_us": 62212,
+                "peak_us": 72053,
+                "timeouts": 330,
+                "errors": 0,
+                "direct": 330,
+                "pipe": 0
+              }
+            }
+          },
+          "13": {
+            "handle": 4227471,
+            "stages": {
+              "wine_event": {
+                "row": 13,
+                "handle": 4227471,
+                "n": 192,
+                "total_us": 96334,
+                "avg_us": 501,
+                "peak_us": 6577,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 192,
+                "pipe": 0
+              }
+            }
+          },
+          "14": {
+            "handle": 3670431,
+            "stages": {
+              "wine_select": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 45,
+                "total_us": 20121611,
+                "avg_us": 447146,
+                "peak_us": 3021642,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 45,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 23,
+                "total_us": 9059,
+                "avg_us": 393,
+                "peak_us": 3199,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 23,
+                "pipe": 0
+              }
+            }
+          },
+          "15": {
+            "handle": 3735965,
+            "stages": {
+              "wine_select": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 8,
+                "total_us": 18272693,
+                "avg_us": 2284086,
+                "peak_us": 7158270,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 8,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 11,
+                "total_us": 34328,
+                "avg_us": 3120,
+                "peak_us": 9995,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 11,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 2,
+                "total_us": 984,
+                "avg_us": 492,
+                "peak_us": 498,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 2
+              }
+            }
+          },
+          "16": {
+            "handle": 2359749,
+            "stages": {
+              "wine_select": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 27,
+                "total_us": 18838083,
+                "avg_us": 697706,
+                "peak_us": 3454644,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 27,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 3,
+                "total_us": 12379,
+                "avg_us": 4126,
+                "peak_us": 7840,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 56,
+                "total_us": 14316,
+                "avg_us": 255,
+                "peak_us": 5943,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 56
+              }
+            }
+          },
+          "17": {
+            "handle": 3604897,
+            "stages": {
+              "wine_select": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 37,
+                "total_us": 13640928,
+                "avg_us": 368673,
+                "peak_us": 4280510,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 37,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 14,
+                "total_us": 18545,
+                "avg_us": 1324,
+                "peak_us": 9877,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 14,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 2,
+                "total_us": 56,
+                "avg_us": 28,
+                "peak_us": 30,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 2
+              }
+            }
+          }
+        }
+      },
+      {
+        "line": 2030,
+        "phase": "complete",
+        "elapsed_ms": 30000,
+        "capacity_drops": 0,
+        "reported_rows": 18,
+        "rows": {
+          "0": {
+            "handle": 4030869,
+            "stages": {
+              "wine_event": {
+                "row": 0,
+                "handle": 4030869,
+                "n": 5724,
+                "total_us": 106884,
+                "avg_us": 18,
+                "peak_us": 628,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 5724,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "100w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "1": {
+            "handle": 2818487,
+            "stages": {
+              "vk_acquire": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 514,
+                "total_us": 184456,
+                "avg_us": 358,
+                "peak_us": 39473,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_submit": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 3465,
+                "total_us": 926229,
+                "avg_us": 267,
+                "peak_us": 7721,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              },
+              "vk_fence": {
+                "row": 1,
+                "handle": 2818487,
+                "n": 514,
+                "total_us": 67085,
+                "avg_us": 130,
+                "peak_us": 3979,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            },
+            "frame": {
+              "row": 1,
+              "handle": 2818487,
+              "n": 513,
+              "gap_total_us": 29944796,
+              "gap_peak_us": 104491,
+              "cpu_valid_n": 513,
+              "thread_cpu_total_us": 315298,
+              "over33": 501,
+              "over50": 386,
+              "over100": 1
+            },
+            "observed_thread_labels": [
+              "32w"
+            ],
+            "mapping_unambiguous": true,
+            "present_gap_average_ms": 58.37192202729045,
+            "presenting_thread_cpu_average_ms": 0.6146159844054581,
+            "cpu_tick_coverage": 1.0
+          },
+          "2": {
+            "handle": 4096403,
+            "stages": {
+              "wine_select": {
+                "row": 2,
+                "handle": 4096403,
+                "n": 5398,
+                "total_us": 29599595,
+                "avg_us": 5483,
+                "peak_us": 20343,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 5398,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "104w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "3": {
+            "handle": 2294216,
+            "stages": {
+              "wine_select": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 1295,
+                "total_us": 26722985,
+                "avg_us": 20635,
+                "peak_us": 65963,
+                "timeouts": 536,
+                "errors": 508,
+                "direct": 1295,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 3,
+                "handle": 2294216,
+                "n": 2295,
+                "total_us": 545200,
+                "avg_us": 237,
+                "peak_us": 9989,
+                "timeouts": 0,
+                "errors": 508,
+                "direct": 0,
+                "pipe": 2295
+              }
+            },
+            "observed_thread_labels": [
+              "8w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "4": {
+            "handle": 33279,
+            "stages": {
+              "wine_select": {
+                "row": 4,
+                "handle": 33279,
+                "n": 10904,
+                "total_us": 13704691,
+                "avg_us": 1256,
+                "peak_us": 20971,
+                "timeouts": 0,
+                "errors": 507,
+                "direct": 10904,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 4,
+                "handle": 33279,
+                "n": 53153,
+                "total_us": 1432133,
+                "avg_us": 26,
+                "peak_us": 9371,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 53153,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 4,
+                "handle": 33279,
+                "n": 6570,
+                "total_us": 1389410,
+                "avg_us": 211,
+                "peak_us": 11554,
+                "timeouts": 0,
+                "errors": 507,
+                "direct": 5556,
+                "pipe": 1014
+              }
+            },
+            "observed_thread_labels": [
+              "4w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "5": {
+            "handle": 2556351,
+            "stages": {
+              "wine_select": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 25985,
+                "total_us": 20691553,
+                "avg_us": 796,
+                "peak_us": 57153,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 25985,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 5,
+                "handle": 2556351,
+                "n": 17122,
+                "total_us": 1090816,
+                "avg_us": 63,
+                "peak_us": 13277,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 17122,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "24w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "6": {
+            "handle": 2490817,
+            "stages": {
+              "wine_select": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 23483,
+                "total_us": 20903346,
+                "avg_us": 890,
+                "peak_us": 57285,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 23483,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 6,
+                "handle": 2490817,
+                "n": 13885,
+                "total_us": 942134,
+                "avg_us": 67,
+                "peak_us": 11807,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 13885,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "20w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "7": {
+            "handle": 2884021,
+            "stages": {
+              "vk_semaphore": {
+                "row": 7,
+                "handle": 2884021,
+                "n": 2437,
+                "total_us": 25104829,
+                "avg_us": 10301,
+                "peak_us": 35703,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "36w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "8": {
+            "handle": 3473829,
+            "stages": {
+              "wine_select": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 5555,
+                "total_us": 27275194,
+                "avg_us": 4910,
+                "peak_us": 110213,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 5555,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 8,
+                "handle": 3473829,
+                "n": 4997,
+                "total_us": 1817918,
+                "avg_us": 363,
+                "peak_us": 12312,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 4997,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "72w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "9": {
+            "handle": 2425283,
+            "stages": {
+              "wine_select": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 12080,
+                "total_us": 20040613,
+                "avg_us": 1658,
+                "peak_us": 57187,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 12080,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 9,
+                "handle": 2425283,
+                "n": 10070,
+                "total_us": 1349821,
+                "avg_us": 134,
+                "peak_us": 13632,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 10070,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "16w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "10": {
+            "handle": 4161937,
+            "stages": {
+              "wine_select": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 2405,
+                "total_us": 24437755,
+                "avg_us": 10161,
+                "peak_us": 31876,
+                "timeouts": 1651,
+                "errors": 0,
+                "direct": 2405,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 10,
+                "handle": 4161937,
+                "n": 1290,
+                "total_us": 513385,
+                "avg_us": 397,
+                "peak_us": 9878,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 1290,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "108w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "11": {
+            "handle": 2621885,
+            "stages": {
+              "wine_select": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 5383,
+                "total_us": 21520128,
+                "avg_us": 3997,
+                "peak_us": 24060,
+                "timeouts": 757,
+                "errors": 0,
+                "direct": 5383,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 3081,
+                "total_us": 2286552,
+                "avg_us": 742,
+                "peak_us": 12471,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 3081,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 11,
+                "handle": 2621885,
+                "n": 521,
+                "total_us": 12734,
+                "avg_us": 24,
+                "peak_us": 696,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 521
+              }
+            },
+            "observed_thread_labels": [
+              "28w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "12": {
+            "handle": 3015129,
+            "stages": {
+              "wine_select": {
+                "row": 12,
+                "handle": 3015129,
+                "n": 481,
+                "total_us": 29901448,
+                "avg_us": 62165,
+                "peak_us": 73072,
+                "timeouts": 481,
+                "errors": 0,
+                "direct": 481,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "44w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "13": {
+            "handle": 4227471,
+            "stages": {
+              "wine_event": {
+                "row": 13,
+                "handle": 4227471,
+                "n": 276,
+                "total_us": 122666,
+                "avg_us": 444,
+                "peak_us": 6577,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 276,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "112w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "14": {
+            "handle": 3670431,
+            "stages": {
+              "wine_select": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 61,
+                "total_us": 28527983,
+                "avg_us": 467671,
+                "peak_us": 3021642,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 61,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 14,
+                "handle": 3670431,
+                "n": 31,
+                "total_us": 11803,
+                "avg_us": 380,
+                "peak_us": 3199,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 31,
+                "pipe": 0
+              }
+            },
+            "observed_thread_labels": [
+              "84w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "15": {
+            "handle": 3735965,
+            "stages": {
+              "wine_select": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 12,
+                "total_us": 24516496,
+                "avg_us": 2043041,
+                "peak_us": 7158270,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 12,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 15,
+                "total_us": 42262,
+                "avg_us": 2817,
+                "peak_us": 9995,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 15,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 15,
+                "handle": 3735965,
+                "n": 3,
+                "total_us": 4251,
+                "avg_us": 1417,
+                "peak_us": 3266,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 3
+              }
+            },
+            "observed_thread_labels": [
+              "88w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "16": {
+            "handle": 2359749,
+            "stages": {
+              "wine_select": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 49,
+                "total_us": 26929704,
+                "avg_us": 549585,
+                "peak_us": 3454644,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 49,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 14,
+                "total_us": 22632,
+                "avg_us": 1616,
+                "peak_us": 7840,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 14,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 16,
+                "handle": 2359749,
+                "n": 100,
+                "total_us": 25231,
+                "avg_us": 252,
+                "peak_us": 8909,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 100
+              }
+            },
+            "observed_thread_labels": [
+              "12w"
+            ],
+            "mapping_unambiguous": true
+          },
+          "17": {
+            "handle": 3604897,
+            "stages": {
+              "wine_select": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 49,
+                "total_us": 24308088,
+                "avg_us": 496083,
+                "peak_us": 4280510,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 49,
+                "pipe": 0
+              },
+              "wine_event": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 20,
+                "total_us": 27825,
+                "avg_us": 1391,
+                "peak_us": 9877,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 20,
+                "pipe": 0
+              },
+              "wine_other": {
+                "row": 17,
+                "handle": 3604897,
+                "n": 3,
+                "total_us": 190,
+                "avg_us": 63,
+                "peak_us": 134,
+                "timeouts": 0,
+                "errors": 0,
+                "direct": 0,
+                "pipe": 3
+              }
+            },
+            "observed_thread_labels": [
+              "80w"
+            ],
+            "mapping_unambiguous": true
+          }
+        },
+        "missing_rows": 0
+      }
+    ],
+    "subsequent_frame_windows": [
+      {
+        "line": 1681,
+        "window_ms": 10059,
+        "frames": 182,
+        "fps_x100": 1809,
+        "present_avg_us": 736,
+        "lock_avg_us": 0,
+        "driver_avg_us": 434,
+        "errors": 0
+      },
+      {
+        "line": 1823,
+        "window_ms": 10386,
+        "frames": 171,
+        "fps_x100": 1646,
+        "present_avg_us": 753,
+        "lock_avg_us": 0,
+        "driver_avg_us": 501,
+        "errors": 0
+      },
+      {
+        "line": 1949,
+        "window_ms": 10269,
+        "frames": 177,
+        "fps_x100": 1723,
+        "present_avg_us": 817,
+        "lock_avg_us": 0,
+        "driver_avg_us": 529,
+        "errors": 0
+      },
+      {
+        "line": 2074,
+        "window_ms": 10258,
+        "frames": 187,
+        "fps_x100": 1822,
+        "present_avg_us": 908,
+        "lock_avg_us": 0,
+        "driver_avg_us": 560,
+        "errors": 0
+      },
+      {
+        "line": 2135,
+        "window_ms": 10189,
+        "frames": 190,
+        "fps_x100": 1864,
+        "present_avg_us": 941,
+        "lock_avg_us": 0,
+        "driver_avg_us": 600,
+        "errors": 0
+      },
+      {
+        "line": 2171,
+        "window_ms": 10060,
+        "frames": 162,
+        "fps_x100": 1610,
+        "present_avg_us": 747,
+        "lock_avg_us": 0,
+        "driver_avg_us": 465,
+        "errors": 0
+      },
+      {
+        "line": 2220,
+        "window_ms": 10066,
+        "frames": 159,
+        "fps_x100": 1579,
+        "present_avg_us": 674,
+        "lock_avg_us": 0,
+        "driver_avg_us": 441,
+        "errors": 0
+      },
+      {
+        "line": 2279,
+        "window_ms": 10213,
+        "frames": 168,
+        "fps_x100": 1644,
+        "present_avg_us": 488,
+        "lock_avg_us": 0,
+        "driver_avg_us": 341,
+        "errors": 0
+      },
+      {
+        "line": 2315,
+        "window_ms": 10057,
+        "frames": 140,
+        "fps_x100": 1392,
+        "present_avg_us": 482,
+        "lock_avg_us": 0,
+        "driver_avg_us": 292,
+        "errors": 0
+      },
+      {
+        "line": 2348,
+        "window_ms": 10051,
+        "frames": 153,
+        "fps_x100": 1522,
+        "present_avg_us": 727,
+        "lock_avg_us": 0,
+        "driver_avg_us": 515,
+        "errors": 0
+      },
+      {
+        "line": 2401,
+        "window_ms": 10202,
+        "frames": 149,
+        "fps_x100": 1460,
+        "present_avg_us": 545,
+        "lock_avg_us": 0,
+        "driver_avg_us": 319,
+        "errors": 0
+      },
+      {
+        "line": 2435,
+        "window_ms": 10059,
+        "frames": 134,
+        "fps_x100": 1332,
+        "present_avg_us": 550,
+        "lock_avg_us": 0,
+        "driver_avg_us": 404,
+        "errors": 0
+      },
+      {
+        "line": 2474,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 839,
+        "lock_avg_us": 0,
+        "driver_avg_us": 574,
+        "errors": 0
+      },
+      {
+        "line": 2526,
+        "window_ms": 10190,
+        "frames": 135,
+        "fps_x100": 1324,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2558,
+        "window_ms": 10063,
+        "frames": 146,
+        "fps_x100": 1450,
+        "present_avg_us": 778,
+        "lock_avg_us": 0,
+        "driver_avg_us": 539,
+        "errors": 0
+      }
+    ],
+    "limitations": [
+      "Each snapshot is cumulative; use only the latest snapshot or differences, never sum snapshots.",
+      "Different thread durations overlap; Wine and Vulkan totals are not removable frame cost.",
+      "Thread mappings are observed snapshots; exited or recycled handles may be missing or ambiguous.",
+      "Present CPU ticks cover only that thread, and invalid CPU intervals are excluded.",
+      "Only calls wholly inside the capture are counted; live snapshots may see partial updates.",
+      "No GPU timestamps, measured clocks or temperatures. No definitive CPU/GPU bottleneck verdict."
+    ]
+  },
+  "limitations": [
+    "Each snapshot is cumulative; use only the latest snapshot or differences, never sum snapshots.",
+    "Different thread durations overlap; Wine and Vulkan totals are not removable frame cost.",
+    "Thread mappings are observed snapshots; exited or recycled handles may be missing or ambiguous.",
+    "Present CPU ticks cover only that thread, and invalid CPU intervals are excluded.",
+    "Only calls wholly inside the capture are counted; live snapshots may see partial updates.",
+    "No GPU timestamps, measured clocks or temperatures. No definitive CPU/GPU bottleneck verdict.",
+    "The final sub-30-FPS segment is a workload heuristic, not an identified scene.",
+    "Ten-second FPS windows do not validate or disprove instantaneous HUD readings.",
+    "Zero NAK compilation is normal with a warm cache and does not identify its build.",
+    "The build marker discrepancy cannot be resolved by trusting the filename or directory.",
+    "Scene density sensitivity alone does not distinguish CPU scene work, draw dispatch or GPU geometry/shading.",
+    "No measured performance gain or installed-build verdict from comparison with previous unpaired logs."
+  ]
+}

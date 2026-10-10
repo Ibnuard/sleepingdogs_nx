@@ -1,0 +1,78 @@
+{
+  "build": "sleepingdogs-dxvk-sdmem1",
+  "source": {
+    "commit": "b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+    "patch_sha256": "2843757c5b4af29a8f0cc5b383756d442c4f7606cb422538cf69939f3ba306dc",
+    "base_patch_sha256": "ab43c9ef25c9b2702cf26cf7133c29d2983365e99ea2ed5810884c4b4b923fec",
+    "small_patch_sha256": "22e3887c5079594564c17a9602700dcc8f865e774bfab99af9309d6c286b930a"
+  },
+  "source_changes": {
+    "src/d3d11/d3d11_context_def.cpp": "d8120ac6bd8023fbcde591360542723b297297f5f0e0223e6231a270780f6757",
+    "src/dxvk/dxvk_memory.cpp": "82e5eec9e5d13c273fdb110b4c318bde32edbd8b8fd37db605c19ae6c7434e8a",
+    "version.h.in": "5f62af6fb735531261d23c487deefdc2fc3ed0947b8d80b6fd04d6aedf1f1c78"
+  },
+  "files": {
+    "d3d9.dll": {
+      "sha256": "9af6f4c693bda716940993fec2894be61054e2ad49950507c91222925edd923b",
+      "bytes": 7475200
+    },
+    "d3d11.dll": {
+      "sha256": "c5fbfad3dbe00a814bb7e5ba25350a1ff69cb140b2f3b44e309599d238a3cbd4",
+      "bytes": 8257536
+    },
+    "dxgi.dll": {
+      "sha256": "4dbfaec2e967ae3c6e85e4518ae01e681b050e4826ad2611999a67599ce8355a",
+      "bytes": 5541888
+    }
+  },
+  "archive_sha256": "9a7efccf3825b41a85c4bca97cadf23f5c282c701590ce9a3c0ddd7c3738b08b",
+  "upstream_archive_sha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+  "previous_archive_sha256": "525c810cc298406623771bfe86772b21971413be7dcb8f27e378998bf1bbf6f9",
+  "dependencies": {
+    "include/native/directx": {
+      "url": "https://github.com/Joshua-Ashton/mingw-directx-headers",
+      "commit": "9df86f2341616ef1888ae59919feaa6d4fad693d"
+    },
+    "include/vulkan": {
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers",
+      "commit": "8864cdc896bbc2a9b6eb36b3218fc9ef57908d77"
+    },
+    "include/spirv": {
+      "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+      "commit": "04f10f650d514df88b76d25e83db360142c7b174"
+    },
+    "subprojects/libdisplay-info": {
+      "url": "https://github.com/doitsujin/libdisplay-info.git",
+      "commit": "275e6459c7ab1ddd4b125f28d0440716e4888078"
+    },
+    "subprojects/dxbc-spirv": {
+      "url": "https://github.com/doitsujin/dxbc-spirv.git",
+      "commit": "bf14419e5fa7eacb817b7b632f03cb61d61bbad7",
+      "nested": "c8ad050fcb29e42a2f57d9f59e97488f465c436d submodules/spirv_headers (c8ad050)"
+    }
+  },
+  "strip": {
+    "flags": [
+      "--strip-debug"
+    ],
+    "tool_sha256": "56484c4d8189b3ddc4b8bb98bc47e8c5b8dc10489dd458114cf1b37ca9cc3a09",
+    "raw_files": {
+      "d3d9.dll": {
+        "sha256": "b6f0077c172b87bddc921b8edd4f2278d374d71d588d07546a7b86cc2aae2c76",
+        "bytes": 7770112
+      },
+      "d3d11.dll": {
+        "sha256": "75f97aef96350bdfe5155dcab5459d73de9ab0478ed20ad9150e3d53445d3573",
+        "bytes": 8552448
+      },
+      "dxgi.dll": {
+        "sha256": "ea6374d098e76b658e7b5ef9ab05ddc3566f608cd3d8ed72bbdc0e81149eaa26",
+        "bytes": 5836800
+      }
+    }
+  },
+  "pool_cap_bytes": 2097152,
+  "resource_sizes_unchanged": true,
+  "hardware_tested": false,
+  "note": "Sleeping Dogs: 2 MiB ordinary chunk cap; larger resources receive their full aligned size; deferred MapBuffer handles allocation failure."
+}

@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "scope": "Execute the shipped ARM64 cache identity paths, including a failing v14 control.\n\nnvk_CreateInstance runs as a complete function with modeled allocation, Vulkan\ninitialization and environment/DRI services. The inlined physical-device cache\ninitializer runs from its verified instruction boundary with a fixture pdev.\nActual build-ID conversion, BLAKE3 hashing and hex formatting execute unmodified.\nDisk I/O is intercepted at disk_cache_create to inspect the namespace arguments.\nThis is an identity regression test, not a Vulkan/GPU or gameplay test.\n",
+  "cases": {
+    "v14": {
+      "elf_sha256": "1b919a9c90291ec3054a716b1400bd080259e29451c60539217d36e27d916f5d",
+      "instance_build_sha": "e1ebad7dfe18474eca84a5f7f4251d1a0d028b8c000000000000000000000000",
+      "pipeline_build_id": "8b8d3ff1c7937a1f55443fdadf6c739048110e18",
+      "pipeline_uuid": "d31e02b8513aa5da93b1f0390770d3e2",
+      "disk_cache": {
+        "renderer": "nvk_012b",
+        "timestamp": "e1ebad7dfe18474eca84a5f7f4251d1a0d028b8c000000000000000000000000",
+        "flags": 4660
+      },
+      "identities_match": false,
+      "logs": [],
+      "cache_block_entry": "0x1072cb8",
+      "cache_block_end": "0x1072e14"
+    },
+    "v141": {
+      "elf_sha256": "8c3d3795d6f3c866b614d8741346c2ad348b5426989893e7ee069f929b52c5cd",
+      "instance_build_sha": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+      "pipeline_build_id": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1",
+      "pipeline_uuid": "7ebc440af4cfc181c5eadf217fd9497c",
+      "disk_cache": {
+        "renderer": "nvk_012b",
+        "timestamp": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+        "flags": 4660
+      },
+      "identities_match": true,
+      "logs": [
+        "[SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity"
+      ],
+      "cache_block_entry": "0x9c7a8",
+      "cache_block_end": "0x9c904"
+    }
+  },
+  "negative_control_detected": true,
+  "cache_fix_verified": true,
+  "native_receipt_sha256": "524ff7b19635e442e872e91085b0796ea43863f816cdcd2698ba29a2099d3cd1",
+  "sources": {
+    "tests/check_v141_cache_binary.py": "293ebf1d607da3382dd933ce2203b68f4898a97245cf46dd3162cc1854e666b8",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147",
+    "dist/low-window-gm20b-cache-fix/layout.json": "e45de21dd98744b67620acb7a11a83f07067c47b4edd7793066c381b3b6ad3af"
+  },
+  "hardware_tested": false
+}

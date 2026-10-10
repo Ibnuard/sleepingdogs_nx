@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": [
+    "REPRODUCED: prior Wine pass-through leaves FEX DEP enabled after Wine disables it",
+    "PASS initial sync, enable/disable, real self, remote, denied, bad size, query failures, optional backend",
+    "PASS 4000 concurrent changes preserve Wine/backend policy ordering"
+  ],
+  "concurrent_changes": 4000,
+  "hardware_tested": false,
+  "sources": {
+    "src/sd_wow64_dep.inc": "364543a0a33ea0f89912d1ac186044fae3bdfca324e701ef9bd1575033a11772",
+    "tests/dep_bridge.c": "eec2d2df91d640342495f4b222efa3f46087de2663741b12380e232e1421274f",
+    "tests/check_dep_bridge.py": "dfce88673274f22a28ce9e9d40752fdf2ce52f0583d1dfe0bdc6ded28f2b7e25"
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ]
+}

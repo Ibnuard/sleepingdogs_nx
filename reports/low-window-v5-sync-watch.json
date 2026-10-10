@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "asan": true,
+  "ubsan": true,
+  "hardware_tested": false,
+  "cases": [
+    "PASS missing native TEB skips capture",
+    "PASS loader before WoW64 CPU setup skips capture, then records normally",
+    "PASS absent x86 context does not consume first-invalid evidence",
+    "PASS GUI/expired observation does no capture",
+    "PASS lifecycle, failed close, untracked close, handle reuse",
+    "PASS duplicate handle does not consume a second registry slot",
+    "PASS failed create cannot reuse stale output handle",
+    "PASS invalid-wait object capture, no mutation, retry flood deduplicated",
+    "PASS inaccessible memory, mismatched code, bad index and address overflow",
+    "PASS bounded ring, explicit dropped/registry counters, drain once",
+    "PASS global invalid snapshot cap",
+    "PASS concurrent producers and bounded history"
+  ],
+  "sources": {
+    "src/low_window/sd_sync_watch.h": "bace5ef4ddd73006e8571dd923eac90d1f98139f5f50d8f53859d3e2b733e0ad",
+    "src/low_window/sd_sync_watch.inc": "f1956bb5996e2187de4a2edce088afcccd533806f0d4cb455afc4abec1948443",
+    "src/low_window/sd_sync_bridge.inc": "4b6516b4409ef27691885563dedf74ade5fe73ba769a8553248adb4d67d8fb80",
+    "tests/sync_watch.c": "efbe01b23be0ff47c44982e4210ad40202b2a87437e65d414cad03f8cd546dc0",
+    "tests/check_sync_watch.py": "a7c74b325fa657e8d4913e30a76de3c118e33856229b54a9c6782ec86ca624f7"
+  }
+}

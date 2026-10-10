@@ -1,0 +1,34 @@
+{
+  "input_log_sha256": "e93c185c4ab481a143df5d1ea14045dfb8600cb46d75f236f87b5a566d9ce68b",
+  "game_exe_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "main_thread": 4,
+  "stalled_syscall": "NtSuspendThread",
+  "stalled_handle": "0xfffffffffffffffe",
+  "guest_return_pc": "0x009b2a3c",
+  "guest_call": "GetThreadContext(GetCurrentThread(), CONTEXT_DEBUG_REGISTERS)",
+  "iat_GetThreadContext": "0x010e1230",
+  "native_load_offset": "0x176eb000",
+  "native_stack": [
+    "svcWaitProcessWideKeyAtomic",
+    "condvarWaitTimeout",
+    "horizon_pipe_read_r",
+    "server_call_unlocked",
+    "NtSuspendThread"
+  ],
+  "nheap_live_kb": 2899,
+  "nheap_failures": 0,
+  "last_progress_seconds": 85,
+  "fix": "sleepingdogs-wow64-self-context-v1",
+  "patch": "sleepingdogs-fex-startup-context-fix.zip",
+  "patch_sha256": "8ed93c10664a6d3b15ecdcab76b08c4c2bb599d2e731cb1e7666c56004d078bd",
+  "patch_bytes": 254383,
+  "fixed_dll_sha256": "cce529e75bc5417f56781b2654d8298e0a8e9cfced0a6b5a742a0768c7dab199",
+  "native_nro_rebuilt": false,
+  "fastest_preserved": true,
+  "switch_retest_pending": true,
+  "validation": {
+    "c_cases": 9,
+    "arm64_cases": 9,
+    "imports_and_exports_preserved": true
+  }
+}

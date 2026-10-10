@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "results": {
+    "baseline": {
+      "output": "PASS: cap=8388608; 5 MiB backing; bounded pressure; aligned floors; failure cleanup; small-resource reuse",
+      "function_sha256": "5e2b3eb3eb9f323a248cbf3e07221642f4a08b5b6abc79ba21553bcdfc3bed70",
+      "page_allocator_sha256": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+    },
+    "candidate": {
+      "output": "PASS: cap=2097152; 5 MiB backing; bounded pressure; aligned floors; failure cleanup; small-resource reuse",
+      "function_sha256": "5e9eb4df59184d5929088394d908383da05429ff838ebc310705d826b15d7058",
+      "page_allocator_sha256": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+    }
+  },
+  "deferred_map": {
+    "baseline": "Reproduced null pointer on failed resource allocation under UBSan",
+    "candidate": "PASS: deferred Map OOM HRESULT/zero output/no commands; failed update; map success/queued ownership; NO_OVERWRITE; invalid mode"
+  },
+  "sources": {
+    "tools/sleepingdogs_dxvk_memory.py": "2843757c5b4af29a8f0cc5b383756d442c4f7606cb422538cf69939f3ba306dc",
+    "tests/dxvk_memory.cpp": "3afa3aab6821945f31de113578d49a09655928584d95b29b50bae51973f22847",
+    "tests/dxvk_deferred_map.cpp": "fa7ca758b6ebea0f76970df1264b99e26559cbadcdd4f3362bbe4bd393a01233",
+    "tests/check_dxvk_memory_host.py": "69cef92a32068d76221b51928a03baa46c410c763a2729ada2f68c6f416cad6c"
+  },
+  "limits": "Vulkan allocation and mapping modeled; pressure workload synthetic; no hardware boot claim."
+}

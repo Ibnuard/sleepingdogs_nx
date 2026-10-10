@@ -1,0 +1,827 @@
+{
+  "status": "PASS",
+  "log_sha256": "faa37ff1c99c387274c756115f345f1916b590ac86d4d6a4ea7e388323049d7a",
+  "log_bytes": 1590061,
+  "build": "[BUILD] sleepingdogs-fextendo-0.1.0-low-window-v6-cpu-topology-fix",
+  "cpu": "[SD-CPU-TOPOLOGY] v1 logical=4 cores=4 mask=f legacy_records=6 ex_bytes=368",
+  "user_report": "Gameplay reached; OLED handheld CPU 1728 MHz, GPU 768 MHz, RAM 1600 MHz",
+  "launch_mode": "debug",
+  "profile": "fastest",
+  "renderer": "dxvk-3.1.1",
+  "sampled_intervals": [
+    {
+      "line": 792,
+      "start_seconds": 5,
+      "end_seconds": 10,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 1909,
+      "start_seconds": 10,
+      "end_seconds": 15,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 2811,
+      "start_seconds": 15,
+      "end_seconds": 20,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 4271,
+      "start_seconds": 20,
+      "end_seconds": 25,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 4663,
+      "start_seconds": 25,
+      "end_seconds": 30,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 4836,
+      "start_seconds": 30,
+      "end_seconds": 35,
+      "frames": 0,
+      "fps": 0.0,
+      "errors": 0
+    },
+    {
+      "line": 6426,
+      "start_seconds": 35,
+      "end_seconds": 50,
+      "frames": 569,
+      "fps": 37.933,
+      "errors": 0
+    },
+    {
+      "line": 6612,
+      "start_seconds": 50,
+      "end_seconds": 65,
+      "frames": 816,
+      "fps": 54.4,
+      "errors": 0
+    },
+    {
+      "line": 7437,
+      "start_seconds": 65,
+      "end_seconds": 80,
+      "frames": 487,
+      "fps": 32.467,
+      "errors": 0
+    },
+    {
+      "line": 7712,
+      "start_seconds": 80,
+      "end_seconds": 95,
+      "frames": 224,
+      "fps": 14.933,
+      "errors": 0
+    },
+    {
+      "line": 8055,
+      "start_seconds": 95,
+      "end_seconds": 110,
+      "frames": 165,
+      "fps": 11.0,
+      "errors": 0
+    },
+    {
+      "line": 8293,
+      "start_seconds": 110,
+      "end_seconds": 125,
+      "frames": 259,
+      "fps": 17.267,
+      "errors": 0
+    },
+    {
+      "line": 8593,
+      "start_seconds": 125,
+      "end_seconds": 140,
+      "frames": 291,
+      "fps": 19.4,
+      "errors": 0
+    },
+    {
+      "line": 8683,
+      "start_seconds": 140,
+      "end_seconds": 155,
+      "frames": 259,
+      "fps": 17.267,
+      "errors": 0
+    },
+    {
+      "line": 8983,
+      "start_seconds": 155,
+      "end_seconds": 170,
+      "frames": 250,
+      "fps": 16.667,
+      "errors": 0
+    },
+    {
+      "line": 9074,
+      "start_seconds": 170,
+      "end_seconds": 185,
+      "frames": 244,
+      "fps": 16.267,
+      "errors": 0
+    },
+    {
+      "line": 9376,
+      "start_seconds": 185,
+      "end_seconds": 200,
+      "frames": 241,
+      "fps": 16.067,
+      "errors": 0
+    },
+    {
+      "line": 9468,
+      "start_seconds": 200,
+      "end_seconds": 215,
+      "frames": 171,
+      "fps": 11.4,
+      "errors": 0
+    },
+    {
+      "line": 9767,
+      "start_seconds": 215,
+      "end_seconds": 230,
+      "frames": 153,
+      "fps": 10.2,
+      "errors": 0
+    },
+    {
+      "line": 9857,
+      "start_seconds": 230,
+      "end_seconds": 245,
+      "frames": 141,
+      "fps": 9.4,
+      "errors": 0
+    },
+    {
+      "line": 10157,
+      "start_seconds": 245,
+      "end_seconds": 260,
+      "frames": 152,
+      "fps": 10.133,
+      "errors": 0
+    },
+    {
+      "line": 10248,
+      "start_seconds": 260,
+      "end_seconds": 275,
+      "frames": 144,
+      "fps": 9.6,
+      "errors": 0
+    },
+    {
+      "line": 10495,
+      "start_seconds": 275,
+      "end_seconds": 290,
+      "frames": 129,
+      "fps": 8.6,
+      "errors": 0
+    },
+    {
+      "line": 10534,
+      "start_seconds": 290,
+      "end_seconds": 305,
+      "frames": 143,
+      "fps": 9.533,
+      "errors": 0
+    },
+    {
+      "line": 10833,
+      "start_seconds": 305,
+      "end_seconds": 320,
+      "frames": 174,
+      "fps": 11.6,
+      "errors": 0
+    },
+    {
+      "line": 10924,
+      "start_seconds": 320,
+      "end_seconds": 335,
+      "frames": 182,
+      "fps": 12.133,
+      "errors": 0
+    },
+    {
+      "line": 11306,
+      "start_seconds": 335,
+      "end_seconds": 350,
+      "frames": 143,
+      "fps": 9.533,
+      "errors": 0
+    },
+    {
+      "line": 11345,
+      "start_seconds": 350,
+      "end_seconds": 365,
+      "frames": 143,
+      "fps": 9.533,
+      "errors": 0
+    },
+    {
+      "line": 11739,
+      "start_seconds": 365,
+      "end_seconds": 380,
+      "frames": 145,
+      "fps": 9.667,
+      "errors": 0
+    },
+    {
+      "line": 12034,
+      "start_seconds": 380,
+      "end_seconds": 395,
+      "frames": 225,
+      "fps": 15.0,
+      "errors": 0
+    },
+    {
+      "line": 12581,
+      "start_seconds": 395,
+      "end_seconds": 410,
+      "frames": 247,
+      "fps": 16.467,
+      "errors": 0
+    },
+    {
+      "line": 12783,
+      "start_seconds": 410,
+      "end_seconds": 425,
+      "frames": 187,
+      "fps": 12.467,
+      "errors": 0
+    },
+    {
+      "line": 13177,
+      "start_seconds": 425,
+      "end_seconds": 440,
+      "frames": 152,
+      "fps": 10.133,
+      "errors": 0
+    },
+    {
+      "line": 13274,
+      "start_seconds": 440,
+      "end_seconds": 455,
+      "frames": 157,
+      "fps": 10.467,
+      "errors": 0
+    },
+    {
+      "line": 13604,
+      "start_seconds": 455,
+      "end_seconds": 470,
+      "frames": 162,
+      "fps": 10.8,
+      "errors": 0
+    },
+    {
+      "line": 13934,
+      "start_seconds": 470,
+      "end_seconds": 485,
+      "frames": 167,
+      "fps": 11.133,
+      "errors": 0
+    },
+    {
+      "line": 14258,
+      "start_seconds": 485,
+      "end_seconds": 500,
+      "frames": 217,
+      "fps": 14.467,
+      "errors": 0
+    },
+    {
+      "line": 14362,
+      "start_seconds": 500,
+      "end_seconds": 515,
+      "frames": 215,
+      "fps": 14.333,
+      "errors": 0
+    }
+  ],
+  "post_95s": {
+    "seconds": 420,
+    "frames": 5258,
+    "fps_min": 8.6,
+    "fps_max": 19.4,
+    "weighted_fps": 12.519
+  },
+  "last_present_count": 7354,
+  "min_native_heap_available_mib": 869.5,
+  "gpu_oom_seen": false,
+  "repeated_old_invalid_handle_seen": false,
+  "jit_late_window": {
+    "first": {
+      "uptime_ms": 400912,
+      "calls": 208134,
+      "total_us": 38766496
+    },
+    "last": {
+      "uptime_ms": 506109,
+      "calls": 239702,
+      "total_us": 39626344
+    },
+    "wall_seconds": 105.197,
+    "aggregate_dispatch_seconds": 0.859848
+  },
+  "pipeline_windows": [
+    {
+      "seconds": 5,
+      "phase": "submit_driver",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 5,
+      "phase": "semaphore_wait",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 10,
+      "phase": "submit_driver",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 10,
+      "phase": "semaphore_wait",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 15,
+      "phase": "submit_driver",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 15,
+      "phase": "semaphore_wait",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 20,
+      "phase": "submit_driver",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 20,
+      "phase": "semaphore_wait",
+      "calls": 0,
+      "avg_us": 0
+    },
+    {
+      "seconds": 25,
+      "phase": "submit_driver",
+      "calls": 1,
+      "avg_us": 92
+    },
+    {
+      "seconds": 25,
+      "phase": "semaphore_wait",
+      "calls": 1,
+      "avg_us": 36
+    },
+    {
+      "seconds": 30,
+      "phase": "submit_driver",
+      "calls": 1,
+      "avg_us": 93
+    },
+    {
+      "seconds": 30,
+      "phase": "semaphore_wait",
+      "calls": 1,
+      "avg_us": 33
+    },
+    {
+      "seconds": 35,
+      "phase": "submit_driver",
+      "calls": 11,
+      "avg_us": 98
+    },
+    {
+      "seconds": 35,
+      "phase": "semaphore_wait",
+      "calls": 11,
+      "avg_us": 517
+    },
+    {
+      "seconds": 50,
+      "phase": "submit_driver",
+      "calls": 2299,
+      "avg_us": 591
+    },
+    {
+      "seconds": 50,
+      "phase": "semaphore_wait",
+      "calls": 1160,
+      "avg_us": 704
+    },
+    {
+      "seconds": 65,
+      "phase": "submit_driver",
+      "calls": 3273,
+      "avg_us": 618
+    },
+    {
+      "seconds": 65,
+      "phase": "semaphore_wait",
+      "calls": 1644,
+      "avg_us": 418
+    },
+    {
+      "seconds": 80,
+      "phase": "submit_driver",
+      "calls": 1985,
+      "avg_us": 691
+    },
+    {
+      "seconds": 80,
+      "phase": "semaphore_wait",
+      "calls": 1008,
+      "avg_us": 1736
+    },
+    {
+      "seconds": 95,
+      "phase": "submit_driver",
+      "calls": 1072,
+      "avg_us": 696
+    },
+    {
+      "seconds": 95,
+      "phase": "semaphore_wait",
+      "calls": 626,
+      "avg_us": 4358
+    },
+    {
+      "seconds": 110,
+      "phase": "submit_driver",
+      "calls": 1146,
+      "avg_us": 1492
+    },
+    {
+      "seconds": 110,
+      "phase": "semaphore_wait",
+      "calls": 810,
+      "avg_us": 6321
+    },
+    {
+      "seconds": 125,
+      "phase": "submit_driver",
+      "calls": 1509,
+      "avg_us": 904
+    },
+    {
+      "seconds": 125,
+      "phase": "semaphore_wait",
+      "calls": 994,
+      "avg_us": 12479
+    },
+    {
+      "seconds": 140,
+      "phase": "submit_driver",
+      "calls": 1779,
+      "avg_us": 1359
+    },
+    {
+      "seconds": 140,
+      "phase": "semaphore_wait",
+      "calls": 1197,
+      "avg_us": 11622
+    },
+    {
+      "seconds": 155,
+      "phase": "submit_driver",
+      "calls": 1446,
+      "avg_us": 925
+    },
+    {
+      "seconds": 155,
+      "phase": "semaphore_wait",
+      "calls": 924,
+      "avg_us": 14539
+    },
+    {
+      "seconds": 170,
+      "phase": "submit_driver",
+      "calls": 1517,
+      "avg_us": 1315
+    },
+    {
+      "seconds": 170,
+      "phase": "semaphore_wait",
+      "calls": 1024,
+      "avg_us": 12627
+    },
+    {
+      "seconds": 185,
+      "phase": "submit_driver",
+      "calls": 1592,
+      "avg_us": 1621
+    },
+    {
+      "seconds": 185,
+      "phase": "semaphore_wait",
+      "calls": 1101,
+      "avg_us": 11482
+    },
+    {
+      "seconds": 200,
+      "phase": "submit_driver",
+      "calls": 1585,
+      "avg_us": 1521
+    },
+    {
+      "seconds": 200,
+      "phase": "semaphore_wait",
+      "calls": 1103,
+      "avg_us": 10317
+    },
+    {
+      "seconds": 215,
+      "phase": "submit_driver",
+      "calls": 1317,
+      "avg_us": 2783
+    },
+    {
+      "seconds": 215,
+      "phase": "semaphore_wait",
+      "calls": 978,
+      "avg_us": 7627
+    },
+    {
+      "seconds": 230,
+      "phase": "submit_driver",
+      "calls": 1360,
+      "avg_us": 3677
+    },
+    {
+      "seconds": 230,
+      "phase": "semaphore_wait",
+      "calls": 1054,
+      "avg_us": 7154
+    },
+    {
+      "seconds": 245,
+      "phase": "submit_driver",
+      "calls": 1372,
+      "avg_us": 4361
+    },
+    {
+      "seconds": 245,
+      "phase": "semaphore_wait",
+      "calls": 1090,
+      "avg_us": 6355
+    },
+    {
+      "seconds": 260,
+      "phase": "submit_driver",
+      "calls": 1292,
+      "avg_us": 4046
+    },
+    {
+      "seconds": 260,
+      "phase": "semaphore_wait",
+      "calls": 985,
+      "avg_us": 7824
+    },
+    {
+      "seconds": 275,
+      "phase": "submit_driver",
+      "calls": 1341,
+      "avg_us": 4423
+    },
+    {
+      "seconds": 275,
+      "phase": "semaphore_wait",
+      "calls": 1056,
+      "avg_us": 6651
+    },
+    {
+      "seconds": 290,
+      "phase": "submit_driver",
+      "calls": 1155,
+      "avg_us": 4160
+    },
+    {
+      "seconds": 290,
+      "phase": "semaphore_wait",
+      "calls": 898,
+      "avg_us": 7305
+    },
+    {
+      "seconds": 305,
+      "phase": "submit_driver",
+      "calls": 1262,
+      "avg_us": 3739
+    },
+    {
+      "seconds": 305,
+      "phase": "semaphore_wait",
+      "calls": 975,
+      "avg_us": 7078
+    },
+    {
+      "seconds": 320,
+      "phase": "submit_driver",
+      "calls": 1455,
+      "avg_us": 3866
+    },
+    {
+      "seconds": 320,
+      "phase": "semaphore_wait",
+      "calls": 1107,
+      "avg_us": 7279
+    },
+    {
+      "seconds": 335,
+      "phase": "submit_driver",
+      "calls": 1438,
+      "avg_us": 3092
+    },
+    {
+      "seconds": 335,
+      "phase": "semaphore_wait",
+      "calls": 1074,
+      "avg_us": 7050
+    },
+    {
+      "seconds": 350,
+      "phase": "submit_driver",
+      "calls": 1117,
+      "avg_us": 3128
+    },
+    {
+      "seconds": 350,
+      "phase": "semaphore_wait",
+      "calls": 827,
+      "avg_us": 11156
+    },
+    {
+      "seconds": 365,
+      "phase": "submit_driver",
+      "calls": 1237,
+      "avg_us": 3226
+    },
+    {
+      "seconds": 365,
+      "phase": "semaphore_wait",
+      "calls": 953,
+      "avg_us": 8331
+    },
+    {
+      "seconds": 380,
+      "phase": "submit_driver",
+      "calls": 1149,
+      "avg_us": 3243
+    },
+    {
+      "seconds": 380,
+      "phase": "semaphore_wait",
+      "calls": 861,
+      "avg_us": 10481
+    },
+    {
+      "seconds": 395,
+      "phase": "submit_driver",
+      "calls": 1302,
+      "avg_us": 1516
+    },
+    {
+      "seconds": 395,
+      "phase": "semaphore_wait",
+      "calls": 845,
+      "avg_us": 14610
+    },
+    {
+      "seconds": 410,
+      "phase": "submit_driver",
+      "calls": 1413,
+      "avg_us": 1445
+    },
+    {
+      "seconds": 410,
+      "phase": "semaphore_wait",
+      "calls": 921,
+      "avg_us": 13020
+    },
+    {
+      "seconds": 425,
+      "phase": "submit_driver",
+      "calls": 1446,
+      "avg_us": 2521
+    },
+    {
+      "seconds": 425,
+      "phase": "semaphore_wait",
+      "calls": 1069,
+      "avg_us": 9767
+    },
+    {
+      "seconds": 440,
+      "phase": "submit_driver",
+      "calls": 1292,
+      "avg_us": 3192
+    },
+    {
+      "seconds": 440,
+      "phase": "semaphore_wait",
+      "calls": 995,
+      "avg_us": 7795
+    },
+    {
+      "seconds": 455,
+      "phase": "submit_driver",
+      "calls": 1420,
+      "avg_us": 3117
+    },
+    {
+      "seconds": 455,
+      "phase": "semaphore_wait",
+      "calls": 1106,
+      "avg_us": 7079
+    },
+    {
+      "seconds": 470,
+      "phase": "submit_driver",
+      "calls": 1361,
+      "avg_us": 3250
+    },
+    {
+      "seconds": 470,
+      "phase": "semaphore_wait",
+      "calls": 1037,
+      "avg_us": 7770
+    },
+    {
+      "seconds": 485,
+      "phase": "submit_driver",
+      "calls": 1392,
+      "avg_us": 3347
+    },
+    {
+      "seconds": 485,
+      "phase": "semaphore_wait",
+      "calls": 1055,
+      "avg_us": 8612
+    },
+    {
+      "seconds": 500,
+      "phase": "submit_driver",
+      "calls": 1552,
+      "avg_us": 2275
+    },
+    {
+      "seconds": 500,
+      "phase": "semaphore_wait",
+      "calls": 1118,
+      "avg_us": 7654
+    },
+    {
+      "seconds": 515,
+      "phase": "submit_driver",
+      "calls": 1612,
+      "avg_us": 2533
+    },
+    {
+      "seconds": 515,
+      "phase": "semaphore_wait",
+      "calls": 1182,
+      "avg_us": 7780
+    }
+  ],
+  "display_settings_read": "[SD-FILE] tid=4 read returned handle=7e0 bytes=888 age_ms=589 status=00000000 path=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/Data/DisplaySettings.xml",
+  "diagnostic_counts": {
+    "[WINE]": 6944,
+    "[SD-PC]": 1732,
+    "[SD-STACK]": 1732,
+    "[SD-CALL]": 1224
+  },
+  "limits": [
+    "Intervals include unknown mixtures of menus, cutscenes and gameplay; not a controlled benchmark.",
+    "Driver wait wall times overlap across threads and do not measure GPU execution time.",
+    "No GPU occupancy or per-stage GPU timestamps are in this log.",
+    "undefined is a game UI label; active AA/shadow/SSAO values are not supplied.",
+    "30 FPS has not been demonstrated."
+  ],
+  "next_comparison": "Same scene and clock: v7 Launch normal + FPS HUD, Stable vs Performance; then compare 720p vs 960x540 with lowest in-game advanced options."
+}

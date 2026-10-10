@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "scope": "Validate the packed opt-in NSP and execute its forwarder with the v5 NRO.\n\nThe generic loader's contract is checked against the hardware-tested probe\nNSPs. Horizon services are modeled by the existing ARM64 forwarder harness;\nthis does not boot the console or execute Sleeping Dogs gameplay.\n",
+  "hardware_tested": false,
+  "nsp_sha256": "f893d51849443ae6da59925aeec8659f68e94b15347d8528ce56412fbad52598",
+  "elf_sha256": "569334bc424c07009b04b592bd31a61a90c9af1281c7bdea698c92b3cb760a1d",
+  "nro_sha256": "2ddb568038ec028f909070bee54abc50678a8fe7f77d330ec93cf9f7688dc146",
+  "descriptor_sha256": "6a4b404254f26c3b77a738213105989f38798b8abb231e97c1bcd7931f58fb8f",
+  "abi": "fxtmem-v1",
+  "previous_nsp_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "exefs_added_only": [
+    "fxtmem"
+  ],
+  "forwarder_code_unchanged": true,
+  "npdm_assets_target_unchanged": true,
+  "npdm": {
+    "native_architecture": "AArch64",
+    "address_space_type": 3,
+    "address_bits": 39,
+    "title_id": "059a3db219b42000",
+    "capabilities": {
+      "ACI0": {
+        "cores": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "svc_debug": false,
+        "required_syscalls_present": [
+          "0x6",
+          "0x29",
+          "0x4b",
+          "0x4c",
+          "0x73",
+          "0x77",
+          "0x78"
+        ]
+      },
+      "ACID": {
+        "cores": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "svc_debug": false,
+        "required_syscalls_present": [
+          "0x6",
+          "0x29",
+          "0x4b",
+          "0x4c",
+          "0x73",
+          "0x77",
+          "0x78"
+        ]
+      }
+    }
+  },
+  "generic_probe_nsp_hashes": {
+    "control": "756ad5e21fc02412a7e6155d454f9035be533605967ff7456c208e5f0a557d3f",
+    "optin-a": "ce9d58a38b8cffe0dbb3b1ea297d7b6043af66738a23332e4945179c3e63348e",
+    "optin-b": "5b97337f2755e089a286ae10ddb41cbb3baab28f93307f926f0897b74da4c328"
+  },
+  "arm64_cases": [
+    {
+      "case": "low_candidate_then_high",
+      "native_nro": "0x100200000",
+      "reload": true,
+      "private_heap_bytes": 16384
+    },
+    {
+      "case": "random_high_address",
+      "native_nro": "0x4000200000",
+      "reload": true,
+      "private_heap_bytes": 16384
+    }
+  ],
+  "source_files": {
+    "main.c": "810139d565387650e3f55c70e760bbca542f4ed3afeedf18c0b25dc600761216",
+    "sd_forwarder_heap.inc": "700744cc5345ce9719ab12cca88fe1e5f1fd75a9d68b6d5acfff5f978c520b30",
+    "sd_forwarder_low.inc": "2e5bb086b42d7c34f3e08fdf96840b9aebf0459ca61f49d70afe31a0a64f3d9f",
+    "sd_gpu_budget.h": "b933b85b5266de197106516aa2d43ce3dbd19fe07d8796d87823564ea1a631d1",
+    "trampoline.s": "2f11a79cc9a4a162dcef557274076b66480bb256f353d47cea1ef56ab8e11f4e"
+  },
+  "test_sha256": "e8711ed5f927d79bff832a9c91953a0abdc90e29ff3c37505a2ca5e4fc15a83e",
+  "harness_sha256": "266201a512745ef67a7144bdb7da2dc9c15d9ec40fa8098792809df23c0647f1",
+  "builder_sha256": "946a90d8ccceb035cf45634bf46a5e80c6a4e5d8796c06fdca3c3fb63aa66ccc"
+}

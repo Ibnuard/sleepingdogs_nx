@@ -1,0 +1,953 @@
+{
+  "status": "CONVERTED",
+  "source_dll_sha256": "8b7dbc11b2ea544650af2ed4ffc92da3abd88ec5afa09c36484c060fbc848834",
+  "source_version": "3.2.1.0",
+  "model": "LSFG 3.1 FP32",
+  "pack_sha256": "2f6b1292290b264c812ff54585b9af9bb123bb1321026f34c9f3d4f3a75a26d2",
+  "shader_count": 45,
+  "records": [
+    {
+      "dll_resource": 256,
+      "backend_resource": 354,
+      "bytes": 9952,
+      "sha256": "dac0738b143856aa135657ccbda6e0056a40cfac887c2da678729bb76a642378",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 257,
+      "backend_resource": 355,
+      "bytes": 39340,
+      "sha256": "3cd8df4cc7c86c572b47c0dc3d3947eb82e9a344a4863fd6e5ee4b3a3966731c",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        48,
+        49,
+        50
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 258,
+      "backend_resource": 356,
+      "bytes": 162208,
+      "sha256": "b8e8bc7f5b3be47859b39973cbd789bdedfdb2f44f6bcbef61391338f881f187",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 259,
+      "backend_resource": 357,
+      "bytes": 181768,
+      "sha256": "df07cab33e3d28cad938fc4d2914f3c4177b29599baeeabc87d8b5879c813191",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 260,
+      "backend_resource": 358,
+      "bytes": 329640,
+      "sha256": "0b152954355042604232e874daca04be775450fcdec817abf5fc8764f1c13af6",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 261,
+      "backend_resource": 359,
+      "bytes": 329560,
+      "sha256": "2c3030bd1daefba738bab9a7a68911897227c4cbf7b4cb548be6805485e89a6f",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 262,
+      "backend_resource": 360,
+      "bytes": 64944,
+      "sha256": "a92f6ca0f9dbad9ff03146a488198d7d04325c9b0d819b6be1300e1aa028ba3b",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 263,
+      "backend_resource": 361,
+      "bytes": 181784,
+      "sha256": "eae7341551e2df4d37b775ed86eaaa68c8b5074cca587f94131efe5e64dae0a2",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 264,
+      "backend_resource": 362,
+      "bytes": 329592,
+      "sha256": "ca61dc24228c744c3b32de99be7bb181bfd2a41bfd3010fc5c19a92e5e13a859",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 265,
+      "backend_resource": 363,
+      "bytes": 329528,
+      "sha256": "86a50c51061fbff8df7811881a9accfa211877a3dd51f996e441be9648f2d4c4",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 266,
+      "backend_resource": 364,
+      "bytes": 64944,
+      "sha256": "24f71cf78ddac42881d56fc539413208a2055de2faa368b232ec0b5239891c78",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 267,
+      "backend_resource": 365,
+      "bytes": 19948,
+      "sha256": "c755d4327fdf61e3eb7f39e985e9d53368d8ea26289cc925be6c7cf7c2446fa0",
+      "bindings": [
+        16,
+        32,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 268,
+      "backend_resource": 366,
+      "bytes": 87616,
+      "sha256": "aa667100abe0d751fc9e4c812b8017f977ab0291131ad988ca02cf23647d7906",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 269,
+      "backend_resource": 367,
+      "bytes": 167792,
+      "sha256": "a6c884ec0506a56701c74467fb4b32903b40142a676b02d5b29ec9a7201e6918",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 270,
+      "backend_resource": 368,
+      "bytes": 329528,
+      "sha256": "b53fe2864a0e442d631e0bf9e3b804061daaa1740d6a66eb7636c84c1361c195",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        48,
+        49,
+        50,
+        51
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 271,
+      "backend_resource": 369,
+      "bytes": 87600,
+      "sha256": "c057275188ff95b1ff486f94ffbb9f491ca98c183f702467260b0a6ac901209c",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 272,
+      "backend_resource": 370,
+      "bytes": 87616,
+      "sha256": "93d3517454be1392ddce4fd55763d8ab5b7bc950535489bb6a5e3a3bd3380b74",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 273,
+      "backend_resource": 371,
+      "bytes": 87600,
+      "sha256": "e2cb59fe5477e5a6a5b2fecd869039e62b4a2b200a5cdf55585d7de601fe7946",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 274,
+      "backend_resource": 372,
+      "bytes": 48332,
+      "sha256": "0ddcd307068710520008c092b3f9d883c3c3639a631795689885a9409eb140f5",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 275,
+      "backend_resource": 373,
+      "bytes": 78640,
+      "sha256": "40e10c2f34b17a7924d61222f6afe1d4b76b4f5899603df61309058bca9644ab",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 276,
+      "backend_resource": 374,
+      "bytes": 87616,
+      "sha256": "e38231246380e409d3d3a5b05dc594993b9d0db5faf9680292e769e4e0b7fc25",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 277,
+      "backend_resource": 375,
+      "bytes": 87616,
+      "sha256": "85f60fca89dcd3f69a4c5efdc1431587096d50ea0573fb595eadf77300297f14",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 278,
+      "backend_resource": 376,
+      "bytes": 87616,
+      "sha256": "4e06faa8443bac006687785b53f07b4396b649cb7b00e4591045e6d99b093cfa",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 280,
+      "backend_resource": 378,
+      "bytes": 23448,
+      "sha256": "e23d7fc79b61f5ddb002da08fae886636f2b8cc9c15f2c7f6a349f8deab3242a",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        48,
+        49,
+        50
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 281,
+      "backend_resource": 379,
+      "bytes": 89808,
+      "sha256": "708c3168cb7b795e77fc521890e98395517f8c3e70038cc2fa5bca00945c4028",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 282,
+      "backend_resource": 380,
+      "bytes": 96784,
+      "sha256": "763242c3a45d0b978d7dbef7e7acd1e5188ff5cf8618e6e6a8aff4e22afb52e3",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 283,
+      "backend_resource": 381,
+      "bytes": 87616,
+      "sha256": "4769fdf1702e9a0494d055c1ee06e57b54de68f04b05fbabd008b9752d93fa6e",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 284,
+      "backend_resource": 382,
+      "bytes": 87616,
+      "sha256": "27c74dc821dcd539e5d49b4a89c74b727eb31f8879ebcc53c8cfc2876bff0d9b",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 285,
+      "backend_resource": 383,
+      "bytes": 37392,
+      "sha256": "a7385ad7683a14c600068dd45b9796c3f087c3f180c3c959832b3d7cc32371dc",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 286,
+      "backend_resource": 384,
+      "bytes": 96784,
+      "sha256": "f36d9e488992d020aac2010f815f5d75f207905d5af3260f1a8fca9ea4196502",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 287,
+      "backend_resource": 385,
+      "bytes": 87616,
+      "sha256": "714df6bc916b9559a135c9b23c5ed1f85b0d2a9f316a111129ac079bff80d467",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 288,
+      "backend_resource": 386,
+      "bytes": 87616,
+      "sha256": "ffdada1276d4c48da2a1e167257fd7010686ab8fbf720b8b197a869e7730eb5d",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 289,
+      "backend_resource": 387,
+      "bytes": 37376,
+      "sha256": "02046815db7b106c2dbab954cf4fd0ba6bdae5d2f89cdae4b9fd81bbf1cadf03",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        34,
+        35,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 290,
+      "backend_resource": 388,
+      "bytes": 16608,
+      "sha256": "21b0a97d2f74e10edd324588ba9de4a9716940a2214a0bc3d8197f8bdc0aa6d3",
+      "bindings": [
+        16,
+        32,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 291,
+      "backend_resource": 389,
+      "bytes": 25356,
+      "sha256": "b82e7877bc7e48a9e71149f754348944623b7bd3d7d8d8443a1b02fce9bcc60d",
+      "bindings": [
+        16,
+        32,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 292,
+      "backend_resource": 390,
+      "bytes": 46060,
+      "sha256": "db6ae3db5d59d4b2569f40ae7f69eb2ba3098c8786575b6242346e49206a86a3",
+      "bindings": [
+        16,
+        32,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 293,
+      "backend_resource": 391,
+      "bytes": 87616,
+      "sha256": "c6c0840b3633364d1a63e28c853d40d79ba33d633ce33c7f8d154bb9294202be",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 294,
+      "backend_resource": 392,
+      "bytes": 25356,
+      "sha256": "47005e2f6c2739a921a3a7f38a7ef4844d5ca2617d1c97667e3d8706a65faa0b",
+      "bindings": [
+        16,
+        32,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 295,
+      "backend_resource": 393,
+      "bytes": 25356,
+      "sha256": "e0232ccd24d8b9d64fc96421bfbcd2ad824d4e2932f353d3dbf91743f0d4833d",
+      "bindings": [
+        16,
+        32,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 296,
+      "backend_resource": 394,
+      "bytes": 25356,
+      "sha256": "4e2c1cdff6536a6388ee5b1cf84951596b595a05fb8816b4f8ae60021d8f3026",
+      "bindings": [
+        16,
+        32,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 297,
+      "backend_resource": 395,
+      "bytes": 26024,
+      "sha256": "e5c180caf9d53b759fb3dc14ac15a4beda9743e28a9b8d8aad5801e7bd35bf83",
+      "bindings": [
+        0,
+        16,
+        17,
+        32,
+        33,
+        48
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 298,
+      "backend_resource": 396,
+      "bytes": 51768,
+      "sha256": "a2a090ea6287843e2b634fdffcf1a36f5ad8c4bcc22428e23815d64da3db98fd",
+      "bindings": [
+        16,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 299,
+      "backend_resource": 397,
+      "bytes": 87616,
+      "sha256": "2d091f5cf74848f9876e3d22c188ad10763fda55af1a107ec5eaaf42507d8bda",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 300,
+      "backend_resource": 398,
+      "bytes": 87616,
+      "sha256": "3f265eaf7115a748f41d8245702ff4102bae1ba40e206eb0d9487c957f9ecaac",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    },
+    {
+      "dll_resource": 301,
+      "backend_resource": 399,
+      "bytes": 87616,
+      "sha256": "448000d7cea230c393640940ce0bd06dac9f640c5fff50b1252171d36632ac95",
+      "bindings": [
+        16,
+        32,
+        33,
+        48,
+        49
+      ],
+      "capabilities": [
+        1,
+        50,
+        56,
+        5345
+      ]
+    }
+  ],
+  "dll_executed": false,
+  "hardware_tested": false
+}

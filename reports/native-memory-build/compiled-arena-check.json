@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "actual_compiled_arena_bytes": 1048576000,
+  "symbols": {
+    "sd_arena_pages": {
+      "bytes": 256000,
+      "address": "0x2551520"
+    },
+    "sd_guest_arena_init": {
+      "bytes": 364,
+      "address": "0x39cda0"
+    },
+    "sd_guest_arena_protect": {
+      "bytes": 2568,
+      "address": "0x39bc70"
+    },
+    "sd_guest_arena_reset": {
+      "bytes": 1816,
+      "address": "0x39c680"
+    }
+  },
+  "fastest_preserved": true,
+  "wow64_fix_preserved": true,
+  "original_exe_unchanged": true
+}

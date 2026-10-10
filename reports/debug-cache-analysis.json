@@ -1,0 +1,85 @@
+{
+  "runtime": "SleepingDogs/HKShip.exe",
+  "input_log": "D:\\Dev\\Switch\\SwitchHub\\pes13-nx\\dist\\pes13-as39-bias-bench-v1\\fex-runtime.log",
+  "input_sha256": "9cd2dc8a9d649e486517bc859f8d1570a6f6f0c6df77a9220c874f17d61f4286",
+  "bytes": 853449,
+  "evidence": {
+    "[SD-DEP] change flags=00000002": [
+      {
+        "line": 289,
+        "text": "[WINE] 0004:warn:wow:sd_wow64_notify_execute_flags [SD-DEP] change flags=00000002 backend notified"
+      }
+    ],
+    "[SD-DB] arm": [
+      {
+        "line": 2129,
+        "text": "[SD-DB] arm tid=4 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a"
+      }
+    ],
+    "[NXVK] present 4:": [
+      {
+        "line": 4718,
+        "text": "[NXVK] present 4: result 0, swapchain 1292x732, hwnd 0x20030 client (0,0)-(1292,732), style 0x15000000, foreground 0x20030"
+      }
+    ],
+    "[SD-FIRSTFAULT] ticket=1": [
+      {
+        "line": 4732,
+        "text": "[SD-FIRSTFAULT] ticket=1 tid=4 code=406d1388 address=7b013049 native_pc=ffb9c098 native_sp=295a5a70"
+      }
+    ],
+    "[SD-FIRSTFAULT] ticket=2": [
+      {
+        "line": 4852,
+        "text": "[SD-FIRSTFAULT] ticket=2 tid=4 code=c0000005 address=3a4f82 native_pc=ff685890 native_sp=295a5f90"
+      }
+    ],
+    "[SD-FIRSTFAULT] dr0=": [
+      {
+        "line": 4753,
+        "text": "[SD-FIRSTFAULT] dr0=00000000 dr1=00000000 dr2=00000000 dr3=00000000 dr6=00000000 dr7=00000000"
+      },
+      {
+        "line": 4856,
+        "text": "[SD-FIRSTFAULT] dr0=00000000 dr1=00000000 dr2=00000000 dr3=00000000 dr6=00000000 dr7=00000000"
+      },
+      {
+        "line": 4900,
+        "text": "[SD-FIRSTFAULT] dr0=00000000 dr1=00000000 dr2=00000000 dr3=00000000 dr6=00000000 dr7=00000000"
+      },
+      {
+        "line": 4944,
+        "text": "[SD-FIRSTFAULT] dr0=00000000 dr1=00000000 dr2=00000000 dr3=00000000 dr6=00000000 dr7=00000000"
+      }
+    ],
+    "code@003a4f82": [
+      {
+        "line": 4858,
+        "text": "[SD-FIRSTFAULT] code@003a4f82=00030000 00000000 00000000 00000000"
+      }
+    ],
+    "stack@0166f664": [
+      {
+        "line": 4864,
+        "text": "[SD-FIRSTFAULT] stack@0166f664=00b236d8 011aff8c 00b2374f 003a4f78"
+      }
+    ],
+    "seh=0166f68c": [
+      {
+        "line": 4862,
+        "text": "[SD-FIRSTFAULT] teb32=7cbe2000 seh=0166f68c stack_limit=014f2000 stack_base=01670000"
+      }
+    ],
+    "[NXVK] present 1800:": [
+      {
+        "line": 7783,
+        "text": "[NXVK] present 1800: result 0, swapchain 1292x732, hwnd 0x20030 client (0,0)-(1292,732), style 0x15000000, foreground 0x20030"
+      }
+    ]
+  },
+  "cause": "Native context set updated canonical debug registers but not the Wine x86 TEB cache used by raise_exception_full_context. The thread-name software exception submits stale zero debug registers and disarms FEX.",
+  "log_boundary": "Cache loss reproduced with shipped guest ntdll and old native ELF. Negative post-frame replay supplies nonzero checker return, then executes the unmodified destructive branch.",
+  "fixed_binary_report": "reports/debug-cache-binary-check.json",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

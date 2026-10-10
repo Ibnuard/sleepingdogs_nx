@@ -1,0 +1,1189 @@
+{
+  "status": "ANALYZED",
+  "sha256": "d00be9c4bb287a9365b4339a39b20cc1977a1f88b5aa27dcd32e51fb43f65de7",
+  "input": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-06\\bisa-x20\\fex-runtime.log",
+  "user_reported": {
+    "overlay": "Status Monitor / Tesla",
+    "device": "OLED handheld",
+    "clocks_mhz": {
+      "cpu": 1728,
+      "gpu": 768,
+      "ram": 1600
+    },
+    "observed_fps": [
+      11,
+      20
+    ],
+    "observed_gpu_load_peak_percent": 99,
+    "observed_ram_traffic_gb_per_sec": 6,
+    "same_position_and_camera_confirmed": false,
+    "measured_by_log": false
+  },
+  "resolution_changes": [
+    {
+      "line": 1066,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    {
+      "line": 2755,
+      "resolution": [
+        960,
+        540
+      ]
+    }
+  ],
+  "slow_segment": {
+    "windows": 23,
+    "window_ms": 233123,
+    "frames": 3383,
+    "fps_weighted": 14.51165264688598,
+    "fps_min": 11.53,
+    "fps_max": 16.9,
+    "rows": [
+      {
+        "line": 1749,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10079,
+        "frames": 120,
+        "fps_x100": 1190,
+        "present_avg_us": 427,
+        "lock_avg_us": 0,
+        "driver_avg_us": 322,
+        "errors": 0
+      },
+      {
+        "line": 1782,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10059,
+        "frames": 144,
+        "fps_x100": 1431,
+        "present_avg_us": 273,
+        "lock_avg_us": 0,
+        "driver_avg_us": 211,
+        "errors": 0
+      },
+      {
+        "line": 1832,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10243,
+        "frames": 167,
+        "fps_x100": 1630,
+        "present_avg_us": 277,
+        "lock_avg_us": 0,
+        "driver_avg_us": 218,
+        "errors": 0
+      },
+      {
+        "line": 1954,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10244,
+        "frames": 147,
+        "fps_x100": 1434,
+        "present_avg_us": 296,
+        "lock_avg_us": 0,
+        "driver_avg_us": 239,
+        "errors": 0
+      },
+      {
+        "line": 2076,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10246,
+        "frames": 160,
+        "fps_x100": 1561,
+        "present_avg_us": 277,
+        "lock_avg_us": 0,
+        "driver_avg_us": 213,
+        "errors": 0
+      },
+      {
+        "line": 2218,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10412,
+        "frames": 174,
+        "fps_x100": 1671,
+        "present_avg_us": 301,
+        "lock_avg_us": 0,
+        "driver_avg_us": 210,
+        "errors": 0
+      },
+      {
+        "line": 2249,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10077,
+        "frames": 154,
+        "fps_x100": 1528,
+        "present_avg_us": 312,
+        "lock_avg_us": 0,
+        "driver_avg_us": 249,
+        "errors": 0
+      },
+      {
+        "line": 2292,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10065,
+        "frames": 165,
+        "fps_x100": 1639,
+        "present_avg_us": 486,
+        "lock_avg_us": 0,
+        "driver_avg_us": 328,
+        "errors": 0
+      },
+      {
+        "line": 2353,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10216,
+        "frames": 139,
+        "fps_x100": 1360,
+        "present_avg_us": 352,
+        "lock_avg_us": 0,
+        "driver_avg_us": 256,
+        "errors": 0
+      },
+      {
+        "line": 2386,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10062,
+        "frames": 143,
+        "fps_x100": 1421,
+        "present_avg_us": 251,
+        "lock_avg_us": 0,
+        "driver_avg_us": 195,
+        "errors": 0
+      },
+      {
+        "line": 2428,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10055,
+        "frames": 170,
+        "fps_x100": 1690,
+        "present_avg_us": 252,
+        "lock_avg_us": 0,
+        "driver_avg_us": 196,
+        "errors": 0
+      },
+      {
+        "line": 2479,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10197,
+        "frames": 155,
+        "fps_x100": 1520,
+        "present_avg_us": 260,
+        "lock_avg_us": 0,
+        "driver_avg_us": 203,
+        "errors": 0
+      },
+      {
+        "line": 2511,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10054,
+        "frames": 143,
+        "fps_x100": 1422,
+        "present_avg_us": 263,
+        "lock_avg_us": 0,
+        "driver_avg_us": 201,
+        "errors": 0
+      },
+      {
+        "line": 2542,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10111,
+        "frames": 126,
+        "fps_x100": 1246,
+        "present_avg_us": 250,
+        "lock_avg_us": 0,
+        "driver_avg_us": 196,
+        "errors": 0
+      },
+      {
+        "line": 2591,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10199,
+        "frames": 152,
+        "fps_x100": 1490,
+        "present_avg_us": 256,
+        "lock_avg_us": 0,
+        "driver_avg_us": 198,
+        "errors": 0
+      },
+      {
+        "line": 2624,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10058,
+        "frames": 148,
+        "fps_x100": 1471,
+        "present_avg_us": 266,
+        "lock_avg_us": 0,
+        "driver_avg_us": 205,
+        "errors": 0
+      },
+      {
+        "line": 2668,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10076,
+        "frames": 142,
+        "fps_x100": 1409,
+        "present_avg_us": 431,
+        "lock_avg_us": 0,
+        "driver_avg_us": 270,
+        "errors": 0
+      },
+      {
+        "line": 2724,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10214,
+        "frames": 160,
+        "fps_x100": 1566,
+        "present_avg_us": 535,
+        "lock_avg_us": 0,
+        "driver_avg_us": 410,
+        "errors": 0
+      },
+      {
+        "line": 2780,
+        "resolution": [
+          960,
+          540
+        ],
+        "resolution_changed_in_window": true,
+        "window_ms": 10074,
+        "frames": 142,
+        "fps_x100": 1409,
+        "present_avg_us": 403,
+        "lock_avg_us": 0,
+        "driver_avg_us": 243,
+        "errors": 0
+      },
+      {
+        "line": 2814,
+        "resolution": [
+          960,
+          540
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10091,
+        "frames": 143,
+        "fps_x100": 1416,
+        "present_avg_us": 295,
+        "lock_avg_us": 0,
+        "driver_avg_us": 202,
+        "errors": 0
+      },
+      {
+        "line": 2863,
+        "resolution": [
+          960,
+          540
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10175,
+        "frames": 139,
+        "fps_x100": 1365,
+        "present_avg_us": 251,
+        "lock_avg_us": 0,
+        "driver_avg_us": 196,
+        "errors": 0
+      },
+      {
+        "line": 2894,
+        "resolution": [
+          960,
+          540
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10057,
+        "frames": 116,
+        "fps_x100": 1153,
+        "present_avg_us": 253,
+        "lock_avg_us": 0,
+        "driver_avg_us": 196,
+        "errors": 0
+      },
+      {
+        "line": 2925,
+        "resolution": [
+          960,
+          540
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10059,
+        "frames": 134,
+        "fps_x100": 1332,
+        "present_avg_us": 255,
+        "lock_avg_us": 0,
+        "driver_avg_us": 201,
+        "errors": 0
+      }
+    ]
+  },
+  "by_resolution": {
+    "1280x720": {
+      "windows": 18,
+      "window_ms": 182667,
+      "frames": 2709,
+      "fps_weighted": 14.830264908275716,
+      "fps_min": 11.9,
+      "fps_max": 16.9,
+      "rows": [
+        {
+          "line": 1749,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10079,
+          "frames": 120,
+          "fps_x100": 1190,
+          "present_avg_us": 427,
+          "lock_avg_us": 0,
+          "driver_avg_us": 322,
+          "errors": 0
+        },
+        {
+          "line": 1782,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10059,
+          "frames": 144,
+          "fps_x100": 1431,
+          "present_avg_us": 273,
+          "lock_avg_us": 0,
+          "driver_avg_us": 211,
+          "errors": 0
+        },
+        {
+          "line": 1832,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10243,
+          "frames": 167,
+          "fps_x100": 1630,
+          "present_avg_us": 277,
+          "lock_avg_us": 0,
+          "driver_avg_us": 218,
+          "errors": 0
+        },
+        {
+          "line": 1954,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10244,
+          "frames": 147,
+          "fps_x100": 1434,
+          "present_avg_us": 296,
+          "lock_avg_us": 0,
+          "driver_avg_us": 239,
+          "errors": 0
+        },
+        {
+          "line": 2076,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10246,
+          "frames": 160,
+          "fps_x100": 1561,
+          "present_avg_us": 277,
+          "lock_avg_us": 0,
+          "driver_avg_us": 213,
+          "errors": 0
+        },
+        {
+          "line": 2218,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10412,
+          "frames": 174,
+          "fps_x100": 1671,
+          "present_avg_us": 301,
+          "lock_avg_us": 0,
+          "driver_avg_us": 210,
+          "errors": 0
+        },
+        {
+          "line": 2249,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10077,
+          "frames": 154,
+          "fps_x100": 1528,
+          "present_avg_us": 312,
+          "lock_avg_us": 0,
+          "driver_avg_us": 249,
+          "errors": 0
+        },
+        {
+          "line": 2292,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10065,
+          "frames": 165,
+          "fps_x100": 1639,
+          "present_avg_us": 486,
+          "lock_avg_us": 0,
+          "driver_avg_us": 328,
+          "errors": 0
+        },
+        {
+          "line": 2353,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10216,
+          "frames": 139,
+          "fps_x100": 1360,
+          "present_avg_us": 352,
+          "lock_avg_us": 0,
+          "driver_avg_us": 256,
+          "errors": 0
+        },
+        {
+          "line": 2386,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10062,
+          "frames": 143,
+          "fps_x100": 1421,
+          "present_avg_us": 251,
+          "lock_avg_us": 0,
+          "driver_avg_us": 195,
+          "errors": 0
+        },
+        {
+          "line": 2428,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10055,
+          "frames": 170,
+          "fps_x100": 1690,
+          "present_avg_us": 252,
+          "lock_avg_us": 0,
+          "driver_avg_us": 196,
+          "errors": 0
+        },
+        {
+          "line": 2479,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10197,
+          "frames": 155,
+          "fps_x100": 1520,
+          "present_avg_us": 260,
+          "lock_avg_us": 0,
+          "driver_avg_us": 203,
+          "errors": 0
+        },
+        {
+          "line": 2511,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10054,
+          "frames": 143,
+          "fps_x100": 1422,
+          "present_avg_us": 263,
+          "lock_avg_us": 0,
+          "driver_avg_us": 201,
+          "errors": 0
+        },
+        {
+          "line": 2542,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10111,
+          "frames": 126,
+          "fps_x100": 1246,
+          "present_avg_us": 250,
+          "lock_avg_us": 0,
+          "driver_avg_us": 196,
+          "errors": 0
+        },
+        {
+          "line": 2591,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10199,
+          "frames": 152,
+          "fps_x100": 1490,
+          "present_avg_us": 256,
+          "lock_avg_us": 0,
+          "driver_avg_us": 198,
+          "errors": 0
+        },
+        {
+          "line": 2624,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10058,
+          "frames": 148,
+          "fps_x100": 1471,
+          "present_avg_us": 266,
+          "lock_avg_us": 0,
+          "driver_avg_us": 205,
+          "errors": 0
+        },
+        {
+          "line": 2668,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10076,
+          "frames": 142,
+          "fps_x100": 1409,
+          "present_avg_us": 431,
+          "lock_avg_us": 0,
+          "driver_avg_us": 270,
+          "errors": 0
+        },
+        {
+          "line": 2724,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10214,
+          "frames": 160,
+          "fps_x100": 1566,
+          "present_avg_us": 535,
+          "lock_avg_us": 0,
+          "driver_avg_us": 410,
+          "errors": 0
+        }
+      ]
+    },
+    "960x540": {
+      "windows": 4,
+      "window_ms": 40382,
+      "frames": 532,
+      "fps_weighted": 13.174186518745977,
+      "fps_min": 11.53,
+      "fps_max": 14.16,
+      "rows": [
+        {
+          "line": 2814,
+          "resolution": [
+            960,
+            540
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10091,
+          "frames": 143,
+          "fps_x100": 1416,
+          "present_avg_us": 295,
+          "lock_avg_us": 0,
+          "driver_avg_us": 202,
+          "errors": 0
+        },
+        {
+          "line": 2863,
+          "resolution": [
+            960,
+            540
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10175,
+          "frames": 139,
+          "fps_x100": 1365,
+          "present_avg_us": 251,
+          "lock_avg_us": 0,
+          "driver_avg_us": 196,
+          "errors": 0
+        },
+        {
+          "line": 2894,
+          "resolution": [
+            960,
+            540
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10057,
+          "frames": 116,
+          "fps_x100": 1153,
+          "present_avg_us": 253,
+          "lock_avg_us": 0,
+          "driver_avg_us": 196,
+          "errors": 0
+        },
+        {
+          "line": 2925,
+          "resolution": [
+            960,
+            540
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10059,
+          "frames": 134,
+          "fps_x100": 1332,
+          "present_avg_us": 255,
+          "lock_avg_us": 0,
+          "driver_avg_us": 201,
+          "errors": 0
+        }
+      ]
+    }
+  },
+  "capture_resolution": [
+    1280,
+    720
+  ],
+  "capture_start_line": 1828,
+  "capture_end_line": 2175,
+  "capture_duration_ms": 30000,
+  "capture_average_frame_ms": 64.62562203023758,
+  "capture_fps": 15.473738876077844,
+  "submit_thread_cpu_ms": 249.497,
+  "submit_calls": 3478,
+  "submit_wall_ms": 6421.389,
+  "submits_per_present_interval": 7.5118790496760255,
+  "registered_cpu_samples": [
+    {
+      "line": 1751,
+      "registered_cores": 1.4,
+      "threads": {
+        "4w": 38.8,
+        "72w": 19.7,
+        "40w": 16.6,
+        "24w": 14.0,
+        "108w": 10.2,
+        "20w": 8.7,
+        "16w": 8.6,
+        "60w": 8.1,
+        "28w": 7.2,
+        "36w": 2.8,
+        "12w": 1.5,
+        "104w": 1.2
+      }
+    },
+    {
+      "line": 1784,
+      "registered_cores": 1.56,
+      "threads": {
+        "4w": 30.1,
+        "40w": 30.1,
+        "24w": 23.8,
+        "16w": 15.8,
+        "20w": 15.7,
+        "108w": 14.8,
+        "28w": 14.0,
+        "36w": 4.8,
+        "72w": 1.8,
+        "104w": 1.2,
+        "8w": 0.8,
+        "8s": 0.7
+      }
+    },
+    {
+      "line": 1834,
+      "registered_cores": 1.56,
+      "threads": {
+        "4w": 32.9,
+        "40w": 29.1,
+        "24w": 21.8,
+        "108w": 18.3,
+        "16w": 14.0,
+        "20w": 13.9,
+        "28w": 13.9,
+        "36w": 4.4,
+        "72w": 1.9,
+        "104w": 1.3,
+        "8s": 0.9,
+        "32w": 0.8
+      }
+    },
+    {
+      "line": 1956,
+      "registered_cores": 1.59,
+      "threads": {
+        "40w": 34.8,
+        "4w": 25.8,
+        "24w": 23.4,
+        "28w": 17.2,
+        "108w": 16.2,
+        "20w": 15.6,
+        "16w": 14.7,
+        "36w": 5.3,
+        "72w": 1.8,
+        "104w": 1.3,
+        "8s": 0.9,
+        "0s": 0.7
+      }
+    },
+    {
+      "line": 2078,
+      "registered_cores": 1.59,
+      "threads": {
+        "40w": 34.9,
+        "4w": 26.7,
+        "24w": 22.4,
+        "28w": 17.0,
+        "108w": 15.8,
+        "20w": 14.9,
+        "16w": 14.6,
+        "36w": 5.5,
+        "72w": 1.9,
+        "104w": 1.3,
+        "8s": 1.1,
+        "0s": 0.8
+      }
+    },
+    {
+      "line": 2220,
+      "registered_cores": 1.6,
+      "threads": {
+        "40w": 37.1,
+        "4w": 26.8,
+        "24w": 23.1,
+        "28w": 18.1,
+        "20w": 14.8,
+        "16w": 14.2,
+        "108w": 11.8,
+        "36w": 6.1,
+        "72w": 2.0,
+        "8s": 1.3,
+        "104w": 1.3,
+        "0s": 0.9
+      }
+    },
+    {
+      "line": 2251,
+      "registered_cores": 1.56,
+      "threads": {
+        "40w": 33.7,
+        "4w": 25.7,
+        "24w": 24.2,
+        "16w": 16.0,
+        "28w": 16.0,
+        "20w": 15.7,
+        "108w": 11.1,
+        "36w": 5.7,
+        "72w": 2.2,
+        "104w": 1.3,
+        "8s": 1.2,
+        "0s": 0.9
+      }
+    },
+    {
+      "line": 2294,
+      "registered_cores": 1.46,
+      "threads": {
+        "4w": 29.6,
+        "40w": 28.9,
+        "24w": 20.6,
+        "16w": 13.9,
+        "20w": 13.7,
+        "28w": 13.5,
+        "108w": 11.4,
+        "36w": 4.8,
+        "72w": 2.6,
+        "8s": 1.3,
+        "104w": 1.3,
+        "12w": 1.2
+      }
+    },
+    {
+      "line": 2355,
+      "registered_cores": 1.47,
+      "threads": {
+        "4w": 30.6,
+        "40w": 24.4,
+        "24w": 22.7,
+        "16w": 15.8,
+        "20w": 15.3,
+        "108w": 13.6,
+        "28w": 11.5,
+        "36w": 4.1,
+        "72w": 3.0,
+        "104w": 1.2,
+        "8s": 1.1,
+        "0s": 0.9
+      }
+    },
+    {
+      "line": 2388,
+      "registered_cores": 1.54,
+      "threads": {
+        "4w": 31.7,
+        "40w": 25.8,
+        "24w": 24.3,
+        "20w": 17.1,
+        "16w": 15.4,
+        "108w": 14.6,
+        "28w": 12.1,
+        "36w": 4.1,
+        "72w": 3.7,
+        "8s": 1.2,
+        "104w": 1.2,
+        "0s": 0.9
+      }
+    },
+    {
+      "line": 2430,
+      "registered_cores": 1.54,
+      "threads": {
+        "4w": 36.4,
+        "40w": 25.1,
+        "24w": 23.1,
+        "108w": 14.9,
+        "20w": 14.8,
+        "16w": 14.2,
+        "28w": 11.7,
+        "72w": 4.4,
+        "36w": 3.8,
+        "8s": 1.5,
+        "0s": 1.3,
+        "104w": 1.3
+      }
+    },
+    {
+      "line": 2481,
+      "registered_cores": 1.57,
+      "threads": {
+        "4w": 34.0,
+        "40w": 28.0,
+        "24w": 23.3,
+        "20w": 15.2,
+        "16w": 14.2,
+        "108w": 14.1,
+        "28w": 13.5,
+        "36w": 4.4,
+        "72w": 3.9,
+        "8s": 1.5,
+        "104w": 1.3,
+        "0s": 1.2
+      }
+    },
+    {
+      "line": 2513,
+      "registered_cores": 1.54,
+      "threads": {
+        "4w": 33.0,
+        "40w": 26.4,
+        "24w": 24.4,
+        "16w": 16.0,
+        "20w": 14.6,
+        "108w": 13.8,
+        "28w": 12.7,
+        "36w": 4.4,
+        "72w": 3.7,
+        "8s": 1.5,
+        "104w": 1.3,
+        "0s": 1.1
+      }
+    },
+    {
+      "line": 2544,
+      "registered_cores": 1.53,
+      "threads": {
+        "4w": 28.2,
+        "40w": 26.7,
+        "24w": 25.8,
+        "16w": 16.6,
+        "20w": 16.3,
+        "108w": 13.9,
+        "28w": 12.4,
+        "36w": 4.5,
+        "72w": 3.2,
+        "8s": 1.4,
+        "104w": 1.2,
+        "0s": 1.0
+      }
+    },
+    {
+      "line": 2593,
+      "registered_cores": 1.52,
+      "threads": {
+        "4w": 31.2,
+        "24w": 25.5,
+        "40w": 24.2,
+        "16w": 16.4,
+        "20w": 16.1,
+        "108w": 13.7,
+        "28w": 11.2,
+        "72w": 4.1,
+        "36w": 4.0,
+        "8s": 1.7,
+        "104w": 1.3,
+        "0s": 1.2
+      }
+    },
+    {
+      "line": 2626,
+      "registered_cores": 1.26,
+      "threads": {
+        "4w": 24.4,
+        "40w": 22.9,
+        "24w": 19.6,
+        "108w": 13.7,
+        "16w": 12.2,
+        "20w": 11.3,
+        "28w": 10.7,
+        "36w": 3.3,
+        "72w": 2.3,
+        "8s": 1.8,
+        "0s": 1.2,
+        "104w": 1.2
+      }
+    },
+    {
+      "line": 2670,
+      "registered_cores": 1.51,
+      "threads": {
+        "24w": 29.7,
+        "4w": 24.6,
+        "40w": 24.5,
+        "16w": 19.6,
+        "20w": 19.4,
+        "28w": 11.1,
+        "108w": 10.1,
+        "36w": 4.1,
+        "8s": 1.9,
+        "0s": 1.7,
+        "104w": 1.3,
+        "12w": 1.0
+      }
+    },
+    {
+      "line": 2726,
+      "registered_cores": 1.6,
+      "threads": {
+        "24w": 34.1,
+        "40w": 31.1,
+        "16w": 22.2,
+        "20w": 21.5,
+        "4w": 20.5,
+        "28w": 13.7,
+        "108w": 5.2,
+        "36w": 4.6,
+        "8s": 2.3,
+        "0s": 1.9,
+        "104w": 1.3,
+        "32w": 0.8
+      }
+    },
+    {
+      "line": 2782,
+      "registered_cores": 1.51,
+      "threads": {
+        "24w": 32.0,
+        "40w": 25.6,
+        "4w": 22.8,
+        "20w": 20.7,
+        "16w": 20.0,
+        "28w": 11.9,
+        "108w": 6.5,
+        "36w": 4.4,
+        "8s": 1.9,
+        "0s": 1.5,
+        "104w": 1.2,
+        "32w": 0.7
+      }
+    },
+    {
+      "line": 2816,
+      "registered_cores": 1.53,
+      "threads": {
+        "24w": 29.2,
+        "4w": 28.9,
+        "40w": 20.9,
+        "16w": 19.2,
+        "20w": 19.1,
+        "108w": 14.3,
+        "28w": 9.5,
+        "36w": 3.4,
+        "72w": 2.5,
+        "8s": 1.9,
+        "0s": 1.3,
+        "104w": 1.3
+      }
+    },
+    {
+      "line": 2865,
+      "registered_cores": 1.52,
+      "threads": {
+        "4w": 29.1,
+        "24w": 27.0,
+        "40w": 23.1,
+        "16w": 18.1,
+        "20w": 18.0,
+        "108w": 13.4,
+        "28w": 10.5,
+        "36w": 4.0,
+        "72w": 2.7,
+        "8s": 1.8,
+        "0s": 1.3,
+        "104w": 1.2
+      }
+    },
+    {
+      "line": 2896,
+      "registered_cores": 1.5,
+      "threads": {
+        "4w": 29.1,
+        "24w": 27.5,
+        "40w": 21.0,
+        "20w": 18.9,
+        "16w": 18.3,
+        "108w": 14.0,
+        "28w": 9.7,
+        "36w": 3.6,
+        "72w": 2.7,
+        "8s": 1.6,
+        "104w": 1.2,
+        "0s": 1.1
+      }
+    },
+    {
+      "line": 2927,
+      "registered_cores": 1.52,
+      "threads": {
+        "4w": 30.1,
+        "24w": 27.6,
+        "40w": 21.9,
+        "16w": 18.5,
+        "20w": 17.9,
+        "108w": 13.6,
+        "28w": 9.9,
+        "36w": 3.6,
+        "72w": 2.7,
+        "8s": 1.9,
+        "0s": 1.3,
+        "104w": 1.2
+      }
+    }
+  ],
+  "limitations": [
+    "Each snapshot is cumulative; use only the latest snapshot or differences, never sum snapshots.",
+    "Different thread durations overlap; Wine and Vulkan totals are not removable frame cost.",
+    "Thread mappings are observed snapshots; exited or recycled handles may be missing or ambiguous.",
+    "Present CPU ticks cover only that thread, and invalid CPU intervals are excluded.",
+    "Only calls wholly inside the capture are counted; live snapshots may see partial updates.",
+    "No GPU timestamps, measured clocks or temperatures. No definitive CPU/GPU bottleneck verdict.",
+    "Sub-30-FPS windows are a workload heuristic, not verified gameplay/scene markers.",
+    "The resolution-transition window is excluded from per-resolution aggregates.",
+    "720p/540p scene and camera are uncontrolled; this is not a paired resolution benchmark.",
+    "The 30-second per-thread capture ended before the switch to 540p.",
+    "User overlay readings are not recorded in the log; 6 GB/s is traffic, not 6 GB allocated RAM.",
+    "Registered CPU utilization excludes unregistered/system threads.",
+    "No measured FPS gain from batching is available."
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "dll_sha256": "3a8e9cbc9f45c0d17c06f9789697609abe847571389fd4b5336e4bbfc2b90126",
+  "prior_dll_sha256": "cce529e75bc5417f56781b2654d8298e0a8e9cfced0a6b5a742a0768c7dab199",
+  "prior_policy_desync_reproduced": {
+    "policy": 2,
+    "backend_flags": 1,
+    "notified": [],
+    "events": "S",
+    "locks": 0,
+    "status": 0
+  },
+  "cases": {
+    "initial": {
+      "policy": 2,
+      "backend_flags": 2,
+      "notified": [
+        2
+      ],
+      "events": "QN",
+      "locks": 0,
+      "status": 0
+    },
+    "self-disable": {
+      "policy": 2,
+      "backend_flags": 2,
+      "notified": [
+        2
+      ],
+      "events": "SQN",
+      "locks": 0,
+      "status": 0
+    },
+    "self-enable": {
+      "policy": 9,
+      "backend_flags": 9,
+      "notified": [
+        9
+      ],
+      "events": "SQN",
+      "locks": 0,
+      "status": 0
+    },
+    "self-real": {
+      "policy": 2,
+      "backend_flags": 2,
+      "notified": [
+        2
+      ],
+      "events": "SIQN",
+      "locks": 0,
+      "status": 0
+    },
+    "remote": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "SI",
+      "locks": 0,
+      "status": 0
+    },
+    "denied": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "S",
+      "locks": 0,
+      "status": 3221225506
+    },
+    "bad-size": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "S",
+      "locks": 0,
+      "status": 3221225476
+    },
+    "null-buffer": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "S",
+      "locks": 0,
+      "status": 3221225477
+    },
+    "query-error": {
+      "policy": 2,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "SQ",
+      "locks": 0,
+      "status": 0
+    },
+    "identity-error": {
+      "policy": 2,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "SI",
+      "locks": 0,
+      "status": 0
+    },
+    "backend-absent": {
+      "policy": 2,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "S",
+      "locks": 0,
+      "status": 0
+    },
+    "initial-backend-absent": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "",
+      "locks": 0,
+      "status": 0
+    },
+    "initial-query-error": {
+      "policy": 1,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "Q",
+      "locks": 0,
+      "status": 0
+    },
+    "other-information-class": {
+      "policy": 2,
+      "backend_flags": 1,
+      "notified": [],
+      "events": "S",
+      "locks": 0,
+      "status": 0
+    }
+  },
+  "context_regression_cases": 9,
+  "export_abi_preserved": true,
+  "dependency_dlls_unchanged": true,
+  "hardware_tested": false,
+  "scope": "Actual ARM64 WoW64 DLL; external NT/CPU APIs mocked",
+  "sources": {
+    "tests/check_dep_bridge_binary.py": "d0b565b662b8a067f26e0ac2a6ab4b258b3825deef7ea8b5c8b37e096d478962"
+  }
+}

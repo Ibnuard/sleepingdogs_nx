@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "elf_sha256": "73a8dfde96b51a7c77da97b8223bf536c20ecee0174ae9319c54b78e8d709cf0",
+  "nro_sha256": "366e9d7c175b48654c0faf9200dc04da98b4a6e1ba85da0771c8b7318b917fbb",
+  "inherited_checks": {
+    "direct-sync": "6d264c70ed0226d8bfff7cea9665657b366b2d2908c651ee77917ca9c7ee3162",
+    "low-window": "baf24bf43ff36bce5806f805fcb83f33f9bc52f50ec1f3d814bdd58b5762904c",
+    "shader": "e459eaf4005c26555d225c7e8156c1c254457621bde5bed74da38f2b5563bc9e"
+  },
+  "lsfg_link_routes": {
+    "wine_nx_lsfg_prepare_swapchain": [
+      "f1_impl_win32u_vkCreateSwapchainKHR.isra.0"
+    ],
+    "wine_nx_lsfg_create": [
+      "f1_impl_win32u_vkCreateSwapchainKHR.isra.0"
+    ],
+    "wine_nx_lsfg_destroy": [
+      "win32u_vkDestroySwapchainKHR"
+    ],
+    "wine_nx_lsfg_device_features": [
+      "win32u_vkCreateDevice"
+    ],
+    "wine_nx_lsfg_present": [
+      "f1_impl_win32u_vkQueuePresentKHR"
+    ]
+  },
+  "cache_identity": {
+    "instance_build_sha": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+    "pipeline_build_id": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1",
+    "pipeline_uuid": "7ebc440af4cfc181c5eadf217fd9497c",
+    "disk_cache": {
+      "renderer": "nvk_012b",
+      "timestamp": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+      "flags": 4660
+    },
+    "identities_match": true,
+    "logs": [
+      "[SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity"
+    ],
+    "cache_block_entry": "0x9d3e8",
+    "cache_block_end": "0x9d544"
+  },
+  "nro_matches_elf": true,
+  "hardware_tested": false
+}

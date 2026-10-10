@@ -1,0 +1,10 @@
+{
+  "status": "BUILT",
+  "backend_revision": "8b0da2661c6f3473a7fccc8ba643880050e71642",
+  "horizon_revision": "28b2fe1bc39ef1f4c4fe217c430a6908e7d4c7e8",
+  "dxbc_revision": "78ab59a8aaeb43cd1b0a5e91ba86722433a10b78",
+  "library_sha256": "33caaf017c638a6fd46c196dcc94478ad98e5efb868a1cabe92696e565a27a2f",
+  "converter_sha256": "5a69d84cd1b5fa4b03827f03225109041bd902002a22924182923f4f77b7106c",
+  "fixed_x18": true,
+  "soft_tls": true
+}

@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-frame-diagnostics.zip",
+    "bytes": 12161277,
+    "sha256": "f753ec3e8b716facbce7740851ffee1c1344e559a4a5aa13bb0979cf5b968cf1",
+    "files": 197
+  },
+  "build": "sleepingdogs-low-window-v11-frame-diagnostics",
+  "nro_sha256": "91cce20983b88834d9652deb9f5225ec431c300a0440e34370766f9372ecd7d8",
+  "elf_sha256": "e8cf0e365a75716d179bcc8e55f41317b87bee3fe7928ca92a50f7339ed70f1e",
+  "baseline_sha256": "b352ef810914d90fc2cda9b153b5c2f871e85004678102f8c9b77aabcc73bacf",
+  "baseline_preserved": true,
+  "changed_native_files": [
+    "dlls/ntdll/unix/server.c",
+    "wine-nx-probe/source/f1_bounded_profile.h",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_frame_diag_core.h",
+    "wine-nx-probe/source/sd_frame_diag_runtime.h",
+    "wine-nx-probe/source/sd_frame_diag_thread_map.h",
+    "wine-nx-probe/source/thread_profile.c"
+  ],
+  "game_files_changed": [],
+  "fex_adapter_unchanged": true,
+  "dxvk_unchanged": true,
+  "graphics_presets_unchanged": true,
+  "target_resolution": [
+    1280,
+    720
+  ],
+  "sync_mode": 2,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "diagnostics_duration_ms": 30000,
+  "reports": {
+    "frame-diagnostics": "e68255b1d1a354298dd06e0d66c98483b038762b0f84686bad75ac1da5ff348b",
+    "diagnostic-binary": "8ade5b9647aa1b4b8f146d2b510e901154f44e1d6eeaa06c40bbd8bc2d0b2834",
+    "direct-sync-binary": "f0ac62ea364a42a3685b79946a7bef5e4620942b203cfce347d88d5255322dbc",
+    "shader-binary": "1e819968e7a741f50494be130dcc3a8f0244dbfa4cb32fc0f0b044df4db05239",
+    "cpu-topology": "2f681be7a4d035204f1686e324d553488d1efbf1cbc5ee8fdb2d55681e70c388",
+    "sync-startup-binary": "c8a53c9cc9eb97fa3481ff2371f7a5c2974b429cd504e71e0def89444e2bba53",
+    "binary": "a182994d2d2fb6fe46582050c1a86d2752592cc70ea5756515ccdce60eb8cea9"
+  }
+}

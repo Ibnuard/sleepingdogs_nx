@@ -1,0 +1,65 @@
+{
+  "input_sha256": {
+    "crash.log": "b91504dcb4e96521674ab859c98636b517a408ee08020943539a88a27134876a",
+    "fex-runtime.log": "577361d9bd4f09046679872d1ff8039f31eeba13df6738a733371bd191c6b109"
+  },
+  "original_log_directory": "D:\\Dev\\Switch\\SwitchHub\\pes13-fex39\\dist\\pes13-fex39-0.5.0-SD",
+  "user_progress": "Main menu reached; crashes when pressing START",
+  "first_fault": {
+    "module": "HKShip.exe",
+    "eip": "0x00e5897a",
+    "target": "0x40",
+    "access": "write",
+    "instructions": [
+      {
+        "address": "0xe5897a",
+        "op": "rep movsd",
+        "args": "dword ptr es:[edi], dword ptr [esi]",
+        "bytes": "f3a5"
+      },
+      {
+        "address": "0xe5897c",
+        "op": "jmp",
+        "args": "dword ptr [edx*4 + 0xe58a94]",
+        "bytes": "ff2495948ae500"
+      },
+      {
+        "address": "0xe58983",
+        "op": "nop",
+        "args": "",
+        "bytes": "90"
+      },
+      {
+        "address": "0xe58984",
+        "op": "mov",
+        "args": "eax, edi",
+        "bytes": "8bc7"
+      }
+    ]
+  },
+  "secondary_fault": {
+    "eip": "0x0071d2ab",
+    "target": "0x10005"
+  },
+  "gpu_oom_bytes": 5242880,
+  "dxvk_allocated_mib": 196,
+  "dxvk_used_mib": 182,
+  "previous_allocated_mib": 231,
+  "heap_available_bytes": 58191296,
+  "largest_examined_bytes": 692472,
+  "gpu_pool_bytes": 134217728,
+  "gpu_pool_last_free_bytes": 6029312,
+  "gpu_pool_last_largest_bytes": 3145728,
+  "process_total_bytes": 2147483648,
+  "process_used_bytes": 2043723776,
+  "process_unclaimed_quota_bytes": 103759872,
+  "pinned_loader_reserve_bytes": 100663296,
+  "new_loader_reserve_bytes": 33554432,
+  "additional_kernel_heap_bytes": 67108864,
+  "new_gpu_pool_max_bytes": 268435456,
+  "legacy_loader_pool_bytes": 134217728,
+  "compiler_and_sdmem1_markers_present": true,
+  "inference": "The game continues copying to NULL+0x40 after DXVK reports allocation failure. GPU backing fragmentation remains despite lower DXVK overhead.",
+  "change": "Increase full-quota loader heap by 64 MiB and gate the larger 256 MiB GPU pool on the paired loader plus actual capacity.",
+  "hardware_tested": false
+}

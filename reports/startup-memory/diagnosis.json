@@ -1,0 +1,36 @@
+{
+  "log_sha256": "9ed87cb39db311f736ad79d6a951a04eec04ded6b02664fea0b94cb97a8c72f7",
+  "previous_self_suspend_passed": true,
+  "fex_profile": "fastest (2)",
+  "allocation": {
+    "status": "confirmed failure",
+    "bytes": 1048576000,
+    "type": "0x103000",
+    "largest_free_bytes": 193986560,
+    "native_heap_capacity": 2003214336,
+    "gpu_reservation_old": 671088640
+  },
+  "executable": {
+    "sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+    "pool_allocator": "0x8b4f20",
+    "fixed_size_push": "0x8b4fb8",
+    "allocator_call": "0x8b4fbd -> 0x5b11d0",
+    "virtual_alloc_iat": "0x10e1290",
+    "requested_protect": "PAGE_READWRITE",
+    "pool_pointer": "0x1456d48",
+    "pool_size_consumer": "0x8b4ffb"
+  },
+  "subsequent_fault": {
+    "status": "c0000005",
+    "reconstructed_guest_pc": "fffffffe",
+    "first_present": 0,
+    "physical_retest_required": true
+  },
+  "change": "Early owned 1000 MiB native heap arena exposed as one Wine data view without a duplicate virtual alias; GPU preallocation 256 MiB; process quota and original game files unchanged.",
+  "limits": [
+    "Arena consumes real physical memory.",
+    "Only exact 1000 MiB anonymous reserve+commit RW requests use it.",
+    "Full release and per-page decommit/recommit supported; partial release and executable/WRITECOPY changes rejected.",
+    "Switch boot and graphics remain unverified."
+  ]
+}

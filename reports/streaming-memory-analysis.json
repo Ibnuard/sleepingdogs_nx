@@ -1,0 +1,133 @@
+{
+  "input_sha256": {
+    "crash.log": "5391270b6f01fbac2779ecfdba480c865a26617bf0b39ecac5f9de8300c1fd85",
+    "fex-runtime.log": "90300dc32f458b2c867f1ce0bb7a7468b9a0b5aa5027773411b80722b24f9af4"
+  },
+  "original_log_directory": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08",
+  "user_progress": "Main menu and New Game loading reached; crash approaching the 3D scene",
+  "mode": "gui",
+  "paired_256_mib_gpu_pool_active": true,
+  "fex_fastest": true,
+  "gpu_oom_bytes": 5242880,
+  "final_gpu_pool": {
+    "capacity": 268435456,
+    "used": 262799360,
+    "free": 5636096,
+    "largest": 2097152
+  },
+  "normal_heap_largest_examined_bytes": 720952,
+  "dxvk_allocated_mib": 256,
+  "dxvk_used_mib": 241,
+  "process_total_bytes": 2147483648,
+  "process_used_bytes": 2110832640,
+  "last_periodic_render_snapshot": {
+    "heap_free_bytes": 59251680,
+    "unclaimed_bytes": 44412928,
+    "timing_caveat": "Before the New Game failure; GUI has no contemporaneous full heap snapshot at OOM."
+  },
+  "first_fault": {
+    "module": "HKShip.exe",
+    "eip": "0x00e5897a",
+    "instruction": "rep movsd",
+    "access": "write",
+    "target": "0x40",
+    "ecx": "0x10",
+    "esi": "0x9f4f0040",
+    "edi": "0x40",
+    "caller": "0x00a5a6fe"
+  },
+  "secondary_fault": {
+    "eip": "0x0071d2ab",
+    "target": "0x10005"
+  },
+  "inference": "The game copies to NULL+0x40 after a failed deferred Map. Native GPU backing is fragmented and nearly full.",
+  "source_observation": "sdmem1 tries shared suballocation even for large mapped buffers. A small live allocation can retain a retiring large buffer backing.",
+  "hypothesis": "Dedicated large mapped allocations plus size segregation reduce small-allocation interference during scene loading. The log does not record every resource lifetime.",
+  "change": {
+    "mapped_dedicated_threshold_bytes": 2097152,
+    "total_gpu_pool_bytes": 268435456,
+    "large_preferred_region_bytes": 67108864,
+    "small_borrow_contiguous_guard_bytes": 16777216,
+    "forwarder_unchanged": true,
+    "compiler_buffers_unchanged": true
+  },
+  "evidence": [
+    {
+      "line": 7,
+      "text": "[SD-COMPILER-MEM] native=v1 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=4"
+    },
+    {
+      "line": 49,
+      "text": "[SD-GPU-BUDGET] v1 paired_loader=1 heap=2070044672 target_mib=256 reserved_mib=256"
+    },
+    {
+      "line": 50,
+      "text": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0"
+    },
+    {
+      "line": 270,
+      "text": "[SD-COMPILER-MEM] fex=v1 compile_slots=4 decoder=instruction-limit ir_mib=16"
+    },
+    {
+      "line": 1447,
+      "text": "[SD-GPU-HEAP] bytes=2097152 align=65536 recovered=0 largest_examined=720952 scanned=10 attempt=2"
+    },
+    {
+      "line": 1449,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=10 attempt=3"
+    },
+    {
+      "line": 1450,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=10 attempt=4"
+    },
+    {
+      "line": 1451,
+      "text": "[SD-GPU-ARENA] capacity=268435456 used=262799360 free=5636096 largest=2097152 peak=268435456 live=160 takes=176 misses=124 returned=16 invalid=0"
+    },
+    {
+      "line": 1454,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=10 attempt=5"
+    },
+    {
+      "line": 1455,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=10 attempt=6"
+    },
+    {
+      "line": 1458,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=9 attempt=7"
+    },
+    {
+      "line": 1459,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=9 attempt=8"
+    },
+    {
+      "line": 1460,
+      "text": "[SD-GPU-ARENA] capacity=268435456 used=262799360 free=5636096 largest=2097152 peak=268435456 live=160 takes=176 misses=128 returned=16 invalid=0"
+    },
+    {
+      "line": 1463,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=9 attempt=9"
+    },
+    {
+      "line": 1464,
+      "text": "[SD-GPU-HEAP] bytes=5242880 align=65536 recovered=0 largest_examined=720952 scanned=9 attempt=10"
+    },
+    {
+      "line": 1473,
+      "text": "[WINE] err:   [SD-DXVK-MAP] deferred buffer allocation failed: bytes=5242880"
+    },
+    {
+      "line": 1482,
+      "text": "[SD-FIRSTFAULT] access=1 target=40 flags=00000000"
+    },
+    {
+      "line": 1483,
+      "text": "[SD-FIRSTFAULT] eip=00e5897a esp=0166ee18 ebp=0166ee20 eflags=00000212 context_flags=0001003f"
+    },
+    {
+      "line": 1529,
+      "text": "[SD-FIRSTFAULT] eip=0071d2ab esp=0166e250 ebp=013ef7dc eflags=00000293 context_flags=0001003f"
+    }
+  ],
+  "candidate_hardware_tested": false
+}

@@ -1,0 +1,532 @@
+From ed2b4dd00d06a60b233a6fb3b1397689eb4e80a3 Mon Sep 17 00:00:00 2001
+From: naga <38852591+NaGaa95@users.noreply.github.com>
+Date: Mon, 28 Sep 2026 16:11:46 +0200
+Subject: [PATCH] nvk: enable safe persistent and transient ZCULL on Horizon
+
+---
+ src/nouveau/horizon/nouveau_horizon.h         |  4 ++
+ src/nouveau/horizon/nouveau_horizon_device.c  | 36 +++++++++--
+ src/nouveau/vulkan/nvk_cmd_buffer.c           | 26 +++++++-
+ src/nouveau/vulkan/nvk_cmd_buffer.h           |  5 +-
+ src/nouveau/vulkan/nvk_cmd_draw.c             | 57 +++++++++++------
+ src/nouveau/vulkan/nvk_event.c                |  3 +
+ src/nouveau/vulkan/nvk_image.c                | 62 +++++++++++++++++--
+ src/nouveau/vulkan/nvk_image.h                |  2 +
+ .../vulkan/nvkmd/switch/nvkmd_switch_dev.c    | 56 +++++++++++++++++
+ .../vulkan/nvkmd/switch/nvkmd_switch_pdev.c   |  9 ++-
+ 10 files changed, 223 insertions(+), 37 deletions(-)
+
+diff --git a/src/nouveau/horizon/nouveau_horizon.h b/src/nouveau/horizon/nouveau_horizon.h
+index 5f5d3c1a8db..faea7b739c6 100644
+--- a/src/nouveau/horizon/nouveau_horizon.h
++++ b/src/nouveau/horizon/nouveau_horizon.h
+@@ -432,6 +432,10 @@ nouveau_horizon_runtime_shutdown(void (*step)(const char *what));
+ void
+ nouveau_horizon_get_gm20b_info(struct nv_device_info *info_out);
+ 
++/* Requires a live runtime reference. Invalid geometry leaves ZCULL disabled. */
++void
++nouveau_horizon_add_zcull_info(struct nv_device_info *info_out);
++
+ enum nouveau_horizon_status
+ nouveau_horizon_device_create(
+    struct nouveau_horizon_runtime *runtime,
+diff --git a/src/nouveau/horizon/nouveau_horizon_device.c b/src/nouveau/horizon/nouveau_horizon_device.c
+index 7824c9bfb0c..e319d189754 100644
+--- a/src/nouveau/horizon/nouveau_horizon_device.c
++++ b/src/nouveau/horizon/nouveau_horizon_device.c
+@@ -61,19 +61,43 @@ nouveau_horizon_get_gm20b_info(struct nv_device_info *info_out)
+    info_out->nc_atom_size_B = 128;
+ }
+ 
+-static void
+-nouveau_horizon_add_runtime_device_info(struct nouveau_horizon_device *device)
++void
++nouveau_horizon_add_zcull_info(struct nv_device_info *info_out)
+ {
++   if (info_out == NULL)
++      return;
++
++   info_out->has_zcull_info = false;
++   memset(&info_out->zcull_info, 0, sizeof(info_out->zcull_info));
++
+    const nvioctl_zcull_info *zcull = nvGpuGetZcullInfo();
+    const uint32_t ctxsw_size = nvGpuGetZcullCtxSize();
++   /* NIL supports 16 subregions; GM20B geometry fields are 16 bits. */
+    if (zcull == NULL || ctxsw_size == 0 ||
+        zcull->width_align_pixels == 0 ||
++       zcull->width_align_pixels > UINT16_MAX ||
+        zcull->height_align_pixels == 0 ||
++       zcull->height_align_pixels > UINT16_MAX ||
+        zcull->pixel_squares_by_aliquots == 0 ||
+-       zcull->aliquot_total == 0)
++       zcull->aliquot_total == 0 ||
++       zcull->aliquot_total > UINT16_MAX ||
++       zcull->subregion_count == 0 || zcull->subregion_count > 16 ||
++       zcull->subregion_width_align_pixels == 0 ||
++       zcull->subregion_width_align_pixels > UINT16_MAX ||
++       zcull->subregion_height_align_pixels == 0 ||
++       zcull->subregion_height_align_pixels > UINT16_MAX ||
++       zcull->region_byte_multiplier == 0 ||
++       (zcull->region_byte_multiplier & 3) != 0 ||
++       ((zcull->region_header_size | zcull->subregion_header_size) & 3) != 0)
++      return;
++
++   const uint64_t max_size_B =
++      (uint64_t)zcull->aliquot_total * zcull->region_byte_multiplier +
++      zcull->region_header_size + zcull->subregion_header_size;
++   if (max_size_B > UINT32_MAX)
+       return;
+ 
+-   device->info.zcull_info = (struct nv_zcull_device_info) {
++   info_out->zcull_info = (struct nv_zcull_device_info) {
+       .width_align_pixels = zcull->width_align_pixels,
+       .height_align_pixels = zcull->height_align_pixels,
+       .pixel_squares_by_aliquots = zcull->pixel_squares_by_aliquots,
+@@ -90,7 +114,7 @@ nouveau_horizon_add_runtime_device_info(struct nouveau_horizon_device *device)
+       /* nvhost allocates the GM20B Z-cull context at a 4 KiB boundary. */
+       .ctxsw_align = 0x1000,
+    };
+-   device->info.has_zcull_info = true;
++   info_out->has_zcull_info = true;
+ }
+ 
+ static uint32_t
+@@ -209,7 +233,7 @@ nouveau_horizon_device_create(
+       device->enable_timing = create_info->enable_timing;
+    }
+    nouveau_horizon_get_gm20b_info(&device->info);
+-   nouveau_horizon_add_runtime_device_info(device);
++   nouveau_horizon_add_zcull_info(&device->info);
+ 
+    const nvioctl_gpu_characteristics *gpu_info = nvGpuGetCharacteristics();
+    device->page_size_B = nouveau_horizon_choose_page_size(gpu_info);
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
+index 2b414d92120..444d49075f5 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
+@@ -1169,23 +1169,43 @@ nvk_cmd_invalidate_deps(struct nvk_cmd_buffer *cmd,
+       P_IMMD(p, NVB1C0, INVALIDATE_SKED_CACHES, 0);
+ }
+ 
+-static void
++void
+ nvk_cmd_image_layout_transition(struct nvk_cmd_buffer *cmd,
+                                 const VkDependencyInfo *dep)
+ {
++   bool initialized_zcull = false;
+    for (uint32_t i = 0; i < dep->imageMemoryBarrierCount; i++) {
+       const VkImageMemoryBarrier2 *bar = &dep->pImageMemoryBarriers[i];
+       if (bar->oldLayout == VK_IMAGE_LAYOUT_UNDEFINED &&
+-          bar->newLayout != VK_IMAGE_LAYOUT_UNDEFINED) {
++          bar->newLayout != VK_IMAGE_LAYOUT_UNDEFINED &&
++          (bar->subresourceRange.aspectMask & VK_IMAGE_ASPECT_DEPTH_BIT)) {
+          VK_FROM_HANDLE(nvk_image, image, bar->image);
+          /*
+           * zcull hardware kills the context if we try to LOAD_ZCULL on garbage
+           * data. Handle this by initializing the zcull data to zero.
+           */
+-         if (image->zcull.nil.size_B > 0)
++         if (image->zcull.addr != 0) {
+             nvk_cmd_fill_memory_ce(cmd, image->zcull.addr, image->zcull.nil.size_B, 0);
++            initialized_zcull = true;
++         }
+       }
+    }
++
++   if (initialized_zcull) {
++      /* Finish pipelined fills before a subsequent LOAD_ZCULL can read them. */
++      struct nv_push *p = nvk_cmd_buffer_push(cmd, 5);
++      P_MTHD(p, NV90B5, LINE_LENGTH_IN);
++      P_NV90B5_LINE_LENGTH_IN(p, 0);
++      P_NV90B5_LINE_COUNT(p, 0);
++      P_IMMD(p, NV90B5, LAUNCH_DMA, {
++         .data_transfer_type = DATA_TRANSFER_TYPE_NON_PIPELINED,
++         .multi_line_enable = false,
++         .flush_enable = FLUSH_ENABLE_TRUE,
++         .src_memory_layout = SRC_MEMORY_LAYOUT_PITCH,
++         .dst_memory_layout = DST_MEMORY_LAYOUT_PITCH,
++         .remap_enable = REMAP_ENABLE_TRUE,
++      });
++   }
+ }
+ 
+ VKAPI_ATTR void VKAPI_CALL
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.h b/src/nouveau/vulkan/nvk_cmd_buffer.h
+index c0ea422b7ca..3c6f78ce94d 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.h
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.h
+@@ -198,7 +198,7 @@ struct nvk_rendering_state {
+ 
+    /* True if all the conditions are met to allow rendering to linear */
+    bool linear;
+-
++   bool zcull_enabled;
+ };
+ 
+ struct nvk_graphics_state {
+@@ -430,6 +430,9 @@ void nvk_cmd_invalidate_deps(struct nvk_cmd_buffer *cmd,
+                              uint32_t dep_count,
+                              const VkDependencyInfo *deps);
+ 
++void nvk_cmd_image_layout_transition(struct nvk_cmd_buffer *cmd,
++                                      const VkDependencyInfo *dep);
++
+ void
+ nvk_cmd_buffer_flush_push_descriptors(struct nvk_cmd_buffer *cmd,
+                                       struct nvk_descriptor_state *desc);
+diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
+index 36376d9bf4d..309a5158ff4 100644
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c
+@@ -1181,15 +1181,23 @@ get_depth_stencil_plane_params(struct nvk_image_view *iview,
+    *image_out = nil_image;
+ }
+ 
+-static struct nvk_zcull_plane*
+-nvk_get_zcull_plane(struct nvk_rendering_state *render) {
+-   if (render->depth_att.iview) {
+-      struct nvk_image *img = (struct nvk_image*) render->depth_att.iview->vk.image;
+-      if (img->zcull.nil.size_B > 0) {
+-         return &img->zcull;
+-      }
+-   }
+-   return NULL;
++static struct nvk_image *
++nvk_get_zcull_image(const struct nvk_rendering_state *render)
++{
++   const struct nvk_image_view *iview = render->depth_att.iview;
++   if (iview == NULL)
++      return NULL;
++
++#ifdef HAVE_SWITCH_PLATFORM
++   if (render->linear || render->view_mask > 1 ||
++       render->area.extent.width == 0 || render->area.extent.height == 0 ||
++       (render->view_mask == 0 && render->layer_count != 1) ||
++       iview->vk.base_mip_level != 0 || iview->vk.base_array_layer != 0 ||
++       iview->vk.layer_count != 1)
++      return NULL;
++#endif
++
++   return (struct nvk_image *)iview->vk.image;
+ }
+ 
+ static uint32_t
+@@ -1531,14 +1539,20 @@ nvk_CmdBeginRendering(VkCommandBuffer commandBuffer,
+       P_IMMD(p, NV9097, SET_ZT_SELECT, 0 /* target_count */);
+    }
+ 
+-   /* TODO: zcull for depth-stencil */
+-   struct nvk_zcull_plane *zcull_plane = nvk_get_zcull_plane(render);
++   struct nvk_image *zcull_image = nvk_get_zcull_image(render);
++   struct nvk_zcull_plane *zcull_plane =
++      zcull_image != NULL && zcull_image->zcull.addr != 0 ?
++      &zcull_image->zcull : NULL;
+    bool use_zcull = pdev->info.has_zcull_info &&
+       pRenderingInfo->pDepthAttachment != NULL &&
+       pRenderingInfo->pDepthAttachment->imageView != VK_NULL_HANDLE &&
+-      pRenderingInfo->pDepthAttachment->loadOp != VK_ATTACHMENT_LOAD_OP_NONE &&
+       (zcull_plane ||
+        pRenderingInfo->pDepthAttachment->loadOp == VK_ATTACHMENT_LOAD_OP_CLEAR);
++#ifdef HAVE_SWITCH_PLATFORM
++   use_zcull &= zcull_image != NULL &&
++                (zcull_plane != NULL || zcull_image->zcull.transient_eligible);
++#endif
++   render->zcull_enabled = use_zcull;
+ 
+    if (use_zcull) {
+       uint32_t start_count = nv_push_dw_count(p);
+@@ -1715,17 +1729,20 @@ nvk_CmdBeginRendering(VkCommandBuffer commandBuffer,
+    if (sample_layout != NIL_SAMPLE_LAYOUT_INVALID)
+       nvk_cmd_set_sample_layout(cmd, sample_layout);
+ 
+-   if (render->flags & VK_RENDERING_RESUMING_BIT)
+-      return;
+-
+    if (use_zcull) {
++      /* A resumed pass has no guaranteed snapshot; rebuild without touching depth. */
++      const VkAttachmentLoadOp load_op =
++         (render->flags & VK_RENDERING_RESUMING_BIT) ?
++         VK_ATTACHMENT_LOAD_OP_DONT_CARE :
++         pRenderingInfo->pDepthAttachment->loadOp;
+       float depth = 0.0f;
+-      switch (pRenderingInfo->pDepthAttachment->loadOp) {
++      switch (load_op) {
+          case VK_ATTACHMENT_LOAD_OP_CLEAR:
+             depth =
+                pRenderingInfo->pDepthAttachment->clearValue.depthStencil.depth;
+             FALLTHROUGH;
+          case VK_ATTACHMENT_LOAD_OP_DONT_CARE:
++         case VK_ATTACHMENT_LOAD_OP_NONE:
+             p = nvk_cmd_buffer_push(cmd, 4);
+             P_IMMD(p, NV9097, SET_Z_CLEAR_VALUE, fui(depth));
+ 
+@@ -1750,6 +1767,9 @@ nvk_CmdBeginRendering(VkCommandBuffer commandBuffer,
+       }
+    }
+ 
++   if (render->flags & VK_RENDERING_RESUMING_BIT)
++      return;
++
+    for (uint32_t i = 0; i < pRenderingInfo->colorAttachmentCount; i++) {
+       const struct nvk_image_view *iview = render->color_att[i].iview;
+       if (iview == NULL)
+@@ -1830,8 +1850,9 @@ nvk_CmdEndRendering2KHR(VkCommandBuffer commandBuffer,
+    VK_FROM_HANDLE(nvk_cmd_buffer, cmd, commandBuffer);
+    struct nvk_rendering_state *render = &cmd->state.gfx.render;
+ 
+-   struct nvk_zcull_plane* zcull_plane = nvk_get_zcull_plane(render);
+-   if (zcull_plane &&
++   struct nvk_image *zcull_image = nvk_get_zcull_image(render);
++   if (render->zcull_enabled && zcull_image && zcull_image->zcull.addr != 0 &&
++       !(render->flags & VK_RENDERING_SUSPENDING_BIT) &&
+        render->depth_att.store_op == VK_ATTACHMENT_STORE_OP_STORE) {
+       struct nv_push *p = nvk_cmd_buffer_push(cmd, 2);
+       P_IMMD(p, NV9097, STORE_ZCULL, 0);
+diff --git a/src/nouveau/vulkan/nvk_event.c b/src/nouveau/vulkan/nvk_event.c
+index 2a671c4be45..37055a41c1b 100644
+--- a/src/nouveau/vulkan/nvk_event.c
++++ b/src/nouveau/vulkan/nvk_event.c
+@@ -257,6 +257,9 @@ nvk_CmdWaitEvents2(VkCommandBuffer commandBuffer,
+       });
+    }
+ 
++   for (uint32_t i = 0; i < eventCount; i++)
++      nvk_cmd_image_layout_transition(cmd, &pDependencyInfos[i]);
++
+    nvk_cmd_invalidate_deps(cmd, eventCount, pDependencyInfos);
+ }
+ 
+diff --git a/src/nouveau/vulkan/nvk_image.c b/src/nouveau/vulkan/nvk_image.c
+index 3124edd35cd..13b86f44929 100644
+--- a/src/nouveau/vulkan/nvk_image.c
++++ b/src/nouveau/vulkan/nvk_image.c
+@@ -854,6 +854,38 @@ nvk_image_can_compress(const struct nvk_physical_device *pdev,
+    return true;
+ }
+ 
++#ifdef __SWITCH__
++static bool
++nvk_switch_image_has_zcull_layout(const struct nvk_image *image,
++                                 const struct nv_zcull_device_info *info)
++{
++   /* One saved plane cannot represent independent mip levels or layers. */
++   if (image->vk.image_type != VK_IMAGE_TYPE_2D ||
++       image->vk.mip_levels != 1 || image->vk.array_layers != 1 ||
++       image->vk.external_handle_types != 0 ||
++       (image->vk.create_flags & VK_IMAGE_CREATE_ALIAS_BIT))
++      return false;
++
++   const uint64_t width =
++      DIV_ROUND_UP((uint64_t)image->vk.extent.width,
++                   info->subregion_width_align_pixels) *
++      info->subregion_width_align_pixels;
++   const uint64_t height =
++      DIV_ROUND_UP((uint64_t)image->vk.extent.height,
++                   info->subregion_height_align_pixels) *
++      info->subregion_height_align_pixels;
++   if (width > UINT16_MAX || height > UINT16_MAX)
++      return false;
++
++   const uint64_t normalized_aliquots =
++      DIV_ROUND_UP(DIV_ROUND_UP(width * height,
++                                info->pixel_squares_by_aliquots),
++                   info->subregion_count) * info->subregion_count;
++
++   return normalized_aliquots <= 0xffffff;
++}
++#endif
++
+ static VkResult
+ nvk_image_init(struct nvk_device *dev,
+                struct nvk_image *image,
+@@ -1090,7 +1122,6 @@ nvk_image_init(struct nvk_device *dev,
+       }
+    }
+ 
+-#ifndef __SWITCH__
+    const VkImageUsageFlagBits READ_ONLY_IMAGE_USAGE =
+       VK_IMAGE_USAGE_TRANSFER_SRC_BIT |
+       VK_IMAGE_USAGE_SAMPLED_BIT |
+@@ -1103,18 +1134,25 @@ nvk_image_init(struct nvk_device *dev,
+    const VkImageUsageFlagBits ZCULL_COMPATIBLE_IMAGE_USAGE =
+       VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT | READ_ONLY_IMAGE_USAGE;
+ 
+-   if ((image->vk.aspects & VK_IMAGE_ASPECT_DEPTH_BIT) &&
++   bool zcull_layout = pdev->info.has_zcull_info &&
++       (image->vk.aspects & VK_IMAGE_ASPECT_DEPTH_BIT) &&
+        (image->vk.usage & VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT) &&
+-       !(image->vk.usage & ~ZCULL_COMPATIBLE_IMAGE_USAGE) &&
+        !(image->vk.create_flags & VK_IMAGE_CREATE_SPARSE_BINDING_BIT) &&
+        image->vk.image_type != VK_IMAGE_TYPE_3D &&
+-       image->vk.tiling == VK_IMAGE_TILING_OPTIMAL &&
+-       pdev->info.has_zcull_info) {
++       image->vk.tiling == VK_IMAGE_TILING_OPTIMAL;
++#ifdef __SWITCH__
++   zcull_layout = zcull_layout &&
++      nvk_switch_image_has_zcull_layout(image, &pdev->info.zcull_info);
++   image->zcull.transient_eligible = zcull_layout &&
++      !(image->vk.usage & ~(ZCULL_COMPATIBLE_IMAGE_USAGE |
++                           VK_IMAGE_USAGE_TRANSFER_DST_BIT));
++#endif
++
++   if (zcull_layout && !(image->vk.usage & ~ZCULL_COMPATIBLE_IMAGE_USAGE)) {
+       image->zcull.nil = nil_zcull_new(&pdev->info.zcull_info, 0, 0,
+                                        image->vk.extent.width,
+                                        image->vk.extent.height);
+    }
+-#endif
+ 
+    const enum pipe_format plane0_format = image->planes[0].nil.format.p_format;
+    if (plane0_format == PIPE_FORMAT_Z32_FLOAT_S8X24_UINT) {
+@@ -1695,6 +1733,14 @@ nvk_image_zcull_bind(struct nvk_zcull_plane *zcull,
+                      struct nvk_device_memory *mem,
+                      uint64_t offset_B)
+ {
++#ifdef __SWITCH__
++   /* External writers cannot maintain our saved depth hierarchy. */
++   if ((mem->mem->flags & NVKMD_MEM_SHARED) || mem->vk.host_ptr != NULL) {
++      zcull->addr = 0;
++      return VK_SUCCESS;
++   }
++#endif
++
+    offset_B += zcull->plane_offset_B;
+    assert(offset_B % zcull->nil.align_B == 0);
+    zcull->addr = mem->mem->va->addr + offset_B;
+@@ -1733,6 +1779,10 @@ nvk_bind_image_memory(struct nvk_device *dev,
+ #endif
+ 
+    assert(mem != NULL);
++#ifdef __SWITCH__
++   if ((mem->mem->flags & NVKMD_MEM_SHARED) || mem->vk.host_ptr != NULL)
++      image->zcull.transient_eligible = false;
++#endif
+    if (image->disjoint) {
+       const VkBindImagePlaneMemoryInfo *plane_info =
+          vk_find_struct_const(info->pNext, BIND_IMAGE_PLANE_MEMORY_INFO);
+diff --git a/src/nouveau/vulkan/nvk_image.h b/src/nouveau/vulkan/nvk_image.h
+index 166a90f9289..6dd4c3d5f49 100644
+--- a/src/nouveau/vulkan/nvk_image.h
++++ b/src/nouveau/vulkan/nvk_image.h
+@@ -89,8 +89,10 @@ struct nvk_image_plane {
+ 
+ struct nvk_zcull_plane {
+    struct nil_zcull nil;
++   /* Zero until bound to backing that can preserve the hierarchy. */
+    uint64_t addr;
+    uint64_t plane_offset_B;
++   bool transient_eligible;
+ };
+ 
+ struct nvk_image {
+diff --git a/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c b/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c
+index e4b63a0c96a..39bf895a14f 100644
+--- a/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c
++++ b/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_dev.c
+@@ -31,6 +31,8 @@ struct nvkmd_switch_ctx {
+    struct nvkmd_ctx base;
+    enum nvkmd_engines engines;
+    struct nouveau_horizon_channel *channel;
++   struct nouveau_horizon_memory *zcull_memory;
++   struct nouveau_horizon_va *zcull_va;
+    struct nouveau_horizon_fence last_fence;
+    bool has_last_fence;
+    bool teardown_quarantined;
+@@ -261,6 +263,8 @@ nvkmd_switch_ctx_try_destroy(struct nvkmd_ctx *_ctx,
+       return false;
+    }
+ 
++   nouveau_horizon_va_put(ctx->zcull_va);
++   nouveau_horizon_memory_put(ctx->zcull_memory);
+    FREE(ctx);
+    return true;
+ }
+@@ -1135,6 +1139,47 @@ nvkmd_switch_dev_import_dma_buf(struct nvkmd_dev *_dev,
+                     "nvkmd-switch: dma-buf import is unsupported");
+ }
+ 
++static enum nouveau_horizon_status
++nvkmd_switch_ctx_init_zcull(struct nvkmd_switch_ctx *ctx)
++{
++   struct nvkmd_switch_dev *dev = nvkmd_switch_dev(ctx->base.dev);
++   const struct nv_zcull_device_info *info =
++      &dev->base.pdev->dev_info.zcull_info;
++   const uint64_t align_B = MAX2(info->ctxsw_align, 0x20000);
++
++   /* Keep channel storage outside client cleanup for independent quarantine. */
++   const struct nouveau_horizon_memory_create_info memory_info = {
++      .size_B = info->ctxsw_size,
++      .align_B = align_B,
++      .backing_kind = NvKind_Pitch,
++      .flags = NOUVEAU_HORIZON_MEMORY_CPU_VISIBLE |
++               NOUVEAU_HORIZON_MEMORY_CPU_CACHED |
++               NOUVEAU_HORIZON_MEMORY_GPU_CACHED |
++               NOUVEAU_HORIZON_MEMORY_ZERO,
++   };
++   enum nouveau_horizon_status status = nouveau_horizon_memory_create(
++      dev->horizon, &memory_info, &ctx->zcull_memory);
++   if (status != NOUVEAU_HORIZON_SUCCESS)
++      return status;
++
++   const uint64_t size_B = nouveau_horizon_memory_get_size(ctx->zcull_memory);
++   const struct nouveau_horizon_va_create_info va_info = {
++      .size_B = size_B,
++      .align_B = align_B,
++   };
++   status = nouveau_horizon_va_create(dev->horizon, &va_info, &ctx->zcull_va);
++   if (status != NOUVEAU_HORIZON_SUCCESS)
++      return status;
++
++   status = nouveau_horizon_va_bind(ctx->zcull_va, 0, ctx->zcull_memory,
++                                    0, size_B);
++   if (status != NOUVEAU_HORIZON_SUCCESS)
++      return status;
++
++   return nouveau_horizon_channel_bind_zcull(
++      ctx->channel, nouveau_horizon_va_get_addr(ctx->zcull_va));
++}
++
+ static VkResult
+ nvkmd_switch_dev_create_ctx(struct nvkmd_dev *_dev,
+                             struct vk_object_base *log_obj,
+@@ -1170,6 +1215,17 @@ nvkmd_switch_dev_create_ctx(struct nvkmd_dev *_dev,
+       }
+    }
+ 
++   if ((engines & NVKMD_ENGINE_3D) && _dev->pdev->dev_info.has_zcull_info) {
++      const enum nouveau_horizon_status status =
++         nvkmd_switch_ctx_init_zcull(ctx);
++      if (status != NOUVEAU_HORIZON_SUCCESS) {
++         (void)nvkmd_switch_ctx_try_destroy(&ctx->base, log_obj);
++         return nvkmd_switch_status_result(log_obj, status,
++                                           VK_ERROR_INITIALIZATION_FAILED,
++                                           "initialize ZCULL context");
++      }
++   }
++
+    *ctx_out = &ctx->base;
+    return VK_SUCCESS;
+ }
+diff --git a/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c b/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c
+index 63ea5fdd8c7..b558a712cd1 100644
+--- a/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c
++++ b/src/nouveau/vulkan/nvkmd/switch/nvkmd_switch_pdev.c
+@@ -459,11 +459,14 @@ nvkmd_switch_try_create_pdev(struct vk_object_base *log_obj,
+    pdev->base.ops = &nvkmd_switch_pdev_ops;
+    pdev->base.debug_flags = debug_flags;
+ 
+-   /* Use static GM20B properties without acquiring libnx services during
+-    * enumeration.
+-    */
+    nouveau_horizon_get_gm20b_info(&pdev->base.dev_info);
+ 
++   struct nouveau_horizon_runtime *runtime = NULL;
++   if (nouveau_horizon_runtime_get(&runtime) == NOUVEAU_HORIZON_SUCCESS) {
++      nouveau_horizon_add_zcull_info(&pdev->base.dev_info);
++      nouveau_horizon_runtime_put(runtime);
++   }
++
+    pdev->base.kmd_info = (struct nvkmd_info) {
+       .has_dma_buf = false,
+       /* nvMapCreate accepts a caller-supplied page-aligned pointer. */

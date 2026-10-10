@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "results": [
+    "32 threads / 8000 compiler lifetimes: peak=4, IR allocations=4, OOM=0",
+    "PASS: old fifth-owner failure; retirement/reclaim race; queued progress; ownership; early exits; 70002 decoder sizes"
+  ],
+  "concurrent_threads": 32,
+  "compiler_lifetimes": 8000,
+  "decoder_sizes": 70002,
+  "previous_pool_retirement_race_reproduced": true,
+  "pool_source_sha256": "cd2c920bb55a59c8029f176436064341597933eacdcea6c6fbf92da6e6911c5e",
+  "header_sha256": "e14abe0098204c43fcc92e33d8f610c11a576cba657348c4131c6f573b72cdba",
+  "sources": {
+    "src/sd_fex_workspace.h": "e14abe0098204c43fcc92e33d8f610c11a576cba657348c4131c6f573b72cdba",
+    "tests/compiler_memory_host.cpp": "c66e871495563a1fb5eccf0e010b83100c39be6c7f3d48ce0ba6a2d8783774b7",
+    "tests/check_compiler_memory_host.py": "bf035f7d768dd82c2511cc7d36cc7e6ba38e938b68f34ee2ccc447e5f4d71f96"
+  },
+  "hardware_tested": false
+}

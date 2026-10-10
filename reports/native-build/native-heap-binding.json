@@ -1,0 +1,22 @@
+{
+  "rust": {
+    "libnak_rs_sha256": "f56fc46711c90330a9d68ff78cf00fd31a2525f922b6a90b77366d044542381f",
+    "header_sha256": "7efa52a69491bbee1797009fb4681399e75c8d504436dc44198aa0e2fe6a3266",
+    "symbols": {
+      "alloc": "_RNvCsdBezzDwma51_7___rustc12___rust_alloc",
+      "dealloc": "_RNvCsdBezzDwma51_7___rustc14___rust_dealloc",
+      "realloc": "_RNvCsdBezzDwma51_7___rustc14___rust_realloc",
+      "alloc_zeroed": "_RNvCsdBezzDwma51_7___rustc19___rust_alloc_zeroed"
+    }
+  },
+  "mesa": {
+    "library_sha256": "f4cb6feafd6ccc203c90debe720d660fd4007f1f5fb833a65d061da579c16d0a",
+    "object_sha256": "f64b6d5b68aa217316bd68d8e259d6e1cc6be218d263aa5ae7e1f9b6d63ef6d6",
+    "bound_object_sha256": "91e6b7a130abdec15ce2ea8fcba0c595c28fbf2b32e86a0d30125e61928f70ea",
+    "imports": {
+      "malloc": "pes13_mesa_malloc",
+      "realloc": "pes13_mesa_realloc",
+      "free": "pes13_mesa_free"
+    }
+  }
+}

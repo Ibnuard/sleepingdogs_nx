@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "patch": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-gpu-pressure-fix.zip",
+    "sha256": "5e638baccba90ea1a62a7542753b810602c422a60e7865af01c4de5bc9ef8e6b",
+    "bytes": 32415995
+  },
+  "rollback": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-gpu-pressure-rollback.zip",
+    "sha256": "7ca9d9d5f150cecaa07d26ba326fd1a5b32b37593952ab0f44ebf820ac869be7",
+    "bytes": 9771254
+  },
+  "nro_sha256": "6b1c87d99b5182af103dde9495ebae033774ad9cd02b4b2f6c930434c7742905",
+  "native_elf_sha256": "73bb81ad6f1dee33319ecf99bc9b5e5faecab299f2f4bf5ca7b0cd894614ec35",
+  "checks": {
+    "host": {
+      "status": "PASS",
+      "report_sha256": "4657dcd7250a2d8f888542d42d8f758df8d388dde0a2aaa837699db29d7e4665"
+    },
+    "binary": {
+      "status": "PASS",
+      "report_sha256": "d8c51edab68ed6e2b3e1b928860cee68f757c793e5ba8d20a0526fc97b9e7936"
+    },
+    "package": {
+      "status": "PASS",
+      "report_sha256": "63be3125319f6db09773bc858ce78bee27134c06a1322e8b5b4219d484b0d432"
+    }
+  },
+  "validation_prefix": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\gpu-pressure-validate-g27cqrxb\\switch\\sleepingdogs-fex",
+  "forwarder_unchanged": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "dlls_unchanged": true,
+  "fastest_preserved": true,
+  "hardware_tested": false,
+  "observed_vulkan_error": {
+    "code": -1,
+    "name": "VK_ERROR_OUT_OF_HOST_MEMORY"
+  },
+  "test_target": "New Game > loading > first 3D scene"
+}

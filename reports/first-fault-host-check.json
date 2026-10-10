@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "checks": [
+    "PASS guarded reads: null, overflow, cross-region, no-access, query failure",
+    "PASS 2000 normal debug/thread-name exceptions do not consume the fault snapshot quota",
+    "PASS first snapshot: registers, dispatcher, stack, frame chain, SEH; context and errno preserved",
+    "PASS bad guest pointers and repeated faults bounded; first persistent snapshot retained",
+    "PASS full record and storage failure leave runtime status intact",
+    "PASS SEH/WoW/backtrace limits; other Wine warnings and all errors remain visible"
+  ],
+  "sources": {
+    "tests/fault_trace.c": "5059708da697df5c2df7ba00a76f1ea9d71fe08cb9978eecffda00d5dfde5a9f",
+    "tests/check_fault_trace.py": "2d070359f5ba61c6c11384e6d68ea15451b426d4658ec12c509bf653153507d2",
+    "src/sd_fault_trace.inc": "340b108e6a600f3e8875ede281c6aad5b69f10f14bcc264c1419ea46239af875",
+    "src/sd_fault_io.inc": "6782a1e4d5d09c2e785331e9df8dd68d3a3db92d396410f2e4e63844c42c7f30",
+    "src/sd_fault_wine_log.h": "5dd505a63261008153a5601bc55e3a22cb826e4da191dc09fea1e3336c3d269b"
+  }
+}

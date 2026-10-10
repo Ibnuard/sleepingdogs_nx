@@ -1,0 +1,334 @@
+{
+  "status": "PASS",
+  "log_sha256": "584eba0f214fef36e277c27bc3fca0aa4bc13f04c9bde9760d25d7be02e07861",
+  "log_bytes": 115552,
+  "input": "D:\\Dev\\Switch\\PES PROJECT\\public_pesnx\\local-debug\\review-v5-production\\fex-runtime.log",
+  "preserved_input": "local/performance-v7/fex-runtime.log",
+  "hardware_user_reported": "OLED handheld; CPU 1728 / GPU 768 / RAM 1600 MHz",
+  "user_report": "Performance, lowest in-game detail, observed 16-20 FPS; 540p not yet tried",
+  "launch": "normal GUI",
+  "config": [
+    "[SD-DXVK-CONFIG] profile=performance renderer=dxvk-3.1.1 hud=FPS"
+  ],
+  "display_mode": "1280x720@60",
+  "final_swapchain": "1292x732 scaled to 1280x720",
+  "present_mode": "IMMEDIATE",
+  "selection": "Trailing contiguous logged windows below 30 FPS; inferred slow segment, no scene/menu markers",
+  "slow_segment": {
+    "windows": 11,
+    "elapsed_ms": 110560,
+    "frames": 1885,
+    "fps_weighted": 17.049565846599133,
+    "fps_min": 15.68,
+    "fps_max": 20.38,
+    "frame_average_ms": 58.652519893899196,
+    "present_average_ms": 1.4742960212201592,
+    "present_share_percent": 2.5136107091172217,
+    "errors": 0,
+    "rows": [
+      {
+        "line": 1389,
+        "window_ms": 10131,
+        "frames": 159,
+        "fps_x100": 1569,
+        "present_avg_us": 1520,
+        "lock_avg_us": 0,
+        "driver_avg_us": 771,
+        "errors": 0
+      },
+      {
+        "line": 1397,
+        "window_ms": 10003,
+        "frames": 172,
+        "fps_x100": 1719,
+        "present_avg_us": 1726,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1046,
+        "errors": 0
+      },
+      {
+        "line": 1404,
+        "window_ms": 10004,
+        "frames": 193,
+        "fps_x100": 1929,
+        "present_avg_us": 1930,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1077,
+        "errors": 0
+      },
+      {
+        "line": 1431,
+        "window_ms": 10136,
+        "frames": 165,
+        "fps_x100": 1627,
+        "present_avg_us": 1737,
+        "lock_avg_us": 0,
+        "driver_avg_us": 959,
+        "errors": 0
+      },
+      {
+        "line": 1450,
+        "window_ms": 10002,
+        "frames": 161,
+        "fps_x100": 1609,
+        "present_avg_us": 1055,
+        "lock_avg_us": 0,
+        "driver_avg_us": 618,
+        "errors": 0
+      },
+      {
+        "line": 1463,
+        "window_ms": 10002,
+        "frames": 158,
+        "fps_x100": 1579,
+        "present_avg_us": 603,
+        "lock_avg_us": 0,
+        "driver_avg_us": 382,
+        "errors": 0
+      },
+      {
+        "line": 1488,
+        "window_ms": 10137,
+        "frames": 159,
+        "fps_x100": 1568,
+        "present_avg_us": 650,
+        "lock_avg_us": 0,
+        "driver_avg_us": 358,
+        "errors": 0
+      },
+      {
+        "line": 1501,
+        "window_ms": 10004,
+        "frames": 158,
+        "fps_x100": 1579,
+        "present_avg_us": 630,
+        "lock_avg_us": 0,
+        "driver_avg_us": 337,
+        "errors": 0
+      },
+      {
+        "line": 1519,
+        "window_ms": 10004,
+        "frames": 162,
+        "fps_x100": 1619,
+        "present_avg_us": 1218,
+        "lock_avg_us": 0,
+        "driver_avg_us": 689,
+        "errors": 0
+      },
+      {
+        "line": 1544,
+        "window_ms": 10132,
+        "frames": 194,
+        "fps_x100": 1914,
+        "present_avg_us": 2213,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1229,
+        "errors": 0
+      },
+      {
+        "line": 1553,
+        "window_ms": 10005,
+        "frames": 204,
+        "fps_x100": 2038,
+        "present_avg_us": 2386,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1222,
+        "errors": 0
+      }
+    ]
+  },
+  "all_frame_windows": [
+    {
+      "line": 1254,
+      "window_ms": 10033,
+      "frames": 736,
+      "fps_x100": 7335,
+      "present_avg_us": 979,
+      "lock_avg_us": 0,
+      "driver_avg_us": 608,
+      "errors": 0
+    },
+    {
+      "line": 1262,
+      "window_ms": 10004,
+      "frames": 792,
+      "fps_x100": 7916,
+      "present_avg_us": 396,
+      "lock_avg_us": 0,
+      "driver_avg_us": 277,
+      "errors": 0
+    },
+    {
+      "line": 1299,
+      "window_ms": 10131,
+      "frames": 572,
+      "fps_x100": 5645,
+      "present_avg_us": 972,
+      "lock_avg_us": 0,
+      "driver_avg_us": 496,
+      "errors": 0
+    },
+    {
+      "line": 1346,
+      "window_ms": 10002,
+      "frames": 438,
+      "fps_x100": 4378,
+      "present_avg_us": 907,
+      "lock_avg_us": 0,
+      "driver_avg_us": 530,
+      "errors": 0
+    },
+    {
+      "line": 1362,
+      "window_ms": 10011,
+      "frames": 344,
+      "fps_x100": 3436,
+      "present_avg_us": 782,
+      "lock_avg_us": 0,
+      "driver_avg_us": 473,
+      "errors": 0
+    },
+    {
+      "line": 1389,
+      "window_ms": 10131,
+      "frames": 159,
+      "fps_x100": 1569,
+      "present_avg_us": 1520,
+      "lock_avg_us": 0,
+      "driver_avg_us": 771,
+      "errors": 0
+    },
+    {
+      "line": 1397,
+      "window_ms": 10003,
+      "frames": 172,
+      "fps_x100": 1719,
+      "present_avg_us": 1726,
+      "lock_avg_us": 0,
+      "driver_avg_us": 1046,
+      "errors": 0
+    },
+    {
+      "line": 1404,
+      "window_ms": 10004,
+      "frames": 193,
+      "fps_x100": 1929,
+      "present_avg_us": 1930,
+      "lock_avg_us": 0,
+      "driver_avg_us": 1077,
+      "errors": 0
+    },
+    {
+      "line": 1431,
+      "window_ms": 10136,
+      "frames": 165,
+      "fps_x100": 1627,
+      "present_avg_us": 1737,
+      "lock_avg_us": 0,
+      "driver_avg_us": 959,
+      "errors": 0
+    },
+    {
+      "line": 1450,
+      "window_ms": 10002,
+      "frames": 161,
+      "fps_x100": 1609,
+      "present_avg_us": 1055,
+      "lock_avg_us": 0,
+      "driver_avg_us": 618,
+      "errors": 0
+    },
+    {
+      "line": 1463,
+      "window_ms": 10002,
+      "frames": 158,
+      "fps_x100": 1579,
+      "present_avg_us": 603,
+      "lock_avg_us": 0,
+      "driver_avg_us": 382,
+      "errors": 0
+    },
+    {
+      "line": 1488,
+      "window_ms": 10137,
+      "frames": 159,
+      "fps_x100": 1568,
+      "present_avg_us": 650,
+      "lock_avg_us": 0,
+      "driver_avg_us": 358,
+      "errors": 0
+    },
+    {
+      "line": 1501,
+      "window_ms": 10004,
+      "frames": 158,
+      "fps_x100": 1579,
+      "present_avg_us": 630,
+      "lock_avg_us": 0,
+      "driver_avg_us": 337,
+      "errors": 0
+    },
+    {
+      "line": 1519,
+      "window_ms": 10004,
+      "frames": 162,
+      "fps_x100": 1619,
+      "present_avg_us": 1218,
+      "lock_avg_us": 0,
+      "driver_avg_us": 689,
+      "errors": 0
+    },
+    {
+      "line": 1544,
+      "window_ms": 10132,
+      "frames": 194,
+      "fps_x100": 1914,
+      "present_avg_us": 2213,
+      "lock_avg_us": 0,
+      "driver_avg_us": 1229,
+      "errors": 0
+    },
+    {
+      "line": 1553,
+      "window_ms": 10005,
+      "frames": 204,
+      "fps_x100": 2038,
+      "present_avg_us": 2386,
+      "lock_avg_us": 0,
+      "driver_avg_us": 1222,
+      "errors": 0
+    }
+  ],
+  "late_jit": {
+    "dispatch_compile": {
+      "window_ms": 90179,
+      "calls": 32726,
+      "total_us": 1475264,
+      "explanation": "Aggregate elapsed call time, may overlap across threads; not CPU utilization"
+    },
+    "compile_code": {
+      "window_ms": 90179,
+      "calls": 967,
+      "total_us": 669186,
+      "explanation": "Aggregate elapsed call time, may overlap across threads; not CPU utilization"
+    },
+    "invalidate": {
+      "window_ms": 90179,
+      "calls": 1860,
+      "total_us": 207326,
+      "explanation": "Aggregate elapsed call time, may overlap across threads; not CPU utilization"
+    }
+  },
+  "memory": {
+    "minimum_heap_available_bytes": 953119120,
+    "maximum_gpu_oom": 0
+  },
+  "limitations": [
+    "Not a controlled comparison with v6 or 540p.",
+    "Low Present duration does not exclude GPU waits in other calls.",
+    "No per-thread CPU, driver-wait or pipeline compiler interval reports in this normal v7 run.",
+    "DisplaySettings.xml content and applied advanced options are not present in the log.",
+    "No evidence yet that a software change reaches stable 30 FPS."
+  ]
+}

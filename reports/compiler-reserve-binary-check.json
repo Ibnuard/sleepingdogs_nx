@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "before": {
+    "elf_sha256": "bb577b6a8a8a4144fc0d2a3c234195a67914eda2d83641207f38744c985bafde",
+    "sizes": [
+      8388608,
+      8388608,
+      8388608,
+      8388608,
+      16777216,
+      16777216,
+      16777216,
+      16777216
+    ],
+    "reserve_bytes": 100663296,
+    "heap_used_after_init": 100663424,
+    "cycles_under_heap_exhaustion": 64,
+    "live_data_preserved": true
+  },
+  "after": {
+    "elf_sha256": "14c589156568fa9e77e9ff3c70e13ef0207754c8a68d4faf6045b6bb70a68b43",
+    "sizes": [
+      65536,
+      65536,
+      65536,
+      65536,
+      16777216,
+      16777216,
+      16777216,
+      16777216
+    ],
+    "reserve_bytes": 67371008,
+    "heap_used_after_init": 67371136,
+    "cycles_under_heap_exhaustion": 64,
+    "live_data_preserved": true
+  },
+  "native_heap_bytes_saved": 33292288,
+  "boundaries": "sbrk, locks and diagnostic I/O modeled; actual NRO allocator/reserve code executes",
+  "hardware_tested": false
+}

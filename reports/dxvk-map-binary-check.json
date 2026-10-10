@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "dll_sha256": "c5fbfad3dbe00a814bb7e5ba25350a1ff69cb140b2f3b44e309599d238a3cbd4",
+  "baseline_sha256": "598c56dce50a04adb9c2d6f134d380697b6ef1c5c3dcbf65a6de29e636710be7",
+  "baseline_fault": [
+    {
+      "pc": "0x10073556",
+      "address": "0x28",
+      "bytes": 4
+    }
+  ],
+  "oom_cases": [
+    {
+      "bytes": 1,
+      "oom_hresult": "0x8007000e",
+      "failed_update_no_copy": true
+    },
+    {
+      "bytes": 65536,
+      "oom_hresult": "0x8007000e",
+      "failed_update_no_copy": true
+    },
+    {
+      "bytes": 5242880,
+      "oom_hresult": "0x8007000e",
+      "failed_update_no_copy": true
+    },
+    {
+      "bytes": 9437184,
+      "oom_hresult": "0x8007000e",
+      "failed_update_no_copy": true
+    }
+  ],
+  "success_command_ownership": true,
+  "failed_remap_preserves_previous_commands": true,
+  "invalid_mode": "PASS",
+  "sources": {
+    "tests/check_dxvk_map_binary.py": "2fc5cd7ea600037029deccfeb4029254266d6f6d384079460f3ad9d015115dce"
+  },
+  "limits": "Real DLL instructions; Vulkan resource creation and diagnostics modeled. No complete game/GPU execution."
+}

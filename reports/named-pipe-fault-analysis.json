@@ -1,0 +1,35 @@
+{
+  "log": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-debug-register-fix\\fex-runtime.log",
+  "log_sha256": "0ce58e3f795e39cf5a2c98cbc15d92ec5f128f77f554a1ecc4e5e9f2d6bbfb7c",
+  "observed": [
+    "FEX debug-register marker v1 present",
+    "Seven SD-DB hits; game passes the previously failing static initialization",
+    "1000 MiB direct arena allocation succeeded",
+    "NtTerminateProcess(self) with exit code 1; no graphics present",
+    "Game exit caller return address 007dd275; prior DR crash addresses are absent"
+  ],
+  "exit_branch": {
+    "call_exit": "0x007dd270",
+    "return_address": "0x007dd275",
+    "initialization_function": "0x009787f0",
+    "failing_call": "0x009788ca SteamAPI_Init",
+    "messages": [
+      "Initializing SteamSDK....\n",
+      "    API: Initializing....",
+      " failed\n",
+      "    Exiting...\n"
+    ]
+  },
+  "static_findings": [
+    "SteamAPI_Init delegates to the supplied pandora_api.dll Init; both it and pandoraclient.dll load successfully",
+    "pandoraclient.dll opens a local overlapped duplex message pipe; original create/open callers return false when Win32 returns INVALID_HANDLE_VALUE",
+    "Previous native Horizon source has no create_named_pipe request handler or named pipe open path"
+  ],
+  "inference": "Missing local named-pipe support is a concrete startup blocker on this dependency path. The current hardware log does not record the precise failed pipe syscall. Added native trace and host transport tests address this gap; full initialization still requires device testing.",
+  "not_diagnosed_as": [
+    "mscoree.dll missing (queried during CRT exit)",
+    "NHEAP loop",
+    "new unhandled guest exception"
+  ],
+  "game_boot_confirmed": false
+}

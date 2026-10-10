@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "combinations": 30,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "horizon_rename": true,
+  "hardware_tested": false,
+  "result": "PASS: 30 renderer/profile/HUD combinations; persisted choices; malformed input; interrupted write recovery; group navigation; render bounds.",
+  "renderer_files": {
+    "dxvk-3.1.1": {
+      "url": "https://github.com/doitsujin/dxvk/tree/b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+      "archive_sha256": "d7d898bff3d722ab290b28150c5fe24e7e4a0d90da555808ca53203c352f96d5",
+      "dlls": {
+        "d3d9.dll": "a29bc56249bdedcdd6c304befe9c5f2da45463d09d3aa8c24d2140f8e408a951",
+        "d3d11.dll": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+        "dxgi.dll": "dcc3e79731bcc3c379cfbb0813bac7690f9c2a5578eac07c9e295559b406035c"
+      },
+      "patch": {
+        "build": "sleepingdogs-dxvk-sdrecycle1",
+        "source": {
+          "commit": "b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+          "patch_sha256": "054f6c4b2a5c2a1ca48df0411247b4adaeb3fb3a256f44c31897d5f87f2588ee",
+          "base_patch_sha256": "ab43c9ef25c9b2702cf26cf7133c29d2983365e99ea2ed5810884c4b4b923fec",
+          "small_patch_sha256": "22e3887c5079594564c17a9602700dcc8f865e774bfab99af9309d6c286b930a",
+          "sdmem1_patch_sha256": "2843757c5b4af29a8f0cc5b383756d442c4f7606cb422538cf69939f3ba306dc",
+          "sdstream1_patch_sha256": "17d816423bfd1bb3f0e41559d780d5369377a358ddae88234a0e4d1136dd754d",
+          "helper_sha256": "2710c2c5c841e3037eb8d1e32c332c25e39d7cd569321d0788f6c056a509213d"
+        },
+        "source_changes": {
+          "src/dxvk/dxvk_memory.cpp": "9f04f6a5fccbf7872569e8df381c44ae1a9288bb244de138cf5c58fcf094bd3e",
+          "src/dxvk/dxvk_memory.h": "ffb222a3425fa6a435c207d13d68f337bc622a97926df49d2aabc8f2a706e957",
+          "src/dxvk/sd_dxvk_recycle.inc": "2710c2c5c841e3037eb8d1e32c332c25e39d7cd569321d0788f6c056a509213d",
+          "version.h.in": "1eb1868585a6113b54dce258711596859040e3743799513eab0963375aeebf71"
+        },
+        "files": {
+          "d3d9.dll": {
+            "sha256": "a29bc56249bdedcdd6c304befe9c5f2da45463d09d3aa8c24d2140f8e408a951",
+            "bytes": 7475200
+          },
+          "d3d11.dll": {
+            "sha256": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+            "bytes": 8261632
+          },
+          "dxgi.dll": {
+            "sha256": "dcc3e79731bcc3c379cfbb0813bac7690f9c2a5578eac07c9e295559b406035c",
+            "bytes": 5550080
+          }
+        },
+        "archive_sha256": "d7d898bff3d722ab290b28150c5fe24e7e4a0d90da555808ca53203c352f96d5",
+        "upstream_archive_sha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+        "previous_archive_sha256": "29c2de482524cde5366df56131202ec5693998b1dfe597015197c7dc35217eb3",
+        "dependencies": {
+          "include/native/directx": {
+            "url": "https://github.com/Joshua-Ashton/mingw-directx-headers",
+            "commit": "9df86f2341616ef1888ae59919feaa6d4fad693d"
+          },
+          "include/vulkan": {
+            "url": "https://github.com/KhronosGroup/Vulkan-Headers",
+            "commit": "8864cdc896bbc2a9b6eb36b3218fc9ef57908d77"
+          },
+          "include/spirv": {
+            "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+            "commit": "04f10f650d514df88b76d25e83db360142c7b174"
+          },
+          "subprojects/libdisplay-info": {
+            "url": "https://github.com/doitsujin/libdisplay-info.git",
+            "commit": "275e6459c7ab1ddd4b125f28d0440716e4888078"
+          },
+          "subprojects/dxbc-spirv": {
+            "url": "https://github.com/doitsujin/dxbc-spirv.git",
+            "commit": "bf14419e5fa7eacb817b7b632f03cb61d61bbad7",
+            "nested": "c8ad050fcb29e42a2f57d9f59e97488f465c436d submodules/spirv_headers (c8ad050)"
+          }
+        },
+        "pool_cap_bytes": 2097152,
+        "dedicated_mapped_threshold_bytes": 2097152,
+        "resource_sizes_unchanged": true,
+        "max_idle_bytes": 16777216,
+        "max_idle_count": 4,
+        "retired_only": true,
+        "hardware_tested": false
+      }
+    },
+    "dxvk-2.7.1-async": {
+      "url": "https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/releases/dxvk-gplasync-v2.7.1-1.tar.gz",
+      "archive_sha256": "590050b88be7b156cf641abe762e1ad47ebbe828f7f0edb2970aa4716ee3af6d",
+      "dlls": {
+        "d3d9.dll": "a2cd6841e102f37189527c118ec416fa5071ac4d3120762973d9a0c6c5fd067e",
+        "d3d11.dll": "ddf904b00801add1d299a3da0e02319ca16e75595c3fd8d47262565ad45e09e1",
+        "dxgi.dll": "b871cbe7d59ba92d1a7add831d3691eaf6ea6fa2f7f0a3f7473e9fd2eb081653"
+      }
+    }
+  },
+  "source_files": {
+    "wine-nx-probe/source/f1_crash.c": "e7ec2807323bf04ca1a0f3f29698af3947b4110d9fbc70dc8be89562a4894431",
+    "wine-nx-probe/source/f1_settings.h": "a06474a5c109d974b4e9bd79cea629cd2002983e17576ed299e7d1bf21dcbaa2",
+    "wine-nx-probe/source/runtime.c": "54726fefd6c5072f3f49de8b02eca5988db55ad57fa81a2640695fd5d3047dfc",
+    "wine-nx-probe/source/sd_frame_summary.h": "8da0938323b229460c6d5a522ddc8c4dc6a6671ece43a8cc3b9b8e77c52b9379",
+    "wine-nx-probe/source/f1_dx_hud.h": "973f4a2e5b1a4339da30f2f0e6f4929a007746f1f386408a0131f48972c7f24e"
+  },
+  "sources": {
+    "tests/check_performance_hud.py": "34ddfc113aa19ae0ae2242037deeb19cdd64638e3d6a28175464941bb0c02cfb"
+  },
+  "previews": [
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/hud-fps.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/hud-full.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/hud-none.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/lsfg-row-0.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/lsfg-row-1.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/lsfg-row-2.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/performance.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/settings-hud.ppm",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/settings-lsfg.ppm"
+  ],
+  "lsfg_persistence_combinations": 12,
+  "missing_pack_guard": true,
+  "lsfg_navigation": true
+}

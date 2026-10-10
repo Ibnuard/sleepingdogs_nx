@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "runtime_files_compared": 268,
+  "baseline": "runtime-before-renderer-config-fix.zip",
+  "preserves_fastest": true,
+  "active_game_config_replaced_by_launcher": true
+}

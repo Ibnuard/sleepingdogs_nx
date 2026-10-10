@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "sanitizers": [
+    "undefined"
+  ],
+  "cases": [
+    "allocation failure remains disabled",
+    "reject backing below 4 GiB",
+    "failed initial protection releases backing",
+    "failed preflight prevents physical allocation",
+    "occupied low range is never replaced",
+    "map failure frees unowned backing",
+    "permission failure unmaps before freeing",
+    "failed unmap retains owned backing and disables arena",
+    "idle arena inaccessible and initialization idempotent",
+    "bounds alignment overflow and executable access rejected",
+    "high kernel heap does not hide the low Wine arena guard",
+    "limits flags size fixed address and alignment preserve ordinary path",
+    "failed activation preserves inaccessible guard",
+    "exact backing identity zero initialized and cannot be double allocated",
+    "read-only protection enforced and unsupported execution leaves metadata intact",
+    "partial decommit recommit zeros only discarded pages; failed decommit preserves data",
+    "failed mixed recommit rolls back each old protection group",
+    "guard access change preserves committed contents",
+    "full release restores guard and rejects stale or partial operations",
+    "reuse zeros all data without releasing neighbour guards"
+  ],
+  "arena_bytes": 1048576000,
+  "source_files": {
+    "wine-nx-probe/source/sd_guest_arena.c": "4e74232780fe35bac709535fe4651472036b5e79b443ff3680b14bb717ac0030",
+    "wine-nx-probe/source/sd_guest_arena.h": "edc87c6ccaa508b5e9425590d95fd68fa40c760427a60b5d2b28a754f2533cf7",
+    "wine-nx-probe/source/sd_alias_arena_init.inc": "2d3df1691ee2eecfa956bf5c3e9afdd40ffb4af3f2462ff34337e9d953e1e1e5",
+    "wine-nx-probe/source/sd_low_window.h": "2f136862cdc82923868d687781a3f78d3c5f852232aba7fd01dc1bb6dc552d8c",
+    "dlls/ntdll/unix/sd_guest_view.inc": "eadd91cb53df9bd709f2fb10d61d1972522e073bd4513812f0c3eaee0ede1b25"
+  },
+  "tests": {
+    "tests/check_low_window_arena.py": "3452fc575f6cebd02597693d6e673e671c0aa760681bbeca0accd06ac48b760d",
+    "tests/direct_arena.c": "33b67d978d0f9a499cd04f8ed07eb272aa6636e2a20c4a69cb7734fd6061edc5",
+    "tests/low_window_arena_boundary.inc": "d1a9d49300658e6e7d0dcb4985300375346b538c32958fbc00abba4346ad3a70"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "results": {
+    "baseline": {
+      "result": "PASS baseline: retired buffer lost; fragmented backing fails 5 MiB",
+      "compiled_sources": {
+        "src/dxvk/dxvk_memory.cpp": "53127c02d0a015e95b595c3f80018fa174d79532643fe68801ff6a956de6a74d",
+        "src/dxvk/dxvk_allocator.cpp": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+      }
+    },
+    "candidate": {
+      "result": "PASS: retired-only reuse, 2000 fragmented-backing cycles, exact type/size, distinct live versions, 16 MiB/4-slot bounds, trim, zeroing, exclusions, 8 threads/8000 lifetimes",
+      "compiled_sources": {
+        "src/dxvk/dxvk_memory.cpp": "9f04f6a5fccbf7872569e8df381c44ae1a9288bb244de138cf5c58fcf094bd3e",
+        "src/dxvk/dxvk_allocator.cpp": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+      }
+    }
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "helper_sha256": "2710c2c5c841e3037eb8d1e32c332c25e39d7cd569321d0788f6c056a509213d",
+  "sources": {
+    "tests/recycle_dxvk.cpp": "7d2e0b3ea510fb1339ee03b6f697f3b1b58e64508b60d8635330ed134a0a512f",
+    "tests/check_recycle_host.py": "7e6e8d17538bed463550ab6e9184a444ee4991ec0676a13c23f24e2a3183151a",
+    "src/sd_dxvk_recycle.inc": "2710c2c5c841e3037eb8d1e32c332c25e39d7cd569321d0788f6c056a509213d"
+  },
+  "scope": "Sanitize production DXVK dispatch/free/cache functions, with Vulkan modeled.",
+  "hardware_tested": false
+}

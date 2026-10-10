@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "zip_sha256": "b85ca33634a33467b9756f8fa408009add613ab92f3f88d584921f78eae9dd2e",
+  "files": 63,
+  "checks": [
+    "CRC and every SHA256 entry",
+    "v8 NRO matches tested ELF receipt",
+    "counter toggle enabled",
+    "v7 graphics configurations unchanged",
+    "no game, save, kernel or forwarder payloads",
+    "v7 rollback preserved"
+  ],
+  "hardware_tested": false
+}

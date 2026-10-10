@@ -1,0 +1,19 @@
+{
+  "passed_groups": 13,
+  "stress_connections": 500,
+  "duplex_thread_roundtrips": 200,
+  "objects_remaining": 0,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "sources": {
+    "src/sd_named_pipe.inc": "38c6c9e480c5982dc6e135d59b298736b96212d388a33d2cb3b15fd59622fde1",
+    "src/sd_named_pipe.h": "a491c7fdf856bfb0ab848a3a4d45991b38c1cc89f5dafb9903cb81ff75c4a561",
+    "tests/named_pipe.c": "be54115e959ba47987f63af7433da7555fc0be0c51cb8a4302a080acfe8d8ee3"
+  },
+  "limitations": [
+    "Host handle/TEB/scheduler fixture; Switch boot not confirmed",
+    "APC completion and alertable synchronous pipe I/O explicitly unsupported"
+  ]
+}

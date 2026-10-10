@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Audit the delivered v14.1 ZIP/NRO and its public loader route, not the user's SD.",
+  "zip_sha256": "aef7051cd368e806260163afead4925be8b27c290ae6c99a83ee84d4cf3ed5bf",
+  "nro_sha256": "69021fdc43afcef9aed9713e50f5bb5a1a5e8865f3e842bab9fb636cb5d39f71",
+  "elf_sha256": "8c3d3795d6f3c866b614d8741346c2ad348b5426989893e7ee069f929b52c5cd",
+  "segment_payloads_match": [
+    {
+      "index": 0,
+      "offset": 0,
+      "nro_size": 18161664,
+      "elf_file_size": 18158976,
+      "skipped_header_bytes": 128
+    },
+    {
+      "index": 1,
+      "offset": 18161664,
+      "nro_size": 12070912,
+      "elf_file_size": 12070844,
+      "skipped_header_bytes": 0
+    },
+    {
+      "index": 2,
+      "offset": 30232576,
+      "nro_size": 917504,
+      "elf_file_size": 916200,
+      "skipped_header_bytes": 0
+    }
+  ],
+  "public_loader_lookup_and_create": {
+    "instance_build_sha": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+    "pipeline_build_id": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1",
+    "pipeline_uuid": "7ebc440af4cfc181c5eadf217fd9497c",
+    "disk_cache": {
+      "renderer": "nvk_012b",
+      "timestamp": "1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1000000000000000000000000",
+      "flags": 4660
+    },
+    "identities_match": true,
+    "logs": [
+      "[SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity"
+    ],
+    "cache_block_entry": "0x9c7a8",
+    "cache_block_end": "0x9c904"
+  },
+  "sources": {
+    "tests/audit_v141_distributed.py": "fd2c184ce495bd26f050e56c17d523fc2702074b32154f6201a1f7660c319952",
+    "tests/check_v141_cache_binary.py": "293ebf1d607da3382dd933ce2203b68f4898a97245cf46dd3162cc1854e666b8",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  },
+  "hardware_tested": false,
+  "deployed_nro_available": false,
+  "limitation": "Fixture execution confirms the shipped loader reaches the corrected instance; the trace sink is modeled. This does not explain the missing hardware-log marker or prove what file is stored/launched on the SD."
+}

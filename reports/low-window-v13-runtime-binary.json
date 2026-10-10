@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "elf_sha256": "bf67f1a9e666735cc331b9abd65c49e2c91ad3a26aff75f805fe95063df9eb35",
+  "reports": {
+    "diagnostic-binary": "c23fdff69a400798f49bc2256d7d701f610d06ff4e703cd26547c296c883c077",
+    "direct-sync-binary": "3260f8efc49f932392393b0ff047c7ad7ebc45a68aa24845846328891d06b3f0",
+    "binary": "4d2fdc71130d18ff3dde5b27249ea616c74d8dd2fd418d735ae90c547a485762",
+    "shader-binary": "960069dc04cccaf7d5379c96e6813f97a4c2b5e829f004ee862f0811c8c02278"
+  },
+  "sources": {
+    "tests/check_v13_runtime_binary.py": "e205d184cb5af9e520ab2b7a7b7f06b4af1237755bae7a1a8109b283822775da",
+    "tests/check_v11_binary.py": "2547aa0c8ce71b7b2dbbf5642352e2c278f7731f4ef5b594c693c0bce1eab480",
+    "tests/check_direct_sync_binary.py": "139a1a31fc49ccc94490f021e19ef7b813b37e1f65bb6eeb6496fb70e8869747",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147",
+    "tests/check_shader_binary.py": "8e8ecc2be8fee101751c58337868716a89f12b157ce7969a2a84db3531635277"
+  },
+  "hardware_tested": false
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "scope": "Run the real launcher control flow with deterministic UI/resource fixtures.",
+  "cases": [
+    "old launcher reproduces rejection before memory initialization",
+    "Launch GUI initializes memory before validation",
+    "Launch Debug initializes memory before validation",
+    "failed probe blocks guest without blaming boot selection",
+    "failed arena blocks guest",
+    "renderer failure does not initialize memory",
+    "retry retains one probe and one arena allocation",
+    "exit without Play does not allocate guest arena"
+  ],
+  "guest_test_path_uses_shared_admission": true,
+  "source_files": {
+    "runtime.c": "198bb18365ec19915d35dd8f085af3371ea623123ff49ab8bd2c8be48a74a68c",
+    "sd_launch_memory.c": "a14ef53aad4691f7814ab8b30a86dd26a3e70c8c31f51914ac5a404589f161f2"
+  },
+  "old_runtime_sha256": "bfe1ff8932d664128c65aaa5ba6414b97824c1f674cc30565d5952bf17838873",
+  "test_sha256": "a61247f40069a06d7047e9f028b9aa3b28a6c1dcf33912f64ae5d7f57e05c0ca"
+}

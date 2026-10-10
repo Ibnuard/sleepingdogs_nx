@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "dll_sha256": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "actual_decoder_limits": [
+    1,
+    2,
+    31,
+    32,
+    33,
+    127,
+    499,
+    500,
+    501,
+    512,
+    513,
+    1024
+  ],
+  "large_setup_limits": [
+    2048,
+    65535,
+    65536,
+    65537,
+    18446744073709551615
+  ],
+  "fastest_native_request": 65536,
+  "pause_resume": true,
+  "multiblock_and_invalid": true,
+  "prewrite_capacity_guard": true,
+  "buffer_tail_canaries": true,
+  "original_game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "actual_game_code": [
+    {
+      "pc": "0x40bd80",
+      "instructions": 7
+    },
+    {
+      "pc": "0x549430",
+      "instructions": 185
+    },
+    {
+      "pc": "0x5b2e92",
+      "instructions": 3
+    },
+    {
+      "pc": "0x9b2ad0",
+      "instructions": 28
+    }
+  ],
+  "entry_bytes": 128,
+  "hardware_tested": false,
+  "boundaries": "NT memory, container heap, locks, clock and config getters modeled; actual DLL x86 decoder executes"
+}

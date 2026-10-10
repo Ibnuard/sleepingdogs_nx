@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-direct-sync.zip",
+    "bytes": 11395656,
+    "sha256": "b352ef810914d90fc2cda9b153b5c2f871e85004678102f8c9b77aabcc73bacf",
+    "files": 117
+  },
+  "build": "sleepingdogs-low-window-v10-direct-sync",
+  "nro_sha256": "25802a32a9b13e35a3133496529261a5786d413729b68d007433d82665e957fe",
+  "elf_sha256": "66b72a3a1285355a04e26ebbd55d93b694d66aa8d6e284eb957a8a6cf898d6c8",
+  "baseline_sha256": "06d09aa6eea05cc38158c6a72c5782320c83ea2db4e8815ad272d56375f9063d",
+  "baseline_preserved": true,
+  "changed_native_files": [
+    "dlls/ntdll/unix/horizon.c",
+    "dlls/ntdll/unix/horizon_private.h",
+    "dlls/ntdll/unix/sd_sync_client.h",
+    "dlls/ntdll/unix/sd_sync_dispatch.h",
+    "dlls/ntdll/unix/sd_sync_legacy_wait.h",
+    "dlls/ntdll/unix/sd_sync_queue.h",
+    "dlls/ntdll/unix/sd_sync_router.h",
+    "dlls/ntdll/unix/sd_sync_state.h",
+    "dlls/ntdll/unix/server.c",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_perf_summary.h",
+    "wine-nx-probe/source/sd_sync_config.h",
+    "wine-nx-probe/source/sd_sync_report.h",
+    "wine-nx-probe/source/thread_profile.c"
+  ],
+  "game_files_changed": [],
+  "fex_adapter_unchanged": true,
+  "dxvk_unchanged": true,
+  "graphics_presets_unchanged": true,
+  "target_resolution": [
+    1280,
+    720
+  ],
+  "sync_mode": 2,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "reports": {
+    "direct-sync": "f27bb55d41c64cef89cec5fb0ed11ea31971fbcb4d899465a8a7e6f438d88369",
+    "direct-sync-binary": "788c706ae43b25f8c01a2b9544027562b5a4b447c4d208b179d4a305c5f962de",
+    "shader-binary": "31c20f2f435f957703baa510edd03c1e87c94a9cd989cfad0771fe7801c54221",
+    "cpu-topology": "6948b5c7f5dc13a98272987b797903ae9f51fbf7de98f15ea6d9c0792c9df73f",
+    "sync-startup-binary": "a7998b53b5b01f2b3271e1331c9cd4842f052d8bc843bbf26507b341b182e055",
+    "binary": "b8ab2d34d3bca8ad6fae7a0814a33e81d513d98bd250f626dd9db37daf9a852c"
+  }
+}

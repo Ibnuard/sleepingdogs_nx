@@ -1,0 +1,508 @@
+{
+  "status": "PASS",
+  "scope": "Replay shipped ARM64 topology queries and original x86 game initialization.\n\nNative allocation, pthread_once, logging and PEB values are fixtures. Wine's\nlinked topology builder and NtQuerySystemInformation(/Ex) execute unchanged.\nThe x86 test executes HKShip's CPU probe, queue initialization and index read,\nplus the real kernelbase GetLogicalProcessorInformation. The WoW64 structure\nconversion is a model of dlls/wow64/system.c; no game file is modified.\n",
+  "hardware_tested": false,
+  "game_modified": false,
+  "elf_sha256": "e8cf0e365a75716d179bcc8e55f41317b87bee3fe7928ca92a50f7339ed70f1e",
+  "old_elf_sha256": "1e933b326bdffa9144b9158498083c21c60b81023665d313470c7b93a9652f59",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "kernelbase_sha256": "972a55bf3fc8e7f7f6fa9ac62c9c8ec44cb5463bb891f71a0358f2eb03c60a9f",
+  "old_game": {
+    "worker_count": 0,
+    "queue_default_index": 4294967262,
+    "indices": [
+      4294967262
+    ],
+    "queries": [
+      {
+        "input_length": 0,
+        "status": "0xc0000002",
+        "returned_length": null
+      },
+      {
+        "input_length": 0,
+        "status": "0xc0000002",
+        "returned_length": null
+      }
+    ],
+    "table": "dededededededededededede"
+  },
+  "new_game": {
+    "worker_count": 4,
+    "queue_default_index": 0,
+    "indices": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "queries": [
+      {
+        "input_length": 0,
+        "status": "0xc0000004",
+        "returned_length": 144
+      },
+      {
+        "input_length": 144,
+        "status": "0x0",
+        "returned_length": 144
+      }
+    ],
+    "table": "01000000dededededededede"
+  },
+  "cases": [
+    {
+      "count": 1,
+      "legacy_records": [
+        {
+          "mask": 1,
+          "relation": 3,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 1,
+          "relation": 0,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 1,
+          "relation": 1,
+          "body": "00000000000000000000000000000000"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "count": 3,
+      "legacy_records": [
+        {
+          "mask": 7,
+          "relation": 3,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 1,
+          "relation": 0,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 2,
+          "relation": 0,
+          "body": "00000000000000000100000000000000"
+        },
+        {
+          "mask": 4,
+          "relation": 0,
+          "body": "00000000000000000200000000000000"
+        },
+        {
+          "mask": 7,
+          "relation": 1,
+          "body": "00000000000000000000000000000000"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "count": 4,
+      "legacy_records": [
+        {
+          "mask": 15,
+          "relation": 3,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 1,
+          "relation": 0,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 2,
+          "relation": 0,
+          "body": "00000000000000000100000000000000"
+        },
+        {
+          "mask": 4,
+          "relation": 0,
+          "body": "00000000000000000200000000000000"
+        },
+        {
+          "mask": 8,
+          "relation": 0,
+          "body": "00000000000000000300000000000000"
+        },
+        {
+          "mask": 15,
+          "relation": 1,
+          "body": "00000000000000000000000000000000"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "count": 64,
+      "legacy_records": [
+        {
+          "mask": 18446744073709551615,
+          "relation": 3,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 1,
+          "relation": 0,
+          "body": "00000000000000000000000000000000"
+        },
+        {
+          "mask": 2,
+          "relation": 0,
+          "body": "00000000000000000100000000000000"
+        },
+        {
+          "mask": 4,
+          "relation": 0,
+          "body": "00000000000000000200000000000000"
+        },
+        {
+          "mask": 8,
+          "relation": 0,
+          "body": "00000000000000000300000000000000"
+        },
+        {
+          "mask": 16,
+          "relation": 0,
+          "body": "00000000000000000400000000000000"
+        },
+        {
+          "mask": 32,
+          "relation": 0,
+          "body": "00000000000000000500000000000000"
+        },
+        {
+          "mask": 64,
+          "relation": 0,
+          "body": "00000000000000000600000000000000"
+        },
+        {
+          "mask": 128,
+          "relation": 0,
+          "body": "00000000000000000700000000000000"
+        },
+        {
+          "mask": 256,
+          "relation": 0,
+          "body": "00000000000000000800000000000000"
+        },
+        {
+          "mask": 512,
+          "relation": 0,
+          "body": "00000000000000000900000000000000"
+        },
+        {
+          "mask": 1024,
+          "relation": 0,
+          "body": "00000000000000000a00000000000000"
+        },
+        {
+          "mask": 2048,
+          "relation": 0,
+          "body": "00000000000000000b00000000000000"
+        },
+        {
+          "mask": 4096,
+          "relation": 0,
+          "body": "00000000000000000c00000000000000"
+        },
+        {
+          "mask": 8192,
+          "relation": 0,
+          "body": "00000000000000000d00000000000000"
+        },
+        {
+          "mask": 16384,
+          "relation": 0,
+          "body": "00000000000000000e00000000000000"
+        },
+        {
+          "mask": 32768,
+          "relation": 0,
+          "body": "00000000000000000f00000000000000"
+        },
+        {
+          "mask": 65536,
+          "relation": 0,
+          "body": "00000000000000001000000000000000"
+        },
+        {
+          "mask": 131072,
+          "relation": 0,
+          "body": "00000000000000001100000000000000"
+        },
+        {
+          "mask": 262144,
+          "relation": 0,
+          "body": "00000000000000001200000000000000"
+        },
+        {
+          "mask": 524288,
+          "relation": 0,
+          "body": "00000000000000001300000000000000"
+        },
+        {
+          "mask": 1048576,
+          "relation": 0,
+          "body": "00000000000000001400000000000000"
+        },
+        {
+          "mask": 2097152,
+          "relation": 0,
+          "body": "00000000000000001500000000000000"
+        },
+        {
+          "mask": 4194304,
+          "relation": 0,
+          "body": "00000000000000001600000000000000"
+        },
+        {
+          "mask": 8388608,
+          "relation": 0,
+          "body": "00000000000000001700000000000000"
+        },
+        {
+          "mask": 16777216,
+          "relation": 0,
+          "body": "00000000000000001800000000000000"
+        },
+        {
+          "mask": 33554432,
+          "relation": 0,
+          "body": "00000000000000001900000000000000"
+        },
+        {
+          "mask": 67108864,
+          "relation": 0,
+          "body": "00000000000000001a00000000000000"
+        },
+        {
+          "mask": 134217728,
+          "relation": 0,
+          "body": "00000000000000001b00000000000000"
+        },
+        {
+          "mask": 268435456,
+          "relation": 0,
+          "body": "00000000000000001c00000000000000"
+        },
+        {
+          "mask": 536870912,
+          "relation": 0,
+          "body": "00000000000000001d00000000000000"
+        },
+        {
+          "mask": 1073741824,
+          "relation": 0,
+          "body": "00000000000000001e00000000000000"
+        },
+        {
+          "mask": 2147483648,
+          "relation": 0,
+          "body": "00000000000000001f00000000000000"
+        },
+        {
+          "mask": 4294967296,
+          "relation": 0,
+          "body": "00000000000000002000000000000000"
+        },
+        {
+          "mask": 8589934592,
+          "relation": 0,
+          "body": "00000000000000002100000000000000"
+        },
+        {
+          "mask": 17179869184,
+          "relation": 0,
+          "body": "00000000000000002200000000000000"
+        },
+        {
+          "mask": 34359738368,
+          "relation": 0,
+          "body": "00000000000000002300000000000000"
+        },
+        {
+          "mask": 68719476736,
+          "relation": 0,
+          "body": "00000000000000002400000000000000"
+        },
+        {
+          "mask": 137438953472,
+          "relation": 0,
+          "body": "00000000000000002500000000000000"
+        },
+        {
+          "mask": 274877906944,
+          "relation": 0,
+          "body": "00000000000000002600000000000000"
+        },
+        {
+          "mask": 549755813888,
+          "relation": 0,
+          "body": "00000000000000002700000000000000"
+        },
+        {
+          "mask": 1099511627776,
+          "relation": 0,
+          "body": "00000000000000002800000000000000"
+        },
+        {
+          "mask": 2199023255552,
+          "relation": 0,
+          "body": "00000000000000002900000000000000"
+        },
+        {
+          "mask": 4398046511104,
+          "relation": 0,
+          "body": "00000000000000002a00000000000000"
+        },
+        {
+          "mask": 8796093022208,
+          "relation": 0,
+          "body": "00000000000000002b00000000000000"
+        },
+        {
+          "mask": 17592186044416,
+          "relation": 0,
+          "body": "00000000000000002c00000000000000"
+        },
+        {
+          "mask": 35184372088832,
+          "relation": 0,
+          "body": "00000000000000002d00000000000000"
+        },
+        {
+          "mask": 70368744177664,
+          "relation": 0,
+          "body": "00000000000000002e00000000000000"
+        },
+        {
+          "mask": 140737488355328,
+          "relation": 0,
+          "body": "00000000000000002f00000000000000"
+        },
+        {
+          "mask": 281474976710656,
+          "relation": 0,
+          "body": "00000000000000003000000000000000"
+        },
+        {
+          "mask": 562949953421312,
+          "relation": 0,
+          "body": "00000000000000003100000000000000"
+        },
+        {
+          "mask": 1125899906842624,
+          "relation": 0,
+          "body": "00000000000000003200000000000000"
+        },
+        {
+          "mask": 2251799813685248,
+          "relation": 0,
+          "body": "00000000000000003300000000000000"
+        },
+        {
+          "mask": 4503599627370496,
+          "relation": 0,
+          "body": "00000000000000003400000000000000"
+        },
+        {
+          "mask": 9007199254740992,
+          "relation": 0,
+          "body": "00000000000000003500000000000000"
+        },
+        {
+          "mask": 18014398509481984,
+          "relation": 0,
+          "body": "00000000000000003600000000000000"
+        },
+        {
+          "mask": 36028797018963968,
+          "relation": 0,
+          "body": "00000000000000003700000000000000"
+        },
+        {
+          "mask": 72057594037927936,
+          "relation": 0,
+          "body": "00000000000000003800000000000000"
+        },
+        {
+          "mask": 144115188075855872,
+          "relation": 0,
+          "body": "00000000000000003900000000000000"
+        },
+        {
+          "mask": 288230376151711744,
+          "relation": 0,
+          "body": "00000000000000003a00000000000000"
+        },
+        {
+          "mask": 576460752303423488,
+          "relation": 0,
+          "body": "00000000000000003b00000000000000"
+        },
+        {
+          "mask": 1152921504606846976,
+          "relation": 0,
+          "body": "00000000000000003c00000000000000"
+        },
+        {
+          "mask": 2305843009213693952,
+          "relation": 0,
+          "body": "00000000000000003d00000000000000"
+        },
+        {
+          "mask": 4611686018427387904,
+          "relation": 0,
+          "body": "00000000000000003e00000000000000"
+        },
+        {
+          "mask": 9223372036854775808,
+          "relation": 0,
+          "body": "00000000000000003f00000000000000"
+        },
+        {
+          "mask": 18446744073709551615,
+          "relation": 1,
+          "body": "00000000000000000000000000000000"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "count": 0,
+      "invalid_count_rejected": true
+    },
+    {
+      "count": 65,
+      "invalid_count_rejected": true
+    },
+    {
+      "fail_allocation": 1,
+      "partial_topology_discarded": true
+    },
+    {
+      "fail_allocation": 2,
+      "partial_topology_discarded": true
+    },
+    {
+      "fail_allocation": 3,
+      "partial_topology_discarded": true
+    },
+    {
+      "fail_allocation": 5,
+      "partial_topology_discarded": true
+    }
+  ],
+  "sources": {
+    "tests/check_cpu_topology_binary.py": "77a95159725cbf96fd3d8e3121429290020265d9986ab61b44343457d80612cb",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147",
+    "src/low_window/sd_cpu_topology.inc": "c17ffd34a3cd5dcc64b8b7b878b4b8cfbafdf6fe3f871590043274144e307c7e"
+  }
+}

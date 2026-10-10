@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "symbols": {
+    "sd_arena_pages": 256000,
+    "wine_nx_sd_fault_read": 184,
+    "wine_nx_sd_fault_line": 288,
+    "call_user_exception_dispatcher": 1684
+  },
+  "capture_helper_inlined": true,
+  "elf_sha256": "2d844be762de62df5e872208211d0b17fb6880630bd80cfb425e083d8f828d27"
+}

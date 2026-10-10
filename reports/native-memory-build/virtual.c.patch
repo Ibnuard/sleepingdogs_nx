@@ -1,0 +1,86 @@
+--- a/dlls/ntdll/unix/virtual.c
++++ b/dlls/ntdll/unix/virtual.c
+@@ -134,6 +134,7 @@
+ }
+ #define mlock   horizon_mlock
+ #define munlock horizon_munlock
++#include "sd_guest_arena.h"
+ #define mmap    horizon_mmap
+ #define munmap  horizon_munmap
+ #define mprotect horizon_mprotect
+@@ -2280,6 +2281,10 @@
+  *
+  * Build page protections from Win32 flags.
+  */
++#ifdef __SWITCH__
++#include "sd_guest_view.inc"
++#endif
++
+ static NTSTATUS get_vprot_flags( DWORD protect, unsigned int *vprot, BOOL image )
+ {
+     switch(protect & 0xff)
+@@ -2329,6 +2334,10 @@
+  */
+ static inline int mprotect_exec( void *base, size_t size, int unix_prot )
+ {
++#ifdef __SWITCH__
++    if (sd_guest_arena_overlaps(base, size))
++        return sd_guest_arena_protect(base, size, unix_prot);
++#endif
+     if (force_exec_prot && (unix_prot & PROT_READ) && !(unix_prot & PROT_EXEC))
+     {
+         TRACE( "forcing exec permission on %p-%p\n", base, (char *)base + size - 1 );
+@@ -2407,6 +2416,10 @@
+     NTSTATUS status;
+ 
+     if ((status = get_vprot_flags( protect, &vprot, view->protect & SEC_IMAGE ))) return status;
++#ifdef __SWITCH__
++    if (view == sd_direct_view)
++        return sd_direct_protection(view, base, size, vprot);
++#endif
+     if (is_view_valloc( view ))
+     {
+         if (vprot & VPROT_WRITECOPY) return STATUS_INVALID_PAGE_PROTECTION;
+@@ -2901,6 +2914,11 @@
+     }
+ 
+     if (limit_high && limit_low >= limit_high) return STATUS_INVALID_PARAMETER;
++#ifdef __SWITCH__
++    status = sd_map_direct_view(view_ret, base, size, alloc_type, vprot, limit_low,
++                               limit_high, align_mask, (uintptr_t)effective_user_space_limit);
++    if (status != STATUS_NOT_SUPPORTED) return status;
++#endif
+ 
+     if (use_kernel_writewatch && vprot & VPROT_WRITEWATCH)
+         unix_prot = get_unix_prot( vprot & ~VPROT_WRITEWATCH );
+@@ -3097,6 +3115,10 @@
+ static NTSTATUS decommit_pages( struct file_view *view, char *base, size_t size )
+ {
+     char *host_end, *host_start = (char *)ROUND_SIZE( 0, base, host_page_mask );
++#ifdef __SWITCH__
++    if (view == sd_direct_view)
++        return sd_direct_decommit(view, base, size);
++#endif
+ 
+     if (!size)
+     {
+@@ -3208,6 +3230,10 @@
+     char *host_base = (char *)ROUND_SIZE( 0, base, host_page_mask );
+     char *host_end = base + size;
+     NTSTATUS status;
++#ifdef __SWITCH__
++    if (view == sd_direct_view)
++        return sd_direct_release(view, base, size);
++#endif
+ 
+     if (size == view->size)
+     {
+@@ -4532,7 +4558,7 @@
+             start = (char *)((UINT_PTR)start & ~page_mask);
+             end = (char *)(((UINT_PTR)end + page_mask) & ~page_mask);
+             if (start >= end) continue;
+-            if (create_view( &view, start, end - start, VPROT_SYSTEM ))
++            if (sd_register_kernel_range(start, end - start))
+                 horizon_trace( "[VA] could not keep Wine out of %p-%p", start, end );
+             else
+                 horizon_trace( "[VA] kept Wine out of %p-%p", start, end );

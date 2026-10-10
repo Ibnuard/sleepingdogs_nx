@@ -1,0 +1,42 @@
+{
+  "patch": "sleepingdogs-fex-renderer-config-fix.zip",
+  "bytes": 5598,
+  "sha256": "9e82a5b3eb6b4e813e1b39baf1e9ff21c98de4c932ff37569813ed0ea6b671d9",
+  "cause": "The shipped C renderer gate requires d3d9.presentInterval=1 in addition to the DX11 config.",
+  "changed_packages": [
+    {
+      "package": "sleepingdogs-fex-0.1.0-sd",
+      "configs": 12
+    },
+    {
+      "package": "sleepingdogs-fex-ready",
+      "configs": 12
+    }
+  ],
+  "patch_configs": 11,
+  "fex_mode": "fastest",
+  "nro_changed": false,
+  "nsp_changed": false,
+  "switch_retest_pending": true,
+  "validation": {
+    "original_archive": "REPRODUCED: all 14 C renderer preflight checks rejected the original configs",
+    "original_archive_with_patch": "PASS",
+    "updated_complete_archive": "PASS",
+    "renderer_choices": 2,
+    "profile_combinations": 8,
+    "preflight_checks_per_fixed_archive": 14,
+    "sanitizers": [
+      "AddressSanitizer",
+      "UndefinedBehaviorSanitizer"
+    ],
+    "rename_semantics": "Horizon target-must-not-exist behavior",
+    "malformed_and_missing_config_rejection": "PASS",
+    "stale_installed_renderer_replacement": "PASS",
+    "ready_manifest_entries_verified": 339,
+    "fex_fastest_preserved": true
+  },
+  "native_source_tested": "/home/blekjek/sleepingdogs-fex-final/native-source",
+  "nro_sha256": "5fcb2a389704b53db88dc0a9862f7416268bb5cc3f38ef0da6c3ca53bcf2ef3f",
+  "complete_archive_sha256": "83b59b7706332f9a71fbb1920ec80a929aca794014530a39032515a36b56e414",
+  "reported_log_sha256": "58be800aa98218719f0f080f8b49b45d733c17fa7af69964f8219b56b9c08373"
+}

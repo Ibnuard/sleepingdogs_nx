@@ -1,0 +1,410 @@
+From 1b03eff0ad5c882b392abbf2b9ac7142295d32bc Mon Sep 17 00:00:00 2001
+From: naga <38852591+NaGaa95@users.noreply.github.com>
+Date: Mon, 28 Sep 2026 16:11:46 +0200
+Subject: [PATCH] nvk: avoid redundant dynamic UBO updates on Horizon
+
+---
+ src/nouveau/vulkan/nvk_cmd_buffer.c       | 129 +++++++++++++++++-----
+ src/nouveau/vulkan/nvk_cmd_buffer.h       |   7 ++
+ src/nouveau/vulkan/nvk_cmd_draw.c         |  53 ++++++---
+ src/nouveau/vulkan/nvk_descriptor_delta.h |  45 ++++++++
+ src/nouveau/vulkan/nvk_device.c           |   4 +
+ src/nouveau/vulkan/nvk_device.h           |   1 +
+ 6 files changed, 195 insertions(+), 44 deletions(-)
+ create mode 100644 src/nouveau/vulkan/nvk_descriptor_delta.h
+
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.c b/src/nouveau/vulkan/nvk_cmd_buffer.c
+index 444d49075f5..60ae745ace7 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.c
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.c
+@@ -7,6 +7,7 @@
+ #include "nvk_buffer.h"
+ #include "nvk_cmd_pool.h"
+ #include "nvk_descriptor_set_layout.h"
++#include "nvk_descriptor_delta.h"
+ #include "nvk_device.h"
+ #include "nvk_device_memory.h"
+ #include "nvk_entrypoints.h"
+@@ -1247,10 +1248,12 @@ nvk_cmd_bind_shaders(struct vk_command_buffer *vk_cmd,
+ 
+ #define NVK_VK_GRAPHICS_STAGE_BITS (VK_SHADER_STAGE_ALL_GRAPHICS | VK_SHADER_STAGE_TASK_BIT_EXT | VK_SHADER_STAGE_MESH_BIT_EXT)
+ 
+-void
+-nvk_cmd_dirty_cbufs_for_descriptors(struct nvk_cmd_buffer *cmd,
+-                                    VkShaderStageFlags stages,
+-                                    uint32_t sets_start, uint32_t sets_end)
++static void
++nvk_cmd_dirty_cbufs_for_descriptors_delta(struct nvk_cmd_buffer *cmd,
++                                         VkShaderStageFlags stages,
++                                         uint32_t sets_start, uint32_t sets_end,
++                                         uint64_t dynamic_changed,
++                                         uint32_t dynamic_starts_changed)
+ {
+    if (!(stages & NVK_VK_GRAPHICS_STAGE_BITS))
+       return;
+@@ -1269,27 +1272,70 @@ nvk_cmd_dirty_cbufs_for_descriptors(struct nvk_cmd_buffer *cmd,
+ 
+    u_foreach_bit(g, groups) {
+       struct nvk_cbuf_group *group = &cmd->state.gfx.cbuf_groups[g];
+-
+-      for (uint32_t i = 0; i < ARRAY_SIZE(group->cbufs); i++) {
++      const struct nvk_root_descriptor_table *root =
++         (const void *)cmd->state.gfx.descriptors.root;
++      const uint32_t slots = group->descriptor_slots | group->dynamic_ubo_slots;
++      u_foreach_bit(i, slots) {
+          const struct nvk_cbuf *cbuf = &group->cbufs[i];
+-         switch (cbuf->type) {
+-         case NVK_CBUF_TYPE_INVALID:
+-         case NVK_CBUF_TYPE_ROOT_DESC:
+-         case NVK_CBUF_TYPE_SHADER_DATA:
+-            break;
+-
+-         case NVK_CBUF_TYPE_DESC_SET:
+-         case NVK_CBUF_TYPE_UBO_DESC:
+-         case NVK_CBUF_TYPE_DYNAMIC_UBO:
+-            if (cbuf->desc_set >= sets_start && cbuf->desc_set < sets_end)
+-               group->dirty |= BITFIELD_BIT(i);
+-            break;
+-
+-         default:
+-            UNREACHABLE("Invalid cbuf type");
++         if (cbuf->desc_set < sets_start || cbuf->desc_set >= sets_end)
++            continue;
++
++         if (cbuf->type == NVK_CBUF_TYPE_DYNAMIC_UBO) {
++            const uint32_t d = root->set_dynamic_buffer_start[cbuf->desc_set] +
++                               cbuf->dynamic_idx;
++            if (!(dynamic_starts_changed & BITFIELD_BIT(cbuf->desc_set)) &&
++                d < NVK_MAX_DYNAMIC_BUFFERS &&
++                !(dynamic_changed & BITFIELD64_BIT(d))) {
++               continue;
++            }
+          }
++         group->dirty |= BITFIELD_BIT(i);
++      }
++   }
++}
++
++void
++nvk_cmd_dirty_cbufs_for_descriptors(struct nvk_cmd_buffer *cmd,
++                                    VkShaderStageFlags stages,
++                                    uint32_t sets_start, uint32_t sets_end)
++{
++   nvk_cmd_dirty_cbufs_for_descriptors_delta(cmd, stages, sets_start, sets_end,
++                                            UINT64_MAX, UINT32_MAX);
++}
++
++static uint64_t
++nvk_cmd_update_dynamic_buffers(struct nvk_cmd_buffer *cmd,
++                               struct nvk_descriptor_state *desc,
++                               uint32_t next[4][NVK_MAX_DYNAMIC_BUFFERS],
++                               uint32_t first, uint32_t end, bool delta)
++{
++   const struct nvk_root_descriptor_table *root = (const void *)desc->root;
++   const uint64_t range = nvk_descriptor_range_mask(first, end);
++   uint64_t changed = range & ~desc->dynamic_buffers_valid;
++
++   if (first == end)
++      return 0;
++
++   for (uint32_t k = 0; k < 4; k++) {
++      struct nvk_descriptor_delta update;
++      if (delta) {
++         update = nvk_descriptor_delta(root->dynamic_buffers[k], next[k],
++                                       desc->dynamic_buffers_valid, first, end);
++      } else {
++         update = (struct nvk_descriptor_delta) {
++            .changed = range, .first = first, .count = end - first,
++         };
+       }
++      changed |= update.changed;
++      if (update.count == 0)
++         continue;
++      nvk_descriptor_state_set_root_array(cmd, desc, dynamic_buffers[k],
++                                          update.first, update.count,
++                                          &next[k][update.first]);
+    }
++   if (desc->flush_root != NULL)
++      desc->dynamic_buffers_valid |= range;
++   return changed;
+ }
+ 
+ static void
+@@ -1297,10 +1343,18 @@ nvk_bind_descriptor_sets(struct nvk_cmd_buffer *cmd,
+                          struct nvk_descriptor_state *desc,
+                          const VkBindDescriptorSetsInfoKHR *info)
+ {
++   if (info->descriptorSetCount == 0)
++      return;
++
+    VK_FROM_HANDLE(vk_pipeline_layout, pipeline_layout, info->layout);
+    struct nvk_device *dev = nvk_cmd_buffer_device(cmd);
+    const struct nvk_physical_device *pdev = nvk_device_physical(dev);
+ 
++   const bool delta = dev->ubo_delta_enabled &&
++                      desc == &cmd->state.gfx.descriptors &&
++                      desc->flush_root != NULL &&
++                      !nvk_use_hw_root_table(&pdev->info, true);
++
+    uint32_t dynamic_buffers[4][NVK_MAX_DYNAMIC_BUFFERS];
+    uint8_t set_dynamic_buffer_start[NVK_MAX_SETS];
+ 
+@@ -1328,6 +1382,7 @@ nvk_bind_descriptor_sets(struct nvk_cmd_buffer *cmd,
+    const uint8_t dyn_buffer_start =
+       pipeline_layout->dynamic_descriptor_offset[info->firstSet];
+    uint8_t dyn_buffer_end = dyn_buffer_start;
++   uint32_t dynamic_starts_changed = 0;
+ 
+    uint32_t next_dyn_offset = 0;
+    for (uint32_t i = 0; i < info->descriptorSetCount; ++i) {
+@@ -1349,6 +1404,8 @@ nvk_bind_descriptor_sets(struct nvk_cmd_buffer *cmd,
+          nvk_descriptor_state_set_root(cmd, desc, sets[s], set_addr);
+       }
+ 
++      if (set_dynamic_buffer_start[s] != dyn_buffer_end)
++         dynamic_starts_changed |= BITFIELD_BIT(s);
+       set_dynamic_buffer_start[s] = dyn_buffer_end;
+ 
+       if (pipeline_layout->set_layouts[s] != NULL) {
+@@ -1374,6 +1431,10 @@ nvk_bind_descriptor_sets(struct nvk_cmd_buffer *cmd,
+                   dynamic_buffers[k][dyn_buffer_end + j] = db.values[k];
+             }
+             next_dyn_offset += set->layout->vk.dynamic_descriptor_count;
++         } else if (set == NULL) {
++            for (uint32_t k = 0; k < 4; k++)
++               memset(&dynamic_buffers[k][dyn_buffer_end], 0,
++                      set_layout->vk.dynamic_descriptor_count * sizeof(uint32_t));
+          }
+ 
+          dyn_buffer_end += set_layout->vk.dynamic_descriptor_count;
+@@ -1384,21 +1445,29 @@ nvk_bind_descriptor_sets(struct nvk_cmd_buffer *cmd,
+    assert(dyn_buffer_end <= NVK_MAX_DYNAMIC_BUFFERS);
+    assert(next_dyn_offset <= info->dynamicOffsetCount);
+ 
+-   for (int i = 0; i < 4; i++)
+-      nvk_descriptor_state_set_root_array(cmd, desc, dynamic_buffers[i],
+-                                          dyn_buffer_start, dyn_buffer_end - dyn_buffer_start,
+-                                          &dynamic_buffers[i][dyn_buffer_start]);
++   const uint64_t dynamic_changed =
++      nvk_cmd_update_dynamic_buffers(cmd, desc, dynamic_buffers,
++                                      dyn_buffer_start, dyn_buffer_end, delta);
+ 
+    /* We need to at least sync everything from first_set to NVK_MAX_SETS.
+     * However, we only save anything if firstSet >= 4 so we may as well sync
+     * everything just to be safe.
+     */
+-   nvk_descriptor_state_set_root_array(cmd, desc, set_dynamic_buffer_start,
+-                                       0, NVK_MAX_SETS,
+-                                       set_dynamic_buffer_start);
++   const struct nvk_root_descriptor_table *root = (const void *)desc->root;
++   if (!delta || !desc->dynamic_starts_valid ||
++       memcmp(root->set_dynamic_buffer_start, set_dynamic_buffer_start,
++              sizeof(set_dynamic_buffer_start)) != 0) {
++      nvk_descriptor_state_set_root_array(cmd, desc, set_dynamic_buffer_start,
++                                          0, NVK_MAX_SETS,
++                                          set_dynamic_buffer_start);
++      desc->dynamic_starts_valid = desc->flush_root != NULL;
++   }
+ 
+-   nvk_cmd_dirty_cbufs_for_descriptors(cmd, info->stageFlags, info->firstSet,
+-                                       info->firstSet + info->descriptorSetCount);
++   nvk_cmd_dirty_cbufs_for_descriptors_delta(
++      cmd, info->stageFlags, info->firstSet,
++      info->firstSet + info->descriptorSetCount,
++      delta ? dynamic_changed : UINT64_MAX,
++      delta ? dynamic_starts_changed : UINT32_MAX);
+ }
+ 
+ VKAPI_ATTR void VKAPI_CALL
+diff --git a/src/nouveau/vulkan/nvk_cmd_buffer.h b/src/nouveau/vulkan/nvk_cmd_buffer.h
+index 3c6f78ce94d..0c6a5fd811b 100644
+--- a/src/nouveau/vulkan/nvk_cmd_buffer.h
++++ b/src/nouveau/vulkan/nvk_cmd_buffer.h
+@@ -121,6 +121,10 @@ struct nvk_descriptor_state {
+ 
+    struct nvk_descriptor_set_binding sets[NVK_MAX_SETS];
+    uint32_t push_dirty;
++
++   /* Values already published to this command buffer's graphics root table. */
++   uint64_t dynamic_buffers_valid;
++   bool dynamic_starts_valid;
+ };
+ 
+ #define nvk_descriptor_state_get_root(desc, member, dst) do { \
+@@ -210,6 +214,9 @@ struct nvk_graphics_state {
+ 
+    struct nvk_cbuf_group {
+       uint16_t dirty;
++      uint16_t descriptor_slots;
++      uint16_t dynamic_ubo_slots;
++      const struct nvk_shader *shader;
+       struct nvk_cbuf cbufs[16];
+    } cbuf_groups[5];
+ 
+diff --git a/src/nouveau/vulkan/nvk_cmd_draw.c b/src/nouveau/vulkan/nvk_cmd_draw.c
+index 309a5158ff4..0cbdd883a64 100644
+--- a/src/nouveau/vulkan/nvk_cmd_draw.c
++++ b/src/nouveau/vulkan/nvk_cmd_draw.c
+@@ -848,6 +848,8 @@ nvk_cmd_buffer_begin_graphics(struct nvk_cmd_buffer *cmd,
+    }
+ 
+    cmd->state.gfx.descriptors.flush_root = nvk_cmd_flush_gfx_root_desc;
++   cmd->state.gfx.descriptors.dynamic_buffers_valid = 0;
++   cmd->state.gfx.descriptors.dynamic_starts_valid = false;
+ 
+    if (cmd->vk.level != VK_COMMAND_BUFFER_LEVEL_PRIMARY &&
+        (pBeginInfo->flags & VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT)) {
+@@ -2364,9 +2366,18 @@ nvk_cmd_flush_gfx_shaders(struct nvk_cmd_buffer *cmd)
+                stage, has_task_shader)];
+          for (uint32_t i = 0; i < cbuf_map->cbuf_count; i++) {
+             if (memcmp(&cbuf_group->cbufs[i], &cbuf_map->cbufs[i],
+-                       sizeof(cbuf_group->cbufs[i])) != 0) {
++                       sizeof(cbuf_group->cbufs[i])) != 0 ||
++                (cbuf_map->cbufs[i].type == NVK_CBUF_TYPE_SHADER_DATA &&
++                 cbuf_group->shader != shader)) {
+                cbuf_group->cbufs[i] = cbuf_map->cbufs[i];
+                cbuf_group->dirty |= BITFIELD_BIT(i);
++               const enum nvk_cbuf_type type = cbuf_map->cbufs[i].type;
++               cbuf_group->descriptor_slots &= ~BITFIELD_BIT(i);
++               cbuf_group->dynamic_ubo_slots &= ~BITFIELD_BIT(i);
++               if (type == NVK_CBUF_TYPE_DESC_SET || type == NVK_CBUF_TYPE_UBO_DESC)
++                  cbuf_group->descriptor_slots |= BITFIELD_BIT(i);
++               else if (type == NVK_CBUF_TYPE_DYNAMIC_UBO)
++                  cbuf_group->dynamic_ubo_slots |= BITFIELD_BIT(i);
+             }
+          }
+       }
+@@ -2415,6 +2426,15 @@ nvk_cmd_flush_gfx_shaders(struct nvk_cmd_buffer *cmd)
+       nv_push_raw(p, &last_vtgm->push_dw[dw_start], dw_count);
+    }
+ 
++   for (uint32_t g = 0; g < ARRAY_SIZE(cmd->state.gfx.cbuf_groups); g++)
++      cmd->state.gfx.cbuf_groups[g].shader = NULL;
++   for (mesa_shader_stage stage = 0; stage < MESA_SHADER_MESH_STAGES; stage++) {
++      const struct nvk_shader *shader = cmd->state.gfx.shaders[stage];
++      if (shader != NULL) {
++         const uint32_t g = nvk_cbuf_binding_for_stage(stage, has_task_shader);
++         cmd->state.gfx.cbuf_groups[g].shader = shader;
++      }
++   }
+    cmd->state.gfx.shaders_dirty = 0;
+ }
+ 
+@@ -4353,21 +4373,26 @@ nvk_cmd_flush_gfx_cbufs(struct nvk_cmd_buffer *cmd)
+    const uint32_t min_cbuf_alignment = nvk_min_cbuf_alignment(&pdev->info);
+    struct nvk_descriptor_state *desc = &cmd->state.gfx.descriptors;
+ 
+-   const struct nvk_shader *mesh_shader =
+-      cmd->state.gfx.shaders[MESA_SHADER_MESH];
+-   const bool has_task_shader =
+-      mesh_shader != NULL && mesh_shader->info.mesh.has_task_shader;
+-
+-   /* Find cbuf maps for the 5 cbuf groups */
+    const struct nvk_shader *cbuf_shaders[5] = { NULL, };
+-   for (mesa_shader_stage stage = 0; stage < MESA_SHADER_MESH_STAGES; stage++) {
+-      const struct nvk_shader *shader = cmd->state.gfx.shaders[stage];
+-      if (shader == NULL)
+-         continue;
++   if (dev->ubo_delta_enabled) {
++      for (uint32_t g = 0; g < ARRAY_SIZE(cbuf_shaders); g++)
++         cbuf_shaders[g] = cmd->state.gfx.cbuf_groups[g].shader;
++   } else {
++      const struct nvk_shader *mesh_shader =
++         cmd->state.gfx.shaders[MESA_SHADER_MESH];
++      const bool has_task_shader =
++         mesh_shader != NULL && mesh_shader->info.mesh.has_task_shader;
++
++      /* Find cbuf maps for the 5 cbuf groups */
++      for (mesa_shader_stage stage = 0; stage < MESA_SHADER_MESH_STAGES; stage++) {
++         const struct nvk_shader *shader = cmd->state.gfx.shaders[stage];
++         if (shader == NULL)
++            continue;
+ 
+-      uint32_t group = nvk_cbuf_binding_for_stage(stage, has_task_shader);
+-      assert(group < ARRAY_SIZE(cbuf_shaders));
+-      cbuf_shaders[group] = shader;
++         uint32_t group = nvk_cbuf_binding_for_stage(stage, has_task_shader);
++         assert(group < ARRAY_SIZE(cbuf_shaders));
++         cbuf_shaders[group] = shader;
++      }
+    }
+ 
+    bool bound_any_cbuf = false;
+diff --git a/src/nouveau/vulkan/nvk_descriptor_delta.h b/src/nouveau/vulkan/nvk_descriptor_delta.h
+new file mode 100644
+index 00000000000..38dc2aa5eec
+--- /dev/null
++++ b/src/nouveau/vulkan/nvk_descriptor_delta.h
+@@ -0,0 +1,45 @@
++/* SPDX-License-Identifier: MIT */
++#ifndef NVK_DESCRIPTOR_DELTA_H
++#define NVK_DESCRIPTOR_DELTA_H
++
++#include <assert.h>
++#include <stdint.h>
++
++struct nvk_descriptor_delta {
++   uint64_t changed;
++   uint32_t first;
++   uint32_t count;
++};
++
++static inline uint64_t
++nvk_descriptor_range_mask(uint32_t first, uint32_t end)
++{
++   assert(first <= end && end <= 64);
++   if (first == end)
++      return 0;
++   if (end - first == 64)
++      return UINT64_MAX;
++   return ((UINT64_C(1) << (end - first)) - 1) << first;
++}
++
++/* A single upload spans the changed words, including any gaps between them. */
++static inline struct nvk_descriptor_delta
++nvk_descriptor_delta(const uint32_t *old, const uint32_t *next,
++                     uint64_t valid, uint32_t first, uint32_t end)
++{
++   assert(first <= end && end <= 64);
++   struct nvk_descriptor_delta delta = { .first = end };
++   for (uint32_t i = first; i < end; i++) {
++      const uint64_t bit = UINT64_C(1) << i;
++      if (old[i] != next[i])
++         delta.changed |= bit;
++      if ((delta.changed & bit) || !(valid & bit)) {
++         if (delta.count == 0)
++            delta.first = i;
++         delta.count = i - delta.first + 1;
++      }
++   }
++   return delta;
++}
++
++#endif
+diff --git a/src/nouveau/vulkan/nvk_device.c b/src/nouveau/vulkan/nvk_device.c
+index 6194a1193c8..2dcd1f2791c 100644
+--- a/src/nouveau/vulkan/nvk_device.c
++++ b/src/nouveau/vulkan/nvk_device.c
+@@ -335,6 +335,10 @@ nvk_CreateDevice(VkPhysicalDevice physicalDevice,
+ 
+    init_dispatch_tables(dev);
+ 
++#ifdef HAVE_SWITCH_PLATFORM
++   dev->ubo_delta_enabled = true;
++#endif
++
+    dev->vk.shader_ops = &nvk_device_shader_ops;
+    dev->vk.check_status = &nvk_device_check_status;
+ 
+diff --git a/src/nouveau/vulkan/nvk_device.h b/src/nouveau/vulkan/nvk_device.h
+index 9eda6f2c184..1e3e616ef20 100644
+--- a/src/nouveau/vulkan/nvk_device.h
++++ b/src/nouveau/vulkan/nvk_device.h
+@@ -53,6 +53,7 @@ struct nvk_device {
+     * NVKMD_MEM_GPU_UNCACHED.
+     */
+    bool cpu_write_mem_uncached;
++   bool ubo_delta_enabled;
+ 
+    struct nvk_upload_queue upload;
+ 

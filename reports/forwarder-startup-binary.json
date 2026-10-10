@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "scope": "Execute the actual old/new ARM64 forwarders, including libnx and newlib.\n\nOnly Horizon services, memory-map syscalls and the RNG are modeled. Allocation,\nreservation bookkeeping, ROMFS/NRO parsing and NRO handoff run from the linked\nELFs. This reproduces the old abort before verifying the repaired startup. It\ndoes not substitute for a Switch boot or execute the game's NRO entrypoint.\n",
+  "old_elf_sha256": "07ff64d98365aaafca80a6c585d3aa4ae7ecd1280c97deddfc539bb6232dd802",
+  "elf_sha256": "569334bc424c07009b04b592bd31a61a90c9af1281c7bdea698c92b3cb760a1d",
+  "nro_sha256": "767cf6b973f3686d77b67b81e8cc0271b34b081e0513b4d81e54190b261f6487",
+  "nsp_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "old_abort_result": "0x515b",
+  "allocation_functions_emulated_from_elf": true,
+  "npdm_nacp_icon_target_unchanged": true,
+  "cases": [
+    {
+      "mode": "low_candidate_then_high",
+      "maps": 2,
+      "unmaps": 3,
+      "first_nro_address": "0x100200000",
+      "private_heap_bytes": 16384,
+      "reservation_address": "0x40000ac00",
+      "allocation_failure_and_free": "PASS"
+    },
+    {
+      "mode": "random_high_address",
+      "maps": 2,
+      "unmaps": 3,
+      "first_nro_address": "0x4000200000",
+      "private_heap_bytes": 16384,
+      "reservation_address": "0x40000ac00",
+      "allocation_failure_and_free": "PASS"
+    }
+  ],
+  "source_files": {
+    "main.c": "810139d565387650e3f55c70e760bbca542f4ed3afeedf18c0b25dc600761216",
+    "sd_forwarder_heap.inc": "700744cc5345ce9719ab12cca88fe1e5f1fd75a9d68b6d5acfff5f978c520b30",
+    "sd_forwarder_low.inc": "2e5bb086b42d7c34f3e08fdf96840b9aebf0459ca61f49d70afe31a0a64f3d9f",
+    "sd_gpu_budget.h": "b933b85b5266de197106516aa2d43ce3dbd19fe07d8796d87823564ea1a631d1",
+    "trampoline.s": "2f11a79cc9a4a162dcef557274076b66480bb256f353d47cea1ef56ab8e11f4e"
+  },
+  "test_sha256": "266201a512745ef67a7144bdb7da2dc9c15d9ec40fa8098792809df23c0647f1"
+}

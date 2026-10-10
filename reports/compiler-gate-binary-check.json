@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "dll_sha256": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "simultaneous_compilers": 5,
+  "permits": 4,
+  "fifth_waits_before_invalidation_lock": true,
+  "released_permit_reused": true,
+  "all_early_cache_returns_unlock": true,
+  "boundaries": "NT calls, std::mutex scheduler and lookup result modeled. Actual CompileBlock, gate selection and RAII cleanup execute.",
+  "hardware_tested": false
+}

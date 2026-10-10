@@ -1,0 +1,16 @@
+{
+  "library_sha256": "ca9c82e03b04fb385004d6f7d47bd8357e107f7a35481f08e06f7b870f941315",
+  "object_sha256": "2e7dc31762b884aa5396518505fc442f4408be596f033f38d131bf3907d89dfb",
+  "bound_object_sha256": "fe3ac53ce0a911cd0cca11592543c40eccd2328b0043eb867fea5729bbfd7d03",
+  "newlib_objects": {
+    "libc_a-malignr.o": "05d2c3058952bad1cdadc5f86e751b7070e3fbcb211f51c4253e1beb20a93cb6",
+    "libc_a-mallocr.o": "72c085e5dca9e98070c63cdc03763144b4e4dec55b3b0aa9aa8032b9d626cd9a",
+    "libc_a-freer.o": "1f37d97c49866db92852720cd4242a63034d417259ba3e0198f852a7705d1388",
+    "libc_a-mallinfor.o": "8524c1052d898ac7b35443b163361c8b22c9380b82b7d7e3bdd46edc566cf70c"
+  },
+  "imports": {
+    "memalign": "wine_nx_f1_gpu_memalign",
+    "free": "wine_nx_f1_gpu_free",
+    "nvMapCreate": "wine_nx_f1_gpu_nvmap_create"
+  }
+}

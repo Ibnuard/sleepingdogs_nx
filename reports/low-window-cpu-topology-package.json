@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-cpu-topology-fix.zip",
+    "bytes": 10505264,
+    "sha256": "3cd1e3f0070eacde87e3fa9953dc7f83c3b12d9d1ab744d4c49816afebd303b4",
+    "files": 57
+  },
+  "nro_sha256": "173da7bcb3063b465f9cd34409af8470559e60eab8cbeffe95e83e31509e9a72",
+  "elf_sha256": "3ae60708260cb83ed2f5edfc0bcba20fb84b2e1e70e0fcdc5b56e7bcafed41d0",
+  "changed_native_files": [
+    "dlls/ntdll/unix/sd_cpu_topology.inc",
+    "dlls/ntdll/unix/system.c",
+    "wine-nx-probe/source/runtime.c"
+  ],
+  "profile": "fastest",
+  "fex_adapter_unchanged": true,
+  "startup_cpu_guard": true,
+  "hardware_tested": false,
+  "game_modified": false,
+  "compatible_forwarders": [
+    "f893d51849443ae6da59925aeec8659f68e94b15347d8528ce56412fbad52598",
+    "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929"
+  ],
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-sync-startup-fix.zip",
+    "sha256": "7ade825f06fa11cadd6204f2f6b2fd8e7e792af1524783611c9e3ababe810816"
+  },
+  "reports": {
+    "low-window-v6-cpu-topology": "0b75155d1ccb6e39640c1b03a6bb0dd5f38e751f31393cb299e202f997db50a3",
+    "low-window-v6-sync-startup-binary": "796f4b98fc6e46f763c3e743754a4d7757a2d998a719c78dba990a336e3d396e",
+    "low-window-v6-binary": "6b07f3e21fbbe226eeda1fef4cac0c93b4b27a2af0d4ca2ea485a3ecd1a22042",
+    "loading-freeze-v5-cpu-topology-analysis": "ad794156fc01140899f5dbb8f12abacd037ed26e1e838b9d37479166f03adbae"
+  }
+}

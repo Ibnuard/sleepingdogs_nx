@@ -1,0 +1,22 @@
+{
+  "method": "pinned ARM64 void function entry RET; PE checksum refreshed",
+  "base_sha256": "17dcf3e78371a717a9c41da5bffa4d6a5755d6479afa0a8ade12abcc7639ad23",
+  "sha256": "81b1981e96883e7d07ad096f48b3d40b47038e784880fd51b515f89b5f3d89e5",
+  "entry": "PES13FexPrimeCodeCache",
+  "rva": 1355080,
+  "file_offset": 1355080,
+  "original_entry_32_bytes": "f353bda9f55b01a9fe1300f9951500d0a8425f391f050071e1050054881500d0",
+  "replacement_instruction": "c0035fd6",
+  "changed_offsets": [
+    208,
+    209,
+    210,
+    1355080,
+    1355081,
+    1355082,
+    1355083
+  ],
+  "checksum_offset": 208,
+  "behavior": "No eager spare; initial 128 MiB cache and normal growth/fallback unchanged",
+  "hardware_tested": false
+}

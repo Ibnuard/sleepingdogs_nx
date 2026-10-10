@@ -1,0 +1,20 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-scene-memory-fix.zip",
+  "bytes": 35682213,
+  "sha256": "95d31c4440fea782f3798b4fd14bb26e5e0b34df96e84c8c57c02a02bf6fb277",
+  "files": 754,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-scene-memory-rollback.zip",
+    "bytes": 10867606,
+    "sha256": "6946a9aa80208073c0749c05e603be5433cf0f56d9a57a9aa2bf2cf3bbb4b76f",
+    "files": 18
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "nro_sha256": "de0a9ea83adcdf8e68a1b0cd3d8383af50e911ec99e7e43149ddadb98367b0f7",
+  "dll_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "other_dlls_unchanged": true,
+  "forwarder_unchanged": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "hardware_tested": false
+}

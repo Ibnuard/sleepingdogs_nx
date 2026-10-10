@@ -1,0 +1,590 @@
+{
+  "status": "PASS",
+  "scope": "Execute the shipped ARM64 notification helper with modeled condvars/mutexes.\n\nConcurrent waits are covered by the production-handler pthread sanitizer suite.\nThis check verifies that the real compiled ON/OFF guards and counters preserve\nshared/private legacy wakes and skip only the unrelated direct-queue broadcast.\n",
+  "elf_sha256": "63eb8b35356d35275a896aca86fe3eed8d154605a1afbee06226eb76cef21311",
+  "default_enabled": true,
+  "compiled_cases": [
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 0,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 1,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 0,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 1,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 0,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 1,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 0,
+      "reason": 2,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 0,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 0,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 1,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "mode": 2,
+      "filter": 1,
+      "legacy_router": 1,
+      "reason": 2,
+      "direct_signals": 0,
+      "shared_broadcasts": 1,
+      "private_legacy_signals": 1,
+      "snapshot": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "sources": {
+    "tests/check_sync_notify_v16_binary.py": "0e106b7466ef04a3041272f4ed1c84b0f1d3f1f488eec1ed61caed75fbc48fc9",
+    "tests/check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "changed_sources": {
+    "src/nouveau/compiler/nak/opt_instr_sched_common.rs": "b72bb3b6ab37a7808bb097e998aea2bd76c941f80f67922ce174fa30ecf0c3d7",
+    "src/nouveau/compiler/nak/sm50.rs": "2aa68c9f2f251333d03978b98998ca86f02092af57d7eee2ad8027890934457f",
+    "src/nouveau/compiler/nak_nir.c": "4dc6b3908ef1f3512576b238de25c467d1eeac722095015f10be72ab084aa3b8",
+    "src/nouveau/vulkan/nvk_physical_device.c": "fbe7712ede1d532f7758be33741bc893723704d8bc50669654633c8f99c6494d",
+    "src/nouveau/vulkan/nvk_cmd_draw.c": "4c0b861203546653116d8cbfd38f6748d761575a41e61c00bb519fd9ee937ea4",
+    "src/nouveau/vulkan/nvk_shader.c": "7d3f7838d7ec7ff155ba5f7c40a959f92a54546abfb3e8b1a35fd78654e3f0e9"
+  },
+  "rust_result": "PASS 20388 scheduler and FADD legalization/encoding cases",
+  "nir_result": "PASS 7 actual NIR branch transforms: small ALU flattening, limits, side effects, architecture scope",
+  "hardware_tested": false,
+  "limitation": "Rust extraction exercises production decision/encoding methods with operand adapters; not the full shader compiler or a GPU execution test. NIR tests execute the real pass.",
+  "unchanged_dependency_barriers_and_reg_pressure": {
+    "src/nouveau/compiler/nak/calc_instr_deps.rs": "d4dbdbf8e4d6837559ff46454af3f7c2cc22461489c8d0270dad99b18fbc2e22",
+    "src/nouveau/compiler/nak/opt_instr_sched_prepass.rs": "03b797294742f1db129b1e57a1c3011acdba384f58bb3de65ad666c80f48f624",
+    "src/nouveau/compiler/nak/opt_instr_sched_postpass.rs": "ce93da806082bc1c4d6ecdfd1f1f756806682079ab7cd4be0a2f2d532dc814d7",
+    "src/nouveau/compiler/nak.h": "af327541a88c71080cd6032a9f04d1752bfd17bab97bbdaf7ef32d0ee534503e",
+    "src/nouveau/compiler/nak_private.h": "4ad3e86517f26255bb72eebbbb6da988df990f2976ef03440f2ca91185debb7b"
+  },
+  "native_nir_libraries": {
+    "src/compiler/nir/libnir.a": "4b3e16d27428ea472e85c96d0eaf0f7b041d7c23c136809529785605d4971809",
+    "src/compiler/libcompiler.a": "de73105581d2d2fd056216af16a0931929a62b048e926db5119d5f0245eb0b1d",
+    "src/util/libmesa_util.a": "bd20f8ddc7295383d3ba88101877e0434fe790911cd787ab527269799ef1d349",
+    "src/util/libmesa_util_simd.a": "2f0fac733d4ec50ebc995e2e245ff59d4b4f59ee1c3bc9dbf2b79f8afb4928cc",
+    "src/util/libmesa_util_clflush.a": "4faf3f4e146824a90f755814361a6942175a70e3e1f8a75cc23c98063924abd7",
+    "src/util/libmesa_util_clflushopt.a": "29a2a1919f62b0e5afb81e1336b6c58a728b67f3c888c1bef024c32d35a25b40",
+    "src/util/blake3/libblake3.a": "36b4d3d700931d9492037b0c0580dde41b36538edd5b5488f49f8f8ab981fb02",
+    "src/c11/impl/libmesa_util_c11.a": "900bd9501a9b8e3f767c6732d76b7de7681d6f52e6cc09af7232be7e4798ed7b"
+  },
+  "generated_tests": {
+    "shader.rs": "04a9aa2fd0675bb8bf5055467bbfd5ed8440b90d4c816692bd053b9b0e57937e",
+    "nir.c": "2a29a1ada7617076b6df254117a5ed6e18502bd6ec9a625c77505133c40f8e4a"
+  },
+  "sources": {
+    "tests/check_mesa_shader_v14.py": "2a7dac6bf46afda2636a5843985bedf4b15675437c1565c33d238fa03d9c9c49"
+  }
+}

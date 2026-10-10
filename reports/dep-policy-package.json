@@ -1,0 +1,21 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-dep-policy-fix.zip",
+  "bytes": 12123165,
+  "sha256": "1e120b777329d04713a170306b71a926fc86e2acc26a4378f771fbbed14bbe76",
+  "files": 222,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-dep-policy-rollback.zip",
+    "bytes": 9968378,
+    "sha256": "f772759a9b713718855747edfd1726424aa8ed4c6c902f0a295491d9b595d6e0",
+    "files": 9
+  },
+  "cumulative": true,
+  "checksums_verified": true,
+  "prior_payloads_preserved": true,
+  "source_reconstruction": "PASS",
+  "memory_sources_unchanged": true,
+  "nro_sha256": "c4658fab27181d98ce39b4dd08f71725b775bcf182ff61010e956736de07abbf",
+  "wow64_sha256": "3a8e9cbc9f45c0d17c06f9789697609abe847571389fd4b5336e4bbfc2b90126",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

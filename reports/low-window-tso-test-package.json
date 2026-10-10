@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-tso-test.zip",
+    "bytes": 10576,
+    "sha256": "31130c7f7200152ed0c22b9241fead569f4799ba09b63936f783a7e90ecf413b",
+    "files": 6
+  },
+  "restore": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-restore-fastest.zip",
+    "bytes": 720,
+    "sha256": "87b882e432ca18a97676c55663a4c8544eee9cd64ec114429fa934937ecde62f",
+    "files": 3
+  },
+  "diagnostic_only": true,
+  "runtime_files_changed": [
+    "switch/sleepingdogs-fex/launcher/fex-mode.txt"
+  ],
+  "new_mode": "fast",
+  "previous_mode": "fastest",
+  "full_tso_enabled": true,
+  "native_and_dll_payloads": 0,
+  "prerequisite_nro_sha256": "12820073773794f1cf9659695291cedcc12efcf65259efdd81d8f64d756af750",
+  "prerequisite_dll_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "baseline_zip_preserved": true,
+  "source_selector_verified": true,
+  "hardware_tested": false,
+  "freeze_fix_confirmed": false
+}

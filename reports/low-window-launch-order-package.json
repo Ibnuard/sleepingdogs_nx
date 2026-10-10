@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-low-window-launch-order-fix.zip",
+    "bytes": 10427915,
+    "sha256": "9035631d3c17c7b10ccc09f24dab96097bb18c27c18acbb8fad33f4b6b65dd8a",
+    "files": 44
+  },
+  "nro_sha256": "e297c7c9c664365f989419c4d521ac4c1fd03e211dbd2e8c92a53508413ecd43",
+  "elf_sha256": "8366120f03c1af7117a965ea71472a24144d9a538c5c7ea46d8acfeaa5fb439f",
+  "compatible_forwarder_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "hardware_tested": false,
+  "changed_native_files": [
+    "wine-nx-probe/CMakeLists.txt",
+    "wine-nx-probe/source/runtime.c",
+    "wine-nx-probe/source/sd_launch_memory.c",
+    "wine-nx-probe/source/sd_low_window.h"
+  ],
+  "fex_adapter_unchanged": true,
+  "original_release_preserved": true
+}

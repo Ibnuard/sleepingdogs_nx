@@ -1,0 +1,62 @@
+{
+  "fix": "sleepingdogs-direct-data-arena-v1",
+  "version": "0.1.0",
+  "hardware_tested": false,
+  "arena_bytes": 1048576000,
+  "gpu_preallocation_bytes": 268435456,
+  "virtual_alias_bytes": 0,
+  "address_space": "32-bit no-alias",
+  "fex_profile": "fastest (unchanged)",
+  "nro_sha256": "c9c6e44161517e4c878f4014e6e89b34fc314c3340be6a085251b1a7691fbb7d",
+  "elf_sha256": "2c853fdf9dddb4f9466c69bd25017b6b61033dea5c47689a645d3eae3fbbe3b8",
+  "previous_nro_sha256": "5fcb2a389704b53db88dc0a9862f7416268bb5cc3f38ef0da6c3ca53bcf2ef3f",
+  "actual_generated_sources": {
+    "dlls/ntdll/unix/virtual.c": "96ba9be0ea059ceff80b6f35ee53c88ec2c310f6f9a724e94752a05cfc300021",
+    "wine-nx-probe/source/runtime.c": "020ef51c9f44c9fd32b26ea0a925e7665894559900ced7364af788c13a06ab35",
+    "wine-nx-probe/source/f1_gpu_arena.h": "cccf7714856fab5a3d3e985690aad96aa88c534f3a00d3e845d9b4f071a943d7",
+    "dlls/ntdll/unix/sd_guest_view.inc": "c22f7d38e3b67ed9b7e2ba01c7559cd96bf1cae1002cb06d50ae4f450fedb38b",
+    "dlls/ntdll/unix/sd_guest_arena.h": "ad49bb139a6a367f27f101af04c5ed2328e2599f3e3356f51a1c2397a9bfb519",
+    "wine-nx-probe/source/sd_guest_arena.c": "335a95e4d58cf634fa1071df9f9e54dc4785c0a782a160af5ad02c85399b1f11",
+    "wine-nx-probe/source/sd_guest_arena.h": "ad49bb139a6a367f27f101af04c5ed2328e2599f3e3356f51a1c2397a9bfb519",
+    "wine-nx-probe/CMakeLists.txt": "3bd91038e01ddc55c56d42d20a7320e6e2e681d2cba122bd83b4fe7f53923955"
+  },
+  "prepared_receipt_sha256": "2a0c398244bbe7a4206955fe7513b75073f077d9dcdc5d70ed3996322573c1e1",
+  "post_prepare_correction": "Explicit trace function declaration in sd_guest_view.inc; actual source reconstructed and checked against current overlay.",
+  "overlay_sha256": "57833f36ccc525ffbf04becf31ee367cded23ce849843bc148569412af5f6bd4",
+  "host_tests_sha256": "82571d8cb28629b608c2215a706a08ad64c06e7ea1a23d9e30eba1ae2c92c803",
+  "host_tests": {
+    "status": "PASS",
+    "hardware_tested": false,
+    "sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "cases": [
+      "allocation failure remains disabled",
+      "reject backing above 4 GiB",
+      "failed initial protection releases backing",
+      "idle arena inaccessible and initialization idempotent",
+      "bounds alignment overflow and executable access rejected",
+      "three non-overlapping Wine guards preserve surrounding heap",
+      "limits flags size fixed address and alignment preserve ordinary path",
+      "failed activation preserves inaccessible guard",
+      "exact backing identity zero initialized and cannot be double allocated",
+      "read-only protection enforced and unsupported execution leaves metadata intact",
+      "partial decommit recommit zeros only discarded pages; failed decommit preserves data",
+      "failed mixed recommit rolls back each old protection group",
+      "guard access change preserves committed contents",
+      "full release restores guard and rejects stale or partial operations",
+      "reuse zeros all data without releasing neighbour guards"
+    ],
+    "test_arena_bytes": 1048576000,
+    "production_arena_bytes": 1048576000,
+    "sources": {
+      "tests/direct_arena.c": "33b67d978d0f9a499cd04f8ed07eb272aa6636e2a20c4a69cb7734fd6061edc5",
+      "src/sd_guest_arena.c": "335a95e4d58cf634fa1071df9f9e54dc4785c0a782a160af5ad02c85399b1f11",
+      "src/sd_guest_arena.h": "ad49bb139a6a367f27f101af04c5ed2328e2599f3e3356f51a1c2397a9bfb519",
+      "src/sd_guest_view.inc": "c22f7d38e3b67ed9b7e2ba01c7559cd96bf1cae1002cb06d50ae4f450fedb38b"
+    }
+  },
+  "base_overlay_reconstruction": "PASS",
+  "compiler": "aarch64-none-elf-gcc (devkitA64) 16.1.0"
+}

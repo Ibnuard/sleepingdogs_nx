@@ -1,0 +1,18 @@
+{
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-gpu-budget-fix.zip",
+  "bytes": 31649632,
+  "sha256": "bca038f391c972eeb82b16e52fa3c373cca5fb0d67a704f987470fe87548cec8",
+  "files": 548,
+  "rollback": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sleepingdogs-fex-gpu-budget-rollback.zip",
+    "bytes": 9823039,
+    "sha256": "a16b8c3e25643d931863b9a4b55807cfeaa6e22d00ceed7393423ba4a18f4b14",
+    "files": 14
+  },
+  "status": "PASS",
+  "source_reconstruction": "PASS",
+  "prior_payloads_preserved": true,
+  "nro_sha256": "3c22b793e5c367158ee019af66732a1f2c332d87a2aa7ec0790bf9887016241f",
+  "forwarder_sha256": "222269d0bc876b970a1a82a82890223909dd6811776232041e7b8966c4756781",
+  "hardware_tested": false
+}

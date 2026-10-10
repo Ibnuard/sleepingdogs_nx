@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "zip_sha256": "06d09aa6eea05cc38158c6a72c5782320c83ea2db4e8815ad272d56375f9063d",
+  "files": 108,
+  "nro_sha256": "51e6f3791ab7f8f98af28d1bfbca1669cddcf63e7e2f3604915fc24b4540907f",
+  "elf_sha256": "21cdf72420d8f4967f61b85ad80ed34c84f8b51bf778972a8c2ce72fca6f8765",
+  "checks": [
+    "CRC and every SHA256 entry",
+    "Packaged NRO matches tested v9 receipt",
+    "Both shader toggles and v8 counters enabled",
+    "All previous SD payloads preserved except NRO and declared metadata updates",
+    "No game, DLL, kernel or forwarder payloads",
+    "v8 rollback ZIP unchanged"
+  ],
+  "hardware_tested": false,
+  "fps_gain_measured": false
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "cases": 2640,
+  "dll_sha256": "84e3a8bfacb5e892c75d62db1e6d68a77eb09dc9eae56899fce616ed65ea40b9",
+  "readback_progress": true,
+  "explicit_flush_preserved": true,
+  "interfaces": {
+    "d3d9.dll": {
+      "interfaces_unchanged": true,
+      "sha256": "af11a0d81f98df4822297f31da4d99d06485bdb2d1d5b5294e1a0056d131631c"
+    },
+    "d3d11.dll": {
+      "interfaces_unchanged": true,
+      "sha256": "84e3a8bfacb5e892c75d62db1e6d68a77eb09dc9eae56899fce616ed65ea40b9"
+    },
+    "dxgi.dll": {
+      "interfaces_unchanged": true,
+      "sha256": "272d400c19a3b36fe2d246a9cbc4b68c8e373388f2d771441251b75e58b14ecb"
+    }
+  },
+  "hardware_tested": false
+}

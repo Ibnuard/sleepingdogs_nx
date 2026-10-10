@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "before": {
+    "elf_sha256": "73bb81ad6f1dee33319ecf99bc9b5e5faecab299f2f4bf5ca7b0cd894614ec35",
+    "pairs": 4,
+    "reserve_payload_bytes": 67371008,
+    "heap_used_after_init": 335806608,
+    "same_live_filler_bytes": 684929024,
+    "additional_one_mib_gpu_allocations": 0,
+    "protected_reserve_recycles": 64,
+    "live_game_gpu_compiler_data_preserved": true
+  },
+  "after": {
+    "elf_sha256": "0e722d71ade406fae0b8cb5114965953f93e05402b4e86ec5b11074ebecaccbf",
+    "pairs": 2,
+    "reserve_payload_bytes": 33685504,
+    "heap_used_after_init": 302121040,
+    "same_live_filler_bytes": 684929024,
+    "additional_one_mib_gpu_allocations": 16,
+    "protected_reserve_recycles": 64,
+    "live_game_gpu_compiler_data_preserved": true
+  },
+  "native_heap_bytes_saved": 33685568,
+  "native_elf_sha256": "0e722d71ade406fae0b8cb5114965953f93e05402b4e86ec5b11074ebecaccbf",
+  "previous_native_elf_sha256": "73bb81ad6f1dee33319ecf99bc9b5e5faecab299f2f4bf5ca7b0cd894614ec35",
+  "scope": "Run real old/new ARM64 heaps at identical quota and identical live workload.\n\nSynthetic pressure tests headroom, not the unknown full hardware lifetime trace.\nOnly sbrk, locks, loader metadata and diagnostics are modeled.\n",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_scene_native_binary.py": "5eee96d470585164ef419e37e2ec3fa2c2e770608985e68858347a282c422ff5",
+    "tests/check_gpu_budget_binary.py": "312797edfa5b7ed157db165a6ed72d32cf4bc3c8c8c0518cdf91385ebc38dd8e",
+    "tests/native_heap_binary.py": "ebe7a592f458bd7adda33e001628fddeeb5f1faa245aeb43332b7d84411db140"
+  }
+}

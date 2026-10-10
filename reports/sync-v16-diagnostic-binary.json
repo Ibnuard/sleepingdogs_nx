@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "elf_sha256": "63eb8b35356d35275a896aca86fe3eed8d154605a1afbee06226eb76cef21311",
+  "compiled_cases": [
+    "disabled",
+    "before-window",
+    "at-deadline",
+    "after-window",
+    "reversed-time"
+  ],
+  "wine_callback_linked": true,
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_v11_binary.py": "2547aa0c8ce71b7b2dbbf5642352e2c278f7731f4ef5b594c693c0bce1eab480"
+  }
+}

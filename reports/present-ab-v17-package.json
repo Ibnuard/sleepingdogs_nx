@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "experiment": "v17-present-syncInterval-only",
+  "test": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-v17-present-immediate-test.zip",
+    "sha256": "41d89f8a4800a876098d3f6a6ec32d652989a1fc06cf1b2e04e8e3235d0ad844",
+    "bytes": 1794,
+    "files": 3
+  },
+  "restore": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-v17-present-fifo-restore.zip",
+    "sha256": "e558a8249f637e0c8519bd7b1d8f78af6f78a806c8fadeaab1e6eed35d7225f0",
+    "bytes": 1793,
+    "files": 3
+  },
+  "runtime_files": [
+    "switch/sleepingdogs-fex/launcher/presets/stable/dxvk-3.1.1/dxvk.conf"
+  ],
+  "changed_config_keys": [
+    "dxgi.syncInterval"
+  ],
+  "baseline": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\buffer-reuse-validate-uzpwmdes\\switch\\sleepingdogs-fex\\launcher\\presets\\stable\\dxvk-3.1.1\\dxvk.conf",
+    "sha256": "5478173e15ed78a9663dd0807856661c15e9fcf3df03469eb38a0ff68492121d",
+    "receipt": "reports/fex-debug-package.json",
+    "source_archive": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-v17-scheduler-update.zip",
+    "source_archive_sha256": "bc9db64210b3e55e0ebc1dff3fcff1c55c95b0a0a132409d60749c51c2173b5c",
+    "recipe": "source/native-v15-lsfg/tools/port_common.py",
+    "recipe_sha256": "ddd3a3d2a749befeee88ebbe2914c515595181f1a578d6a9bfae571e093c0c62"
+  },
+  "candidate_config_sha256": "42623884191ffce6eed293a1c936491fcd2f1e2abe4c594a651ef0955149b330",
+  "restore_config_sha256": "5478173e15ed78a9663dd0807856661c15e9fcf3df03469eb38a0ff68492121d",
+  "baseline_config": {
+    "d3d9.presentInterval": "1",
+    "dxgi.syncInterval": "1",
+    "dxgi.maxDeviceMemory": "256",
+    "dxgi.maxSharedMemory": "128",
+    "dxvk.numCompilerThreads": "1",
+    "dxvk.enableDescriptorBuffer": "False",
+    "dxvk.enableDescriptorHeap": "False",
+    "dxgi.maxFrameLatency": "2",
+    "d3d11.samplerAnisotropy": "0"
+  },
+  "candidate_config": {
+    "d3d9.presentInterval": "1",
+    "dxgi.syncInterval": "0",
+    "dxgi.maxDeviceMemory": "256",
+    "dxgi.maxSharedMemory": "128",
+    "dxvk.numCompilerThreads": "1",
+    "dxvk.enableDescriptorBuffer": "False",
+    "dxvk.enableDescriptorHeap": "False",
+    "dxgi.maxFrameLatency": "2",
+    "d3d11.samplerAnisotropy": "0"
+  },
+  "latest_log": {
+    "path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08\\fex-runtime.log",
+    "sha256": "2a6219ff780b5d7e222898e914c3dd94d0a9ae7f652ff54a771f64d8734de024",
+    "effective_configuration": {
+      "d3d11.samplerAnisotropy": "0",
+      "dxvk.hud": "full",
+      "dxgi.maxFrameLatency": "2",
+      "dxvk.numCompilerThreads": "1",
+      "dxgi.syncInterval": "1",
+      "dxgi.maxSharedMemory": "128",
+      "dxvk.enableDescriptorBuffer": "False",
+      "dxgi.maxDeviceMemory": "256",
+      "dxvk.enableDescriptorHeap": "False",
+      "d3d9.presentInterval": "1"
+    },
+    "baseline_matches_effective_configuration": true,
+    "launcher_appended_hud": "full",
+    "clocks_mhz": {
+      "cpu": 1728,
+      "gpu": 768,
+      "ram": 1600
+    },
+    "clock_source": "User confirmation; these values are not measured by the log parser"
+  },
+  "baseline_nro_sha256": "366e9d7c175b48654c0faf9200dc04da98b4a6e1ba85da0771c8b7318b917fbb",
+  "nro_included": false,
+  "dlls_included": false,
+  "active_game_config_included": false,
+  "profile_selection_included": false,
+  "other_profiles_included": false,
+  "all_other_config_values_preserved": true,
+  "restores_standard_preset_exactly": true,
+  "restores_unknown_user_customizations": false,
+  "baseline_inputs_preserved": true,
+  "zip_crc_and_hash_manifests_verified": true,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "packager_sha256": "9df76df999b993d518d4bac30d3c1ff962025dd16fa2f6d6222d31b818d89175",
+  "docs_sha256": "4644c037f22fd3a7f27b37de2c3634cf1f4007756230e21d5895955f4ecf5dab"
+}

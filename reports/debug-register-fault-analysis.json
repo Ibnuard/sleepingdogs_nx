@@ -1,0 +1,21 @@
+{
+  "log_path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\fex-runtime.log",
+  "log_sha256": "2631432cb41cd7305a17e632adf5ad3d2cbbe4e26497993f43760b6f4573375c",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "first_guest_fault": {
+    "eip": "fffffffe",
+    "dr0": "004c0a8a",
+    "dr1": "005b2e92",
+    "dr2": "0061ce88",
+    "dr3": "0068d35a",
+    "dr7": "00000155"
+  },
+  "cause": "FEX previously stored WOW64 debug registers but did not generate execution-breakpoint exceptions; observed nonzero checker return enters stack-erasure path, including SEH frame.",
+  "evidence": [
+    "Original x86 call target equals DR0",
+    "Original VEH handles EXCEPTION_SINGLE_STEP and resumes caller with EAX=0",
+    "Actual call-site/VEH regression reproduces reported stack damage without breakpoint delivery"
+  ],
+  "fix": "Generic runtime execution breakpoint checks, per-thread state and shared-cache invalidation",
+  "game_boot_confirmed": false
+}

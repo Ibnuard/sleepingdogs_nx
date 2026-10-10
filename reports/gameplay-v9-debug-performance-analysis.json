@@ -1,0 +1,1303 @@
+{
+  "status": "ANALYZED",
+  "input": "D:\\Dev\\Switch\\PES PROJECT\\public_pesnx\\local-debug\\review-v8-production\\fex-runtime.log",
+  "sha256": "6e4e00334380b754dd884a921b2f678dad2897d87f88b7184badee743fb8c4f0",
+  "bytes": 1036549,
+  "preserved_input": "local\\performance-v9-debug\\6e4e00334380b754dd884a921b2f678dad2897d87f88b7184badee743fb8c4f0\\fex-runtime.log",
+  "configuration": [
+    {
+      "line": 2,
+      "text": "[SD-FEX] launch_mode=debug"
+    },
+    {
+      "line": 110,
+      "text": "[SD-VK] build=sleepingdogs-fextendo-0.1.0-low-window-v9-shader-optimizations Mesa=26.2.2 commit=b297e230ef88c6c88df2561becf864f979f494a6"
+    },
+    {
+      "line": 70,
+      "text": "[SD-DXVK-CONFIG] profile=performance renderer=dxvk-3.1.1 hud=FPS"
+    },
+    {
+      "line": 104,
+      "text": "[SD-SHADER] v1 affinity=1 cache=1; application cores 0-2, priority unchanged, scoped NAK allocation reuse"
+    },
+    {
+      "line": 105,
+      "text": "[SD-PERF] v1 requested=1 active=0 interval_ms=10000; normal Launch only; existing thread/driver/wait/compiler/IO counters"
+    }
+  ],
+  "display": [
+    {
+      "line": 5028,
+      "text": "[WINE] info:  Setting display mode: 1280x720@60"
+    },
+    {
+      "line": 5029,
+      "text": "[WINE] info:  Setting display mode: 1280x720@60"
+    },
+    {
+      "line": 5034,
+      "text": "[WINE] info:    Present mode: VK_PRESENT_MODE_IMMEDIATE_KHR (dynamic: no)"
+    },
+    {
+      "line": 5035,
+      "text": "[WINE] info:    Buffer size:  1280x720"
+    },
+    {
+      "line": 5046,
+      "text": "[WINE] info:    Present mode: VK_PRESENT_MODE_IMMEDIATE_KHR (dynamic: no)"
+    },
+    {
+      "line": 5047,
+      "text": "[WINE] info:    Buffer size:  1292x732"
+    }
+  ],
+  "tag_counts": {
+    "[WINE]": 6353,
+    "[SD-PC]": 664,
+    "[SD-STACK]": 664,
+    "[SD-CALL]": 522,
+    "[SD-SYNC-MEM]": 440,
+    "[FEX3-JIT]": 133,
+    "[FEX3-PIPE]": 126,
+    "[SD-FILE]": 112,
+    "[FEX2]": 100,
+    "[FEX3-SMC2]": 65,
+    "[TR]": 58,
+    "[THREAD]": 45,
+    "[WOW64 THREAD]": 45,
+    "[SD-SCRATCH-PAGES]": 38,
+    "[FEX3-SEH]": 36,
+    "[SD-DB]": 33,
+    "[SD-SYNC]": 30,
+    "[SD-SYNC-REG]": 30,
+    "[SD-AUDIO]": 25,
+    "[NXVK]": 25,
+    "[SD-GPU-ARENA]": 22,
+    "[SD-NATIVE-STACKS]": 22,
+    "[SD-RESOURCE]": 21,
+    "[SD-MEMBUDGET]": 21,
+    "[SD-MEMMAP]": 21,
+    "[SD-VKMEM-STATS]": 21,
+    "[SD-GPU-STREAM-STATS]": 21,
+    "[SD-GPU-PRESSURE-STATS]": 21,
+    "[SD-GPU-HEAP-STATS]": 21,
+    "[SD-GPU-SCAN]": 21,
+    "[SD-RUST-HEAP]": 21,
+    "[SD-PAGES]": 21,
+    "[SD-LOAD]": 21,
+    "[SD-PROGRESS]": 21,
+    "[SD-POLL]": 21,
+    "[SD-APC]": 21,
+    "[LIFECYCLE]": 21,
+    "[SD-SCRATCH]": 20,
+    "[SD-SCRATCH-RESERVE]": 19,
+    "[SD-VIRTMEM]": 19,
+    "[FEX3-NHEAP]": 19,
+    "[BALANCE]": 19,
+    "[SD-THREAD-DEBUG]": 17,
+    "[SD-FRAME]": 17,
+    "[FEX3-DXVKCORE]": 16,
+    "[WOW64]": 16,
+    "[ATTACH]": 15,
+    "[INIT]": 13,
+    "[LDR]": 13,
+    "[SD-COMPILER-WAIT]": 13,
+    "[NLS]": 10,
+    "[SD-THREAD]": 7,
+    "[FEX3-SCRATCH]": 5,
+    "[SD-FEX]": 4,
+    "[SD-LOWVA]": 4,
+    "[SD-SYNC-SUMMARY]": 4,
+    "[NXWIN]": 4,
+    "[STAGE]": 3,
+    "[SD-COMPILER-MEM]": 2,
+    "[SD-INIT]": 2,
+    "[SD-ALIAS]": 2,
+    "[FEX3-MEM]": 2,
+    "[FEX3]": 2,
+    "[FEX3-YIELD]": 2,
+    "[SD-INPUT]": 2,
+    "[SD-VA]": 2,
+    "[IMAGE]": 2,
+    "[FEX2-ABI]": 2,
+    "[FEX2-ALLOC]": 2,
+    "[FEX2-TIMER]": 2,
+    "[FEX3-HEAP]": 2,
+    "[FEX-JIT]": 2,
+    "[FEXTENDO]": 2,
+    "[SD-FIRSTFAULT]": 1,
+    "[SD-TEB-DEBUG]": 1,
+    "[SD-MEMORY-BUDGET]": 1,
+    "[SD-PIPE]": 1,
+    "[FEXTENDO-TIME]": 1,
+    "[SD-ADDRESS]": 1,
+    "[SD-THREAD-BUDGET]": 1,
+    "[SD-RESTART]": 1,
+    "[SD-GRAPHICS]": 1,
+    "[SD-CRASH]": 1,
+    "[SD-DXVK-CONFIG]": 1,
+    "[FEXTENDO-RENDERER]": 1,
+    "[SD-GPU-BUDGET]": 1,
+    "[SD-GPU-STREAM]": 1,
+    "[SD-GPU-PRESSURE]": 1,
+    "[SD-FEX-MODE]": 1,
+    "[FEX3-GAME]": 1,
+    "[FEX3-SYNC]": 1,
+    "[FEX3-RESUME]": 1,
+    "[FEX3-SCALED]": 1,
+    "[FEX3-SLEEP]": 1,
+    "[FEX3-WARM]": 1,
+    "[SD-WATCH]": 1,
+    "[FEX3-FD]": 1,
+    "[FEX3-SUSPEND]": 1,
+    "[FEX2-HOST]": 1,
+    "[FEX3-MEMBUDGET]": 1,
+    "[FEX3-GAP]": 1,
+    "[FEX3-MEMQUERY]": 1,
+    "[FEX3-JITLOG]": 1,
+    "[FEX3-CORES]": 1,
+    "[FEX3-BALANCE]": 1,
+    "[FEX3-FASTAPI]": 1,
+    "[FEX3-POLL]": 1,
+    "[FEX3-DXVKPOLICY]": 1,
+    "[SD-SHADER]": 1,
+    "[SD-PERF]": 1,
+    "[SD-VK]": 1,
+    "[BUILD]": 1,
+    "[SDCACHE]": 1,
+    "[FEX3-HOT]": 1,
+    "[TARGET]": 1,
+    "[SD-REG]": 1,
+    "[FEX-CACHE]": 1,
+    "[NET]": 1,
+    "[SD-CRYPTO]": 1,
+    "[SD-REGISTRY]": 1,
+    "[ARGS]": 1,
+    "[STDIO]": 1,
+    "[PEB]": 1,
+    "[SD-CODE-MEM]": 1,
+    "[FEX-HOST]": 1,
+    "[FEX3-UNWIND]": 1,
+    "[SD-CPU-TOPOLOGY]": 1,
+    "[FEX3-DECODE]": 1,
+    "[FEX3-JIT-CONFIG]": 1,
+    "[FEX3-PRESET]": 1,
+    "[FEX3-EMIT]": 1,
+    "[FEX3-FP]": 1,
+    "[FEX3-ALIAS]": 1,
+    "[FEX3-SMC]": 1,
+    "[FEX3-CODE]": 1,
+    "[FEX3-CALLRET]": 1,
+    "[FEX3-GEX]": 1,
+    "[HMAP]": 1,
+    "[FEX3-LOOKUP]": 1,
+    "[SD-DIRECT]": 1,
+    "[SD-VKDEVICE]": 1,
+    "[STDOUT]": 1,
+    "[NXGL]": 1,
+    "[SD-RENDER]": 1
+  },
+  "slow_segment": {
+    "selection": "Trailing contiguous sub-30-FPS logged windows; scene/loading boundaries unknown",
+    "windows": 11,
+    "elapsed_ms": 114723,
+    "frames": 1891,
+    "weighted_fps": 16.48318122782703,
+    "mean_frame_ms": 60.6679005817028,
+    "minimum_window_fps": 11.6953218712515,
+    "maximum_window_fps": 20.573322932917318,
+    "mean_present_ms": 0.8163008989952406,
+    "errors": 0,
+    "rows": [
+      {
+        "line": 8229,
+        "window_ms": 10004,
+        "frames": 117,
+        "fps_x100": 1169,
+        "present_avg_us": 540,
+        "lock_avg_us": 0,
+        "driver_avg_us": 361,
+        "errors": 0
+      },
+      {
+        "line": 8523,
+        "window_ms": 10936,
+        "frames": 181,
+        "fps_x100": 1654,
+        "present_avg_us": 673,
+        "lock_avg_us": 0,
+        "driver_avg_us": 426,
+        "errors": 0
+      },
+      {
+        "line": 8609,
+        "window_ms": 10335,
+        "frames": 198,
+        "fps_x100": 1915,
+        "present_avg_us": 649,
+        "lock_avg_us": 0,
+        "driver_avg_us": 458,
+        "errors": 0
+      },
+      {
+        "line": 8903,
+        "window_ms": 10996,
+        "frames": 186,
+        "fps_x100": 1691,
+        "present_avg_us": 1535,
+        "lock_avg_us": 0,
+        "driver_avg_us": 994,
+        "errors": 0
+      },
+      {
+        "line": 8912,
+        "window_ms": 10005,
+        "frames": 180,
+        "fps_x100": 1798,
+        "present_avg_us": 1799,
+        "lock_avg_us": 0,
+        "driver_avg_us": 981,
+        "errors": 0
+      },
+      {
+        "line": 8997,
+        "window_ms": 10256,
+        "frames": 211,
+        "fps_x100": 2057,
+        "present_avg_us": 902,
+        "lock_avg_us": 0,
+        "driver_avg_us": 483,
+        "errors": 0
+      },
+      {
+        "line": 9367,
+        "window_ms": 10813,
+        "frames": 204,
+        "fps_x100": 1886,
+        "present_avg_us": 703,
+        "lock_avg_us": 0,
+        "driver_avg_us": 396,
+        "errors": 0
+      },
+      {
+        "line": 9453,
+        "window_ms": 10002,
+        "frames": 148,
+        "fps_x100": 1479,
+        "present_avg_us": 449,
+        "lock_avg_us": 0,
+        "driver_avg_us": 353,
+        "errors": 0
+      },
+      {
+        "line": 9709,
+        "window_ms": 10386,
+        "frames": 146,
+        "fps_x100": 1405,
+        "present_avg_us": 383,
+        "lock_avg_us": 0,
+        "driver_avg_us": 257,
+        "errors": 0
+      },
+      {
+        "line": 10086,
+        "window_ms": 10982,
+        "frames": 164,
+        "fps_x100": 1493,
+        "present_avg_us": 619,
+        "lock_avg_us": 0,
+        "driver_avg_us": 243,
+        "errors": 0
+      },
+      {
+        "line": 10170,
+        "window_ms": 10008,
+        "frames": 156,
+        "fps_x100": 1558,
+        "present_avg_us": 405,
+        "lock_avg_us": 0,
+        "driver_avg_us": 273,
+        "errors": 0
+      }
+    ]
+  },
+  "frame_windows": [
+    {
+      "line": 6060,
+      "window_ms": 10006,
+      "frames": 784,
+      "fps_x100": 7834,
+      "present_avg_us": 618,
+      "lock_avg_us": 0,
+      "driver_avg_us": 497,
+      "errors": 0
+    },
+    {
+      "line": 6708,
+      "window_ms": 10018,
+      "frames": 790,
+      "fps_x100": 7885,
+      "present_avg_us": 321,
+      "lock_avg_us": 0,
+      "driver_avg_us": 230,
+      "errors": 0
+    },
+    {
+      "line": 6895,
+      "window_ms": 10340,
+      "frames": 731,
+      "fps_x100": 7069,
+      "present_avg_us": 313,
+      "lock_avg_us": 0,
+      "driver_avg_us": 216,
+      "errors": 0
+    },
+    {
+      "line": 6980,
+      "window_ms": 10002,
+      "frames": 692,
+      "fps_x100": 6918,
+      "present_avg_us": 303,
+      "lock_avg_us": 0,
+      "driver_avg_us": 213,
+      "errors": 0
+    },
+    {
+      "line": 7601,
+      "window_ms": 10308,
+      "frames": 339,
+      "fps_x100": 3288,
+      "present_avg_us": 486,
+      "lock_avg_us": 0,
+      "driver_avg_us": 306,
+      "errors": 0
+    },
+    {
+      "line": 8134,
+      "window_ms": 10703,
+      "frames": 374,
+      "fps_x100": 3494,
+      "present_avg_us": 557,
+      "lock_avg_us": 0,
+      "driver_avg_us": 259,
+      "errors": 0
+    },
+    {
+      "line": 8229,
+      "window_ms": 10004,
+      "frames": 117,
+      "fps_x100": 1169,
+      "present_avg_us": 540,
+      "lock_avg_us": 0,
+      "driver_avg_us": 361,
+      "errors": 0
+    },
+    {
+      "line": 8523,
+      "window_ms": 10936,
+      "frames": 181,
+      "fps_x100": 1654,
+      "present_avg_us": 673,
+      "lock_avg_us": 0,
+      "driver_avg_us": 426,
+      "errors": 0
+    },
+    {
+      "line": 8609,
+      "window_ms": 10335,
+      "frames": 198,
+      "fps_x100": 1915,
+      "present_avg_us": 649,
+      "lock_avg_us": 0,
+      "driver_avg_us": 458,
+      "errors": 0
+    },
+    {
+      "line": 8903,
+      "window_ms": 10996,
+      "frames": 186,
+      "fps_x100": 1691,
+      "present_avg_us": 1535,
+      "lock_avg_us": 0,
+      "driver_avg_us": 994,
+      "errors": 0
+    },
+    {
+      "line": 8912,
+      "window_ms": 10005,
+      "frames": 180,
+      "fps_x100": 1798,
+      "present_avg_us": 1799,
+      "lock_avg_us": 0,
+      "driver_avg_us": 981,
+      "errors": 0
+    },
+    {
+      "line": 8997,
+      "window_ms": 10256,
+      "frames": 211,
+      "fps_x100": 2057,
+      "present_avg_us": 902,
+      "lock_avg_us": 0,
+      "driver_avg_us": 483,
+      "errors": 0
+    },
+    {
+      "line": 9367,
+      "window_ms": 10813,
+      "frames": 204,
+      "fps_x100": 1886,
+      "present_avg_us": 703,
+      "lock_avg_us": 0,
+      "driver_avg_us": 396,
+      "errors": 0
+    },
+    {
+      "line": 9453,
+      "window_ms": 10002,
+      "frames": 148,
+      "fps_x100": 1479,
+      "present_avg_us": 449,
+      "lock_avg_us": 0,
+      "driver_avg_us": 353,
+      "errors": 0
+    },
+    {
+      "line": 9709,
+      "window_ms": 10386,
+      "frames": 146,
+      "fps_x100": 1405,
+      "present_avg_us": 383,
+      "lock_avg_us": 0,
+      "driver_avg_us": 257,
+      "errors": 0
+    },
+    {
+      "line": 10086,
+      "window_ms": 10982,
+      "frames": 164,
+      "fps_x100": 1493,
+      "present_avg_us": 619,
+      "lock_avg_us": 0,
+      "driver_avg_us": 243,
+      "errors": 0
+    },
+    {
+      "line": 10170,
+      "window_ms": 10008,
+      "frames": 156,
+      "fps_x100": 1558,
+      "present_avg_us": 405,
+      "lock_avg_us": 0,
+      "driver_avg_us": 273,
+      "errors": 0
+    }
+  ],
+  "late_jit": {
+    "dispatch_compile": {
+      "first": {
+        "line": 8517,
+        "uptime_ms": 110386,
+        "calls": 96172,
+        "total_us": 26140794,
+        "peak_us": 190166,
+        "over20ms": 42,
+        "over50ms": 4
+      },
+      "last": {
+        "line": 10260,
+        "uptime_ms": 220527,
+        "calls": 148701,
+        "total_us": 28669715,
+        "peak_us": 190166,
+        "over20ms": 46,
+        "over50ms": 4
+      },
+      "elapsed_ms": 110141,
+      "calls": 52529,
+      "aggregate_elapsed_us": 2528921
+    },
+    "compile_code": {
+      "first": {
+        "line": 8518,
+        "uptime_ms": 110386,
+        "calls": 52354,
+        "total_us": 17351799,
+        "peak_us": 170394,
+        "over20ms": 10,
+        "over50ms": 1
+      },
+      "last": {
+        "line": 10261,
+        "uptime_ms": 220527,
+        "calls": 54671,
+        "total_us": 18798671,
+        "peak_us": 170394,
+        "over20ms": 12,
+        "over50ms": 1
+      },
+      "elapsed_ms": 110141,
+      "calls": 2317,
+      "aggregate_elapsed_us": 1446872
+    },
+    "invalidate": {
+      "first": {
+        "line": 8519,
+        "uptime_ms": 110386,
+        "calls": 64748,
+        "total_us": 730314,
+        "peak_us": 3812,
+        "over20ms": 0,
+        "over50ms": 0
+      },
+      "last": {
+        "line": 10262,
+        "uptime_ms": 220527,
+        "calls": 67289,
+        "total_us": 1011198,
+        "peak_us": 7809,
+        "over20ms": 0,
+        "over50ms": 0
+      },
+      "elapsed_ms": 110141,
+      "calls": 2541,
+      "aggregate_elapsed_us": 280884
+    }
+  },
+  "late_driver_intervals": [
+    {
+      "line": 8249,
+      "heartbeat": {
+        "line": 8248,
+        "presents": 3858,
+        "delta": 291,
+        "present_seen": 1,
+        "age_ms": 38,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 291,
+      "avg_us": 137,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8250,
+      "heartbeat": {
+        "line": 8248,
+        "presents": 3858,
+        "delta": 291,
+        "present_seen": 1,
+        "age_ms": 38,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1600,
+      "avg_us": 1101,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8251,
+      "heartbeat": {
+        "line": 8248,
+        "presents": 3858,
+        "delta": 291,
+        "present_seen": 1,
+        "age_ms": 38,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 290,
+      "avg_us": 178,
+      "peak_since_launch_us": 16063,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8252,
+      "heartbeat": {
+        "line": 8248,
+        "presents": 3858,
+        "delta": 291,
+        "present_seen": 1,
+        "age_ms": 38,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1020,
+      "avg_us": 7602,
+      "peak_since_launch_us": 49986,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8253,
+      "heartbeat": {
+        "line": 8248,
+        "presents": 3858,
+        "delta": 291,
+        "present_seen": 1,
+        "age_ms": 38,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 15285,
+      "avg_us": 1019,
+      "peak_since_launch_us": 4247,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8547,
+      "heartbeat": {
+        "line": 8546,
+        "presents": 4111,
+        "delta": 253,
+        "present_seen": 1,
+        "age_ms": 5,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 253,
+      "avg_us": 169,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8548,
+      "heartbeat": {
+        "line": 8546,
+        "presents": 4111,
+        "delta": 253,
+        "present_seen": 1,
+        "age_ms": 5,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1889,
+      "avg_us": 1650,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8549,
+      "heartbeat": {
+        "line": 8546,
+        "presents": 4111,
+        "delta": 253,
+        "present_seen": 1,
+        "age_ms": 5,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 253,
+      "avg_us": 234,
+      "peak_since_launch_us": 16063,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8550,
+      "heartbeat": {
+        "line": 8546,
+        "presents": 4111,
+        "delta": 253,
+        "present_seen": 1,
+        "age_ms": 5,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1380,
+      "avg_us": 8355,
+      "peak_since_launch_us": 49986,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8551,
+      "heartbeat": {
+        "line": 8546,
+        "presents": 4111,
+        "delta": 253,
+        "present_seen": 1,
+        "age_ms": 5,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 14537,
+      "avg_us": 1027,
+      "peak_since_launch_us": 7293,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8636,
+      "heartbeat": {
+        "line": 8635,
+        "presents": 4371,
+        "delta": 260,
+        "present_seen": 1,
+        "age_ms": 72,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 260,
+      "avg_us": 329,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8637,
+      "heartbeat": {
+        "line": 8635,
+        "presents": 4371,
+        "delta": 260,
+        "present_seen": 1,
+        "age_ms": 72,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1776,
+      "avg_us": 1456,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8638,
+      "heartbeat": {
+        "line": 8635,
+        "presents": 4371,
+        "delta": 260,
+        "present_seen": 1,
+        "age_ms": 72,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 260,
+      "avg_us": 1634,
+      "peak_since_launch_us": 25597,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8639,
+      "heartbeat": {
+        "line": 8635,
+        "presents": 4371,
+        "delta": 260,
+        "present_seen": 1,
+        "age_ms": 72,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1259,
+      "avg_us": 9126,
+      "peak_since_launch_us": 49986,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8640,
+      "heartbeat": {
+        "line": 8635,
+        "presents": 4371,
+        "delta": 260,
+        "present_seen": 1,
+        "age_ms": 72,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 13929,
+      "avg_us": 1025,
+      "peak_since_launch_us": 7293,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8935,
+      "heartbeat": {
+        "line": 8934,
+        "presents": 4647,
+        "delta": 276,
+        "present_seen": 1,
+        "age_ms": 22,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 276,
+      "avg_us": 338,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8936,
+      "heartbeat": {
+        "line": 8934,
+        "presents": 4647,
+        "delta": 276,
+        "present_seen": 1,
+        "age_ms": 22,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1782,
+      "avg_us": 1451,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8937,
+      "heartbeat": {
+        "line": 8934,
+        "presents": 4647,
+        "delta": 276,
+        "present_seen": 1,
+        "age_ms": 22,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 276,
+      "avg_us": 3141,
+      "peak_since_launch_us": 27921,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8938,
+      "heartbeat": {
+        "line": 8934,
+        "presents": 4647,
+        "delta": 276,
+        "present_seen": 1,
+        "age_ms": 22,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1226,
+      "avg_us": 9601,
+      "peak_since_launch_us": 49986,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 8939,
+      "heartbeat": {
+        "line": 8934,
+        "presents": 4647,
+        "delta": 276,
+        "present_seen": 1,
+        "age_ms": 22,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 14526,
+      "avg_us": 1033,
+      "peak_since_launch_us": 7293,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9023,
+      "heartbeat": {
+        "line": 9022,
+        "presents": 4943,
+        "delta": 296,
+        "present_seen": 1,
+        "age_ms": 12,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 296,
+      "avg_us": 294,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9024,
+      "heartbeat": {
+        "line": 9022,
+        "presents": 4943,
+        "delta": 296,
+        "present_seen": 1,
+        "age_ms": 12,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1963,
+      "avg_us": 1228,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9025,
+      "heartbeat": {
+        "line": 9022,
+        "presents": 4943,
+        "delta": 296,
+        "present_seen": 1,
+        "age_ms": 12,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 296,
+      "avg_us": 2169,
+      "peak_since_launch_us": 27921,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9026,
+      "heartbeat": {
+        "line": 9022,
+        "presents": 4943,
+        "delta": 296,
+        "present_seen": 1,
+        "age_ms": 12,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1375,
+      "avg_us": 8080,
+      "peak_since_launch_us": 49986,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9027,
+      "heartbeat": {
+        "line": 9022,
+        "presents": 4943,
+        "delta": 296,
+        "present_seen": 1,
+        "age_ms": 12,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 14901,
+      "avg_us": 1024,
+      "peak_since_launch_us": 8122,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9484,
+      "heartbeat": {
+        "line": 9483,
+        "presents": 5185,
+        "delta": 242,
+        "present_seen": 1,
+        "age_ms": 66,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 242,
+      "avg_us": 293,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9485,
+      "heartbeat": {
+        "line": 9483,
+        "presents": 5185,
+        "delta": 242,
+        "present_seen": 1,
+        "age_ms": 66,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1457,
+      "avg_us": 631,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9486,
+      "heartbeat": {
+        "line": 9483,
+        "presents": 5185,
+        "delta": 242,
+        "present_seen": 1,
+        "age_ms": 66,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 242,
+      "avg_us": 19283,
+      "peak_since_launch_us": 57498,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9487,
+      "heartbeat": {
+        "line": 9483,
+        "presents": 5185,
+        "delta": 242,
+        "present_seen": 1,
+        "age_ms": 66,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 973,
+      "avg_us": 12970,
+      "peak_since_launch_us": 68401,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9488,
+      "heartbeat": {
+        "line": 9483,
+        "presents": 5185,
+        "delta": 242,
+        "present_seen": 1,
+        "age_ms": 66,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 14470,
+      "avg_us": 1028,
+      "peak_since_launch_us": 8122,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9812,
+      "heartbeat": {
+        "line": 9811,
+        "presents": 5394,
+        "delta": 209,
+        "present_seen": 1,
+        "age_ms": 128,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 210,
+      "avg_us": 159,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9813,
+      "heartbeat": {
+        "line": 9811,
+        "presents": 5394,
+        "delta": 209,
+        "present_seen": 1,
+        "age_ms": 128,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1631,
+      "avg_us": 947,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9814,
+      "heartbeat": {
+        "line": 9811,
+        "presents": 5394,
+        "delta": 209,
+        "present_seen": 1,
+        "age_ms": 128,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 210,
+      "avg_us": 260,
+      "peak_since_launch_us": 57498,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9815,
+      "heartbeat": {
+        "line": 9811,
+        "presents": 5394,
+        "delta": 209,
+        "present_seen": 1,
+        "age_ms": 128,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1207,
+      "avg_us": 8998,
+      "peak_since_launch_us": 68401,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 9816,
+      "heartbeat": {
+        "line": 9811,
+        "presents": 5394,
+        "delta": 209,
+        "present_seen": 1,
+        "age_ms": 128,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 15073,
+      "avg_us": 1013,
+      "peak_since_launch_us": 8122,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 10193,
+      "heartbeat": {
+        "line": 10192,
+        "presents": 5626,
+        "delta": 232,
+        "present_seen": 1,
+        "age_ms": 146,
+        "present_errors": 0
+      },
+      "phase": "acquire_driver",
+      "n": 231,
+      "avg_us": 133,
+      "peak_since_launch_us": 28735,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 10194,
+      "heartbeat": {
+        "line": 10192,
+        "presents": 5626,
+        "delta": 232,
+        "present_seen": 1,
+        "age_ms": 146,
+        "present_errors": 0
+      },
+      "phase": "submit_driver",
+      "n": 1724,
+      "avg_us": 947,
+      "peak_since_launch_us": 49974,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 10195,
+      "heartbeat": {
+        "line": 10192,
+        "presents": 5626,
+        "delta": 232,
+        "present_seen": 1,
+        "age_ms": 146,
+        "present_errors": 0
+      },
+      "phase": "fence_wait",
+      "n": 231,
+      "avg_us": 52,
+      "peak_since_launch_us": 57498,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 10196,
+      "heartbeat": {
+        "line": 10192,
+        "presents": 5626,
+        "delta": 232,
+        "present_seen": 1,
+        "age_ms": 146,
+        "present_errors": 0
+      },
+      "phase": "semaphore_wait",
+      "n": 1264,
+      "avg_us": 8596,
+      "peak_since_launch_us": 68401,
+      "timeout": 0,
+      "errors": 0
+    },
+    {
+      "line": 10197,
+      "heartbeat": {
+        "line": 10192,
+        "presents": 5626,
+        "delta": 232,
+        "present_seen": 1,
+        "age_ms": 146,
+        "present_errors": 0
+      },
+      "phase": "shared_clock_gap",
+      "n": 14721,
+      "avg_us": 1019,
+      "peak_since_launch_us": 8122,
+      "timeout": 0,
+      "errors": 0
+    }
+  ],
+  "late_io_counter_delta": {
+    "first": {
+      "line": 8255,
+      "reads": 56875,
+      "sd_reads": 63166,
+      "cache_hits": 17566,
+      "sd_ms": 25529,
+      "syscalls": 811025,
+      "rows": 40,
+      "overflow": 0
+    },
+    "last": {
+      "line": 10199,
+      "reads": 57239,
+      "sd_reads": 63961,
+      "cache_hits": 17633,
+      "sd_ms": 28257,
+      "syscalls": 2288837,
+      "rows": 46,
+      "overflow": 0
+    },
+    "delta": {
+      "reads": 364,
+      "sd_reads": 795,
+      "cache_hits": 67,
+      "sd_ms": 2728,
+      "syscalls": 1477812
+    }
+  },
+  "memory": {
+    "minimum_heap_available": {
+      "line": 9004,
+      "free_threads": 195,
+      "query_rc": 0,
+      "heap_used": 2388235072,
+      "arena_free": 506387648,
+      "heap_arena": 2894622720,
+      "heap_capacity": 3348959232,
+      "heap_unclaimed": 454336512,
+      "heap_available": 960724160
+    },
+    "maximum_gpu_oom": 0
+  },
+  "limitations": [
+    "Launch Debug adds syscall instrumentation, thread snapshots and verbose Wine logging; overhead unmeasured.",
+    "No normal-launch per-thread/server/pipeline-compiler/cache-hit interval reports in this capture.",
+    "No controlled comparison with v7, v9 toggles off, or 960x540; no hardware clock readings in log.",
+    "Driver wait durations include blocking and scheduling and can overlap across threads; not GPU execution times.",
+    "Dispatch compilation includes nested compile_code; do not add them or treat them as CPU utilization.",
+    "SD-CALL calls counters cover all calls of a thread, not just the last displayed syscall name.",
+    "Frame summaries cannot recover individual frame times or 1% lows.",
+    "Shader features enabled at startup do not quantify their performance benefit."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "machine": "0x14c",
+  "image_base": 4194304,
+  "image_size": 17715200,
+  "image_end": 21909504,
+  "relocations_available": false,
+  "large_address_aware": false,
+  "address_space": "32-bit no-alias",
+  "executable": "HKShip.exe"
+}

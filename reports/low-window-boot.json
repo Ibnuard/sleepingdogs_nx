@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "boot_files": {
+    "LICENSE.Atmosphere": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+    "LICENSE.HOC": "415913d27a54bd495e0b7f5ab84cac74ced0ac33f891c2805ee0ed480d1bcdd4",
+    "loader-hoc-low-window.kip": "df04e42da91d5cc9e061298e3bcb25d0315670f2e1b558bd10660c5f92875bbd",
+    "loader-stock-low-window.kip": "eddc19c2dbd1aa6322dd06da46cd77dbb8dddbb82d8cd9e4625d6d997ae8353a",
+    "mesosphere-low-window.bin": "2173d92b18048f7676e6fe5e018756e417a03333095b0e7bbb9a969980ebefec",
+    "sleepingdogs-low-window.patch": "c513190ff7e8f359c68f695a122711edc47a5b91d181e3beb31a89620312cc47"
+  },
+  "nsp_sha256": "6da7966c5bfefd7a04f55a3c00f098222bce5aa758c7a8288891916fa8fd46ce",
+  "kernel_patch_files": 8,
+  "whitelist_cases": 6,
+  "hoc_configuration_preserved": true,
+  "npdm_changes_only": [
+    "address space 2 -> 3",
+    "system resource 0 -> 16 MiB"
+  ],
+  "compiled_source_changes": {
+    "atmosphere": {
+      "libraries/libmesosphere/include/mesosphere/arch/arm64/kern_k_page_table.hpp": "25750cdc22b4d13bb3e01a0371d759ebb4963a0c5b068c1f797e6f4995565651",
+      "libraries/libmesosphere/include/mesosphere/arch/arm64/kern_k_process_page_table.hpp": "b0f082597fc01d497a85864286dd594616eb5a9df31df1919d8c8cc0f9302e78",
+      "libraries/libmesosphere/include/mesosphere/kern_k_page_table_base.hpp": "38a9608996023b3bb8ba06a9e613988e6d908297e2523b86eed75edae844ff1b",
+      "libraries/libmesosphere/source/arch/arm64/kern_k_page_table.cpp": "d5156c473005cdf1c723a4417185c78c7d2d6fd6f588ca739bca5c21286a5dfd",
+      "libraries/libmesosphere/source/kern_k_page_table_base.cpp": "ac9881f17dbca84468dab23e1a33bd2b6532afa8c737793707d7af3a8f1953ac",
+      "libraries/libmesosphere/source/kern_k_process.cpp": "381831735d401114c47affd3a55c039c5fe4ca89c1c6b8fd96509412e6bbe983",
+      "libraries/libvapours/include/vapours/svc/svc_memory_map.hpp": "1fa71f5e1bfe40168144c8db033d2fae8987f667ac35702dd4561e7eea97f7c6",
+      "stratosphere/loader/source/ldr_process_creation.cpp": "1578d7fcdeb6dc1f1aaf3c5330d0a09c2027a8e165c98de9b6165d89f6bb304d"
+    },
+    "atmosphere-hoc": {
+      "libraries/libmesosphere/include/mesosphere/arch/arm64/kern_k_page_table.hpp": "25750cdc22b4d13bb3e01a0371d759ebb4963a0c5b068c1f797e6f4995565651",
+      "libraries/libmesosphere/include/mesosphere/arch/arm64/kern_k_process_page_table.hpp": "b0f082597fc01d497a85864286dd594616eb5a9df31df1919d8c8cc0f9302e78",
+      "libraries/libmesosphere/include/mesosphere/kern_k_page_table_base.hpp": "38a9608996023b3bb8ba06a9e613988e6d908297e2523b86eed75edae844ff1b",
+      "libraries/libmesosphere/source/arch/arm64/kern_k_page_table.cpp": "d5156c473005cdf1c723a4417185c78c7d2d6fd6f588ca739bca5c21286a5dfd",
+      "libraries/libmesosphere/source/kern_k_page_table_base.cpp": "ac9881f17dbca84468dab23e1a33bd2b6532afa8c737793707d7af3a8f1953ac",
+      "libraries/libmesosphere/source/kern_k_process.cpp": "381831735d401114c47affd3a55c039c5fe4ca89c1c6b8fd96509412e6bbe983",
+      "libraries/libvapours/include/vapours/svc/svc_memory_map.hpp": "1fa71f5e1bfe40168144c8db033d2fae8987f667ac35702dd4561e7eea97f7c6",
+      "stratosphere/loader/loader.json": "e682a71c25c4f4aa370c2cbd89198956fce606b3915c665a8a5faa070fe49842",
+      "stratosphere/loader/source/ldr_process_creation.cpp": "d14a81dbd51a2ca74b542a2613ff803188f5fc9d13ebaf4dc79109fc7497b1ee"
+    }
+  },
+  "sources": {
+    "tests/check_low_window_boot.py": "a01121e8e784751da8fdc48e4ee8a29b085716b8681ffb90bec314c81911bb60"
+  }
+}

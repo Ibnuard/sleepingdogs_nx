@@ -1,0 +1,149 @@
+{
+  "status": "REVIEW_COMPLETE",
+  "review_date": "2026-10-09",
+  "scope": "Compare current public Autorun sources with Sleeping Dogs v8; no runtime or package changes in this review.",
+  "upstream": {
+    "repository": "https://github.com/autorunhq/autorun",
+    "owner": "autorunhq",
+    "previous_name": "Wine-NX",
+    "branch": "main",
+    "head": "cbb0e4e6e7fa7f47f328d92441f51bfb507f266f",
+    "latest_public_release": {
+      "name": "Autorun - Test Build 4",
+      "tag": "test-build-4",
+      "published_at": "2026-09-24T10:59:45Z",
+      "url": "https://github.com/autorunhq/autorun/releases/tag/test-build-4",
+      "commits_to_reviewed_main": 149
+    },
+    "build_identifiers": {
+      "box64_wow64": "nx-wow64-dynarec-258",
+      "fex": "nx-amd64-fex-2640",
+      "note": "Backend-conditional source identifiers, not interchangeable release numbers.",
+      "source": "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/horizon-wine/source/runtime.c#L96-L105"
+    },
+    "snapshot_directory": "local/upstream-20261009"
+  },
+  "local": {
+    "build": "sleepingdogs-low-window-v8-perf-counters",
+    "receipt": "dist/low-window-perf-counters/native.json",
+    "nro_sha256": "b92813f92ca87c2be82519dda4804020de7e6888f7b1eef5c938400dba8bd2eb",
+    "wine_base_commit": "1bc4e45163f0d2328cdfd35c7f471dd9821bb879",
+    "wine_base_release": "test-build-2",
+    "fex_port_origin": "FEXTendo / AndroSwitch Project / Ibnuard's own Switch integration of upstream FEX-Emu, inherited here from pes13-fex; not imported from Autorun's FEX integration.",
+    "base_provenance": "../pes13-nx/local/production-input-fix/approved/source/dependencies.json",
+    "upstream_commits_since_base": 299,
+    "note": "The base release describes inherited Wine-NX/Wine runtime code only. FEXTendo's own FEX port, fixes and selected backports are layered over it; the commit count does not count missing fixes.",
+    "existing_capabilities": [
+      "FEX translator with the Fastest profile and existing MTrack support",
+      "Mesa 26.2.2 and project DXVK 3.1.1 payload",
+      "Low guest address support and native heap placement above 4 GiB",
+      "Working processor topology, validated with Sleeping Dogs four-worker startup",
+      "Optional DXVK HUD None/FPS/Full and Performance graphics profile",
+      "v8 interval counters for hardware performance diagnosis"
+    ],
+    "native_source_files_rechecked_against_v8_receipt": {
+      "wine-nx-probe/source/thread_profile.c": "96666d6f4c88dbb9736b0ef77fa9bee489865daa7048f3f3ea7b2e6f8b54087a",
+      "wine-nx-probe/source/sd_cache.c": "baeeb4ba2d1f5efcd352d5e0c4a8e5d9c149a9ae63119ef18e38ef87e16fa3b3",
+      "dlls/ntdll/unix/horizon.c": "6bb6eafd3ecce26a80eb7ba1cb74e508c6e2829f5a1b3338a295d2a08aafef7b",
+      "dlls/ntdll/unix/server.c": "201ed95d0e78ac1e2f13a6e1098f56c924c6988d07dceb8a21397b4e4946296d",
+      "dlls/winevulkan/vulkan_thunks.c": "368751e014a150d6f6ec065336693ab5ef27c0e3b4b5bb909c90c3595adf6871"
+    },
+    "all_rechecked_hashes_match": true
+  },
+  "backport_candidates": [
+    {
+      "feature": "Allow DXVK shader workers and Vulkan pipeline compilation to migrate across application cores",
+      "commits": [
+        "5a75cfb647a010704a2811f535323fc4b39c9109",
+        "e823a778f5ccf40ae8392209b9ff769b42780c14"
+      ],
+      "upstream_sources": [
+        "https://github.com/autorunhq/autorun/commit/5a75cfb647a010704a2811f535323fc4b39c9109",
+        "https://github.com/autorunhq/autorun/commit/e823a778f5ccf40ae8392209b9ff769b42780c14"
+      ],
+      "local_status": "Absent: no migrate_shader_locked, NX_SHADER_AFFINITY or wine_nx_thread_pipeline_begin in the relevant native source files.",
+      "mechanism": "Mask eligible shader work onto application cores 0-2, preserve explicit guest affinity and thread priority, and restore affinity after scoped pipeline compilation.",
+      "expected_benefit_inference": "Can reduce shader compilation contention and stutter; a sustained gameplay FPS improvement is unmeasured.",
+      "integration_requirement": "Reconcile with the project's stable balancer, core-3 opt-in and guest-affinity handling; test restoration, renamed workers, fixed affinity and failure paths."
+    },
+    {
+      "feature": "Reuse temporary Mesa NAK shader compiler allocations",
+      "commits": ["e7168c3f438ace433c4e77da2cb4533762a77399"],
+      "upstream_sources": ["https://github.com/autorunhq/autorun/commit/e7168c3f438ace433c4e77da2cb4533762a77399"],
+      "local_status": "Absent: the v8 source manifest lacks shader_alloc_cache.c and shader_compile.c.",
+      "mechanism": "Thread-local allocation reuse inside nak_compile_shader; 1 MiB cache limit per active worker, up to eight cache-enabled workers; drains on scope exit or allocation pressure.",
+      "expected_benefit_inference": "Reduces allocator work during shader compilation. This is not a cache of finished shaders and does not prove higher FPS after shaders are compiled.",
+      "integration_requirement": "Adapt native-heap accounting and allocator wrappers; preserve alignment, realloc semantics, bounded memory use and draining."
+    },
+    {
+      "feature": "Optional Horizon queued synchronization waits and targeted wakeups",
+      "commits": [
+        "17a558619724270c98b52b921a731f143bed7086",
+        "0625c79c9dbb7bc71fa6cf9a244cb6332a377eed"
+      ],
+      "upstream_sources": [
+        "https://github.com/autorunhq/autorun/commit/17a558619724270c98b52b921a731f143bed7086",
+        "https://github.com/autorunhq/autorun/commit/0625c79c9dbb7bc71fa6cf9a244cb6332a377eed"
+      ],
+      "local_status": "Absent: no horizon_fast_sync backend in local horizon.c. Existing local synchronization experiments are not this backend.",
+      "upstream_default": "Off; per-game opt-in sync=horizon.",
+      "expected_benefit_inference": "Potentially relevant to steady performance if server waits or synchronization overhead dominate; v7 does not measure this sufficiently.",
+      "integration_requirement": "Use the queued-wait implementation and its follow-up semantics, not just the initial direct-sync commit. Keep Standard as a selectable fallback and validate events, semaphores, APCs, timers, suspension and cancellation."
+    },
+    {
+      "feature": "Gate server request timing and counters when profiling is disabled",
+      "commits": ["0625c79c9dbb7bc71fa6cf9a244cb6332a377eed"],
+      "upstream_sources": ["https://github.com/autorunhq/autorun/commit/0625c79c9dbb7bc71fa6cf9a244cb6332a377eed"],
+      "local_status": "Local server_call_unlocked always reads ticks and updates atomic request counters; no horizon_server_profile_enabled gate.",
+      "expected_benefit_inference": "Removes per-request observer work when no report consumer is enabled; impact is unmeasured.",
+      "integration_requirement": "Keep counters enabled for v8 diagnostic runs. Only disable when neither profiling nor interval counters consume them."
+    }
+  ],
+  "other_findings": [
+    {
+      "feature": "SD read-ahead, cache reuse and buffered writes",
+      "assessment": "Potential streaming improvement, conditional on SD counters. Preserve the local memory budget and file semantics."
+    },
+    {
+      "commit": "c71391c6062698d501444ec98337c16730e69a21",
+      "assessment": "The cached-writable-file regression fixed upstream is not present in the inspected older local open path. Do not claim this fix applies directly."
+    },
+    {
+      "commit": "19466bf0374a6acc15ab1955e2f209ccfc0711ae",
+      "assessment": "Native heap tracking avoids Vulkan budget scans upstream; the local normal DXVK path already disables that memory-budget extension, so benefit on that path is not established."
+    },
+    {
+      "feature": "Processor topology and fast FEX settings",
+      "assessment": "Already addressed locally; newer upstream code is not evidence that these optimizations are all missing. The ARM64EC upstream integration is different from the local adapter and is not a drop-in version-number change."
+    }
+  ],
+  "performance_evidence": {
+    "local_report": "reports/gameplay-v7-performance-analysis.json",
+    "hardware": "Switch OLED handheld; CPU 1728 MHz, GPU 768 MHz, RAM 1600 MHz",
+    "measured_slow_segment_fps": 17.049565846599133,
+    "frame_average_ms": 58.652519893899196,
+    "render_resolution": "1280x720; final client swapchain 1292x732 scaled to 1280x720",
+    "vsync": "IMMEDIATE; already off",
+    "present_average_ms": 1.4742960212201592,
+    "bottleneck_status": "Unresolved. Short Present duration does not exclude GPU waits elsewhere; FEX compilation time is not shader compilation time or translated-code execution time.",
+    "required_for_target": "30 FPS requires about 33.33 ms per frame, roughly 43 percent less frame time than the measured segment.",
+    "next_hardware_comparison": "Same scene, same clocks, normal Launch, HUD FPS, v8 counters: 60 seconds at 720p and 60 seconds at 960x540 after warm-up. Preserve each run's log.",
+    "undefined_graphics_level": "Unresolved; no DisplaySettings.xml supplied. No reviewed upstream change establishes a fix for this label."
+  },
+  "upstream_benchmark_limits": {
+    "source": "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/documentation/technical.md#status",
+    "reported_examples": [
+      "OpenTTD: up to 60 FPS OpenGL",
+      "Quake III demo: about 37 FPS at 1280x720 OpenGL",
+      "Warcraft III gameplay: 24-34 FPS OpenGL",
+      "NFS Underground 2: roughly 20-45 FPS with wined3d and CPU overclocking"
+    ],
+    "note": "The first three numbers are explicitly older Mesa 20.1 measurements. No Sleeping Dogs benchmark was found in the reviewed repository documentation; this does not disprove external video reports.",
+    "frame_generation": {
+      "available_upstream": "Optional LSFG-VK 2x, requires the user's Lossless.dll.",
+      "source": "https://github.com/autorunhq/autorun/blob/cbb0e4e6e7fa7f47f328d92441f51bfb507f266f/README.md#frame-generation",
+      "note": "Base render FPS and displayed FPS after frame generation are different measurements. The user's referenced 60 FPS demonstrations have not been identified, so their use of frame generation is unknown."
+    }
+  },
+  "conclusion": "Real upstream optimization candidates are missing locally. Prioritize a controlled shader-affinity backport and allocation-cache evaluation, then synchronization according to v8 measurements. Stable 30 FPS is not established by the available evidence."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "cases": 2160,
+  "readback_progress": true,
+  "explicit_flush_preserved": true,
+  "disabled_matches_shipped_baseline": true,
+  "dll_sha256": "1fb6368e856271d15b7ad8974f7e5af3dea88f3f59ea2374935ae835b8450650",
+  "baseline_dll_sha256": "c9beb1baa19a3b73075a8fee945bd43006a20e263627dfa468e01af5f3ea90f2",
+  "execution": "Unicorn x86 PE32, actual shipping functions; no function-boundary mocks",
+  "hardware_tested": false,
+  "sources": {
+    "tests/check_dxvk_batch_binary.py": "c3e40f0ffd9f58ba5be70008099b42a2884d93f9e3ae236871cc19ca9e490afd",
+    "tests/check_wow64_context_binary.py": "425bdf4247b16b50ef5e3e30e95729bddbc0dedb8f5022834531a2d845705516"
+  }
+}

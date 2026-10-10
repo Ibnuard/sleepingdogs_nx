@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "patch_sha256": "8ecb9c7dd6cc5da92382cf3e8e74c552bdb37fb3bb0c203b7c439b6a8d43ba9e",
+  "base_sha256": "b2e19d4f71994a9a0fd80be51f045ee3a5c4711780aa752667497d3b88eeddfa",
+  "result": "PASS: LF/CRLF/mixed lines/spacing/no final newline; wrong options, comments, missing config and missing DLL still rejected.\nPASS: unchanged renderer selection still replaces stale installed DLLs from the complete new set.\nPASS: 14 archive preflight checks, both renderer installations, all 8 presets using byte-exact ZIP files and Horizon rename semantics.",
+  "native_runtime_sha256": "caeb4e52cecac9e54bb3360e027a85a2ca9e3a3d2a7fa05f591267c824cc003f",
+  "source_sha256": "c5196fd41359debfaa2f4866b97417a1ad6f88c68af0cf20bf6dba08cd207898",
+  "hardware_tested": false
+}

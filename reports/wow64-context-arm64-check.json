@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "original_sha256": "a9971c2e3e10117229c76127e62dbeffb2429ea6189ec2e43e8fb1b2e9ce4f37",
+  "fixed_sha256": "cce529e75bc5417f56781b2654d8298e0a8e9cfced0a6b5a742a0768c7dab199",
+  "original_self_suspend_reproduced": {
+    "count": 3,
+    "self_suspend": true,
+    "get_handle": null,
+    "events": "S",
+    "status": 4294967294,
+    "returned": false
+  },
+  "cases": {
+    "self": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 18446744073709551614,
+      "events": "G",
+      "status": 0,
+      "returned": true
+    },
+    "self-real-handle": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 18446744073709551614,
+      "events": "QG",
+      "status": 0,
+      "returned": true
+    },
+    "other-thread": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 72,
+      "events": "QSGR",
+      "status": 0,
+      "returned": true
+    },
+    "other-process-same-tid": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 136,
+      "events": "QSGR",
+      "status": 0,
+      "returned": true
+    },
+    "invalid-handle": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": null,
+      "events": "Q",
+      "status": 3221225480,
+      "returned": true
+    },
+    "suspend-refused": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": null,
+      "events": "QS",
+      "status": 3221225659,
+      "returned": true
+    },
+    "context-error": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 72,
+      "events": "QSGR",
+      "status": 3221225485,
+      "returned": true
+    },
+    "self-context-error": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 18446744073709551614,
+      "events": "G",
+      "status": 3221225485,
+      "returned": true
+    },
+    "native-backend": {
+      "count": 3,
+      "self_suspend": false,
+      "get_handle": 72,
+      "events": "G",
+      "status": 0,
+      "returned": true
+    }
+  },
+  "imports_and_exports_preserved": true,
+  "hardware_tested": false,
+  "scope": "Actual DLL ARM64 instructions, NT API call boundaries mocked by Unicorn"
+}

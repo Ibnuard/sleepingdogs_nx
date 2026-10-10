@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "update": {
+    "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sleepingdogs-fex-low-window-startup-fix.zip",
+    "bytes": 769359,
+    "sha256": "e200cb311b4139f1fe78f18d909c959a13972f39de66fac86b35060ce08db982",
+    "files": 23
+  },
+  "nsp_sha256": "04607905b44c42e9a4825d255f745690b647d7d78b7ebe815a6c6b4c175ae929",
+  "elf_sha256": "569334bc424c07009b04b592bd31a61a90c9af1281c7bdea698c92b3cb760a1d",
+  "nro_sha256_unchanged": "767cf6b973f3686d77b67b81e8cc0271b34b081e0513b4d81e54190b261f6487",
+  "previous_release_preserved": true,
+  "hardware_tested": false
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "checks": [
+    "PASS: size segregation, bounded borrowing, full-size 5 MiB slices, alignment, invalid frees, old pool fallback and 1024 concurrent lifetimes",
+    "PASS: actual DXVK allocation dispatch and page allocator; size floor, failure, NoAllocation, mapping flags and large/small lifetime isolation",
+    "PASS: actual DXVK allocation dispatch and page allocator; size floor, failure, NoAllocation, mapping flags and large/small lifetime isolation"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "compiled_dxvk": {
+    "baseline": {
+      "src/dxvk/dxvk_memory.cpp": "82e5eec9e5d13c273fdb110b4c318bde32edbd8b8fd37db605c19ae6c7434e8a",
+      "src/dxvk/dxvk_allocator.cpp": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+    },
+    "candidate": {
+      "src/dxvk/dxvk_memory.cpp": "53127c02d0a015e95b595c3f80018fa174d79532643fe68801ff6a956de6a74d",
+      "src/dxvk/dxvk_allocator.cpp": "46c114d0a43afb65103892663fd57b01b5737b21d848e73d92a8c82ffa9fdc1e"
+    }
+  },
+  "compiled_native": {
+    "f1_gpu_arena.h": "cccf7714856fab5a3d3e985690aad96aa88c534f3a00d3e845d9b4f071a943d7",
+    "sd_gpu_stream.h": "7c74e6c87288efbd02b64267aadfca6f5512c5d846d58218228141e148e6f649"
+  },
+  "sources": {
+    "tests/check_streaming_host.py": "3c8fd723ae3a7a5c79ce2d4ab337400fe2f889294170fd47b80ca01e91c166fd",
+    "tests/streaming_gpu.c": "6d4f28c6a04f10882b215b408b85767278fda2178b8432436953564ef6df428a",
+    "tests/streaming_dxvk.cpp": "768231881597d7f6c70e6662ae4cc03e5e11b77efd99dd6f5e15ae12c3633830"
+  },
+  "scope": "Actual allocation functions/page allocator and native arena; Vulkan allocation, resource destructor and kernel boundaries modeled.",
+  "hardware_tested": false
+}

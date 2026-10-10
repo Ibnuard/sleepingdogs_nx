@@ -1,0 +1,104 @@
+{
+  "input_sha256": {
+    "crash.log": "0e289085650b1b22fa9ba69367ac497b1a6fe08897dd2ba4f346ced91ba32a55",
+    "fex-runtime.log": "660b2f3edca3e7d0ac5b06bfbaaaec920664c3a427f5d10d00d0f396b38b17d2"
+  },
+  "full_log_snapshot_available": true,
+  "two_compiler_fix_active": true,
+  "fex_profile": "fastest",
+  "failed_bytes": 5242880,
+  "vk_result": -1,
+  "gpu_pool": {
+    "used": 265158656,
+    "free": 3276800,
+    "largest": 1114112
+  },
+  "last_oom_snapshot": {
+    "heap_used": 2022927968,
+    "heap_free": 45896096,
+    "unclaimed": 1216512,
+    "heap_capacity": 2070040576
+  },
+  "dxvk_allocated_mib": 300,
+  "dxvk_used_mib": 291,
+  "gpu_churn_last_sample": {
+    "allocations": 4352,
+    "allocated_mib_cumulative": 19339,
+    "frees": 4246,
+    "freed_mib_cumulative": 19089,
+    "live_mib": 250
+  },
+  "first_fault": {
+    "module": "HKShip.exe",
+    "eip": "0x00e5897a",
+    "instruction": "rep movsd",
+    "access": "write",
+    "target": "0x40"
+  },
+  "finding": "Two compiler workspaces are active. Repeated large GPU allocations still end in a 5 MiB failure; deferred Map returns OOM and the game then copies to NULL+0x40.",
+  "inference": "Keeping a small bounded set of fully retired large mapped buffers intact can prevent fresh contiguous backing requests during repeated Map lifetimes. The complete allocation timeline is unavailable; this does not prove the entire scene fits.",
+  "change": "Cache one retired allocation per exact size/type, 2-8 MiB only, at most four entries and 16 MiB idle globally. No live references reused; drain idle entries on allocator pressure and destruction.",
+  "evidence": [
+    {
+      "line": 7,
+      "text": "[SD-COMPILER-MEM] native=v2 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=2"
+    },
+    {
+      "line": 256,
+      "text": "[FEX3-PRESET] fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack"
+    },
+    {
+      "line": 260,
+      "text": "[SD-COMPILER-MEM] fex=v2 compile_slots=2 decoder=instruction-limit ir_mib=16"
+    },
+    {
+      "line": 6358,
+      "text": "[NXVK] memory: 4352 allocations of 19339 MB, 4246 frees of 19089 MB, 250 MB live, 0 with imported 32-bit mappings"
+    },
+    {
+      "line": 6390,
+      "text": "[SD-GPU-ARENA] capacity=268435456 used=265158656 free=3276800 largest=1114112 peak=267255808 live=164 takes=178 misses=147 returned=14 invalid=0"
+    },
+    {
+      "line": 6394,
+      "text": "[SD-RESOURCE] reason=vulkan-allocation-failed free_threads=195 query_rc=00000000 heap_used=2022927968 arena_free=45896096 heap_arena=2068824064 heap_capacity=2070040576 heap_unclaimed=1216512 heap_available=47112608"
+    },
+    {
+      "line": 6398,
+      "text": "[SD-VKMEM] bytes=5242880 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=2"
+    },
+    {
+      "line": 6400,
+      "text": "[SD-VKMEM] bytes=5242880 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=3"
+    },
+    {
+      "line": 6402,
+      "text": "[SD-VKMEM] bytes=5242880 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=4"
+    },
+    {
+      "line": 6404,
+      "text": "[SD-VKMEM] bytes=5242880 type=1 idle_released=0 scratch_released=0 retries=0 result=-1 failures=5"
+    },
+    {
+      "line": 6411,
+      "text": "[WINE] err:    0:     1536         300         291       n/a         n/a"
+    },
+    {
+      "line": 6412,
+      "text": "[WINE] err:   [SD-DXVK-MAP] deferred buffer allocation failed: bytes=5242880"
+    },
+    {
+      "line": 6421,
+      "text": "[SD-FIRSTFAULT] access=1 target=40 flags=00000000"
+    },
+    {
+      "line": 6422,
+      "text": "[SD-FIRSTFAULT] eip=00e5897a esp=0166ee18 ebp=0166ee20 eflags=00000212 context_flags=0001003f"
+    }
+  ],
+  "reference_semantics": [
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/display/mapping-on-deferred-contexts",
+    "https://docs.vulkan.org/refpages/latest/refpages/source/vkFreeMemory.html"
+  ],
+  "hardware_tested": false
+}

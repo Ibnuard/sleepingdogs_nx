@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "elf_sha256": "bb577b6a8a8a4144fc0d2a3c234195a67914eda2d83641207f38744c985bafde",
+  "previous_elf_sha256": "9b268bc753a7b29946cdef89b7151a584c2bdfb495eff132b12408d5c217e077",
+  "memory_pressure": {
+    "old": {
+      "gpu_reserve_bytes": 268435456,
+      "gpu_live_bytes": 112525312,
+      "common_filler_bytes": 187658240,
+      "general_heap_available_before_request": 31657792,
+      "ordinary_16m_request_success": false,
+      "live_data_preserved": true,
+      "gpu_fallback_above_reservation": false
+    },
+    "new": {
+      "gpu_reserve_bytes": 134217728,
+      "gpu_live_bytes": 112525312,
+      "common_filler_bytes": 187658240,
+      "general_heap_available_before_request": 165875520,
+      "ordinary_16m_request_success": true,
+      "live_data_preserved": true,
+      "gpu_fallback_above_reservation": true
+    }
+  },
+  "stack_recovery": {
+    "old": {
+      "supported_sizes_of_four": 1,
+      "backing_size": 1052672,
+      "oversize_invalid_caller_stack_and_non_oom_preserved": true,
+      "quarantine_checked": false
+    },
+    "new": {
+      "supported_sizes_of_four": 4,
+      "backing_size": 1052672,
+      "oversize_invalid_caller_stack_and_non_oom_preserved": true,
+      "quarantine_checked": true
+    }
+  },
+  "exhausted_diagnostics": {
+    "allocation_still_fails": true,
+    "failure_snapshots_in_order": [
+      "wine_nx_f1_resource_snapshot",
+      "wine_nx_f1_gpu_heap_snapshot",
+      "wine_nx_f1_native_stacks_snapshot"
+    ]
+  },
+  "scope": "Execute actual ARM64 newlib/GPU/stack code from old and new runtime ELFs.\n\nThe heap pressure pattern is synthetic, using the recorded process capacity\nand GPU usage. It is not a reconstruction of every hardware allocation.\nOnly sbrk, locks, diagnostic I/O and libnx kernel thread boundaries are modeled.\nAllocator results, arena ownership, stack retry and cleanup execute unchanged.\n",
+  "hardware_tested": false,
+  "game_boot_confirmed": false,
+  "sources": {
+    "tests/check_memory_budget_binary.py": "2028acee6b4588ef60810fa15f135bc2cfa8504930106ce26c93a80e13789e87",
+    "tests/native_heap_binary.py": "ebe7a592f458bd7adda33e001628fddeeb5f1faa245aeb43332b7d84411db140"
+  }
+}

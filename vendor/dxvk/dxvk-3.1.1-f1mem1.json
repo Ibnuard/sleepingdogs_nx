@@ -1,0 +1,49 @@
+{
+  "source": {
+    "commit": "b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+    "patch_sha256": "22e3887c5079594564c17a9602700dcc8f865e774bfab99af9309d6c286b930a",
+    "original_memory_sha256": "0e0c0322d981e70f1f53af8c7d7b4890d9c6de7ec7e7673297efe89042676ba2",
+    "patched_memory_sha256": "aabb9518d593f74f639eaa93cded87e2c5eb9e254c8f6f8e5b5cca05c90227ac"
+  },
+  "files": {
+    "d3d9.dll": {
+      "sha256": "7dca1082ed71e7f9a9c6ac3db40c28f6f8a918849784420f82336151d23467e7",
+      "bytes": 7471104
+    },
+    "d3d11.dll": {
+      "sha256": "743b9d0357506f60a05b28527406a59581fb69c68e960d9c30a3950d440fec11",
+      "bytes": 8257536
+    },
+    "dxgi.dll": {
+      "sha256": "a55e691d527d48650893a554921dac7943d1d3494ecec1307ace14e5aba4a96a",
+      "bytes": 5545984
+    }
+  },
+  "archive_sha256": "2601e1475094d1c9a0188ced35f5d53e5ddccd7b9034a4f24fc61ac01bb2e607",
+  "upstream_archive_sha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+  "patch_sha256": "f54a35c5bae27a14ad87927003068ac93f71a5b911f1b5254a5b72f65c618160",
+  "dependencies": {
+    "include/native/directx": {
+      "url": "https://github.com/Joshua-Ashton/mingw-directx-headers",
+      "commit": "9df86f2341616ef1888ae59919feaa6d4fad693d"
+    },
+    "include/vulkan": {
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers",
+      "commit": "8864cdc896bbc2a9b6eb36b3218fc9ef57908d77"
+    },
+    "include/spirv": {
+      "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+      "commit": "04f10f650d514df88b76d25e83db360142c7b174"
+    },
+    "subprojects/libdisplay-info": {
+      "url": "https://github.com/doitsujin/libdisplay-info.git",
+      "commit": "275e6459c7ab1ddd4b125f28d0440716e4888078"
+    },
+    "subprojects/dxbc-spirv": {
+      "url": "https://github.com/doitsujin/dxbc-spirv.git",
+      "commit": "bf14419e5fa7eacb817b7b632f03cb61d61bbad7",
+      "nested": "c8ad050fcb29e42a2f57d9f59e97488f465c436d submodules/spirv_headers (c8ad050)"
+    }
+  },
+  "note": "F1-specific DXVK 3.1.1-f1mem1. Normal allocation sizes retained; bounded small real Vulkan chunks after ordinary pool allocation failure."
+}

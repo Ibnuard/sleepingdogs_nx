@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "existing_nsp_reinstall_required": false,
+  "payloads_identical": {
+    "exefs/main": "76a3664e036bbe41e29f1096dcb1fadda316adf2b8884f21795b60cd23b2c99f",
+    "exefs/main.npdm": "c04331fd1cad146b77fb2bb1dc52c33c8311d2d874ef43583e0b056ff5aa8ac2",
+    "control/control.nacp": "c817c781e8948382efc749a5255071c2e5c1ce080de2ffc19a7abdf1b4a7025b",
+    "control/icon_AmericanEnglish.dat": "df9f2639fdedb5cc6ff85d82be5ac82077a0c51d9b83e8c93d2676ded0d052b9",
+    "romfs/nextNroPath": "1d9390a7ff94821e537bf6de792ec21ac42ea8e0f010c5a9d5fadd05341335f4",
+    "romfs/nextArgv": "1d9390a7ff94821e537bf6de792ec21ac42ea8e0f010c5a9d5fadd05341335f4"
+  },
+  "previous_nsp_sha256": "5e6c7010a2ee8e525311b0f03c57dd1affc24bff38763326936ea2f586bb19f0",
+  "new_nsp_sha256": "445faf7b83ea1adb06cf0c2e156a29d870b4fa2d1a1ad0688caeb984b2ffd4b2"
+}

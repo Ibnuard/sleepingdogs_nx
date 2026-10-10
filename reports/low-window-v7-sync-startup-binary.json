@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "scope": "Replay the linked ARM64 syscall dispatcher and real get_cpu_area.\n\nTEB/TLS, syscall returns, locks and clock are fixtures. The v4 regression must\nfault at address 2 inside the actual Wine get_cpu_area; v5 must return the\noriginal syscall status without entering that function until CPU TLS exists.\nThe collector is observed at its boundary and has separate ASan/UBSan tests.\nThis is not a hardware run or a reproduction of the game loading freeze.\n",
+  "hardware_tested": false,
+  "old_elf_sha256": "e9519a8cfdabcad70c5a5f16c5054eb64bad0146759f695a7ae006c965070df6",
+  "elf_sha256": "73512b76c0d0fe5d1d2a859d11f63a491c9ac88dc5af0f2f8b01ca0ef430e4b2",
+  "cases": [
+    "v4 NtClose with missing CPU area faults at address 2",
+    "v4 NtCreateSemaphore with missing CPU area faults at address 2",
+    "v4 NtOpenSemaphore with missing CPU area faults at address 2",
+    "v4 control debug=False wow_peb=True returns normally",
+    "v4 control debug=True wow_peb=False returns normally",
+    "v5 NtClose status=00000000 CPU=missing",
+    "v5 NtClose status=00000000 CPU=wrong_machine",
+    "v5 NtClose status=00000000 CPU=ready",
+    "v5 NtClose status=c0000008 CPU=missing",
+    "v5 NtClose status=c0000008 CPU=wrong_machine",
+    "v5 NtClose status=c0000008 CPU=ready",
+    "v5 NtCreateSemaphore status=00000000 CPU=missing",
+    "v5 NtCreateSemaphore status=00000000 CPU=wrong_machine",
+    "v5 NtCreateSemaphore status=00000000 CPU=ready",
+    "v5 NtOpenSemaphore status=00000000 CPU=missing",
+    "v5 NtOpenSemaphore status=00000000 CPU=wrong_machine",
+    "v5 NtOpenSemaphore status=00000000 CPU=ready",
+    "v5 NtWaitForSingleObject status=c0000008 CPU=missing",
+    "v5 NtWaitForSingleObject status=c0000008 CPU=wrong_machine",
+    "v5 NtWaitForSingleObject status=c0000008 CPU=ready",
+    "v5 GUI/debug-off does not request a CPU area"
+  ],
+  "old_faults": [
+    {
+      "handler": "NtClose",
+      "address": 2,
+      "pc": 17180871316,
+      "size": 2
+    },
+    {
+      "handler": "NtCreateSemaphore",
+      "address": 2,
+      "pc": 17180871316,
+      "size": 2
+    },
+    {
+      "handler": "NtOpenSemaphore",
+      "address": 2,
+      "pc": 17180871316,
+      "size": 2
+    }
+  ],
+  "sources": {
+    "tests\\check_sync_startup_binary.py": "1d11171db479db48c130d695a163b56c4c585ea9f3e8dceae50898121bb4a203",
+    "tests\\check_low_window_binary.py": "a6ac77acc71e872ef7525c3f1cdf7362e4f6a383df06ccd470a33619510ed147"
+  }
+}

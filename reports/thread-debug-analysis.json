@@ -1,0 +1,101 @@
+{
+  "input": {
+    "fex-runtime.log": {
+      "path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08\\fex-runtime.log",
+      "sha256": "0f2989176b9707616b7e1f30551e91574e50d0078747d38b7aafd358316b1ab4",
+      "bytes": 402619,
+      "lines": [
+        {
+          "line": 3,
+          "text": "[SD-FIRSTFAULT] build=v3 first 4 faults; skip debug/thread-name; code bytes; first snapshot also in crash.log"
+        },
+        {
+          "line": 4,
+          "text": "[SD-TEB-DEBUG] build=v1 exception debug cache sync"
+        },
+        {
+          "line": 32,
+          "text": "[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0"
+        },
+        {
+          "line": 262,
+          "text": "[FEX3-GEX] v1 bounded exception-route diagnostics; behavior unchanged"
+        },
+        {
+          "line": 263,
+          "text": "[FEX-JIT] slot=0 size=16384 rw=0xdcf96000 rx=0xd41bc000"
+        },
+        {
+          "line": 2093,
+          "text": "[SD-DB] arm tid=4 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a"
+        },
+        {
+          "line": 4626,
+          "text": "[NXVK] present 4: result 0, swapchain 1292x732, hwnd 0x20030 client (0,0)-(1292,732), style 0x15000000, foreground 0x20030"
+        },
+        {
+          "line": 4693,
+          "text": "[THREAD] NtCreateThreadEx tid=76 start=0x549430 param=0x59ad0c30 flags=0x1 stack_reserve=0x0 err=0"
+        },
+        {
+          "line": 4735,
+          "text": "[FEX3-GEX] ticket=0x0000000000000001 tid=0x000000000000004c stage=candidate host_pc=0x0000000000000000 address=0x0000000000000000"
+        },
+        {
+          "line": 4736,
+          "text": "[FEX3-GEX] ticket=0x0000000000000001 stage=smc-lock pc=0x0000000000000000 value=0x0000000000000000"
+        },
+        {
+          "line": 4738,
+          "text": "[FEX3-GEX] ticket=0x0000000000000001 stage=classify pc=0x0000000000000000 value=0x00000000c0000005"
+        },
+        {
+          "line": 4740,
+          "text": "[FEX3-GEX] ticket=0x0000000000000001 stage=native-fault pc=0x0000000000000000 value=0x00000000c0000005"
+        }
+      ]
+    },
+    "crash.log": {
+      "path": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\08\\crash.log",
+      "sha256": "ce52468d070239860627ee8cb02b32fd539ad787e1af3b3f85b02c8567c07222",
+      "bytes": 32768,
+      "lines": [
+        {
+          "line": 3,
+          "text": "native_anchor_wine_nx_f1_crash_init=0x2adfc2a0 launch_tick=0xd3d708e4f"
+        },
+        {
+          "line": 66,
+          "text": "FATAL reason=unhandled-native-exception code=0xc0000005 caller=0x0"
+        },
+        {
+          "line": 69,
+          "text": "pc=0x0 lr=0xd41bc1a0 sp=0x3b8069b0 fp=0x3b806e20"
+        },
+        {
+          "line": 71,
+          "text": "x4=0x745ff50 x5=0x358 x6=0x7 x7=0xe081"
+        },
+        {
+          "line": 75,
+          "text": "x20=0x0 x21=0xffffffffcccccccc x22=0x1 x23=0x0"
+        }
+      ]
+    }
+  },
+  "defect": "Native WoW64 Get/SetThreadContext rejected the new suspended thread handle used by the original game CreateThread hook. Debug state was armed only on the main thread.",
+  "game_sites": {
+    "create_thread_hook": "0xb74630",
+    "context_helper": "0xb74550",
+    "worker_entry": "0x549430",
+    "worker_call": "0x5494f2",
+    "DR1_target": "0x5b2e92",
+    "worker_success": "0x54951c"
+  },
+  "correlation": "Native PC=0, LR lies inside FEX dispatcher allocation at +0x1a0; worker check uses ECX=e081 also visible in crash. This is consistent with missing per-thread debug state; not a complete hardware guest stack trace.",
+  "instruction_replay": "Old native API rejects the game request, original worker target/branch erase stack and return zero. New native API stages debug state, actual runtime initialization applies it after reset, original VEH/worker branch preserve stack.",
+  "fix": "Honor debug-only contexts on suspended never-started same-process threads; one-shot post-init application and TEB cache sync under object/start-gate mutex.",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "hardware_tested": false,
+  "game_boot_confirmed": false
+}

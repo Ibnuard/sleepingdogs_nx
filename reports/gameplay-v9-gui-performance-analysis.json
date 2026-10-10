@@ -1,0 +1,4454 @@
+{
+  "status": "ANALYZED",
+  "input": "C:\\Users\\Administrator\\Pictures\\pesnx\\fex-runtime.log",
+  "sha256": "e98582f3869240001f268bcd51e664f91cfa78a85be91aad6557b6dfdf48d13b",
+  "bytes": 192035,
+  "preserved_input": "local\\performance-v9-gui\\e98582f3869240001f268bcd51e664f91cfa78a85be91aad6557b6dfdf48d13b\\fex-runtime.log",
+  "user_observation": "FPS drop occurred while changing area/scene, not a fixed-camera idle test",
+  "configuration": [
+    {
+      "line": 2,
+      "text": "[SD-FEX] launch_mode=gui"
+    },
+    {
+      "line": 37,
+      "text": "[SD-DXVK-CONFIG] profile=performance renderer=dxvk-3.1.1 hud=FPS"
+    },
+    {
+      "line": 71,
+      "text": "[SD-SHADER] v1 affinity=1 cache=1; application cores 0-2, priority unchanged, scoped NAK allocation reuse"
+    },
+    {
+      "line": 77,
+      "text": "[SD-VK] build=sleepingdogs-fextendo-0.1.0-low-window-v9-shader-optimizations Mesa=26.2.2 commit=b297e230ef88c6c88df2561becf864f979f494a6"
+    },
+    {
+      "line": 1064,
+      "text": "[WINE] info:  Setting display mode: 1280x720@60"
+    },
+    {
+      "line": 1065,
+      "text": "[WINE] info:  Setting display mode: 1280x720@60"
+    },
+    {
+      "line": 1073,
+      "text": "[WINE] info:    Buffer size:  1280x720"
+    },
+    {
+      "line": 1085,
+      "text": "[WINE] info:    Buffer size:  1292x732"
+    }
+  ],
+  "selection": "Trailing contiguous sub-30-FPS windows; no exact scene markers",
+  "slow_segment": {
+    "reports": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "elapsed_ms": 111130,
+    "frames": 2062,
+    "fps": 18.55484567623504,
+    "frame_ms": 53.894277400581956,
+    "min_window_fps": 14.81113320079523,
+    "max_window_fps": 22.85997031172687,
+    "registered_cpu_cores_min": 1.79,
+    "registered_cpu_cores_max": 2.35,
+    "main_thread_percent_min": 34.5,
+    "main_thread_percent_max": 54.2,
+    "dxvk_cs_percent_min": 23.4,
+    "dxvk_cs_percent_max": 48.0,
+    "graphics_pipeline_calls": 498,
+    "graphics_pipeline_aggregate_us": 2359036,
+    "driver_cache_get_aggregate_us": 2186554,
+    "server_requests": 926717,
+    "sd_read_aggregate_ms": 5224,
+    "observer_aggregate_us": 573381
+  },
+  "last_three_windows": {
+    "reports": [
+      18,
+      19,
+      20
+    ],
+    "elapsed_ms": 30334,
+    "frames": 499,
+    "fps": 16.450187907958068,
+    "frame_ms": 60.789579158316634,
+    "min_window_fps": 14.81113320079523,
+    "max_window_fps": 18.03567927857283,
+    "registered_cpu_cores_min": 1.81,
+    "registered_cpu_cores_max": 2.06,
+    "main_thread_percent_min": 37.5,
+    "main_thread_percent_max": 40.0,
+    "dxvk_cs_percent_min": 30.9,
+    "dxvk_cs_percent_max": 35.3,
+    "graphics_pipeline_calls": 43,
+    "graphics_pipeline_aggregate_us": 337696,
+    "driver_cache_get_aggregate_us": 321203,
+    "server_requests": 261832,
+    "sd_read_aggregate_ms": 1464,
+    "observer_aggregate_us": 166230
+  },
+  "driver_cache_observed_totals": {
+    "driver_cache_hits": 2452,
+    "misses": 0
+  },
+  "shader_allocation_cache_last": {
+    "completed": 0,
+    "hits": 0,
+    "misses": 0,
+    "puts": 0,
+    "peak_worker_bytes": 0
+  },
+  "memory": {
+    "minimum_available_bytes": 975296736,
+    "last_resource": {
+      "line": 2152,
+      "free_threads": 195,
+      "query_rc": 0,
+      "heap_used": 2362039872,
+      "arena_free": 598458816,
+      "heap_arena": 2960498688,
+      "heap_capacity": 3348959232,
+      "heap_unclaimed": 388460544,
+      "heap_available": 986919360
+    },
+    "max_gpu_oom": 0
+  },
+  "late_jit": {
+    "dispatch_compile": {
+      "first": {
+        "line": 1750,
+        "phase": "dispatch_compile",
+        "uptime_ms": 125125,
+        "calls": 99719,
+        "total_us": 31242816,
+        "peak_us": 559620,
+        "over20ms": 43,
+        "over50ms": 5
+      },
+      "last": {
+        "line": 2149,
+        "phase": "dispatch_compile",
+        "uptime_ms": 230203,
+        "calls": 151984,
+        "total_us": 33909766,
+        "peak_us": 559620,
+        "over20ms": 44,
+        "over50ms": 5
+      },
+      "elapsed_ms": 105078,
+      "calls": 52265,
+      "aggregate_us": 2666950
+    },
+    "compile_code": {
+      "first": {
+        "line": 1751,
+        "phase": "compile_code",
+        "uptime_ms": 125125,
+        "calls": 52465,
+        "total_us": 19988304,
+        "peak_us": 512845,
+        "over20ms": 16,
+        "over50ms": 2
+      },
+      "last": {
+        "line": 2150,
+        "phase": "compile_code",
+        "uptime_ms": 230203,
+        "calls": 54899,
+        "total_us": 21581390,
+        "peak_us": 512845,
+        "over20ms": 17,
+        "over50ms": 2
+      },
+      "elapsed_ms": 105078,
+      "calls": 2434,
+      "aggregate_us": 1593086
+    },
+    "invalidate": {
+      "first": {
+        "line": 1752,
+        "phase": "invalidate",
+        "uptime_ms": 125125,
+        "calls": 65577,
+        "total_us": 793562,
+        "peak_us": 3922,
+        "over20ms": 0,
+        "over50ms": 0
+      },
+      "last": {
+        "line": 2151,
+        "phase": "invalidate",
+        "uptime_ms": 230203,
+        "calls": 68180,
+        "total_us": 1057186,
+        "peak_us": 3922,
+        "over20ms": 0,
+        "over50ms": 0
+      },
+      "elapsed_ms": 105078,
+      "calls": 2603,
+      "aggregate_us": 263624
+    }
+  },
+  "thread_names": {
+    "36w": "dxvk-queue",
+    "32w": "dxvk-submit",
+    "40w": "dxvk-cs",
+    "60w": "dxvk-shader-l",
+    "64w": "dxvk-cache",
+    "72w": "HavokWorkerThread",
+    "84w": "AK::IOThread",
+    "88w": "AK::BankManager",
+    "92w": "wine_mmdevapi_notification",
+    "96w": "audio_client_main",
+    "100w": "audio_client_timer",
+    "108w": "AK::EventManager",
+    "104w": "wine_dsound_mixer"
+  },
+  "intervals": [
+    {
+      "line": 1088,
+      "report": 0,
+      "tick": 1377404692382,
+      "window_ms": 0,
+      "frame": null,
+      "threads": {},
+      "pipe": {
+        "acquire_driver": {
+          "n": 2,
+          "avg_us": 593,
+          "peak_since_launch_us": 616,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2
+        },
+        "submit_driver": {
+          "n": 40,
+          "avg_us": 309,
+          "peak_since_launch_us": 4576,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 40
+        },
+        "fence_wait": {
+          "n": 2,
+          "avg_us": 36,
+          "peak_since_launch_us": 48,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2
+        },
+        "semaphore_wait": {
+          "n": 38,
+          "avg_us": 286,
+          "peak_since_launch_us": 2991,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 38
+        },
+        "shared_clock_gap": {
+          "n": 24492,
+          "avg_us": 1002,
+          "peak_since_launch_us": 2598,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 24492
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 670,
+          "total_us": 3052598,
+          "avg_us": 4556,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 5,
+          "total_us": 11697,
+          "avg_us": 2339,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 1371,
+          "total_us": 3037747,
+          "avg_us": 2215,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 1368,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 0,
+        "sd_reads": 0,
+        "cache_hits": 0,
+        "sd_ms": 0,
+        "syscalls": 0,
+        "qpc": 0,
+        "delay": 0,
+        "fast_qpc": 0,
+        "fast_delay": 0
+      },
+      "observer_us": 66035
+    },
+    {
+      "line": 1280,
+      "report": 1,
+      "tick": 1377598152977,
+      "window_ms": 10076,
+      "frame": {
+        "line": 1279,
+        "window_ms": 10076,
+        "frames": 725,
+        "fps_x100": 7195,
+        "present_avg_us": 988,
+        "lock_avg_us": 0,
+        "driver_avg_us": 609,
+        "errors": 0,
+        "fps": 71.95315601429138
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 31.8
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 13.5
+        },
+        "108w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 6.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.8
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 3.3
+        },
+        "88w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 2.7
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.5
+        },
+        "12w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.9
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.4
+        },
+        "20w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.1
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 731,
+          "avg_us": 318,
+          "peak_since_launch_us": 10126,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 723
+        },
+        "submit_driver": {
+          "n": 2923,
+          "avg_us": 483,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2891
+        },
+        "fence_wait": {
+          "n": 728,
+          "avg_us": 4073,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 596
+        },
+        "semaphore_wait": {
+          "n": 1459,
+          "avg_us": 4351,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1015
+        },
+        "shared_clock_gap": {
+          "n": 10063,
+          "avg_us": 1005,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10063
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 42,
+          "total_us": 128464,
+          "avg_us": 3058,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 87,
+          "total_us": 134385,
+          "avg_us": 1544,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.83,
+      "server": {
+        "requests": 183049,
+        "aggregate_ms": 211600,
+        "operations": {
+          "select": {
+            "calls": 26408,
+            "avg_us": 7918,
+            "aggregate_ms": 209118
+          },
+          "event_op": {
+            "calls": 33270,
+            "avg_us": 30,
+            "aggregate_ms": 999
+          },
+          "get_handle_fd": {
+            "calls": 116572,
+            "avg_us": 6,
+            "aggregate_ms": 768
+          },
+          "init_thread": {
+            "calls": 31,
+            "avg_us": 7072,
+            "aggregate_ms": 219
+          },
+          "create_mapping": {
+            "calls": 80,
+            "avg_us": 1764,
+            "aggregate_ms": 141
+          },
+          "create_file": {
+            "calls": 122,
+            "avg_us": 628,
+            "aggregate_ms": 76
+          },
+          "release_mutex": {
+            "calls": 1707,
+            "avg_us": 43,
+            "aggregate_ms": 73
+          },
+          "close_handle": {
+            "calls": 863,
+            "avg_us": 77,
+            "aggregate_ms": 67
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 90,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 212,
+        "sd_reads": 296,
+        "cache_hits": 73,
+        "sd_ms": 1334,
+        "syscalls": 96965,
+        "qpc": 63739,
+        "delay": 5096,
+        "fast_qpc": 63739,
+        "fast_delay": 4959
+      },
+      "observer_us": 114424
+    },
+    {
+      "line": 1344,
+      "report": 2,
+      "tick": 1377792438762,
+      "window_ms": 10119,
+      "frame": {
+        "line": 1343,
+        "window_ms": 10119,
+        "frames": 800,
+        "fps_x100": 7905,
+        "present_avg_us": 467,
+        "lock_avg_us": 0,
+        "driver_avg_us": 303,
+        "errors": 0,
+        "fps": 79.05919557268504
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 23.1
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 18.6
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.0
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.9
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.5
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.3
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.0
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.3
+        },
+        "20w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.2
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 798,
+          "avg_us": 138,
+          "peak_since_launch_us": 10126,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 798
+        },
+        "submit_driver": {
+          "n": 3196,
+          "avg_us": 318,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 3193
+        },
+        "fence_wait": {
+          "n": 799,
+          "avg_us": 7353,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 500
+        },
+        "semaphore_wait": {
+          "n": 1598,
+          "avg_us": 6195,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 799
+        },
+        "shared_clock_gap": {
+          "n": 10032,
+          "avg_us": 1005,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10032
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.79,
+      "server": {
+        "requests": 89146,
+        "aggregate_ms": 96869,
+        "operations": {
+          "select": {
+            "calls": 37910,
+            "avg_us": 2518,
+            "aggregate_ms": 95468
+          },
+          "event_op": {
+            "calls": 44892,
+            "avg_us": 25,
+            "aggregate_ms": 1149
+          },
+          "release_mutex": {
+            "calls": 4210,
+            "avg_us": 40,
+            "aggregate_ms": 170
+          },
+          "create_event": {
+            "calls": 500,
+            "avg_us": 90,
+            "aggregate_ms": 45
+          },
+          "close_handle": {
+            "calls": 500,
+            "avg_us": 26,
+            "aggregate_ms": 13
+          },
+          "get_thread_completion": {
+            "calls": 100,
+            "avg_us": 122,
+            "aggregate_ms": 12
+          },
+          "get_message": {
+            "calls": 803,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "remove_completion": {
+            "calls": 201,
+            "avg_us": 9,
+            "aggregate_ms": 1
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 0,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 29,
+        "sd_reads": 29,
+        "cache_hits": 0,
+        "sd_ms": 139,
+        "syscalls": 112861,
+        "qpc": 19435,
+        "delay": 2480,
+        "fast_qpc": 19435,
+        "fast_delay": 2379
+      },
+      "observer_us": 49338
+    },
+    {
+      "line": 1400,
+      "report": 3,
+      "tick": 1377988807543,
+      "window_ms": 10227,
+      "frame": {
+        "line": 1399,
+        "window_ms": 10227,
+        "frames": 740,
+        "fps_x100": 7235,
+        "present_avg_us": 1085,
+        "lock_avg_us": 0,
+        "driver_avg_us": 498,
+        "errors": 0,
+        "fps": 72.35748508849125
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 38.0
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 16.7
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.2
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.7
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.5
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.5
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.9
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.5
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.5
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.5
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.1
+        },
+        "28s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 740,
+          "avg_us": 199,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 739
+        },
+        "submit_driver": {
+          "n": 2970,
+          "avg_us": 733,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2882
+        },
+        "fence_wait": {
+          "n": 740,
+          "avg_us": 5770,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 428
+        },
+        "semaphore_wait": {
+          "n": 1490,
+          "avg_us": 6414,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 754
+        },
+        "shared_clock_gap": {
+          "n": 10158,
+          "avg_us": 1006,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10158
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 16,
+          "total_us": 29936,
+          "avg_us": 1871,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 24,
+          "total_us": 28423,
+          "avg_us": 1184,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.89,
+      "server": {
+        "requests": 80775,
+        "aggregate_ms": 88436,
+        "operations": {
+          "select": {
+            "calls": 34227,
+            "avg_us": 2542,
+            "aggregate_ms": 87033
+          },
+          "event_op": {
+            "calls": 41854,
+            "avg_us": 28,
+            "aggregate_ms": 1206
+          },
+          "release_mutex": {
+            "calls": 2508,
+            "avg_us": 41,
+            "aggregate_ms": 103
+          },
+          "create_event": {
+            "calls": 471,
+            "avg_us": 115,
+            "aggregate_ms": 54
+          },
+          "close_handle": {
+            "calls": 484,
+            "avg_us": 27,
+            "aggregate_ms": 13
+          },
+          "get_thread_completion": {
+            "calls": 94,
+            "avg_us": 128,
+            "aggregate_ms": 12
+          },
+          "get_message": {
+            "calls": 740,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "remove_completion": {
+            "calls": 254,
+            "avg_us": 8,
+            "aggregate_ms": 2
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 24,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 116,
+        "sd_reads": 139,
+        "cache_hits": 1,
+        "sd_ms": 433,
+        "syscalls": 102721,
+        "qpc": 19459,
+        "delay": 16026,
+        "fast_qpc": 19459,
+        "fast_delay": 15866
+      },
+      "observer_us": 47580
+    },
+    {
+      "line": 1432,
+      "report": 4,
+      "tick": 1378182506873,
+      "window_ms": 10088,
+      "frame": {
+        "line": 1431,
+        "window_ms": 10088,
+        "frames": 742,
+        "fps_x100": 7354,
+        "present_avg_us": 1274,
+        "lock_avg_us": 0,
+        "driver_avg_us": 600,
+        "errors": 0,
+        "fps": 73.55273592386995
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 41.3
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 17.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.6
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.7
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.6
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.8
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.6
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.5
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.3
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.2
+        },
+        "28s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 739,
+          "avg_us": 157,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 739
+        },
+        "submit_driver": {
+          "n": 2956,
+          "avg_us": 868,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2824
+        },
+        "fence_wait": {
+          "n": 739,
+          "avg_us": 5479,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 402
+        },
+        "semaphore_wait": {
+          "n": 1478,
+          "avg_us": 6661,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 739
+        },
+        "shared_clock_gap": {
+          "n": 9994,
+          "avg_us": 1006,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9994
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.93,
+      "server": {
+        "requests": 78682,
+        "aggregate_ms": 82993,
+        "operations": {
+          "select": {
+            "calls": 33006,
+            "avg_us": 2472,
+            "aggregate_ms": 81597
+          },
+          "event_op": {
+            "calls": 41740,
+            "avg_us": 29,
+            "aggregate_ms": 1228
+          },
+          "create_event": {
+            "calls": 465,
+            "avg_us": 143,
+            "aggregate_ms": 66
+          },
+          "release_mutex": {
+            "calls": 1767,
+            "avg_us": 36,
+            "aggregate_ms": 65
+          },
+          "get_thread_completion": {
+            "calls": 93,
+            "avg_us": 135,
+            "aggregate_ms": 12
+          },
+          "close_handle": {
+            "calls": 465,
+            "avg_us": 26,
+            "aggregate_ms": 12
+          },
+          "get_message": {
+            "calls": 739,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "remove_completion": {
+            "calls": 277,
+            "avg_us": 7,
+            "aggregate_ms": 2
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 0,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 130,
+        "sd_reads": 130,
+        "cache_hits": 0,
+        "sd_ms": 444,
+        "syscalls": 99958,
+        "qpc": 15438,
+        "delay": 2663,
+        "fast_qpc": 15438,
+        "fast_delay": 2479
+      },
+      "observer_us": 52455
+    },
+    {
+      "line": 1472,
+      "report": 5,
+      "tick": 1378375774756,
+      "window_ms": 10066,
+      "frame": {
+        "line": 1471,
+        "window_ms": 10066,
+        "frames": 770,
+        "fps_x100": 7649,
+        "present_avg_us": 773,
+        "lock_avg_us": 0,
+        "driver_avg_us": 384,
+        "errors": 0,
+        "fps": 76.4951321279555
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 26.7
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 18.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.3
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.8
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.5
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.3
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.8
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.4
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.1
+        },
+        "20w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 770,
+          "avg_us": 146,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 770
+        },
+        "submit_driver": {
+          "n": 3090,
+          "avg_us": 443,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 3054
+        },
+        "fence_wait": {
+          "n": 770,
+          "avg_us": 7013,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 453
+        },
+        "semaphore_wait": {
+          "n": 1550,
+          "avg_us": 6287,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 780
+        },
+        "shared_clock_gap": {
+          "n": 10001,
+          "avg_us": 1005,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10001
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.81,
+      "server": {
+        "requests": 85009,
+        "aggregate_ms": 92278,
+        "operations": {
+          "select": {
+            "calls": 36045,
+            "avg_us": 2521,
+            "aggregate_ms": 90887
+          },
+          "event_op": {
+            "calls": 43359,
+            "avg_us": 26,
+            "aggregate_ms": 1138
+          },
+          "release_mutex": {
+            "calls": 3452,
+            "avg_us": 38,
+            "aggregate_ms": 133
+          },
+          "create_event": {
+            "calls": 482,
+            "avg_us": 163,
+            "aggregate_ms": 78
+          },
+          "close_handle": {
+            "calls": 489,
+            "avg_us": 26,
+            "aggregate_ms": 13
+          },
+          "get_thread_completion": {
+            "calls": 92,
+            "avg_us": 101,
+            "aggregate_ms": 9
+          },
+          "get_message": {
+            "calls": 770,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "init_thread": {
+            "calls": 2,
+            "avg_us": 2916,
+            "aggregate_ms": 5
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 0,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 62,
+        "sd_reads": 57,
+        "cache_hits": 5,
+        "sd_ms": 183,
+        "syscalls": 107394,
+        "qpc": 17992,
+        "delay": 12202,
+        "fast_qpc": 17992,
+        "fast_delay": 12072
+      },
+      "observer_us": 49919
+    },
+    {
+      "line": 1529,
+      "report": 6,
+      "tick": 1378571267377,
+      "window_ms": 10181,
+      "frame": {
+        "line": 1528,
+        "window_ms": 10181,
+        "frames": 788,
+        "fps_x100": 7739,
+        "present_avg_us": 493,
+        "lock_avg_us": 0,
+        "driver_avg_us": 298,
+        "errors": 0,
+        "fps": 77.39907671152146
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 25.8
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 17.9
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.1
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.8
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.4
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.0
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.4
+        },
+        "20w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.2
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 790,
+          "avg_us": 173,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 789
+        },
+        "submit_driver": {
+          "n": 3166,
+          "avg_us": 384,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 3151
+        },
+        "fence_wait": {
+          "n": 789,
+          "avg_us": 6900,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 486
+        },
+        "semaphore_wait": {
+          "n": 1590,
+          "avg_us": 6129,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 803
+        },
+        "shared_clock_gap": {
+          "n": 10147,
+          "avg_us": 1005,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10147
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.79,
+      "server": {
+        "requests": 88243,
+        "aggregate_ms": 96771,
+        "operations": {
+          "select": {
+            "calls": 37561,
+            "avg_us": 2538,
+            "aggregate_ms": 95346
+          },
+          "event_op": {
+            "calls": 44403,
+            "avg_us": 24,
+            "aggregate_ms": 1107
+          },
+          "release_mutex": {
+            "calls": 4094,
+            "avg_us": 45,
+            "aggregate_ms": 185
+          },
+          "create_event": {
+            "calls": 496,
+            "avg_us": 194,
+            "aggregate_ms": 96
+          },
+          "close_handle": {
+            "calls": 509,
+            "avg_us": 25,
+            "aggregate_ms": 12
+          },
+          "get_message": {
+            "calls": 790,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "get_thread_completion": {
+            "calls": 97,
+            "avg_us": 75,
+            "aggregate_ms": 7
+          },
+          "remove_completion": {
+            "calls": 212,
+            "avg_us": 14,
+            "aggregate_ms": 3
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 0,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 54,
+        "sd_reads": 53,
+        "cache_hits": 1,
+        "sd_ms": 182,
+        "syscalls": 110771,
+        "qpc": 19339,
+        "delay": 15375,
+        "fast_qpc": 19339,
+        "fast_delay": 15261
+      },
+      "observer_us": 61587
+    },
+    {
+      "line": 1566,
+      "report": 7,
+      "tick": 1378764989140,
+      "window_ms": 10089,
+      "frame": {
+        "line": 1565,
+        "window_ms": 10089,
+        "frames": 718,
+        "fps_x100": 7116,
+        "present_avg_us": 1140,
+        "lock_avg_us": 0,
+        "driver_avg_us": 554,
+        "errors": 0,
+        "fps": 71.1666171077411
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 42.9
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 16.9
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.5
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.6
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.5
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.0
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.6
+        },
+        "108w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.4
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.3
+        },
+        "16s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 716,
+          "avg_us": 174,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 715
+        },
+        "submit_driver": {
+          "n": 2864,
+          "avg_us": 904,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2740
+        },
+        "fence_wait": {
+          "n": 716,
+          "avg_us": 5223,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 410
+        },
+        "semaphore_wait": {
+          "n": 1434,
+          "avg_us": 6688,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 719
+        },
+        "shared_clock_gap": {
+          "n": 10010,
+          "avg_us": 1006,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10010
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 11,
+          "total_us": 28981,
+          "avg_us": 2634,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 16,
+          "total_us": 27630,
+          "avg_us": 1726,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.95,
+      "server": {
+        "requests": 76777,
+        "aggregate_ms": 143759,
+        "operations": {
+          "select": {
+            "calls": 32216,
+            "avg_us": 4418,
+            "aggregate_ms": 142331
+          },
+          "event_op": {
+            "calls": 40583,
+            "avg_us": 29,
+            "aggregate_ms": 1194
+          },
+          "create_event": {
+            "calls": 460,
+            "avg_us": 228,
+            "aggregate_ms": 105
+          },
+          "release_mutex": {
+            "calls": 1811,
+            "avg_us": 48,
+            "aggregate_ms": 87
+          },
+          "close_handle": {
+            "calls": 470,
+            "avg_us": 31,
+            "aggregate_ms": 14
+          },
+          "get_thread_completion": {
+            "calls": 89,
+            "avg_us": 86,
+            "aggregate_ms": 7
+          },
+          "get_message": {
+            "calls": 715,
+            "avg_us": 9,
+            "aggregate_ms": 7
+          },
+          "remove_completion": {
+            "calls": 272,
+            "avg_us": 12,
+            "aggregate_ms": 3
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 16,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 132,
+        "sd_reads": 147,
+        "cache_hits": 1,
+        "sd_ms": 541,
+        "syscalls": 96022,
+        "qpc": 20585,
+        "delay": 2310,
+        "fast_qpc": 20583,
+        "fast_delay": 2130
+      },
+      "observer_us": 64790
+    },
+    {
+      "line": 1623,
+      "report": 8,
+      "tick": 1378958549549,
+      "window_ms": 10081,
+      "frame": {
+        "line": 1622,
+        "window_ms": 10081,
+        "frames": 435,
+        "fps_x100": 4314,
+        "present_avg_us": 665,
+        "lock_avg_us": 0,
+        "driver_avg_us": 407,
+        "errors": 0,
+        "fps": 43.150481103065175
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 33.6
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 11.7
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.1
+        },
+        "108w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.4
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.5
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.5
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.5
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.3
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.3
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 0.9
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 0.8
+        },
+        "12w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 0.7
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 435,
+          "avg_us": 203,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 434
+        },
+        "submit_driver": {
+          "n": 1760,
+          "avg_us": 566,
+          "peak_since_launch_us": 60022,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1746
+        },
+        "fence_wait": {
+          "n": 436,
+          "avg_us": 6134,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 277
+        },
+        "semaphore_wait": {
+          "n": 884,
+          "avg_us": 6425,
+          "peak_since_launch_us": 49928,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 458
+        },
+        "shared_clock_gap": {
+          "n": 10003,
+          "avg_us": 1005,
+          "peak_since_launch_us": 2726,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 10003
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 6,
+          "total_us": 35945,
+          "avg_us": 5990,
+          "peak_since_launch_us": 33054,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 8,
+          "total_us": 35593,
+          "avg_us": 4449,
+          "peak_since_launch_us": 32532,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 0.71,
+      "server": {
+        "requests": 50865,
+        "aggregate_ms": 158393,
+        "operations": {
+          "select": {
+            "calls": 22098,
+            "avg_us": 7130,
+            "aggregate_ms": 157567
+          },
+          "event_op": {
+            "calls": 25225,
+            "avg_us": 24,
+            "aggregate_ms": 620
+          },
+          "create_event": {
+            "calls": 311,
+            "avg_us": 251,
+            "aggregate_ms": 78
+          },
+          "release_mutex": {
+            "calls": 1894,
+            "avg_us": 35,
+            "aggregate_ms": 66
+          },
+          "init_thread": {
+            "calls": 3,
+            "avg_us": 4329,
+            "aggregate_ms": 12
+          },
+          "close_handle": {
+            "calls": 343,
+            "avg_us": 37,
+            "aggregate_ms": 12
+          },
+          "get_thread_completion": {
+            "calls": 62,
+            "avg_us": 138,
+            "aggregate_ms": 8
+          },
+          "create_mutex": {
+            "calls": 23,
+            "avg_us": 340,
+            "aggregate_ms": 7
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 8,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 110,
+        "sd_reads": 124,
+        "cache_hits": 3,
+        "sd_ms": 507,
+        "syscalls": 62583,
+        "qpc": 41410,
+        "delay": 2903,
+        "fast_qpc": 41412,
+        "fast_delay": 2718
+      },
+      "observer_us": 53063
+    },
+    {
+      "line": 1686,
+      "report": 9,
+      "tick": 1379153978038,
+      "window_ms": 10178,
+      "frame": {
+        "line": 1685,
+        "window_ms": 10178,
+        "frames": 522,
+        "fps_x100": 5128,
+        "present_avg_us": 862,
+        "lock_avg_us": 0,
+        "driver_avg_us": 464,
+        "errors": 0,
+        "fps": 51.287089801532716
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 49.0
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 17.6
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.7
+        },
+        "12w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.1
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.9
+        },
+        "16w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 4.1
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 3.3
+        },
+        "108w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.9
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.5
+        },
+        "32w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.9
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.7
+        },
+        "104w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.3
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 523,
+          "avg_us": 275,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 519
+        },
+        "submit_driver": {
+          "n": 2192,
+          "avg_us": 760,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 2158
+        },
+        "fence_wait": {
+          "n": 522,
+          "avg_us": 4611,
+          "peak_since_launch_us": 15899,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 384
+        },
+        "semaphore_wait": {
+          "n": 1152,
+          "avg_us": 6241,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 649
+        },
+        "shared_clock_gap": {
+          "n": 9990,
+          "avg_us": 1020,
+          "peak_since_launch_us": 2888,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9990
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 33,
+          "total_us": 157279,
+          "avg_us": 4766,
+          "peak_since_launch_us": 35837,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 56,
+          "total_us": 153062,
+          "avg_us": 2733,
+          "peak_since_launch_us": 34613,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 1.15,
+      "server": {
+        "requests": 57987,
+        "aggregate_ms": 189329,
+        "operations": {
+          "select": {
+            "calls": 24030,
+            "avg_us": 7837,
+            "aggregate_ms": 188342
+          },
+          "event_op": {
+            "calls": 30145,
+            "avg_us": 19,
+            "aggregate_ms": 593
+          },
+          "create_event": {
+            "calls": 416,
+            "avg_us": 334,
+            "aggregate_ms": 139
+          },
+          "get_handle_fd": {
+            "calls": 761,
+            "avg_us": 77,
+            "aggregate_ms": 59
+          },
+          "close_handle": {
+            "calls": 594,
+            "avg_us": 87,
+            "aggregate_ms": 51
+          },
+          "release_mutex": {
+            "calls": 975,
+            "avg_us": 40,
+            "aggregate_ms": 39
+          },
+          "create_mutex": {
+            "calls": 157,
+            "avg_us": 239,
+            "aggregate_ms": 37
+          },
+          "init_thread": {
+            "calls": 2,
+            "avg_us": 13150,
+            "aggregate_ms": 26
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 56,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 391,
+        "sd_reads": 396,
+        "cache_hits": 73,
+        "sd_ms": 2221,
+        "syscalls": 74991,
+        "qpc": 41189,
+        "delay": 13338,
+        "fast_qpc": 41189,
+        "fast_delay": 13169
+      },
+      "observer_us": 98786
+    },
+    {
+      "line": 1726,
+      "report": 10,
+      "tick": 1379347995177,
+      "window_ms": 10105,
+      "frame": {
+        "line": 1725,
+        "window_ms": 10105,
+        "frames": 231,
+        "fps_x100": 2285,
+        "present_avg_us": 1098,
+        "lock_avg_us": 0,
+        "driver_avg_us": 596,
+        "errors": 0,
+        "fps": 22.85997031172687
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 54.2
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 23.4
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 20.0
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 11.3
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 11.2
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 10.1
+        },
+        "108w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 10.1
+        },
+        "60w": {
+          "core_mask_snapshot_core": -1,
+          "cpu_percent": 8.3
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 6.8
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.5
+        },
+        "12w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.7
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 1.7
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 230,
+          "avg_us": 287,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 230
+        },
+        "submit_driver": {
+          "n": 1157,
+          "avg_us": 908,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1138
+        },
+        "fence_wait": {
+          "n": 230,
+          "avg_us": 285,
+          "peak_since_launch_us": 19993,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 227
+        },
+        "semaphore_wait": {
+          "n": 696,
+          "avg_us": 7417,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 383
+        },
+        "shared_clock_gap": {
+          "n": 9886,
+          "avg_us": 1019,
+          "peak_since_launch_us": 3861,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9886
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 352,
+          "total_us": 1393915,
+          "avg_us": 3959,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 626,
+          "total_us": 1313265,
+          "avg_us": 2097,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 1.79,
+      "server": {
+        "requests": 68996,
+        "aggregate_ms": 295712,
+        "operations": {
+          "select": {
+            "calls": 28614,
+            "avg_us": 10279,
+            "aggregate_ms": 294149
+          },
+          "event_op": {
+            "calls": 36490,
+            "avg_us": 20,
+            "aggregate_ms": 730
+          },
+          "get_thread_completion": {
+            "calls": 65,
+            "avg_us": 3627,
+            "aggregate_ms": 235
+          },
+          "create_event": {
+            "calls": 356,
+            "avg_us": 442,
+            "aggregate_ms": 157
+          },
+          "close_handle": {
+            "calls": 607,
+            "avg_us": 229,
+            "aggregate_ms": 139
+          },
+          "create_mutex": {
+            "calls": 261,
+            "avg_us": 476,
+            "aggregate_ms": 124
+          },
+          "get_handle_fd": {
+            "calls": 648,
+            "avg_us": 147,
+            "aggregate_ms": 95
+          },
+          "release_semaphore": {
+            "calls": 1164,
+            "avg_us": 40,
+            "aggregate_ms": 47
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 626,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 324,
+        "sd_reads": 1471,
+        "cache_hits": 46,
+        "sd_ms": 2386,
+        "syscalls": 111932,
+        "qpc": 52572,
+        "delay": 8726,
+        "fast_qpc": 52572,
+        "fast_delay": 8581
+      },
+      "observer_us": 53535
+    },
+    {
+      "line": 1757,
+      "report": 11,
+      "tick": 1379541085829,
+      "window_ms": 10056,
+      "frame": {
+        "line": 1756,
+        "window_ms": 10056,
+        "frames": 187,
+        "fps_x100": 1859,
+        "present_avg_us": 2289,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1157,
+        "errors": 0,
+        "fps": 18.595863166268895
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 46.4
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 39.4
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 30.8
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 22.2
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 22.0
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 21.2
+        },
+        "108w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 13.5
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.2
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 3.8
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.9
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "16s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.1
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 187,
+          "avg_us": 632,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 187
+        },
+        "submit_driver": {
+          "n": 1346,
+          "avg_us": 1397,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1297
+        },
+        "fence_wait": {
+          "n": 187,
+          "avg_us": 453,
+          "peak_since_launch_us": 19993,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 187
+        },
+        "semaphore_wait": {
+          "n": 970,
+          "avg_us": 8655,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 565
+        },
+        "shared_clock_gap": {
+          "n": 9780,
+          "avg_us": 1028,
+          "peak_since_launch_us": 6944,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9780
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.35,
+      "server": {
+        "requests": 105735,
+        "aggregate_ms": 110510,
+        "operations": {
+          "select": {
+            "calls": 46328,
+            "avg_us": 2327,
+            "aggregate_ms": 107833
+          },
+          "event_op": {
+            "calls": 54046,
+            "avg_us": 26,
+            "aggregate_ms": 1457
+          },
+          "get_thread_completion": {
+            "calls": 91,
+            "avg_us": 7656,
+            "aggregate_ms": 696
+          },
+          "create_event": {
+            "calls": 461,
+            "avg_us": 467,
+            "aggregate_ms": 215
+          },
+          "close_handle": {
+            "calls": 464,
+            "avg_us": 299,
+            "aggregate_ms": 139
+          },
+          "release_semaphore": {
+            "calls": 3913,
+            "avg_us": 31,
+            "aggregate_ms": 124
+          },
+          "get_handle_fd": {
+            "calls": 56,
+            "avg_us": 487,
+            "aggregate_ms": 27
+          },
+          "remove_completion": {
+            "calls": 188,
+            "avg_us": 78,
+            "aggregate_ms": 14
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 0,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 28,
+        "sd_reads": 19,
+        "cache_hits": 9,
+        "sd_ms": 111,
+        "syscalls": 168644,
+        "qpc": 5687,
+        "delay": 21773,
+        "fast_qpc": 5687,
+        "fast_delay": 21676
+      },
+      "observer_us": 47199
+    },
+    {
+      "line": 1808,
+      "report": 12,
+      "tick": 1379736783993,
+      "window_ms": 10192,
+      "frame": {
+        "line": 1807,
+        "window_ms": 10192,
+        "frames": 192,
+        "fps_x100": 1883,
+        "present_avg_us": 2567,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1171,
+        "errors": 0,
+        "fps": 18.838304552590266
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 46.0
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 39.9
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 30.4
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 22.1
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 22.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 20.9
+        },
+        "108w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 14.2
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.7
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.0
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.8
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.7
+        },
+        "16s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 192,
+          "avg_us": 799,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 191
+        },
+        "submit_driver": {
+          "n": 1380,
+          "avg_us": 1532,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1325
+        },
+        "fence_wait": {
+          "n": 192,
+          "avg_us": 724,
+          "peak_since_launch_us": 19993,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 192
+        },
+        "semaphore_wait": {
+          "n": 993,
+          "avg_us": 8507,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 585
+        },
+        "shared_clock_gap": {
+          "n": 9946,
+          "avg_us": 1027,
+          "peak_since_launch_us": 6944,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9946
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 11,
+          "total_us": 51566,
+          "avg_us": 4687,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 20,
+          "total_us": 43277,
+          "avg_us": 2163,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.35,
+      "server": {
+        "requests": 106068,
+        "aggregate_ms": 131191,
+        "operations": {
+          "select": {
+            "calls": 46474,
+            "avg_us": 2768,
+            "aggregate_ms": 128655
+          },
+          "event_op": {
+            "calls": 54147,
+            "avg_us": 25,
+            "aggregate_ms": 1401
+          },
+          "get_thread_completion": {
+            "calls": 90,
+            "avg_us": 7283,
+            "aggregate_ms": 655
+          },
+          "create_event": {
+            "calls": 456,
+            "avg_us": 502,
+            "aggregate_ms": 228
+          },
+          "close_handle": {
+            "calls": 455,
+            "avg_us": 259,
+            "aggregate_ms": 118
+          },
+          "release_semaphore": {
+            "calls": 4031,
+            "avg_us": 28,
+            "aggregate_ms": 113
+          },
+          "get_handle_fd": {
+            "calls": 26,
+            "avg_us": 376,
+            "aggregate_ms": 9
+          },
+          "remove_completion": {
+            "calls": 196,
+            "avg_us": 31,
+            "aggregate_ms": 6
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 20,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 13,
+        "sd_reads": 50,
+        "cache_hits": 2,
+        "sd_ms": 84,
+        "syscalls": 164623,
+        "qpc": 6784,
+        "delay": 21157,
+        "fast_qpc": 6784,
+        "fast_delay": 21052
+      },
+      "observer_us": 63085
+    },
+    {
+      "line": 1838,
+      "report": 13,
+      "tick": 1379930504248,
+      "window_ms": 10089,
+      "frame": {
+        "line": 1837,
+        "window_ms": 10089,
+        "frames": 187,
+        "fps_x100": 1853,
+        "present_avg_us": 2533,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1462,
+        "errors": 0,
+        "fps": 18.535038160372682
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 41.8
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 39.7
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 25.7
+        },
+        "108w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 20.6
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 18.2
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 18.1
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 16.8
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.9
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.2
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.7
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.2
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.5
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 187,
+          "avg_us": 343,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 187
+        },
+        "submit_driver": {
+          "n": 1109,
+          "avg_us": 1530,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1092
+        },
+        "fence_wait": {
+          "n": 187,
+          "avg_us": 12463,
+          "peak_since_launch_us": 36056,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 79
+        },
+        "semaphore_wait": {
+          "n": 732,
+          "avg_us": 12213,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 390
+        },
+        "shared_clock_gap": {
+          "n": 9792,
+          "avg_us": 1026,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9792
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 34,
+          "total_us": 198399,
+          "avg_us": 5835,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 58,
+          "total_us": 159605,
+          "avg_us": 2751,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.15,
+      "server": {
+        "requests": 93164,
+        "aggregate_ms": 107317,
+        "operations": {
+          "select": {
+            "calls": 38641,
+            "avg_us": 2724,
+            "aggregate_ms": 105260
+          },
+          "event_op": {
+            "calls": 49152,
+            "avg_us": 23,
+            "aggregate_ms": 1166
+          },
+          "get_thread_completion": {
+            "calls": 85,
+            "avg_us": 5723,
+            "aggregate_ms": 486
+          },
+          "create_event": {
+            "calls": 440,
+            "avg_us": 497,
+            "aggregate_ms": 218
+          },
+          "release_semaphore": {
+            "calls": 3970,
+            "avg_us": 28,
+            "aggregate_ms": 113
+          },
+          "close_handle": {
+            "calls": 441,
+            "avg_us": 124,
+            "aggregate_ms": 55
+          },
+          "get_handle_fd": {
+            "calls": 58,
+            "avg_us": 174,
+            "aggregate_ms": 10
+          },
+          "remove_completion": {
+            "calls": 190,
+            "avg_us": 24,
+            "aggregate_ms": 4
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 58,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 29,
+        "sd_reads": 132,
+        "cache_hits": 4,
+        "sd_ms": 246,
+        "syscalls": 145981,
+        "qpc": 5745,
+        "delay": 16497,
+        "fast_qpc": 5745,
+        "fast_delay": 16394
+      },
+      "observer_us": 49529
+    },
+    {
+      "line": 1870,
+      "report": 14,
+      "tick": 1380123575631,
+      "window_ms": 10055,
+      "frame": {
+        "line": 1869,
+        "window_ms": 10055,
+        "frames": 196,
+        "fps_x100": 1949,
+        "present_avg_us": 2433,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1247,
+        "errors": 0,
+        "fps": 19.49278965688712
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 42.9
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 36.4
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 25.9
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 20.0
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 19.2
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 17.4
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 17.0
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 6.4
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.2
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.1
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.6
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 196,
+          "avg_us": 326,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 196
+        },
+        "submit_driver": {
+          "n": 1158,
+          "avg_us": 1573,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1137
+        },
+        "fence_wait": {
+          "n": 196,
+          "avg_us": 11545,
+          "peak_since_launch_us": 36056,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 66
+        },
+        "semaphore_wait": {
+          "n": 770,
+          "avg_us": 11603,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 417
+        },
+        "shared_clock_gap": {
+          "n": 9805,
+          "avg_us": 1025,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9805
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 26,
+          "total_us": 153061,
+          "avg_us": 5886,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 46,
+          "total_us": 138543,
+          "avg_us": 3011,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.14,
+      "server": {
+        "requests": 82303,
+        "aggregate_ms": 115791,
+        "operations": {
+          "select": {
+            "calls": 35614,
+            "avg_us": 3197,
+            "aggregate_ms": 113878
+          },
+          "event_op": {
+            "calls": 41085,
+            "avg_us": 23,
+            "aggregate_ms": 946
+          },
+          "get_thread_completion": {
+            "calls": 86,
+            "avg_us": 6035,
+            "aggregate_ms": 519
+          },
+          "create_event": {
+            "calls": 436,
+            "avg_us": 566,
+            "aggregate_ms": 247
+          },
+          "release_semaphore": {
+            "calls": 4203,
+            "avg_us": 30,
+            "aggregate_ms": 126
+          },
+          "close_handle": {
+            "calls": 436,
+            "avg_us": 151,
+            "aggregate_ms": 66
+          },
+          "remove_completion": {
+            "calls": 197,
+            "avg_us": 22,
+            "aggregate_ms": 4
+          },
+          "get_message": {
+            "calls": 196,
+            "avg_us": 10,
+            "aggregate_ms": 2
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 46,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 25,
+        "sd_reads": 117,
+        "cache_hits": 5,
+        "sd_ms": 262,
+        "syscalls": 128635,
+        "qpc": 5060,
+        "delay": 18504,
+        "fast_qpc": 5060,
+        "fast_delay": 18395
+      },
+      "observer_us": 46637
+    },
+    {
+      "line": 1918,
+      "report": 15,
+      "tick": 1380319166126,
+      "window_ms": 10187,
+      "frame": {
+        "line": 1917,
+        "window_ms": 10187,
+        "frames": 187,
+        "fps_x100": 1835,
+        "present_avg_us": 3806,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1735,
+        "errors": 0,
+        "fps": 18.356729164621576
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 47.4
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 35.6
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 24.8
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 24.0
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 22.4
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 18.1
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 13.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.7
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 3.9
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.6
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.9
+        },
+        "20s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.9
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 187,
+          "avg_us": 837,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 187
+        },
+        "submit_driver": {
+          "n": 1205,
+          "avg_us": 1981,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1156
+        },
+        "fence_wait": {
+          "n": 187,
+          "avg_us": 4412,
+          "peak_since_launch_us": 36056,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 146
+        },
+        "semaphore_wait": {
+          "n": 824,
+          "avg_us": 10547,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 456
+        },
+        "shared_clock_gap": {
+          "n": 9938,
+          "avg_us": 1024,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9938
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 4,
+          "total_us": 24428,
+          "avg_us": 6107,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 8,
+          "total_us": 23235,
+          "avg_us": 2904,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.23,
+      "server": {
+        "requests": 73913,
+        "aggregate_ms": 122844,
+        "operations": {
+          "select": {
+            "calls": 32378,
+            "avg_us": 3722,
+            "aggregate_ms": 120538
+          },
+          "event_op": {
+            "calls": 36145,
+            "avg_us": 28,
+            "aggregate_ms": 1032
+          },
+          "get_thread_completion": {
+            "calls": 89,
+            "avg_us": 7707,
+            "aggregate_ms": 685
+          },
+          "create_event": {
+            "calls": 446,
+            "avg_us": 677,
+            "aggregate_ms": 302
+          },
+          "release_semaphore": {
+            "calls": 4008,
+            "avg_us": 36,
+            "aggregate_ms": 144
+          },
+          "close_handle": {
+            "calls": 446,
+            "avg_us": 294,
+            "aggregate_ms": 131
+          },
+          "get_handle_fd": {
+            "calls": 26,
+            "avg_us": 159,
+            "aggregate_ms": 4
+          },
+          "remove_completion": {
+            "calls": 188,
+            "avg_us": 16,
+            "aggregate_ms": 3
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 8,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 13,
+        "sd_reads": 31,
+        "cache_hits": 4,
+        "sd_ms": 112,
+        "syscalls": 123194,
+        "qpc": 5644,
+        "delay": 20324,
+        "fast_qpc": 5644,
+        "fast_delay": 20224
+      },
+      "observer_us": 52740
+    },
+    {
+      "line": 1950,
+      "report": 16,
+      "tick": 1380512291076,
+      "window_ms": 10058,
+      "frame": {
+        "line": 1949,
+        "window_ms": 10058,
+        "frames": 194,
+        "fps_x100": 1928,
+        "present_avg_us": 3758,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1834,
+        "errors": 0,
+        "fps": 19.2881288526546
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 48.0
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 34.5
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 24.3
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 23.7
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 22.6
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 13.4
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 13.4
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.9
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 3.7
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.5
+        },
+        "20s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 1.8
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.8
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 194,
+          "avg_us": 434,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 194
+        },
+        "submit_driver": {
+          "n": 1165,
+          "avg_us": 1862,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1130
+        },
+        "fence_wait": {
+          "n": 194,
+          "avg_us": 10367,
+          "peak_since_launch_us": 36056,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 76
+        },
+        "semaphore_wait": {
+          "n": 777,
+          "avg_us": 11204,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 397
+        },
+        "shared_clock_gap": {
+          "n": 9794,
+          "avg_us": 1026,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9794
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 4,
+          "total_us": 47744,
+          "avg_us": 11936,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 8,
+          "total_us": 47075,
+          "avg_us": 5884,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.16,
+      "server": {
+        "requests": 68580,
+        "aggregate_ms": 116142,
+        "operations": {
+          "select": {
+            "calls": 29677,
+            "avg_us": 3843,
+            "aggregate_ms": 114075
+          },
+          "event_op": {
+            "calls": 33477,
+            "avg_us": 28,
+            "aggregate_ms": 939
+          },
+          "get_thread_completion": {
+            "calls": 80,
+            "avg_us": 7159,
+            "aggregate_ms": 572
+          },
+          "create_event": {
+            "calls": 401,
+            "avg_us": 628,
+            "aggregate_ms": 252
+          },
+          "close_handle": {
+            "calls": 401,
+            "avg_us": 337,
+            "aggregate_ms": 135
+          },
+          "release_semaphore": {
+            "calls": 4109,
+            "avg_us": 32,
+            "aggregate_ms": 134
+          },
+          "get_handle_fd": {
+            "calls": 46,
+            "avg_us": 616,
+            "aggregate_ms": 28
+          },
+          "get_message": {
+            "calls": 194,
+            "avg_us": 10,
+            "aggregate_ms": 2
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 8,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 23,
+        "sd_reads": 32,
+        "cache_hits": 3,
+        "sd_ms": 206,
+        "syscalls": 114554,
+        "qpc": 5351,
+        "delay": 19226,
+        "fast_qpc": 5351,
+        "fast_delay": 19111
+      },
+      "observer_us": 50060
+    },
+    {
+      "line": 1980,
+      "report": 17,
+      "tick": 1380705340383,
+      "window_ms": 10054,
+      "frame": {
+        "line": 1979,
+        "window_ms": 10054,
+        "frames": 189,
+        "fps_x100": 1879,
+        "present_avg_us": 3122,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1848,
+        "errors": 0,
+        "fps": 18.79848816391486
+      },
+      "threads": {
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 46.2
+        },
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 34.9
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 27.8
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 26.8
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 21.2
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 18.7
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 11.6
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 7.8
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.0
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.7
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.0
+        },
+        "24s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 1.9
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 190,
+          "avg_us": 779,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 189
+        },
+        "submit_driver": {
+          "n": 1320,
+          "avg_us": 1546,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1273
+        },
+        "fence_wait": {
+          "n": 190,
+          "avg_us": 2201,
+          "peak_since_launch_us": 36056,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 170
+        },
+        "semaphore_wait": {
+          "n": 952,
+          "avg_us": 8552,
+          "peak_since_launch_us": 56059,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 554
+        },
+        "shared_clock_gap": {
+          "n": 9763,
+          "avg_us": 1029,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9763
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 24,
+          "total_us": 152227,
+          "avg_us": 6342,
+          "peak_since_launch_us": 46270,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 46,
+          "total_us": 140351,
+          "avg_us": 3051,
+          "peak_since_launch_us": 40430,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.25,
+      "server": {
+        "requests": 66126,
+        "aggregate_ms": 117720,
+        "operations": {
+          "select": {
+            "calls": 29506,
+            "avg_us": 3918,
+            "aggregate_ms": 115613
+          },
+          "event_op": {
+            "calls": 30986,
+            "avg_us": 30,
+            "aggregate_ms": 943
+          },
+          "get_thread_completion": {
+            "calls": 86,
+            "avg_us": 6599,
+            "aggregate_ms": 567
+          },
+          "create_event": {
+            "calls": 431,
+            "avg_us": 729,
+            "aggregate_ms": 314
+          },
+          "release_semaphore": {
+            "calls": 4195,
+            "avg_us": 32,
+            "aggregate_ms": 137
+          },
+          "close_handle": {
+            "calls": 445,
+            "avg_us": 243,
+            "aggregate_ms": 108
+          },
+          "get_handle_fd": {
+            "calls": 76,
+            "avg_us": 398,
+            "aggregate_ms": 30
+          },
+          "remove_completion": {
+            "calls": 197,
+            "avg_us": 14,
+            "aggregate_ms": 2
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 46,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 38,
+        "sd_reads": 122,
+        "cache_hits": 4,
+        "sd_ms": 353,
+        "syscalls": 109272,
+        "qpc": 7518,
+        "delay": 20001,
+        "fast_qpc": 7518,
+        "fast_delay": 19890
+      },
+      "observer_us": 44366
+    },
+    {
+      "line": 2038,
+      "report": 18,
+      "tick": 1380901227627,
+      "window_ms": 10202,
+      "frame": {
+        "line": 2037,
+        "window_ms": 10202,
+        "frames": 184,
+        "fps_x100": 1803,
+        "present_avg_us": 1992,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1052,
+        "errors": 0,
+        "fps": 18.03567927857283
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 37.5
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 30.9
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 20.6
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 20.0
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 14.0
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 12.5
+        },
+        "16w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 12.2
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.1
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 4.3
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 2.5
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.0
+        },
+        "12w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 183,
+          "avg_us": 518,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 181
+        },
+        "submit_driver": {
+          "n": 1109,
+          "avg_us": 1497,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1074
+        },
+        "fence_wait": {
+          "n": 183,
+          "avg_us": 9336,
+          "peak_since_launch_us": 48268,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 119
+        },
+        "semaphore_wait": {
+          "n": 740,
+          "avg_us": 11898,
+          "peak_since_launch_us": 68010,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 437
+        },
+        "shared_clock_gap": {
+          "n": 9849,
+          "avg_us": 1035,
+          "peak_since_launch_us": 7145,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9849
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 35,
+          "total_us": 286049,
+          "avg_us": 8172,
+          "peak_since_launch_us": 66475,
+          "over50ms": 1,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 64,
+          "total_us": 273054,
+          "avg_us": 4266,
+          "peak_since_launch_us": 65025,
+          "over50ms": 1,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 1.81,
+      "server": {
+        "requests": 73243,
+        "aggregate_ms": 125793,
+        "operations": {
+          "select": {
+            "calls": 30890,
+            "avg_us": 3985,
+            "aggregate_ms": 123117
+          },
+          "event_op": {
+            "calls": 36081,
+            "avg_us": 31,
+            "aggregate_ms": 1149
+          },
+          "create_mutex": {
+            "calls": 512,
+            "avg_us": 652,
+            "aggregate_ms": 333
+          },
+          "create_event": {
+            "calls": 400,
+            "avg_us": 816,
+            "aggregate_ms": 326
+          },
+          "close_handle": {
+            "calls": 934,
+            "avg_us": 314,
+            "aggregate_ms": 294
+          },
+          "get_thread_completion": {
+            "calls": 79,
+            "avg_us": 3691,
+            "aggregate_ms": 291
+          },
+          "release_semaphore": {
+            "calls": 2906,
+            "avg_us": 47,
+            "aggregate_ms": 136
+          },
+          "get_handle_fd": {
+            "calls": 322,
+            "avg_us": 202,
+            "aggregate_ms": 65
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 64,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 161,
+        "sd_reads": 271,
+        "cache_hits": 26,
+        "sd_ms": 1228,
+        "syscalls": 115179,
+        "qpc": 14660,
+        "delay": 11598,
+        "fast_qpc": 14660,
+        "fast_delay": 11465
+      },
+      "observer_us": 64957
+    },
+    {
+      "line": 2086,
+      "report": 19,
+      "tick": 1381094611913,
+      "window_ms": 10072,
+      "frame": {
+        "line": 2085,
+        "window_ms": 10072,
+        "frames": 166,
+        "fps_x100": 1648,
+        "present_avg_us": 2209,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1246,
+        "errors": 0,
+        "fps": 16.4813343923749
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 40.0
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 33.5
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 26.3
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 24.8
+        },
+        "16w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 16.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 15.6
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 15.3
+        },
+        "36w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.3
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.0
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 3.2
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.1
+        },
+        "20s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 2.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 166,
+          "avg_us": 756,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 165
+        },
+        "submit_driver": {
+          "n": 1189,
+          "avg_us": 1463,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1145
+        },
+        "fence_wait": {
+          "n": 166,
+          "avg_us": 1273,
+          "peak_since_launch_us": 48268,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 159
+        },
+        "semaphore_wait": {
+          "n": 859,
+          "avg_us": 9703,
+          "peak_since_launch_us": 68010,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 514
+        },
+        "shared_clock_gap": {
+          "n": 9830,
+          "avg_us": 1023,
+          "peak_since_launch_us": 8070,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9830
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 4,
+          "total_us": 29161,
+          "avg_us": 7290,
+          "peak_since_launch_us": 66475,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 6,
+          "total_us": 26723,
+          "avg_us": 4453,
+          "peak_since_launch_us": 65025,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.06,
+      "server": {
+        "requests": 94589,
+        "aggregate_ms": 116989,
+        "operations": {
+          "select": {
+            "calls": 39940,
+            "avg_us": 2866,
+            "aggregate_ms": 114483
+          },
+          "event_op": {
+            "calls": 48521,
+            "avg_us": 21,
+            "aggregate_ms": 1051
+          },
+          "get_thread_completion": {
+            "calls": 79,
+            "avg_us": 5145,
+            "aggregate_ms": 406
+          },
+          "create_event": {
+            "calls": 412,
+            "avg_us": 800,
+            "aggregate_ms": 329
+          },
+          "create_mutex": {
+            "calls": 286,
+            "avg_us": 921,
+            "aggregate_ms": 263
+          },
+          "close_handle": {
+            "calls": 687,
+            "avg_us": 344,
+            "aggregate_ms": 236
+          },
+          "release_semaphore": {
+            "calls": 3811,
+            "avg_us": 40,
+            "aggregate_ms": 152
+          },
+          "init_thread": {
+            "calls": 3,
+            "avg_us": 6428,
+            "aggregate_ms": 19
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 6,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 26,
+        "sd_reads": 35,
+        "cache_hits": 8,
+        "sd_ms": 120,
+        "syscalls": 151309,
+        "qpc": 9689,
+        "delay": 13582,
+        "fast_qpc": 9689,
+        "fast_delay": 13462
+      },
+      "observer_us": 54023
+    },
+    {
+      "line": 2125,
+      "report": 20,
+      "tick": 1381287771173,
+      "window_ms": 10060,
+      "frame": {
+        "line": 2124,
+        "window_ms": 10060,
+        "frames": 149,
+        "fps_x100": 1481,
+        "present_avg_us": 1804,
+        "lock_avg_us": 0,
+        "driver_avg_us": 1077,
+        "errors": 0,
+        "fps": 14.81113320079523
+      },
+      "threads": {
+        "4w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 38.1
+        },
+        "40w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 35.3
+        },
+        "20w": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 31.4
+        },
+        "16w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 18.1
+        },
+        "24w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 18.1
+        },
+        "28w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 16.0
+        },
+        "108w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 14.5
+        },
+        "36w": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 6.0
+        },
+        "72w": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 5.3
+        },
+        "0s": {
+          "core_mask_snapshot_core": 0,
+          "cpu_percent": 3.0
+        },
+        "8s": {
+          "core_mask_snapshot_core": 1,
+          "cpu_percent": 2.1
+        },
+        "20s": {
+          "core_mask_snapshot_core": 2,
+          "cpu_percent": 2.0
+        }
+      },
+      "pipe": {
+        "acquire_driver": {
+          "n": 149,
+          "avg_us": 518,
+          "peak_since_launch_us": 25921,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 149
+        },
+        "submit_driver": {
+          "n": 1153,
+          "avg_us": 1183,
+          "peak_since_launch_us": 60054,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 1120
+        },
+        "fence_wait": {
+          "n": 149,
+          "avg_us": 407,
+          "peak_since_launch_us": 48268,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 149
+        },
+        "semaphore_wait": {
+          "n": 855,
+          "avg_us": 9295,
+          "peak_since_launch_us": 68010,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 548
+        },
+        "shared_clock_gap": {
+          "n": 9890,
+          "avg_us": 1016,
+          "peak_since_launch_us": 8070,
+          "timeout": 0,
+          "errors": 0,
+          "bins": 9890
+        }
+      },
+      "warm": {
+        "graphics_pipeline": {
+          "n": 4,
+          "total_us": 22486,
+          "avg_us": 5621,
+          "peak_since_launch_us": 66475,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "compute_pipeline": {
+          "n": 0,
+          "total_us": 0,
+          "avg_us": 0,
+          "peak_since_launch_us": 4771,
+          "over50ms": 0,
+          "errors": 0
+        },
+        "driver_cache_get": {
+          "n": 8,
+          "total_us": 21426,
+          "avg_us": 2678,
+          "peak_since_launch_us": 65025,
+          "over50ms": 0,
+          "errors": 0
+        }
+      },
+      "registered_cpu_cores": 2.06,
+      "server": {
+        "requests": 94000,
+        "aggregate_ms": 117741,
+        "operations": {
+          "select": {
+            "calls": 40036,
+            "avg_us": 2890,
+            "aggregate_ms": 115729
+          },
+          "event_op": {
+            "calls": 48952,
+            "avg_us": 20,
+            "aggregate_ms": 998
+          },
+          "get_thread_completion": {
+            "calls": 75,
+            "avg_us": 6072,
+            "aggregate_ms": 455
+          },
+          "create_event": {
+            "calls": 376,
+            "avg_us": 884,
+            "aggregate_ms": 332
+          },
+          "release_semaphore": {
+            "calls": 3709,
+            "avg_us": 29,
+            "aggregate_ms": 108
+          },
+          "close_handle": {
+            "calls": 390,
+            "avg_us": 190,
+            "aggregate_ms": 74
+          },
+          "remove_completion": {
+            "calls": 211,
+            "avg_us": 76,
+            "aggregate_ms": 16
+          },
+          "create_mutex": {
+            "calls": 15,
+            "avg_us": 695,
+            "aggregate_ms": 10
+          }
+        }
+      },
+      "driver_cache": {
+        "driver_cache_hits": 8,
+        "misses": 0,
+        "routine_flushes_deferred": 0
+      },
+      "shader_allocation_cache": {
+        "completed": 0,
+        "hits": 0,
+        "misses": 0,
+        "puts": 0,
+        "peak_worker_bytes": 0
+      },
+      "io": {
+        "reads": 19,
+        "sd_reads": 38,
+        "cache_hits": 4,
+        "sd_ms": 116,
+        "syscalls": 160101,
+        "qpc": 5865,
+        "delay": 14824,
+        "fast_qpc": 5865,
+        "fast_delay": 14687
+      },
+      "observer_us": 47250
+    }
+  ],
+  "limitations": [
+    "No controlled scene comparison with Debug, v7, shader switches off, or 960x540.",
+    "No current temperature, CPU/GPU frequency or GPU busy-time measurements.",
+    "Registered thread CPU excludes unregistered/system threads. Only the top 12 are printed.",
+    "Thread core masks are end-of-interval snapshots, not per-core residency for the full interval.",
+    "The first SERVER report includes startup and must not be treated as a steady interval.",
+    "SERVER select time includes real blocking; concurrent waits sum above wall time and are not all removable overhead.",
+    "Driver/server/compiler timings can overlap or nest; do not add them as frame cost or CPU usage.",
+    "Cache-hit and timed-call counts are read independently and can differ slightly during active calls.",
+    "Zero completed NAK allocation-cache scopes does not prove all possible shader compilation paths were idle.",
+    "Observer wall time divided by interval does not measure its FPS impact.",
+    "Frame summaries cannot establish 1% lows or distinguish GPU, CPU execution, and ready-queue latency."
+  ]
+}

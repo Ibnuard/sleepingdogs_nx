@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "hardware_tested": false,
+  "result": "PASS: disabled and Debug modes do not touch counters; ten-second cadence; startup baseline; unsigned wrap; interval deltas; backwards-clock recovery; observer cost.",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "source_files": {
+    "wine-nx-probe/source/sd_perf_summary.h": "8eebaffb294d0410f7a02628c5c03e31a1a65f7a3d2037da848d6b75da5dd5f7",
+    "wine-nx-probe/source/runtime.c": "d247e52bbd6d0e908aaba18408e2d38953b5f53446881fb982c7222f3992f3f5"
+  },
+  "sources": {
+    "tests/check_perf_counters.py": "679178dcb6cedc237e73017d7f3e69abfa51ad7c428b397805538a0815cef28a",
+    "src/low_window/sd_perf_summary.h": "8eebaffb294d0410f7a02628c5c03e31a1a65f7a3d2037da848d6b75da5dd5f7",
+    "tools/sleepingdogs_perf_counters.py": "d32f7df07bcc7fa0699d880597902a6c22661b3d31927e5ca557de2e3aed255f"
+  },
+  "all_native_changes_match_overlay": true,
+  "v7_package_preserved": true
+}

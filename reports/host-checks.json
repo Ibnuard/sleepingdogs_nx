@@ -1,0 +1,9 @@
+{
+  "pe_layout_tests": 5,
+  "native_launcher": "PASS: actual C UI, isolated C drive, grouped navigation, stride guards, AddressSanitizer + UndefinedBehaviorSanitizer",
+  "registry": "PASS: real Horizon registry, existing value preservation, no unwanted WoW64 view, AddressSanitizer + UndefinedBehaviorSanitizer",
+  "compiled_source_inputs_match": true,
+  "native_build": "\\\\wsl.localhost\\Ubuntu\\home\\blekjek\\sleepingdogs-fex-final",
+  "nro_sha256": "5fcb2a389704b53db88dc0a9862f7416268bb5cc3f38ef0da6c3ca53bcf2ef3f",
+  "hardware_tested": false
+}

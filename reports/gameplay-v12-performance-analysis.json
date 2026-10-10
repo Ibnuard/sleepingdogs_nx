@@ -1,0 +1,3205 @@
+{
+  "status": "ANALYZED",
+  "sha256": "e9589ec56f84dfb89574553168c21f5d69e1ea7f5b74233c4d921f7145927ebc",
+  "input": "C:\\Users\\Administrator\\Pictures\\pesnx\\SS\\fex-runtime.log",
+  "preserved_input": "local/performance-v12/e9589ec56f84dfb89574553168c21f5d69e1ea7f5b74233c4d921f7145927ebc/fex-runtime.log",
+  "capture_report": "reports/gameplay-v12-e9589ec56f84.json",
+  "analyzer_sha256": "967463e5ef0f332ba88c85c6f3f8cfcda730733cbc90ee9442e24911500e1f07",
+  "user_reported": {
+    "device": "OLED handheld",
+    "previous_typical_fps": [
+      11,
+      14
+    ],
+    "latest_more_frequent_fps": [
+      16,
+      19
+    ],
+    "target_resolution": [
+      1280,
+      720
+    ],
+    "target_fps": 30,
+    "prior_clocks_mhz": {
+      "cpu": 1728,
+      "gpu": 768,
+      "ram": 1600
+    },
+    "clocks_reconfirmed_for_this_log": false,
+    "same_position_and_camera_confirmed": false,
+    "measured_by_log": false
+  },
+  "log_provenance": [
+    {
+      "line": 74,
+      "text": "[SD-SYNC-MODE] v1 mode=2 profile=1; 0=server 1=direct 2=direct-queued; original startup/APC handlers"
+    },
+    {
+      "line": 79,
+      "text": "[SD-VK] build=sleepingdogs-fextendo-0.1.0-low-window-v11-frame-diagnostics Mesa=26.2.2 commit=b297e230ef88c6c88df2561becf864f979f494a6"
+    },
+    {
+      "line": 83,
+      "text": "[BUILD] sleepingdogs-fextendo-0.1.0-low-window-v11-frame-diagnostics"
+    },
+    {
+      "line": 246,
+      "text": "[FEX3-JIT-CONFIG] maxinst=500 multiblock=1; latency candidate"
+    },
+    {
+      "line": 247,
+      "text": "[FEX3-PRESET] fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack"
+    },
+    {
+      "line": 526,
+      "text": "[WINE] info:  DXVK: 3.1.1-sdbatch1"
+    },
+    {
+      "line": 888,
+      "text": "[WINE] info:  [SD-DXVK-BATCH] v1 enabled=1 hint_chunks=12 min_pending=2; explicit/map/query/present flush paths retained"
+    },
+    {
+      "line": 988,
+      "text": "[WINE] warn:  Cache was created with DXVK version 3.1.1-sdrecycle1, but current version is 3.1.1-sdbatch1. Discarding old cache."
+    }
+  ],
+  "resolution_changes": [
+    {
+      "line": 1030,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    {
+      "line": 1495,
+      "resolution": [
+        1280,
+        720
+      ]
+    }
+  ],
+  "all_frame_windows": [
+    {
+      "line": 1235,
+      "resolution": [
+        960,
+        540
+      ],
+      "resolution_changed_in_window": true,
+      "window_ms": 10078,
+      "frames": 427,
+      "fps_x100": 4236,
+      "present_avg_us": 1238,
+      "lock_avg_us": 0,
+      "driver_avg_us": 690,
+      "errors": 0
+    },
+    {
+      "line": 1316,
+      "resolution": [
+        960,
+        540
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10157,
+      "frames": 1073,
+      "fps_x100": 10563,
+      "present_avg_us": 882,
+      "lock_avg_us": 0,
+      "driver_avg_us": 577,
+      "errors": 0
+    },
+    {
+      "line": 1384,
+      "resolution": [
+        960,
+        540
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10281,
+      "frames": 1163,
+      "fps_x100": 11312,
+      "present_avg_us": 1303,
+      "lock_avg_us": 0,
+      "driver_avg_us": 741,
+      "errors": 0
+    },
+    {
+      "line": 1450,
+      "resolution": [
+        960,
+        540
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10105,
+      "frames": 255,
+      "fps_x100": 2523,
+      "present_avg_us": 1452,
+      "lock_avg_us": 0,
+      "driver_avg_us": 841,
+      "errors": 0
+    },
+    {
+      "line": 1511,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": true,
+      "window_ms": 10108,
+      "frames": 855,
+      "fps_x100": 8458,
+      "present_avg_us": 2369,
+      "lock_avg_us": 0,
+      "driver_avg_us": 1525,
+      "errors": 0
+    },
+    {
+      "line": 1576,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10262,
+      "frames": 547,
+      "fps_x100": 5330,
+      "present_avg_us": 1497,
+      "lock_avg_us": 0,
+      "driver_avg_us": 774,
+      "errors": 0
+    },
+    {
+      "line": 1618,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10082,
+      "frames": 275,
+      "fps_x100": 2727,
+      "present_avg_us": 496,
+      "lock_avg_us": 0,
+      "driver_avg_us": 365,
+      "errors": 0
+    },
+    {
+      "line": 1654,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10108,
+      "frames": 148,
+      "fps_x100": 1464,
+      "present_avg_us": 430,
+      "lock_avg_us": 0,
+      "driver_avg_us": 297,
+      "errors": 0
+    },
+    {
+      "line": 1706,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10198,
+      "frames": 178,
+      "fps_x100": 1745,
+      "present_avg_us": 596,
+      "lock_avg_us": 0,
+      "driver_avg_us": 378,
+      "errors": 0
+    },
+    {
+      "line": 1832,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10324,
+      "frames": 175,
+      "fps_x100": 1695,
+      "present_avg_us": 710,
+      "lock_avg_us": 0,
+      "driver_avg_us": 478,
+      "errors": 0
+    },
+    {
+      "line": 1958,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10335,
+      "frames": 170,
+      "fps_x100": 1644,
+      "present_avg_us": 494,
+      "lock_avg_us": 0,
+      "driver_avg_us": 336,
+      "errors": 0
+    },
+    {
+      "line": 2104,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10530,
+      "frames": 185,
+      "fps_x100": 1756,
+      "present_avg_us": 771,
+      "lock_avg_us": 0,
+      "driver_avg_us": 472,
+      "errors": 0
+    },
+    {
+      "line": 2137,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10071,
+      "frames": 169,
+      "fps_x100": 1677,
+      "present_avg_us": 691,
+      "lock_avg_us": 0,
+      "driver_avg_us": 419,
+      "errors": 0
+    },
+    {
+      "line": 2180,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10074,
+      "frames": 183,
+      "fps_x100": 1816,
+      "present_avg_us": 687,
+      "lock_avg_us": 0,
+      "driver_avg_us": 449,
+      "errors": 0
+    },
+    {
+      "line": 2243,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10239,
+      "frames": 157,
+      "fps_x100": 1533,
+      "present_avg_us": 685,
+      "lock_avg_us": 0,
+      "driver_avg_us": 451,
+      "errors": 0
+    },
+    {
+      "line": 2288,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10079,
+      "frames": 138,
+      "fps_x100": 1369,
+      "present_avg_us": 713,
+      "lock_avg_us": 0,
+      "driver_avg_us": 402,
+      "errors": 0
+    },
+    {
+      "line": 2323,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10091,
+      "frames": 146,
+      "fps_x100": 1446,
+      "present_avg_us": 741,
+      "lock_avg_us": 0,
+      "driver_avg_us": 452,
+      "errors": 0
+    },
+    {
+      "line": 2375,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10236,
+      "frames": 128,
+      "fps_x100": 1250,
+      "present_avg_us": 612,
+      "lock_avg_us": 0,
+      "driver_avg_us": 349,
+      "errors": 0
+    },
+    {
+      "line": 2408,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10088,
+      "frames": 138,
+      "fps_x100": 1367,
+      "present_avg_us": 654,
+      "lock_avg_us": 0,
+      "driver_avg_us": 453,
+      "errors": 0
+    },
+    {
+      "line": 2441,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10083,
+      "frames": 136,
+      "fps_x100": 1348,
+      "present_avg_us": 570,
+      "lock_avg_us": 0,
+      "driver_avg_us": 375,
+      "errors": 0
+    },
+    {
+      "line": 2491,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10219,
+      "frames": 146,
+      "fps_x100": 1428,
+      "present_avg_us": 534,
+      "lock_avg_us": 0,
+      "driver_avg_us": 366,
+      "errors": 0
+    },
+    {
+      "line": 2528,
+      "resolution": [
+        1280,
+        720
+      ],
+      "resolution_changed_in_window": false,
+      "window_ms": 10088,
+      "frames": 154,
+      "fps_x100": 1526,
+      "present_avg_us": 693,
+      "lock_avg_us": 0,
+      "driver_avg_us": 421,
+      "errors": 0
+    }
+  ],
+  "slow_segment": {
+    "windows": 16,
+    "window_ms": 162845,
+    "frames": 2626,
+    "fps_weighted": 16.125763763087598,
+    "fps_min": 12.5,
+    "fps_max": 27.27,
+    "rows": [
+      {
+        "line": 1618,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10082,
+        "frames": 275,
+        "fps_x100": 2727,
+        "present_avg_us": 496,
+        "lock_avg_us": 0,
+        "driver_avg_us": 365,
+        "errors": 0
+      },
+      {
+        "line": 1654,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10108,
+        "frames": 148,
+        "fps_x100": 1464,
+        "present_avg_us": 430,
+        "lock_avg_us": 0,
+        "driver_avg_us": 297,
+        "errors": 0
+      },
+      {
+        "line": 1706,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10198,
+        "frames": 178,
+        "fps_x100": 1745,
+        "present_avg_us": 596,
+        "lock_avg_us": 0,
+        "driver_avg_us": 378,
+        "errors": 0
+      },
+      {
+        "line": 1832,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10324,
+        "frames": 175,
+        "fps_x100": 1695,
+        "present_avg_us": 710,
+        "lock_avg_us": 0,
+        "driver_avg_us": 478,
+        "errors": 0
+      },
+      {
+        "line": 1958,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10335,
+        "frames": 170,
+        "fps_x100": 1644,
+        "present_avg_us": 494,
+        "lock_avg_us": 0,
+        "driver_avg_us": 336,
+        "errors": 0
+      },
+      {
+        "line": 2104,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10530,
+        "frames": 185,
+        "fps_x100": 1756,
+        "present_avg_us": 771,
+        "lock_avg_us": 0,
+        "driver_avg_us": 472,
+        "errors": 0
+      },
+      {
+        "line": 2137,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10071,
+        "frames": 169,
+        "fps_x100": 1677,
+        "present_avg_us": 691,
+        "lock_avg_us": 0,
+        "driver_avg_us": 419,
+        "errors": 0
+      },
+      {
+        "line": 2180,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10074,
+        "frames": 183,
+        "fps_x100": 1816,
+        "present_avg_us": 687,
+        "lock_avg_us": 0,
+        "driver_avg_us": 449,
+        "errors": 0
+      },
+      {
+        "line": 2243,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10239,
+        "frames": 157,
+        "fps_x100": 1533,
+        "present_avg_us": 685,
+        "lock_avg_us": 0,
+        "driver_avg_us": 451,
+        "errors": 0
+      },
+      {
+        "line": 2288,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10079,
+        "frames": 138,
+        "fps_x100": 1369,
+        "present_avg_us": 713,
+        "lock_avg_us": 0,
+        "driver_avg_us": 402,
+        "errors": 0
+      },
+      {
+        "line": 2323,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10091,
+        "frames": 146,
+        "fps_x100": 1446,
+        "present_avg_us": 741,
+        "lock_avg_us": 0,
+        "driver_avg_us": 452,
+        "errors": 0
+      },
+      {
+        "line": 2375,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10236,
+        "frames": 128,
+        "fps_x100": 1250,
+        "present_avg_us": 612,
+        "lock_avg_us": 0,
+        "driver_avg_us": 349,
+        "errors": 0
+      },
+      {
+        "line": 2408,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10088,
+        "frames": 138,
+        "fps_x100": 1367,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 453,
+        "errors": 0
+      },
+      {
+        "line": 2441,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10083,
+        "frames": 136,
+        "fps_x100": 1348,
+        "present_avg_us": 570,
+        "lock_avg_us": 0,
+        "driver_avg_us": 375,
+        "errors": 0
+      },
+      {
+        "line": 2491,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10219,
+        "frames": 146,
+        "fps_x100": 1428,
+        "present_avg_us": 534,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2528,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10088,
+        "frames": 154,
+        "fps_x100": 1526,
+        "present_avg_us": 693,
+        "lock_avg_us": 0,
+        "driver_avg_us": 421,
+        "errors": 0
+      }
+    ]
+  },
+  "last_seven_windows": {
+    "windows": 7,
+    "window_ms": 70884,
+    "frames": 986,
+    "fps_weighted": 13.910050222899384,
+    "fps_min": 12.5,
+    "fps_max": 15.26,
+    "rows": [
+      {
+        "line": 2288,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10079,
+        "frames": 138,
+        "fps_x100": 1369,
+        "present_avg_us": 713,
+        "lock_avg_us": 0,
+        "driver_avg_us": 402,
+        "errors": 0
+      },
+      {
+        "line": 2323,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10091,
+        "frames": 146,
+        "fps_x100": 1446,
+        "present_avg_us": 741,
+        "lock_avg_us": 0,
+        "driver_avg_us": 452,
+        "errors": 0
+      },
+      {
+        "line": 2375,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10236,
+        "frames": 128,
+        "fps_x100": 1250,
+        "present_avg_us": 612,
+        "lock_avg_us": 0,
+        "driver_avg_us": 349,
+        "errors": 0
+      },
+      {
+        "line": 2408,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10088,
+        "frames": 138,
+        "fps_x100": 1367,
+        "present_avg_us": 654,
+        "lock_avg_us": 0,
+        "driver_avg_us": 453,
+        "errors": 0
+      },
+      {
+        "line": 2441,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10083,
+        "frames": 136,
+        "fps_x100": 1348,
+        "present_avg_us": 570,
+        "lock_avg_us": 0,
+        "driver_avg_us": 375,
+        "errors": 0
+      },
+      {
+        "line": 2491,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10219,
+        "frames": 146,
+        "fps_x100": 1428,
+        "present_avg_us": 534,
+        "lock_avg_us": 0,
+        "driver_avg_us": 366,
+        "errors": 0
+      },
+      {
+        "line": 2528,
+        "resolution": [
+          1280,
+          720
+        ],
+        "resolution_changed_in_window": false,
+        "window_ms": 10088,
+        "frames": 154,
+        "fps_x100": 1526,
+        "present_avg_us": 693,
+        "lock_avg_us": 0,
+        "driver_avg_us": 421,
+        "errors": 0
+      }
+    ]
+  },
+  "by_resolution": {
+    "960x540": {
+      "windows": 0,
+      "window_ms": 0,
+      "frames": 0,
+      "fps_weighted": null,
+      "fps_min": null,
+      "fps_max": null,
+      "rows": []
+    },
+    "1280x720": {
+      "windows": 16,
+      "window_ms": 162845,
+      "frames": 2626,
+      "fps_weighted": 16.125763763087598,
+      "fps_min": 12.5,
+      "fps_max": 27.27,
+      "rows": [
+        {
+          "line": 1618,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10082,
+          "frames": 275,
+          "fps_x100": 2727,
+          "present_avg_us": 496,
+          "lock_avg_us": 0,
+          "driver_avg_us": 365,
+          "errors": 0
+        },
+        {
+          "line": 1654,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10108,
+          "frames": 148,
+          "fps_x100": 1464,
+          "present_avg_us": 430,
+          "lock_avg_us": 0,
+          "driver_avg_us": 297,
+          "errors": 0
+        },
+        {
+          "line": 1706,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10198,
+          "frames": 178,
+          "fps_x100": 1745,
+          "present_avg_us": 596,
+          "lock_avg_us": 0,
+          "driver_avg_us": 378,
+          "errors": 0
+        },
+        {
+          "line": 1832,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10324,
+          "frames": 175,
+          "fps_x100": 1695,
+          "present_avg_us": 710,
+          "lock_avg_us": 0,
+          "driver_avg_us": 478,
+          "errors": 0
+        },
+        {
+          "line": 1958,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10335,
+          "frames": 170,
+          "fps_x100": 1644,
+          "present_avg_us": 494,
+          "lock_avg_us": 0,
+          "driver_avg_us": 336,
+          "errors": 0
+        },
+        {
+          "line": 2104,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10530,
+          "frames": 185,
+          "fps_x100": 1756,
+          "present_avg_us": 771,
+          "lock_avg_us": 0,
+          "driver_avg_us": 472,
+          "errors": 0
+        },
+        {
+          "line": 2137,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10071,
+          "frames": 169,
+          "fps_x100": 1677,
+          "present_avg_us": 691,
+          "lock_avg_us": 0,
+          "driver_avg_us": 419,
+          "errors": 0
+        },
+        {
+          "line": 2180,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10074,
+          "frames": 183,
+          "fps_x100": 1816,
+          "present_avg_us": 687,
+          "lock_avg_us": 0,
+          "driver_avg_us": 449,
+          "errors": 0
+        },
+        {
+          "line": 2243,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10239,
+          "frames": 157,
+          "fps_x100": 1533,
+          "present_avg_us": 685,
+          "lock_avg_us": 0,
+          "driver_avg_us": 451,
+          "errors": 0
+        },
+        {
+          "line": 2288,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10079,
+          "frames": 138,
+          "fps_x100": 1369,
+          "present_avg_us": 713,
+          "lock_avg_us": 0,
+          "driver_avg_us": 402,
+          "errors": 0
+        },
+        {
+          "line": 2323,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10091,
+          "frames": 146,
+          "fps_x100": 1446,
+          "present_avg_us": 741,
+          "lock_avg_us": 0,
+          "driver_avg_us": 452,
+          "errors": 0
+        },
+        {
+          "line": 2375,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10236,
+          "frames": 128,
+          "fps_x100": 1250,
+          "present_avg_us": 612,
+          "lock_avg_us": 0,
+          "driver_avg_us": 349,
+          "errors": 0
+        },
+        {
+          "line": 2408,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10088,
+          "frames": 138,
+          "fps_x100": 1367,
+          "present_avg_us": 654,
+          "lock_avg_us": 0,
+          "driver_avg_us": 453,
+          "errors": 0
+        },
+        {
+          "line": 2441,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10083,
+          "frames": 136,
+          "fps_x100": 1348,
+          "present_avg_us": 570,
+          "lock_avg_us": 0,
+          "driver_avg_us": 375,
+          "errors": 0
+        },
+        {
+          "line": 2491,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10219,
+          "frames": 146,
+          "fps_x100": 1428,
+          "present_avg_us": 534,
+          "lock_avg_us": 0,
+          "driver_avg_us": 366,
+          "errors": 0
+        },
+        {
+          "line": 2528,
+          "resolution": [
+            1280,
+            720
+          ],
+          "resolution_changed_in_window": false,
+          "window_ms": 10088,
+          "frames": 154,
+          "fps_x100": 1526,
+          "present_avg_us": 693,
+          "lock_avg_us": 0,
+          "driver_avg_us": 421,
+          "errors": 0
+        }
+      ]
+    }
+  },
+  "capture_resolution": [
+    1280,
+    720
+  ],
+  "capture_resolution_changes": [],
+  "capture_start_line": 1683,
+  "capture_end_line": 2040,
+  "capture_duration_ms": 30000,
+  "capture_present_intervals": 514,
+  "capture_average_frame_ms": 58.33058365758755,
+  "capture_fps": 17.143665248923348,
+  "submit_thread_cpu_ms": 309.543,
+  "submit_calls": 3301,
+  "submit_wall_ms": 793.837,
+  "submits_per_present_interval": 6.4221789883268485,
+  "capture_thread_waits": [
+    {
+      "handle": 33279,
+      "labels": [
+        "4w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 0,
+          "handle": 33279,
+          "n": 10779,
+          "total_us": 13719163,
+          "avg_us": 1272,
+          "peak_us": 21008,
+          "timeouts": 0,
+          "errors": 492,
+          "direct": 10779,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 0,
+          "handle": 33279,
+          "n": 58901,
+          "total_us": 1604048,
+          "avg_us": 27,
+          "peak_us": 8371,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 58901,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 0,
+          "handle": 33279,
+          "n": 6402,
+          "total_us": 1642223,
+          "avg_us": 256,
+          "peak_us": 13475,
+          "timeouts": 0,
+          "errors": 492,
+          "direct": 5418,
+          "pipe": 984
+        }
+      }
+    },
+    {
+      "handle": 2556351,
+      "labels": [
+        "24w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 1,
+          "handle": 2556351,
+          "n": 26563,
+          "total_us": 21279645,
+          "avg_us": 801,
+          "peak_us": 75728,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 26563,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 1,
+          "handle": 2556351,
+          "n": 16110,
+          "total_us": 870954,
+          "avg_us": 54,
+          "peak_us": 32511,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 16110,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2490817,
+      "labels": [
+        "20w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 2,
+          "handle": 2490817,
+          "n": 25712,
+          "total_us": 21657362,
+          "avg_us": 842,
+          "peak_us": 75705,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 25712,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 2,
+          "handle": 2490817,
+          "n": 15724,
+          "total_us": 856928,
+          "avg_us": 54,
+          "peak_us": 11097,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 15724,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2425283,
+      "labels": [
+        "16w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 3,
+          "handle": 2425283,
+          "n": 12076,
+          "total_us": 20826106,
+          "avg_us": 1724,
+          "peak_us": 71524,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 12076,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 3,
+          "handle": 2425283,
+          "n": 9433,
+          "total_us": 1237309,
+          "avg_us": 131,
+          "peak_us": 11772,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 9433,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2818487,
+      "labels": [
+        "32w"
+      ],
+      "stages": {
+        "vk_acquire": {
+          "row": 4,
+          "handle": 2818487,
+          "n": 515,
+          "total_us": 114609,
+          "avg_us": 222,
+          "peak_us": 4923,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 0
+        },
+        "vk_submit": {
+          "row": 4,
+          "handle": 2818487,
+          "n": 3301,
+          "total_us": 793837,
+          "avg_us": 240,
+          "peak_us": 42066,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 0
+        },
+        "vk_fence": {
+          "row": 4,
+          "handle": 2818487,
+          "n": 515,
+          "total_us": 54208,
+          "avg_us": 105,
+          "peak_us": 4699,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 3277227,
+      "labels": [
+        "60w"
+      ],
+      "stages": {
+        "wine_other": {
+          "row": 5,
+          "handle": 3277227,
+          "n": 9755,
+          "total_us": 802166,
+          "avg_us": 82,
+          "peak_us": 32515,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 9755
+        }
+      }
+    },
+    {
+      "handle": 4030869,
+      "labels": [
+        "100w"
+      ],
+      "stages": {
+        "wine_event": {
+          "row": 6,
+          "handle": 4030869,
+          "n": 5705,
+          "total_us": 172674,
+          "avg_us": 30,
+          "peak_us": 39687,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 5705,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 3473829,
+      "labels": [
+        "72w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 7,
+          "handle": 3473829,
+          "n": 5417,
+          "total_us": 27114625,
+          "avg_us": 5005,
+          "peak_us": 92582,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 5417,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 7,
+          "handle": 3473829,
+          "n": 5137,
+          "total_us": 1862883,
+          "avg_us": 362,
+          "peak_us": 14782,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 5137,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 4227471,
+      "labels": [
+        "112w"
+      ],
+      "stages": {
+        "wine_event": {
+          "row": 8,
+          "handle": 4227471,
+          "n": 258,
+          "total_us": 126795,
+          "avg_us": 491,
+          "peak_us": 13369,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 258,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 4161937,
+      "labels": [
+        "108w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 9,
+          "handle": 4161937,
+          "n": 2408,
+          "total_us": 24482872,
+          "avg_us": 10167,
+          "peak_us": 48233,
+          "timeouts": 1661,
+          "errors": 0,
+          "direct": 2408,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 9,
+          "handle": 4161937,
+          "n": 1303,
+          "total_us": 466612,
+          "avg_us": 358,
+          "peak_us": 9756,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 1303,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 4096403,
+      "labels": [
+        "104w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 10,
+          "handle": 4096403,
+          "n": 5375,
+          "total_us": 29584020,
+          "avg_us": 5504,
+          "peak_us": 42170,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 5375,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2621885,
+      "labels": [
+        "28w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 11,
+          "handle": 2621885,
+          "n": 5393,
+          "total_us": 22155199,
+          "avg_us": 4108,
+          "peak_us": 41816,
+          "timeouts": 767,
+          "errors": 0,
+          "direct": 5393,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 11,
+          "handle": 2621885,
+          "n": 3087,
+          "total_us": 2317501,
+          "avg_us": 750,
+          "peak_us": 44892,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 3087,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 11,
+          "handle": 2621885,
+          "n": 521,
+          "total_us": 14690,
+          "avg_us": 28,
+          "peak_us": 2099,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 521
+        }
+      }
+    },
+    {
+      "handle": 2884021,
+      "labels": [
+        "36w"
+      ],
+      "stages": {
+        "vk_semaphore": {
+          "row": 12,
+          "handle": 2884021,
+          "n": 2269,
+          "total_us": 24724787,
+          "avg_us": 10896,
+          "peak_us": 46019,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2294216,
+      "labels": [
+        "8w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 13,
+          "handle": 2294216,
+          "n": 1302,
+          "total_us": 27106757,
+          "avg_us": 20819,
+          "peak_us": 67845,
+          "timeouts": 568,
+          "errors": 492,
+          "direct": 1302,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 13,
+          "handle": 2294216,
+          "n": 2249,
+          "total_us": 479483,
+          "avg_us": 213,
+          "peak_us": 6580,
+          "timeouts": 0,
+          "errors": 492,
+          "direct": 0,
+          "pipe": 2249
+        }
+      }
+    },
+    {
+      "handle": 3670431,
+      "labels": [
+        "84w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 14,
+          "handle": 3670431,
+          "n": 59,
+          "total_us": 29035864,
+          "avg_us": 492133,
+          "peak_us": 2953447,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 59,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 14,
+          "handle": 3670431,
+          "n": 30,
+          "total_us": 18916,
+          "avg_us": 630,
+          "peak_us": 4859,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 30,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 3015129,
+      "labels": [
+        "44w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 15,
+          "handle": 3015129,
+          "n": 476,
+          "total_us": 29898994,
+          "avg_us": 62813,
+          "peak_us": 82006,
+          "timeouts": 476,
+          "errors": 0,
+          "direct": 476,
+          "pipe": 0
+        }
+      }
+    },
+    {
+      "handle": 2359749,
+      "labels": [
+        "12w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 16,
+          "handle": 2359749,
+          "n": 39,
+          "total_us": 28591687,
+          "avg_us": 733120,
+          "peak_us": 5914774,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 39,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 16,
+          "handle": 2359749,
+          "n": 8,
+          "total_us": 4360,
+          "avg_us": 545,
+          "peak_us": 3203,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 8,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 16,
+          "handle": 2359749,
+          "n": 80,
+          "total_us": 25495,
+          "avg_us": 318,
+          "peak_us": 7181,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 80
+        }
+      }
+    },
+    {
+      "handle": 3735965,
+      "labels": [
+        "88w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 17,
+          "handle": 3735965,
+          "n": 10,
+          "total_us": 24324653,
+          "avg_us": 2432465,
+          "peak_us": 7291198,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 10,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 17,
+          "handle": 3735965,
+          "n": 13,
+          "total_us": 48862,
+          "avg_us": 3758,
+          "peak_us": 13980,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 13,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 17,
+          "handle": 3735965,
+          "n": 2,
+          "total_us": 1148,
+          "avg_us": 574,
+          "peak_us": 648,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 2
+        }
+      }
+    },
+    {
+      "handle": 3604897,
+      "labels": [
+        "80w"
+      ],
+      "stages": {
+        "wine_select": {
+          "row": 18,
+          "handle": 3604897,
+          "n": 37,
+          "total_us": 24221358,
+          "avg_us": 654631,
+          "peak_us": 7318420,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 37,
+          "pipe": 0
+        },
+        "wine_event": {
+          "row": 18,
+          "handle": 3604897,
+          "n": 16,
+          "total_us": 27758,
+          "avg_us": 1734,
+          "peak_us": 13340,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 16,
+          "pipe": 0
+        },
+        "wine_other": {
+          "row": 18,
+          "handle": 3604897,
+          "n": 2,
+          "total_us": 104,
+          "avg_us": 52,
+          "peak_us": 78,
+          "timeouts": 0,
+          "errors": 0,
+          "direct": 0,
+          "pipe": 2
+        }
+      }
+    }
+  ],
+  "batch_counter_snapshots": [
+    {
+      "line": 1146,
+      "enabled": 1,
+      "flushes": 256,
+      "explicit": 221,
+      "sync": 33,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 223
+    },
+    {
+      "line": 1294,
+      "enabled": 1,
+      "flushes": 512,
+      "explicit": 477,
+      "sync": 33,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 564
+    },
+    {
+      "line": 1307,
+      "enabled": 1,
+      "flushes": 768,
+      "explicit": 731,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 7129
+    },
+    {
+      "line": 1312,
+      "enabled": 1,
+      "flushes": 1024,
+      "explicit": 987,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 19673
+    },
+    {
+      "line": 1314,
+      "enabled": 1,
+      "flushes": 1280,
+      "explicit": 1243,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 32217
+    },
+    {
+      "line": 1315,
+      "enabled": 1,
+      "flushes": 1536,
+      "explicit": 1499,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 44761
+    },
+    {
+      "line": 1347,
+      "enabled": 1,
+      "flushes": 1792,
+      "explicit": 1755,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 57256
+    },
+    {
+      "line": 1349,
+      "enabled": 1,
+      "flushes": 2048,
+      "explicit": 2011,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 69800
+    },
+    {
+      "line": 1354,
+      "enabled": 1,
+      "flushes": 2304,
+      "explicit": 2267,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 81511
+    },
+    {
+      "line": 1373,
+      "enabled": 1,
+      "flushes": 2560,
+      "explicit": 2523,
+      "sync": 35,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 93812
+    },
+    {
+      "line": 1416,
+      "enabled": 1,
+      "flushes": 2816,
+      "explicit": 2769,
+      "sync": 45,
+      "strong": 2,
+      "weak": 0,
+      "deferred_hints": 102909
+    },
+    {
+      "line": 1478,
+      "enabled": 1,
+      "flushes": 3072,
+      "explicit": 3005,
+      "sync": 55,
+      "strong": 2,
+      "weak": 10,
+      "deferred_hints": 109648
+    },
+    {
+      "line": 1485,
+      "enabled": 1,
+      "flushes": 3328,
+      "explicit": 3259,
+      "sync": 55,
+      "strong": 2,
+      "weak": 12,
+      "deferred_hints": 116644
+    },
+    {
+      "line": 1489,
+      "enabled": 1,
+      "flushes": 3584,
+      "explicit": 3449,
+      "sync": 55,
+      "strong": 2,
+      "weak": 78,
+      "deferred_hints": 122648
+    },
+    {
+      "line": 1506,
+      "enabled": 1,
+      "flushes": 3840,
+      "explicit": 3574,
+      "sync": 137,
+      "strong": 4,
+      "weak": 125,
+      "deferred_hints": 126363
+    },
+    {
+      "line": 1538,
+      "enabled": 1,
+      "flushes": 4096,
+      "explicit": 3828,
+      "sync": 137,
+      "strong": 4,
+      "weak": 127,
+      "deferred_hints": 139302
+    },
+    {
+      "line": 1539,
+      "enabled": 1,
+      "flushes": 4352,
+      "explicit": 4084,
+      "sync": 137,
+      "strong": 4,
+      "weak": 127,
+      "deferred_hints": 152191
+    },
+    {
+      "line": 1602,
+      "enabled": 1,
+      "flushes": 4608,
+      "explicit": 4331,
+      "sync": 145,
+      "strong": 4,
+      "weak": 128,
+      "deferred_hints": 160708
+    },
+    {
+      "line": 1608,
+      "enabled": 1,
+      "flushes": 4864,
+      "explicit": 4558,
+      "sync": 145,
+      "strong": 4,
+      "weak": 157,
+      "deferred_hints": 161683
+    },
+    {
+      "line": 1645,
+      "enabled": 1,
+      "flushes": 5120,
+      "explicit": 4631,
+      "sync": 145,
+      "strong": 6,
+      "weak": 338,
+      "deferred_hints": 169339
+    },
+    {
+      "line": 1650,
+      "enabled": 1,
+      "flushes": 5376,
+      "explicit": 4704,
+      "sync": 145,
+      "strong": 7,
+      "weak": 520,
+      "deferred_hints": 176288
+    },
+    {
+      "line": 1679,
+      "enabled": 1,
+      "flushes": 5632,
+      "explicit": 4775,
+      "sync": 145,
+      "strong": 9,
+      "weak": 703,
+      "deferred_hints": 183358
+    },
+    {
+      "line": 1702,
+      "enabled": 1,
+      "flushes": 5888,
+      "explicit": 4865,
+      "sync": 145,
+      "strong": 10,
+      "weak": 868,
+      "deferred_hints": 194560
+    },
+    {
+      "line": 1731,
+      "enabled": 1,
+      "flushes": 6144,
+      "explicit": 4955,
+      "sync": 156,
+      "strong": 10,
+      "weak": 1023,
+      "deferred_hints": 205398
+    },
+    {
+      "line": 1827,
+      "enabled": 1,
+      "flushes": 6400,
+      "explicit": 5021,
+      "sync": 167,
+      "strong": 10,
+      "weak": 1202,
+      "deferred_hints": 212561
+    },
+    {
+      "line": 1857,
+      "enabled": 1,
+      "flushes": 6656,
+      "explicit": 5103,
+      "sync": 187,
+      "strong": 10,
+      "weak": 1356,
+      "deferred_hints": 221994
+    },
+    {
+      "line": 1861,
+      "enabled": 1,
+      "flushes": 6912,
+      "explicit": 5176,
+      "sync": 200,
+      "strong": 10,
+      "weak": 1526,
+      "deferred_hints": 230616
+    },
+    {
+      "line": 1957,
+      "enabled": 1,
+      "flushes": 7168,
+      "explicit": 5243,
+      "sync": 222,
+      "strong": 10,
+      "weak": 1693,
+      "deferred_hints": 238664
+    },
+    {
+      "line": 1983,
+      "enabled": 1,
+      "flushes": 7424,
+      "explicit": 5312,
+      "sync": 237,
+      "strong": 10,
+      "weak": 1865,
+      "deferred_hints": 246562
+    },
+    {
+      "line": 2098,
+      "enabled": 1,
+      "flushes": 7680,
+      "explicit": 5378,
+      "sync": 254,
+      "strong": 10,
+      "weak": 2038,
+      "deferred_hints": 253776
+    },
+    {
+      "line": 2103,
+      "enabled": 1,
+      "flushes": 7936,
+      "explicit": 5444,
+      "sync": 275,
+      "strong": 10,
+      "weak": 2207,
+      "deferred_hints": 261312
+    },
+    {
+      "line": 2132,
+      "enabled": 1,
+      "flushes": 8192,
+      "explicit": 5513,
+      "sync": 301,
+      "strong": 10,
+      "weak": 2368,
+      "deferred_hints": 269499
+    },
+    {
+      "line": 2133,
+      "enabled": 1,
+      "flushes": 8448,
+      "explicit": 5579,
+      "sync": 308,
+      "strong": 10,
+      "weak": 2551,
+      "deferred_hints": 276012
+    },
+    {
+      "line": 2166,
+      "enabled": 1,
+      "flushes": 8704,
+      "explicit": 5665,
+      "sync": 316,
+      "strong": 10,
+      "weak": 2713,
+      "deferred_hints": 285479
+    },
+    {
+      "line": 2176,
+      "enabled": 1,
+      "flushes": 8960,
+      "explicit": 5771,
+      "sync": 337,
+      "strong": 12,
+      "weak": 2840,
+      "deferred_hints": 298328
+    },
+    {
+      "line": 2219,
+      "enabled": 1,
+      "flushes": 9216,
+      "explicit": 5872,
+      "sync": 346,
+      "strong": 13,
+      "weak": 2985,
+      "deferred_hints": 310787
+    },
+    {
+      "line": 2242,
+      "enabled": 1,
+      "flushes": 9472,
+      "explicit": 5948,
+      "sync": 360,
+      "strong": 14,
+      "weak": 3150,
+      "deferred_hints": 318226
+    },
+    {
+      "line": 2278,
+      "enabled": 1,
+      "flushes": 9728,
+      "explicit": 6025,
+      "sync": 381,
+      "strong": 17,
+      "weak": 3305,
+      "deferred_hints": 326502
+    },
+    {
+      "line": 2287,
+      "enabled": 1,
+      "flushes": 9984,
+      "explicit": 6091,
+      "sync": 381,
+      "strong": 17,
+      "weak": 3495,
+      "deferred_hints": 332976
+    },
+    {
+      "line": 2318,
+      "enabled": 1,
+      "flushes": 10240,
+      "explicit": 6165,
+      "sync": 402,
+      "strong": 21,
+      "weak": 3652,
+      "deferred_hints": 341085
+    },
+    {
+      "line": 2322,
+      "enabled": 1,
+      "flushes": 10496,
+      "explicit": 6234,
+      "sync": 407,
+      "strong": 22,
+      "weak": 3833,
+      "deferred_hints": 348155
+    },
+    {
+      "line": 2369,
+      "enabled": 1,
+      "flushes": 10752,
+      "explicit": 6298,
+      "sync": 407,
+      "strong": 22,
+      "weak": 4025,
+      "deferred_hints": 354040
+    },
+    {
+      "line": 2374,
+      "enabled": 1,
+      "flushes": 11008,
+      "explicit": 6363,
+      "sync": 407,
+      "strong": 22,
+      "weak": 4216,
+      "deferred_hints": 360090
+    },
+    {
+      "line": 2403,
+      "enabled": 1,
+      "flushes": 11264,
+      "explicit": 6430,
+      "sync": 407,
+      "strong": 23,
+      "weak": 4404,
+      "deferred_hints": 366293
+    },
+    {
+      "line": 2407,
+      "enabled": 1,
+      "flushes": 11520,
+      "explicit": 6506,
+      "sync": 407,
+      "strong": 23,
+      "weak": 4584,
+      "deferred_hints": 373707
+    },
+    {
+      "line": 2436,
+      "enabled": 1,
+      "flushes": 11776,
+      "explicit": 6577,
+      "sync": 407,
+      "strong": 26,
+      "weak": 4766,
+      "deferred_hints": 380569
+    },
+    {
+      "line": 2440,
+      "enabled": 1,
+      "flushes": 12032,
+      "explicit": 6647,
+      "sync": 407,
+      "strong": 26,
+      "weak": 4952,
+      "deferred_hints": 387124
+    },
+    {
+      "line": 2487,
+      "enabled": 1,
+      "flushes": 12288,
+      "explicit": 6723,
+      "sync": 407,
+      "strong": 26,
+      "weak": 5132,
+      "deferred_hints": 394305
+    },
+    {
+      "line": 2519,
+      "enabled": 1,
+      "flushes": 12544,
+      "explicit": 6827,
+      "sync": 410,
+      "strong": 30,
+      "weak": 5277,
+      "deferred_hints": 406973
+    },
+    {
+      "line": 2527,
+      "enabled": 1,
+      "flushes": 12800,
+      "explicit": 6942,
+      "sync": 417,
+      "strong": 30,
+      "weak": 5411,
+      "deferred_hints": 421327
+    }
+  ],
+  "batch_counter_intervals": [
+    {
+      "from_line": 1146,
+      "to_line": 1294,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 341
+      }
+    },
+    {
+      "from_line": 1294,
+      "to_line": 1307,
+      "delta": {
+        "flushes": 256,
+        "explicit": 254,
+        "sync": 2,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 6565
+      }
+    },
+    {
+      "from_line": 1307,
+      "to_line": 1312,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12544
+      }
+    },
+    {
+      "from_line": 1312,
+      "to_line": 1314,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12544
+      }
+    },
+    {
+      "from_line": 1314,
+      "to_line": 1315,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12544
+      }
+    },
+    {
+      "from_line": 1315,
+      "to_line": 1347,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12495
+      }
+    },
+    {
+      "from_line": 1347,
+      "to_line": 1349,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12544
+      }
+    },
+    {
+      "from_line": 1349,
+      "to_line": 1354,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 11711
+      }
+    },
+    {
+      "from_line": 1354,
+      "to_line": 1373,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12301
+      }
+    },
+    {
+      "from_line": 1373,
+      "to_line": 1416,
+      "delta": {
+        "flushes": 256,
+        "explicit": 246,
+        "sync": 10,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 9097
+      }
+    },
+    {
+      "from_line": 1416,
+      "to_line": 1478,
+      "delta": {
+        "flushes": 256,
+        "explicit": 236,
+        "sync": 10,
+        "strong": 0,
+        "weak": 10,
+        "deferred_hints": 6739
+      }
+    },
+    {
+      "from_line": 1478,
+      "to_line": 1485,
+      "delta": {
+        "flushes": 256,
+        "explicit": 254,
+        "sync": 0,
+        "strong": 0,
+        "weak": 2,
+        "deferred_hints": 6996
+      }
+    },
+    {
+      "from_line": 1485,
+      "to_line": 1489,
+      "delta": {
+        "flushes": 256,
+        "explicit": 190,
+        "sync": 0,
+        "strong": 0,
+        "weak": 66,
+        "deferred_hints": 6004
+      }
+    },
+    {
+      "from_line": 1489,
+      "to_line": 1506,
+      "delta": {
+        "flushes": 256,
+        "explicit": 125,
+        "sync": 82,
+        "strong": 2,
+        "weak": 47,
+        "deferred_hints": 3715
+      }
+    },
+    {
+      "from_line": 1506,
+      "to_line": 1538,
+      "delta": {
+        "flushes": 256,
+        "explicit": 254,
+        "sync": 0,
+        "strong": 0,
+        "weak": 2,
+        "deferred_hints": 12939
+      }
+    },
+    {
+      "from_line": 1538,
+      "to_line": 1539,
+      "delta": {
+        "flushes": 256,
+        "explicit": 256,
+        "sync": 0,
+        "strong": 0,
+        "weak": 0,
+        "deferred_hints": 12889
+      }
+    },
+    {
+      "from_line": 1539,
+      "to_line": 1602,
+      "delta": {
+        "flushes": 256,
+        "explicit": 247,
+        "sync": 8,
+        "strong": 0,
+        "weak": 1,
+        "deferred_hints": 8517
+      }
+    },
+    {
+      "from_line": 1602,
+      "to_line": 1608,
+      "delta": {
+        "flushes": 256,
+        "explicit": 227,
+        "sync": 0,
+        "strong": 0,
+        "weak": 29,
+        "deferred_hints": 975
+      }
+    },
+    {
+      "from_line": 1608,
+      "to_line": 1645,
+      "delta": {
+        "flushes": 256,
+        "explicit": 73,
+        "sync": 0,
+        "strong": 2,
+        "weak": 181,
+        "deferred_hints": 7656
+      }
+    },
+    {
+      "from_line": 1645,
+      "to_line": 1650,
+      "delta": {
+        "flushes": 256,
+        "explicit": 73,
+        "sync": 0,
+        "strong": 1,
+        "weak": 182,
+        "deferred_hints": 6949
+      }
+    },
+    {
+      "from_line": 1650,
+      "to_line": 1679,
+      "delta": {
+        "flushes": 256,
+        "explicit": 71,
+        "sync": 0,
+        "strong": 2,
+        "weak": 183,
+        "deferred_hints": 7070
+      }
+    },
+    {
+      "from_line": 1679,
+      "to_line": 1702,
+      "delta": {
+        "flushes": 256,
+        "explicit": 90,
+        "sync": 0,
+        "strong": 1,
+        "weak": 165,
+        "deferred_hints": 11202
+      }
+    },
+    {
+      "from_line": 1702,
+      "to_line": 1731,
+      "delta": {
+        "flushes": 256,
+        "explicit": 90,
+        "sync": 11,
+        "strong": 0,
+        "weak": 155,
+        "deferred_hints": 10838
+      }
+    },
+    {
+      "from_line": 1731,
+      "to_line": 1827,
+      "delta": {
+        "flushes": 256,
+        "explicit": 66,
+        "sync": 11,
+        "strong": 0,
+        "weak": 179,
+        "deferred_hints": 7163
+      }
+    },
+    {
+      "from_line": 1827,
+      "to_line": 1857,
+      "delta": {
+        "flushes": 256,
+        "explicit": 82,
+        "sync": 20,
+        "strong": 0,
+        "weak": 154,
+        "deferred_hints": 9433
+      }
+    },
+    {
+      "from_line": 1857,
+      "to_line": 1861,
+      "delta": {
+        "flushes": 256,
+        "explicit": 73,
+        "sync": 13,
+        "strong": 0,
+        "weak": 170,
+        "deferred_hints": 8622
+      }
+    },
+    {
+      "from_line": 1861,
+      "to_line": 1957,
+      "delta": {
+        "flushes": 256,
+        "explicit": 67,
+        "sync": 22,
+        "strong": 0,
+        "weak": 167,
+        "deferred_hints": 8048
+      }
+    },
+    {
+      "from_line": 1957,
+      "to_line": 1983,
+      "delta": {
+        "flushes": 256,
+        "explicit": 69,
+        "sync": 15,
+        "strong": 0,
+        "weak": 172,
+        "deferred_hints": 7898
+      }
+    },
+    {
+      "from_line": 1983,
+      "to_line": 2098,
+      "delta": {
+        "flushes": 256,
+        "explicit": 66,
+        "sync": 17,
+        "strong": 0,
+        "weak": 173,
+        "deferred_hints": 7214
+      }
+    },
+    {
+      "from_line": 2098,
+      "to_line": 2103,
+      "delta": {
+        "flushes": 256,
+        "explicit": 66,
+        "sync": 21,
+        "strong": 0,
+        "weak": 169,
+        "deferred_hints": 7536
+      }
+    },
+    {
+      "from_line": 2103,
+      "to_line": 2132,
+      "delta": {
+        "flushes": 256,
+        "explicit": 69,
+        "sync": 26,
+        "strong": 0,
+        "weak": 161,
+        "deferred_hints": 8187
+      }
+    },
+    {
+      "from_line": 2132,
+      "to_line": 2133,
+      "delta": {
+        "flushes": 256,
+        "explicit": 66,
+        "sync": 7,
+        "strong": 0,
+        "weak": 183,
+        "deferred_hints": 6513
+      }
+    },
+    {
+      "from_line": 2133,
+      "to_line": 2166,
+      "delta": {
+        "flushes": 256,
+        "explicit": 86,
+        "sync": 8,
+        "strong": 0,
+        "weak": 162,
+        "deferred_hints": 9467
+      }
+    },
+    {
+      "from_line": 2166,
+      "to_line": 2176,
+      "delta": {
+        "flushes": 256,
+        "explicit": 106,
+        "sync": 21,
+        "strong": 2,
+        "weak": 127,
+        "deferred_hints": 12849
+      }
+    },
+    {
+      "from_line": 2176,
+      "to_line": 2219,
+      "delta": {
+        "flushes": 256,
+        "explicit": 101,
+        "sync": 9,
+        "strong": 1,
+        "weak": 145,
+        "deferred_hints": 12459
+      }
+    },
+    {
+      "from_line": 2219,
+      "to_line": 2242,
+      "delta": {
+        "flushes": 256,
+        "explicit": 76,
+        "sync": 14,
+        "strong": 1,
+        "weak": 165,
+        "deferred_hints": 7439
+      }
+    },
+    {
+      "from_line": 2242,
+      "to_line": 2278,
+      "delta": {
+        "flushes": 256,
+        "explicit": 77,
+        "sync": 21,
+        "strong": 3,
+        "weak": 155,
+        "deferred_hints": 8276
+      }
+    },
+    {
+      "from_line": 2278,
+      "to_line": 2287,
+      "delta": {
+        "flushes": 256,
+        "explicit": 66,
+        "sync": 0,
+        "strong": 0,
+        "weak": 190,
+        "deferred_hints": 6474
+      }
+    },
+    {
+      "from_line": 2287,
+      "to_line": 2318,
+      "delta": {
+        "flushes": 256,
+        "explicit": 74,
+        "sync": 21,
+        "strong": 4,
+        "weak": 157,
+        "deferred_hints": 8109
+      }
+    },
+    {
+      "from_line": 2318,
+      "to_line": 2322,
+      "delta": {
+        "flushes": 256,
+        "explicit": 69,
+        "sync": 5,
+        "strong": 1,
+        "weak": 181,
+        "deferred_hints": 7070
+      }
+    },
+    {
+      "from_line": 2322,
+      "to_line": 2369,
+      "delta": {
+        "flushes": 256,
+        "explicit": 64,
+        "sync": 0,
+        "strong": 0,
+        "weak": 192,
+        "deferred_hints": 5885
+      }
+    },
+    {
+      "from_line": 2369,
+      "to_line": 2374,
+      "delta": {
+        "flushes": 256,
+        "explicit": 65,
+        "sync": 0,
+        "strong": 0,
+        "weak": 191,
+        "deferred_hints": 6050
+      }
+    },
+    {
+      "from_line": 2374,
+      "to_line": 2403,
+      "delta": {
+        "flushes": 256,
+        "explicit": 67,
+        "sync": 0,
+        "strong": 1,
+        "weak": 188,
+        "deferred_hints": 6203
+      }
+    },
+    {
+      "from_line": 2403,
+      "to_line": 2407,
+      "delta": {
+        "flushes": 256,
+        "explicit": 76,
+        "sync": 0,
+        "strong": 0,
+        "weak": 180,
+        "deferred_hints": 7414
+      }
+    },
+    {
+      "from_line": 2407,
+      "to_line": 2436,
+      "delta": {
+        "flushes": 256,
+        "explicit": 71,
+        "sync": 0,
+        "strong": 3,
+        "weak": 182,
+        "deferred_hints": 6862
+      }
+    },
+    {
+      "from_line": 2436,
+      "to_line": 2440,
+      "delta": {
+        "flushes": 256,
+        "explicit": 70,
+        "sync": 0,
+        "strong": 0,
+        "weak": 186,
+        "deferred_hints": 6555
+      }
+    },
+    {
+      "from_line": 2440,
+      "to_line": 2487,
+      "delta": {
+        "flushes": 256,
+        "explicit": 76,
+        "sync": 0,
+        "strong": 0,
+        "weak": 180,
+        "deferred_hints": 7181
+      }
+    },
+    {
+      "from_line": 2487,
+      "to_line": 2519,
+      "delta": {
+        "flushes": 256,
+        "explicit": 104,
+        "sync": 3,
+        "strong": 4,
+        "weak": 145,
+        "deferred_hints": 12668
+      }
+    },
+    {
+      "from_line": 2519,
+      "to_line": 2527,
+      "delta": {
+        "flushes": 256,
+        "explicit": 115,
+        "sync": 7,
+        "strong": 0,
+        "weak": 134,
+        "deferred_hints": 14354
+      }
+    }
+  ],
+  "batch_capture_inner": {
+    "requested_start_line": 1683,
+    "requested_end_line": 2040,
+    "measured_start_line": 1702,
+    "measured_end_line": 1983,
+    "intervals": 6,
+    "totals": {
+      "flushes": 1536,
+      "explicit": 447,
+      "sync": 92,
+      "strong": 0,
+      "weak": 997,
+      "deferred_hints": 52002
+    },
+    "flush_class_percent": {
+      "explicit": 29.1015625,
+      "sync": 5.989583333333333,
+      "strong": 0.0,
+      "weak": 64.90885416666667
+    },
+    "note": "Inner cumulative-counter endpoints only; not the entire time window. deferred_hints counts requests, not eliminated submissions."
+  },
+  "batch_slow_inner": {
+    "requested_start_line": 1618,
+    "requested_end_line": 2528,
+    "measured_start_line": 1645,
+    "measured_end_line": 2527,
+    "intervals": 30,
+    "totals": {
+      "flushes": 7680,
+      "explicit": 2311,
+      "sync": 272,
+      "strong": 24,
+      "weak": 5073,
+      "deferred_hints": 251988
+    },
+    "flush_class_percent": {
+      "explicit": 30.091145833333332,
+      "sync": 3.5416666666666665,
+      "strong": 0.3125,
+      "weak": 66.0546875
+    },
+    "note": "Inner cumulative-counter endpoints only; not the entire time window. deferred_hints counts requests, not eliminated submissions."
+  },
+  "batch_last_seven_inner": {
+    "requested_start_line": 2288,
+    "requested_end_line": 2528,
+    "measured_start_line": 2318,
+    "measured_end_line": 2527,
+    "intervals": 10,
+    "totals": {
+      "flushes": 2560,
+      "explicit": 777,
+      "sync": 15,
+      "strong": 9,
+      "weak": 1759,
+      "deferred_hints": 80242
+    },
+    "flush_class_percent": {
+      "explicit": 30.3515625,
+      "sync": 0.5859375,
+      "strong": 0.3515625,
+      "weak": 68.7109375
+    },
+    "note": "Inner cumulative-counter endpoints only; not the entire time window. deferred_hints counts requests, not eliminated submissions."
+  },
+  "jit_after_200_seconds": {
+    "compile_code": {
+      "from_line": 2401,
+      "to_line": 2556,
+      "uptime_from_ms": 200135,
+      "uptime_to_ms": 240151,
+      "elapsed_ms": 40016,
+      "calls": 277,
+      "completed_wall_us": 124876,
+      "note": "Completed calls; phase durations may overlap/nest and are not CPU ticks."
+    },
+    "dispatch_compile": {
+      "from_line": 2400,
+      "to_line": 2555,
+      "uptime_from_ms": 200135,
+      "uptime_to_ms": 240151,
+      "elapsed_ms": 40016,
+      "calls": 26952,
+      "completed_wall_us": 320015,
+      "note": "Completed calls; phase durations may overlap/nest and are not CPU ticks."
+    },
+    "invalidate": {
+      "from_line": 2402,
+      "to_line": 2557,
+      "uptime_from_ms": 200135,
+      "uptime_to_ms": 240151,
+      "elapsed_ms": 40016,
+      "calls": 739,
+      "completed_wall_us": 64397,
+      "note": "Completed calls; phase durations may overlap/nest and are not CPU ticks."
+    }
+  },
+  "registered_cpu_samples": [
+    {
+      "line": 1620,
+      "registered_cores": 1.57,
+      "threads": {
+        "4w": 52.5,
+        "40w": 19.1,
+        "24w": 17.7,
+        "20w": 11.2,
+        "16w": 10.7,
+        "108w": 8.6,
+        "28w": 8.1,
+        "64w": 7.8,
+        "72w": 6.0,
+        "12w": 4.2,
+        "36w": 3.4,
+        "60w": 1.7
+      }
+    },
+    {
+      "line": 1656,
+      "registered_cores": 1.69,
+      "threads": {
+        "4w": 35.3,
+        "40w": 32.2,
+        "24w": 22.7,
+        "20w": 21.8,
+        "108w": 14.4,
+        "16w": 14.1,
+        "28w": 14.0,
+        "36w": 5.0,
+        "72w": 3.5,
+        "60w": 1.3,
+        "104w": 1.3,
+        "8w": 0.8
+      }
+    },
+    {
+      "line": 1708,
+      "registered_cores": 1.68,
+      "threads": {
+        "4w": 35.1,
+        "40w": 31.5,
+        "24w": 21.6,
+        "20w": 19.6,
+        "108w": 18.1,
+        "28w": 14.4,
+        "16w": 12.8,
+        "36w": 4.8,
+        "72w": 3.5,
+        "60w": 1.4,
+        "104w": 1.4,
+        "32w": 0.9
+      }
+    },
+    {
+      "line": 1834,
+      "registered_cores": 1.74,
+      "threads": {
+        "40w": 38.2,
+        "4w": 28.8,
+        "24w": 22.6,
+        "20w": 21.1,
+        "28w": 17.3,
+        "108w": 15.4,
+        "16w": 14.6,
+        "36w": 5.9,
+        "72w": 3.4,
+        "104w": 1.4,
+        "60w": 1.2,
+        "32w": 1.0
+      }
+    },
+    {
+      "line": 1960,
+      "registered_cores": 1.74,
+      "threads": {
+        "40w": 40.2,
+        "4w": 27.1,
+        "24w": 22.1,
+        "20w": 20.9,
+        "28w": 18.2,
+        "108w": 15.9,
+        "16w": 13.9,
+        "36w": 6.7,
+        "72w": 3.1,
+        "104w": 1.4,
+        "32w": 1.0,
+        "60w": 1.0
+      }
+    },
+    {
+      "line": 2106,
+      "registered_cores": 1.7,
+      "threads": {
+        "40w": 40.5,
+        "4w": 27.8,
+        "24w": 21.4,
+        "20w": 20.1,
+        "28w": 18.2,
+        "16w": 13.3,
+        "108w": 12.4,
+        "36w": 6.7,
+        "72w": 2.9,
+        "104w": 1.4,
+        "8s": 1.2,
+        "32w": 1.0
+      }
+    },
+    {
+      "line": 2139,
+      "registered_cores": 1.72,
+      "threads": {
+        "40w": 38.2,
+        "4w": 27.0,
+        "24w": 24.0,
+        "20w": 21.8,
+        "28w": 16.8,
+        "16w": 16.6,
+        "108w": 11.0,
+        "36w": 6.2,
+        "72w": 3.5,
+        "104w": 1.4,
+        "8s": 1.2,
+        "60w": 1.1
+      }
+    },
+    {
+      "line": 2182,
+      "registered_cores": 1.58,
+      "threads": {
+        "4w": 34.0,
+        "40w": 28.6,
+        "24w": 20.0,
+        "20w": 18.3,
+        "108w": 13.2,
+        "28w": 12.8,
+        "16w": 12.6,
+        "36w": 4.5,
+        "72w": 4.4,
+        "60w": 1.6,
+        "104w": 1.4,
+        "12w": 1.3
+      }
+    },
+    {
+      "line": 2245,
+      "registered_cores": 1.65,
+      "threads": {
+        "4w": 34.3,
+        "40w": 28.5,
+        "24w": 22.7,
+        "20w": 21.9,
+        "16w": 16.0,
+        "108w": 12.8,
+        "28w": 12.6,
+        "36w": 4.5,
+        "72w": 3.9,
+        "60w": 1.5,
+        "104w": 1.4,
+        "8s": 1.2
+      }
+    },
+    {
+      "line": 2290,
+      "registered_cores": 1.74,
+      "threads": {
+        "4w": 32.8,
+        "40w": 31.1,
+        "24w": 24.6,
+        "20w": 23.8,
+        "16w": 17.6,
+        "28w": 13.6,
+        "108w": 13.5,
+        "36w": 5.0,
+        "72w": 5.0,
+        "104w": 1.4,
+        "8s": 1.3,
+        "60w": 1.3
+      }
+    },
+    {
+      "line": 2325,
+      "registered_cores": 1.75,
+      "threads": {
+        "4w": 36.3,
+        "40w": 31.5,
+        "24w": 23.7,
+        "20w": 22.9,
+        "16w": 16.6,
+        "28w": 14.1,
+        "108w": 13.0,
+        "36w": 4.9,
+        "72w": 4.9,
+        "8s": 1.4,
+        "60w": 1.4,
+        "104w": 1.4
+      }
+    },
+    {
+      "line": 2377,
+      "registered_cores": 1.73,
+      "threads": {
+        "4w": 33.3,
+        "40w": 30.2,
+        "24w": 24.6,
+        "20w": 24.0,
+        "16w": 17.9,
+        "108w": 13.8,
+        "28w": 13.1,
+        "36w": 4.8,
+        "72w": 4.6,
+        "104w": 1.4,
+        "8s": 1.3,
+        "60w": 1.1
+      }
+    },
+    {
+      "line": 2410,
+      "registered_cores": 1.72,
+      "threads": {
+        "4w": 33.6,
+        "40w": 28.7,
+        "24w": 24.8,
+        "20w": 23.8,
+        "16w": 17.3,
+        "108w": 14.2,
+        "28w": 12.4,
+        "72w": 5.8,
+        "36w": 4.5,
+        "8s": 1.4,
+        "104w": 1.4,
+        "60w": 1.3
+      }
+    },
+    {
+      "line": 2443,
+      "registered_cores": 1.74,
+      "threads": {
+        "4w": 32.1,
+        "40w": 28.5,
+        "24w": 26.1,
+        "20w": 25.0,
+        "16w": 18.7,
+        "108w": 13.8,
+        "28w": 12.3,
+        "72w": 5.7,
+        "36w": 4.5,
+        "8s": 1.5,
+        "60w": 1.4,
+        "104w": 1.4
+      }
+    },
+    {
+      "line": 2493,
+      "registered_cores": 1.66,
+      "threads": {
+        "4w": 32.0,
+        "40w": 28.3,
+        "24w": 23.1,
+        "20w": 22.3,
+        "16w": 16.1,
+        "108w": 14.3,
+        "28w": 12.5,
+        "72w": 5.1,
+        "36w": 4.3,
+        "8s": 1.6,
+        "60w": 1.5,
+        "104w": 1.4
+      }
+    },
+    {
+      "line": 2530,
+      "registered_cores": 1.37,
+      "threads": {
+        "4w": 24.9,
+        "40w": 22.4,
+        "24w": 19.7,
+        "20w": 19.1,
+        "16w": 13.5,
+        "108w": 12.4,
+        "28w": 10.0,
+        "36w": 3.6,
+        "72w": 2.4,
+        "8s": 1.7,
+        "60w": 1.7,
+        "104w": 1.3
+      }
+    }
+  ],
+  "prior_v11_comparison": {
+    "report": "reports/gameplay-v11-performance-analysis.json",
+    "report_sha256": "3728e0193c37a964f60f4251f2c404f95be13d2b078b7eccac4307b9992168e9",
+    "log_sha256": "d00be9c4bb287a9365b4339a39b20cc1977a1f88b5aa27dcd32e51fb43f65de7",
+    "paired_test": false,
+    "capture_resolution": [
+      1280,
+      720
+    ],
+    "metrics": {
+      "capture_average_frame_ms": {
+        "v11": 64.62562203023758,
+        "v12": 58.33058365758755,
+        "difference": -6.295038372650026
+      },
+      "capture_fps": {
+        "v11": 15.473738876077844,
+        "v12": 17.143665248923348,
+        "difference": 1.669926372845504
+      },
+      "submit_thread_cpu_ms": {
+        "v11": 249.497,
+        "v12": 309.543,
+        "difference": 60.04599999999999
+      },
+      "submit_calls": {
+        "v11": 3478,
+        "v12": 3301,
+        "difference": -177
+      },
+      "submit_wall_ms": {
+        "v11": 6421.389,
+        "v12": 793.837,
+        "difference": -5627.552
+      },
+      "submits_per_present_interval": {
+        "v11": 7.5118790496760255,
+        "v12": 6.4221789883268485,
+        "difference": -1.089700061349177
+      }
+    },
+    "note": "Observed runs differ in scene, timing, cache state and potentially clocks; these differences do not establish a causal speedup."
+  },
+  "limitations": [
+    "Each snapshot is cumulative; use only the latest snapshot or differences, never sum snapshots.",
+    "Different thread durations overlap; Wine and Vulkan totals are not removable frame cost.",
+    "Thread mappings are observed snapshots; exited or recycled handles may be missing or ambiguous.",
+    "Present CPU ticks cover only that thread, and invalid CPU intervals are excluded.",
+    "Only calls wholly inside the capture are counted; live snapshots may see partial updates.",
+    "No GPU timestamps, measured clocks or temperatures. No definitive CPU/GPU bottleneck verdict.",
+    "Sub-30-FPS windows are a workload heuristic, not verified gameplay or scene markers.",
+    "The resolution-transition window is excluded from per-resolution aggregates.",
+    "The run changes from 540p to 720p; resolution comparisons are not controlled.",
+    "DXVK discarded the prior version shader cache; late compilation counters must be checked separately.",
+    "Batch deltas use only fully enclosed snapshot endpoints, so they under-cover their enclosing frame windows.",
+    "Deferred hints are attempted flush requests, not a count of saved GPU submissions.",
+    "Registered CPU utilization excludes unregistered and system threads.",
+    "Wine and Vulkan waits overlap across threads and cannot simply be subtracted from frame time.",
+    "User clocks are from the previous report and have not been reconfirmed for this run."
+  ]
+}

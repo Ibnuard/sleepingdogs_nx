@@ -1,0 +1,50 @@
+{
+  "source": {
+    "commit": "b1a1c99ab52b687cf950d62c88bc2fa316b41663",
+    "patch_sha256": "ab43c9ef25c9b2702cf26cf7133c29d2983365e99ea2ed5810884c4b4b923fec",
+    "original_memory_sha256": "0e0c0322d981e70f1f53af8c7d7b4890d9c6de7ec7e7673297efe89042676ba2",
+    "patched_memory_sha256": "7fc0e1e903439536788d99f5820af2eb79466bac58508755c5fae95e5e801877",
+    "base_patch_sha256": "22e3887c5079594564c17a9602700dcc8f865e774bfab99af9309d6c286b930a"
+  },
+  "files": {
+    "d3d9.dll": {
+      "sha256": "2318b18d7b70538be4d12263fa701b8643636f098f517cea39a4bf4ea17c37bc",
+      "bytes": 7475200
+    },
+    "d3d11.dll": {
+      "sha256": "598c56dce50a04adb9c2d6f134d380697b6ef1c5c3dcbf65a6de29e636710be7",
+      "bytes": 8257536
+    },
+    "dxgi.dll": {
+      "sha256": "5deeaf90039cf2c7f26298d3c91da6ed9376be4f8e0c75bb75ec90eca3e75cc0",
+      "bytes": 5545984
+    }
+  },
+  "archive_sha256": "525c810cc298406623771bfe86772b21971413be7dcb8f27e378998bf1bbf6f9",
+  "upstream_archive_sha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+  "patch_sha256": "7ca78f68cec32333d34b0864fc67f21fb041f28da6a0c9f74540499b1dd61b5c",
+  "dependencies": {
+    "include/native/directx": {
+      "url": "https://github.com/Joshua-Ashton/mingw-directx-headers",
+      "commit": "9df86f2341616ef1888ae59919feaa6d4fad693d"
+    },
+    "include/vulkan": {
+      "url": "https://github.com/KhronosGroup/Vulkan-Headers",
+      "commit": "8864cdc896bbc2a9b6eb36b3218fc9ef57908d77"
+    },
+    "include/spirv": {
+      "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+      "commit": "04f10f650d514df88b76d25e83db360142c7b174"
+    },
+    "subprojects/libdisplay-info": {
+      "url": "https://github.com/doitsujin/libdisplay-info.git",
+      "commit": "275e6459c7ab1ddd4b125f28d0440716e4888078"
+    },
+    "subprojects/dxbc-spirv": {
+      "url": "https://github.com/doitsujin/dxbc-spirv.git",
+      "commit": "bf14419e5fa7eacb817b7b632f03cb61d61bbad7",
+      "nested": "c8ad050fcb29e42a2f57d9f59e97488f465c436d submodules/spirv_headers (c8ad050)"
+    }
+  },
+  "note": "F1-specific DXVK 3.1.1-f1mem2. 8 MiB normal chunk cap; bounded exact page-aligned resource retry; ordinary Vulkan ownership retained."
+}

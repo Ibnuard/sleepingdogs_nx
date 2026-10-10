@@ -1,0 +1,8 @@
+{
+  "passed": 8,
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "game_modified": false,
+  "negative": "Observed nonzero return reproduces stack erasure, null SEH and return-to-fffffffe",
+  "positive": "Original VEH handles #DB at all four addresses; original call site preserves stack",
+  "hardware_boot_test": false
+}
