@@ -1,6 +1,7 @@
 /* SPDX-License-Identifier: MIT; typed ARM64 COM dispatch, no native pointer escapes. */
 #include "com_protocol.h"
 #include "com_methods.h"
+#include "com_progress.h"
 #include <d3d11.h>
 #include <d3d10.h>
 #include <dxgi.h>
@@ -183,6 +184,39 @@ struct Context {
     }
 };
 Context state;
+sd_com_progress::State progress;
+sd_com_progress::Snapshot progress_values{}; // Only accessed while holding state.mutex.
+struct ProgressCall {
+    ProgressCall() {
+        using namespace sd_com_progress;
+        ++progress_values[Entry];progress_values[Thread]=sd_com_thread_id();
+        progress_values[Call]=progress_values[Interface]=progress_values[Method]=progress_values[Object]=0;
+        for(unsigned i=Arg0;i<=Arg4;++i)progress_values[i]=0;
+        progress_values[Phase]=Validate;progress_values[Begin]=sd_com_clock_ns();
+        progress_values[End]=progress_values[Ret]=progress_values[FaultCode]=0;
+        progress.publish(progress_values);
+    }
+    void packet(const sd_com_packet& p) {
+        using namespace sd_com_progress;
+        progress_values[Call]=state.calls;progress_values[Interface]=p.interface_id;
+        progress_values[Method]=p.method;progress_values[Object]=p.object;
+        for(unsigned i=0;i<5;++i)progress_values[Arg0+i]=p.args[i];
+        progress_values[Phase]=Execute;progress.publish(progress_values);
+    }
+    void result(const sd_com_packet& p) {
+        using namespace sd_com_progress;
+        progress_values[Ret]=p.ret;progress_values[FaultCode]=p.fault;
+        progress_values[Phase]=ResultCopy;progress.publish(progress_values);
+    }
+    ~ProgressCall() {
+        using namespace sd_com_progress;
+        progress_values[Phase]=Idle;progress_values[End]=sd_com_clock_ns();
+        progress_values[Calls]=state.calls;progress_values[Draws]=state.draws;
+        progress_values[Presents]=state.presents;progress_values[Maps]=state.maps.size();
+        progress_values[CopyBytes]=state.map_bytes;progress_values[Refs]=state.index.size();
+        progress_values[Failures]=state.failures;progress.publish(progress_values);
+    }
+};
 
 // Bound synchronous startup logging to three Presents / 128 calls. BEGIN is
 // emitted before native work; a missing END identifies an unfinished call,
@@ -292,7 +326,10 @@ void execute(Context& c,sd_com_packet& p) {
     }
 }
 int32_t unix_dispatch(void* request) {
+    progress.waiting.fetch_add(1);
     std::lock_guard<std::recursive_mutex> guard(state.mutex);
+    progress.waiting.fetch_sub(1);
+    ProgressCall watch;
     uintptr_t address=reinterpret_cast<uintptr_t>(request);
     if(address>UINT32_MAX)return int32_t(0xc0000005u);
     sd_com_packet* output=nullptr;
@@ -301,15 +338,35 @@ int32_t unix_dispatch(void* request) {
         if(p.abi!=SD_COM_ABI||p.reserved)return int32_t(0xc000000du);
         p.ret=p.fault=p.aux=0;
         ++state.calls;
+        watch.packet(p);
         StartupTrace trace(state,p);
         try{if(state.stopped&&!(p.interface_id==0&&p.method==SD_COM_STATS))throw Fault(E_INVALIDARG);execute(state,p);}catch(const Fault& f){p.fault=p.ret=f.code;}catch(const std::bad_alloc&){p.fault=p.ret=E_OUTOFMEMORY;}catch(...){p.fault=p.ret=E_FAIL;}
         trace.finish();
         if(HRESULT(p.fault)<0){++state.failures;char line[192];std::snprintf(line,sizeof(line),"[SD-NDX-COM] FAULT interface=%u method=%u object=%08x hr=%08x",p.interface_id,p.method,p.object,p.fault);wine_nx_runtime_trace(line);}
-        *output=p;state.report();return 0;
+        watch.result(p);*output=p;state.report();return 0;
     }catch(...){return int32_t(0xc0000005u);}
 }
 }
 extern "C" {
+void sd_com_progress_report() {
+    using namespace sd_com_progress;
+    static uint64_t previous=0;uint64_t now=sd_com_clock_ns();
+    if(previous&&now>=previous&&now-previous<5000000000ull)return;
+    previous=now;Snapshot v{};char line[512];
+    if(!progress.read(v)){wine_nx_runtime_trace("[SD-NDX-PROGRESS] snapshot busy; retry next interval");return;}
+    uint64_t age=v[Begin]&&now>=v[Begin]?(now-v[Begin])/1000000:0;
+    uint64_t wall=v[End]>=v[Begin]?(v[End]-v[Begin])/1000:0;
+    const char* phase=v[Phase]==Validate?"validate":v[Phase]==Execute?"execute":v[Phase]==ResultCopy?"result-copy":"idle";
+    std::snprintf(line,sizeof(line),"[SD-NDX-PROGRESS] calls=%llu draws=%llu presents=%llu maps=%llu refs=%llu copy_bytes=%llu failures=%llu gate_waiters=%llu; totals are last completed call",
+        (unsigned long long)v[Calls],(unsigned long long)v[Draws],(unsigned long long)v[Presents],(unsigned long long)v[Maps],
+        (unsigned long long)v[Refs],(unsigned long long)v[CopyBytes],(unsigned long long)v[Failures],(unsigned long long)progress.waiting.load());
+    wine_nx_runtime_trace(line);
+    std::snprintf(line,sizeof(line),"[SD-NDX-ACTIVE] entry=%llu call=%llu thread=%llx phase=%s interface=%llu method=%llu object=%08x age_ms=%llu completed_wall_us=%llu ret=%08x fault=%08x args=%08x,%08x,%08x,%08x,%08x",
+        (unsigned long long)v[Entry],(unsigned long long)v[Call],(unsigned long long)v[Thread],phase,
+        (unsigned long long)v[Interface],(unsigned long long)v[Method],unsigned(v[Object]),(unsigned long long)age,(unsigned long long)wall,
+        unsigned(v[Ret]),unsigned(v[FaultCode]),unsigned(v[Arg0]),unsigned(v[Arg1]),unsigned(v[Arg2]),unsigned(v[Arg3]),unsigned(v[Arg4]));
+    wine_nx_runtime_trace(line);
+}
 extern const sd_com_unix_entry wine_nx_sd_com_wow64_unix_funcs[]={unix_dispatch};
 extern const unsigned int wine_nx_sd_com_wow64_unix_count=1;
 void sd_com_shutdown(){std::lock_guard<std::recursive_mutex> guard(state.mutex);state.shutdown();}

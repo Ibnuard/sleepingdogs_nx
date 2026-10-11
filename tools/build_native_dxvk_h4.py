@@ -22,8 +22,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SDK=Path('/opt/devkitpro')
 A64=SDK/'devkitA64/bin'
 MINGW=Path('/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin')
-BUILD='native-dxvk-h4-v3'
-APP_VERSION='0.1.0-h4.3'
+BUILD='native-dxvk-h4-v4'
+APP_VERSION='0.1.0-h4.4'
 WORK=Path('/home/blekjek/sleepingdogs-'+BUILD)
 LOCAL=ROOT/'local'/BUILD
 SOURCES=ROOT/'src/native_dxvk_com'
@@ -69,7 +69,25 @@ def overlay_runtime(before):
     transaction=transaction.replace('renderer-dx11.txn','renderer-native-com.txn')
     text=text[:start]+transaction+text[end:]
     text=replace(text,'extern void wine_nx_runtime_platform_init(void);',
-        'extern void sd_com_shutdown(void);\nextern void *sd_com_native_window(void);\nstatic int sd_com_enabled,sd_com_diagnostic;\nextern void wine_nx_runtime_platform_init(void);')
+        'extern void sd_com_shutdown(void);\nextern void sd_com_progress_report(void);\nextern void *sd_com_native_window(void);\nstatic int sd_com_enabled,sd_com_diagnostic;\nextern void wine_nx_runtime_platform_init(void);')
+    # Disk writes must not hold the native COM gate. The existing maintenance
+    # thread drains a bounded queue; its file lock is never taken by producers.
+    text=replace(text,'static void *log_flusher( void *arg )',
+        '#include "native_log_queue.h"\n'
+        'static void sd_native_log_write(const char *data,size_t bytes,void *unused) {\n'
+        '    (void)unused;pthread_mutex_lock(&fx_debug_file_lock);\n'
+        '    if(fx_debug_file){fwrite(data,1,bytes,fx_debug_file);fflush(fx_debug_file);}\n'
+        '    pthread_mutex_unlock(&fx_debug_file_lock);\n'
+        '}\n\nstatic void *log_flusher( void *arg )')
+    text=replace(text,'        fx_production_maintenance_tick(++ticks);',
+        '        if(__atomic_load_n(&sd_com_enabled,__ATOMIC_ACQUIRE) && __atomic_load_n(&fx_debug_live,__ATOMIC_ACQUIRE))sd_native_log_drain(sd_native_log_write,NULL);\n'
+        '        fx_production_maintenance_tick(++ticks);')
+    text=replace(text,'    pthread_mutex_lock(&fx_debug_file_lock);\n    if (fx_debug_file)',
+        '    if(__atomic_load_n(&sd_com_enabled,__ATOMIC_ACQUIRE)){sd_native_log_enqueue(line);return;}\n'
+        '    pthread_mutex_lock(&fx_debug_file_lock);\n    if (fx_debug_file)')
+    text=replace(text,'        unsigned presented = __atomic_load_n(&fx_first_present, __ATOMIC_ACQUIRE);',
+        '        if(__atomic_load_n(&sd_com_enabled,__ATOMIC_ACQUIRE)){sd_com_progress_report();continue;} /* native compact monitor; no bulk observer */\n'
+        '        unsigned presented = __atomic_load_n(&fx_first_present, __ATOMIC_ACQUIRE);')
     # Native DXVK bypasses Wine's GL/Vulkan surface acquisition. Explicitly use
     # the existing joined launcher handoff, and keep later Wine/GDI surfaces
     # from taking the same default NWindow during native COM rendering.
@@ -97,7 +115,7 @@ static int sd_com_prepare_screen(void) {
     marker='static void fx_native_error(const char *message) {'
     text=replace(text,marker,'void wine_nx_sd_com_first_present(void) { fx_record_first_present(); }\n\n'+marker)
     text=replace(text,'            wine_nx_lsfg_configure(lsfg.enabled,lsfg.performance,lsfg.flow);',
-        '            sd_com_enabled=renderer==2;\n            wine_nx_lsfg_configure(sd_com_enabled?0:lsfg.enabled,lsfg.performance,lsfg.flow);\n'
+        '            __atomic_store_n(&sd_com_enabled,renderer==2,__ATOMIC_RELEASE);\n            wine_nx_lsfg_configure(sd_com_enabled?0:lsfg.enabled,lsfg.performance,lsfg.flow);\n'
         '            if(sd_com_enabled)log_line("[SD-NDX-COM] game selection native ARM64; LSFG OFF; measured FPS pending");')
     text=replace(text,'    if(wine_nx_f1_relaunch_request(F1_RETURN_GUEST,code))return;',
         '    if(sd_com_enabled)sd_com_shutdown();\n'
@@ -110,7 +128,7 @@ static int sd_com_prepare_screen(void) {
         '    if (guest_tests) snprintf(target, sizeof(target), "%s/%s", WINE_DRIVE_C,sd_com_diagnostic?"sd-native-dxvk-h4-test.exe":"fex-stress.exe");\n'
         '    if(sd_com_diagnostic){\n'
         '        if(!fx_apply_renderer(RUNTIME_DIR,2)||!fx_apply_preset(RUNTIME_DIR,fx_selected(RUNTIME_DIR))){log_line("[SD-NDX-COM] diagnostic renderer install failed");return 1;}\n'
-        '        sd_com_enabled=1;wine_nx_lsfg_configure(0,1,0);\n'
+        '        __atomic_store_n(&sd_com_enabled,1,__ATOMIC_RELEASE);wine_nx_lsfg_configure(0,1,0);\n'
         '    }\n'
         '    if(sd_com_enabled){\n'
         '        mkdir(RUNTIME_DIR "/native-dxvk-h4",0777);mkdir(RUNTIME_DIR "/native-dxvk-h4/cache",0777);\n'
@@ -119,6 +137,7 @@ static int sd_com_prepare_screen(void) {
         '        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);\n'
         '        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);\n'
         '        log_line("[SD-NDX-COM] BUILD '+BUILD+' mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);\n'
+        '        log_line("[SD-NDX-LOG] async queue=512 batch=32; native progress=5s; bulk observer disabled; missing tail possible after forced restart");\n'
         '        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build='+BUILD+' renderer=DXVK Native ARM64");\n'
         '        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
         '    }')
@@ -190,6 +209,8 @@ def main():
         before=Path(pin[kind+'_source']).read_text()
         if kind=='runtime':
             after=overlay_runtime(before);command=old['compile_commands'][relative]
+            log_header=overlay/'wine-nx-probe/source/native_log_queue.h';log_header.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(SOURCES/'native_log_queue.h',log_header)
             settings_path=Path(pin['runtime_source']).parent/'f1_settings.h';settings=settings_path.read_text()
             settings_after=replace(settings,'{7,5,2,3,2,3,2}','{7,5,3,3,2,3,2}')
             settings_after=replace(settings_after,'return row?"Async shader compilation  /  Alternative renderer":"Default renderer";',
@@ -239,7 +260,7 @@ def main():
     symbols=subprocess.check_output([str(A64/'aarch64-none-elf-readelf'),'-Ws',str(elf)],text=True)
     missing=[line for line in symbols.splitlines() if len(line.split())>=8 and ' UND ' in line and ' WEAK ' not in line]
     assert not missing,missing
-    for required in ('wine_nx_sd_com_wow64_unix_funcs','sd_com_shutdown','sd_com_native_window','sd_com_presented','sd_com_native_worker','wine_nx_sd_com_first_present','D3D11CreateDevice','vkGetInstanceProcAddr','nvk_CreateDevice'):
+    for required in ('wine_nx_sd_com_wow64_unix_funcs','sd_com_shutdown','sd_com_progress_report','sd_com_native_window','sd_com_presented','sd_com_native_worker','wine_nx_sd_com_first_present','D3D11CreateDevice','vkGetInstanceProcAddr','nvk_CreateDevice'):
         assert re.search(r'\b'+required+r'\s*$',symbols,re.M),required
     nacp=work/'app.nacp';nro=work/'sleepingdogs-fex.nro'
     subprocess.run([str(SDK/'tools/bin/nacptool'),'--create','FEXTendo Native DXVK H4','AndroSwitch Project',APP_VERSION,str(nacp)],check=True)

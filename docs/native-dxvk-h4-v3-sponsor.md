@@ -2,10 +2,15 @@
 
 [Documentation](README.md) · [H4 COM implementation](native-dxvk-h4-v1.md) · [Current status](STATUS.md)
 
+**Historical candidate:** v3 COM completion was subsequently observed, but
+the game still froze with FIFO. See the [preserved v3 findings and v4 candidate](native-dxvk-h4-v4-logging.md).
+The behavior and validation limits below describe the original v3 delivery;
+current build tools generate v4.
+
 H4 v2 passed the real PE32 COM self-test on Switch and presented the game's
 first native frame. The game then froze on the static sponsor/legal screen,
 before the animated splash. **H4 v3 is a diagnostic candidate for that freeze;
-it has not yet been tested on Switch and does not establish a performance gain.**
+its initial host checks did not establish a performance gain.**
 
 ## What the v2 files showed
 
@@ -97,6 +102,10 @@ restores the pinned v18 NRO, x86 D3D11/DXGI pair and selection. Always close
 from HOME before replacing files. The v1/v2 folders are preserved separately.
 
 ## Build, checks and capture analysis
+
+These commands describe the v3 source snapshot in the v3 delivery folder.
+Use the v4 note for the current checkout; the analyzer requires
+`--expected-build native-dxvk-h4-v3` for v3 captures.
 
 Prepared pinned Wine/FEX/Mesa/SDK objects and legacy renderer inputs remain
 required. Work is isolated in `/home/blekjek/sleepingdogs-native-dxvk-h4-v3`.

@@ -7,7 +7,7 @@ import re
 import shutil
 
 ROOT=Path(__file__).resolve().parents[1]
-BUILD='native-dxvk-h4-v3'
+BUILD='native-dxvk-h4-v4'
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -30,7 +30,27 @@ def startup_trace(runtime):
                 unmatched_ends=unmatched,malformed_events=malformed,
                 bounded_stop_observed='[SD-NDX-CALL] startup trace complete;' in runtime,
                 cause_confirmed=False,
-                limits='Missing END means the call did not finish in the captured log; it does not prove deadlock. Wall time includes synchronous logging, not GPU time. No trace is emitted before packet validation or bridge lock acquisition.')
+                limits='Missing END means no completion was captured, not proof of deadlock. V4 queued logging can drop events or lose its tail on forced restart. Wall time includes scheduling and logging (synchronous SD I/O in v3), not GPU time. Startup trace begins after packet validation and bridge lock acquisition.')
+
+def progress_trace(runtime):
+    snapshots=[];active=[];drops=[];busy=0
+    for line in runtime.splitlines():
+        if '[SD-NDX-PROGRESS] snapshot busy' in line:busy+=1
+        elif '[SD-NDX-PROGRESS]' in line:
+            values={k:int(v) for k,v in re.findall(r'(\w+)=(\d+)',line)}
+            if 'calls' in values:snapshots.append(values)
+        elif '[SD-NDX-ACTIVE]' in line:
+            values=dict(re.findall(r'(\w+)=([^\s]+)',line))
+            # Idle describes the last completed call, never a hung active call.
+            values['call_in_progress']=values.get('phase') in ('validate','execute','result-copy')
+            active.append(values)
+        elif '[SD-NDX-LOG] dropped=' in line:
+            match=re.search(r'\bdropped=(\d+)',line)
+            if match:drops.append(int(match[1]))
+    return dict(snapshots=snapshots,call_states=active,snapshot_busy_count=busy,
+                reported_dropped_lines=sum(drops),async_logging_observed='[SD-NDX-LOG] async queue=' in runtime,
+                cause_confirmed=False,
+                limits='Snapshots never acquire the COM gate. Totals describe the last completed call; idle is not an active call. Missing snapshots may mean scheduling/I/O delay or lost queued output. Zero reported drops does not authenticate a complete tail. These are not GPU timings.')
 
 def capture_files(root,flat,mode,dxvk_override=None):
     guest_root=root if flat else root/'drive_c';native_root=root if flat else root/'native-dxvk-h4'
@@ -55,7 +75,7 @@ def analyze(mode,result,guest,runtime,dxvk,expected_build=BUILD):
         'no_bridge_fault':'[SD-NDX-COM] FAULT ' not in runtime and '[SD-NDX-COM] UNSUPPORTED ' not in runtime,
         'renderer_log_mode_matches':config_modes_match,
     }
-    if expected_build==BUILD:
+    if expected_build in ('native-dxvk-h4-v3',BUILD):
         validation.update(native_fifo_requested=bool(re.search(r'\bdxgi\.syncInterval\s*=\s*1\s*$',dxvk,re.M)),
                           fifo_present='VK_PRESENT_MODE_FIFO_KHR' in dxvk)
     if mode=='com':
@@ -91,7 +111,7 @@ def analyze(mode,result,guest,runtime,dxvk,expected_build=BUILD):
     return dict(status=status,mode=mode,build=expected_build,validation=validation,result=result if mode=='com' else None,
                 hardware_capture_consistent=validation['native_renderer'] and validation['switch_gpu'] and config_modes_match,
                 real_pe32_com_api_passed=mode=='com' and completed,game_native_present_observed=mode=='game' and completed,
-                renderer_config_paths=configs,startup_trace=startup_trace(runtime),same_session_authenticated=False,
+                renderer_config_paths=configs,startup_trace=startup_trace(runtime),progress_trace=progress_trace(runtime),same_session_authenticated=False,
                 native_present_windows=windows,unknown_iids=sorted(set(re.findall(r'\[SD-NDX-COM\] UNKNOWN_IID ([^\n]+)',runtime))),
                 worker_markers=[line for line in runtime.splitlines() if '[SD-NDX-WORKER]' in line],
                 unsupported_or_faults=[line for line in runtime.splitlines() if '[SD-NDX-COM] UNSUPPORTED ' in line or '[SD-NDX-COM] FAULT ' in line],
@@ -107,7 +127,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);source=parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--runtime-root',type=Path);source.add_argument('--log-dir',type=Path)
     parser.add_argument('--mode',choices=('com','game'),default='com')
-    parser.add_argument('--expected-build',choices=('native-dxvk-h4-v2',BUILD),default=BUILD)
+    parser.add_argument('--expected-build',choices=('native-dxvk-h4-v2','native-dxvk-h4-v3',BUILD),default=BUILD)
     parser.add_argument('--dxvk-log',type=Path,help='Preserved renderer log from this COM/game session')
     args=parser.parse_args()
     files=capture_files(args.log_dir or args.runtime_root,bool(args.log_dir),args.mode,args.dxvk_log)

@@ -28,9 +28,14 @@ device creation. The COM self-test had been skipped. [H4 v2](native-dxvk-h4-v2-w
 restores the missing launcher framebuffer handoff for GUI and Debug. The later
 GUI run passed that handoff, created the native device and presented one game
 frame, then froze at the static sponsor page before the animated splash.
-[H4 v3](native-dxvk-h4-v3-sponsor.md) tests native FIFO profiles and adds bounded
-BEGIN/END call tracing. The freeze's cause and v3's hardware behavior are
-unconfirmed; native gameplay and FPS validation remain pending.
+[H4 v3](native-dxvk-h4-v3-sponsor.md) also completed the COM test, but its game
+run still froze with FIFO active. All 128 traced calls returned, including two
+Presents; the trace cap hides the later stall. One bulk observer report took
+31.6 seconds including output/scheduling. The [preserved v3 evidence](../reports/native-dxvk-h4-v3-sponsor-analysis.json)
+separates the prior COM guest files, newly supplied COM runtime, and game logs.
+[H4 v4](native-dxvk-h4-v4-logging.md) moves routine native log writes out of
+the bridge call and adds ongoing compact progress. V4 Switch behavior and the
+freeze's cause remain unconfirmed; native gameplay/FPS validation is pending.
 
 ## Performance evidence
 
@@ -102,10 +107,10 @@ The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
-pass their supplied hardware captures. H4 v2's ordinary PE32 COM client also
-passed on Switch. The [H4 v3 update folder](native-dxvk-h4-v3-sponsor.md#install-and-validate-on-switch)
-tests the first-frame freeze using FIFO and startup call traces. Save COM files
-before game launch because the shared DXVK log gets overwritten. A v3 COM pass,
+pass their supplied hardware captures. H4 v2/v3 ordinary PE32 COM completion
+is also observed. The [H4 v4 update folder](native-dxvk-h4-v4-logging.md#install-and-validate-on-switch)
+tests queued logging and compact progress after the continued FIFO freeze.
+Save COM files before the game overwrites the shared DXVK log. A v4 COM pass,
 game startup, actual game API use, resource lifetime and native worker behavior
 still need validation. Matched 720p gameplay and long-session evidence are
 required before production or a 30 FPS claim. See the

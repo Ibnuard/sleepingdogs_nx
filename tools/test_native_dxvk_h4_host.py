@@ -13,12 +13,12 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def main():
-    output=ROOT/'local/native-dxvk-h4-v3';output.mkdir(parents=True,exist_ok=True)
+    output=ROOT/'local/native-dxvk-h4-v4';output.mkdir(parents=True,exist_ok=True)
     build_receipt=ROOT/'local/native-dxvk-probe-v1/build-host.json';build=json.loads(build_receipt.read_text());library=Path(build['library'])
     assert sha(library)==build['sha256']
     source=library.parent.parent/'source';headers=library.parent.parent/'host-deps/usr/include'
     inputs=[ROOT/'tests/native_dxvk_com_host.cpp',*sorted((ROOT/'src/native_dxvk_com').glob('com_native*')),
-            *[ROOT/'src/native_dxvk_com'/n for n in ('com_protocol.h','com_interfaces.h','com_methods.h','com_guids.inc','com_inheritance.inc')],ROOT/'src/native_dxvk/probe_shaders.h']
+            *[ROOT/'src/native_dxvk_com'/n for n in ('com_protocol.h','com_progress.h','com_interfaces.h','com_methods.h','com_guids.inc','com_inheritance.inc')],ROOT/'src/native_dxvk/probe_shaders.h']
     executable=output/'h4-host-test'
     command=['g++','-O2','-std=c++17','-Wall','-Wextra','-Wno-missing-field-initializers','-DSD_COM_HOST_FAULT_TESTS',
              *['-I'+str(source/p) for p in ('include/native/windows','include/native/directx','include/native','include')],'-I'+str(headers),

@@ -1,0 +1,3402 @@
+{
+  "status": "ROUTE_OBSERVED",
+  "mode": "game",
+  "build": "native-dxvk-h4-v3",
+  "validation": {
+    "build": true,
+    "native_device": true,
+    "first_present": true,
+    "native_renderer": true,
+    "switch_gpu": true,
+    "no_device_lost": true,
+    "no_bridge_fault": true,
+    "renderer_log_mode_matches": true,
+    "native_fifo_requested": true,
+    "fifo_present": true,
+    "game_target": true,
+    "native_selection": true
+  },
+  "result": null,
+  "hardware_capture_consistent": true,
+  "real_pe32_com_api_passed": false,
+  "game_native_present_observed": true,
+  "renderer_config_paths": [
+    "sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/dxvk.conf"
+  ],
+  "startup_trace": {
+    "begin_count": 128,
+    "completed_calls": [
+      {
+        "begin": {
+          "call": 667,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955574334",
+          "args": "00010294,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 667,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "1",
+          "bytes": "4194304",
+          "wall_us": "4108",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "0"
+        }
+      },
+      {
+        "begin": {
+          "call": 668,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "955580631",
+          "args": "00000001,03ef0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 668,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1701",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "0"
+        }
+      },
+      {
+        "begin": {
+          "call": 671,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955585452",
+          "args": "00010294,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 671,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "1",
+          "bytes": "0",
+          "wall_us": "2872",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 675,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955593179",
+          "args": "00010295,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 675,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "2",
+          "bytes": "4194304",
+          "wall_us": "3308",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 676,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "955598697",
+          "args": "00000002,03ef0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 676,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1752",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 679,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955602090",
+          "args": "00010295,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 679,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "2",
+          "bytes": "0",
+          "wall_us": "2883",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 683,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955610419",
+          "args": "00010296,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 683,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "3",
+          "bytes": "5242880",
+          "wall_us": "3263",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 684,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "955615951",
+          "args": "00000003,03ef0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 684,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1750",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 687,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955619648",
+          "args": "00010296,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 687,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "3",
+          "bytes": "0",
+          "wall_us": "3226",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 691,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955627838",
+          "args": "00010297,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 691,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "4",
+          "bytes": "5242880",
+          "wall_us": "3365",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 692,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "955633563",
+          "args": "00000004,03ef0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 692,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1791",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 695,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "955637820",
+          "args": "00010297,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 695,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "4",
+          "bytes": "0",
+          "wall_us": "3198",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 727,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "955676402",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 727,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4003",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 728,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "955693845",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 728,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "49053",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 733,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "956320803",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 733,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1801",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 734,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "956324497",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 734,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2719",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1692,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "956756142",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1692,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2713447",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1693,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "959474435",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1693,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6013",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1716,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "959890274",
+          "args": "00010677,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1716,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4454302",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1717,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "964349998",
+          "args": "00010677,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1717,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5760",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1740,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "964364166",
+          "args": "00010689,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1740,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6088385",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1741,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "970463822",
+          "args": "00010689,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1741,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3271",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1760,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "970481483",
+          "args": "00010697,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1760,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1700238",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1761,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "972187719",
+          "args": "00010697,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1761,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4942",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3438,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "973625579",
+          "args": "00010d1f,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3438,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3879303",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3439,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "978799266",
+          "args": "00010d1f,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3439,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1614687",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3479,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980478586",
+          "args": "00010d42,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3479,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7421",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3480,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980489582",
+          "args": "00010d42,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3480,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4381",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3547,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980507155",
+          "args": "00010d80,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3547,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "23877",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3548,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980540503",
+          "args": "00010d80,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3548,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3133",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3559,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980548131",
+          "args": "00010d86,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3559,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2062",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3560,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980551897",
+          "args": "00010d86,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3560,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1735",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3561,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980555341",
+          "args": "00010d86,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3561,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1940",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3562,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980558938",
+          "args": "00010d86,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3562,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "41984",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3841,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "980640938",
+          "args": "00010e98,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3841,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1165428",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3842,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "981810237",
+          "args": "00010e98,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3842,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2319",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3872,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "981825535",
+          "args": "00010eb1,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3872,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1510869",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3873,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "984690431",
+          "args": "00010eb1,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3873,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6227",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3889,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "984706857",
+          "args": "00010ebc,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3889,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2389",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3890,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "984712664",
+          "args": "00010ebc,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3890,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3289",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3945,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "984745838",
+          "args": "00010eee,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3945,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "9786542",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 3946,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "994544623",
+          "args": "00010eee,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 3946,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5852925",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4015,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1000669683",
+          "args": "00010f2e,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4015,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "638624",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4016,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1001313780",
+          "args": "00010f2e,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4016,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "170597",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4032,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1001744051",
+          "args": "00010f39,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4032,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "125020",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4033,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1001871032",
+          "args": "00010f39,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4033,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1714",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4071,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1001889410",
+          "args": "00010f5a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4071,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "19230",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4072,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1002329197",
+          "args": "00010f5a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4072,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "727227",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4317,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1003569400",
+          "args": "0001104a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4317,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "13550",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4318,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1003586882",
+          "args": "0001104a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4318,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1758",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4547,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1003683569",
+          "args": "0001112a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4547,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "169198",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4548,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1003856510",
+          "args": "0001112a,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4548,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "9560",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4564,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004193243",
+          "args": "00011135,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4564,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "160884",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4565,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004359848",
+          "args": "00011135,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4565,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3269",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4578,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004374865",
+          "args": "0001113d,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4578,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4340",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4579,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004380986",
+          "args": "0001113d,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4579,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "328500",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4607,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004732810",
+          "args": "00011154,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4607,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5159",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4608,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1004739814",
+          "args": "00011154,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4608,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1945",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4632,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007072380",
+          "args": "00011167,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4632,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "8296",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4633,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007082981",
+          "args": "00011167,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4633,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1690",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4650,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007135000",
+          "args": "00011173,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4650,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5235",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4651,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007305168",
+          "args": "00011173,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4651,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3158",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4676,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007316216",
+          "args": "00011187,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4676,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "10937",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4677,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007556951",
+          "args": "00011187,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4677,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3422",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4687,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007566125",
+          "args": "0001118c,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4687,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3011",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4688,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007570880",
+          "args": "0001118c,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4688,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1762",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4689,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007574418",
+          "args": "0001118c,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4689,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1730",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4690,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007577899",
+          "args": "0001118c,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4690,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1722",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4691,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "1007582502",
+          "args": "0001118c,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4691,
+          "thread": "2a81c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3518",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4721,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1017860069",
+          "args": "00010295,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4721,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "5",
+          "bytes": "4194304",
+          "wall_us": "6062",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4722,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "1023875045",
+          "args": "00000005,04c70000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 4722,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "890547",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4725,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1025477214",
+          "args": "00010297,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4725,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "6",
+          "bytes": "5242880",
+          "wall_us": "175365",
+          "presents": "0",
+          "maps": "2",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4726,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "1025963165",
+          "args": "00000006,05070000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 4726,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "162535",
+          "presents": "0",
+          "maps": "2",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 4729,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1026926999",
+          "args": "00010295,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4729,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "5",
+          "bytes": "0",
+          "wall_us": "207556",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "23068672"
+        }
+      },
+      {
+        "begin": {
+          "call": 4732,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1027161048",
+          "args": "00010297,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4732,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "6",
+          "bytes": "0",
+          "wall_us": "9584",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "28311552"
+        }
+      },
+      {
+        "begin": {
+          "call": 4740,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1027248567",
+          "args": "00010294,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4740,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "7",
+          "bytes": "4194304",
+          "wall_us": "18531",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "28311552"
+        }
+      },
+      {
+        "begin": {
+          "call": 4742,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "1027278648",
+          "args": "00000007,04c70000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 4742,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "21768",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "28311552"
+        }
+      },
+      {
+        "begin": {
+          "call": 4746,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1027303625",
+          "args": "00010296,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4746,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "8",
+          "bytes": "5242880",
+          "wall_us": "7901",
+          "presents": "0",
+          "maps": "2",
+          "copy_bytes": "28311552"
+        }
+      },
+      {
+        "begin": {
+          "call": 4748,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "1027346086",
+          "args": "00000008,05070000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 4748,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "889343",
+          "presents": "0",
+          "maps": "2",
+          "copy_bytes": "28311552"
+        }
+      },
+      {
+        "begin": {
+          "call": 4752,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1028245879",
+          "args": "00010294,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4752,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "7",
+          "bytes": "0",
+          "wall_us": "6454",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "32505856"
+        }
+      },
+      {
+        "begin": {
+          "call": 4756,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "0",
+          "time_us": "1028300975",
+          "args": "00010296,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4756,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "8",
+          "bytes": "0",
+          "wall_us": "199476",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4790,
+          "thread": "2a81c0",
+          "name": "Present",
+          "interface": "46",
+          "method": "8",
+          "object": "0001000d",
+          "presents": "0",
+          "time_us": "1029415546",
+          "args": "00000001,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4790,
+          "thread": "2a81c0",
+          "name": "Present",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7579015",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4791,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "58",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1041067490",
+          "args": "000111a2,00000001,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4791,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "715037",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4793,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "110",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1044464048",
+          "args": "00000000,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4793,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "31248",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4794,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "1",
+          "time_us": "1044502090",
+          "args": "00010295,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4794,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "9",
+          "bytes": "4194304",
+          "wall_us": "12987",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4795,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "50",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1048694691",
+          "args": "0001029b,03aaf960,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4795,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "11689507",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4796,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "1",
+          "time_us": "1072919245",
+          "args": "00000009,04df0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 4796,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1047314",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4797,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "53",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1074204827",
+          "args": "0001029e,00000003,3f800000,00000000,00000000"
+        },
+        "end": {
+          "call": 4797,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7636",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4800,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "50",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1074225021",
+          "args": "0001029b,03aaf960,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4800,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "56877",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4803,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "53",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1074309448",
+          "args": "0001029e,00000003,3f800000,00000001,00000000"
+        },
+        "end": {
+          "call": 4803,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "64313",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4805,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "1",
+          "time_us": "1074377297",
+          "args": "00010297,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 4805,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "10",
+          "bytes": "5242880",
+          "wall_us": "5168",
+          "presents": "1",
+          "maps": "2",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4806,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "48",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1074409745",
+          "args": "00010667,00000000,00000000,013f3340,000000c0"
+        },
+        "end": {
+          "call": 4806,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "9765",
+          "presents": "1",
+          "maps": "2",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4808,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "1",
+          "time_us": "1074429144",
+          "args": "0000000a,056f0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 4808,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6354",
+          "presents": "1",
+          "maps": "2",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4812,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "17",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1074659994",
+          "args": "000111a3,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4812,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4497431",
+          "presents": "1",
+          "maps": "2",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4815,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "19",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079575180",
+          "args": "00010296,00000039,000000c0,00000000,00000000"
+        },
+        "end": {
+          "call": 4815,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "21890",
+          "presents": "1",
+          "maps": "2",
+          "copy_bytes": "37748736"
+        }
+      },
+      {
+        "begin": {
+          "call": 4817,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "1",
+          "time_us": "1079610579",
+          "args": "00010295,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4817,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "9",
+          "bytes": "0",
+          "wall_us": "7163",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "41943040"
+        }
+      },
+      {
+        "begin": {
+          "call": 4818,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "18",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079619769",
+          "args": "00000000,00000008,03aaf690,03aafd08,03aafd28"
+        },
+        "end": {
+          "call": 4818,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3620",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "41943040"
+        }
+      },
+      {
+        "begin": {
+          "call": 4821,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "24",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079627520",
+          "args": "00000005,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4821,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "137088",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "41943040"
+        }
+      },
+      {
+        "begin": {
+          "call": 4824,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "11",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079773895",
+          "args": "00010666,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4824,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "11562",
+          "presents": "1",
+          "maps": "1",
+          "copy_bytes": "41943040"
+        }
+      },
+      {
+        "begin": {
+          "call": 4825,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010011",
+          "presents": "1",
+          "time_us": "1079796449",
+          "args": "00010297,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4825,
+          "thread": "3401ad",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "10",
+          "bytes": "0",
+          "wall_us": "5363",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4827,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "7",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079811499",
+          "args": "00000000,00000008,03aaf698,00000000,00000000"
+        },
+        "end": {
+          "call": 4827,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "9175",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4830,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "9",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079832468",
+          "args": "00020665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4830,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "45606",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4833,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "33",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079882619",
+          "args": "00000004,03aaf698,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4833,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "10447",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4834,
+          "thread": "3401ad",
+          "name": "Context",
+          "interface": "14",
+          "method": "114",
+          "object": "00010011",
+          "presents": "1",
+          "time_us": "1079905321",
+          "args": "00000001,014b6ba8,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4834,
+          "thread": "3401ad",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3447",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4836,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "8",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079920713",
+          "args": "00000000,0000000c,03aaf698,00000000,00000000"
+        },
+        "end": {
+          "call": 4836,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "10560",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4838,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "10",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079935354",
+          "args": "00000000,0000000c,03aaf698,00000000,00000000"
+        },
+        "end": {
+          "call": 4838,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3543",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4840,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "43",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079949815",
+          "args": "000111a6,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4840,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3418",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4842,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "44",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1079966008",
+          "args": "00000001,03aafdd4,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4842,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "44115",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4844,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "45",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080021251",
+          "args": "00000001,03aafdec,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4844,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "4232",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4846,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "33",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080029173",
+          "args": "00000004,03aaf698,0001029e,00000000,00000000"
+        },
+        "end": {
+          "call": 4846,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5256",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4848,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "35",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080038410",
+          "args": "000111a4,01258cbc,ffffffff,00000000,00000000"
+        },
+        "end": {
+          "call": 4848,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "11158",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4850,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "36",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080053233",
+          "args": "000111a5,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4850,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "13645",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4852,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "12",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080087466",
+          "args": "00000004,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4852,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6209",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4856,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "47",
+          "object": "00010005",
+          "presents": "1",
+          "time_us": "1080161133",
+          "args": "0001000e,00010298,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4856,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2664",
+          "presents": "1",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4858,
+          "thread": "2a81c0",
+          "name": "Present",
+          "interface": "46",
+          "method": "8",
+          "object": "0001000d",
+          "presents": "1",
+          "time_us": "1080167333",
+          "args": "00000001,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4858,
+          "thread": "2a81c0",
+          "name": "Present",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "3892",
+          "presents": "2",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 4860,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "58",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1080248098",
+          "args": "000111ae,00000001,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 4860,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "11008905",
+          "presents": "2",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5189,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "110",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113697183",
+          "args": "00000000,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 5189,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1654",
+          "presents": "2",
+          "maps": "0",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5190,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "2",
+          "time_us": "1113700464",
+          "args": "00010294,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 5190,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "11",
+          "bytes": "4194304",
+          "wall_us": "4780",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5192,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "50",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113707104",
+          "args": "0001029b,03aaf960,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 5192,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2213",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5194,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "2",
+          "time_us": "1113711194",
+          "args": "0000000b,04df0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 5194,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1949",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5195,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "53",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113715010",
+          "args": "0001029e,00000003,3f800000,00000000,00000000"
+        },
+        "end": {
+          "call": 5195,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1672",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5198,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "50",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113718612",
+          "args": "0001029b,03aaf960,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 5198,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1719",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5201,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "53",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113723173",
+          "args": "0001029e,00000003,3f800000,00000001,00000000"
+        },
+        "end": {
+          "call": 5201,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1766",
+          "presents": "2",
+          "maps": "1",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5202,
+          "thread": "3401ad",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010011",
+          "presents": "2",
+          "time_us": "1113726739",
+          "args": "00010296,00000000,00000004,00000000,04c6ff10"
+        },
+        "end": {
+          "call": 5202,
+          "thread": "3401ad",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "12",
+          "bytes": "5242880",
+          "wall_us": "3319",
+          "presents": "2",
+          "maps": "2",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5204,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "48",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113731701",
+          "args": "00010667,00000000,00000000,013f3340,000000c0"
+        },
+        "end": {
+          "call": 5204,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1668",
+          "presents": "2",
+          "maps": "2",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5206,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "2",
+          "time_us": "1113735444",
+          "args": "0000000c,056f0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 5206,
+          "thread": "3401ad",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "2791",
+          "presents": "2",
+          "maps": "2",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5210,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "17",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113740110",
+          "args": "000111a3,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 5210,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "9852",
+          "presents": "2",
+          "maps": "2",
+          "copy_bytes": "47185920"
+        }
+      },
+      {
+        "begin": {
+          "call": 5213,
+          "thread": "2a81c0",
+          "name": "Context",
+          "interface": "14",
+          "method": "19",
+          "object": "00010005",
+          "presents": "2",
+          "time_us": "1113753052",
+          "args": "00010297,00000039,000000c0,00000000,00000000"
+        },
+        "end": {
+          "call": 5213,
+          "thread": "2a81c0",
+          "name": "Context",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "1653",
+          "presents": "2",
+          "maps": "2",
+          "copy_bytes": "47185920"
+        }
+      }
+    ],
+    "incomplete_calls": [],
+    "unmatched_ends": [],
+    "malformed_events": [],
+    "bounded_stop_observed": true,
+    "cause_confirmed": false,
+    "limits": "Missing END means the call did not finish in the captured log; it does not prove deadlock. Wall time includes synchronous logging, not GPU time. No trace is emitted before packet validation or bridge lock acquisition."
+  },
+  "same_session_authenticated": false,
+  "native_present_windows": [],
+  "unknown_iids": [],
+  "worker_markers": [
+    "[SD-NDX-WORKER] name=dxvk-submit handle=2949563 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-queue handle=2982330 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-cs handle=3015097 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-cache handle=3310000 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-shader-l handle=3342767 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry"
+  ],
+  "unsupported_or_faults": [],
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false,
+  "visual_scanout_confirmed": null,
+  "clocks_mhz": null,
+  "running_binary_authenticated": false,
+  "limits": [
+    "COM self-test is a synthetic client, not Sleeping Dogs FPS.",
+    "Game Present windows can include menu, loading and pause. Scene/clock matched gameplay validation remains separate.",
+    "Logs do not authenticate running binary, clocks or visible scanout.",
+    "Renderer config must match COM/game mode. This rejects a game log overwriting COM output but does not authenticate an exact session. Save COM logs before launching the game.",
+    "Resource counters are bridge-owned external references/maps; they do not prove all DXVK/driver allocations are freed."
+  ],
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-a227d3dee3f4/runtime.txt",
+      "sha256": "a227d3dee3f469533721def00555bab0f1ca8e552163fc189bdfb9afa877bb67",
+      "bytes": 121060
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-a227d3dee3f4/dxvk.txt",
+      "sha256": "c82897f1b4630499fabb478c9893b8dab75ecb53150587c068a5550afbd16190",
+      "bytes": 14911
+    }
+  },
+  "analyzer_sha256": "838c81722c709c4692312daff3fc4f4bf9d851a93aa9d3f4643b41cd6f8f1746"
+}
