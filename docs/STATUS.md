@@ -16,6 +16,11 @@ graphics path uses **x86 DXVK 3.1.1-sdbatch2** and native ARM64
 **Mesa 26.2.2-sdv14.1-cache / NVK GM20B**. The FEX Switch integration continues
 FEXTendo's own PES13-derived port of upstream FEX-Emu.
 
+The separate **H4 native DXVK candidate** now implements x86 COM proxies and
+an experimental native ARM64 launcher/game route. Its local build/host/ABI
+checks do not replace the v18 hardware baseline: H4 guest execution and game
+validation on Switch are still pending.
+
 ## Performance evidence
 
 | Observation | Result and scope |
@@ -56,7 +61,7 @@ baseline without that presentation path and its repeated logging.
 - CPU usage, GPU-load estimates and memory occupancy are insufficient to
   isolate the remaining frame bottleneck. Current logs lack GPU timestamp
   measurements for that attribution.
-- **Native ARM64 DXVK is a prototype only.** The
+- **Native ARM64 DXVK is experimental.** The
   [v1 probe](native-dxvk-probe-v1.md) builds an ARM64 static library, passes
   host draw/readback tests and has passed the supplied standalone Switch H1
   capture: 644 checks, all 720p pixels correct and 300 FIFO presentation calls.
@@ -68,8 +73,12 @@ baseline without that presentation path and its repeated logging.
   720p offscreen pixels match. The [H3 native Present diagnostic](native-dxvk-h3-v1.md)
   also passes the supplied Switch capture: 2,331 checks, 651 real bridge calls,
   both full 720p readbacks and 300 FIFO Present calls in 5.034 seconds.
-  This is a synthetic test, not game FPS. Neither diagnostic implements game
-  COM interfaces, and Sleeping Dogs still uses the existing x86 DXVK path.
+  This is a synthetic test, not game FPS. H1–H3 do not implement game COM
+  interfaces. The subsequent [H4 candidate](native-dxvk-h4-v1.md) implements
+  those proxies and a third renderer choice. Native host correctness, compiled
+  layouts, static game imports and launcher transactions are checked locally;
+  actual H4 PE32/FEX execution, dynamic game API coverage and playable native
+  rendering remain unverified. The confirmed gameplay still uses x86 DXVK.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -80,12 +89,13 @@ The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
-pass their supplied hardware captures. The next major gate is x86 D3D11/DXGI
-COM proxies exercised by a real PE32 caller. Game API coverage, production
-mapping/resource lifetime, host-thread integration and actual gameplay testing
-follow. Native DXVK is not an available launcher mode or a proven route to
-30 FPS. See the [production gates](native-dxvk-h3-v1.md#production-readiness)
-and [probe record](native-dxvk-probe-v1.md) for exact coverage.
+pass their supplied hardware captures. The [H4 update folder](native-dxvk-h4-v1.md#switch-validation-one-nro-folder-only)
+contains the COM client and native launcher/game candidate on one NRO. The next
+gate is running that ordinary PE32 COM client through Wine/FEX on Switch, then
+loading the game and validating its actual API use, resource lifetime and native
+worker behavior. Matched 720p gameplay and long-session evidence are required
+before production or a 30 FPS claim. See the
+[production gates](native-dxvk-h3-v1.md#production-readiness) for what remains.
 
 Memory statistics must also be interpreted at the correct layer: remaining
 process heap quota is not the same as free space inside existing allocators.

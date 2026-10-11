@@ -56,6 +56,14 @@ original `src/native_dxvk/probe_*` sources, original test shaders and
 [probe license](src/native_dxvk/LICENSE). This experiment does not use LSFG
 or game shader payloads.
 
+The [H4 COM bridge](docs/native-dxvk-h4-v1.md) adds original MIT-marked proxy,
+dispatch and fixture code in `src/native_dxvk_com/`. Its generated signatures
+and GUID inventory are derived from the pinned DXVK native headers and Wine
+IDL files; their respective upstream notices still apply. The ready folder
+retains the inherited native renderer/driver source bundle, exact H4 overlays
+and both legacy renderer origins. No game or proprietary LSFG shader bytes
+are included.
+
 ## Attributed backports
 
 The [v9 shader integration](docs/low-window-shader-optimizations.md) adapts

@@ -1,0 +1,16 @@
+{
+  "build": "native-dxvk-h4-v1",
+  "scope": "Pinned renderer binaries and canonical five-profile recipes. No preference, save or game files.",
+  "legacy_renderer": "DXVK 3.1.1-sdbatch2; same binaries recorded in native-v15-package.json and retained by v18",
+  "async_archive": "vendor/dxvk/dxvk-gplasync-v2.7.1-1.tar.gz",
+  "profile_policy": "Regenerate Balanced, Low latency, Stable, Quality and Performance from the existing project recipes. No dependency on deleted update ZIPs.",
+  "files": {
+    "local/dxvk-native-v15/d3d9.dll": "af11a0d81f98df4822297f31da4d99d06485bdb2d1d5b5294e1a0056d131631c",
+    "local/dxvk-native-v15/d3d11.dll": "84e3a8bfacb5e892c75d62db1e6d68a77eb09dc9eae56899fce616ed65ea40b9",
+    "local/dxvk-native-v15/dxgi.dll": "272d400c19a3b36fe2d246a9cbc4b68c8e373388f2d771441251b75e58b14ecb",
+    "vendor/dxvk/dxvk-gplasync-v2.7.1-1.tar.gz": "590050b88be7b156cf641abe762e1ad47ebbe828f7f0edb2970aa4716ee3af6d",
+    "tools/port_common.py": "ddd3a3d2a749befeee88ebbe2914c515595181f1a578d6a9bfae571e093c0c62",
+    "tools/sleepingdogs_performance_hud.py": "6ecb0ce915078c439ee84e82e74616112b22786e6eb2414cc24ae1d44d92d4e5",
+    "reports/native-v15-package.json": "5b0b6d8b4ab5c01547dac81da16e31c9de5ebc4684de9cac5cbdfd4eb072a59b"
+  }
+}

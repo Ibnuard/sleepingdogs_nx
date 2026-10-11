@@ -11,6 +11,7 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
+| Native DXVK H4 v1 | [x86 COM bridge and native game launch candidate](native-dxvk-h4-v1.md); built and locally checked, H4 Switch/game/FPS validation pending; folder delivery only |
 | Native DXVK H3 v1 | [Guest-driven native swapchain/Present](native-dxvk-h3-v1.md); supplied Switch capture passes 2,331 checks and 300 Present calls, folder delivery only; no game COM integration |
 | Native DXVK H2 v1 | [PE32 Wine/FEX bridge diagnostic](native-dxvk-h2-v1.md); supplied Switch capture passes 1,096 checks and both readbacks |
 | Native DXVK probe v1 / H1 | [ARM64 build, host tests and successful standalone Switch capture](native-dxvk-probe-v1.md); no real x86 guest or game integration |

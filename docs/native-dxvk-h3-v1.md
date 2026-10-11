@@ -151,6 +151,10 @@ are completed experiment gates, not a production candidate. The largest
 remaining work is connecting the game's actual Windows graphics interfaces
 to that renderer.
 
+Follow-up: [H4 implements COM proxies and the native launcher/game route](native-dxvk-h4-v1.md).
+Its local build/host/ABI checks are separate from the hardware evidence still
+needed below; the H3 capture itself remains unchanged.
+
 | Remaining gate | Evidence needed before moving on |
 | --- | --- |
 | H4: real x86 COM bridge | A PE32 program uses D3D11/DXGI exports and x86 COM vtables, including QueryInterface/AddRef/Release, device/context/resources and a swapchain; struct layouts, returned pointers and mapped data cross the ABI correctly without diagnostic packet calls in the client. |

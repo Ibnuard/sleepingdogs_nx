@@ -1,0 +1,19 @@
+--- a/dlls/ntdll/unix/virtual.c
++++ b/dlls/ntdll/unix/virtual.c
+@@ -1075,6 +1075,8 @@
+ /* Tables for 32-bit DLLs under WoW64 (see ws2_32_unix_stub.c). Those modules
+  * are in the 32-bit loader list only, so they are matched by the DLL name in
+  * their export directory. */
++extern const unixlib_entry_t wine_nx_sd_com_wow64_unix_funcs[];
++extern const unsigned int wine_nx_sd_com_wow64_unix_count;
+ extern const unixlib_entry_t wine_nx_ws2_32_wow64_unix_funcs[];
+ extern const unixlib_entry_t wine_nx_opengl32_wow64_unix_funcs[];
+ extern const unsigned int wine_nx_ws2_32_wow64_unix_count;
+@@ -1097,6 +1099,7 @@
+     const unsigned int     *count;
+ } wine_nx_static_wow64_unix_libs[] =
+ {
++    { "sdndx4.dll", wine_nx_sd_com_wow64_unix_funcs, &wine_nx_sd_com_wow64_unix_count },
+     { "ws2_32.dll", wine_nx_ws2_32_wow64_unix_funcs, &wine_nx_ws2_32_wow64_unix_count },
+     { "opengl32.dll", wine_nx_opengl32_wow64_unix_funcs, &wine_nx_opengl32_wow64_unix_count },
+     { "winenxaudio.drv", wine_nx_audio_wow64_unix_funcs, &wine_nx_audio_wow64_unix_count },

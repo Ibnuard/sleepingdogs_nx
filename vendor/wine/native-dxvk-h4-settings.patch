@@ -1,0 +1,20 @@
+--- a/wine-nx-probe/source/f1_settings.h
++++ b/wine-nx-probe/source/f1_settings.h
+@@ -36,7 +36,7 @@
+     return 0;
+ }
+ static int fx_settings_rows(int page) {
+-    static const int counts[FX_SETTINGS_PAGES]={7,5,2,3,2,3,2};
++    static const int counts[FX_SETTINGS_PAGES]={7,5,3,3,2,3,2};
+     return page>=0&&page<FX_SETTINGS_PAGES?counts[page]:5;
+ }
+ static float fx_settings_scroll_target(int row,int page) {
+@@ -90,7 +90,7 @@
+     case FX_SETTINGS_LSFG:return row==0?(fx_lsfg_available?"Ready. Applies when you launch the game.":"Shader pack missing or invalid."):fx_lsfg_motion[fx_lsfg.flow];
+     case FX_SETTINGS_DX_LOG:return row==0?"Hide the DXVK overlay.":row==1?"Frame rate only.":"Frame times, GPU estimate, memory and worker stats.";
+     case FX_SETTINGS_GRAPHICS:return fx_preset_details[row];
+-    case FX_SETTINGS_RENDERER:return row?"Async shader compilation  /  Alternative renderer":"Default renderer";
++    case FX_SETTINGS_RENDERER:return row==2?"Native ARM64 graphics / experimental":row?"Async shader compilation  /  Alternative renderer":"Default renderer";
+     case FX_SETTINGS_KEYBOARD:return keyboard[row];
+     case FX_SETTINGS_AUDIO:return row?"Original ambient loop in the launcher":"Soft sounds for navigation and actions";
+     default:return "";

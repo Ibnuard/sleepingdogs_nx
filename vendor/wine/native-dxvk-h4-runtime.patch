@@ -1,0 +1,247 @@
+--- a/wine-nx-probe/source/runtime.c
++++ b/wine-nx-probe/source/runtime.c
+@@ -58,11 +58,14 @@
+ #ifdef WINE_NX_BOX64_DYNAREC
+ #define WINE_NX_RUNTIME_BUILD "pes13-nx-0.2.0-vk1-production"
+ #else
+-#define WINE_NX_RUNTIME_BUILD "sleepingdogs-fextendo-0.1.0-v18-apc"
++#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v1"
+ #endif
+ #define MAX_RUNTIME_MODULES 64
+ #define MAX_IMPORT_DEPTH 16
+ 
++extern void sd_com_shutdown(void);
++extern void *sd_com_native_window(void);
++static int sd_com_enabled,sd_com_diagnostic;
+ extern void wine_nx_runtime_platform_init(void);
+ extern void wine_nx_runtime_environment_init(void);
+ extern NTSTATUS wine_nx_loader_bootstrap( const UNICODE_STRING *main_nt_name );
+@@ -402,7 +405,7 @@
+ }
+ static int fx_copy_file(const char *, const char *);
+ static int fx_files_equal(const char *, const char *);
+-static const char *const fx_renderer_ids[2];
++static const char *const fx_renderer_ids[3];
+ #include "f1_dx_hud.h"
+ static int fx_apply_preset(const char *root,int selected) {
+     char source[768], target[768], stage[800], choice[768];
+@@ -410,7 +413,7 @@
+     if (selected < 0 || selected > 4) return 0;
+     snprintf(renderer_file,sizeof(renderer_file),"%s/launcher/renderer-choice.txt",root);
+     renderer[0]='0'; renderer[1]='\n';
+-    if (fx_read(renderer_file,renderer,sizeof(renderer))!=2 || renderer[0]!='1')
++    if (fx_read(renderer_file,renderer,sizeof(renderer))!=2 || (renderer[0]<'0'||renderer[0]>'2'))
+         renderer[0]='0';
+     snprintf(source,sizeof(source),"%s/launcher/presets/%s/%s/dxvk.conf",
+              root,fx_preset_ids[selected],fx_renderer_ids[renderer[0]-'0']);
+@@ -437,15 +440,15 @@
+ /* LGPL-2.1-or-later. Install matching x86 D3D9/D3D11/DXGI before loading Wine. */
+ #ifndef FEXTENDO_RENDERERS_H
+ #define FEXTENDO_RENDERERS_H
+-static const char *const fx_renderer_ids[2]={"dxvk-3.1.1","dxvk-2.7.1-async"};
+-static const char *const fx_renderer_names[2]={"DXVK 3.1.1","DXVK 2.7.1 async"};
++static const char *const fx_renderer_ids[3]={"dxvk-3.1.1","dxvk-2.7.1-async","dxvk-native-h4"};
++static const char *const fx_renderer_names[3]={"DXVK 3.1.1","DXVK 2.7.1 async","DXVK Native ARM64"};
+ /* Keep the first five entries identical to the old journal's bit layout. */
+-static const char *const fx_renderer_targets[7]={
++static const char *const fx_renderer_targets[8]={
+     "/drive_c/SleepingDogs/d3d9.dll","/drive_c/dxvk/d3d9.dll",
+     "/drive_c/SleepingDogs/dxvk.conf","/launcher/presets/dxvk.conf","/launcher/renderer.txt",
+-    "/drive_c/SleepingDogs/d3d11.dll","/drive_c/SleepingDogs/dxgi.dll"};
+-static const char *const fx_renderer_sources[4]={"d3d9.dll","dxvk.conf","d3d11.dll","dxgi.dll"};
+-static const int fx_renderer_source_index[7]={0,0,1,1,-1,2,3};
++    "/drive_c/SleepingDogs/d3d11.dll","/drive_c/SleepingDogs/dxgi.dll","/drive_c/SleepingDogs/sdndx4.dll"};
++static const char *const fx_renderer_sources[5]={"d3d9.dll","dxvk.conf","d3d11.dll","dxgi.dll","sdndx4.dll"};
++static const int fx_renderer_source_index[8]={0,0,1,1,-1,2,3,4};
+ static char fx_renderer_error_text[192],fx_renderer_error_detail[1024];
+ static int fx_renderer_reject(const char *reason,const char *path) {
+     int error=errno;const char *name=strrchr(path,'/');
+@@ -455,11 +458,11 @@
+ }
+ static int fx_renderer_selected(const char *root) {
+     char p[768],b[2];snprintf(p,sizeof(p),"%s/launcher/renderer-choice.txt",root);
+-    return fx_read(p,b,2)==2&&b[0]=='1'&&b[1]=='\n';
++    return fx_read(p,b,2)==2&&b[0]>='0'&&b[0]<='2'&&b[1]=='\n' ? b[0]-'0' : 0;
+ }
+ static int fx_renderer_save(const char *root,int selected) {
+     char p[768],b[2]={(char)('0'+selected),'\n'};
+-    if(selected<0||selected>1)return 0;
++    if(selected<0||selected>2)return 0;
+     snprintf(p,sizeof(p),"%s/launcher/renderer-choice.txt",root);
+     return fx_write(p,b,2);
+ }
+@@ -485,7 +488,8 @@
+     /* Old versions used five bits. A separate journal avoids deleting the new
+      * D3D11 pair while recovering a transaction interrupted before this update. */
+     return fx_renderer_recover_journal(root,"renderer.txn",5)&&
+-           fx_renderer_recover_journal(root,"renderer-dx11.txn",7);
++           fx_renderer_recover_journal(root,"renderer-dx11.txn",7)&&
++           fx_renderer_recover_journal(root,"renderer-native-com.txn",8);
+ }
+ static int fx_files_equal(const char *a,const char *b) {
+     unsigned char x[16384],y[16384];size_t nx,ny;int same=0;
+@@ -531,7 +535,7 @@
+ static int fx_renderer_valid(const char *dll,const char *conf,int selected) {
+     unsigned char head[64],pe[26];char config[4096];struct stat st;
+     if(stat(dll,&st))return fx_renderer_reject("Cannot read renderer DLL",dll);
+-    if(st.st_size<1024*1024||st.st_size>32*1024*1024){errno=0;return fx_renderer_reject("Invalid renderer DLL size",dll);}
++    if(st.st_size<(selected==2?1024:1024*1024)||st.st_size>32*1024*1024){errno=0;return fx_renderer_reject("Invalid renderer DLL size",dll);}
+     FILE *f=fopen(dll,"rb");if(!f)return fx_renderer_reject("Cannot open renderer DLL",dll);
+     int ok=fread(head,1,64,f)==64&&head[0]=='M'&&head[1]=='Z';
+     if(ok){uint32_t offset=fx_u32(head+60);
+@@ -548,16 +552,16 @@
+     return 1;
+ }
+ static int fx_apply_renderer(const char *root,int selected) {
+-    char source[4][768],p[7][768],tmp[7][800],old[7][800],journal[768],journal_tmp[800];
++    char source[5][768],p[8][768],tmp[8][800],old[8][800],journal[768],journal_tmp[800];
+     unsigned char mask=0;char choice[2]={(char)('0'+selected),'\n'};int same=1;
+     snprintf(fx_renderer_error_text,sizeof(fx_renderer_error_text),"Cannot install renderer. Check SD space and fex-runtime.log.");
+     snprintf(fx_renderer_error_detail,sizeof(fx_renderer_error_detail),"Renderer transaction failed before guest startup");
+-    if(selected<0||selected>1)return fx_renderer_reject("Invalid renderer selection","");
++    if(selected<0||selected>2)return fx_renderer_reject("Invalid renderer selection","");
+     if(!fx_renderer_recover(root)||!fx_recover(root))return fx_renderer_reject("Cannot recover renderer transaction","renderer journal");
+-    for(int i=0;i<4;i++)
+-        snprintf(source[i],sizeof(source[i]),"%s/launcher/renderers/%s/%s",root,fx_renderer_ids[selected],fx_renderer_sources[i]);
+-    for(int i=0;i<4;i++)if(i!=1&&!fx_renderer_valid(source[i],source[1],selected))return 0;
+-    for(int i=0;i<7;i++){
++    for(int i=0;i<5;i++)
++        snprintf(source[i],sizeof(source[i]),"%s/launcher/renderers/%s/%s",root,fx_renderer_ids[i==4?2:selected],fx_renderer_sources[i]);
++    for(int i=0;i<5;i++)if(i!=1&&!fx_renderer_valid(source[i],source[1],i==4?2:selected))return 0;
++    for(int i=0;i<8;i++){
+         int src=fx_renderer_source_index[i];
+         snprintf(p[i],sizeof(p[i]),"%s%s",root,fx_renderer_targets[i]);
+         snprintf(tmp[i],sizeof(tmp[i]),"%.*s.fxr-new",767,p[i]);snprintf(old[i],sizeof(old[i]),"%.*s.fxr-old",767,p[i]);
+@@ -567,26 +571,26 @@
+         else {char b[2];if(fx_read(p[i],b,2)!=2||memcmp(b,choice,2))same=0;}
+     }
+     if(same)return 1; /* Read-only verification, no repeated multi-MB writes. */
+-    for(int i=0;i<7;i++){
++    for(int i=0;i<8;i++){
+         int src=fx_renderer_source_index[i];
+         if(src>=0){if(!fx_copy_file(source[src],tmp[i])||!fx_files_equal(source[src],tmp[i]))goto failed;}
+         else if(!fx_write(tmp[i],choice,2))goto failed;
+     }
+-    for(int i=0;i<7;i++)if(unlink(old[i])&&errno!=ENOENT)goto failed;
+-    snprintf(journal,sizeof(journal),"%s/launcher/renderer-dx11.txn",root);
++    for(int i=0;i<8;i++)if(unlink(old[i])&&errno!=ENOENT)goto failed;
++    snprintf(journal,sizeof(journal),"%s/launcher/renderer-native-com.txn",root);
+     snprintf(journal_tmp,sizeof(journal_tmp),"%s.tmp",journal);
+     if(!fx_write(journal_tmp,&mask,1)||rename(journal_tmp,journal)){unlink(journal_tmp);goto failed;}
+-    for(int i=0;i<7;i++){
++    for(int i=0;i<8;i++){
+         if((mask&(1u<<i))&&rename(p[i],old[i]))goto rollback;
+         if(rename(tmp[i],p[i]))goto rollback;
+     }
+     if(unlink(journal))goto rollback;
+-    for(int i=0;i<7;i++)unlink(old[i]);
++    for(int i=0;i<8;i++)unlink(old[i]);
+     return 1;
+ rollback:
+     fx_renderer_recover(root);return 0;
+ failed:
+-    for(int i=0;i<7;i++)unlink(tmp[i]);
++    for(int i=0;i<8;i++)unlink(tmp[i]);
+     return 0;
+ }
+ #endif
+@@ -605,7 +609,7 @@
+ #define FX_WHITE FX_COLOR(242,248,252)
+ #define FX_MUTED FX_COLOR(170,185,208)
+ #define FX_BLUE FX_COLOR(51,194,255)
+-#define FX_APP_VERSION "0.1.0-v18-apc"
++#define FX_APP_VERSION "0.1.0-h4-native"
+ #define FX_RELEASE "Sleeping Dogs"
+ #define FX_TILE_MIN 212
+ #define FX_TILE_MAX 260
+@@ -1541,6 +1545,8 @@
+     if(!fx_last_played_save(RUNTIME_DIR,(uint64_t)now-elapsed))
+         log_line("[FEXTENDO] last-played history could not be saved");
+ }
++void wine_nx_sd_com_first_present(void) { fx_record_first_present(); }
++
+ static void fx_native_error(const char *message) {
+     ErrorApplicationConfig c;
+     if(R_SUCCEEDED(errorApplicationCreate(&c,message,"Sleeping Dogs launcher could not start the game. Check fex-runtime.log.")))
+@@ -1812,7 +1818,9 @@
+         }
+         if(ready){
+             struct sd_lsfg_settings lsfg=fx_lsfg_load(RUNTIME_DIR);
+-            wine_nx_lsfg_configure(lsfg.enabled,lsfg.performance,lsfg.flow);
++            sd_com_enabled=renderer==2;
++            wine_nx_lsfg_configure(sd_com_enabled?0:lsfg.enabled,lsfg.performance,lsfg.flow);
++            if(sd_com_enabled)log_line("[SD-NDX-COM] game selection native ARM64; LSFG OFF; measured FPS pending");
+             wine_nx_native_present_enabled=wine_nx_config_file_bool(RUNTIME_DIR "/launcher/native-present.txt",1);
+             log_line("[SD-NATIVE-V15] fullscreen geometry correction=%d; target=1280x720; FPS gain unmeasured",wine_nx_native_present_enabled);
+             log_line("[SD-GRAPHICS] game-owned UserOptions.dat; display modes 1280x720/960x540");
+@@ -4020,6 +4028,17 @@
+             environment = short_environment;
+         }
+     }
++    if(sd_com_enabled){
++        static char native_environment[8192];size_t used=0;
++        for(const char *entry=environment;entry<environment+environment_bytes && *entry;entry+=strlen(entry)+1){
++            size_t length=strlen(entry)+1;if(!strncmp(entry,"WINEDLLOVERRIDES=",17))continue;
++            if(used+length+64>=sizeof(native_environment))return NULL;
++            memcpy(native_environment+used,entry,length);used+=length;
++        }
++        const char overrides[]="WINEDLLOVERRIDES=d3d11,dxgi,sdndx4=n;d3d9=n,b\0";
++        memcpy(native_environment+used,overrides,sizeof(overrides));used+=sizeof(overrides);
++        environment=native_environment;environment_bytes=used;
++    }
+     chars += environment_bytes;
+     size = sizeof(*params) + chars * sizeof(WCHAR);
+ 
+@@ -4652,6 +4671,8 @@
+     __atomic_compare_exchange_n(&f1_guest_exit_state,&empty,(1ULL<<32)|code,0,__ATOMIC_RELEASE,__ATOMIC_RELAXED);
+     wine_nx_f1_crash_stage("guest-process-exit",(int)code,0,0);
+     log_line("[SD-EXIT] code=%08x first_present=%d",code,__atomic_load_n(&fx_first_present,__ATOMIC_ACQUIRE));
++    if(sd_com_enabled)sd_com_shutdown();
++    if(sd_com_diagnostic){consoleInit(NULL);wine_nx_console_active=1;printf("\nH4 COM test exited: %08x\nSee drive_c/native-dxvk-h4-result.json. Close from HOME.\n",code);consoleUpdate(NULL);return;}
+     if(wine_nx_f1_relaunch_request(F1_RETURN_GUEST,code))return;
+     char message[160];
+     if (code == 0xc0000142u)
+@@ -4714,7 +4735,8 @@
+     }
+     pthread_detach(startup_monitor);
+ 
+-    const int guest_tests = wine_nx_config_file_bool(RUNTIME_DIR "/run-guest-tests.txt", 0);
++    sd_com_diagnostic=wine_nx_config_file_bool(RUNTIME_DIR "/run-native-com-test.txt",0);
++    const int guest_tests = sd_com_diagnostic || wine_nx_config_file_bool(RUNTIME_DIR "/run-guest-tests.txt", 0);
+     __atomic_store_n(&fex_short_enabled, !guest_tests && log_flusher_running &&
+         !wine_nx_config_file_bool(RUNTIME_DIR "/fex_short_trace_off", 0), __ATOMIC_RELEASE);
+     log_line("[FEX3-SHORT] v1 enabled=%d threshold_us=20000 rows=256 jit_rows=128; fex_short_trace_off=1 disables; kinds 0=acquire 1=submit 2=fence 3=semaphore 5=alert_wait 6=present_map", fex_short_enabled);
+@@ -4740,7 +4762,21 @@
+     log_line("[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved");
+     log_line("[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change");
+     log_line("[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet");
+-    if (guest_tests) snprintf(target, sizeof(target), "%s/fex-stress.exe", WINE_DRIVE_C);
++    if (guest_tests) snprintf(target, sizeof(target), "%s/%s", WINE_DRIVE_C,sd_com_diagnostic?"sd-native-dxvk-h4-test.exe":"fex-stress.exe");
++    if(sd_com_diagnostic){
++        if(!fx_apply_renderer(RUNTIME_DIR,2)||!fx_apply_preset(RUNTIME_DIR,fx_selected(RUNTIME_DIR))){log_line("[SD-NDX-COM] diagnostic renderer install failed");return 1;}
++        sd_com_enabled=1;wine_nx_lsfg_configure(0,1,0);
++        if(wine_nx_console_active){consoleExit(NULL);wine_nx_console_active=0;}
++    }
++    if(sd_com_enabled){
++        mkdir(RUNTIME_DIR "/native-dxvk-h4",0777);mkdir(RUNTIME_DIR "/native-dxvk-h4/cache",0777);
++        if(sd_com_diagnostic){fx_debug_file=fopen(RUNTIME_DIR "/native-dxvk-h4/runtime.log","w");__atomic_store_n(&fx_debug_live,1,__ATOMIC_RELEASE);}
++        setenv("DXVK_WSI_DRIVER","FEXTendoProbe",1);setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h4",1);
++        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);
++        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);
++        if(!sd_com_native_window()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}
++        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v1 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
++    }
+     wine_nx_runtime_trace("[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query");
+     wine_nx_runtime_trace("[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups");
+     wine_nx_runtime_trace("[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay");
+@@ -4748,8 +4784,8 @@
+     wine_nx_runtime_trace("[FEX3-YIELD] same-core Sleep(0) experiment");
+     fx_stage("Preparing your game...");
+     if (!pes13_fex_context_preflight()) {log_line("[FAIL] FEX context preflight");fx_fail("FEX context preflight failed.");park_forever();}
+-    if (guest_tests && !pes13_fex_fault_stress()) park_forever();
+-    if (setenv("WINEDLLOVERRIDES", "d3d9,d3d11,dxgi=n,b", 1) ||
++    if (guest_tests && !sd_com_diagnostic && !pes13_fex_fault_stress()) park_forever();
++    if (setenv("WINEDLLOVERRIDES", sd_com_enabled?"d3d11,dxgi,sdndx4=n;d3d9=n,b":"d3d9,d3d11,dxgi=n,b", 1) ||
+         setenv("WINEPREFIX", "/switch/sleepingdogs-fex", 1))
+     { log_line("[FAIL] WINEPREFIX setup");fx_fail("WINEPREFIX setup failed.");park_forever(); }
+     wine_nx_runtime_verbose = 0;

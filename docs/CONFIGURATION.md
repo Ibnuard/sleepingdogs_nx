@@ -14,7 +14,7 @@ consistent improvement over one another in the reported hardware tests.
 | Control | Effect |
 | --- | --- |
 | Settings → Graphics | Selects a DXVK configuration profile: Balanced, Low latency, Stable, Quality or Performance |
-| Settings → Renderer | Selects the DXVK 3.1.1 family or the alternative DXVK 2.7.1 async set |
+| Settings → Renderer | Selects the DXVK 3.1.1 family or DXVK 2.7.1 async; the H4 candidate adds experimental DXVK Native ARM64 |
 | FEX mode | Selects the CPU-translation profile; Fastest is the current test baseline |
 | In-game Resolution | Selects the game's render resolution, including 1280×720 and 960×540 |
 | In-game Advanced Options | Controls game quality settings independently of launcher profiles |
@@ -31,6 +31,12 @@ log. Preserve those files when comparing NRO-only changes.
 `UserOptions.dat` belongs to the game and is not rewritten by the launcher.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
+
+The [H4 native candidate](native-dxvk-h4-v1.md) needs a passing COM self-test
+before game validation. Its swapchain stays at 1280×720 and LSFG is forced
+OFF without changing the stored LSFG preference. Both existing x86 renderer
+choices remain available for comparisons. H4 has not yet established Switch
+gameplay correctness or an FPS gain.
 
 ## DXVK HUD
 
