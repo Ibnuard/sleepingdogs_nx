@@ -40,8 +40,12 @@ user reports reaching Press Start. The supplied COM runtime is older v3 data,
 so a v4 COM test is not validated by those files. [H4 v5](native-dxvk-h4-v5-com-outputs.md)
 fixes a reproduced scalar DSV overrun and transient handle publication in COM
 outputs. PE32 regression and native host checks pass. The precise source of
-the game's invalid sampler value and v5 hardware behavior remain unconfirmed;
-native gameplay/FPS validation is pending.
+the game's earlier invalid sampler value remains unconfirmed. The user now
+reports v5 gameplay around 15 FPS; the [v5 observation](../reports/native-dxvk-h4-v5-gameplay-observation.json)
+preserves the matching native game route and separates the older v3 COM file.
+No fresh v5 COM result/guest log or clean-exit evidence was supplied.
+[H4 v6](native-dxvk-h4-v6-dispatch.md) reduces per-call diagnostic work and
+passes local checks; v6 Switch/native FPS validation is pending.
 
 ## Performance evidence
 
@@ -52,6 +56,9 @@ native gameplay/FPS validation is pending.
 | Subsequent gameplay feedback | Usually around 20–23 FPS, with scene-dependent dips including about 17 FPS |
 | Latest v18 log capture | 600 frame intervals in 29.875 seconds: about 20.08 FPS / 49.79 ms per frame |
 | Later sampled v18 windows | About 19.56 FPS overall; individual window averages roughly 17.13–23.60 FPS |
+| Native H4 v5 user feedback | Gameplay reached; 3D scenes around 15 FPS |
+| Native H4 v5 last Present windows | 15.07 and 14.39 FPS over 600 intervals each; scenes/clocks not authenticated, no matched x86 comparison |
+| Native H4 v6 dispatcher measurement | Host scalar GetType cost 620.139 → 66.536 ns against v5; measures local dispatch, not game FPS |
 | Stable 30 FPS | Not achieved |
 
 The v18 figures refer to the log with SHA-256
@@ -100,9 +107,10 @@ baseline without that presentation path and its repeated logging.
   those proxies and a third renderer choice. Native host correctness, compiled
   layouts, static game imports and launcher transactions are checked locally;
   H4 v2/v3 PE32/FEX COM completion is observed, and v4 records 1,020 native
-  startup/menu Presents before a Press Start crash. That crash, remaining dynamic game
-  API coverage and playable native rendering are unresolved. The confirmed
-  gameplay still uses x86 DXVK.
+  startup/menu Presents before a Press Start crash. V5 subsequently reaches
+  user-reported gameplay around 15 FPS. Fresh v5/v6 COM evidence, remaining
+  dynamic API coverage, sustained resource lifetime, clean exit and a matched
+  native FPS comparison remain open. The v6 candidate is only locally tested.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -114,10 +122,10 @@ DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
 pass their supplied hardware captures. H4 v2/v3 ordinary PE32 COM completion
-is also observed. The [H4 v5 update folder](native-dxvk-h4-v5-com-outputs.md#install-and-validate-on-switch)
-tests COM output fixes after v4's Press Start crash. Its COM test requires 72
+is also observed. The [H4 v6 update folder](native-dxvk-h4-v6-dispatch.md#install-and-validate-on-switch)
+reduces bridge diagnostic cost after v5's user-reported gameplay result. Its COM test requires 72
 sampler-slot and 16 scalar DSV/guard checks in addition to the prior coverage.
-Save COM files before the game overwrites the shared DXVK log. A v5 COM pass,
+Save COM files before the game overwrites the shared DXVK log. A v6 COM pass,
 game startup, actual game API use, resource lifetime and native worker behavior
 still need validation. Matched 720p gameplay and long-session evidence are
 required before production or a 30 FPS claim. See the

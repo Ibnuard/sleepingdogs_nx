@@ -22,8 +22,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SDK=Path('/opt/devkitpro')
 A64=SDK/'devkitA64/bin'
 MINGW=Path('/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin')
-BUILD='native-dxvk-h4-v5'
-APP_VERSION='0.1.0-h4.5'
+BUILD='native-dxvk-h4-v6'
+APP_VERSION='0.1.0-h4.6'
 WORK=Path('/home/blekjek/sleepingdogs-'+BUILD)
 LOCAL=ROOT/'local'/BUILD
 SOURCES=ROOT/'src/native_dxvk_com'
@@ -138,6 +138,7 @@ static int sd_com_prepare_screen(void) {
         '        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);\n'
         '        log_line("[SD-NDX-COM] BUILD '+BUILD+' mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);\n'
         '        log_line("[SD-NDX-LOG] async queue=512 batch=32; native progress=5s; bulk observer disabled; missing tail possible after forced restart");\n'
+        '        log_line("[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call");\n'
         '        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build='+BUILD+' renderer=DXVK Native ARM64");\n'
         '        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
         '    }')

@@ -4,6 +4,7 @@
  */
 #include "../src/native_dxvk_com/com_protocol.h"
 #include "../src/native_dxvk_com/com_methods.h"
+#include "../src/native_dxvk_com/com_progress.h"
 #include "../src/native_dxvk/probe_shaders.h"
 #include <d3d11.h>
 #include <d3d10.h>
@@ -105,8 +106,11 @@ extern "C" uint64_t sd_com_clock_ns(){return std::chrono::duration_cast<std::chr
 extern "C" uint64_t sd_com_thread_id(){return std::hash<std::thread::id>{}(std::this_thread::get_id());}
 extern "C" void sd_com_presented(uint32_t,int32_t result){require(result==0);++presented;}
 extern "C" void sd_com_test_fail_adopt_after(int32_t);
+#ifdef SD_COM_PROGRESS_TEST
+extern "C" int sd_com_test_progress_snapshot(uint64_t*);
+#endif
 
-int main(){
+int main(int argc,char** argv){
     try {
         Window window;
         arena=static_cast<unsigned char*>(mmap(reinterpret_cast<void*>(uintptr_t(base)),arena_bytes,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS|MAP_FIXED_NOREPLACE,-1,0));
@@ -128,6 +132,29 @@ int main(){
         }
         require(c.call(0,SD_COM_CREATE_DEVICE,0,{0,D3D_DRIVER_TYPE_HARDWARE,0,0,address(level),1,D3D11_SDK_VERSION,address(device_out),address(actual),address(context_out)})==0);
         uint32_t device=*device_out,context=*context_out;require(device&&context&&*actual==D3D_FEATURE_LEVEL_11_0);
+        if(argc==2&&!std::strcmp(argv[1],"--dispatch-bench")) {
+            // Exercise the actual dispatcher without GPU work in the measured
+            // region. Wine permissions are modeled; no PE32/FEX or game FPS.
+            *c.packet={SD_COM_ABI,context,SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_GetType};
+            constexpr unsigned iterations=1000000;
+            auto start=std::chrono::steady_clock::now();
+            for(unsigned i=0;i<iterations;++i) {
+                auto rc=wine_nx_sd_com_wow64_unix_funcs[0](c.packet);
+                if(rc||c.packet->fault||c.packet->ret!=D3D11_DEVICE_CONTEXT_IMMEDIATE)throw std::runtime_error("dispatch benchmark result changed");
+            }
+            auto ns=std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-start).count();
+#ifdef SD_COM_PROGRESS_TEST
+            using namespace sd_com_progress;Snapshot snapshot{};
+            require(sd_com_test_progress_snapshot(snapshot.data())&&snapshot[Phase]==Idle&&snapshot[Method]==SD_COM_M_ID3D11DeviceContext_GetType);
+            require(snapshot[Entry]%256==0&&snapshot[Calls]>iterations-256&&snapshot[Calls]<iterations+100,"periodic progress snapshot stayed fresh");
+            c.packet->object=0xdeadbeef;
+            require(wine_nx_sd_com_wow64_unix_funcs[0](c.packet)==0&&c.packet->fault==uint32_t(E_INVALIDARG));
+            require(sd_com_test_progress_snapshot(snapshot.data())&&snapshot[Phase]==Idle&&snapshot[Object]==0xdeadbeef&&snapshot[FaultCode]==uint32_t(E_INVALIDARG),"unsampled call failure was not published");
+#endif
+            c.release(context);c.release(device);sd_com_shutdown();
+            std::printf("{\"status\":\"PASS\",\"iterations\":%u,\"elapsed_ns\":%lld,\"ns_per_call\":%.3f,\"game_fps_measured\":false}\n",iterations,(long long)ns,double(ns)/iterations);
+            return 0;
+        }
         c.call(SD_COM_IF_ID3D11Device,SD_COM_M_ID3D11Device_GetImmediateContext,device,{address(out)});require(*out==context);c.release(*out);
         uint32_t factory=c.create(0,SD_COM_CREATE_FACTORY,0,{0,wire(__uuidof(IDXGIFactory1)),address(out)},out);
         uint32_t adapter=c.create(SD_COM_IF_IDXGIFactory1,SD_COM_M_IDXGIFactory1_EnumAdapters1,factory,{0,address(out)},out);

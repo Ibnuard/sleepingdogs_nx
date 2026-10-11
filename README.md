@@ -19,14 +19,15 @@ and saves are not supplied. The x64 **Definitive Edition is not supported**.
 ## Current status
 
 This is an **experimental port** with gameplay confirmed on a Switch OLED.
-Recent 720p testing reports roughly **20–23 FPS**, with scene-dependent drops
-and peaks around 25 FPS. **Stable 30 FPS has not been achieved.**
+Recent 720p x86-DXVK testing reports roughly **20–23 FPS**, with scene-dependent
+drops and peaks around 25 FPS. Native H4 v5 now reaches gameplay according to
+the user, around 15 FPS. **Stable 30 FPS has not been achieved.**
 
 | Area | Status |
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V4 reaches Press Start then crashes; [H4 v5 corrects COM output memory](docs/native-dxvk-h4-v5-com-outputs.md) and passes local checks. V5 Switch/native gameplay/FPS remain unverified |
+| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V5 reaches user-reported gameplay around 15 FPS. [H4 v6 reduces bridge diagnostic overhead](docs/native-dxvk-h4-v6-dispatch.md) and passes local checks; v6 Switch/FPS testing is pending |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 

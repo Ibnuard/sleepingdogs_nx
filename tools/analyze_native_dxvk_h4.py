@@ -7,7 +7,7 @@ import re
 import shutil
 
 ROOT=Path(__file__).resolve().parents[1]
-BUILD='native-dxvk-h4-v5'
+BUILD='native-dxvk-h4-v6'
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -50,7 +50,7 @@ def progress_trace(runtime):
     return dict(snapshots=snapshots,call_states=active,snapshot_busy_count=busy,
                 reported_dropped_lines=sum(drops),async_logging_observed='[SD-NDX-LOG] async queue=' in runtime,
                 cause_confirmed=False,
-                limits='Snapshots never acquire the COM gate. Totals describe the last completed call; idle is not an active call. Missing snapshots may mean scheduling/I/O delay or lost queued output. Zero reported drops does not authenticate a complete tail. These are not GPU timings.')
+                limits='Snapshots never acquire the COM gate. V6 samples ordinary calls every 256 entries; critical calls and failures retain detailed state. Totals describe the last sampled completion and idle is not proof that another unsampled call is idle. Missing snapshots may mean scheduling/I/O delay or lost queued output. These are not GPU timings.')
 
 def capture_files(root,flat,mode,dxvk_override=None):
     guest_root=root if flat else root/'drive_c';native_root=root if flat else root/'native-dxvk-h4'
@@ -75,7 +75,7 @@ def analyze(mode,result,guest,runtime,dxvk,expected_build=BUILD):
         'no_bridge_fault':'[SD-NDX-COM] FAULT ' not in runtime and '[SD-NDX-COM] UNSUPPORTED ' not in runtime,
         'renderer_log_mode_matches':config_modes_match,
     }
-    if expected_build in ('native-dxvk-h4-v3','native-dxvk-h4-v4',BUILD):
+    if expected_build in ('native-dxvk-h4-v3','native-dxvk-h4-v4','native-dxvk-h4-v5',BUILD):
         validation.update(native_fifo_requested=bool(re.search(r'\bdxgi\.syncInterval\s*=\s*1\s*$',dxvk,re.M)),
                           fifo_present='VK_PRESENT_MODE_FIFO_KHR' in dxvk)
     if mode=='com':
@@ -92,7 +92,7 @@ def analyze(mode,result,guest,runtime,dxvk,expected_build=BUILD):
             'no_external_refs_or_maps':result.get('live_interfaces')==0 and result.get('live_maps')==0 and result.get('bridge_failures')==0,
             'synthetic_only':result.get('game_integration_tested') is False and result.get('game_fps_measured') is False,
         })
-        if expected_build==BUILD:
+        if expected_build in ('native-dxvk-h4-v5',BUILD):
             validation.update(sampler_roundtrip_slots=result.get('sampler_roundtrip_slots_verified')==72,
                               scalar_dsv_guards=result.get('dsv_guard_checks')==16,
                               com_output_stage='[SD-NDX-H4-GUEST] scalar DSV guards and six-stage sampler roundtrips' in guest)
@@ -131,7 +131,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);source=parser.add_mutually_exclusive_group(required=True)
     source.add_argument('--runtime-root',type=Path);source.add_argument('--log-dir',type=Path)
     parser.add_argument('--mode',choices=('com','game'),default='com')
-    parser.add_argument('--expected-build',choices=('native-dxvk-h4-v2','native-dxvk-h4-v3','native-dxvk-h4-v4',BUILD),default=BUILD)
+    parser.add_argument('--expected-build',choices=('native-dxvk-h4-v2','native-dxvk-h4-v3','native-dxvk-h4-v4','native-dxvk-h4-v5',BUILD),default=BUILD)
     parser.add_argument('--dxvk-log',type=Path,help='Preserved renderer log from this COM/game session')
     args=parser.parse_args()
     files=capture_files(args.log_dir or args.runtime_root,bool(args.log_dir),args.mode,args.dxvk_log)

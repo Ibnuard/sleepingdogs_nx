@@ -1,0 +1,171 @@
+{
+  "status": "GAMEPLAY_REPORTED_WITH_NATIVE_ROUTE_OBSERVED",
+  "observed_build": "native-dxvk-h4-v5",
+  "game_capture_report": "reports/native-dxvk-h4-game-cc4aa81f2903.json",
+  "game_capture_report_sha256": "8de19c1e2693b9193e04fbcf2dbc092069730674d658e3c59e082d3b16928b3d",
+  "original_bytes_archived": true,
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-cc4aa81f2903/runtime.txt",
+      "sha256": "cc4aa81f2903242273b7adfacdf44375d2ebabbb20ab8bf523c18d781521e9b0",
+      "bytes": 120268
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-cc4aa81f2903/dxvk.txt",
+      "sha256": "431855a678e0acf3e7383e99dab3de5981e88ff1132c44f67695e7e6160f03d3",
+      "bytes": 21841
+    }
+  },
+  "additional_evidence": {
+    "older-com-runtime": {
+      "path": "reports/native-dxvk-h4-game-cc4aa81f2903/older-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026,
+      "role": "Byte-identical earlier v3 COM runtime, not a v5 COM self-test result"
+    }
+  },
+  "user_observation": {
+    "gameplay_reached": true,
+    "reported_3d_fps": "around 15",
+    "reported_previous_x86_peak_fps": 25,
+    "source": "Human report accompanying this capture; visible gameplay is not encoded in the log"
+  },
+  "runtime": {
+    "mode": "SleepingDogs",
+    "launch": "GUI",
+    "profile": "Performance",
+    "resolution": [
+      1280,
+      720
+    ],
+    "lsfg": "OFF",
+    "native_device_and_present_route": true,
+    "fifo": true,
+    "swapchain_images": 3,
+    "native_batch_enabled": false,
+    "unknown_iids": [],
+    "unsupported_or_faults": [],
+    "device_loss_observed": false,
+    "guest_exit_observed": false,
+    "final_stats": {
+      "calls": 9891728,
+      "draws": 1633666,
+      "presents": 3045,
+      "live_interfaces": 16633,
+      "maps": 0,
+      "map_copy_bytes": 28774098944,
+      "failures": 0
+    },
+    "native_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 10867542,
+        "present_fps": 55.21027662004895,
+        "mean_frame_us": 18112,
+        "min_us": 3984,
+        "max_us": 248032,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 14399995,
+        "present_fps": 41.66668113426428,
+        "mean_frame_us": 23999,
+        "min_us": 3530,
+        "max_us": 3434762,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 13707512,
+        "present_fps": 43.77161953241405,
+        "mean_frame_us": 22845,
+        "min_us": 4112,
+        "max_us": 430607,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 39823496,
+        "present_fps": 15.06648236006201,
+        "mean_frame_us": 66372,
+        "min_us": 4642,
+        "max_us": 1311653,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 41706815,
+        "present_fps": 14.386138092779321,
+        "mean_frame_us": 69511,
+        "min_us": 32697,
+        "max_us": 164599,
+        "scene_identified": false
+      }
+    ],
+    "last_interval_delta": {
+      "earlier_progress": {
+        "calls": 8869001,
+        "draws": 1471070,
+        "presents": 2917,
+        "copy_bytes": 27556702208
+      },
+      "later_stats": {
+        "calls": 9891728,
+        "draws": 1633666,
+        "presents": 3045,
+        "live_interfaces": 16633,
+        "maps": 0,
+        "map_copy_bytes": 28774098944,
+        "failures": 0
+      },
+      "delta": {
+        "presents": 128,
+        "calls": 1022727,
+        "draws": 162596,
+        "copy_bytes": 1217396736
+      },
+      "calls_per_present": 7990.0546875,
+      "draws_per_present": 1270.28125,
+      "map_copy_bytes_per_present": 9510912.0,
+      "scene_identified": false
+    },
+    "worker_markers": [
+      "[SD-NDX-WORKER] name=dxvk-submit handle=2884027 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-queue handle=2916794 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cs handle=2949561 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-shader-l handle=3244464 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cache handle=3277231 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry"
+    ]
+  },
+  "reference_clocks_mhz": {
+    "cpu": 1728,
+    "gpu": 768,
+    "ram": 1600,
+    "origin": "Earlier confirmed user comparison settings, not telemetry for this capture"
+  },
+  "fresh_v5_com_completion_validated": false,
+  "running_binary_authenticated": false,
+  "same_session_authenticated": false,
+  "matched_gameplay_fps_comparison": false,
+  "long_session_and_clean_exit_validated": false,
+  "stable_30fps_proven": false,
+  "conclusions": [
+    "User reports native gameplay reached after v5; runtime records a native ARM64 route without a supplied fault or device-loss event.",
+    "Last two 600-interval Present windows are 15.0665 and 14.3861 FPS. Scene labels are absent; earlier faster windows cannot be described as gameplay FPS.",
+    "Around 7990 bridge calls and 9.07 MiB Map copy per Present occur over the last two counter observations, not measured CPU or GPU timings.",
+    "V5 publishes a diagnostic atomic snapshot four times per bridge call and checks the stats clock per call. V6 samples ordinary call state while retaining actual counters and critical/fault snapshots.",
+    "Native DXVK removes FEX translation of DXVK C++ code. The x86 game, COM proxy conversion, guest/native crossings, shadow Map copies and GPU work remain.",
+    "No current COM result/guest log was supplied. The older runtime cannot validate the six-stage sampler and scalar DSV self-test on hardware.",
+    "Live interfaces at a running tail are not evidence of an ownership leak; no shutdown report is present.",
+    "A previous x86 peak of 25 cannot be compared to native window averages without matching scene, camera, clocks and warm cache."
+  ],
+  "next_candidate": {
+    "build": "native-dxvk-h4-v6",
+    "hardware_tested": false,
+    "game_integration_tested": false,
+    "game_fps_measured": false,
+    "benchmark_report": "reports/native-dxvk-h4-v6-dispatch-benchmark.json",
+    "benchmark_scope": "Actual GetType native dispatcher on host against v5, not PE32/FEX, Switch or game FPS"
+  }
+}

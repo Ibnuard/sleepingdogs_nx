@@ -5,7 +5,7 @@
  #define WINE_NX_RUNTIME_BUILD "pes13-nx-0.2.0-vk1-production"
  #else
 -#define WINE_NX_RUNTIME_BUILD "sleepingdogs-fextendo-0.1.0-v18-apc"
-+#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v5"
++#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v6"
  #endif
  #define MAX_RUNTIME_MODULES 64
  #define MAX_IMPORT_DEPTH 16
@@ -151,7 +151,7 @@
  #define FX_MUTED FX_COLOR(170,185,208)
  #define FX_BLUE FX_COLOR(51,194,255)
 -#define FX_APP_VERSION "0.1.0-v18-apc"
-+#define FX_APP_VERSION "0.1.0-h4.5"
++#define FX_APP_VERSION "0.1.0-h4.6"
  #define FX_RELEASE "Sleeping Dogs"
  #define FX_TILE_MIN 212
  #define FX_TILE_MAX 260
@@ -302,7 +302,7 @@
      __atomic_store_n(&fex_short_enabled, !guest_tests && log_flusher_running &&
          !wine_nx_config_file_bool(RUNTIME_DIR "/fex_short_trace_off", 0), __ATOMIC_RELEASE);
      log_line("[FEX3-SHORT] v1 enabled=%d threshold_us=20000 rows=256 jit_rows=128; fex_short_trace_off=1 disables; kinds 0=acquire 1=submit 2=fence 3=semaphore 5=alert_wait 6=present_map", fex_short_enabled);
-@@ -4740,7 +4783,22 @@
+@@ -4740,7 +4783,23 @@
      log_line("[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved");
      log_line("[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change");
      log_line("[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet");
@@ -318,15 +318,16 @@
 +        setenv("DXVK_WSI_DRIVER","FEXTendoProbe",1);setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h4",1);
 +        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);
 +        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);
-+        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v5 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
++        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v6 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
 +        log_line("[SD-NDX-LOG] async queue=512 batch=32; native progress=5s; bulk observer disabled; missing tail possible after forced restart");
-+        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build=native-dxvk-h4-v5 renderer=DXVK Native ARM64");
++        log_line("[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call");
++        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build=native-dxvk-h4-v6 renderer=DXVK Native ARM64");
 +        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}
 +    }
      wine_nx_runtime_trace("[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query");
      wine_nx_runtime_trace("[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups");
      wine_nx_runtime_trace("[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay");
-@@ -4748,8 +4806,8 @@
+@@ -4748,8 +4807,8 @@
      wine_nx_runtime_trace("[FEX3-YIELD] same-core Sleep(0) experiment");
      fx_stage("Preparing your game...");
      if (!pes13_fex_context_preflight()) {log_line("[FAIL] FEX context preflight");fx_fail("FEX context preflight failed.");park_forever();}

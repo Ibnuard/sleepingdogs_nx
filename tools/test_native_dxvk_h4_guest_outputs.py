@@ -10,7 +10,7 @@ import os
 import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
-LOCAL=ROOT/'local/native-dxvk-h4-v5'
+LOCAL=ROOT/'local/native-dxvk-h4-v6'
 BASELINE='9e234fbdf31c24323dc26ed0544a30179d7f5e02'
 MINGW='/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc'
 GIT='C:/devkitPro/msys2/usr/bin/git.exe'
