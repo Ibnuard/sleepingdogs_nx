@@ -2,6 +2,11 @@
 
 [Documentation](README.md) · [H3 Switch result](native-dxvk-h3-v1.md) · [Current status](STATUS.md)
 
+**Historical v1 record.** The first game capture failed before native device
+creation because the launcher framebuffer had not been handed off. Use the
+[H4 v2 candidate and current instructions](native-dxvk-h4-v2-window.md).
+V1's folder and receipts are preserved; v2 hardware validation is pending.
+
 H4 implements the Windows D3D11/DXGI COM connection and a **DXVK Native ARM64**
 launcher choice for the original `HKShip.exe`. It is ready for a Switch COM
 self-test followed by game validation. **H4 guest execution, Sleeping Dogs
@@ -140,6 +145,10 @@ It restores the pinned v18 NRO, legacy renderer selection and matching
 D3D11/DXGI game DLLs. For another COM run, copy `start-com-test/switch/`.
 
 ## Rebuild and analyze
+
+The commands below document the original v1 workflow. Current tools target v2;
+use its [current recipe](native-dxvk-h4-v2-window.md#local-checks-and-rebuild),
+which also requires the window-handoff regression check.
 
 Prepared local v18/H1 Wine/FEX/Mesa/SDK inputs and pinned legacy renderer
 binaries are still required. This is not a self-contained clean-clone build.

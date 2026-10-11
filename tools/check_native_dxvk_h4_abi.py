@@ -4,7 +4,7 @@ import hashlib
 import json
 import struct
 import subprocess
-from build_native_dxvk_h4 import A64,MINGW,SOURCES,LOCAL
+from build_native_dxvk_h4 import A64,MINGW,SOURCES,LOCAL,WORK
 
 EXPLICIT={'void','char','LPCSTR','LPSTR','HANDLE','HWND','HDC','HMONITOR','HMODULE',
           'D3D11_SUBRESOURCE_DATA','D3D11_MAPPED_SUBRESOURCE','D3D11_INPUT_ELEMENT_DESC',
@@ -19,7 +19,7 @@ def main():
         for method in interface['methods']:
             for param in method['params']:
                 if param['pointer'] and param['base'] not in interfaces and param['base'] not in EXPLICIT:types.add(param['base'])
-    names=sorted(types);work=Path('/home/blekjek/sleepingdogs-native-dxvk-h4-v1/abi');work.mkdir(parents=True,exist_ok=True)
+    names=sorted(types);work=WORK/'abi';work.mkdir(parents=True,exist_ok=True)
     file=work/'layouts.cpp'
     file.write_text('#include <d3d11.h>\n#include <d3d10.h>\n#include <dxgi.h>\n#include "com_protocol.h"\n'
         +'uint32_t sd_layouts[]={\n'+',\n'.join(f' sizeof({name}), __alignof__({name})' for name in names)+'\n};\n')

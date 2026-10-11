@@ -5,7 +5,7 @@
  #define WINE_NX_RUNTIME_BUILD "pes13-nx-0.2.0-vk1-production"
  #else
 -#define WINE_NX_RUNTIME_BUILD "sleepingdogs-fextendo-0.1.0-v18-apc"
-+#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v1"
++#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v2"
  #endif
  #define MAX_RUNTIME_MODULES 64
  #define MAX_IMPORT_DEPTH 16
@@ -150,7 +150,7 @@
  #define FX_MUTED FX_COLOR(170,185,208)
  #define FX_BLUE FX_COLOR(51,194,255)
 -#define FX_APP_VERSION "0.1.0-v18-apc"
-+#define FX_APP_VERSION "0.1.0-h4-native"
++#define FX_APP_VERSION "0.1.0-h4.2"
  #define FX_RELEASE "Sleeping Dogs"
  #define FX_TILE_MIN 212
  #define FX_TILE_MAX 260
@@ -174,7 +174,60 @@
              wine_nx_native_present_enabled=wine_nx_config_file_bool(RUNTIME_DIR "/launcher/native-present.txt",1);
              log_line("[SD-NATIVE-V15] fullscreen geometry correction=%d; target=1280x720; FPS gain unmeasured",wine_nx_native_present_enabled);
              log_line("[SD-GRAPHICS] game-owned UserOptions.dat; display modes 1280x720/960x540");
-@@ -4020,6 +4028,17 @@
+@@ -2688,7 +2696,7 @@
+ int wine_nx_fb_init(void)
+ {
+     Result rc;
+-    if (fx_owned()) return -1;
++    if (sd_com_enabled || fx_owned()) return -1;
+     if (wine_nx_fb_ready) return 0;
+     if (wine_nx_gl_window) return -1;  /* an OpenGL surface has the screen */
+     log_line( "[NXFB] fb_init: taking screen from console" );
+@@ -2713,7 +2721,7 @@
+ /* Acquire the back buffer for writing; returns linear RGBA8888 pixels. */
+ void *wine_nx_fb_lock( int *width, int *height, int *stride_px )
+ {
+-    if (fx_owned()) return NULL; /* suppress intermediate desktop/GDI windows */
++    if (sd_com_enabled || fx_owned()) return NULL; /* suppress intermediate desktop/GDI windows */
+     u32 stride = 0;
+     void *bits = NULL;
+ 
+@@ -2765,6 +2773,16 @@
+     pthread_mutex_unlock( &wine_nx_fb_mutex );
+ }
+ 
++/* H4 native COM owns the default NWindow before starting the guest. */
++static int sd_com_prepare_screen(void) {
++    if(!fx_handoff()) {
++        log_line("[SD-NDX-WINDOW] FAIL stage=launcher-handoff");return 0;
++    }
++    wine_nx_screen_leave_console();
++    log_line("[SD-NDX-WINDOW] handoff complete launcher_owned=%d console_active=%d",fx_owned(),wine_nx_console_active);
++    return sd_com_native_window()!=NULL;
++}
++
+ /* Whether the compositor presents the screen, starting it on the first call.
+  * The display driver asks before giving a window surface a layer, and an
+  * OpenGL surface asks before it takes the screen, so the compositor never
+@@ -2774,7 +2792,7 @@
+     static int cursor_synced;
+     int x, y, visible;
+ 
+-    if (fx_owned() || !wine_nx_compositor_mode) return 0;
++    if (sd_com_enabled || fx_owned() || !wine_nx_compositor_mode) return 0;
+     /* The console shares the NWindow. Leave it from this Wine thread, as the
+      * framebuffer does, not from the presenter. */
+     if (!wine_nx_compositor_running()) wine_nx_screen_leave_console();
+@@ -2798,7 +2816,7 @@
+  * NULL while another surface has the screen or the framebuffer is being drawn. */
+ void *wine_nx_gl_acquire_window(void)
+ {
+-    if (!fx_handoff()) return NULL;
++    if (sd_com_enabled || !fx_handoff()) return NULL;
+     wine_nx_f1_crash_note("window-acquire: enter after launcher handoff");
+     int compositor = wine_nx_compositor_enabled();
+     wine_nx_f1_crash_stage("window-acquire: compositor",compositor,0,0);
+@@ -4020,6 +4038,17 @@
              environment = short_environment;
          }
      }
@@ -192,7 +245,7 @@
      chars += environment_bytes;
      size = sizeof(*params) + chars * sizeof(WCHAR);
  
-@@ -4652,6 +4671,8 @@
+@@ -4652,6 +4681,8 @@
      __atomic_compare_exchange_n(&f1_guest_exit_state,&empty,(1ULL<<32)|code,0,__ATOMIC_RELEASE,__ATOMIC_RELAXED);
      wine_nx_f1_crash_stage("guest-process-exit",(int)code,0,0);
      log_line("[SD-EXIT] code=%08x first_present=%d",code,__atomic_load_n(&fx_first_present,__ATOMIC_ACQUIRE));
@@ -201,7 +254,7 @@
      if(wine_nx_f1_relaunch_request(F1_RETURN_GUEST,code))return;
      char message[160];
      if (code == 0xc0000142u)
-@@ -4714,7 +4735,8 @@
+@@ -4714,7 +4745,8 @@
      }
      pthread_detach(startup_monitor);
  
@@ -211,7 +264,7 @@
      __atomic_store_n(&fex_short_enabled, !guest_tests && log_flusher_running &&
          !wine_nx_config_file_bool(RUNTIME_DIR "/fex_short_trace_off", 0), __ATOMIC_RELEASE);
      log_line("[FEX3-SHORT] v1 enabled=%d threshold_us=20000 rows=256 jit_rows=128; fex_short_trace_off=1 disables; kinds 0=acquire 1=submit 2=fence 3=semaphore 5=alert_wait 6=present_map", fex_short_enabled);
-@@ -4740,7 +4762,21 @@
+@@ -4740,7 +4772,21 @@
      log_line("[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved");
      log_line("[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change");
      log_line("[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet");
@@ -220,7 +273,6 @@
 +    if(sd_com_diagnostic){
 +        if(!fx_apply_renderer(RUNTIME_DIR,2)||!fx_apply_preset(RUNTIME_DIR,fx_selected(RUNTIME_DIR))){log_line("[SD-NDX-COM] diagnostic renderer install failed");return 1;}
 +        sd_com_enabled=1;wine_nx_lsfg_configure(0,1,0);
-+        if(wine_nx_console_active){consoleExit(NULL);wine_nx_console_active=0;}
 +    }
 +    if(sd_com_enabled){
 +        mkdir(RUNTIME_DIR "/native-dxvk-h4",0777);mkdir(RUNTIME_DIR "/native-dxvk-h4/cache",0777);
@@ -228,13 +280,14 @@
 +        setenv("DXVK_WSI_DRIVER","FEXTendoProbe",1);setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h4",1);
 +        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);
 +        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);
-+        if(!sd_com_native_window()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}
-+        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v1 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
++        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v2 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
++        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build=native-dxvk-h4-v2 renderer=DXVK Native ARM64");
++        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}
 +    }
      wine_nx_runtime_trace("[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query");
      wine_nx_runtime_trace("[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups");
      wine_nx_runtime_trace("[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay");
-@@ -4748,8 +4784,8 @@
+@@ -4748,8 +4794,8 @@
      wine_nx_runtime_trace("[FEX3-YIELD] same-core Sleep(0) experiment");
      fx_stage("Preparing your game...");
      if (!pes13_fex_context_preflight()) {log_line("[FAIL] FEX context preflight");fx_fail("FEX context preflight failed.");park_forever();}

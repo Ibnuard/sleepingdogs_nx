@@ -15,7 +15,8 @@ installation for a first setup, or current status before comparing test builds.
 | [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 build, host correctness tests, standalone Horizon NRO and remaining game integration |
 | [Native DXVK H2](native-dxvk-h2-v1.md) | Real PE32 guest bridge diagnostic, hardware test instructions and v18 restoration |
 | [Native DXVK H3](native-dxvk-h3-v1.md) | Successful Switch guest-driven native Present capture, folder installation and production gates |
-| [Native DXVK H4](native-dxvk-h4-v1.md) | Real x86 COM proxies, native ARM64 launcher/game candidate, local evidence and two-phase Switch validation |
+| [Native DXVK H4 v2](native-dxvk-h4-v2-window.md) | Startup screen-handoff fix, preserved failure capture and COM-first Switch validation |
+| [Native DXVK H4 implementation](native-dxvk-h4-v1.md) | Original x86 COM proxies, native ARM64 launcher/game route and local validation boundaries |
 | [Contributing](../CONTRIBUTING.md) | Reporting a problem, submitting changes and keeping evidence reproducible |
 | [Credits and licenses](../THIRD_PARTY.md) | FEXTendo's FEX port, upstream dependencies and adapted code |
 | [Development history](HISTORY.md) | Index of every version-specific investigation and build note |

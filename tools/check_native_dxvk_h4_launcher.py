@@ -5,7 +5,7 @@ import json
 import subprocess
 import tempfile
 from package_native_dxvk_h4 import ROOT,LOCAL,PREFIX,launcher_payload
-from build_native_dxvk_h4 import overlay_runtime,PIN
+from build_native_dxvk_h4 import overlay_runtime,PIN,WORK
 
 PREAMBLE=r'''
 #include <assert.h>
@@ -70,7 +70,7 @@ def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def main():
     pin=json.loads(PIN.read_text());source=Path(pin['runtime_source']);before=source.read_text();after=overlay_runtime(before)
     start=after.index('#ifndef FEXTENDO_PRESETS_H');end=after.index('\n#endif',after.index('#ifndef FEXTENDO_RENDERERS_H'))+len('\n#endif')
-    work=Path('/home/blekjek/sleepingdogs-native-dxvk-h4-v1/launcher-checks');work.mkdir(parents=True,exist_ok=True)
+    work=WORK/'launcher-checks';work.mkdir(parents=True,exist_ok=True)
     fixture=work/'launcher-check.c';fixture.write_text(PREAMBLE+after[start:end]+HARNESS);executable=work/'launcher-check'
     command=['gcc','-std=c11','-O1','-g','-D_POSIX_C_SOURCE=200809L','-fsanitize=address,undefined','-fno-sanitize-recover=all','-I'+str(source.parent),str(fixture),'-o',str(executable)]
     with (LOCAL/'launcher.compile.log').open('w') as log:result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)

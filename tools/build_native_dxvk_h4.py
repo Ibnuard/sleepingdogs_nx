@@ -22,7 +22,10 @@ ROOT=Path(__file__).resolve().parents[1]
 SDK=Path('/opt/devkitpro')
 A64=SDK/'devkitA64/bin'
 MINGW=Path('/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin')
-LOCAL=ROOT/'local/native-dxvk-h4-v1'
+BUILD='native-dxvk-h4-v2'
+APP_VERSION='0.1.0-h4.2'
+WORK=Path('/home/blekjek/sleepingdogs-'+BUILD)
+LOCAL=ROOT/'local'/BUILD
 SOURCES=ROOT/'src/native_dxvk_com'
 PIN=ROOT/'vendor/wine/native-dxvk-h3-inputs.json'
 
@@ -33,7 +36,7 @@ def patch(before,after,path,relative):
     return dict(baseline_sha256=hashlib.sha256(before.encode()).hexdigest(),patch_sha256=sha(path),source_sha256=hashlib.sha256(after.encode()).hexdigest())
 
 def overlay_runtime(before):
-    text=replace(before,'"sleepingdogs-fextendo-0.1.0-v18-apc"','"sleepingdogs-native-dxvk-h4-v1"')
+    text=replace(before,'"sleepingdogs-fextendo-0.1.0-v18-apc"','"sleepingdogs-'+BUILD+'"')
     text=text.replace('fx_renderer_ids[2]','fx_renderer_ids[3]').replace('fx_renderer_names[2]','fx_renderer_names[3]')
     text=replace(text,'{"dxvk-3.1.1","dxvk-2.7.1-async"}','{"dxvk-3.1.1","dxvk-2.7.1-async","dxvk-native-h4"}')
     text=replace(text,'{"DXVK 3.1.1","DXVK 2.7.1 async"}','{"DXVK 3.1.1","DXVK 2.7.1 async","DXVK Native ARM64"}')
@@ -42,7 +45,7 @@ def overlay_runtime(before):
     text=replace(text,'"%s/launcher/renderer-choice.txt",root);\n    return fx_read(p,b,2)==2&&b[0]==\'1\'&&b[1]==\'\\n\';',
                  '"%s/launcher/renderer-choice.txt",root);\n    return fx_read(p,b,2)==2&&b[0]>=\'0\'&&b[0]<=\'2\'&&b[1]==\'\\n\' ? b[0]-\'0\' : 0;')
     text=replace(text,"renderer[0]!='1'","(renderer[0]<'0'||renderer[0]>'2')")
-    text=replace(text,'#define FX_APP_VERSION "0.1.0-v18-apc"','#define FX_APP_VERSION "0.1.0-h4-native"')
+    text=replace(text,'#define FX_APP_VERSION "0.1.0-v18-apc"','#define FX_APP_VERSION "'+APP_VERSION+'"')
     # Add the bridge companion to the same durable transaction as both graphics
     # DLLs. Separate the eight-bit journal from existing five/seven-bit updates.
     text=replace(text,'fx_renderer_targets[7]','fx_renderer_targets[8]')
@@ -67,6 +70,26 @@ def overlay_runtime(before):
     text=text[:start]+transaction+text[end:]
     text=replace(text,'extern void wine_nx_runtime_platform_init(void);',
         'extern void sd_com_shutdown(void);\nextern void *sd_com_native_window(void);\nstatic int sd_com_enabled,sd_com_diagnostic;\nextern void wine_nx_runtime_platform_init(void);')
+    # Native DXVK bypasses Wine's GL/Vulkan surface acquisition. Explicitly use
+    # the existing joined launcher handoff, and keep later Wine/GDI surfaces
+    # from taking the same default NWindow during native COM rendering.
+    text=replace(text,'    if (fx_owned()) return -1;','    if (sd_com_enabled || fx_owned()) return -1;')
+    text=replace(text,'    if (fx_owned()) return NULL;','    if (sd_com_enabled || fx_owned()) return NULL;')
+    text=replace(text,'    if (fx_owned() || !wine_nx_compositor_mode) return 0;',
+                 '    if (sd_com_enabled || fx_owned() || !wine_nx_compositor_mode) return 0;')
+    text=replace(text,'    if (!fx_handoff()) return NULL;','    if (sd_com_enabled || !fx_handoff()) return NULL;')
+    anchor='/* Whether the compositor presents the screen, starting it on the first call.'
+    text=replace(text,anchor,'''/* H4 native COM owns the default NWindow before starting the guest. */
+static int sd_com_prepare_screen(void) {
+    if(!fx_handoff()) {
+        log_line("[SD-NDX-WINDOW] FAIL stage=launcher-handoff");return 0;
+    }
+    wine_nx_screen_leave_console();
+    log_line("[SD-NDX-WINDOW] handoff complete launcher_owned=%d console_active=%d",fx_owned(),wine_nx_console_active);
+    return sd_com_native_window()!=NULL;
+}
+
+'''+anchor)
     # This callback marks actual native COM Present, without attributing its
     # total D3D call time to the old Vulkan-driver timing counters.
     anchor='static void fx_record_first_present(void) {'
@@ -88,7 +111,6 @@ def overlay_runtime(before):
         '    if(sd_com_diagnostic){\n'
         '        if(!fx_apply_renderer(RUNTIME_DIR,2)||!fx_apply_preset(RUNTIME_DIR,fx_selected(RUNTIME_DIR))){log_line("[SD-NDX-COM] diagnostic renderer install failed");return 1;}\n'
         '        sd_com_enabled=1;wine_nx_lsfg_configure(0,1,0);\n'
-        '        if(wine_nx_console_active){consoleExit(NULL);wine_nx_console_active=0;}\n'
         '    }\n'
         '    if(sd_com_enabled){\n'
         '        mkdir(RUNTIME_DIR "/native-dxvk-h4",0777);mkdir(RUNTIME_DIR "/native-dxvk-h4/cache",0777);\n'
@@ -96,8 +118,9 @@ def overlay_runtime(before):
         '        setenv("DXVK_WSI_DRIVER","FEXTendoProbe",1);setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h4",1);\n'
         '        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);\n'
         '        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);\n'
-        '        if(!sd_com_native_window()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
-        '        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v1 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);\n'
+        '        log_line("[SD-NDX-COM] BUILD '+BUILD+' mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);\n'
+        '        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build='+BUILD+' renderer=DXVK Native ARM64");\n'
+        '        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
         '    }')
     text=replace(text,'    if (guest_tests && !pes13_fex_fault_stress()) park_forever();','    if (guest_tests && !sd_com_diagnostic && !pes13_fex_fault_stress()) park_forever();')
     text=replace(text,'setenv("WINEDLLOVERRIDES", "d3d9,d3d11,dxgi=n,b", 1)',
@@ -131,7 +154,7 @@ def pe_audit(path):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--work',type=Path,default=Path('/home/blekjek/sleepingdogs-native-dxvk-h4-v1'))
+    parser.add_argument('--work',type=Path,default=WORK)
     parser.add_argument('--pe-only',action='store_true')
     args=parser.parse_args();assert os.name=='posix'
     work=args.work;work.mkdir(parents=True,exist_ok=True);LOCAL.mkdir(parents=True,exist_ok=True)
@@ -141,7 +164,7 @@ def main():
     commands={}
     targets=[('sdndx4.dll','com_guest.c',True),('d3d11.dll','d3d11_guest.c',True),('dxgi.dll','dxgi_guest.c',True),('sd-native-dxvk-h4-test.exe','com_guest_test.c',False)]
     for name,source,dll in targets:
-        command=[str(MINGW/'i686-w64-mingw32-gcc'),'-O2','-std=c11','-DINITGUID','-ffreestanding','-fno-builtin','-fno-stack-protector','-nostdlib',
+        command=[str(MINGW/'i686-w64-mingw32-gcc'),'-O2','-std=c11','-DINITGUID','-DSD_COM_BUILD="'+BUILD+'"','-ffreestanding','-fno-builtin','-fno-stack-protector','-nostdlib',
                  '-Wl,--no-insert-timestamp','-Wl,--kill-at','-Wl,--entry,'+('DllMain@12' if dll else 'start@0')]
         if dll:command+=['-shared']
         if name=='sdndx4.dll':command+=['-Wl,--out-implib,'+str(pe/'sdndx4.a')]
@@ -219,7 +242,7 @@ def main():
     for required in ('wine_nx_sd_com_wow64_unix_funcs','sd_com_shutdown','sd_com_native_window','sd_com_presented','sd_com_native_worker','wine_nx_sd_com_first_present','D3D11CreateDevice','vkGetInstanceProcAddr','nvk_CreateDevice'):
         assert re.search(r'\b'+required+r'\s*$',symbols,re.M),required
     nacp=work/'app.nacp';nro=work/'sleepingdogs-fex.nro'
-    subprocess.run([str(SDK/'tools/bin/nacptool'),'--create','FEXTendo Native DXVK H4','AndroSwitch Project','0.1.0-h4',str(nacp)],check=True)
+    subprocess.run([str(SDK/'tools/bin/nacptool'),'--create','FEXTendo Native DXVK H4','AndroSwitch Project',APP_VERSION,str(nacp)],check=True)
     subprocess.run([str(SDK/'tools/bin/elf2nro'),str(elf),str(nro),'--nacp='+str(nacp)],check=True)
     for name,digest in inputs.items():assert sha(name)==digest,('baseline changed',name)
     assert sha(library)==h1['sha256']
@@ -230,7 +253,7 @@ def main():
             if path.is_file():headers[str(path)]=sha(path)
     for file in [nro,*[pe/name for name,_,_ in targets]]:shutil.copy2(file,LOCAL/file.name)
     inventory=json.loads((SOURCES/'com_inventory.json').read_text())
-    receipt=dict(status='BUILT',build='native-dxvk-h4-v1',work=str(work),baseline_reproduced=True,baseline_elf_sha256=sha(baseline),baseline_nro_sha256=pin['baseline_nro_sha256'],
+    receipt=dict(status='BUILT',build=BUILD,work=str(work),baseline_reproduced=True,baseline_elf_sha256=sha(baseline),baseline_nro_sha256=pin['baseline_nro_sha256'],
         nro_sha256=sha(nro),nro_bytes=nro.stat().st_size,elf=str(elf),elf_sha256=sha(elf),native_dxvk_sha256=sha(native_library),native_dxvk_baseline_sha256=sha(library),
         interface_count=inventory['interface_count'],vtable_entries=inventory['vtable_entries'],pe_audits=audits,patches=patches,compile_commands=commands,link_argv=link,working_directory=str(cwd),
         inputs=inputs,header_inputs=headers,builder_sha256=sha(__file__),input_manifest_sha256=sha(PIN),source_files={str(p.relative_to(ROOT)):sha(p) for p in SOURCES.iterdir() if p.is_file()},

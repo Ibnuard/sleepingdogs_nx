@@ -7,6 +7,9 @@
 #include <dxgi.h>
 #include <stdint.h>
 #include "../native_dxvk/probe_shaders.h"
+#ifndef SD_COM_BUILD
+#error SD_COM_BUILD must identify the packaged native runtime
+#endif
 
 void* memcpy(void *d,const void *s,size_t n){unsigned char *a=d;const unsigned char*b=s;while(n--)*a++=*b++;return d;}
 void* memset(void *d,int v,size_t n){unsigned char*a=d;while(n--)*a++=(unsigned char)v;return d;}
@@ -22,7 +25,7 @@ static void record(const char* name){stage=name;used=0;append("[SD-NDX-H4-GUEST]
 static int check(int value,uint32_t code){++checks;if(!value){error=code;return 0;}return 1;}
 static void result(int passed){
     HANDLE file=CreateFileA("C:\\native-dxvk-h4-result.json",GENERIC_WRITE,FILE_SHARE_READ,NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL);
-    used=0;append("{\"status\":\"");append(passed>0?"PASS":passed<0?"RUNNING":"FAIL");append("\",\"build\":\"native-dxvk-h4-v1\",\"stage\":\"");append(stage);
+    used=0;append("{\"status\":\"");append(passed>0?"PASS":passed<0?"RUNNING":"FAIL");append("\",\"build\":\"" SD_COM_BUILD "\",\"stage\":\"");append(stage);
     append("\",\"error\":");number(error);append(",\"checks\":");number(checks);append(",\"buffer_bytes_verified\":");number(buffers);
     append(",\"mip_array_bytes_verified\":");number(mip_bytes);append(",\"pixels_verified\":");number(pixels);append(",\"bad_pixels\":");number(bad);
     append(",\"present_calls\":");number(presents);append(",\"present_elapsed_ms\":");number(elapsed_ms);

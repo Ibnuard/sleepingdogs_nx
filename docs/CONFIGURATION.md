@@ -32,7 +32,7 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 native candidate](native-dxvk-h4-v1.md) needs a passing COM self-test
+The [H4 v2 native candidate](native-dxvk-h4-v2-window.md) needs a passing COM self-test
 before game validation. Its swapchain stays at 1280×720 and LSFG is forced
 OFF without changing the stored LSFG preference. Both existing x86 renderer
 choices remain available for comparisons. H4 has not yet established Switch

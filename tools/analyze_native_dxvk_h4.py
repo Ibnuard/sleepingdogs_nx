@@ -7,7 +7,7 @@ import re
 import shutil
 
 ROOT=Path(__file__).resolve().parents[1]
-BUILD='native-dxvk-h4-v1'
+BUILD='native-dxvk-h4-v2'
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 

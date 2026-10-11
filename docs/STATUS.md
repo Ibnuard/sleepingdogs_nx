@@ -21,6 +21,12 @@ an experimental native ARM64 launcher/game route. Its local build/host/ABI
 checks do not replace the v18 hardware baseline: H4 guest execution and game
 validation on Switch are still pending.
 
+The first supplied H4 start-game capture failed at native window setup, before
+device creation. The COM self-test had been skipped. [H4 v2](native-dxvk-h4-v2-window.md)
+restores the missing launcher framebuffer handoff for GUI and Debug and records
+detailed window errors. Its regression reproduces the old order locally; the
+new Switch COM test must pass before further game validation.
+
 ## Performance evidence
 
 | Observation | Result and scope |
@@ -89,7 +95,7 @@ The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
-pass their supplied hardware captures. The [H4 update folder](native-dxvk-h4-v1.md#switch-validation-one-nro-folder-only)
+pass their supplied hardware captures. The [H4 v2 update folder](native-dxvk-h4-v2-window.md#switch-validation)
 contains the COM client and native launcher/game candidate on one NRO. The next
 gate is running that ordinary PE32 COM client through Wine/FEX on Switch, then
 loading the game and validating its actual API use, resource lifetime and native

@@ -8,17 +8,22 @@ import struct
 import subprocess
 import tarfile
 import zipfile
+from build_native_dxvk_h4 import BUILD,APP_VERSION,LOCAL
 
 ROOT=Path(__file__).resolve().parents[1]
-LOCAL=ROOT/'local/native-dxvk-h4-v1'
 PREFIX='switch/sleepingdogs-fex/'
-NAME='sd-dxvk-native-h4-v1-update'
+NAME='sd-dxvk-native-h4-v2-update'
 LAUNCHER_INPUTS=ROOT/'vendor/wine/native-dxvk-h4-launcher-inputs.json'
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def digest(data):return hashlib.sha256(data).hexdigest()
 def encode(data):return (json.dumps(data,indent=2)+'\n').encode()
 
-INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v1
+INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v2 - window handoff fix
+
+Memperbaiki startup FAIL trusted native window: launcher sekarang dihentikan
+dan framebuffer dilepas sebelum DXVK mengambil layar, untuk GUI maupun Debug.
+Folder v1 tetap tersimpan terpisah. H4 COM belum dikonfirmasi PASS di Switch;
+jalankan tahap A dahulu sebelum start-game.
 
 FOLDER SIAP SALIN, TANPA ZIP. Update untuk instalasi v18 lengkap yang sudah
 berfungsi; game, save, Wine modules, aset launcher dan forwarder tetap dari SD.
@@ -51,7 +56,9 @@ B. VALIDASI GAME NATIVE SETELAH HASIL COM PASS
    crash.log. UNKNOWN_IID/UNSUPPORTED/FAULT dicatat di runtime log.
    Catat FPS GAME dari HUD;
    FPS menu, loop COM biru, dan frame generation bukan hasil gameplay.
-7. Log game harus mencatat BUILD native-dxvk-h4-v1 mode=SleepingDogs,
+7. Log game harus mencatat BUILD native-dxvk-h4-v2 mode=SleepingDogs,
+   [SD-NDX-WINDOW] handoff complete launcher_owned=0 console_active=0,
+   dimensions rc=00000000, lalu
    D3D11CreateDevice native=ARM64 dan FIRST_PRESENT real COM path.
    [SD-NDX-FPS] mencatat 600 interval native Present, LSFG=OFF. Menu/loading
    bisa ikut terhitung; belum merupakan benchmark gameplay terkontrol.
@@ -73,7 +80,7 @@ Native worker dicatat di log, di luar registry thread guest FEX.
 Target stable 30 FPS BELUM terbukti. Ini kandidat uji integrasi, bukan rilis.
 
 Checksum seluruh isi: SHA256SUMS.txt. Jangan salin source/ dan notices/ ke SD.
-Detail: source/project/docs/native-dxvk-h4-v1.md.
+Detail: source/project/docs/native-dxvk-h4-v2-window.md.
 Prepared Wine/FEX/Mesa/SDK lokal tetap diperlukan untuk rebuild.
 '''
 
@@ -108,28 +115,30 @@ def launcher_payload():
 
 def main():
     LOCAL.mkdir(parents=True,exist_ok=True);lock=(LOCAL/'packaging.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports')}
+    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports','window-check')}
     build=receipts['build'];assert build['status']=='BUILT' and build['baseline_reproduced']
-    assert all(receipts[n]['status']=='PASS' for n in ('host-test','abi-check','launcher-check','game-imports'))
+    assert all(receipts[n]['status']=='PASS' for n in ('host-test','abi-check','launcher-check','game-imports','window-check'))
     for receipt in (build,receipts['host-test']):
         for name,expected in receipt['source_files'].items():assert sha(ROOT/name)==expected,('source changed',name)
     assert sha(ROOT/'tools/build_native_dxvk_h4.py')==build['builder_sha256']
-    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py')]:
+    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py'),('window-check','test_native_dxvk_h4_window.py')]:
         assert sha(ROOT/'tools'/tool)==receipts[name]['runner_sha256']
     for name,expected in build['inputs'].items():assert sha(name)==expected
     for name,expected in build['header_inputs'].items():assert sha(name)==expected
     assert sha(ROOT/'vendor/wine/native-dxvk-h3-inputs.json')==build['input_manifest_sha256']
     assert sha(LOCAL/'sleepingdogs-fex.nro')==build['nro_sha256']
     nro=(LOCAL/'sleepingdogs-fex.nro').read_bytes();assert nro[0x10:0x14]==b'NRO0'
-    for marker in (b'sleepingdogs-native-dxvk-h4-v1',b'dxvk-native-h4',b'DXVK Native ARM64',
+    for marker in (('sleepingdogs-'+BUILD).encode(),b'dxvk-native-h4',b'DXVK Native ARM64',b'[SD-NDX-WINDOW] handoff complete',
                    b'sd-native-dxvk-h4-test.exe',b'sdndx4.dll',b'd3d11,dxgi,sdndx4=n;d3d9=n,b',b'[SD-NDX-COM] FIRST_PRESENT',b'[SD-NDX-WORKER]'):
         assert marker in nro,('missing binary marker',marker)
     asset=struct.unpack_from('<I',nro,0x18)[0];assert nro[asset:asset+4]==b'ASET'
     nacp_offset,nacp_size=struct.unpack_from('<QQ',nro,asset+0x18);nacp=nro[asset+nacp_offset:asset+nacp_offset+nacp_size]
-    assert len(nacp)==0x4000 and nacp.startswith(b'FEXTendo Native DXVK H4\0') and b'0.1.0-h4' in nacp
+    assert len(nacp)==0x4000 and nacp.startswith(b'FEXTendo Native DXVK H4\0') and APP_VERSION.encode()+b'\0' in nacp
     assert not any(build[k] for k in ('hardware_tested','com_guest_execution_tested','game_integration_tested','game_fps_measured'))
     entries=launcher_payload()
     assert receipts['launcher-check']['source_sha256']==build['patches']['runtime']['source_sha256']
+    assert receipts['window-check']['runtime_source_sha256']==build['patches']['runtime']['source_sha256']
+    for name,expected in receipts['window-check']['source_files'].items():assert sha(ROOT/name)==expected,name
     assert receipts['launcher-check']['payload_sha256']=={name:digest(data) for name,data in entries.items()}
     assert receipts['abi-check']['inventory_sha256']==sha(ROOT/'src/native_dxvk_com/com_inventory.json')
     inventory=json.loads((ROOT/'src/native_dxvk_com/com_inventory.json').read_text())
@@ -162,21 +171,27 @@ def main():
     entries['notices/Wine-LGPL-2.1']=(ROOT/'LICENSE').read_bytes()
     entries['notices/DXVK-LICENSE']=(ROOT/'vendor/dxvk/DXVK-LICENSE').read_bytes()
     paths=['tools/build_native_dxvk_h4.py','tools/generate_native_dxvk_com.py','tools/check_native_dxvk_h4_abi.py','tools/check_native_dxvk_h4_launcher.py',
-           'tools/check_native_dxvk_h4_imports.py','tools/test_native_dxvk_h4_host.py','tools/package_native_dxvk_h4.py','tools/analyze_native_dxvk_h4.py',
+           'tools/check_native_dxvk_h4_imports.py','tools/test_native_dxvk_h4_host.py','tools/test_native_dxvk_h4_window.py','tools/package_native_dxvk_h4.py','tools/analyze_native_dxvk_h4.py',
            'tools/build_native_dxvk_h3.py','tools/build_native_dxvk_h2.py','docs/native-dxvk-h4-v1.md','docs/native-dxvk-h3-v1.md',
-           'docs/STATUS.md','THIRD_PARTY.md','tests/native_dxvk_com_host.cpp','tests/check_native_dxvk_h4_capture.py',
+           'docs/STATUS.md','docs/native-dxvk-h4-v2-window.md','THIRD_PARTY.md','tests/native_dxvk_com_host.cpp','tests/native_dxvk_window_host.cpp','tests/check_native_dxvk_h4_capture.py',
            'vendor/wine/native-dxvk-h3-inputs.json','vendor/wine/native-dxvk-h4-launcher-inputs.json',
            'tools/port_common.py','tools/sleepingdogs_performance_hud.py','reports/native-v15-package.json']
     paths += [str(p.relative_to(ROOT)).replace('\\','/') for p in (ROOT/'src/native_dxvk_com').iterdir() if p.is_file()]
     for name in paths:entries['source/project/'+name]=(ROOT/name).read_bytes()
     for name,receipt in receipts.items():
         entries['source/evidence/h4-'+name+'.json']=encode(receipt)
-        entries['source/project/reports/native-dxvk-h4-v1-'+name+'.json']=encode(receipt)
+        entries['source/project/reports/'+BUILD+'-'+name+'.json']=encode(receipt)
     # Preserve the real H3 capture as a prerequisite, separately from H4 flags.
     h3=ROOT/'reports/native-dxvk-h3-36d3933d1d46.json';capture=json.loads(h3.read_text())
     assert capture['hardware_tested'] and capture['real_pe32_native_present_api_passed']
     entries['source/project/'+str(h3.relative_to(ROOT))]=h3.read_bytes()
     for detail in capture['evidence'].values():
+        path=ROOT/detail['path'];assert sha(path)==detail['sha256'];entries['source/project/'+detail['path']]=path.read_bytes()
+    startup_path=ROOT/'reports/native-dxvk-h4-startup-95efa6101d4f.json'
+    startup=json.loads(startup_path.read_text())
+    assert startup['status']=='STARTUP_FAILED_BEFORE_NATIVE_DEVICE' and not startup['fix_hardware_tested']
+    entries['source/project/'+startup_path.relative_to(ROOT).as_posix()]=startup_path.read_bytes()
+    for detail in startup['evidence'].values():
         path=ROOT/detail['path'];assert sha(path)==detail['sha256'];entries['source/project/'+detail['path']]=path.read_bytes()
     work=Path(build['work']);pin=json.loads((ROOT/'vendor/wine/native-dxvk-h3-inputs.json').read_text())
     originals={'runtime':Path(pin['runtime_source']),'virtual':Path(pin['virtual_source']),
@@ -215,7 +230,7 @@ def main():
                 receipts={name:sha(LOCAL/(name+'.json')) for name in receipts},packager_sha256=sha(__file__),instructions_sha256=digest(INSTRUCTIONS.encode()),
                 launcher_inputs_sha256=sha(LAUNCHER_INPUTS),canonical_profiles_regenerated=True,
                 sd_payload=sorted(name for name in entries if name.startswith(PREFIX)),game_data_included=False)
-    for name,receipt in receipts.items():(ROOT/'reports'/('native-dxvk-h4-v1-'+name+'.json')).write_text(json.dumps(receipt,indent=2)+'\n',newline='\n')
-    (ROOT/'reports/native-dxvk-h4-v1-folder.json').write_text(json.dumps(report,indent=2)+'\n',newline='\n');print(json.dumps(report,indent=2))
+    for name,receipt in receipts.items():(ROOT/'reports'/(BUILD+'-'+name+'.json')).write_text(json.dumps(receipt,indent=2)+'\n',newline='\n')
+    (ROOT/'reports'/(BUILD+'-folder.json')).write_text(json.dumps(report,indent=2)+'\n',newline='\n');print(json.dumps(report,indent=2))
 
 if __name__=='__main__':main()

@@ -8,9 +8,16 @@ extern "C" void wine_nx_sd_com_first_present(void);
 namespace { NWindow* window=nullptr;std::mutex metrics_mutex; }
 extern "C" void* sd_com_native_window(void) {
     if(window)return window;
-    if(appletGetAppletType()!=AppletType_Application)return nullptr;
+    auto type=appletGetAppletType();
+    if(type!=AppletType_Application){
+        char line[128];std::snprintf(line,sizeof(line),"[SD-NDX-WINDOW] FAIL stage=applet type=%d; Application required",int(type));wine_nx_runtime_trace(line);return nullptr;
+    }
     NWindow* candidate=nwindowGetDefault();
-    if(!nwindowIsValid(candidate)||R_FAILED(nwindowSetDimensions(candidate,1280,720)))return nullptr;
+    if(!nwindowIsValid(candidate)){wine_nx_runtime_trace("[SD-NDX-WINDOW] FAIL stage=invalid-default-window");return nullptr;}
+    Result rc=nwindowSetDimensions(candidate,1280,720);
+    char line[192];std::snprintf(line,sizeof(line),"[SD-NDX-WINDOW] dimensions rc=%08x slots=%llx connected=%d size=%ux%u",
+        rc,(unsigned long long)candidate->slots_configured,int(candidate->is_connected),candidate->width,candidate->height);wine_nx_runtime_trace(line);
+    if(R_FAILED(rc))return nullptr;
     window=candidate;wine_nx_runtime_trace("[SD-NDX-COM] trusted Horizon NWindow 1280x720; guest HWND is metadata only");return window;
 }
 extern "C" uint64_t sd_com_clock_ns(void){return armTicksToNs(armGetSystemTick());}
