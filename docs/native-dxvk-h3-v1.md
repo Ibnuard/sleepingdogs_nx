@@ -70,7 +70,31 @@ ELF reproduction, PE32/ARM64 layout checks, CRT-free imports, the exact native
 library/driver and the final AArch64 PIE with no unresolved nonweak symbols.
 The [folder receipt](../reports/native-dxvk-h3-v1-folder.json) verifies all staged
 files and reconstructs both Wine overlays from their pinned source inputs.
-**H3 Switch validation is pending.** Synthetic host timing is not game FPS.
+
+The supplied **H3 Switch capture passes** all analyzer conditions. The
+[hardware report](../reports/native-dxvk-h3-36d3933d1d46.json) preserves the
+original four files and their hashes. The actual PE32 client makes **651
+Wine/FEX bridge calls**, completes **2,331 checks**, verifies the 1 KiB buffer
+and all **921,600 pixels in each of the two images**, and rejects seven
+deliberately invalid requests. The guest/native arena is `0x01a80000`.
+The native swapchain is 1280×720, RGBA8, FIFO, with three images.
+
+All **300 Present calls complete in 5.034225 seconds**, and both session
+generations close before the guest exits zero. Only 11 full arena scans occur.
+The recorded native validation/copy time is 1,890 microseconds cumulatively;
+it is not the full guest-to-host bridge cost. The 5,900,428 microseconds of
+native dispatch include setup, readbacks and FIFO waits. Neither figure is a
+GPU timestamp or a Sleeping Dogs performance measurement. H3 does not launch
+the game or implement COM proxies.
+
+The logs do not authenticate clocks or the running binary hash, nor directly
+confirm that scanout was visible. The user's feedback reports a successful
+test without specifying that observation. The memory counters are an active-run
+snapshot, so this capture does not establish zero live allocations after CLOSE
+or long-session leak freedom. Optional-interface/display-metadata warnings and
+the native backend's unimplemented `CloseHandle` stub also remain integration
+audit items. Build and folder receipts retain their original build-time flags;
+the separate hardware report records the later test.
 
 ## Switch test: folder only
 
@@ -119,6 +143,24 @@ before updating it and refuses unexpected or modified files, preserving any
 hardware logs later copied into that folder. Prepared Wine/FEX/Mesa inputs are
 still required; this is not a self-contained clean-clone build.
 
-After H3 hardware validation, the next major gate is real x86 D3D11/DXGI COM
-proxies and the game-required API subset. Only a subsequent comparison of the
-same 720p game scene can determine the native renderer's FPS benefit.
+## Production readiness
+
+H1, H2 and H3 establish the native renderer, real PE32 Wine/FEX transport and
+native swapchain/Present for a controlled rendering subset on Switch. They
+are completed experiment gates, not a production candidate. The largest
+remaining work is connecting the game's actual Windows graphics interfaces
+to that renderer.
+
+| Remaining gate | Evidence needed before moving on |
+| --- | --- |
+| H4: real x86 COM bridge | A PE32 program uses D3D11/DXGI exports and x86 COM vtables, including QueryInterface/AddRef/Release, device/context/resources and a swapchain; struct layouts, returned pointers and mapped data cross the ABI correctly without diagnostic packet calls in the client. |
+| Sleeping Dogs integration | Inventory and implement the API subset the original game actually uses; validate required formats, textures, shaders, states, draw variants and Map modes. Establish resource lifetime, low-address mapping, memory budgets and native-thread behavior. Reach the menu and playable scenes through native DXVK. |
+| Production validation and rollout | Compare native game FPS and frame times in the same 720p scenes at CPU 1728 / GPU 768 / RAM 1600 MHz with LSFG OFF. Test longer sessions, scene changes, resource recreation and clean shutdown; provide a launcher fallback, reproducible runtime inputs and a verified ready folder. |
+
+The diagnostic Draw path submits three vertices with a fixed pipeline. Its
+Present loop does not include the game's rendering workload. No implementation
+percentage, delivery date or stable 30 FPS result can be derived from its
+roughly five-second run. A working native gameplay build is required to measure
+the actual benefit; production readiness also requires stability and packaging
+beyond an initial gameplay success. Future diagnostic deliveries remain folders,
+with no new ZIP.

@@ -66,8 +66,10 @@ baseline without that presentation path and its repeated logging.
   The separate [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) has passed
   the actual Switch Wine/FEX guest path: 1,096 checks, the 1 KiB buffer and all
   720p offscreen pixels match. The [H3 native Present diagnostic](native-dxvk-h3-v1.md)
-  passes build/host tests and is delivered as a ready folder for its next
-  hardware test. Neither diagnostic implements game COM interfaces.
+  also passes the supplied Switch capture: 2,331 checks, 651 real bridge calls,
+  both full 720p readbacks and 300 FIFO Present calls in 5.034 seconds.
+  This is a synthetic test, not game FPS. Neither diagnostic implements game
+  COM interfaces, and Sleeping Dogs still uses the existing x86 DXVK path.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -77,10 +79,13 @@ baseline without that presentation path and its repeated logging.
 The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
-the H2 Wine/FEX guest bridge also passes the supplied hardware capture. The
-next hardware gate is H3 guest-driven native swapchain/Present, followed by
-x86 COM interfaces and host-thread integration. It is not an available launcher mode or a proven
-route to 30 FPS. See the [probe record](native-dxvk-probe-v1.md) for exact coverage.
+the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
+pass their supplied hardware captures. The next major gate is x86 D3D11/DXGI
+COM proxies exercised by a real PE32 caller. Game API coverage, production
+mapping/resource lifetime, host-thread integration and actual gameplay testing
+follow. Native DXVK is not an available launcher mode or a proven route to
+30 FPS. See the [production gates](native-dxvk-h3-v1.md#production-readiness)
+and [probe record](native-dxvk-probe-v1.md) for exact coverage.
 
 Memory statistics must also be interpreted at the correct layer: remaining
 process heap quota is not the same as free space inside existing allocators.

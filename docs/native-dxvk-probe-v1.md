@@ -191,9 +191,10 @@ the host test afterward.
 The [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) now implements a small
 real guest-to-native offscreen test. Its actual Switch Wine/FEX path now passes
 the [supplied H2 capture](../reports/native-dxvk-h2-748072991d01.json).
-The [H3 diagnostic](native-dxvk-h3-v1.md) next tests guest-driven native Present.
+The [H3 diagnostic](native-dxvk-h3-v1.md) now passes guest-driven native Present
+on the [supplied Switch capture](../reports/native-dxvk-h3-36d3933d1d46.json).
 H1, H2 and H3 are separate
-artifacts and neither is integrated with Sleeping Dogs.
+artifacts and none is integrated with Sleeping Dogs.
 
 1. Expand the successful H1 hardware subset before production use: handle
    lifetime, repeated device/swapchain recreation, memory pressure and visual

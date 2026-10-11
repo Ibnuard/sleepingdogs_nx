@@ -130,5 +130,6 @@ H2 hardware success validates a small guest-to-native rendering subset. Full
 x86 COM interfaces, D3D11/DXGI coverage, HWND/swapchain conversion, production
 resource lifetime rules and profiling are still needed before the game can
 use native DXVK. A route to stable 30 FPS has not been demonstrated.
-The [H3 diagnostic](native-dxvk-h3-v1.md) next tests guest-driven native
-swapchain/backbuffer/Present with a trusted Horizon window.
+The [H3 diagnostic](native-dxvk-h3-v1.md) now passes guest-driven native
+swapchain/backbuffer/Present on the supplied Switch capture with a trusted
+Horizon window. That remains a bounded packet test, not game COM integration.
