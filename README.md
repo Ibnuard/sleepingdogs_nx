@@ -26,6 +26,7 @@ and peaks around 25 FPS. **Stable 30 FPS has not been achieved.**
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
+| Native DXVK research | [ARM64 library and host rendering probe](docs/native-dxvk-probe-v1.md); not integrated with the game |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-11 |
 

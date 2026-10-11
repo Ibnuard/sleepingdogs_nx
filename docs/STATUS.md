@@ -56,8 +56,11 @@ baseline without that presentation path and its repeated logging.
 - CPU usage, GPU-load estimates and memory occupancy are insufficient to
   isolate the remaining frame bottleneck. Current logs lack GPU timestamp
   measurements for that attribution.
-- **Native ARM64 DXVK is not implemented.** The v15 term "native presentation"
-  refers to the host presentation bridge; its DXVK DLLs still execute as x86.
+- **Native ARM64 DXVK is a prototype only.** The
+  [v1 probe](native-dxvk-probe-v1.md) builds an ARM64 static library and passes
+  host draw/readback tests. It is not integrated with the game or tested on
+  Switch. The v15 term "native presentation" refers to the host presentation
+  bridge; its DXVK DLLs still execute as x86.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -66,9 +69,10 @@ baseline without that presentation path and its repeated logging.
 
 The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
-A native ARM64 DXVK prototype remains a possible research direction, requiring
-an x86 COM bridge, mapped-resource handling and host-thread integration. It is
-not an available launcher mode or a proven route to 30 FPS.
+The native ARM64 DXVK probe has begun; its next work requires a Horizon
+executable test, a real Wine/FEX guest bridge, x86 COM interfaces and
+host-thread integration. It is not an available launcher mode or a proven
+route to 30 FPS. See the [probe record](native-dxvk-probe-v1.md) for exact coverage.
 
 Memory statistics must also be interpreted at the correct layer: remaining
 process heap quota is not the same as free space inside existing allocators.

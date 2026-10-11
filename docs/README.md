@@ -12,6 +12,7 @@ installation for a first setup, or current status before comparing test builds.
 | [Troubleshooting](TROUBLESHOOTING.md) | Startup failures, graphics labels, logs and useful performance reports |
 | [Current status](STATUS.md) | Confirmed gameplay, measured results, limitations and work still under investigation |
 | [Building](BUILD.md) | Local prerequisites, baseline versus v18 recipes, validation and packaging |
+| [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 source build, host Map/draw/present tests and remaining game integration |
 | [Contributing](../CONTRIBUTING.md) | Reporting a problem, submitting changes and keeping evidence reproducible |
 | [Credits and licenses](../THIRD_PARTY.md) | FEXTendo's FEX port, upstream dependencies and adapted code |
 | [Development history](HISTORY.md) | Index of every version-specific investigation and build note |

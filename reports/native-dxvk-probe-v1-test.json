@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "target": "linux-x86_64-native",
+  "transport": "modeled-guest32-arena",
+  "native_arena_above_4g": true,
+  "checks": 166,
+  "rejected_requests": 25,
+  "buffer_bytes_verified": 1024,
+  "draw_pixels_verified": 921600,
+  "present_calls": 60,
+  "game_integration": false,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "executable_sha256": "d5cf5359c39f27348545c407d23ca9057718f8e45e6eef78e0a72df1d57bb8d2",
+  "driver": "llvmpipe (LLVM 21.1.8, 256 bits) (llvmpipe 26.0.3)",
+  "software_vulkan": true,
+  "stderr_sha256": "4b9bd19546a50594132763593edfb3f88693e1ab867913dc6e2dc7c43f3a49c2",
+  "build_receipt_sha256": "8199327a982be8bce93eb9eabbb5c87698a39ca06407593e5ee6ba9f4c0aecd5",
+  "runner_sha256": "38bf2b2b14f9be920c38b2b99cc099e0ba1e2b0a6263e3132f2b408058042f54"
+}

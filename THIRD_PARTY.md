@@ -49,6 +49,13 @@ its PES-specific optional components and paths do not imply that every one is
 active in Sleeping Dogs. Exact runtime inputs vary by experiment and are
 recorded in the corresponding build/package receipts.
 
+The [native DXVK probe v1](docs/native-dxvk-probe-v1.md) uses DXVK's existing
+native implementation and headers with the retained licenses above. Its
+original `src/native_dxvk/probe_*` sources, original test shaders and
+`tests/native_dxvk_abi.c` carry MIT notices; see the
+[probe license](src/native_dxvk/LICENSE). This experiment does not use LSFG
+or game shader payloads.
+
 ## Attributed backports
 
 The [v9 shader integration](docs/low-window-shader-optimizations.md) adapts
