@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "capture": "native-dxvk-h1-73faa8ebc4ef",
+  "evidence": "user-supplied Switch logs",
+  "build": "native-dxvk-horizon-v1",
+  "checks": 644,
+  "inputs": {
+    "result.json": {
+      "source": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-dxvk-native-probe-horizon-v1\\switch\\result.json",
+      "sha256": "828ada7be31cbbbd5a7bb5832d01ef57d02ad68b09244fccb13fcbbf56c5f6f6",
+      "archived_path": "reports/native-dxvk-h1-73faa8ebc4ef/result.json",
+      "bytes": 159
+    },
+    "probe.log": {
+      "source": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-dxvk-native-probe-horizon-v1\\switch\\probe.log",
+      "sha256": "73faa8ebc4ef5d16defb050013e37d09707f7ca789b7b4652d98e6aa47024b25",
+      "archived_path": "reports/native-dxvk-h1-73faa8ebc4ef/probe.txt",
+      "bytes": 1655
+    },
+    "stderr.log": {
+      "source": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-dxvk-native-probe-horizon-v1\\switch\\stderr.log",
+      "sha256": "ddb606b536bd8166a460f0ddbc3ccc53a5ee3e24d7d6b8f8c04dbd7ee082ab58",
+      "archived_path": "reports/native-dxvk-h1-73faa8ebc4ef/stderr.txt",
+      "bytes": 14209
+    },
+    "sd-dxvk-native-probe_d3d11.log": {
+      "source": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-dxvk-native-probe-horizon-v1\\switch\\sd-dxvk-native-probe_d3d11.log",
+      "sha256": "1ed2cd8ba4260e9f926ea4eb860bae1054a7d0ba98ca1b1884ccb370f8f88cc7",
+      "archived_path": "reports/native-dxvk-h1-73faa8ebc4ef/sd-dxvk-native-probe_d3d11.txt",
+      "bytes": 14135
+    }
+  },
+  "hardware_rendering_tested": true,
+  "transport": "modeled-guest32-arena",
+  "real_x86_guest_execution": false,
+  "game_integration": false,
+  "game_fps_measured": false,
+  "applet_type": 0,
+  "operation_mode": 0,
+  "clocks_recorded": false,
+  "clocks_mhz": null,
+  "visible_scanout_confirmed_by_user": false,
+  "native_arena_address": "0x8b530de20",
+  "native_arena_above_4g": true,
+  "modeled_guest_base": "0x10000000",
+  "arena_bytes": 8388608,
+  "renderer": "DXVK 3.1.1-sdbatch2-native-probe-v1 / Horizon ARM64",
+  "gpu": "NVIDIA Tegra X1 (GM20B)",
+  "driver": "NVK 26.2.2 / v14.1 cache identity",
+  "device_feature_level": "11_0",
+  "buffer_bytes_verified": 1024,
+  "draw_resolution": [
+    1280,
+    720
+  ],
+  "draw_pixels_verified": 921600,
+  "draw_bad_pixels": 0,
+  "readback_row_pitch": 5120,
+  "present_mode": "FIFO",
+  "swapchain_images": 3,
+  "present_calls": 300,
+  "present_seconds": 5.029,
+  "synthetic_present_rate_hz": 59.654,
+  "synthetic_workload": true,
+  "normal_main_exit_marker": true,
+  "binary_sha256_in_runtime_log": false,
+  "warnings": [
+    "warn:  DXGI: Found monitors not associated with any adapter, using fallback",
+    "warn:  D3D11DeviceFeatures: External memory features not supported",
+    "warn:  No path found for shader cache, consider setting DXVK_SHADER_CACHE_PATH.",
+    "warn:  D3D11DXGIDevice::QueryInterface: Unknown interface query",
+    "warn:  0ec870a6-5d7e-4c22-8cfc-5baae07616ed",
+    "err:   DXGI: Failed to parse display metadata + colorimetry info, using blank.",
+    "warn:  CloseHandle not implemented."
+  ],
+  "driver_conformance_warning": true,
+  "limits": [
+    "No real PE32/FEX guest or x86 COM proxy exercised.",
+    "Map uses an explicit bounded shadow copy, not zero-copy.",
+    "Present timing is a tiny FIFO synthetic workload, not game FPS.",
+    "Clock telemetry, visible scanout and final return to hbmenu are not recorded.",
+    "The marker identifies H1; logs do not authenticate a running NRO hash.",
+    "Display metadata fallback and native CloseHandle stub still require production review."
+  ],
+  "analyzer_sha256": "d5d6892fc46a6316cb15186cbd225f2d530b183885948373c361a4156b276e56"
+}

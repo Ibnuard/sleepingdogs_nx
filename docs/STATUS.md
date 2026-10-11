@@ -58,10 +58,14 @@ baseline without that presentation path and its repeated logging.
   measurements for that attribution.
 - **Native ARM64 DXVK is a prototype only.** The
   [v1 probe](native-dxvk-probe-v1.md) builds an ARM64 static library, passes
-  host draw/readback tests and now has a standalone Horizon diagnostic NRO
-  linked with real Mesa/NVK. It is not integrated with the game or tested on
-  Switch. The v15 term "native presentation" refers to the host presentation
+  host draw/readback tests and has passed the supplied standalone Switch H1
+  capture: 644 checks, all 720p pixels correct and 300 FIFO presentation calls.
+  It is not integrated with the game; its modeled guest arena does not execute
+  a real x86/FEX guest. The v15 term "native presentation" refers to the host presentation
   bridge; its DXVK DLLs still execute as x86.
+  The separate [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) has passed
+  build and host checks and is packaged for Switch testing. Its actual
+  Wine/FEX guest path has not yet been validated on hardware.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -70,9 +74,9 @@ baseline without that presentation path and its repeated logging.
 
 The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
-The native ARM64 DXVK probe has begun; its next work requires testing the
-linked Horizon NRO, a real Wine/FEX guest bridge, x86 COM interfaces and
-host-thread integration. It is not an available launcher mode or a proven
+The native ARM64 DXVK probe has passed the supplied standalone hardware test;
+its next hardware gate is the H2 Wine/FEX guest bridge diagnostic, followed
+by x86 COM interfaces and host-thread integration. It is not an available launcher mode or a proven
 route to 30 FPS. See the [probe record](native-dxvk-probe-v1.md) for exact coverage.
 
 Memory statistics must also be interpreted at the correct layer: remaining

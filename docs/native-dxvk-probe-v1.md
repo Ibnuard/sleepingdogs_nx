@@ -13,7 +13,7 @@ x86 DXVK renderer in v18; this probe is not a launcher option or a game update.
 | Check | Result and scope |
 | --- | --- |
 | Horizon static archive | Built with devkitA64 GCC 16.1.0; all 202 ELF members are AArch64 |
-| Horizon diagnostic NRO | Linked with v14.1 Mesa/NVK and libnx; 21,741,624 bytes; build inspection passes, hardware execution pending |
+| Horizon diagnostic NRO | Linked with v14.1 Mesa/NVK and libnx; 21,741,624 bytes; supplied Switch H1 capture reports PASS |
 | Final executable | AArch64 PIE, native TLS and C++ initializers present; no unresolved symbols; real DXVK, NVK, NAK and libnx scanout symbols verified |
 | Vulkan loader | Horizon object imports `vkGetInstanceProcAddr` directly; no dynamic Vulkan loader is required by that path |
 | Wire layout | A 64-byte packet, identical field offsets under i686 MinGW, Linux x86-64 and Horizon ARM64 compilers |
@@ -23,7 +23,9 @@ x86 DXVK renderer in v18; this probe is not a launcher option or a game update.
 | DXGI presentation | 60 successful `Present(0, 0)` calls to the XCB test window |
 | Invalid requests | 25 rejected cases, including out-of-arena pointers, insufficient Map capacity, stale handles, wrong object types and overlapping active shadows |
 | Host checks | 166 successful calls/assertions, plus those 25 rejected requests |
-| Switch runtime / FPS | Not tested; no FPS gain measured |
+| Switch H1 device / buffer / draw | FL11_0, 1,024-byte buffer pattern, all 921,600 pixels correct; 644 checks |
+| Switch H1 presentation | 300 FIFO Present calls in 5.029 seconds; 1280×720, three Vulkan swapchain images |
+| Sleeping Dogs FPS | No native game run or FPS gain measured |
 
 The Linux test uses real DXVK Native and software Vulkan, with a host arena
 above 4 GiB exposed through modeled guest addresses starting at `0x10000000`.
@@ -37,12 +39,24 @@ Receipts: [Horizon archive](../reports/native-dxvk-probe-v1-horizon.json),
 [host build](../reports/native-dxvk-probe-v1-host.json), and
 [host correctness test](../reports/native-dxvk-probe-v1-test.json).
 
+The supplied Switch capture is preserved in the
+[H1 hardware analysis](../reports/native-dxvk-h1-73faa8ebc4ef.json) and its
+[raw probe log](../reports/native-dxvk-h1-73faa8ebc4ef/probe.txt).
+It reports application mode (`applet_type=0`), handheld operation mode, the
+real Tegra X1 / NVK GM20B device, a native arena at `0x8b530de20` and an
+explicitly modeled guest base at `0x10000000`. Native Map/shader/readback and
+FIFO presentation completed with a normal exit marker. No real x86/FEX guest
+or COM proxy was exercised. The approximately 59.65 synthetic presents/second
+are not Sleeping Dogs FPS. Clock telemetry and a visual scanout confirmation
+were not supplied. Build-time receipts retain their original pre-test flags;
+the separate capture records the later hardware evidence.
+
 ## What was implemented
 
 - An isolated CMake recipe for DXVK's native headers, D3D11, DXGI, internal
   D3D10 dependencies, DXBC-SPIRV and libdisplay-info. D3D9 is outside this probe.
 - A diagnostic WSI driver: XCB on Linux, `VK_NN_vi_surface` with a trusted
-  libnx native window on Horizon. Only the XCB path has run.
+  libnx native window on Horizon. Both paths have now completed the probe.
 - Horizon compatibility adaptations for the static Vulkan loader, executable
   name, unavailable optional POSIX thread naming and default thread priority.
   Native worker threads remain enabled. The unified archive uses one D3D11 logger
@@ -174,9 +188,15 @@ the host test afterward.
 
 ## Remaining integration work
 
-1. Run the linked Horizon diagnostic on hardware and verify real Mesa/NVK
-   device creation, shader readback, native TLS/threads, scanout and cleanup.
-   The NRO is built; no Switch run has been recorded yet.
+The [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) now implements a small
+real guest-to-native offscreen test. Its build and host checks pass; the actual
+Switch Wine/FEX path remains awaiting a hardware result. H1 and H2 are separate
+artifacts and neither is integrated with Sleeping Dogs.
+
+1. Expand the successful H1 hardware subset before production use: handle
+   lifetime, repeated device/swapchain recreation, memory pressure and visual
+   scanout. H1 proves the supplied native device/draw/Map/present run, not
+   general D3D11 compatibility or production handle behavior.
 2. Register a probe Unix-call table through Wine's existing static WOW64
    bridge and execute requests from a real PE32/FEX guest. The current packet
    dispatcher has no Wine table registration or x86 COM proxies.

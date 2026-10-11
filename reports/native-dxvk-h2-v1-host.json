@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "checks": 3686493,
+  "rejected_requests": 17,
+  "draw_pixels_verified": 921600,
+  "buffer_bytes_verified": 1024,
+  "wine_permission_callbacks": "modeled fixture",
+  "wow64_gate_tested": false,
+  "fex_guest_tested": false,
+  "software_vulkan": true,
+  "game_fps_measured": false,
+  "executable_sha256": "e6139576efe76a60c21a9f224f0fba37eddf8f69a3af68d93b42f5abb1bf4284",
+  "native_dxvk_sha256": "766204e07bea416d7cd66793567e70516ddfb005b4ee82971e93b2aab83082d7",
+  "compile_argv": [
+    "g++",
+    "-O2",
+    "-std=c++17",
+    "-Wall",
+    "-Wextra",
+    "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_bridge",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_bridge_host.cpp",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_bridge/bridge_host.cpp",
+    "/home/blekjek/sleepingdogs-dxvk-arm64-v1/build-host/libsd_native_dxvk.a",
+    "-ldl",
+    "-lpthread",
+    "-o",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h2-v1/h2-host-test"
+  ],
+  "runner_sha256": "b5664610761bbad73aa25a8d1240f4735dfc3cf7e4870b641abfaefc485371f6",
+  "source_files": {
+    "tests/native_dxvk_bridge_host.cpp": "0d6ab39f97f5fb6bfc3f4db8cfc566ca00bf248115d5d1f99896296e37160010",
+    "src/native_dxvk_bridge/bridge_host.cpp": "2e9ac26a0dcd75005e7dc79615eafa15ae13522765804028515cdfe970f25485",
+    "src/native_dxvk_bridge/bridge_protocol.h": "27e1d8798aff16daabc87e1e938b0a7d67755423b419a24540a5ce13a34b27a5"
+  }
+}

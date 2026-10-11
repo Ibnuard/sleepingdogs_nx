@@ -11,7 +11,8 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
-| Native DXVK probe v1 / H1 | [ARM64 build, native D3D11 host tests and standalone Horizon NRO](native-dxvk-probe-v1.md); hardware test pending, no game integration |
+| Native DXVK H2 v1 | [PE32 Wine/FEX bridge diagnostic](native-dxvk-h2-v1.md); build and host checks pass, Switch result pending |
+| Native DXVK probe v1 / H1 | [ARM64 build, host tests and successful standalone Switch capture](native-dxvk-probe-v1.md); no real x86 guest or game integration |
 | v18 | [Targeted queued-APC notification](apc-v18.md) |
 | v17 | [Automatic application-core scheduling](scheduler-v17.md) |
 | v17 comparison | [FIFO versus IMMEDIATE presentation](present-ab-v17.md) |

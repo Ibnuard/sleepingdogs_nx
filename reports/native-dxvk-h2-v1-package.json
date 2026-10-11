@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-h2-v1",
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sd-dxvk-native-h2-v1-update.zip",
+  "sha256": "98a58b7ea0f24e2b8a2a6f7ffbb9df6db31ae3ef41d877fd52f8804ec0bb18ce",
+  "bytes": 31459271,
+  "files": 1289,
+  "all_member_hashes_verified": true,
+  "wine_overlay_patches_reproduced": true,
+  "nro_sha256": "63ef5657ceee9ae1d88152e69c42544c8ea46b271fdbe340666e94a1681ea73b",
+  "rollback_nro_sha256": "9f33c1709119c43f4915ea9da0747447988e8e91f031805af0117ce8c87eb0a1",
+  "guest_pe32_files": {
+    "sdndx.dll": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "bytes": 3584,
+      "sha256": "1c181386c8ae674036088aeb383844c77055ba1cbd309d351e107a9c4521f25a",
+      "exports": [
+        "SdNdxCall"
+      ],
+      "dll_export_name": "sdndx.dll"
+    },
+    "sd-native-dxvk-guest.exe": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "bytes": 15360,
+      "sha256": "86a646809fa0137a852a326f782b300367364a03f46e105471af530c95d1a2f8",
+      "exports": [],
+      "dll_export_name": null
+    }
+  },
+  "hardware_tested": false,
+  "guest_execution_tested": false,
+  "game_integration": false,
+  "game_fps_measured": false,
+  "builder_sha256": "89b4842fe776ce482608cd2772791b667a48d4103f0f14bb9032dc04a9fc2424",
+  "packager_sha256": "68baaa99db3f2fe209d8d87e964735053a330247894ccdf2eb965f9b1b4fdd79",
+  "instructions_sha256": "3d2dee1a50f1fd29806d523b4372fb92f46ed34cc1ac68c89f58ff756dac743b",
+  "build_receipt_sha256": "3398b2bff5751ad3b0f6cb2fe53ff7c1328b17001b93f9f6c2c296bc899ced60",
+  "host_receipt_sha256": "49554c9a667c1e7ab1891928dfc82e5c62d7ceedde7825e899af901384b865da"
+}
