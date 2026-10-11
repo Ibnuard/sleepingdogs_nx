@@ -1,0 +1,54 @@
+{
+  "status": "COM_PASS_GAME_FIRST_FRAME_FREEZE_OBSERVED",
+  "build": "native-dxvk-h4-v2",
+  "evidence_kind": "Observations transcribed from files read on the user's SD card during this task; original bytes were not archived before the user ejected E:.",
+  "original_bytes_archived": false,
+  "original_file_hashes_available": false,
+  "running_binary_authenticated": false,
+  "files_observed": {
+    "native-dxvk-h4/runtime.log": {"bytes": 22412, "last_write_local": "2026-10-11 20:27:00", "session": "COM-self-test"},
+    "drive_c/native-dxvk-h4-result.json": {"bytes": 426, "last_write_local": "2026-10-11 20:27:00", "session": "COM-self-test"},
+    "drive_c/native-dxvk-h4-guest.log": {"bytes": 935, "last_write_local": "2026-10-11 20:27:00", "session": "COM-self-test"},
+    "fex-runtime.log": {"bytes": 53179, "last_write_local": "2026-10-11 20:29:18", "session": "SleepingDogs GUI"},
+    "native-dxvk-h4/HKShip.exe_d3d11.log": {"bytes": 14379, "last_write_local": "2026-10-11 20:29:10", "session": "SleepingDogs GUI"},
+    "crash.log": {"bytes": 32768, "last_write_local": "2026-10-11 20:28:14", "session": "SleepingDogs GUI"}
+  },
+  "timestamp_timezone": "Asia/Jakarta as displayed on the client; device clocks not authenticated",
+  "com_result_observed": {
+    "status": "PASS", "build": "native-dxvk-h4-v2", "stage": "PASS", "error": 0,
+    "checks": 1845687, "buffer_bytes_verified": 2048, "mip_array_bytes_verified": 80,
+    "pixels_verified": 1843200, "bad_pixels": 0, "present_calls": 300,
+    "present_elapsed_ms": 5044, "bridge_calls": 1773, "native_draws": 302,
+    "live_interfaces": 0, "live_maps": 0, "bridge_failures": 0,
+    "guest_execution": true, "com_proxy": true,
+    "game_integration_tested": false, "game_fps_measured": false
+  },
+  "com_runtime_clean_exit_observed": true,
+  "com_guest_pass_marker_observed": true,
+  "com_same_session_dxvk_log_available": false,
+  "com_note": "The shared DXVK filename contains the later game's config and IMMEDIATE swapchain; do not present it as the COM run's renderer log. COM result, guest log and runtime agree on completion.",
+  "game_window_handoff_success": true,
+  "game_native_device_success": true,
+  "game_first_native_present_observed": true,
+  "game_resolution": [1280, 720],
+  "game_present_mode": "VK_PRESENT_MODE_IMMEDIATE_KHR",
+  "last_game_bridge_snapshot": {
+    "calls": 8094, "draws": 1, "presents": 1, "live_interfaces": 4517,
+    "maps": 2, "map_copy_bytes": 37748736, "failures": 0
+  },
+  "device_lost_observed": false,
+  "bridge_fault_observed": false,
+  "game_clean_exit_observed": false,
+  "game_log_tail_has_nontext_bytes": true,
+  "user_observation": "Static sponsor/legal page before animated splash. HUD dropped to 0.0 FPS and Switch reportedly stopped responding. Forced restart about five seconds after visible freeze.",
+  "root_cause_confirmed": false,
+  "gameplay_passed": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false,
+  "limits": [
+    "COM PASS is an observed hardware result, not a newly preserved four-file immutable capture.",
+    "V2 lacks native call BEGIN/END markers; counters do not identify the stopped operation or prove a deadlock.",
+    "The log tail was nontext after a forced restart; the cause of that corruption is not established.",
+    "Timestamps support ordering, not proof of freshness or binary identity. Session targets and build markers distinguish these runs."
+  ]
+}

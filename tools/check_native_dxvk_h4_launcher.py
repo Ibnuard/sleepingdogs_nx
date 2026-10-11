@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import re
 import subprocess
 import tempfile
 from package_native_dxvk_h4 import ROOT,LOCAL,PREFIX,launcher_payload
@@ -76,6 +77,23 @@ def main():
     with (LOCAL/'launcher.compile.log').open('w') as log:result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)
     if result.returncode:raise RuntimeError((LOCAL/'launcher.compile.log').read_text())
     payload=launcher_payload()
+    from port_common import profile_config
+    from sleepingdogs_performance_hud import performance_config
+    # Every x86 profile remains canonical; native differs only in syncInterval.
+    native_configs=0
+    for name,data in payload.items():
+        if not name.endswith('/dxvk.conf'):continue
+        renderer=name.split('/')[-2];native=renderer=='dxvk-native-h4'
+        profile=name.split('/launcher/presets/')[1].split('/')[0] if '/launcher/presets/' in name else 'balanced'
+        async_mode=renderer=='dxvk-2.7.1-async'
+        canonical=(performance_config(async_mode) if profile=='performance' else profile_config(profile,async_mode)).encode()
+        if native:
+            assert re.findall(rb'(?m)^dxgi\.syncInterval\s*=\s*(\d+)',data)==[b'1']
+            strip=lambda value:re.sub(rb'(?m)^dxgi\.syncInterval\s*=\s*[^\r\n]+$',b'',value)
+            assert strip(data)==strip(canonical),name
+            native_configs+=1
+        else:assert data==canonical,name
+    assert native_configs==6
     with tempfile.TemporaryDirectory(prefix='h4-launcher-',dir=work) as temporary:
         root=Path(temporary)
         for name,data in payload.items():
@@ -85,7 +103,8 @@ def main():
         if result.returncode:raise RuntimeError(result.stderr)
     receipt=dict(status='PASS',renderers=3,presets=15,transaction_targets=8,missing_companion_rejected=True,
                  rename_failure_rolled_back=True,staging_sync_failure_preserved=True,power_loss_recovery=True,legacy_fallback_verified=True,sanitizers=['address','undefined'],
-                 modeled_fsync=True,scope='Actual file payload/transaction under modeled Horizon rename and sync outcomes; interrupted file layout recovery. Not physical filesystem durability.',
+                 modeled_fsync=True,native_fifo_configs_verified=native_configs,legacy_configs_unchanged=True,native_only_sync_interval_changed=True,
+                 scope='Actual file payload/transaction under modeled Horizon rename and sync outcomes; interrupted file layout recovery. Not physical filesystem durability.',
                  source_sha256=hashlib.sha256(after.encode()).hexdigest(),fixture_sha256=sha(fixture),runner_sha256=sha(__file__),compile_argv=command,
                  payload_sha256={name:hashlib.sha256(data).hexdigest() for name,data in payload.items()},hardware_tested=False)
     (LOCAL/'launcher-check.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))

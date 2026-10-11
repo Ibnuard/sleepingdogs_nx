@@ -21,6 +21,7 @@ extern "C" void* sd_com_native_window(void) {
     window=candidate;wine_nx_runtime_trace("[SD-NDX-COM] trusted Horizon NWindow 1280x720; guest HWND is metadata only");return window;
 }
 extern "C" uint64_t sd_com_clock_ns(void){return armTicksToNs(armGetSystemTick());}
+extern "C" uint64_t sd_com_thread_id(void){return threadGetCurHandle();}
 extern "C" void sd_com_presented(uint32_t token,int32_t result) {
     if(result)return;
     std::lock_guard<std::mutex> guard(metrics_mutex);

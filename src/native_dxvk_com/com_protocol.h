@@ -38,6 +38,7 @@ extern const unsigned int wine_nx_sd_com_wow64_unix_count;
 void sd_com_shutdown(void);
 void* sd_com_native_window(void);
 uint64_t sd_com_clock_ns(void);
+uint64_t sd_com_thread_id(void);
 void sd_com_presented(uint32_t token, int32_t result);
 #ifdef __cplusplus
 }

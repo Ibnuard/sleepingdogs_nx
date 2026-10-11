@@ -3,19 +3,20 @@ from pathlib import Path
 import copy
 import importlib.util
 import json
+import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('h4_analyzer',ROOT/'tools/analyze_native_dxvk_h4.py')
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-result=dict(status='PASS',stage='PASS',error=0,build='native-dxvk-h4-v2',guest_execution=True,com_proxy=True,
+result=dict(status='PASS',stage='PASS',error=0,build='native-dxvk-h4-v3',guest_execution=True,com_proxy=True,
             buffer_bytes_verified=2048,mip_array_bytes_verified=80,pixels_verified=1843200,bad_pixels=0,
             present_calls=300,native_draws=302,live_interfaces=0,live_maps=0,bridge_failures=0,
             game_integration_tested=False,game_fps_measured=False)
-runtime='\n'.join(['[SD-NDX-COM] BUILD native-dxvk-h4-v2 mode=COM-self-test target=/drive_c/sd-native-dxvk-h4-test.exe',
+runtime='\n'.join(['[SD-NDX-COM] BUILD native-dxvk-h4-v3 mode=COM-self-test target=/drive_c/sd-native-dxvk-h4-test.exe',
                   '[SD-NDX-COM] D3D11CreateDevice hr=00000000 device=00010001 context=00010002 feature=b000 native=ARM64',
                   '[SD-NDX-COM] FIRST_PRESENT real COM path','[SD-EXIT] code=00000000'])
 guest='[SD-NDX-H4-GUEST] startup real PE32 COM client\n[SD-NDX-H4-GUEST] guest/native multithread references and critical section\n[SD-NDX-H4-GUEST] PASS checks=1843200'
-dxvk='DXVK: 3.1.1-sdbatch2-native-probe-v1\nBuild: horizon\nNVIDIA Tegra X1 (GM20B) NVK'
+dxvk='DXVK: 3.1.1-sdbatch2-native-probe-v1\nBuild: horizon\nNVIDIA Tegra X1 (GM20B) NVK\nFound config file: sdmc:/switch/sleepingdogs-fex/native-dxvk-h4/com-test.conf\ndxgi.syncInterval = 1\nPresent mode: VK_PRESENT_MODE_FIFO_KHR'
 
 def main():
     checks=0
@@ -24,7 +25,7 @@ def main():
         checks+=1;assert test
     report=module.analyze('com',result,guest,runtime,dxvk);expect(report['status']=='PASS')
     expect(not report['stable_30fps_proven'] and not report['game_fps_measured'])
-    for key,value in [('status','RUNNING'),('stage','startup'),('pixels_verified',921600),('bad_pixels',1),('live_maps',1),('live_interfaces',1),('bridge_failures',1),('present_calls',299),('com_proxy',False),('build','native-dxvk-h3-v1'),('build','native-dxvk-h4-v1')]:
+    for key,value in [('status','RUNNING'),('stage','startup'),('pixels_verified',921600),('bad_pixels',1),('live_maps',1),('live_interfaces',1),('bridge_failures',1),('present_calls',299),('com_proxy',False),('build','native-dxvk-h3-v1'),('build','native-dxvk-h4-v1'),('build','native-dxvk-h4-v2')]:
         altered=copy.deepcopy(result);altered[key]=value
         expect(module.analyze('com',altered,guest,runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
     for altered in [runtime.replace('FIRST_PRESENT','NO_PRESENT'),runtime.replace('mode=COM-self-test','mode=SleepingDogs'),runtime.replace('code=00000000','code=00000001'),runtime+'\n[SD-NDX-COM] FAULT foo']:
@@ -33,10 +34,37 @@ def main():
     expect(module.analyze('com',result,'',runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
     game=runtime.replace('mode=COM-self-test','mode=SleepingDogs').replace('sd-native-dxvk-h4-test.exe','SleepingDogs/HKShip.exe')
     game+='\n[SD-NDX-COM] game selection native ARM64; LSFG OFF\n[SD-NDX-FPS] intervals=600 elapsed_us=10000000 mean_frame_us=16666 min_us=100 max_us=20000 LSFG=OFF'
-    report=module.analyze('game',{},'',game,dxvk);expect(report['status']=='ROUTE_OBSERVED');expect(report['native_present_windows'][0]['present_fps']==60)
+    game_dxvk=dxvk.replace('/native-dxvk-h4/com-test.conf','/drive_c/SleepingDogs/dxvk.conf')
+    report=module.analyze('game',{},'',game,game_dxvk);expect(report['status']=='ROUTE_OBSERVED');expect(report['native_present_windows'][0]['present_fps']==60)
     expect(not report['game_fps_measured'] and not report['game_integration_tested'] and not report['stable_30fps_proven'])
     expect(module.analyze('game',{},'',runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
-    expect(module.analyze('game',{},'',game.replace('elapsed_us=10000000','elapsed_us=0'),dxvk)['native_present_windows']==[])
+    expect(module.analyze('game',{},'',game.replace('elapsed_us=10000000','elapsed_us=0'),game_dxvk)['native_present_windows']==[])
+    # A game renderer log must not certify an otherwise passing COM session.
+    for mode,actual_runtime,renderer in [('com',runtime,game_dxvk),('game',game,dxvk),('com',runtime,dxvk.split('Found config file:')[0])]:
+        report=module.analyze(mode,result,guest,actual_runtime,renderer)
+        expect(report['status']=='INCOMPLETE_OR_FAILED' and not report['validation']['renderer_log_mode_matches'])
+    for renderer in [game_dxvk.replace('syncInterval = 1','syncInterval = 0'),game_dxvk.replace('FIFO_KHR','IMMEDIATE_KHR')]:
+        expect(module.analyze('game',{},'',game,renderer)['status']=='INCOMPLETE_OR_FAILED')
+    old_result=copy.deepcopy(result);old_result['build']='native-dxvk-h4-v2'
+    expect(module.analyze('com',old_result,guest,runtime.replace('-v3','-v2'),dxvk,'native-dxvk-h4-v2')['status']=='PASS')
+    begin='[SD-NDX-CALL] BEGIN call=8095 thread=ff name=Map interface=7 method=14 object=00010001 args=1,2,3'
+    end='[SD-NDX-CALL] END call=8095 thread=ff name=Map ret=00000000 wall_us=1000'
+    trace=module.startup_trace(begin+'\n'+end)
+    expect(len(trace['completed_calls'])==1 and not trace['incomplete_calls'] and not trace['unmatched_ends'])
+    trace=module.startup_trace(begin)
+    expect(trace['incomplete_calls'][0]['name']=='Map' and not trace['cause_confirmed'])
+    trace=module.startup_trace(begin+'\n'+end.replace('thread=ff','thread=ab'))
+    expect(len(trace['incomplete_calls'])==1 and len(trace['unmatched_ends'])==1)
+    expect(bool(module.startup_trace('[SD-NDX-CALL] BEGIN call=truncated')['malformed_events']))
+    expect(module.startup_trace('[SD-NDX-CALL] startup trace complete;')['bounded_stop_observed'])
+    with tempfile.TemporaryDirectory(prefix='h4-capture-') as temp:
+        root=Path(temp);native=root/'native-dxvk-h4';native.mkdir()
+        legacy=native/'HKShip_d3d11.log';actual=native/'HKShip.exe_d3d11.log'
+        legacy.write_text('old');expect(module.capture_files(root,False,'com')['dxvk']==legacy)
+        actual.write_text('new');expect(module.capture_files(root,False,'com')['dxvk']==actual)
+        files=module.capture_files(root,False,'game');expect(files['runtime']==root/'fex-runtime.log')
+        expect(module.capture_files(root,False,'com',root/'saved-com.txt')['dxvk']==root/'saved-com.txt')
+        files=module.capture_files(root,True,'com');expect(files['result']==root/'native-dxvk-h4-result.json' and files['runtime']==root/'runtime.log')
     print(json.dumps(dict(status='PASS',checks=checks,fixtures='SYNTHETIC; no hardware execution',hardware_tested=False,game_fps_measured=False)))
 
 if __name__=='__main__':main()

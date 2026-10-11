@@ -16,16 +16,21 @@ graphics path uses **x86 DXVK 3.1.1-sdbatch2** and native ARM64
 **Mesa 26.2.2-sdv14.1-cache / NVK GM20B**. The FEX Switch integration continues
 FEXTendo's own PES13-derived port of upstream FEX-Emu.
 
-The separate **H4 native DXVK candidate** now implements x86 COM proxies and
-an experimental native ARM64 launcher/game route. Its local build/host/ABI
-checks do not replace the v18 hardware baseline: H4 guest execution and game
-validation on Switch are still pending.
+The separate **H4 native DXVK candidate** implements x86 COM proxies and an
+experimental native ARM64 launcher/game route. H4 v2's COM client has now
+passed on Switch: 1,845,687 checks, both 720p readbacks, 300 Present calls and
+clean exit. The original files were read before SD eject but not archived;
+see the [transcribed observation and limits](../reports/native-dxvk-h4-v2-sponsor-observation.json).
+This synthetic completion does not replace the v18 gameplay baseline.
 
 The first supplied H4 start-game capture failed at native window setup, before
 device creation. The COM self-test had been skipped. [H4 v2](native-dxvk-h4-v2-window.md)
-restores the missing launcher framebuffer handoff for GUI and Debug and records
-detailed window errors. Its regression reproduces the old order locally; the
-new Switch COM test must pass before further game validation.
+restores the missing launcher framebuffer handoff for GUI and Debug. The later
+GUI run passed that handoff, created the native device and presented one game
+frame, then froze at the static sponsor page before the animated splash.
+[H4 v3](native-dxvk-h4-v3-sponsor.md) tests native FIFO profiles and adds bounded
+BEGIN/END call tracing. The freeze's cause and v3's hardware behavior are
+unconfirmed; native gameplay and FPS validation remain pending.
 
 ## Performance evidence
 
@@ -83,8 +88,10 @@ baseline without that presentation path and its repeated logging.
   interfaces. The subsequent [H4 candidate](native-dxvk-h4-v1.md) implements
   those proxies and a third renderer choice. Native host correctness, compiled
   layouts, static game imports and launcher transactions are checked locally;
-  actual H4 PE32/FEX execution, dynamic game API coverage and playable native
-  rendering remain unverified. The confirmed gameplay still uses x86 DXVK.
+  H4 v2 PE32/FEX COM execution has passed the observed self-test, and one native
+  game Present is recorded. The sponsor-screen freeze, remaining dynamic game
+  API coverage and playable native rendering are unresolved. The confirmed
+  gameplay still uses x86 DXVK.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -95,12 +102,13 @@ The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
-pass their supplied hardware captures. The [H4 v2 update folder](native-dxvk-h4-v2-window.md#switch-validation)
-contains the COM client and native launcher/game candidate on one NRO. The next
-gate is running that ordinary PE32 COM client through Wine/FEX on Switch, then
-loading the game and validating its actual API use, resource lifetime and native
-worker behavior. Matched 720p gameplay and long-session evidence are required
-before production or a 30 FPS claim. See the
+pass their supplied hardware captures. H4 v2's ordinary PE32 COM client also
+passed on Switch. The [H4 v3 update folder](native-dxvk-h4-v3-sponsor.md#install-and-validate-on-switch)
+tests the first-frame freeze using FIFO and startup call traces. Save COM files
+before game launch because the shared DXVK log gets overwritten. A v3 COM pass,
+game startup, actual game API use, resource lifetime and native worker behavior
+still need validation. Matched 720p gameplay and long-session evidence are
+required before production or a 30 FPS claim. See the
 [production gates](native-dxvk-h3-v1.md#production-readiness) for what remains.
 
 Memory statistics must also be interpreted at the correct layer: remaining

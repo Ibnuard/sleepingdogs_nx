@@ -16,6 +16,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <initializer_list>
+#include <functional>
 #include <stdexcept>
 #include <thread>
 #include <vector>
@@ -101,6 +102,7 @@ extern "C" int virtual_check_buffer_for_write(void* p,size_t n){return permissio
 extern "C" void wine_nx_runtime_trace(const char* s){std::fprintf(stderr,"%s\n",s);}
 extern "C" void* sd_com_native_window(){return window_pointer;}
 extern "C" uint64_t sd_com_clock_ns(){return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}
+extern "C" uint64_t sd_com_thread_id(){return std::hash<std::thread::id>{}(std::this_thread::get_id());}
 extern "C" void sd_com_presented(uint32_t,int32_t result){require(result==0);++presented;}
 extern "C" void sd_com_test_fail_adopt_after(int32_t);
 

@@ -5,7 +5,7 @@
  #define WINE_NX_RUNTIME_BUILD "pes13-nx-0.2.0-vk1-production"
  #else
 -#define WINE_NX_RUNTIME_BUILD "sleepingdogs-fextendo-0.1.0-v18-apc"
-+#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v2"
++#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h4-v3"
  #endif
  #define MAX_RUNTIME_MODULES 64
  #define MAX_IMPORT_DEPTH 16
@@ -150,7 +150,7 @@
  #define FX_MUTED FX_COLOR(170,185,208)
  #define FX_BLUE FX_COLOR(51,194,255)
 -#define FX_APP_VERSION "0.1.0-v18-apc"
-+#define FX_APP_VERSION "0.1.0-h4.2"
++#define FX_APP_VERSION "0.1.0-h4.3"
  #define FX_RELEASE "Sleeping Dogs"
  #define FX_TILE_MIN 212
  #define FX_TILE_MAX 260
@@ -280,8 +280,8 @@
 +        setenv("DXVK_WSI_DRIVER","FEXTendoProbe",1);setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h4",1);
 +        setenv("DXVK_CONFIG_FILE",sd_com_diagnostic?RUNTIME_DIR "/native-dxvk-h4/com-test.conf":WINE_DRIVE_C "/SleepingDogs/dxvk.conf",1);
 +        setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h4/cache",1);setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h4/cache",1);
-+        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v2 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
-+        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build=native-dxvk-h4-v2 renderer=DXVK Native ARM64");
++        log_line("[SD-NDX-COM] BUILD native-dxvk-h4-v3 mode=%s target=%s; x86 COM to ARM64 DXVK",sd_com_diagnostic?"COM-self-test":"SleepingDogs",target);
++        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build=native-dxvk-h4-v3 renderer=DXVK Native ARM64");
 +        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}
 +    }
      wine_nx_runtime_trace("[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query");

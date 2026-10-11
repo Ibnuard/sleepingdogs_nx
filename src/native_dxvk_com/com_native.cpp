@@ -1,5 +1,6 @@
 /* SPDX-License-Identifier: MIT; typed ARM64 COM dispatch, no native pointer escapes. */
 #include "com_protocol.h"
+#include "com_methods.h"
 #include <d3d11.h>
 #include <d3d10.h>
 #include <dxgi.h>
@@ -58,6 +59,7 @@ struct Context {
     uint32_t next_map=1;
     bool stopped=false;
     uint64_t calls=0,presents=0,draws=0,map_bytes=0,failures=0,last_stats_ns=0;
+    uint32_t startup_traces=0;
 #ifdef SD_COM_HOST_FAULT_TESTS
     int32_t adopt_failure_after=-1;
 #endif
@@ -182,6 +184,49 @@ struct Context {
 };
 Context state;
 
+// Bound synchronous startup logging to three Presents / 128 calls. BEGIN is
+// emitted before native work; a missing END identifies an unfinished call,
+// not necessarily a deadlock. This is diagnostic wall time, never GPU timing.
+const char* startup_call_name(const sd_com_packet& p,uint64_t presents) {
+    if(!p.interface_id) {
+        if(p.method==SD_COM_BIND_MAP)return "BindMap";
+        if(p.method==SD_COM_ABORT_MAP)return "AbortMap";
+    }
+    if(p.interface_id==SD_COM_IF_IDXGISwapChain&&p.method==SD_COM_M_IDXGISwapChain_Present)return "Present";
+    if(p.interface_id==SD_COM_IF_ID3D11DeviceContext) {
+        if(p.method==SD_COM_M_ID3D11DeviceContext_Map)return "Map";
+        if(p.method==SD_COM_M_ID3D11DeviceContext_Unmap)return "Unmap";
+        if(p.method==SD_COM_M_ID3D11DeviceContext_GetData)return "GetData";
+        if(p.method==SD_COM_M_ID3D11DeviceContext_Flush)return "Flush";
+        if(presents&&p.method>2)return "Context";
+    }
+    return nullptr;
+}
+struct StartupTrace {
+    Context& c;sd_com_packet& p;const char* name=nullptr;
+    uint64_t start=0,call=0,thread=0;
+    StartupTrace(Context& context,sd_com_packet& packet):c(context),p(packet) {
+        if(c.presents>=3||c.startup_traces>=128)return;
+        name=startup_call_name(p,c.presents);if(!name)return;
+        ++c.startup_traces;start=sd_com_clock_ns();call=c.calls;thread=sd_com_thread_id();
+        char line[384];std::snprintf(line,sizeof(line),
+            "[SD-NDX-CALL] BEGIN call=%llu thread=%llx name=%s interface=%u method=%u object=%08x presents=%llu time_us=%llu args=%08x,%08x,%08x,%08x,%08x",
+            (unsigned long long)call,(unsigned long long)thread,name,p.interface_id,p.method,p.object,
+            (unsigned long long)c.presents,(unsigned long long)(start/1000),p.args[0],p.args[1],p.args[2],p.args[3],p.args[4]);
+        wine_nx_runtime_trace(line);
+    }
+    void finish() {
+        if(!name)return;
+        uint64_t now=sd_com_clock_ns();char line[384];std::snprintf(line,sizeof(line),
+            "[SD-NDX-CALL] END call=%llu thread=%llx name=%s ret=%08x fault=%08x aux=%u bytes=%u wall_us=%llu presents=%llu maps=%zu copy_bytes=%llu",
+            (unsigned long long)call,(unsigned long long)thread,name,p.ret,p.fault,p.aux,p.high[0],
+            (unsigned long long)((now>=start?now-start:0)/1000),(unsigned long long)c.presents,c.maps.size(),(unsigned long long)c.map_bytes);
+        wine_nx_runtime_trace(line);
+        if(c.presents>=3||c.startup_traces==128)
+            wine_nx_runtime_trace("[SD-NDX-CALL] startup trace complete; three Presents or 128 traced calls reached; normal logging continues");
+    }
+};
+
 // Pointer-bearing descriptors and mapped data need explicit adapters.
 #include "com_native_adapters.inc"
 
@@ -256,7 +301,9 @@ int32_t unix_dispatch(void* request) {
         if(p.abi!=SD_COM_ABI||p.reserved)return int32_t(0xc000000du);
         p.ret=p.fault=p.aux=0;
         ++state.calls;
+        StartupTrace trace(state,p);
         try{if(state.stopped&&!(p.interface_id==0&&p.method==SD_COM_STATS))throw Fault(E_INVALIDARG);execute(state,p);}catch(const Fault& f){p.fault=p.ret=f.code;}catch(const std::bad_alloc&){p.fault=p.ret=E_OUTOFMEMORY;}catch(...){p.fault=p.ret=E_FAIL;}
+        trace.finish();
         if(HRESULT(p.fault)<0){++state.failures;char line[192];std::snprintf(line,sizeof(line),"[SD-NDX-COM] FAULT interface=%u method=%u object=%08x hr=%08x",p.interface_id,p.method,p.object,p.fault);wine_nx_runtime_trace(line);}
         *output=p;state.report();return 0;
     }catch(...){return int32_t(0xc0000005u);}

@@ -4,13 +4,14 @@
 
 **Historical v1 record.** The first game capture failed before native device
 creation because the launcher framebuffer had not been handed off. Use the
-[H4 v2 candidate and current instructions](native-dxvk-h4-v2-window.md).
-V1's folder and receipts are preserved; v2 hardware validation is pending.
+[H4 v3 candidate and current instructions](native-dxvk-h4-v3-sponsor.md).
+V1's folder and receipts are preserved. V2 subsequently passed the Switch
+COM self-test and native window handoff, but the game froze at its sponsor page.
 
 H4 implements the Windows D3D11/DXGI COM connection and a **DXVK Native ARM64**
 launcher choice for the original `HKShip.exe`. It is ready for a Switch COM
-self-test followed by game validation. **H4 guest execution, Sleeping Dogs
-gameplay and an FPS gain have not yet been verified on Switch.** H1–H3's
+self-test followed by game validation. **At v1 packaging, H4 guest execution,
+Sleeping Dogs gameplay and an FPS gain had not been verified on Switch.** H1–H3's
 successful hardware results remain separate prerequisites.
 
 ```text

@@ -111,14 +111,14 @@ records subsequent hardware results.
 
 ## Native DXVK H4 candidate
 
-The [H4 v2 recipe](native-dxvk-h4-v2-window.md#local-checks-and-rebuild) overlays the pinned
+The [H4 v3 recipe](native-dxvk-h4-v3-sponsor.md#build-checks-and-capture-analysis) overlays the pinned
 v18 link inputs and native H1 DXVK archive, first reproducing the baseline ELF.
 It builds PE32 COM DLLs, a real COM self-test client and the ARM64 runtime with
 three renderer choices. Separate host, compiled-ABI, window-handoff,
 launcher-transaction and static-game-import checks feed its folder packager.
 
 Run the listed checks before `tools/package_native_dxvk_h4.py`. The output is
-`dist/sd-dxvk-native-h4-v2-update/` with two-phase COM/game activation and the
+`dist/sd-dxvk-native-h4-v3-update/` with two-phase COM/game activation and the
 exact v18 rollback; no ZIP is created. Prepared sources/objects/SDK and pinned
 legacy DLLs remain necessary. Local PASS receipts do not establish H4 guest
 execution, game API coverage, gameplay or a Switch FPS improvement.

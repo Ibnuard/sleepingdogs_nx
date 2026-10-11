@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def main():
-    output=ROOT/'local/native-dxvk-h4-v2';output.mkdir(parents=True,exist_ok=True)
+    output=ROOT/'local/native-dxvk-h4-v3';output.mkdir(parents=True,exist_ok=True)
     build_receipt=ROOT/'local/native-dxvk-probe-v1/build-host.json';build=json.loads(build_receipt.read_text());library=Path(build['library'])
     assert sha(library)==build['sha256']
     source=library.parent.parent/'source';headers=library.parent.parent/'host-deps/usr/include'
@@ -49,10 +49,16 @@ def main():
         (output/'host-stdout.log').write_text(result.stdout);(output/'host-stderr.log').write_text(result.stderr)
         if result.returncode:raise RuntimeError(result.stderr[-12000:])
         receipt=json.loads(result.stdout);driver=re.search(r'Found device: (.*)',result.stderr)
+        begins=re.findall(r'\[SD-NDX-CALL\] BEGIN call=(\d+) [^\n]*name=(\w+)',result.stderr)
+        ends=re.findall(r'\[SD-NDX-CALL\] END call=(\d+) [^\n]*name=(\w+)',result.stderr)
+        assert begins==ends and 0<len(begins)<=128
+        assert {'Map','Unmap','BindMap','Present'} <= {name for _,name in begins}
+        assert result.stderr.count('[SD-NDX-CALL] startup trace complete;')==1
         receipt.update(executable_sha256=sha(executable),driver=driver.group(1) if driver else 'see DXVK log',software_vulkan=True,
                        native_dxvk_sha256=sha(library),build_receipt_sha256=sha(build_receipt),runner_sha256=sha(__file__),compile_argv=command,
                        source_files={str(p.relative_to(ROOT)):sha(p) for p in inputs},
                        allocation_rollback_cases=2,fault_injection_host_only=True,empty_update_boxes_verified=3,
+                       startup_trace_pairs=len(begins),startup_trace_bounded=True,startup_trace_pairs_matched=True,
                        scope='Actual DXVK/lavapipe and low mmap; modeled Wine permission checks and host-only allocation failures; direct table entry. No PE32/FEX execution or game test.')
         (output/'host-test.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
     finally:

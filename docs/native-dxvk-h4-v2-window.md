@@ -2,10 +2,16 @@
 
 [Documentation](README.md) · [COM implementation](native-dxvk-h4-v1.md) · [Current status](STATUS.md)
 
+**Later hardware result:** the v2 COM self-test passed on Switch, and the game
+passed this window handoff before freezing after its first sponsor frame.
+See [v3 observations and diagnostic candidate](native-dxvk-h4-v3-sponsor.md).
+The v2 record below describes its original packaging and validation scope.
+
 The supplied start-game capture stops at `FAIL trusted native window`, before
 native D3D11 device creation or a presented frame. H4 v2 fixes a missing screen
 handoff in that route and adds specific window failure diagnostics. It is a
-new **Switch test candidate**, with no confirmed H4 COM/game pass or FPS gain.
+**Switch test candidate** that initially had no confirmed H4 COM/game pass or
+FPS gain; the subsequent COM result is recorded in the v3 note above.
 
 ## Evidence and cause
 
@@ -59,14 +65,15 @@ and any customized launcher profile templates before copying.
    the logs before another run and diagnose that failure before starting HKShip.
 3. Preserve these four files under `switch/sleepingdogs-fex/`:
    `drive_c/native-dxvk-h4-result.json`, `drive_c/native-dxvk-h4-guest.log`,
-   `native-dxvk-h4/runtime.log`, and `native-dxvk-h4/HKShip_d3d11.log`.
+   `native-dxvk-h4/runtime.log`, and `native-dxvk-h4/HKShip.exe_d3d11.log`.
+   Save these before game launch, which overwrites the shared DXVK log.
 4. After COM PASS, close from HOME and copy **`start-game/switch/`** to SD root.
    Choose DXVK Native ARM64, Launch GUI, 1280×720 and the FPS HUD. Native mode
    forces LSFG OFF. Keep the comparison clocks CPU 1728 / GPU 768 / RAM 1600 MHz;
    the build itself does not change clocks.
 5. Validate menu, load, gameplay, crowded areas, transitions, pause/resume and
    exit. Repeat startup with Launch Debug to cover the reported route. Preserve
-   `fex-runtime.log`, `native-dxvk-h4/HKShip_d3d11.log`, and `crash.log` if present.
+   `fex-runtime.log`, `native-dxvk-h4/HKShip.exe_d3d11.log`, and `crash.log` if present.
    Compare gameplay in the same scene/camera with warm caches. Menu or self-test
    FPS is not gameplay evidence.
 
@@ -108,8 +115,9 @@ The [build receipt](../reports/native-dxvk-h4-v2-build.json) and
 sources, overlays, NRO and manifest hashes. None asserts a hardware FPS gain.
 
 Prepared local Wine/FEX/Mesa/SDK objects and pinned legacy renderer DLLs are
-required. Current tools produce v2 in an isolated work directory; they do not
-rebuild or overwrite the v1 delivery folder.
+required. The recipe below produced v2 at commit `61c9b1a`. Current tools produce
+[v3](native-dxvk-h4-v3-sponsor.md) in a separate work directory and preserve
+the v1/v2 folders. Use a separate checkout of that commit to reproduce v2.
 
 ```sh
 python3 tools/test_native_dxvk_h4_window.py
@@ -124,8 +132,8 @@ python3 tools/analyze_native_dxvk_h4.py --mode com --log-dir /path/to/four-files
 python3 tools/analyze_native_dxvk_h4.py --mode game --runtime-root /path/to/copied-runtime
 ```
 
-The current analyzer requires v2 markers; it rejects stale v1 results. The
-packager verifies test/source hashes and overlay round trips, and refuses to
-overwrite altered payloads or added user logs. Production still requires H4
-COM success, actual game API coverage, long-session correctness and matched
-native-FPS evidence on Switch.
+The current analyzer defaults to v3; use `--expected-build native-dxvk-h4-v2`
+for v2 logs. The packager verifies test/source hashes and overlay round trips,
+and refuses to overwrite altered payloads or added user logs. Despite the later
+v2 COM pass, production still requires stable game startup, actual game API
+coverage, long-session correctness and matched native-FPS evidence on Switch.
