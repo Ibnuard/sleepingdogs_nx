@@ -92,6 +92,10 @@ def prepare(work, baseline):
     replace(source / patched[3], '#elif defined(__FreeBSD__)\n    int mib[4]',
             '#elif defined(__SWITCH__)\n    return "sd-dxvk-native-probe";\n'
             '#elif defined(__FreeBSD__)\n    int mib[4]')
+    replace(source / patched[3],
+            '    ::pthread_setname_np(pthread_self(), posixName.data());',
+            '#ifndef __SWITCH__\n    ::pthread_setname_np(pthread_self(), posixName.data());\n'
+            '#else\n    (void)posixName; // libnx has no optional POSIX thread-name API.\n#endif')
     replace(source / 'src/util/thread.h',
             '      ::pthread_setschedparam(this->native_handle(), policy, &param);',
             '#ifndef __SWITCH__\n      ::pthread_setschedparam(this->native_handle(), policy, &param);\n'

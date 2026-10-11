@@ -34,6 +34,18 @@
  #elif defined(__FreeBSD__)
      int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, getpid()};
      char exePath[PATH_MAX] = {};
+@@ -136,7 +138,11 @@
+ #else
+     std::array<char, 16> posixName = {};
+     dxvk::str::strlcpy(posixName.data(), name.c_str(), 16);
++#ifndef __SWITCH__
+     ::pthread_setname_np(pthread_self(), posixName.data());
++#else
++    (void)posixName; // libnx has no optional POSIX thread-name API.
++#endif
+ #endif
+   }
+ 
 --- a/src/util/util_win32_compat.h
 +++ b/src/util/util_win32_compat.h
 @@ -3,23 +3,37 @@

@@ -2,7 +2,7 @@ info:  Game: sd_native_dxvk_host_probe
 info:  DXVK: 3.1.1-sdbatch2-native-probe-v1
 info:  Build: host GCC recorded in receipt
 info:  Found config file: /mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-probe-v1/probe.conf
-info:  Vulkan: Found vkGetInstanceProcAddr in libvulkan.so.1 @ 0x7cef6f08fa00
+info:  Vulkan: Found vkGetInstanceProcAddr in libvulkan.so.1 @ 0x7743eb7b5a00
 info:  Extension providers:
 info:    Platform WSI
 info:  Enabled instance extensions:

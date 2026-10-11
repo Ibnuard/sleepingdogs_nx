@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-horizon-v1",
+  "package": {
+    "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sd-dxvk-native-probe-horizon-v1.zip",
+    "sha256": "ddb7161482c960282bfe715c928b3724f894ef15714a8a770e1255310383b945",
+    "bytes": 15224167,
+    "files": 1285,
+    "all_member_hashes_verified": true
+  },
+  "nro_sha256": "53a99869ed1d01950361969d7e9c50cd95de4500155dde5338ff3260f4d33e84",
+  "nro_bytes": 21741624,
+  "native_receipt_sha256": "969f66be397ddc1731e807b6863d7ff8d979a9c69b621438ae300ffcb7c66f1f",
+  "dxvk_source_files": 1203,
+  "mesa_overlay_files": 25,
+  "elf_audit": {
+    "status": "PASS",
+    "machine": "AArch64",
+    "type": "PIE",
+    "unresolved_nonweak": [],
+    "unresolved_weak": [],
+    "required_symbols": [
+      "main",
+      "sd_ndx_dispatch",
+      "sd_ndx_session_create",
+      "D3D11CreateDevice",
+      "vkGetInstanceProcAddr",
+      "nvk_CreateDevice",
+      "wsi_CreateViSurfaceNN",
+      "nak_compile_shader",
+      "nwindowQueueBuffer",
+      "nvMapCreate"
+    ],
+    "tls_section": true,
+    "cpp_initializers": true,
+    "reader_sha256": "792ec2022f9a30d0713f5b381f00ae365a9e7940ef8699df93e91a59c073adf4"
+  },
+  "nro_audit": {
+    "status": "PASS",
+    "format": "NRO0",
+    "segments": [
+      {
+        "name": "text",
+        "offset": 0,
+        "bytes": 10911744
+      },
+      {
+        "name": "rodata",
+        "offset": 10911744,
+        "bytes": 10305536
+      },
+      {
+        "name": "data",
+        "offset": 21217280,
+        "bytes": 507904
+      }
+    ],
+    "asset_metadata": true,
+    "nacp_bytes": 16384
+  },
+  "builder_sha256": "51bd0c1ae074fc1a38346ce2c700ed35eda1077260d8a95ae9516a6d9079fe51",
+  "guest_execution": false,
+  "game_integration": false,
+  "hardware_tested": false,
+  "fps_gain_measured": false
+}

@@ -3,8 +3,9 @@
 [Documentation](README.md) · [Current status](STATUS.md)
 
 This experiment builds the actual DXVK Native D3D11/DXGI implementation for
-Horizon ARM64 and tests a small marshaling backend on Linux. It is the first
-native-renderer milestone, dated **2026-10-11**. Sleeping Dogs still uses the
+Horizon ARM64 and tests a small marshaling backend on Linux. A standalone
+Horizon diagnostic NRO is now linked with the existing real Mesa/NVK driver,
+dated **2026-10-11**. Sleeping Dogs still uses the
 x86 DXVK renderer in v18; this probe is not a launcher option or a game update.
 
 ## Results
@@ -12,6 +13,8 @@ x86 DXVK renderer in v18; this probe is not a launcher option or a game update.
 | Check | Result and scope |
 | --- | --- |
 | Horizon static archive | Built with devkitA64 GCC 16.1.0; all 202 ELF members are AArch64 |
+| Horizon diagnostic NRO | Linked with v14.1 Mesa/NVK and libnx; 21,741,624 bytes; build inspection passes, hardware execution pending |
+| Final executable | AArch64 PIE, native TLS and C++ initializers present; no unresolved symbols; real DXVK, NVK, NAK and libnx scanout symbols verified |
 | Vulkan loader | Horizon object imports `vkGetInstanceProcAddr` directly; no dynamic Vulkan loader is required by that path |
 | Wire layout | A 64-byte packet, identical field offsets under i686 MinGW, Linux x86-64 and Horizon ARM64 compilers |
 | Linux native D3D11 device | Feature level 11_0 on Mesa lavapipe / llvmpipe 26.0.3, LLVM 21.1.8 |
@@ -28,7 +31,9 @@ It does **not** execute an x86 guest through FEX. The i686 check compiles the
 packet layout only. Present calls establish API success, not observed scanout
 or a frame-rate benchmark. Vulkan validation layers were not used.
 
-Receipts: [Horizon build](../reports/native-dxvk-probe-v1-horizon.json),
+Receipts: [Horizon archive](../reports/native-dxvk-probe-v1-horizon.json),
+[Horizon executable](../reports/native-dxvk-horizon-v1.json),
+[diagnostic package verification](../reports/native-dxvk-horizon-v1-package.json),
 [host build](../reports/native-dxvk-probe-v1-host.json), and
 [host correctness test](../reports/native-dxvk-probe-v1-test.json).
 
@@ -39,13 +44,61 @@ Receipts: [Horizon build](../reports/native-dxvk-probe-v1-horizon.json),
 - A diagnostic WSI driver: XCB on Linux, `VK_NN_vi_surface` with a trusted
   libnx native window on Horizon. Only the XCB path has run.
 - Horizon compatibility adaptations for the static Vulkan loader, executable
-  name and default thread priority. The unified archive uses one D3D11 logger
+  name, unavailable optional POSIX thread naming and default thread priority.
+  Native worker threads remain enabled. The unified archive uses one D3D11 logger
   singleton rather than separate DLL logger instances.
 - A bounded dispatcher for device creation, buffers, RGBA8 textures, shaders,
   render-target views, a fullscreen-triangle pipeline, copy/readback, release,
   a 1280×720 swapchain and presentation.
 - Original HLSL test shaders, compiled by Windows `d3dcompiler_47.dll` into
   the checked header. No game or Lossless Scaling shaders are used.
+- A standalone libnx executable with separate diagnostic files, buffer and
+  720p pixel-readback checks, and 300 FIFO presentation calls. This is not
+  connected to Wine, FEX, the game launcher or the game's forwarder.
+
+## Horizon hardware diagnostic H1
+
+Local artifact: `dist/sd-dxvk-native-probe-horizon-v1.zip`. Generated packages
+are excluded from Git; this name does not imply a published GitHub release.
+Copy its `switch/` folder to the SD root. The only SD payload is:
+
+```text
+switch/sd-dxvk-native-probe/sd-dxvk-native-probe.nro
+```
+
+Run **FEXTendo Native DXVK Probe** from hbmenu in application/full-memory mode:
+hold R while opening a game from HOME, then select the probe. Album/applet mode
+is rejected. The probe uses the normal libnx heap, its own native threads and
+the existing v14.1 driver inputs; it does not reserve FEX's guest low-window
+or use v17's thread scheduler. It does not change clocks. Keep the reference
+OLED handheld / CPU 1728 / GPU 768 / RAM 1600 MHz conditions if available.
+
+The test requires a D3D11 FL11_0 device, verifies a 1,024-byte buffer pattern
+through native Map/copy/readback, draws the original shader to an offscreen
+1280×720 texture, and verifies every pixel. It then presents a solid blue
+image 300 times using `Present(1, 0)`, roughly five seconds at 60 Hz, and exits
+to hbmenu. PLUS cancels during presentation. Shader/device startup can add time.
+This tiny workload does not measure Sleeping Dogs FPS or prove a speedup.
+
+Collect these files from `switch/sd-dxvk-native-probe/` after running:
+
+- `result.json`: `PASS`, `FAIL` or `RUNNING` if interrupted before completion.
+- `probe.log`: `[SD-NDX-H1]` stage markers and pixel/presentation results.
+- `stderr.log`: runtime errors and driver output.
+- `sd-dxvk-native-probe_d3d11.log`: DXVK device/configuration details.
+
+The probe overwrites these diagnostic files and its own `probe.conf` on each
+run. A hardware `PASS` must come from that run's `result.json`. Package/build
+receipts are build evidence only. If the default libnx window fails during
+startup before `main()`, there may be no new probe log; libnx documents this
+[startup behavior](https://github.com/switchbrew/libnx/blob/master/nx/include/switch/display/native_window.h).
+The SD log path is also unavailable if SD/file initialization fails.
+
+NRO SHA-256: `53a99869ed1d01950361969d7e9c50cd95de4500155dde5338ff3260f4d33e84`.
+The package contains original probe sources, all 1,203 pinned DXVK source
+files with the native adaptations, versioned Mesa overlays, receipts, notices
+and verified per-file checksums. The Mesa/SDK baseline is still an external
+local build prerequisite; the package is not a self-contained clean-clone build.
 
 Original probe sources are in [src/native_dxvk](../src/native_dxvk).
 The [input manifest](../vendor/dxvk/native-probe-v1-inputs.json) pins 1,203
@@ -93,6 +146,8 @@ python3 tools/build_native_dxvk_probe.py --target horizon --jobs 4
 python3 tools/build_native_dxvk_probe.py --target host --jobs 4 --reuse-prepared
 python3 tools/test_native_dxvk_probe.py
 python3 tools/export_native_dxvk_probe.py
+python3 tools/build_native_dxvk_horizon.py
+python3 tools/package_native_dxvk_horizon.py
 ```
 
 Default work directory: `/home/blekjek/sleepingdogs-dxvk-arm64-v1`.
@@ -103,6 +158,13 @@ Do not run preparation concurrently: it restores adapted source files.
 After preparation, host and Horizon builds may use `--reuse-prepared`, which
 verifies the shared inputs without rewriting them.
 
+The Horizon executable additionally requires `local/apc-v18/native.json` and
+its matching Mesa objects/libraries. The linker checks those pinned inputs,
+records the resolved SDK/runtime libraries and compilation headers, and
+inspects executable symbols/TLS and NRO/NACP bounds. A per-output lock prevents
+concurrent linker runs. Packaging verifies hashes again and checks all ZIP
+members, checksums and the dedicated SD payload path.
+
 Receipts and test logs are generated in `local/native-dxvk-probe-v1/`.
 The runner checks source/archive hashes, uses a temporary authenticated Xvfb
 display, forces lavapipe and closes its display when finished. It does not
@@ -112,9 +174,9 @@ the host test afterward.
 
 ## Remaining integration work
 
-1. Link and run an isolated Horizon diagnostic with the real Mesa/NVK driver,
-   libnx window, runtime allocator/TLS support and native threads. The ARM64
-   archive has **not** been linked into a final executable or NRO.
+1. Run the linked Horizon diagnostic on hardware and verify real Mesa/NVK
+   device creation, shader readback, native TLS/threads, scanout and cleanup.
+   The NRO is built; no Switch run has been recorded yet.
 2. Register a probe Unix-call table through Wine's existing static WOW64
    bridge and execute requests from a real PE32/FEX guest. The current packet
    dispatcher has no Wine table registration or x86 COM proxies.
