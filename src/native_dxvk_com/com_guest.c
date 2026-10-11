@@ -23,7 +23,7 @@ struct proxy {
     struct proxy *hash_next, **hash_previous;
 };
 struct mapped_shadow {
-    uint32_t id;
+    uint32_t id, bytes;
     void *memory, *context, *resource;
     struct mapped_shadow *next;
 };
@@ -39,6 +39,12 @@ static struct proxy *proxies;
 #define PROXY_BUCKET_COUNT 4096u
 static struct proxy *proxy_buckets[PROXY_BUCKET_COUNT];
 static struct mapped_shadow *shadows;
+/* Idle entries own memory only, never a context/resource or an active Map.
+ * Bound retention independently of the number or sizes of active mappings. */
+#define SHADOW_CACHE_BYTES (16u*1024u*1024u)
+#define SHADOW_CACHE_ENTRIES 4u
+static struct mapped_shadow *idle_shadows;
+static uint32_t idle_shadow_bytes,idle_shadow_count;
 #define PROXY_MAGIC 0x53444334u
 
 static uint32_t proxy_bucket(uint32_t token,uint32_t kind) {
@@ -220,6 +226,52 @@ static HRESULT proxy_private_get(void *object,uint32_t method,REFGUID guid,UINT 
     if(wire)HeapFree(GetProcessHeap(),0,wire);
     return status<0?status:(HRESULT)p.ret;
 }
+static void shadow_destroy(struct mapped_shadow *shadow) {
+    if(shadow){if(shadow->memory)VirtualFree(shadow->memory,0,MEM_RELEASE);HeapFree(GetProcessHeap(),0,shadow);}
+}
+static int shadow_cache_clear(void) {
+    EnterCriticalSection(&proxy_lock);
+    struct mapped_shadow *list=idle_shadows;
+    int released=list!=NULL;
+    idle_shadows=NULL;idle_shadow_bytes=idle_shadow_count=0;
+    LeaveCriticalSection(&proxy_lock);
+    while(list){struct mapped_shadow *next=list->next;shadow_destroy(list);list=next;}
+    return released;
+}
+static struct mapped_shadow *shadow_take(uint32_t bytes) {
+    struct mapped_shadow *shadow=NULL;
+    EnterCriticalSection(&proxy_lock);
+    struct mapped_shadow **at=&idle_shadows;
+    while(*at&&(*at)->bytes!=bytes)at=&(*at)->next;
+    if(*at){shadow=*at;*at=shadow->next;--idle_shadow_count;idle_shadow_bytes-=bytes;shadow->next=NULL;}
+    LeaveCriticalSection(&proxy_lock);
+    /* BindMap initializes every byte natively after writable-range validation:
+     * copy-in for preserving modes, zero-fill for WRITE_DISCARD. */
+    if(shadow)return shadow;
+    for(unsigned attempt=0;attempt<2;++attempt) {
+        shadow=HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*shadow));
+        if(shadow)shadow->memory=VirtualAlloc(NULL,bytes,MEM_RESERVE|MEM_COMMIT,PAGE_READWRITE);
+        if(shadow&&shadow->memory){shadow->bytes=bytes;return shadow;}
+        shadow_destroy(shadow);
+        if(!attempt)shadow_cache_clear(); /* Reclaim idle memory before one retry. */
+    }
+    return NULL;
+}
+static void shadow_return(struct mapped_shadow *shadow) {
+    shadow->id=0;shadow->context=shadow->resource=NULL;shadow->next=NULL;
+    if(shadow->bytes>SHADOW_CACHE_BYTES){shadow_destroy(shadow);return;}
+    struct mapped_shadow *evicted=NULL;
+    EnterCriticalSection(&proxy_lock);
+    while(idle_shadows&&(idle_shadow_count>=SHADOW_CACHE_ENTRIES||shadow->bytes>SHADOW_CACHE_BYTES-idle_shadow_bytes)) {
+        struct mapped_shadow **oldest=&idle_shadows;
+        while((*oldest)->next)oldest=&(*oldest)->next;
+        struct mapped_shadow *old=*oldest;*oldest=NULL;
+        --idle_shadow_count;idle_shadow_bytes-=old->bytes;old->next=evicted;evicted=old;
+    }
+    shadow->next=idle_shadows;idle_shadows=shadow;++idle_shadow_count;idle_shadow_bytes+=shadow->bytes;
+    LeaveCriticalSection(&proxy_lock);
+    while(evicted){struct mapped_shadow *next=evicted->next;shadow_destroy(evicted);evicted=next;}
+}
 static HRESULT proxy_map(void *context,void *resource,UINT subresource,D3D11_MAP type,UINT flags,D3D11_MAPPED_SUBRESOURCE *output) {
     if(!output)return E_POINTER;
     memset(output,0,sizeof(*output));
@@ -227,17 +279,20 @@ static HRESULT proxy_map(void *context,void *resource,UINT subresource,D3D11_MAP
     struct sd_com_packet p={SD_COM_ABI,proxy_token(context),self->interface_id,14};
     p.args[0]=proxy_token(resource);p.args[1]=subresource;p.args[2]=type;p.args[3]=flags;p.args[4]=guest_address(output);
     LONG status=proxy_call(&p);
+    /* Idle memory must not cause a native Map allocation to fail. The native
+     * adapter unwinds failed maps; retry only this exact error, once, and only
+     * after freeing cached memory. Active mappings are never reclaimed. */
+    if((status==E_OUTOFMEMORY||(status>=0&&(HRESULT)p.ret==E_OUTOFMEMORY))&&shadow_cache_clear())status=proxy_call(&p);
     if(status<0)return status;
     if(FAILED((HRESULT)p.ret))return (HRESULT)p.ret;
     uint32_t id=p.aux,bytes=p.high[0];
-    struct mapped_shadow *shadow=HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*shadow));
-    if(shadow)shadow->memory=VirtualAlloc(NULL,bytes,MEM_RESERVE|MEM_COMMIT,PAGE_READWRITE);
+    struct mapped_shadow *shadow=shadow_take(bytes);
     struct sd_com_packet bind={SD_COM_ABI,0,0,SD_COM_BIND_MAP};
     bind.args[0]=id;bind.args[1]=shadow?guest_address(shadow->memory):0;bind.args[2]=bytes;
     status=shadow && shadow->memory ? proxy_call(&bind) : E_OUTOFMEMORY;
     if(status<0 || FAILED((HRESULT)bind.ret)) {
         struct sd_com_packet abort={SD_COM_ABI,0,0,SD_COM_ABORT_MAP};abort.args[0]=id;proxy_call(&abort);
-        if(shadow){if(shadow->memory)VirtualFree(shadow->memory,0,MEM_RELEASE);HeapFree(GetProcessHeap(),0,shadow);}
+        shadow_destroy(shadow);
         memset(output,0,sizeof(*output));return status<0?status:(HRESULT)bind.ret;
     }
     shadow->id=id;shadow->context=context;shadow->resource=resource;
@@ -258,7 +313,7 @@ static void proxy_unmap(void *context,void *resource,UINT subresource) {
     while(*at && (*at)->id!=p.aux)at=&(*at)->next;
     if(*at){shadow=*at;*at=shadow->next;}
     LeaveCriticalSection(&proxy_lock);
-    if(shadow){VirtualFree(shadow->memory,0,MEM_RELEASE);proxy_release(shadow->resource);proxy_release(shadow->context);HeapFree(GetProcessHeap(),0,shadow);}
+    if(shadow){proxy_release(shadow->resource);proxy_release(shadow->context);shadow_return(shadow);}
 }
 struct interface_guid {uint32_t kind;GUID guid;const char *name;};
 static const struct interface_guid known_guids[]={

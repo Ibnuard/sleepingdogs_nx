@@ -1,15 +1,65 @@
 --- a/wine-nx-probe/source/f1_settings.h
 +++ b/wine-nx-probe/source/f1_settings.h
+@@ -3,11 +3,11 @@
+ #define F1_FEXTENDO_SETTINGS_H
+ enum fx_settings_page { FX_SETTINGS_ROOT, FX_SETTINGS_GRAPHICS,
+     FX_SETTINGS_RENDERER, FX_SETTINGS_KEYBOARD, FX_SETTINGS_AUDIO,
+-    FX_SETTINGS_DX_LOG, FX_SETTINGS_LSFG, FX_SETTINGS_PAGES };
++    FX_SETTINGS_DX_LOG, FX_SETTINGS_LSFG, FX_SETTINGS_GAME_QUALITY, FX_SETTINGS_PAGES };
+ 
+ #include "sd_lsfg_settings.h"
+ 
+-static int fx_input_mode;
++static int fx_input_mode,fx_game_quality;
+ static int fx_input_mode_load(const char *root) {
+     char path[768], value[2];
+     snprintf(path,sizeof(path),"%s/controller-keyboard.txt",root);
 @@ -36,7 +36,7 @@
      return 0;
  }
  static int fx_settings_rows(int page) {
 -    static const int counts[FX_SETTINGS_PAGES]={7,5,2,3,2,3,2};
-+    static const int counts[FX_SETTINGS_PAGES]={7,5,3,3,2,3,2};
++    static const int counts[FX_SETTINGS_PAGES]={8,5,3,3,2,3,2,3};
      return page>=0&&page<FX_SETTINGS_PAGES?counts[page]:5;
  }
  static float fx_settings_scroll_target(int row,int page) {
-@@ -90,7 +90,7 @@
+@@ -52,24 +52,25 @@
+     if(v->settings_page==FX_SETTINGS_ROOT){v->screen=FX_HOME;return;}
+     int row=v->settings_page==FX_SETTINGS_GRAPHICS?0:
+         v->settings_page==FX_SETTINGS_RENDERER?1:
+-        v->settings_page==FX_SETTINGS_LSFG?6:v->settings_page==FX_SETTINGS_KEYBOARD?2:v->settings_page==FX_SETTINGS_DX_LOG?5:3;
++        v->settings_page==FX_SETTINGS_GAME_QUALITY?7:v->settings_page==FX_SETTINGS_LSFG?6:v->settings_page==FX_SETTINGS_KEYBOARD?2:v->settings_page==FX_SETTINGS_DX_LOG?5:3;
+     fx_settings_enter(v,FX_SETTINGS_ROOT,row);
+ }
+ static const char *fx_settings_title(int page) {
+-    static const char *const titles[]={"Settings","Graphics","Renderer","Controller","Audio","DXVK HUD","Frame Generation"};
++    static const char *const titles[]={"Settings","Graphics","Renderer","Controller","Audio","DXVK HUD","Frame Generation","Game detail"};
+     return titles[page];
+ }
+ static const char *fx_settings_subtitle(int page) {
+     static const char *const text[]={"Choose a group to configure.",
+         "Choose a DXVK profile for the next session.","Choose the Direct3D renderer.",
+-        "Choose how the controller sends game input.","Launcher sounds and music.","Show DXVK statistics while you play.","Performance mode. Adds display frames, not game speed."};
++        "Choose how the controller sends game input.","Launcher sounds and music.","Show DXVK statistics while you play.","Performance mode. Adds display frames, not game speed.","Reduce game detail while keeping 1280x720."};
+     return text[page];
+ }
+ static const char *fx_settings_label(const struct fx_view *v,int row) {
+-    static const char *const root[]={"Graphics","Renderer","Controller","Audio","Debug timestamp","DXVK HUD","Frame Generation"};
++    static const char *const root[]={"Graphics","Renderer","Controller","Audio","Debug timestamp","DXVK HUD","Frame Generation","Game detail"};
+     static const char *const keyboard[]={"Standard","Keyboard only","Gamepad only"};
+     static const char *const audio[]={"Menu sounds","Background music"};
+     switch(v->settings_page){
++    case FX_SETTINGS_GAME_QUALITY:return row==0?"Game settings":row==1?"Light 720p":"Restore original";
+     case FX_SETTINGS_LSFG:return row==0?"LSFG 2x":"Motion resolution";
+     case FX_SETTINGS_DX_LOG:return fx_dx_hud_names[row];
+     case FX_SETTINGS_GRAPHICS:return fx_preset_names[row];
+@@ -86,11 +87,12 @@
+     case FX_SETTINGS_ROOT:
+         return row==0?fx_preset_names[v->selected]:row==1?fx_renderer_names[v->renderer]:
+             row==2?fx_settings_label(&(struct fx_view){.settings_page=FX_SETTINGS_KEYBOARD},fx_input_mode):
+-            row==6?(fx_lsfg.enabled?"LSFG 2x - next launch":"Off"):row==3?"Menu sounds and background music":row==5?fx_dx_hud_names[fx_dx_hud]:"On-screen stopwatch while you play";
++            row==7?(fx_game_quality?"Light 720p - next launch":"Use current in-game options"):row==6?(fx_lsfg.enabled?"LSFG 2x - next launch":"Off"):row==3?"Menu sounds and background music":row==5?fx_dx_hud_names[fx_dx_hud]:"On-screen stopwatch while you play";
++    case FX_SETTINGS_GAME_QUALITY:return row==0?"Keep current options; stop applying Light 720p.":row==1?"Lowest world detail, shadows and effects; 720p.":"Restore the options saved before the first Light launch.";
      case FX_SETTINGS_LSFG:return row==0?(fx_lsfg_available?"Ready. Applies when you launch the game.":"Shader pack missing or invalid."):fx_lsfg_motion[fx_lsfg.flow];
      case FX_SETTINGS_DX_LOG:return row==0?"Hide the DXVK overlay.":row==1?"Frame rate only.":"Frame times, GPU estimate, memory and worker stats.";
      case FX_SETTINGS_GRAPHICS:return fx_preset_details[row];
@@ -18,3 +68,43 @@
      case FX_SETTINGS_KEYBOARD:return keyboard[row];
      case FX_SETTINGS_AUDIO:return row?"Original ambient loop in the launcher":"Soft sounds for navigation and actions";
      default:return "";
+@@ -100,7 +102,8 @@
+     return (v->settings_page==FX_SETTINGS_GRAPHICS&&v->selected==row)||
+         (v->settings_page==FX_SETTINGS_RENDERER&&v->renderer==row)||
+         (v->settings_page==FX_SETTINGS_KEYBOARD&&fx_input_mode==row)||
+-        (v->settings_page==FX_SETTINGS_DX_LOG&&fx_dx_hud==row);
++        (v->settings_page==FX_SETTINGS_DX_LOG&&fx_dx_hud==row)||
++        (v->settings_page==FX_SETTINGS_GAME_QUALITY&&row<2&&fx_game_quality==row);
+ }
+ static int fx_settings_toggle(const struct fx_view *v,int row) {
+     if(v->settings_page==FX_SETTINGS_ROOT&&row==4)return v->timestamp;
+@@ -109,11 +112,12 @@
+     return -1;
+ }
+ static int fx_settings_group(const struct fx_view *v,int row) {
+-    return v->settings_page==FX_SETTINGS_ROOT&&(row<4||row==5||row==6);
++    return v->settings_page==FX_SETTINGS_ROOT&&(row<4||row==5||row==6||row==7);
+ }
+ static int fx_settings_choose(struct fx_view *v,const char *root) {
+     int row=v->row,page=v->settings_page;
+     if(row<0||row>=fx_settings_rows(page))return 0;
++    if(page==FX_SETTINGS_ROOT&&row==7){fx_settings_enter(v,FX_SETTINGS_GAME_QUALITY,fx_game_quality);return 1;}
+     if(page==FX_SETTINGS_ROOT&&row==6){fx_settings_enter(v,FX_SETTINGS_LSFG,0);return 1;}
+     if(page==FX_SETTINGS_ROOT&&row==5){fx_settings_enter(v,FX_SETTINGS_DX_LOG,fx_dx_hud);return 1;}
+     if(page==FX_SETTINGS_ROOT&&row<4){
+@@ -121,7 +125,14 @@
+         fx_settings_enter(v,pages[row],row==0?v->selected:row==1?v->renderer:row==2?fx_input_mode:0);
+         return 1;
+     }
+-    if(page==FX_SETTINGS_LSFG){
++    if(page==FX_SETTINGS_GAME_QUALITY){
++        int ok=row==2?sd_game_quality_restore(root):sd_game_quality_save(root,row);
++        const char *error=sd_game_quality_error;
++        fx_game_quality=sd_game_quality_load(root);
++        if(!error)error=sd_game_quality_error;
++        if(!ok||error){v->screen=FX_FAILED;v->fatal=0;v->message=error?error:"Cannot update game detail settings.";return 1;}
++    }
++    else if(page==FX_SETTINGS_LSFG){
+         struct sd_lsfg_settings next=fx_lsfg;
+         if(row==0){
+             if(!next.enabled&&!fx_lsfg_available){

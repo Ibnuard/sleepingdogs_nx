@@ -1,0 +1,322 @@
+{
+  "status": "GAMEPLAY_REPORTED_WITH_NATIVE_ROUTE_OBSERVED",
+  "observed_build": "native-dxvk-h4-v7",
+  "game_capture_report": "reports/native-dxvk-h4-game-75cd47bd67fe.json",
+  "game_capture_report_sha256": "aa5d32f5cf60965380c01c209ee00a9e2c0473f336e5d7ec9c9e82a9a16be6fd",
+  "original_bytes_archived": true,
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-75cd47bd67fe/runtime.txt",
+      "sha256": "75cd47bd67fe9ce17560251711033f0bc12e924a4a047db0d41409d9b25c828a",
+      "bytes": 135330
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-75cd47bd67fe/dxvk.txt",
+      "sha256": "5a0ac13a2a8e52e6759e3f6ecb2414c78b53e5b3bcb4786d7dd3772d8e455eea",
+      "bytes": 27272
+    }
+  },
+  "additional_evidence": {
+    "older-com-runtime": {
+      "path": "reports/native-dxvk-h4-game-75cd47bd67fe/older-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026,
+      "role": "Byte-identical earlier v3 COM evidence, not a v7 COM self-test result",
+      "matches_prior_archive": "reports/native-dxvk-h4-game-a227d3dee3f4/com-runtime.txt"
+    },
+    "older-com-result": {
+      "path": "reports/native-dxvk-h4-game-75cd47bd67fe/older-com-result.json",
+      "sha256": "9678e556e955b87678bedb2d4ea2b6f9b580413c7bba26569c10103edd2e4813",
+      "bytes": 426,
+      "role": "Byte-identical earlier v3 COM evidence, not a v7 COM self-test result",
+      "matches_prior_archive": "reports/native-dxvk-h4-v3-com-9678e556e955/result.json"
+    },
+    "older-com-guest": {
+      "path": "reports/native-dxvk-h4-game-75cd47bd67fe/older-com-guest.txt",
+      "sha256": "0f78b79613f8d73e0fbcdd4a9987effbe475196745f318dacceddd234c53c3f6",
+      "bytes": 935,
+      "role": "Byte-identical earlier v3 COM evidence, not a v7 COM self-test result",
+      "matches_prior_archive": "reports/native-dxvk-h4-v3-com-9678e556e955/guest.txt"
+    }
+  },
+  "user_observation": {
+    "gameplay_reached": true,
+    "reported_average_3d_fps": 20,
+    "reported_peak_3d_fps": 25,
+    "peak_view": "Confined camera view",
+    "reported_crowded_running_fps": 13,
+    "low_view": "Running while the camera faces a crowded area",
+    "source": "Human report accompanying this capture; scene/camera labels and visual playback speed are not encoded in these logs"
+  },
+  "user_request": {
+    "game_graphics_reductions_permitted": true,
+    "keep_resolution": [
+      1280,
+      720
+    ]
+  },
+  "runtime": {
+    "mode": "SleepingDogs",
+    "launch": "GUI",
+    "profile": "Performance",
+    "resolution": [
+      1280,
+      720
+    ],
+    "hud": "FPS",
+    "lsfg": "OFF",
+    "native_device_and_present_route": true,
+    "fifo": true,
+    "swapchain_images": 3,
+    "native_batch_enabled": false,
+    "binding_model": "Legacy",
+    "diagnostic_sampling_marker": "[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call",
+    "v7_optimization_marker": "[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128; game FPS requires hardware comparison",
+    "unknown_iids": [],
+    "renderer_unknown_interface_queries": [
+      "0ec870a6-5d7e-4c22-8cfc-5baae07616ed"
+    ],
+    "unsupported_or_faults": [],
+    "device_loss_observed": false,
+    "guest_process_exit_observed": false,
+    "final_stats": {
+      "calls": 24201216,
+      "draws": 3851504,
+      "presents": 4757,
+      "live_interfaces": 16818,
+      "maps": 0,
+      "map_copy_bytes": 44921161728,
+      "failures": 0
+    },
+    "final_stats_are_session_total": false,
+    "latest_progress": {
+      "calls": 24887715,
+      "draws": 3954571,
+      "presents": 4859,
+      "maps": 2,
+      "refs": 16818,
+      "copy_bytes": 45874317312,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "latest_present_count_observed": 4859,
+    "final_stats_limit": "Last complete COM stats line is at Present 4757; the final 600-interval FPS marker reaches 4801 and the later sampled progress completion reaches 4859. There is no shutdown report, and all three counters describe different observation points.",
+    "native_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 10727868,
+        "present_fps": 55.9290997987671,
+        "mean_frame_us": 17879,
+        "min_us": 5007,
+        "max_us": 233635,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 14249986,
+        "present_fps": 42.105304524509705,
+        "mean_frame_us": 23749,
+        "min_us": 3596,
+        "max_us": 3348187,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 14230976,
+        "present_fps": 42.16154956624198,
+        "mean_frame_us": 23718,
+        "min_us": 4891,
+        "max_us": 1251242,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 32388856,
+        "present_fps": 18.524890165926205,
+        "mean_frame_us": 53981,
+        "min_us": 13044,
+        "max_us": 178577,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 32680284,
+        "present_fps": 18.35969356937045,
+        "mean_frame_us": 54467,
+        "min_us": 25712,
+        "max_us": 102761,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 31702576,
+        "present_fps": 18.92590684113493,
+        "mean_frame_us": 52837,
+        "min_us": 29655,
+        "max_us": 98161,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 35195322,
+        "present_fps": 17.04772014871749,
+        "mean_frame_us": 58658,
+        "min_us": 27519,
+        "max_us": 113083,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 25378120,
+        "present_fps": 23.64241322840305,
+        "mean_frame_us": 42296,
+        "min_us": 26653,
+        "max_us": 99514,
+        "scene_identified": false
+      }
+    ],
+    "last_five_present_windows_combined": {
+      "intervals": 3000,
+      "elapsed_us": 157345158,
+      "present_fps": 19.066363643678187,
+      "scene_identified": false,
+      "limit": "Weighted by elapsed time over the last five full Present windows; not a scene/clock-matched benchmark. The earlier high-rate windows may include menu/loading."
+    },
+    "last_interval_delta": {
+      "earlier_progress": {
+        "calls": 24122265,
+        "draws": 3838236,
+        "presents": 4750,
+        "maps": 2,
+        "refs": 16818,
+        "copy_bytes": 44845664256,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      "later_progress": {
+        "calls": 24887715,
+        "draws": 3954571,
+        "presents": 4859,
+        "maps": 2,
+        "refs": 16818,
+        "copy_bytes": 45874317312,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      "delta": {
+        "presents": 109,
+        "calls": 765450,
+        "draws": 116335,
+        "copy_bytes": 1028653056
+      },
+      "calls_per_present": 7022.477064220184,
+      "draws_per_present": 1067.2935779816514,
+      "map_copy_bytes_per_present": 9437184.0,
+      "scene_identified": false,
+      "limit": "Both points are sampled progress completions. Counts do not measure time spent in guest code, the bridge, copies or GPU work."
+    },
+    "worker_markers": [
+      "[SD-NDX-WORKER] name=dxvk-submit handle=2884027 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-queue handle=2916794 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cs handle=2949561 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-shader-l handle=3244464 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cache handle=3277231 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry"
+    ],
+    "startup_trace": {
+      "begun": 128,
+      "completed": 128,
+      "incomplete": 0,
+      "bounded_stop_observed": true
+    },
+    "progress_trace_limit": "Snapshots never acquire the COM gate. V6 samples ordinary calls every 256 entries; critical calls and failures retain detailed state. Totals describe the last sampled completion and idle is not proof that another unsampled call is idle. Missing snapshots may mean scheduling/I/O delay or lost queued output. These are not GPU timings.",
+    "gate_waiters_sample_max": 0,
+    "gate_waiters_limit": "Instantaneous counts without wait-duration attribution; they do not quantify contention cost or prove a deadlock.",
+    "reported_dropped_log_lines": 0
+  },
+  "memory_observation": {
+    "startup_memory_budget_bytes": {
+      "total": 3444572160,
+      "used": 3406897152,
+      "free": 37675008,
+      "sysres_total": 16777216,
+      "sysres_used": 192512
+    },
+    "startup_heap_bytes": {
+      "heap_used": 96758400,
+      "arena_free": 550272,
+      "heap_arena": 97308672,
+      "heap_capacity": 3342045184,
+      "heap_unclaimed": 3244736512,
+      "heap_available": 3245286784
+    },
+    "startup_vulkan_memory_counters": {
+      "oom": 0,
+      "recovered": 0,
+      "wine_returned": 0,
+      "scratch_returned": 0,
+      "last_bytes": 0,
+      "last_result": 0
+    },
+    "gpu_arena_initialization_bytes": {
+      "requested": 268435456,
+      "reserved": 268435456,
+      "unit": 65536
+    },
+    "gameplay_memory_snapshots_available": false,
+    "limits": [
+      "These memory counters are logged at startup, before game rendering; they do not show gameplay memory pressure or bandwidth.",
+      "The startup process-level free field is 37675008 bytes, while heap_available is 3245286784 bytes in the separate heap accounting. The small process-level free number alone does not establish allocation exhaustion.",
+      "Cumulative map_copy_bytes is transferred data over many frames, not live RAM or VRAM allocation.",
+      "No device-loss or bridge-failure event was supplied. Absence of these events does not certify long-session memory behavior."
+    ]
+  },
+  "supplied_com_observation": {
+    "build": "native-dxvk-h4-v3",
+    "status": "PASS",
+    "stage": "PASS",
+    "error": 0,
+    "present_calls": 300,
+    "native_draws": 302,
+    "live_interfaces": 0,
+    "live_maps": 0,
+    "bridge_failures": 0,
+    "byte_identical_to_prior_v3_evidence": true,
+    "runtime_clean_exit_marker": true,
+    "same_session_renderer_available": false,
+    "exact_com_session_authenticated": false,
+    "validates_current_v7_com": false,
+    "limit": "Supplied COM result/guest/runtime are old v3 evidence. The supplied renderer log belongs to the v7 game route and cannot authenticate a v7 COM run."
+  },
+  "reference_clocks_mhz": {
+    "cpu": 1728,
+    "gpu": 768,
+    "ram": 1600,
+    "origin": "Earlier confirmed comparison settings, not telemetry for this capture"
+  },
+  "fresh_v7_com_completion_validated": false,
+  "running_binary_authenticated": false,
+  "same_session_authenticated": false,
+  "matched_gameplay_fps_comparison": false,
+  "long_session_and_clean_exit_validated": false,
+  "stable_30fps_proven": false,
+  "conclusions": [
+    "The runtime reports v7 native ARM64 selection and both v7 optimization markers, with 1280x720 FIFO and LSFG OFF; the user reports average 20, peak 25 and crowded-running lows around 13 FPS.",
+    "The last five 600-interval Present windows are 18.5249, 18.3597, 18.9259, 17.0477 and 23.6424 FPS. Their elapsed-time-weighted rate is 19.0664 FPS; the log does not identify scenes or camera positions.",
+    "Across the last two sampled completion counters, each Present corresponds to about 7022 bridge calls, 1067 draws and 9 MiB of shadow Map copies. This is workload evidence, not a measured bottleneck attribution.",
+    "Crowded-view slowdown remains consistent with more scene work in game simulation, draw/submission or GPU rendering. No CPU/GPU timing breakdown in this capture selects one cause.",
+    "Startup memory statistics cannot support a claim that gameplay has run out of RAM, and the cumulative Map-copy total is not a live-memory allocation.",
+    "No native bridge unsupported/fault or device-loss event was captured. The tail still has live interface slots and two maps; without a shutdown report this does not establish either a leak or clean teardown.",
+    "The renderer repeats an unknown-interface warning for 0ec870a6-5d7e-4c22-8cfc-5baae07616ed; the warning alone does not identify a performance cause.",
+    "The supplied COM files are byte-identical v3 PASS evidence and do not validate the v7 sampler/DSV self-test on hardware.",
+    "This observation can guide further rendering-cost reductions while keeping 720p. It cannot quantify a controlled v7-versus-v6 improvement because scene, camera, clocks and cache state were not matched."
+  ],
+  "next_candidate": {
+    "build": "native-dxvk-h4-v8",
+    "hardware_tested": false,
+    "game_integration_tested": false,
+    "game_fps_measured": false
+  }
+}

@@ -326,6 +326,7 @@ void global_call(Context& c,sd_com_packet& p) {
         if(m.guest||p.args[2]!=m.bytes)throw Fault(E_INVALIDARG);
         auto shadow=c.required_write<unsigned char>(p.args[1],m.bytes);m.guest=p.args[1];
         if(m.type!=D3D11_MAP_WRITE_DISCARD){std::memcpy(shadow,m.native.pData,m.bytes);c.map_bytes+=m.bytes;}
+        else std::memset(shadow,0,m.bytes); // Reused guest shadows retain fresh VirtualAlloc's zero-filled behavior.
         p.ret=0;return;
     }
     case SD_COM_ABORT_MAP:c.abort_map(p.args[0]);p.ret=0;return;

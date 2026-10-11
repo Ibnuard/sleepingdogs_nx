@@ -13,6 +13,7 @@ consistent improvement over one another in the reported hardware tests.
 
 | Control | Effect |
 | --- | --- |
+| Settings → Game detail (H4 v8) | Game settings, reversible Light 720p, or Restore original |
 | Settings → Graphics | Selects a DXVK configuration profile: Balanced, Low latency, Stable, Quality or Performance |
 | Settings → Renderer | Selects the DXVK 3.1.1 family or DXVK 2.7.1 async; the H4 candidate adds experimental DXVK Native ARM64 |
 | FEX mode | Selects the CPU-translation profile; Fastest is the current test baseline |
@@ -32,16 +33,36 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 v7 native candidate](native-dxvk-h4-v7-objects.md) needs a passing COM self-test
+The [H4 v8 native candidate](native-dxvk-h4-v8-game-detail.md) needs a passing COM self-test
 before game validation. Its swapchain stays at 1280×720 and LSFG is forced
 OFF without changing the stored LSFG preference. Both existing x86 renderer
-choices remain available for comparisons. V7 retains `dxgi.syncInterval = 1`
+choices remain available for comparisons. V8 retains `dxgi.syncInterval = 1`
 in every native profile; confirm FIFO in the DXVK log. V4 passed the sponsor
 stage and crashed at Press Start; v5 fixes scalar DSV and COM output memory.
 V6 subsequently improves reported gameplay to 16–17 FPS, with 12–13 facing
-crowds. V7 optimizes proxy lookup and native arrays and needs Switch testing.
+crowds. V7 is reported around 20 FPS, peak 25 and crowded-running lows near 13.
+V8 adds bounded Map reuse and optional lower game detail; Switch testing is pending.
 Other profile options and x86 profiles stay canonical. H4 v2/v3 COM completion
 was observed on Switch. A native FPS gain and production readiness remain unproven.
+
+## Light 720p game detail
+
+The H4 v8 menu **Settings → Game detail → Light 720p** lowers WorldDensity,
+shadow resolution/filtering, motion blur, SSAO, AA quality and high-resolution
+textures to the first built-in preset's minimum numeric values. Resolution
+stays **1280×720**. `GlobalSetting=0` prevents a higher preset from overriding
+those individual fields. AA at minimum is not a claim of AA entirely disabled.
+
+An existing valid `drive_c/SleepingDogs/Data/DisplaySettings.xml` is required.
+The first original is backed up alongside it as `.fextendo-original`. Other
+supported display fields, `UserOptions.dat` and saves are preserved. If XML
+is missing, select Game settings, save Display Options in game once, then
+enable Light. An unsupported file is rejected instead of guessed.
+
+Game settings stops enforcement and retains the current file. **Restore
+original** restores pre-Light quality and disables the preset. If all quality
+values were already minimum, Light has no demonstrated additional benefit.
+Compare the same route and camera; v8 FPS remains unmeasured.
 
 ## DXVK HUD
 

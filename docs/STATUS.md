@@ -49,7 +49,11 @@ user reports less slow motion and 16–17 FPS, with 12–13 facing crowds and
 peaks near 22. Its [preserved log](../reports/native-dxvk-h4-v6-gameplay-observation.json)
 records 16.67 FPS across the final four windows, without authenticated scene
 labels or clock telemetry. [H4 v7](native-dxvk-h4-v7-objects.md) optimizes
-proxy lookup and native array storage; local checks pass, Switch testing is pending.
+proxy lookup and native array storage. Its subsequent [capture](../reports/native-dxvk-h4-v7-gameplay-observation.json)
+records 19.07 FPS across the final five windows; the user reports around 20,
+peak 25 and crowded-running lows near 13. The three supplied COM files still
+match old v3 evidence. [H4 v8](native-dxvk-h4-v8-game-detail.md) adds bounded
+Map allocation reuse and reversible Light 720p game detail; Switch testing is pending.
 
 ## Performance evidence
 
@@ -64,6 +68,8 @@ proxy lookup and native array storage; local checks pass, Switch testing is pend
 | Native H4 v5 last Present windows | 15.07 and 14.39 FPS over 600 intervals each; scenes/clocks not authenticated, no matched x86 comparison |
 | Native H4 v6 gameplay feedback/log | User reports 16–17 FPS, crowds 12–13, peak 22; final four Present windows pooled 16.67 FPS |
 | Native H4 v6 dispatcher measurement | Host scalar GetType cost 620.139 → 66.536 ns against v5; measures local dispatch, not game FPS |
+| Native H4 v7 gameplay feedback/log | User reports around 20 FPS, peak 25 and crowded-running lows near 13; final five Present windows pooled 19.07 FPS |
+| Native H4 v8 | Local validation only; Map reuse and optional lower detail at 1280×720; FPS effect unmeasured |
 | Stable 30 FPS | Not achieved |
 
 The v18 figures refer to the log with SHA-256
@@ -115,7 +121,8 @@ baseline without that presentation path and its repeated logging.
   startup/menu Presents before a Press Start crash. V5 subsequently reaches
   user-reported gameplay around 15 FPS. Fresh v5/v6/v7 COM evidence, remaining
   dynamic API coverage, sustained resource lifetime, clean exit and a matched
-  native FPS comparison remain open. V6 has user-reported gameplay improvement; the v7 candidate is only locally tested.
+  native FPS comparison remain open. V7 is reported around 20 FPS with crowded-running
+  lows near 13; the v8 candidate is only locally tested.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -127,10 +134,11 @@ DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
 pass their supplied hardware captures. H4 v2/v3 ordinary PE32 COM completion
-is also observed. The [H4 v7 update folder](native-dxvk-h4-v7-objects.md#install-and-compare)
-reduces proxy searches and temporary allocations after v6's gameplay result. Its COM test requires 72
+is also observed. The [H4 v8 update folder](native-dxvk-h4-v8-game-detail.md#install-and-compare)
+reuses guest Map allocations and adds reversible Light 720p game detail after v7's gameplay result.
+Its COM test requires 72
 sampler-slot and 16 scalar DSV/guard checks in addition to the prior coverage.
-Save COM files before the game overwrites the shared DXVK log. A v7 COM pass,
+Save COM files before the game overwrites the shared DXVK log. A v8 COM pass,
 game startup, actual game API use, resource lifetime and native worker behavior
 still need validation. Matched 720p gameplay and long-session evidence are
 required before production or a 30 FPS claim. See the

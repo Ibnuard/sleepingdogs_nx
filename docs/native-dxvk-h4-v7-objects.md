@@ -6,7 +6,10 @@ The user reports that v6 reduces slow motion, with gameplay usually around
 16–17 FPS, a peak near 22 when looking up/down and 12–13 facing crowds. Its
 last four 600-Present windows average **16.67 FPS** together. V7 targets two
 remaining costs in the bridge: linear proxy searches and temporary native
-pointer-array allocations. **V7 Switch gameplay and its FPS effect are untested.**
+pointer-array allocations. Subsequent [v7 feedback and logs](../reports/native-dxvk-h4-v7-gameplay-observation.json)
+report around 20 FPS, peak 25 and crowded-running lows near 13; the last five
+Present windows pool to 19.07 FPS. This is not a matched benchmark. Current
+tools target [v8 Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md).
 
 ## Evidence and scope
 
@@ -105,8 +108,9 @@ Stable 30 FPS and production readiness remain open hardware validation goals.
 
 ## Rebuild
 
-Prepared pinned Wine/FEX/Mesa/SDK inputs are required. Current tools target
-v7 in `/home/blekjek/sleepingdogs-native-dxvk-h4-v7`. Host comparisons need the
+Prepared pinned Wine/FEX/Mesa/SDK inputs are required. This recipe originally
+targeted v7 in `/home/blekjek/sleepingdogs-native-dxvk-h4-v7`; current tools
+target v8. Use commit `e0995ccfc2819d20b5df8f60bff784996fb479c1` for the original v7 tools. Host comparisons need the
 v6 commit `b98557b28f0011c5eb75d934b20fe60b29cc1a18`; PE32 output controls also
 need the v4 commit recorded in their receipt.
 
@@ -133,7 +137,7 @@ python3 tests/check_native_dxvk_h4_capture.py
 python3 tools/package_native_dxvk_h4.py
 ```
 
-The analyzer defaults to v7. Use `--expected-build native-dxvk-h4-v6` for
+The analyzer now defaults to v8; use `--expected-build native-dxvk-h4-v7` for v7. Use `--expected-build native-dxvk-h4-v6` for
 previous captures. Sampled idle states do not describe every active call;
 missing queued output does not establish deadlock. A matched gameplay test
 and sustained resource lifetime checks are needed before production.

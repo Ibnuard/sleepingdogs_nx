@@ -20,15 +20,15 @@ and saves are not supplied. The x64 **Definitive Edition is not supported**.
 
 This is an **experimental port** with gameplay confirmed on a Switch OLED.
 Recent 720p x86-DXVK testing reports roughly **20–23 FPS**, with scene-dependent
-drops and peaks around 25 FPS. Native H4 v6 gameplay is reported around
-16–17 FPS, with crowded-view drops to 12–13 and peaks near 22.
+drops and peaks around 25 FPS. Native H4 v7 gameplay is reported around
+20 FPS, with crowded-running drops near 13 and peaks near 25.
 **Stable 30 FPS has not been achieved.**
 
 | Area | Status |
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V6 improves user-reported gameplay to 16–17 FPS. [H4 v7 optimizes object lookup and temporary arrays](docs/native-dxvk-h4-v7-objects.md); local checks pass, v7 Switch testing is pending |
+| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V7 gameplay is reported around 20 FPS. [H4 v8 reuses Map buffers and adds Light 720p game detail](docs/native-dxvk-h4-v8-game-detail.md); local checks pass, v8 Switch testing is pending |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 
@@ -72,8 +72,8 @@ switch/sleepingdogs-fex/
 └── share/wine/                       # runtime fonts and NLS data
 ```
 
-The launcher graphics profiles configure DXVK; game quality is controlled in
-the game's own menus. The `Graphics Level: undefined` label remains unresolved.
+The launcher graphics profiles configure DXVK. The H4 v8 candidate also adds
+Game detail → Light 720p, a reversible preset for the game's own display options. The `Graphics Level: undefined` label remains unresolved.
 Installation details, updates and log locations are in the
 [documentation index](docs/README.md).
 

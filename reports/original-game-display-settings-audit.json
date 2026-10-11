@@ -1,0 +1,127 @@
+{
+  "status": "STATIC_SOURCE_AUDIT",
+  "date": "2026-10-12",
+  "scope": "Read-only inspection of the user's original PE32 executable and existing repository configuration tools. No game execution, installed-game writes, binary redistribution, or FPS measurement.",
+  "game": {
+    "path": "D:/Dev/Switch/SwitchHub/Sleeping Dogs/HKShip.exe",
+    "sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+    "image_base": "0x00400000",
+    "machine": "PE32 i386",
+    "inspected_with": "GNU objdump -d -M intel and bounded PE string/reference inspection",
+    "reviewed_code_ranges": {
+      "xml_reader": {
+        "start_rva": "0x004ace90",
+        "end_rva_exclusive": "0x004ad4a9",
+        "sha256": "08be669dbbab6e40ca7565d34681419a22c52f1a420b14942ab6e2ba9f750fe7"
+      },
+      "settings_initializer": {
+        "start_rva": "0x000e8500",
+        "end_rva_exclusive": "0x000e8543",
+        "sha256": "1a8690a12ac3e61516e779e53b665f57b683a48b79e2d4fec8e994454153159b"
+      },
+      "builtin_quality_preset_with_jump_table": {
+        "start_rva": "0x000d72a0",
+        "end_rva_exclusive": "0x000d7360",
+        "sha256": "e132ff92330e7da7cc87ebc7bbd7cb286603e9db9624a6f74d1a4f6f5e854354"
+      },
+      "xml_serializer_reviewed_prefix": {
+        "start_rva": "0x007419e0",
+        "end_rva_exclusive": "0x00741e0e",
+        "sha256": "e1ed75882d4c1ea54239b8deba1f1f3ccc67ed1716984ac9ae980b41620a6938"
+      }
+    }
+  },
+  "configuration": {
+    "relative_path": "Data/DisplaySettings.xml",
+    "switch_path": "sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/Data/DisplaySettings.xml",
+    "root": "DisplaySettings",
+    "required_version": 1,
+    "syntax": "Direct child elements containing scalar text; the original serializer does not use attributes for these settings.",
+    "serialized_fields_in_order": [
+      "Version", "AdapterUID", "MonitorUID", "ResolutionWidth", "ResolutionHeight",
+      "RefreshRateNumerator", "RefreshRateDenominator", "ScalingMode", "ScanlineMode",
+      "Fullscreen", "Stereo3D", "StereoEyeDistance", "VSync", "AAQuality", "HighResTextures",
+      "ShadowRes", "ShadowFilter", "MotionBlur", "SSAO", "FPSLimiter", "Option3DDepth",
+      "Option3DConvergence", "WorldDensity", "GlobalSetting"
+    ],
+    "quality_field_offsets_in_settings": {
+      "AAQuality": "0x24",
+      "HighResTextures": "0x28 (one byte)",
+      "ShadowRes": "0x2c",
+      "ShadowFilter": "0x30",
+      "MotionBlur": "0x34",
+      "SSAO": "0x3c",
+      "WorldDensity": "0x50",
+      "GlobalSetting": "0x54"
+    },
+    "boolean_encoding": "Fullscreen, Stereo3D, VSync and HighResTextures are serialized as integer 0/1; their XML reader converts integer text to bool with !=0. Use numeric 0 rather than the literal word false.",
+    "resolution_offsets": {"ResolutionWidth": "0x00", "ResolutionHeight": "0x04"},
+    "global_preset_behavior": "After all individual fields are read, GlobalSetting is passed to the built-in quality switch. Values 1 through 4 replace all seven quality fields below. Value 0 retains the individually read fields. Merely changing WorldDensity while leaving GlobalSetting=2/3/4 can be overridden during load.",
+    "builtin_presets": {
+      "field_order": ["AAQuality", "HighResTextures", "ShadowRes", "ShadowFilter", "MotionBlur", "SSAO", "WorldDensity"],
+      "1": [0, 0, 0, 0, 0, 0, 0],
+      "2": [0, 0, 1, 1, 1, 0, 1],
+      "3": [1, 1, 2, 1, 1, 1, 1],
+      "4": [2, 1, 2, 1, 2, 1, 2]
+    },
+    "builtin_preset_limit": "Numeric values and writes are directly verified. Exact localized labels and resulting image quality were not tested in this executable. The first preset sets the minimum values appearing in the four built-in presets; 0 for AAQuality must not be advertised as proven AA-off.",
+    "missing_children": "The reader leaves an absent individual child at the value supplied by its initializer. Version is checked against 1 before accepting the document.",
+    "initializer": {
+      "zeroes_bytes": 92,
+      "nonzero_defaults": {
+        "Fullscreen": 1, "VSync": 1, "ShadowRes": 1, "ShadowFilter": 1,
+        "MotionBlur": 1, "WorldDensity": 1, "GlobalSetting": 2,
+        "Option3DDepth": 1, "Option3DConvergence": 10,
+        "StereoEyeDistance": 0.029999999329447746
+      },
+      "notable_zero_defaults": ["ResolutionWidth", "ResolutionHeight", "AdapterUID", "MonitorUID", "RefreshRateNumerator", "RefreshRateDenominator"],
+      "missing_file_policy": "Do not synthesize a minimal configuration based solely on this audit. A successfully parsed minimal XML replaces the caller's preexisting settings with the initialized structure, including zero adapter/monitor/refresh fields. Downstream display-mode recovery has not been validated. Require an existing valid XML for the first reversible preset."
+    },
+    "not_supported_by_this_reviewed_reader": ["TextureDetailLevel", "EnableLowResBuffer", "PedDensityScale", "CrowdDensity", "TrafficDensity"]
+  },
+  "recommended_reversible_preset": {
+    "name": "Light 720p",
+    "require_existing_xml": true,
+    "require_root_and_version": true,
+    "writes": {
+      "ResolutionWidth": 1280, "ResolutionHeight": 720,
+      "AAQuality": 0, "HighResTextures": 0, "ShadowRes": 0, "ShadowFilter": 0,
+      "MotionBlur": 0, "SSAO": 0, "WorldDensity": 0, "GlobalSetting": 0
+    },
+    "preserve": "All unrelated bytes and settings, including adapter/monitor identifiers, refresh ratio, fullscreen, VSync, FPSLimiter, stereo values, and unknown fields.",
+    "backup": "Preserve the exact original bytes before the first successful replacement; write a separate stage file and atomically replace rather than editing a hardlink in place. Provide explicit restore.",
+    "validation": "Reject malformed XML, wrong root/version, duplicate targeted elements, invalid target scalar syntax, and unsafe or ambiguous structure. Log before/after quality values. Existing game save data and UserOptions.dat are outside this preset.",
+    "performance_limit": "This can only lower settings which were previously above these values. It cannot establish a performance improvement if the game already used the first built-in preset. WorldDensity concerns world detail; this audit does not prove a particular NPC/traffic count or remove mission characters. Test the same crowded route and camera at 1280x720."
+  },
+  "local_observations": {
+    "installed_display_settings_present": false,
+    "copied_display_settings_found_in_pictures_pesnx": false,
+    "user_options_dat_bytes": 141,
+    "user_options_dat_is_hardlinked": true,
+    "user_options_dat_format_decoded": false,
+    "current_switch_applied_quality_known": false,
+    "launcher_profiles": "Current Balanced/Stable/Performance profiles modify DXVK options only; repository tools explicitly removed the unrelated F1 XML migration. They do not currently change Sleeping Dogs WorldDensity or other game quality fields.",
+    "earlier_runtime_evidence": "reports/gameplay-v6-performance-analysis.json records a successful 888-byte read of Data/DisplaySettings.xml, but does not contain its contents."
+  },
+  "primary_public_sources": [
+    {
+      "url": "https://store.steampowered.com/app/202181/Sleeping_Dogs__High_Resolution_Texture_Pack/",
+      "supports": "United Front Games/Square Enix original-game DLC page confirms the high-resolution texture pack is selected through an in-game graphics option and specifies at least 1 GB graphics memory.",
+      "does_not_support": "No XML schema, numeric enum mapping or Switch FPS gain is specified."
+    },
+    {
+      "url": "https://www.feralinteractive.com/en/readmes/sleepingdogs/latest/steam/",
+      "supports": "Feral identifies World Density as the number/detail of environment objects and documents lowering shadows, AA, motion blur and world detail as performance options.",
+      "edition_limit": "This is the Mac Definitive Edition guide, not the user's original PE32 game. It corroborates the general option purpose only; its additional options and numeric formats were not imported into the proposed preset."
+    }
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "installed_files_modified": false,
+  "open_questions": [
+    "Actual current Switch DisplaySettings.xml values and whether all targeted values are already zero.",
+    "Exact localized in-game labels and reason for Graphics Level undefined.",
+    "Per-scene benefit and which world elements WorldDensity actually suppresses in the original game.",
+    "Whether missing XML initialization can safely retain display-mode selection; not established here."
+  ]
+}

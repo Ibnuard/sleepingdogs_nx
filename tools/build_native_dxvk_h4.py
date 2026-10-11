@@ -22,8 +22,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SDK=Path('/opt/devkitpro')
 A64=SDK/'devkitA64/bin'
 MINGW=Path('/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin')
-BUILD='native-dxvk-h4-v7'
-APP_VERSION='0.1.0-h4.7'
+BUILD='native-dxvk-h4-v8'
+APP_VERSION='0.1.0-h4.8'
 WORK=Path('/home/blekjek/sleepingdogs-'+BUILD)
 LOCAL=ROOT/'local'/BUILD
 SOURCES=ROOT/'src/native_dxvk_com'
@@ -46,6 +46,24 @@ def overlay_runtime(before):
                  '"%s/launcher/renderer-choice.txt",root);\n    return fx_read(p,b,2)==2&&b[0]>=\'0\'&&b[0]<=\'2\'&&b[1]==\'\\n\' ? b[0]-\'0\' : 0;')
     text=replace(text,"renderer[0]!='1'","(renderer[0]<'0'||renderer[0]>'2')")
     text=replace(text,'#define FX_APP_VERSION "0.1.0-v18-apc"','#define FX_APP_VERSION "'+APP_VERSION+'"')
+    text=replace(text,'#include "f1_settings.h"','#include "game_quality.h"\n#include "f1_settings.h"')
+    text=replace(text,'    fx_input_mode=fx_input_mode_load(RUNTIME_DIR);',
+        '    fx_input_mode=fx_input_mode_load(RUNTIME_DIR);\n    fx_game_quality=sd_game_quality_load(RUNTIME_DIR);\n'
+        '    if(sd_game_quality_error)log_line("[SD-QUALITY] settings read failed: %s",sd_game_quality_error);')
+    text=replace(text,'        if(ready&&!wine_nx_f1_prepare_threads(thread_error,sizeof(thread_error))){',
+        '        if(ready){\n'
+        '            int quality=sd_game_quality_load(RUNTIME_DIR);\n'
+        '            if(sd_game_quality_error||!sd_game_quality_apply(RUNTIME_DIR,quality)){\n'
+        '                ready=0;launch_error=sd_game_quality_error;log_line("[SD-QUALITY] launch stopped: %s",launch_error);\n'
+        '            }\n'
+        '        }\n'
+        '        if(ready&&!wine_nx_f1_prepare_threads(thread_error,sizeof(thread_error))){')
+    text=replace(text,'[SD-GRAPHICS] game-owned UserOptions.dat; display modes 1280x720/960x540',
+        '[SD-GRAPHICS] game-owned UserOptions.dat; optional Light720p DisplaySettings profile; display modes 1280x720/960x540')
+    text=replace(text,'[SD-FEX] launch requested; game settings remain owned by Sleeping Dogs',
+        '[SD-FEX] launch requested; UserOptions/save preserved; selected game-detail profile applied before launch')
+    text=replace(text,'v->saved?"Settings saved. Ready to play.":"Game video settings are managed in Sleeping Dogs."',
+        'v->saved?"Settings saved. Ready to play.":v->settings_page==FX_SETTINGS_GAME_QUALITY?"Light 720p applies at next launch.":"Choose Game detail for the Light 720p preset."')
     # Add the bridge companion to the same durable transaction as both graphics
     # DLLs. Separate the eight-bit journal from existing five/seven-bit updates.
     text=replace(text,'fx_renderer_targets[7]','fx_renderer_targets[8]')
@@ -140,6 +158,7 @@ static int sd_com_prepare_screen(void) {
         '        log_line("[SD-NDX-LOG] async queue=512 batch=32; native progress=5s; bulk observer disabled; missing tail possible after forced restart");\n'
         '        log_line("[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call");\n'
         '        log_line("[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128; game FPS requires hardware comparison");\n'
+        '        log_line("[SD-NDX-PERF] map_shadow_cache=16MiB/4 exact-size idle entries; discard zeroing=native; full copies preserved");\n'
         '        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build='+BUILD+' renderer=DXVK Native ARM64");\n'
         '        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
         '    }')
@@ -162,6 +181,45 @@ static int sd_com_prepare_screen(void) {
         '    }\n'
         '    chars += environment_bytes;')
     return text
+
+def overlay_settings(settings):
+    text=replace(settings,'{7,5,2,3,2,3,2}','{8,5,3,3,2,3,2,3}')
+    text=replace(text,'return row?"Async shader compilation  /  Alternative renderer":"Default renderer";',
+        'return row==2?"Native ARM64 graphics / experimental":row?"Async shader compilation  /  Alternative renderer":"Default renderer";')
+    text=replace(text,'FX_SETTINGS_LSFG, FX_SETTINGS_PAGES','FX_SETTINGS_LSFG, FX_SETTINGS_GAME_QUALITY, FX_SETTINGS_PAGES')
+    text=replace(text,'static int fx_input_mode;','static int fx_input_mode,fx_game_quality;')
+    text=replace(text,'v->settings_page==FX_SETTINGS_LSFG?6:',
+        'v->settings_page==FX_SETTINGS_GAME_QUALITY?7:v->settings_page==FX_SETTINGS_LSFG?6:')
+    assert text.count('"Frame Generation"};')==2
+    text=text.replace('"Frame Generation"};','"Frame Generation","Game detail"};')
+    text=replace(text,'"Performance mode. Adds display frames, not game speed."};',
+        '"Performance mode. Adds display frames, not game speed.","Reduce game detail while keeping 1280x720."};')
+    text=replace(text,'case FX_SETTINGS_LSFG:return row==0?"LSFG 2x":"Motion resolution";',
+        'case FX_SETTINGS_GAME_QUALITY:return row==0?"Game settings":row==1?"Light 720p":"Restore original";\n'
+        '    case FX_SETTINGS_LSFG:return row==0?"LSFG 2x":"Motion resolution";')
+    text=replace(text,'row==6?(fx_lsfg.enabled?',
+        'row==7?(fx_game_quality?"Light 720p - next launch":"Use current in-game options"):row==6?(fx_lsfg.enabled?')
+    text=replace(text,'case FX_SETTINGS_LSFG:return row==0?(fx_lsfg_available?',
+        'case FX_SETTINGS_GAME_QUALITY:return row==0?"Keep current options; stop applying Light 720p.":row==1?"Lowest world detail, shadows and effects; 720p.":"Restore the options saved before the first Light launch.";\n'
+        '    case FX_SETTINGS_LSFG:return row==0?(fx_lsfg_available?')
+    text=replace(text,'(v->settings_page==FX_SETTINGS_DX_LOG&&fx_dx_hud==row);',
+        '(v->settings_page==FX_SETTINGS_DX_LOG&&fx_dx_hud==row)||\n'
+        '        (v->settings_page==FX_SETTINGS_GAME_QUALITY&&row<2&&fx_game_quality==row);')
+    text=replace(text,'row<4||row==5||row==6','row<4||row==5||row==6||row==7')
+    text=replace(text,'    if(page==FX_SETTINGS_ROOT&&row==6){',
+        '    if(page==FX_SETTINGS_ROOT&&row==7){fx_settings_enter(v,FX_SETTINGS_GAME_QUALITY,fx_game_quality);return 1;}\n'
+        '    if(page==FX_SETTINGS_ROOT&&row==6){')
+    text=replace(text,'    if(page==FX_SETTINGS_LSFG){',
+        '    if(page==FX_SETTINGS_GAME_QUALITY){\n'
+        '        int ok=row==2?sd_game_quality_restore(root):sd_game_quality_save(root,row);\n'
+        '        const char *error=sd_game_quality_error;\n'
+        '        fx_game_quality=sd_game_quality_load(root);\n'
+        '        if(!error)error=sd_game_quality_error;\n'
+        '        if(!ok||error){v->screen=FX_FAILED;v->fatal=0;v->message=error?error:"Cannot update game detail settings.";return 1;}\n'
+        '    }\n'
+        '    else if(page==FX_SETTINGS_LSFG){')
+    return text
+
 
 def pe_audit(path):
     data=path.read_bytes();offset=struct.unpack_from('<I',data,0x3c)[0]
@@ -213,10 +271,9 @@ def main():
             after=overlay_runtime(before);command=old['compile_commands'][relative]
             log_header=overlay/'wine-nx-probe/source/native_log_queue.h';log_header.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(SOURCES/'native_log_queue.h',log_header)
+            shutil.copyfile(SOURCES/'game_quality.h',log_header.parent/'game_quality.h')
             settings_path=Path(pin['runtime_source']).parent/'f1_settings.h';settings=settings_path.read_text()
-            settings_after=replace(settings,'{7,5,2,3,2,3,2}','{7,5,3,3,2,3,2}')
-            settings_after=replace(settings_after,'return row?"Async shader compilation  /  Alternative renderer":"Default renderer";',
-                'return row==2?"Native ARM64 graphics / experimental":row?"Async shader compilation  /  Alternative renderer":"Default renderer";')
+            settings_after=overlay_settings(settings)
             save(overlay/'wine-nx-probe/source/f1_settings.h',settings_after)
             patches['settings']=patch(settings,settings_after,work/'settings.patch','wine-nx-probe/source/f1_settings.h')
         else:

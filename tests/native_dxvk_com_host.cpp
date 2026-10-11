@@ -193,7 +193,10 @@ int main(int argc,char** argv){
         require(unknown_a==unknown_b,"canonical IUnknown identity");c.release(resource);c.release(unknown_a);c.release(unknown_b);
         c.call(SD_COM_IF_ID3D11Buffer,SD_COM_M_ID3D11Buffer_GetDevice,dynamic,{address(out)});require(*out==device);c.release(*out);
         auto expected=allocate<unsigned char>(1024);for(unsigned i=0;i<1024;++i)expected[i]=uint8_t(i*13+3);
-        auto m=map(c,context,dynamic,0,D3D11_MAP_WRITE_DISCARD);std::memcpy(arena+shadow-base,expected,1024);unmap(c,context,dynamic,0,m.id);
+        std::memset(arena+shadow-base,0xa5,1024);
+        auto m=map(c,context,dynamic,0,D3D11_MAP_WRITE_DISCARD);
+        for(unsigned i=0;i<1024;++i)require(!arena[shadow-base+i],"WRITE_DISCARD reinitializes reused shadow bytes");
+        std::memcpy(arena+shadow-base,expected,1024);unmap(c,context,dynamic,0,m.id);
         m=map(c,context,dynamic,0,D3D11_MAP_WRITE_NO_OVERWRITE);require(!std::memcmp(arena+shadow-base,expected,1024),"NO_OVERWRITE preserves data");
         for(unsigned i=512;i<544;++i){expected[i]^=0x55;arena[shadow-base+i]=expected[i];}unmap(c,context,dynamic,0,m.id);
         bd.Usage=D3D11_USAGE_STAGING;bd.BindFlags=0;bd.CPUAccessFlags=D3D11_CPU_ACCESS_READ;
@@ -214,6 +217,11 @@ int main(int argc,char** argv){
         auto mapped=allocate<sd_com_mapped32>();require(c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_Map,context,{readback,0,D3D11_MAP_READ,0,address(mapped)})==0);
         uint32_t map_id=c.packet->aux,map_length=c.packet->high[0];deny_write=shadow;
         c.reject(0,SD_COM_BIND_MAP,0,{map_id,shadow,map_length});deny_write=0;c.call(0,SD_COM_ABORT_MAP,0,{map_id});
+        require(c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_Map,context,{dynamic,0,D3D11_MAP_WRITE_DISCARD,0,address(mapped)})==0);
+        map_id=c.packet->aux;map_length=c.packet->high[0];std::memset(arena+shadow-base,0xa5,1024);deny_write=shadow;
+        c.reject(0,SD_COM_BIND_MAP,0,{map_id,shadow,map_length});deny_write=0;
+        for(unsigned i=0;i<1024;++i)require(arena[shadow-base+i]==0xa5,"rejected DISCARD BindMap must not zero unwritable shadow bytes");
+        c.call(0,SD_COM_ABORT_MAP,0,{map_id});
         c.reject(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_VSSetShaderResources,context,{0,UINT32_MAX,0});
         c.reject(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_VSSetShaderResources,context,{0,SD_COM_MAX_ARRAY+1,0});
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_OMSetRenderTargetsAndUnorderedAccessViews,context,{UINT32_MAX,0,0,0,UINT32_MAX,0,0});
@@ -293,7 +301,7 @@ int main(int argc,char** argv){
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_ClearState,context);c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_Flush,context);
         for(auto token:{back_view,back,swap,staging,view,target,raster,vs,ps,bc,bc_staging,update_target,immutable,readback,dynamic,output,adapter,factory,context,device})c.release(token);
         c.reject(SD_COM_IF_IUnknown,1,dynamic);
-        auto stats=allocate<uint32_t>(8);c.call(0,SD_COM_STATS,0,{address(stats)});require(stats[3]==0&&stats[4]==0,"no live external interfaces or maps");require(stats[2]==60&&stats[6]==7,"only intentional bridge failures");
+        auto stats=allocate<uint32_t>(8);c.call(0,SD_COM_STATS,0,{address(stats)});require(stats[3]==0&&stats[4]==0,"no live external interfaces or maps");require(stats[2]==60&&stats[6]==8,"only intentional bridge failures, including rejected DISCARD shadow");
         auto calls=stats[0];sd_com_shutdown();c.reject(SD_COM_IF_IUnknown,1,device);
         std::printf("{\"status\":\"PASS\",\"checks\":%u,\"rejected_requests\":%u,\"pixels_verified\":%u,\"buffer_bytes_verified\":%u,\"mip_array_bytes_verified\":%u,\"present_calls\":60,\"synthetic_present_elapsed_us\":%lld,\"concurrent_reference_pairs\":%u,\"bridge_calls\":%u,\"live_interfaces\":0,\"live_maps\":0,\"permission_queries\":%u,\"hardware_tested\":false,\"com_guest_execution_tested\":false,\"game_integration_tested\":false,\"game_fps_measured\":false}\n",checks.load(),rejections,verified_pixels,verified_bytes,verified_bc,(long long)elapsed,thread_pairs.load(),calls,permissions.load());
         require(munmap(arena,arena_bytes)==0);arena=nullptr;
