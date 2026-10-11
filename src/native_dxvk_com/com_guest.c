@@ -19,7 +19,8 @@ struct proxy {
     const void *vtbl;
     uint32_t magic, token, interface_id;
     LONG refs;
-    struct proxy *next;
+    struct proxy *next, **previous;
+    struct proxy *hash_next, **hash_previous;
 };
 struct mapped_shadow {
     uint32_t id;
@@ -33,8 +34,18 @@ static uint64_t unix_handle;
 static unix_call_fn unix_call;
 static CRITICAL_SECTION proxy_lock;
 static struct proxy *proxies;
+/* Keep every generation bit in the key. Fixed storage avoids resize failures
+ * while intrusive backlinks remove either list entry without a linear scan. */
+#define PROXY_BUCKET_COUNT 4096u
+static struct proxy *proxy_buckets[PROXY_BUCKET_COUNT];
 static struct mapped_shadow *shadows;
 #define PROXY_MAGIC 0x53444334u
+
+static uint32_t proxy_bucket(uint32_t token,uint32_t kind) {
+    uint32_t key=token*0x9e3779b9u ^ kind*0x85ebca6bu;
+    key^=key>>16;
+    return key&(PROXY_BUCKET_COUNT-1);
+}
 
 static uint32_t guest_address(const void *p) { return (uint32_t)(uintptr_t)p; }
 static uint32_t float_bits(float f) { union {float f;uint32_t u;} x={.f=f};return x.u; }
@@ -147,9 +158,10 @@ static ULONG proxy_release(void *object) {
     EnterCriticalSection(&proxy_lock);
     ULONG refs=(ULONG)InterlockedDecrement(&self->refs);
     if(!refs) {
-        struct proxy **at=&proxies;
-        while(*at && *at!=self)at=&(*at)->next;
-        if(*at)*at=self->next;
+        *self->previous=self->next;
+        if(self->next)self->next->previous=self->previous;
+        *self->hash_previous=self->hash_next;
+        if(self->hash_next)self->hash_next->hash_previous=self->hash_previous;
         self->magic=0;
         HeapFree(GetProcessHeap(),0,self);
     }
@@ -161,13 +173,22 @@ static void *proxy_wrap(uint32_t token,uint32_t kind) {
     const void *vtbl=proxy_vtable(kind);
     if(!vtbl){proxy_fatal(E_NOINTERFACE);return NULL;}
     EnterCriticalSection(&proxy_lock);
-    for(struct proxy *p=proxies;p;p=p->next) {
+    struct proxy **bucket=&proxy_buckets[proxy_bucket(token,kind)];
+    for(struct proxy *p=*bucket;p;p=p->hash_next) {
         if(p->token==token && p->interface_id==kind) {
             InterlockedIncrement(&p->refs);LeaveCriticalSection(&proxy_lock);return p;
         }
     }
     struct proxy *p=HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*p));
-    if(p){p->vtbl=vtbl;p->magic=PROXY_MAGIC;p->token=token;p->interface_id=kind;p->refs=1;p->next=proxies;proxies=p;}
+    if(p){
+        p->vtbl=vtbl;p->magic=PROXY_MAGIC;p->token=token;p->interface_id=kind;p->refs=1;
+        p->next=proxies;p->previous=&proxies;
+        if(p->next)p->next->previous=&p->next;
+        proxies=p;
+        p->hash_next=*bucket;p->hash_previous=bucket;
+        if(p->hash_next)p->hash_next->hash_previous=&p->hash_next;
+        *bucket=p;
+    }
     LeaveCriticalSection(&proxy_lock);
     if(!p) {
         /* Balance the native reference even if creating its x86 proxy fails. */

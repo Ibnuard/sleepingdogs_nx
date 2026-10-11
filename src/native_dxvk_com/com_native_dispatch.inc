@@ -48,7 +48,7 @@ case 3: { // ID3D11Asynchronous::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -89,7 +89,7 @@ case 3: { // ID3D11BlendState::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -131,7 +131,7 @@ case 3: { // ID3D11Buffer::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -190,7 +190,7 @@ case 3: { // ID3D11ClassInstance::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -210,7 +210,7 @@ case 7: { // ID3D11ClassInstance::GetClassLinkage
     const uint32_t count_ppLinkage = c.array_count(1);
     auto guest_ppLinkage = c.write<uint32_t>(p.args[0], count_ppLinkage);
     if (guest_ppLinkage) std::fill_n(guest_ppLinkage, count_ppLinkage, 0u);
-    std::vector<ID3D11ClassLinkage*> native_ppLinkage(count_ppLinkage, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassLinkage*> native_ppLinkage(count_ppLinkage);
     auto ppLinkage = guest_ppLinkage ? native_ppLinkage.data() : nullptr;
     object->GetClassLinkage(ppLinkage);
     if (guest_ppLinkage) for (uint32_t i=0; i<count_ppLinkage; ++i) guest_ppLinkage[i] = c.adopt(native_ppLinkage[i], SD_COM_IF_ID3D11ClassLinkage);
@@ -249,7 +249,7 @@ case 3: { // ID3D11ClassLinkage::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -271,7 +271,7 @@ case 7: { // ID3D11ClassLinkage::GetClassInstance
     const uint32_t count_ppInstance = c.array_count(1);
     auto guest_ppInstance = c.write<uint32_t>(p.args[2], count_ppInstance);
     if (guest_ppInstance) std::fill_n(guest_ppInstance, count_ppInstance, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppInstance(count_ppInstance, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppInstance(count_ppInstance);
     auto ppInstance = guest_ppInstance ? native_ppInstance.data() : nullptr;
     auto result = object->GetClassInstance(pClassInstanceName, InstanceIndex, ppInstance);
     if (FAILED(result)) { p.ret = result; return; }
@@ -288,7 +288,7 @@ case 8: { // ID3D11ClassLinkage::CreateClassInstance
     const uint32_t count_ppInstance = c.array_count(1);
     auto guest_ppInstance = c.write<uint32_t>(p.args[5], count_ppInstance);
     if (guest_ppInstance) std::fill_n(guest_ppInstance, count_ppInstance, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppInstance(count_ppInstance, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppInstance(count_ppInstance);
     auto ppInstance = guest_ppInstance ? native_ppInstance.data() : nullptr;
     auto result = object->CreateClassInstance(pClassTypeName, ConstantBufferOffset, ConstantVectorOffset, TextureOffset, SamplerOffset, ppInstance);
     if (FAILED(result)) { p.ret = result; return; }
@@ -316,7 +316,7 @@ case 3: { // ID3D11CommandList::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -357,7 +357,7 @@ case 3: { // ID3D11ComputeShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -393,7 +393,7 @@ case 3: { // ID3D11Counter::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -440,7 +440,7 @@ case 3: { // ID3D11DepthStencilState::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -482,7 +482,7 @@ case 3: { // ID3D11DepthStencilView::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -502,7 +502,7 @@ case 7: { // ID3D11DepthStencilView::GetResource
     const uint32_t count_ppResource = c.array_count(1);
     auto guest_ppResource = c.write<uint32_t>(p.args[0], count_ppResource);
     if (guest_ppResource) std::fill_n(guest_ppResource, count_ppResource, 0u);
-    std::vector<ID3D11Resource*> native_ppResource(count_ppResource, nullptr);
+    sd_com::NativePointerArray<ID3D11Resource*> native_ppResource(count_ppResource);
     auto ppResource = guest_ppResource ? native_ppResource.data() : nullptr;
     object->GetResource(ppResource);
     if (guest_ppResource) for (uint32_t i=0; i<count_ppResource; ++i) guest_ppResource[i] = c.adopt(native_ppResource[i], SD_COM_IF_ID3D11Resource);
@@ -549,7 +549,7 @@ case 7: { // ID3D11Device::CreateShaderResourceView
     const uint32_t count_ppSRView = c.array_count(1);
     auto guest_ppSRView = c.write<uint32_t>(p.args[2], count_ppSRView);
     if (guest_ppSRView) std::fill_n(guest_ppSRView, count_ppSRView, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppSRView(count_ppSRView, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppSRView(count_ppSRView);
     auto ppSRView = guest_ppSRView ? native_ppSRView.data() : nullptr;
     auto result = object->CreateShaderResourceView(pResource, pDesc, ppSRView);
     if (FAILED(result)) { p.ret = result; return; }
@@ -563,7 +563,7 @@ case 8: { // ID3D11Device::CreateUnorderedAccessView
     const uint32_t count_ppUAView = c.array_count(1);
     auto guest_ppUAView = c.write<uint32_t>(p.args[2], count_ppUAView);
     if (guest_ppUAView) std::fill_n(guest_ppUAView, count_ppUAView, 0u);
-    std::vector<ID3D11UnorderedAccessView*> native_ppUAView(count_ppUAView, nullptr);
+    sd_com::NativePointerArray<ID3D11UnorderedAccessView*> native_ppUAView(count_ppUAView);
     auto ppUAView = guest_ppUAView ? native_ppUAView.data() : nullptr;
     auto result = object->CreateUnorderedAccessView(pResource, pDesc, ppUAView);
     if (FAILED(result)) { p.ret = result; return; }
@@ -577,7 +577,7 @@ case 9: { // ID3D11Device::CreateRenderTargetView
     const uint32_t count_ppRTView = c.array_count(1);
     auto guest_ppRTView = c.write<uint32_t>(p.args[2], count_ppRTView);
     if (guest_ppRTView) std::fill_n(guest_ppRTView, count_ppRTView, 0u);
-    std::vector<ID3D11RenderTargetView*> native_ppRTView(count_ppRTView, nullptr);
+    sd_com::NativePointerArray<ID3D11RenderTargetView*> native_ppRTView(count_ppRTView);
     auto ppRTView = guest_ppRTView ? native_ppRTView.data() : nullptr;
     auto result = object->CreateRenderTargetView(pResource, pDesc, ppRTView);
     if (FAILED(result)) { p.ret = result; return; }
@@ -591,7 +591,7 @@ case 10: { // ID3D11Device::CreateDepthStencilView
     const uint32_t count_ppDepthStencilView = c.array_count(1);
     auto guest_ppDepthStencilView = c.write<uint32_t>(p.args[2], count_ppDepthStencilView);
     if (guest_ppDepthStencilView) std::fill_n(guest_ppDepthStencilView, count_ppDepthStencilView, 0u);
-    std::vector<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView, nullptr);
+    sd_com::NativePointerArray<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView);
     auto ppDepthStencilView = guest_ppDepthStencilView ? native_ppDepthStencilView.data() : nullptr;
     auto result = object->CreateDepthStencilView(pResource, pDesc, ppDepthStencilView);
     if (FAILED(result)) { p.ret = result; return; }
@@ -609,7 +609,7 @@ case 12: { // ID3D11Device::CreateVertexShader
     const uint32_t count_ppVertexShader = c.array_count(1);
     auto guest_ppVertexShader = c.write<uint32_t>(p.args[3], count_ppVertexShader);
     if (guest_ppVertexShader) std::fill_n(guest_ppVertexShader, count_ppVertexShader, 0u);
-    std::vector<ID3D11VertexShader*> native_ppVertexShader(count_ppVertexShader, nullptr);
+    sd_com::NativePointerArray<ID3D11VertexShader*> native_ppVertexShader(count_ppVertexShader);
     auto ppVertexShader = guest_ppVertexShader ? native_ppVertexShader.data() : nullptr;
     auto result = object->CreateVertexShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppVertexShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -624,7 +624,7 @@ case 13: { // ID3D11Device::CreateGeometryShader
     const uint32_t count_ppGeometryShader = c.array_count(1);
     auto guest_ppGeometryShader = c.write<uint32_t>(p.args[3], count_ppGeometryShader);
     if (guest_ppGeometryShader) std::fill_n(guest_ppGeometryShader, count_ppGeometryShader, 0u);
-    std::vector<ID3D11GeometryShader*> native_ppGeometryShader(count_ppGeometryShader, nullptr);
+    sd_com::NativePointerArray<ID3D11GeometryShader*> native_ppGeometryShader(count_ppGeometryShader);
     auto ppGeometryShader = guest_ppGeometryShader ? native_ppGeometryShader.data() : nullptr;
     auto result = object->CreateGeometryShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppGeometryShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -642,7 +642,7 @@ case 15: { // ID3D11Device::CreatePixelShader
     const uint32_t count_ppPixelShader = c.array_count(1);
     auto guest_ppPixelShader = c.write<uint32_t>(p.args[3], count_ppPixelShader);
     if (guest_ppPixelShader) std::fill_n(guest_ppPixelShader, count_ppPixelShader, 0u);
-    std::vector<ID3D11PixelShader*> native_ppPixelShader(count_ppPixelShader, nullptr);
+    sd_com::NativePointerArray<ID3D11PixelShader*> native_ppPixelShader(count_ppPixelShader);
     auto ppPixelShader = guest_ppPixelShader ? native_ppPixelShader.data() : nullptr;
     auto result = object->CreatePixelShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppPixelShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -657,7 +657,7 @@ case 16: { // ID3D11Device::CreateHullShader
     const uint32_t count_ppHullShader = c.array_count(1);
     auto guest_ppHullShader = c.write<uint32_t>(p.args[3], count_ppHullShader);
     if (guest_ppHullShader) std::fill_n(guest_ppHullShader, count_ppHullShader, 0u);
-    std::vector<ID3D11HullShader*> native_ppHullShader(count_ppHullShader, nullptr);
+    sd_com::NativePointerArray<ID3D11HullShader*> native_ppHullShader(count_ppHullShader);
     auto ppHullShader = guest_ppHullShader ? native_ppHullShader.data() : nullptr;
     auto result = object->CreateHullShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppHullShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -672,7 +672,7 @@ case 17: { // ID3D11Device::CreateDomainShader
     const uint32_t count_ppDomainShader = c.array_count(1);
     auto guest_ppDomainShader = c.write<uint32_t>(p.args[3], count_ppDomainShader);
     if (guest_ppDomainShader) std::fill_n(guest_ppDomainShader, count_ppDomainShader, 0u);
-    std::vector<ID3D11DomainShader*> native_ppDomainShader(count_ppDomainShader, nullptr);
+    sd_com::NativePointerArray<ID3D11DomainShader*> native_ppDomainShader(count_ppDomainShader);
     auto ppDomainShader = guest_ppDomainShader ? native_ppDomainShader.data() : nullptr;
     auto result = object->CreateDomainShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppDomainShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -687,7 +687,7 @@ case 18: { // ID3D11Device::CreateComputeShader
     const uint32_t count_ppComputeShader = c.array_count(1);
     auto guest_ppComputeShader = c.write<uint32_t>(p.args[3], count_ppComputeShader);
     if (guest_ppComputeShader) std::fill_n(guest_ppComputeShader, count_ppComputeShader, 0u);
-    std::vector<ID3D11ComputeShader*> native_ppComputeShader(count_ppComputeShader, nullptr);
+    sd_com::NativePointerArray<ID3D11ComputeShader*> native_ppComputeShader(count_ppComputeShader);
     auto ppComputeShader = guest_ppComputeShader ? native_ppComputeShader.data() : nullptr;
     auto result = object->CreateComputeShader(pShaderBytecode, BytecodeLength, pClassLinkage, ppComputeShader);
     if (FAILED(result)) { p.ret = result; return; }
@@ -699,7 +699,7 @@ case 19: { // ID3D11Device::CreateClassLinkage
     const uint32_t count_ppLinkage = c.array_count(1);
     auto guest_ppLinkage = c.write<uint32_t>(p.args[0], count_ppLinkage);
     if (guest_ppLinkage) std::fill_n(guest_ppLinkage, count_ppLinkage, 0u);
-    std::vector<ID3D11ClassLinkage*> native_ppLinkage(count_ppLinkage, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassLinkage*> native_ppLinkage(count_ppLinkage);
     auto ppLinkage = guest_ppLinkage ? native_ppLinkage.data() : nullptr;
     auto result = object->CreateClassLinkage(ppLinkage);
     if (FAILED(result)) { p.ret = result; return; }
@@ -712,7 +712,7 @@ case 20: { // ID3D11Device::CreateBlendState
     const uint32_t count_ppBlendState = c.array_count(1);
     auto guest_ppBlendState = c.write<uint32_t>(p.args[1], count_ppBlendState);
     if (guest_ppBlendState) std::fill_n(guest_ppBlendState, count_ppBlendState, 0u);
-    std::vector<ID3D11BlendState*> native_ppBlendState(count_ppBlendState, nullptr);
+    sd_com::NativePointerArray<ID3D11BlendState*> native_ppBlendState(count_ppBlendState);
     auto ppBlendState = guest_ppBlendState ? native_ppBlendState.data() : nullptr;
     auto result = object->CreateBlendState(pBlendStateDesc, ppBlendState);
     if (FAILED(result)) { p.ret = result; return; }
@@ -725,7 +725,7 @@ case 21: { // ID3D11Device::CreateDepthStencilState
     const uint32_t count_ppDepthStencilState = c.array_count(1);
     auto guest_ppDepthStencilState = c.write<uint32_t>(p.args[1], count_ppDepthStencilState);
     if (guest_ppDepthStencilState) std::fill_n(guest_ppDepthStencilState, count_ppDepthStencilState, 0u);
-    std::vector<ID3D11DepthStencilState*> native_ppDepthStencilState(count_ppDepthStencilState, nullptr);
+    sd_com::NativePointerArray<ID3D11DepthStencilState*> native_ppDepthStencilState(count_ppDepthStencilState);
     auto ppDepthStencilState = guest_ppDepthStencilState ? native_ppDepthStencilState.data() : nullptr;
     auto result = object->CreateDepthStencilState(pDepthStencilDesc, ppDepthStencilState);
     if (FAILED(result)) { p.ret = result; return; }
@@ -738,7 +738,7 @@ case 22: { // ID3D11Device::CreateRasterizerState
     const uint32_t count_ppRasterizerState = c.array_count(1);
     auto guest_ppRasterizerState = c.write<uint32_t>(p.args[1], count_ppRasterizerState);
     if (guest_ppRasterizerState) std::fill_n(guest_ppRasterizerState, count_ppRasterizerState, 0u);
-    std::vector<ID3D11RasterizerState*> native_ppRasterizerState(count_ppRasterizerState, nullptr);
+    sd_com::NativePointerArray<ID3D11RasterizerState*> native_ppRasterizerState(count_ppRasterizerState);
     auto ppRasterizerState = guest_ppRasterizerState ? native_ppRasterizerState.data() : nullptr;
     auto result = object->CreateRasterizerState(pRasterizerDesc, ppRasterizerState);
     if (FAILED(result)) { p.ret = result; return; }
@@ -751,7 +751,7 @@ case 23: { // ID3D11Device::CreateSamplerState
     const uint32_t count_ppSamplerState = c.array_count(1);
     auto guest_ppSamplerState = c.write<uint32_t>(p.args[1], count_ppSamplerState);
     if (guest_ppSamplerState) std::fill_n(guest_ppSamplerState, count_ppSamplerState, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplerState(count_ppSamplerState, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplerState(count_ppSamplerState);
     auto ppSamplerState = guest_ppSamplerState ? native_ppSamplerState.data() : nullptr;
     auto result = object->CreateSamplerState(pSamplerDesc, ppSamplerState);
     if (FAILED(result)) { p.ret = result; return; }
@@ -764,7 +764,7 @@ case 24: { // ID3D11Device::CreateQuery
     const uint32_t count_ppQuery = c.array_count(1);
     auto guest_ppQuery = c.write<uint32_t>(p.args[1], count_ppQuery);
     if (guest_ppQuery) std::fill_n(guest_ppQuery, count_ppQuery, 0u);
-    std::vector<ID3D11Query*> native_ppQuery(count_ppQuery, nullptr);
+    sd_com::NativePointerArray<ID3D11Query*> native_ppQuery(count_ppQuery);
     auto ppQuery = guest_ppQuery ? native_ppQuery.data() : nullptr;
     auto result = object->CreateQuery(pQueryDesc, ppQuery);
     if (FAILED(result)) { p.ret = result; return; }
@@ -777,7 +777,7 @@ case 25: { // ID3D11Device::CreatePredicate
     const uint32_t count_ppPredicate = c.array_count(1);
     auto guest_ppPredicate = c.write<uint32_t>(p.args[1], count_ppPredicate);
     if (guest_ppPredicate) std::fill_n(guest_ppPredicate, count_ppPredicate, 0u);
-    std::vector<ID3D11Predicate*> native_ppPredicate(count_ppPredicate, nullptr);
+    sd_com::NativePointerArray<ID3D11Predicate*> native_ppPredicate(count_ppPredicate);
     auto ppPredicate = guest_ppPredicate ? native_ppPredicate.data() : nullptr;
     auto result = object->CreatePredicate(pPredicateDesc, ppPredicate);
     if (FAILED(result)) { p.ret = result; return; }
@@ -790,7 +790,7 @@ case 26: { // ID3D11Device::CreateCounter
     const uint32_t count_ppCounter = c.array_count(1);
     auto guest_ppCounter = c.write<uint32_t>(p.args[1], count_ppCounter);
     if (guest_ppCounter) std::fill_n(guest_ppCounter, count_ppCounter, 0u);
-    std::vector<ID3D11Counter*> native_ppCounter(count_ppCounter, nullptr);
+    sd_com::NativePointerArray<ID3D11Counter*> native_ppCounter(count_ppCounter);
     auto ppCounter = guest_ppCounter ? native_ppCounter.data() : nullptr;
     auto result = object->CreateCounter(pCounterDesc, ppCounter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -803,7 +803,7 @@ case 27: { // ID3D11Device::CreateDeferredContext
     const uint32_t count_ppDeferredContext = c.array_count(1);
     auto guest_ppDeferredContext = c.write<uint32_t>(p.args[1], count_ppDeferredContext);
     if (guest_ppDeferredContext) std::fill_n(guest_ppDeferredContext, count_ppDeferredContext, 0u);
-    std::vector<ID3D11DeviceContext*> native_ppDeferredContext(count_ppDeferredContext, nullptr);
+    sd_com::NativePointerArray<ID3D11DeviceContext*> native_ppDeferredContext(count_ppDeferredContext);
     auto ppDeferredContext = guest_ppDeferredContext ? native_ppDeferredContext.data() : nullptr;
     auto result = object->CreateDeferredContext(ContextFlags, ppDeferredContext);
     if (FAILED(result)) { p.ret = result; return; }
@@ -874,7 +874,7 @@ case 40: { // ID3D11Device::GetImmediateContext
     const uint32_t count_ppImmediateContext = c.array_count(1);
     auto guest_ppImmediateContext = c.write<uint32_t>(p.args[0], count_ppImmediateContext);
     if (guest_ppImmediateContext) std::fill_n(guest_ppImmediateContext, count_ppImmediateContext, 0u);
-    std::vector<ID3D11DeviceContext*> native_ppImmediateContext(count_ppImmediateContext, nullptr);
+    sd_com::NativePointerArray<ID3D11DeviceContext*> native_ppImmediateContext(count_ppImmediateContext);
     auto ppImmediateContext = guest_ppImmediateContext ? native_ppImmediateContext.data() : nullptr;
     object->GetImmediateContext(ppImmediateContext);
     if (guest_ppImmediateContext) for (uint32_t i=0; i<count_ppImmediateContext; ++i) guest_ppImmediateContext[i] = c.adopt(native_ppImmediateContext[i], SD_COM_IF_ID3D11DeviceContext);
@@ -912,7 +912,7 @@ case 3: { // ID3D11DeviceChild::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -948,7 +948,7 @@ case 3: { // ID3D11DeviceContext::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -969,7 +969,7 @@ case 7: { // ID3D11DeviceContext::VSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->VSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -981,7 +981,7 @@ case 8: { // ID3D11DeviceContext::PSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->PSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -993,7 +993,7 @@ case 9: { // ID3D11DeviceContext::PSSetShader
     auto pPixelShader = c.object<ID3D11PixelShader>(p.args[0], SD_COM_IF_ID3D11PixelShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->PSSetShader(pPixelShader, ppClassInstances, NumClassInstances);
@@ -1005,7 +1005,7 @@ case 10: { // ID3D11DeviceContext::PSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->PSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1017,7 +1017,7 @@ case 11: { // ID3D11DeviceContext::VSSetShader
     auto pVertexShader = c.object<ID3D11VertexShader>(p.args[0], SD_COM_IF_ID3D11VertexShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->VSSetShader(pVertexShader, ppClassInstances, NumClassInstances);
@@ -1052,7 +1052,7 @@ case 16: { // ID3D11DeviceContext::PSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->PSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -1072,7 +1072,7 @@ case 18: { // ID3D11DeviceContext::IASetVertexBuffers
     auto pOffsets = c.read<UINT>(p.args[4], c.array_count(NumBuffers));
     const uint32_t count_ppVertexBuffers = c.array_count(NumBuffers);
     auto tokens_ppVertexBuffers = c.read<uint32_t>(p.args[2], count_ppVertexBuffers);
-    std::vector<ID3D11Buffer*> native_ppVertexBuffers(tokens_ppVertexBuffers ? count_ppVertexBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppVertexBuffers(tokens_ppVertexBuffers ? count_ppVertexBuffers : 0);
     for (uint32_t i=0; i<native_ppVertexBuffers.size(); ++i) native_ppVertexBuffers[i] = c.object<ID3D11Buffer>(tokens_ppVertexBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppVertexBuffers = tokens_ppVertexBuffers ? native_ppVertexBuffers.data() : nullptr;
     object->IASetVertexBuffers(StartSlot, NumBuffers, ppVertexBuffers, pStrides, pOffsets);
@@ -1113,7 +1113,7 @@ case 22: { // ID3D11DeviceContext::GSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->GSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -1125,7 +1125,7 @@ case 23: { // ID3D11DeviceContext::GSSetShader
     auto pShader = c.object<ID3D11GeometryShader>(p.args[0], SD_COM_IF_ID3D11GeometryShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->GSSetShader(pShader, ppClassInstances, NumClassInstances);
@@ -1143,7 +1143,7 @@ case 25: { // ID3D11DeviceContext::VSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->VSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -1155,7 +1155,7 @@ case 26: { // ID3D11DeviceContext::VSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->VSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1195,7 +1195,7 @@ case 31: { // ID3D11DeviceContext::GSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->GSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -1207,7 +1207,7 @@ case 32: { // ID3D11DeviceContext::GSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->GSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1218,7 +1218,7 @@ case 33: { // ID3D11DeviceContext::OMSetRenderTargets
     auto NumViews = (UINT)p.args[0];
     const uint32_t count_ppRenderTargetViews = c.array_count(NumViews);
     auto tokens_ppRenderTargetViews = c.read<uint32_t>(p.args[1], count_ppRenderTargetViews);
-    std::vector<ID3D11RenderTargetView*> native_ppRenderTargetViews(tokens_ppRenderTargetViews ? count_ppRenderTargetViews : 0);
+    sd_com::NativePointerArray<ID3D11RenderTargetView*> native_ppRenderTargetViews(tokens_ppRenderTargetViews ? count_ppRenderTargetViews : 0);
     for (uint32_t i=0; i<native_ppRenderTargetViews.size(); ++i) native_ppRenderTargetViews[i] = c.object<ID3D11RenderTargetView>(tokens_ppRenderTargetViews[i], SD_COM_IF_ID3D11RenderTargetView);
     auto ppRenderTargetViews = tokens_ppRenderTargetViews ? native_ppRenderTargetViews.data() : nullptr;
     auto pDepthStencilView = c.object<ID3D11DepthStencilView>(p.args[2], SD_COM_IF_ID3D11DepthStencilView);
@@ -1233,13 +1233,13 @@ case 34: { // ID3D11DeviceContext::OMSetRenderTargetsAndUnorderedAccessViews
     auto pUAVInitialCounts = c.read<UINT>(p.args[6], c.keep_array_count(NumUAVs));
     const uint32_t count_ppRenderTargetViews = c.keep_array_count(NumRTVs);
     auto tokens_ppRenderTargetViews = c.read<uint32_t>(p.args[1], count_ppRenderTargetViews);
-    std::vector<ID3D11RenderTargetView*> native_ppRenderTargetViews(tokens_ppRenderTargetViews ? count_ppRenderTargetViews : 0);
+    sd_com::NativePointerArray<ID3D11RenderTargetView*> native_ppRenderTargetViews(tokens_ppRenderTargetViews ? count_ppRenderTargetViews : 0);
     for (uint32_t i=0; i<native_ppRenderTargetViews.size(); ++i) native_ppRenderTargetViews[i] = c.object<ID3D11RenderTargetView>(tokens_ppRenderTargetViews[i], SD_COM_IF_ID3D11RenderTargetView);
     auto ppRenderTargetViews = tokens_ppRenderTargetViews ? native_ppRenderTargetViews.data() : nullptr;
     auto pDepthStencilView = c.object<ID3D11DepthStencilView>(p.args[2], SD_COM_IF_ID3D11DepthStencilView);
     const uint32_t count_ppUnorderedAccessViews = c.keep_array_count(NumUAVs);
     auto tokens_ppUnorderedAccessViews = c.read<uint32_t>(p.args[5], count_ppUnorderedAccessViews);
-    std::vector<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(tokens_ppUnorderedAccessViews ? count_ppUnorderedAccessViews : 0);
+    sd_com::NativePointerArray<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(tokens_ppUnorderedAccessViews ? count_ppUnorderedAccessViews : 0);
     for (uint32_t i=0; i<native_ppUnorderedAccessViews.size(); ++i) native_ppUnorderedAccessViews[i] = c.object<ID3D11UnorderedAccessView>(tokens_ppUnorderedAccessViews[i], SD_COM_IF_ID3D11UnorderedAccessView);
     auto ppUnorderedAccessViews = tokens_ppUnorderedAccessViews ? native_ppUnorderedAccessViews.data() : nullptr;
     object->OMSetRenderTargetsAndUnorderedAccessViews(NumRTVs, ppRenderTargetViews, pDepthStencilView, UAVStartSlot, NumUAVs, ppUnorderedAccessViews, pUAVInitialCounts);
@@ -1266,7 +1266,7 @@ case 37: { // ID3D11DeviceContext::SOSetTargets
     auto pOffsets = c.read<UINT>(p.args[2], c.array_count(NumBuffers));
     const uint32_t count_ppSOTargets = c.array_count(NumBuffers);
     auto tokens_ppSOTargets = c.read<uint32_t>(p.args[1], count_ppSOTargets);
-    std::vector<ID3D11Buffer*> native_ppSOTargets(tokens_ppSOTargets ? count_ppSOTargets : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppSOTargets(tokens_ppSOTargets ? count_ppSOTargets : 0);
     for (uint32_t i=0; i<native_ppSOTargets.size(); ++i) native_ppSOTargets[i] = c.object<ID3D11Buffer>(tokens_ppSOTargets[i], SD_COM_IF_ID3D11Buffer);
     auto ppSOTargets = tokens_ppSOTargets ? native_ppSOTargets.data() : nullptr;
     object->SOSetTargets(NumBuffers, ppSOTargets, pOffsets);
@@ -1432,7 +1432,7 @@ case 59: { // ID3D11DeviceContext::HSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->HSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -1444,7 +1444,7 @@ case 60: { // ID3D11DeviceContext::HSSetShader
     auto pHullShader = c.object<ID3D11HullShader>(p.args[0], SD_COM_IF_ID3D11HullShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->HSSetShader(pHullShader, ppClassInstances, NumClassInstances);
@@ -1456,7 +1456,7 @@ case 61: { // ID3D11DeviceContext::HSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->HSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1468,7 +1468,7 @@ case 62: { // ID3D11DeviceContext::HSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->HSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -1480,7 +1480,7 @@ case 63: { // ID3D11DeviceContext::DSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->DSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -1492,7 +1492,7 @@ case 64: { // ID3D11DeviceContext::DSSetShader
     auto pDomainShader = c.object<ID3D11DomainShader>(p.args[0], SD_COM_IF_ID3D11DomainShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->DSSetShader(pDomainShader, ppClassInstances, NumClassInstances);
@@ -1504,7 +1504,7 @@ case 65: { // ID3D11DeviceContext::DSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->DSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1516,7 +1516,7 @@ case 66: { // ID3D11DeviceContext::DSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->DSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -1528,7 +1528,7 @@ case 67: { // ID3D11DeviceContext::CSSetShaderResources
     auto NumViews = (UINT)p.args[1];
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto tokens_ppShaderResourceViews = c.read<uint32_t>(p.args[2], count_ppShaderResourceViews);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(tokens_ppShaderResourceViews ? count_ppShaderResourceViews : 0);
     for (uint32_t i=0; i<native_ppShaderResourceViews.size(); ++i) native_ppShaderResourceViews[i] = c.object<ID3D11ShaderResourceView>(tokens_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
     auto ppShaderResourceViews = tokens_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->CSSetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
@@ -1541,7 +1541,7 @@ case 68: { // ID3D11DeviceContext::CSSetUnorderedAccessViews
     auto pUAVInitialCounts = c.read<UINT>(p.args[3], c.array_count(NumUAVs));
     const uint32_t count_ppUnorderedAccessViews = c.array_count(NumUAVs);
     auto tokens_ppUnorderedAccessViews = c.read<uint32_t>(p.args[2], count_ppUnorderedAccessViews);
-    std::vector<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(tokens_ppUnorderedAccessViews ? count_ppUnorderedAccessViews : 0);
+    sd_com::NativePointerArray<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(tokens_ppUnorderedAccessViews ? count_ppUnorderedAccessViews : 0);
     for (uint32_t i=0; i<native_ppUnorderedAccessViews.size(); ++i) native_ppUnorderedAccessViews[i] = c.object<ID3D11UnorderedAccessView>(tokens_ppUnorderedAccessViews[i], SD_COM_IF_ID3D11UnorderedAccessView);
     auto ppUnorderedAccessViews = tokens_ppUnorderedAccessViews ? native_ppUnorderedAccessViews.data() : nullptr;
     object->CSSetUnorderedAccessViews(StartSlot, NumUAVs, ppUnorderedAccessViews, pUAVInitialCounts);
@@ -1553,7 +1553,7 @@ case 69: { // ID3D11DeviceContext::CSSetShader
     auto pComputeShader = c.object<ID3D11ComputeShader>(p.args[0], SD_COM_IF_ID3D11ComputeShader);
     const uint32_t count_ppClassInstances = c.array_count(NumClassInstances);
     auto tokens_ppClassInstances = c.read<uint32_t>(p.args[1], count_ppClassInstances);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(tokens_ppClassInstances ? count_ppClassInstances : 0);
     for (uint32_t i=0; i<native_ppClassInstances.size(); ++i) native_ppClassInstances[i] = c.object<ID3D11ClassInstance>(tokens_ppClassInstances[i], SD_COM_IF_ID3D11ClassInstance);
     auto ppClassInstances = tokens_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->CSSetShader(pComputeShader, ppClassInstances, NumClassInstances);
@@ -1565,7 +1565,7 @@ case 70: { // ID3D11DeviceContext::CSSetSamplers
     auto NumSamplers = (UINT)p.args[1];
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto tokens_ppSamplers = c.read<uint32_t>(p.args[2], count_ppSamplers);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(tokens_ppSamplers ? count_ppSamplers : 0);
     for (uint32_t i=0; i<native_ppSamplers.size(); ++i) native_ppSamplers[i] = c.object<ID3D11SamplerState>(tokens_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
     auto ppSamplers = tokens_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->CSSetSamplers(StartSlot, NumSamplers, ppSamplers);
@@ -1577,7 +1577,7 @@ case 71: { // ID3D11DeviceContext::CSSetConstantBuffers
     auto NumBuffers = (UINT)p.args[1];
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto tokens_ppConstantBuffers = c.read<uint32_t>(p.args[2], count_ppConstantBuffers);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(tokens_ppConstantBuffers ? count_ppConstantBuffers : 0);
     for (uint32_t i=0; i<native_ppConstantBuffers.size(); ++i) native_ppConstantBuffers[i] = c.object<ID3D11Buffer>(tokens_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
     auto ppConstantBuffers = tokens_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->CSSetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
@@ -1590,7 +1590,7 @@ case 72: { // ID3D11DeviceContext::VSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->VSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -1603,7 +1603,7 @@ case 73: { // ID3D11DeviceContext::PSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->PSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -1615,12 +1615,12 @@ case 74: { // ID3D11DeviceContext::PSGetShader
     const uint32_t count_ppPixelShader = c.array_count(1);
     auto guest_ppPixelShader = c.write<uint32_t>(p.args[0], count_ppPixelShader);
     if (guest_ppPixelShader) std::fill_n(guest_ppPixelShader, count_ppPixelShader, 0u);
-    std::vector<ID3D11PixelShader*> native_ppPixelShader(count_ppPixelShader, nullptr);
+    sd_com::NativePointerArray<ID3D11PixelShader*> native_ppPixelShader(count_ppPixelShader);
     auto ppPixelShader = guest_ppPixelShader ? native_ppPixelShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->PSGetShader(ppPixelShader, ppClassInstances, pNumClassInstances);
     if (guest_ppPixelShader) for (uint32_t i=0; i<count_ppPixelShader; ++i) guest_ppPixelShader[i] = c.adopt(native_ppPixelShader[i], SD_COM_IF_ID3D11PixelShader);
@@ -1634,7 +1634,7 @@ case 75: { // ID3D11DeviceContext::PSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->PSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -1646,12 +1646,12 @@ case 76: { // ID3D11DeviceContext::VSGetShader
     const uint32_t count_ppVertexShader = c.array_count(1);
     auto guest_ppVertexShader = c.write<uint32_t>(p.args[0], count_ppVertexShader);
     if (guest_ppVertexShader) std::fill_n(guest_ppVertexShader, count_ppVertexShader, 0u);
-    std::vector<ID3D11VertexShader*> native_ppVertexShader(count_ppVertexShader, nullptr);
+    sd_com::NativePointerArray<ID3D11VertexShader*> native_ppVertexShader(count_ppVertexShader);
     auto ppVertexShader = guest_ppVertexShader ? native_ppVertexShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->VSGetShader(ppVertexShader, ppClassInstances, pNumClassInstances);
     if (guest_ppVertexShader) for (uint32_t i=0; i<count_ppVertexShader; ++i) guest_ppVertexShader[i] = c.adopt(native_ppVertexShader[i], SD_COM_IF_ID3D11VertexShader);
@@ -1665,7 +1665,7 @@ case 77: { // ID3D11DeviceContext::PSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->PSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -1676,7 +1676,7 @@ case 78: { // ID3D11DeviceContext::IAGetInputLayout
     const uint32_t count_ppInputLayout = c.array_count(1);
     auto guest_ppInputLayout = c.write<uint32_t>(p.args[0], count_ppInputLayout);
     if (guest_ppInputLayout) std::fill_n(guest_ppInputLayout, count_ppInputLayout, 0u);
-    std::vector<ID3D11InputLayout*> native_ppInputLayout(count_ppInputLayout, nullptr);
+    sd_com::NativePointerArray<ID3D11InputLayout*> native_ppInputLayout(count_ppInputLayout);
     auto ppInputLayout = guest_ppInputLayout ? native_ppInputLayout.data() : nullptr;
     object->IAGetInputLayout(ppInputLayout);
     if (guest_ppInputLayout) for (uint32_t i=0; i<count_ppInputLayout; ++i) guest_ppInputLayout[i] = c.adopt(native_ppInputLayout[i], SD_COM_IF_ID3D11InputLayout);
@@ -1691,7 +1691,7 @@ case 79: { // ID3D11DeviceContext::IAGetVertexBuffers
     const uint32_t count_ppVertexBuffers = c.array_count(NumBuffers);
     auto guest_ppVertexBuffers = c.write<uint32_t>(p.args[2], count_ppVertexBuffers);
     if (guest_ppVertexBuffers) std::fill_n(guest_ppVertexBuffers, count_ppVertexBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppVertexBuffers(count_ppVertexBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppVertexBuffers(count_ppVertexBuffers);
     auto ppVertexBuffers = guest_ppVertexBuffers ? native_ppVertexBuffers.data() : nullptr;
     object->IAGetVertexBuffers(StartSlot, NumBuffers, ppVertexBuffers, pStrides, pOffsets);
     if (guest_ppVertexBuffers) for (uint32_t i=0; i<count_ppVertexBuffers; ++i) guest_ppVertexBuffers[i] = c.adopt(native_ppVertexBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -1703,7 +1703,7 @@ case 80: { // ID3D11DeviceContext::IAGetIndexBuffer
     const uint32_t count_pIndexBuffer = c.array_count(1);
     auto guest_pIndexBuffer = c.write<uint32_t>(p.args[0], count_pIndexBuffer);
     if (guest_pIndexBuffer) std::fill_n(guest_pIndexBuffer, count_pIndexBuffer, 0u);
-    std::vector<ID3D11Buffer*> native_pIndexBuffer(count_pIndexBuffer, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_pIndexBuffer(count_pIndexBuffer);
     auto pIndexBuffer = guest_pIndexBuffer ? native_pIndexBuffer.data() : nullptr;
     auto Format = c.write<DXGI_FORMAT>(p.args[1], c.array_count(1));
     object->IAGetIndexBuffer(pIndexBuffer, Format, Offset);
@@ -1717,7 +1717,7 @@ case 81: { // ID3D11DeviceContext::GSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->GSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -1729,12 +1729,12 @@ case 82: { // ID3D11DeviceContext::GSGetShader
     const uint32_t count_ppGeometryShader = c.array_count(1);
     auto guest_ppGeometryShader = c.write<uint32_t>(p.args[0], count_ppGeometryShader);
     if (guest_ppGeometryShader) std::fill_n(guest_ppGeometryShader, count_ppGeometryShader, 0u);
-    std::vector<ID3D11GeometryShader*> native_ppGeometryShader(count_ppGeometryShader, nullptr);
+    sd_com::NativePointerArray<ID3D11GeometryShader*> native_ppGeometryShader(count_ppGeometryShader);
     auto ppGeometryShader = guest_ppGeometryShader ? native_ppGeometryShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->GSGetShader(ppGeometryShader, ppClassInstances, pNumClassInstances);
     if (guest_ppGeometryShader) for (uint32_t i=0; i<count_ppGeometryShader; ++i) guest_ppGeometryShader[i] = c.adopt(native_ppGeometryShader[i], SD_COM_IF_ID3D11GeometryShader);
@@ -1754,7 +1754,7 @@ case 84: { // ID3D11DeviceContext::VSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->VSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -1767,7 +1767,7 @@ case 85: { // ID3D11DeviceContext::VSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->VSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -1778,7 +1778,7 @@ case 86: { // ID3D11DeviceContext::GetPredication
     const uint32_t count_ppPredicate = c.array_count(1);
     auto guest_ppPredicate = c.write<uint32_t>(p.args[0], count_ppPredicate);
     if (guest_ppPredicate) std::fill_n(guest_ppPredicate, count_ppPredicate, 0u);
-    std::vector<ID3D11Predicate*> native_ppPredicate(count_ppPredicate, nullptr);
+    sd_com::NativePointerArray<ID3D11Predicate*> native_ppPredicate(count_ppPredicate);
     auto ppPredicate = guest_ppPredicate ? native_ppPredicate.data() : nullptr;
     auto pPredicateValue = c.write<WINBOOL>(p.args[1], c.array_count(1));
     object->GetPredication(ppPredicate, pPredicateValue);
@@ -1792,7 +1792,7 @@ case 87: { // ID3D11DeviceContext::GSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->GSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -1805,7 +1805,7 @@ case 88: { // ID3D11DeviceContext::GSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->GSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -1817,12 +1817,12 @@ case 89: { // ID3D11DeviceContext::OMGetRenderTargets
     const uint32_t count_ppRenderTargetViews = c.array_count(NumViews);
     auto guest_ppRenderTargetViews = c.write<uint32_t>(p.args[1], count_ppRenderTargetViews);
     if (guest_ppRenderTargetViews) std::fill_n(guest_ppRenderTargetViews, count_ppRenderTargetViews, 0u);
-    std::vector<ID3D11RenderTargetView*> native_ppRenderTargetViews(count_ppRenderTargetViews, nullptr);
+    sd_com::NativePointerArray<ID3D11RenderTargetView*> native_ppRenderTargetViews(count_ppRenderTargetViews);
     auto ppRenderTargetViews = guest_ppRenderTargetViews ? native_ppRenderTargetViews.data() : nullptr;
     const uint32_t count_ppDepthStencilView = c.array_count(1);
     auto guest_ppDepthStencilView = c.write<uint32_t>(p.args[2], count_ppDepthStencilView);
     if (guest_ppDepthStencilView) std::fill_n(guest_ppDepthStencilView, count_ppDepthStencilView, 0u);
-    std::vector<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView, nullptr);
+    sd_com::NativePointerArray<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView);
     auto ppDepthStencilView = guest_ppDepthStencilView ? native_ppDepthStencilView.data() : nullptr;
     object->OMGetRenderTargets(NumViews, ppRenderTargetViews, ppDepthStencilView);
     if (guest_ppRenderTargetViews) for (uint32_t i=0; i<count_ppRenderTargetViews; ++i) guest_ppRenderTargetViews[i] = c.adopt(native_ppRenderTargetViews[i], SD_COM_IF_ID3D11RenderTargetView);
@@ -1837,17 +1837,17 @@ case 90: { // ID3D11DeviceContext::OMGetRenderTargetsAndUnorderedAccessViews
     const uint32_t count_ppRenderTargetViews = c.array_count(NumRTVs);
     auto guest_ppRenderTargetViews = c.write<uint32_t>(p.args[1], count_ppRenderTargetViews);
     if (guest_ppRenderTargetViews) std::fill_n(guest_ppRenderTargetViews, count_ppRenderTargetViews, 0u);
-    std::vector<ID3D11RenderTargetView*> native_ppRenderTargetViews(count_ppRenderTargetViews, nullptr);
+    sd_com::NativePointerArray<ID3D11RenderTargetView*> native_ppRenderTargetViews(count_ppRenderTargetViews);
     auto ppRenderTargetViews = guest_ppRenderTargetViews ? native_ppRenderTargetViews.data() : nullptr;
     const uint32_t count_ppDepthStencilView = c.array_count(1);
     auto guest_ppDepthStencilView = c.write<uint32_t>(p.args[2], count_ppDepthStencilView);
     if (guest_ppDepthStencilView) std::fill_n(guest_ppDepthStencilView, count_ppDepthStencilView, 0u);
-    std::vector<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView, nullptr);
+    sd_com::NativePointerArray<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView);
     auto ppDepthStencilView = guest_ppDepthStencilView ? native_ppDepthStencilView.data() : nullptr;
     const uint32_t count_ppUnorderedAccessViews = c.array_count(NumUAVs);
     auto guest_ppUnorderedAccessViews = c.write<uint32_t>(p.args[5], count_ppUnorderedAccessViews);
     if (guest_ppUnorderedAccessViews) std::fill_n(guest_ppUnorderedAccessViews, count_ppUnorderedAccessViews, 0u);
-    std::vector<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(count_ppUnorderedAccessViews, nullptr);
+    sd_com::NativePointerArray<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(count_ppUnorderedAccessViews);
     auto ppUnorderedAccessViews = guest_ppUnorderedAccessViews ? native_ppUnorderedAccessViews.data() : nullptr;
     object->OMGetRenderTargetsAndUnorderedAccessViews(NumRTVs, ppRenderTargetViews, ppDepthStencilView, UAVStartSlot, NumUAVs, ppUnorderedAccessViews);
     if (guest_ppRenderTargetViews) for (uint32_t i=0; i<count_ppRenderTargetViews; ++i) guest_ppRenderTargetViews[i] = c.adopt(native_ppRenderTargetViews[i], SD_COM_IF_ID3D11RenderTargetView);
@@ -1861,7 +1861,7 @@ case 91: { // ID3D11DeviceContext::OMGetBlendState
     const uint32_t count_ppBlendState = c.array_count(1);
     auto guest_ppBlendState = c.write<uint32_t>(p.args[0], count_ppBlendState);
     if (guest_ppBlendState) std::fill_n(guest_ppBlendState, count_ppBlendState, 0u);
-    std::vector<ID3D11BlendState*> native_ppBlendState(count_ppBlendState, nullptr);
+    sd_com::NativePointerArray<ID3D11BlendState*> native_ppBlendState(count_ppBlendState);
     auto ppBlendState = guest_ppBlendState ? native_ppBlendState.data() : nullptr;
     auto BlendFactor = c.write<FLOAT>(p.args[1], c.array_count(4));
     object->OMGetBlendState(ppBlendState, BlendFactor, pSampleMask);
@@ -1874,7 +1874,7 @@ case 92: { // ID3D11DeviceContext::OMGetDepthStencilState
     const uint32_t count_ppDepthStencilState = c.array_count(1);
     auto guest_ppDepthStencilState = c.write<uint32_t>(p.args[0], count_ppDepthStencilState);
     if (guest_ppDepthStencilState) std::fill_n(guest_ppDepthStencilState, count_ppDepthStencilState, 0u);
-    std::vector<ID3D11DepthStencilState*> native_ppDepthStencilState(count_ppDepthStencilState, nullptr);
+    sd_com::NativePointerArray<ID3D11DepthStencilState*> native_ppDepthStencilState(count_ppDepthStencilState);
     auto ppDepthStencilState = guest_ppDepthStencilState ? native_ppDepthStencilState.data() : nullptr;
     object->OMGetDepthStencilState(ppDepthStencilState, pStencilRef);
     if (guest_ppDepthStencilState) for (uint32_t i=0; i<count_ppDepthStencilState; ++i) guest_ppDepthStencilState[i] = c.adopt(native_ppDepthStencilState[i], SD_COM_IF_ID3D11DepthStencilState);
@@ -1886,7 +1886,7 @@ case 93: { // ID3D11DeviceContext::SOGetTargets
     const uint32_t count_ppSOTargets = c.array_count(NumBuffers);
     auto guest_ppSOTargets = c.write<uint32_t>(p.args[1], count_ppSOTargets);
     if (guest_ppSOTargets) std::fill_n(guest_ppSOTargets, count_ppSOTargets, 0u);
-    std::vector<ID3D11Buffer*> native_ppSOTargets(count_ppSOTargets, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppSOTargets(count_ppSOTargets);
     auto ppSOTargets = guest_ppSOTargets ? native_ppSOTargets.data() : nullptr;
     object->SOGetTargets(NumBuffers, ppSOTargets);
     if (guest_ppSOTargets) for (uint32_t i=0; i<count_ppSOTargets; ++i) guest_ppSOTargets[i] = c.adopt(native_ppSOTargets[i], SD_COM_IF_ID3D11Buffer);
@@ -1897,7 +1897,7 @@ case 94: { // ID3D11DeviceContext::RSGetState
     const uint32_t count_ppRasterizerState = c.array_count(1);
     auto guest_ppRasterizerState = c.write<uint32_t>(p.args[0], count_ppRasterizerState);
     if (guest_ppRasterizerState) std::fill_n(guest_ppRasterizerState, count_ppRasterizerState, 0u);
-    std::vector<ID3D11RasterizerState*> native_ppRasterizerState(count_ppRasterizerState, nullptr);
+    sd_com::NativePointerArray<ID3D11RasterizerState*> native_ppRasterizerState(count_ppRasterizerState);
     auto ppRasterizerState = guest_ppRasterizerState ? native_ppRasterizerState.data() : nullptr;
     object->RSGetState(ppRasterizerState);
     if (guest_ppRasterizerState) for (uint32_t i=0; i<count_ppRasterizerState; ++i) guest_ppRasterizerState[i] = c.adopt(native_ppRasterizerState[i], SD_COM_IF_ID3D11RasterizerState);
@@ -1924,7 +1924,7 @@ case 97: { // ID3D11DeviceContext::HSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->HSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -1936,12 +1936,12 @@ case 98: { // ID3D11DeviceContext::HSGetShader
     const uint32_t count_ppHullShader = c.array_count(1);
     auto guest_ppHullShader = c.write<uint32_t>(p.args[0], count_ppHullShader);
     if (guest_ppHullShader) std::fill_n(guest_ppHullShader, count_ppHullShader, 0u);
-    std::vector<ID3D11HullShader*> native_ppHullShader(count_ppHullShader, nullptr);
+    sd_com::NativePointerArray<ID3D11HullShader*> native_ppHullShader(count_ppHullShader);
     auto ppHullShader = guest_ppHullShader ? native_ppHullShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->HSGetShader(ppHullShader, ppClassInstances, pNumClassInstances);
     if (guest_ppHullShader) for (uint32_t i=0; i<count_ppHullShader; ++i) guest_ppHullShader[i] = c.adopt(native_ppHullShader[i], SD_COM_IF_ID3D11HullShader);
@@ -1955,7 +1955,7 @@ case 99: { // ID3D11DeviceContext::HSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->HSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -1968,7 +1968,7 @@ case 100: { // ID3D11DeviceContext::HSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->HSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -1981,7 +1981,7 @@ case 101: { // ID3D11DeviceContext::DSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->DSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -1993,12 +1993,12 @@ case 102: { // ID3D11DeviceContext::DSGetShader
     const uint32_t count_ppDomainShader = c.array_count(1);
     auto guest_ppDomainShader = c.write<uint32_t>(p.args[0], count_ppDomainShader);
     if (guest_ppDomainShader) std::fill_n(guest_ppDomainShader, count_ppDomainShader, 0u);
-    std::vector<ID3D11DomainShader*> native_ppDomainShader(count_ppDomainShader, nullptr);
+    sd_com::NativePointerArray<ID3D11DomainShader*> native_ppDomainShader(count_ppDomainShader);
     auto ppDomainShader = guest_ppDomainShader ? native_ppDomainShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->DSGetShader(ppDomainShader, ppClassInstances, pNumClassInstances);
     if (guest_ppDomainShader) for (uint32_t i=0; i<count_ppDomainShader; ++i) guest_ppDomainShader[i] = c.adopt(native_ppDomainShader[i], SD_COM_IF_ID3D11DomainShader);
@@ -2012,7 +2012,7 @@ case 103: { // ID3D11DeviceContext::DSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->DSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -2025,7 +2025,7 @@ case 104: { // ID3D11DeviceContext::DSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->DSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -2038,7 +2038,7 @@ case 105: { // ID3D11DeviceContext::CSGetShaderResources
     const uint32_t count_ppShaderResourceViews = c.array_count(NumViews);
     auto guest_ppShaderResourceViews = c.write<uint32_t>(p.args[2], count_ppShaderResourceViews);
     if (guest_ppShaderResourceViews) std::fill_n(guest_ppShaderResourceViews, count_ppShaderResourceViews, 0u);
-    std::vector<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews, nullptr);
+    sd_com::NativePointerArray<ID3D11ShaderResourceView*> native_ppShaderResourceViews(count_ppShaderResourceViews);
     auto ppShaderResourceViews = guest_ppShaderResourceViews ? native_ppShaderResourceViews.data() : nullptr;
     object->CSGetShaderResources(StartSlot, NumViews, ppShaderResourceViews);
     if (guest_ppShaderResourceViews) for (uint32_t i=0; i<count_ppShaderResourceViews; ++i) guest_ppShaderResourceViews[i] = c.adopt(native_ppShaderResourceViews[i], SD_COM_IF_ID3D11ShaderResourceView);
@@ -2051,7 +2051,7 @@ case 106: { // ID3D11DeviceContext::CSGetUnorderedAccessViews
     const uint32_t count_ppUnorderedAccessViews = c.array_count(NumUAVs);
     auto guest_ppUnorderedAccessViews = c.write<uint32_t>(p.args[2], count_ppUnorderedAccessViews);
     if (guest_ppUnorderedAccessViews) std::fill_n(guest_ppUnorderedAccessViews, count_ppUnorderedAccessViews, 0u);
-    std::vector<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(count_ppUnorderedAccessViews, nullptr);
+    sd_com::NativePointerArray<ID3D11UnorderedAccessView*> native_ppUnorderedAccessViews(count_ppUnorderedAccessViews);
     auto ppUnorderedAccessViews = guest_ppUnorderedAccessViews ? native_ppUnorderedAccessViews.data() : nullptr;
     object->CSGetUnorderedAccessViews(StartSlot, NumUAVs, ppUnorderedAccessViews);
     if (guest_ppUnorderedAccessViews) for (uint32_t i=0; i<count_ppUnorderedAccessViews; ++i) guest_ppUnorderedAccessViews[i] = c.adopt(native_ppUnorderedAccessViews[i], SD_COM_IF_ID3D11UnorderedAccessView);
@@ -2063,12 +2063,12 @@ case 107: { // ID3D11DeviceContext::CSGetShader
     const uint32_t count_ppComputeShader = c.array_count(1);
     auto guest_ppComputeShader = c.write<uint32_t>(p.args[0], count_ppComputeShader);
     if (guest_ppComputeShader) std::fill_n(guest_ppComputeShader, count_ppComputeShader, 0u);
-    std::vector<ID3D11ComputeShader*> native_ppComputeShader(count_ppComputeShader, nullptr);
+    sd_com::NativePointerArray<ID3D11ComputeShader*> native_ppComputeShader(count_ppComputeShader);
     auto ppComputeShader = guest_ppComputeShader ? native_ppComputeShader.data() : nullptr;
     const uint32_t count_ppClassInstances = c.array_count((pNumClassInstances ? *pNumClassInstances : 0));
     auto guest_ppClassInstances = c.write<uint32_t>(p.args[1], count_ppClassInstances);
     if (guest_ppClassInstances) std::fill_n(guest_ppClassInstances, count_ppClassInstances, 0u);
-    std::vector<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances, nullptr);
+    sd_com::NativePointerArray<ID3D11ClassInstance*> native_ppClassInstances(count_ppClassInstances);
     auto ppClassInstances = guest_ppClassInstances ? native_ppClassInstances.data() : nullptr;
     object->CSGetShader(ppComputeShader, ppClassInstances, pNumClassInstances);
     if (guest_ppComputeShader) for (uint32_t i=0; i<count_ppComputeShader; ++i) guest_ppComputeShader[i] = c.adopt(native_ppComputeShader[i], SD_COM_IF_ID3D11ComputeShader);
@@ -2082,7 +2082,7 @@ case 108: { // ID3D11DeviceContext::CSGetSamplers
     const uint32_t count_ppSamplers = c.array_count(NumSamplers);
     auto guest_ppSamplers = c.write<uint32_t>(p.args[2], count_ppSamplers);
     if (guest_ppSamplers) std::fill_n(guest_ppSamplers, count_ppSamplers, 0u);
-    std::vector<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers, nullptr);
+    sd_com::NativePointerArray<ID3D11SamplerState*> native_ppSamplers(count_ppSamplers);
     auto ppSamplers = guest_ppSamplers ? native_ppSamplers.data() : nullptr;
     object->CSGetSamplers(StartSlot, NumSamplers, ppSamplers);
     if (guest_ppSamplers) for (uint32_t i=0; i<count_ppSamplers; ++i) guest_ppSamplers[i] = c.adopt(native_ppSamplers[i], SD_COM_IF_ID3D11SamplerState);
@@ -2095,7 +2095,7 @@ case 109: { // ID3D11DeviceContext::CSGetConstantBuffers
     const uint32_t count_ppConstantBuffers = c.array_count(NumBuffers);
     auto guest_ppConstantBuffers = c.write<uint32_t>(p.args[2], count_ppConstantBuffers);
     if (guest_ppConstantBuffers) std::fill_n(guest_ppConstantBuffers, count_ppConstantBuffers, 0u);
-    std::vector<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers, nullptr);
+    sd_com::NativePointerArray<ID3D11Buffer*> native_ppConstantBuffers(count_ppConstantBuffers);
     auto ppConstantBuffers = guest_ppConstantBuffers ? native_ppConstantBuffers.data() : nullptr;
     object->CSGetConstantBuffers(StartSlot, NumBuffers, ppConstantBuffers);
     if (guest_ppConstantBuffers) for (uint32_t i=0; i<count_ppConstantBuffers; ++i) guest_ppConstantBuffers[i] = c.adopt(native_ppConstantBuffers[i], SD_COM_IF_ID3D11Buffer);
@@ -2127,7 +2127,7 @@ case 114: { // ID3D11DeviceContext::FinishCommandList
     const uint32_t count_ppCommandList = c.array_count(1);
     auto guest_ppCommandList = c.write<uint32_t>(p.args[1], count_ppCommandList);
     if (guest_ppCommandList) std::fill_n(guest_ppCommandList, count_ppCommandList, 0u);
-    std::vector<ID3D11CommandList*> native_ppCommandList(count_ppCommandList, nullptr);
+    sd_com::NativePointerArray<ID3D11CommandList*> native_ppCommandList(count_ppCommandList);
     auto ppCommandList = guest_ppCommandList ? native_ppCommandList.data() : nullptr;
     auto result = object->FinishCommandList(RestoreDeferredContextState, ppCommandList);
     if (FAILED(result)) { p.ret = result; return; }
@@ -2155,7 +2155,7 @@ case 3: { // ID3D11DomainShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2191,7 +2191,7 @@ case 3: { // ID3D11GeometryShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2227,7 +2227,7 @@ case 3: { // ID3D11HullShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2263,7 +2263,7 @@ case 3: { // ID3D11InputLayout::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2299,7 +2299,7 @@ case 3: { // ID3D11PixelShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2335,7 +2335,7 @@ case 3: { // ID3D11Predicate::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2382,7 +2382,7 @@ case 3: { // ID3D11Query::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2429,7 +2429,7 @@ case 3: { // ID3D11RasterizerState::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2471,7 +2471,7 @@ case 3: { // ID3D11RenderTargetView::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2491,7 +2491,7 @@ case 7: { // ID3D11RenderTargetView::GetResource
     const uint32_t count_ppResource = c.array_count(1);
     auto guest_ppResource = c.write<uint32_t>(p.args[0], count_ppResource);
     if (guest_ppResource) std::fill_n(guest_ppResource, count_ppResource, 0u);
-    std::vector<ID3D11Resource*> native_ppResource(count_ppResource, nullptr);
+    sd_com::NativePointerArray<ID3D11Resource*> native_ppResource(count_ppResource);
     auto ppResource = guest_ppResource ? native_ppResource.data() : nullptr;
     object->GetResource(ppResource);
     if (guest_ppResource) for (uint32_t i=0; i<count_ppResource; ++i) guest_ppResource[i] = c.adopt(native_ppResource[i], SD_COM_IF_ID3D11Resource);
@@ -2524,7 +2524,7 @@ case 3: { // ID3D11Resource::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2577,7 +2577,7 @@ case 3: { // ID3D11SamplerState::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2619,7 +2619,7 @@ case 3: { // ID3D11ShaderResourceView::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2639,7 +2639,7 @@ case 7: { // ID3D11ShaderResourceView::GetResource
     const uint32_t count_ppResource = c.array_count(1);
     auto guest_ppResource = c.write<uint32_t>(p.args[0], count_ppResource);
     if (guest_ppResource) std::fill_n(guest_ppResource, count_ppResource, 0u);
-    std::vector<ID3D11Resource*> native_ppResource(count_ppResource, nullptr);
+    sd_com::NativePointerArray<ID3D11Resource*> native_ppResource(count_ppResource);
     auto ppResource = guest_ppResource ? native_ppResource.data() : nullptr;
     object->GetResource(ppResource);
     if (guest_ppResource) for (uint32_t i=0; i<count_ppResource; ++i) guest_ppResource[i] = c.adopt(native_ppResource[i], SD_COM_IF_ID3D11Resource);
@@ -2672,7 +2672,7 @@ case 3: { // ID3D11Texture1D::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2731,7 +2731,7 @@ case 3: { // ID3D11Texture2D::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2790,7 +2790,7 @@ case 3: { // ID3D11Texture3D::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2849,7 +2849,7 @@ case 3: { // ID3D11UnorderedAccessView::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2869,7 +2869,7 @@ case 7: { // ID3D11UnorderedAccessView::GetResource
     const uint32_t count_ppResource = c.array_count(1);
     auto guest_ppResource = c.write<uint32_t>(p.args[0], count_ppResource);
     if (guest_ppResource) std::fill_n(guest_ppResource, count_ppResource, 0u);
-    std::vector<ID3D11Resource*> native_ppResource(count_ppResource, nullptr);
+    sd_com::NativePointerArray<ID3D11Resource*> native_ppResource(count_ppResource);
     auto ppResource = guest_ppResource ? native_ppResource.data() : nullptr;
     object->GetResource(ppResource);
     if (guest_ppResource) for (uint32_t i=0; i<count_ppResource; ++i) guest_ppResource[i] = c.adopt(native_ppResource[i], SD_COM_IF_ID3D11Resource);
@@ -2902,7 +2902,7 @@ case 3: { // ID3D11VertexShader::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2938,7 +2938,7 @@ case 3: { // ID3D11View::GetDevice
     const uint32_t count_ppDevice = c.array_count(1);
     auto guest_ppDevice = c.write<uint32_t>(p.args[0], count_ppDevice);
     if (guest_ppDevice) std::fill_n(guest_ppDevice, count_ppDevice, 0u);
-    std::vector<ID3D11Device*> native_ppDevice(count_ppDevice, nullptr);
+    sd_com::NativePointerArray<ID3D11Device*> native_ppDevice(count_ppDevice);
     auto ppDevice = guest_ppDevice ? native_ppDevice.data() : nullptr;
     object->GetDevice(ppDevice);
     if (guest_ppDevice) for (uint32_t i=0; i<count_ppDevice; ++i) guest_ppDevice[i] = c.adopt(native_ppDevice[i], SD_COM_IF_ID3D11Device);
@@ -2958,7 +2958,7 @@ case 7: { // ID3D11View::GetResource
     const uint32_t count_ppResource = c.array_count(1);
     auto guest_ppResource = c.write<uint32_t>(p.args[0], count_ppResource);
     if (guest_ppResource) std::fill_n(guest_ppResource, count_ppResource, 0u);
-    std::vector<ID3D11Resource*> native_ppResource(count_ppResource, nullptr);
+    sd_com::NativePointerArray<ID3D11Resource*> native_ppResource(count_ppResource);
     auto ppResource = guest_ppResource ? native_ppResource.data() : nullptr;
     object->GetResource(ppResource);
     if (guest_ppResource) for (uint32_t i=0; i<count_ppResource; ++i) guest_ppResource[i] = c.adopt(native_ppResource[i], SD_COM_IF_ID3D11Resource);
@@ -3006,7 +3006,7 @@ case 7: { // IDXGIAdapter::EnumOutputs
     const uint32_t count_output = c.array_count(1);
     auto guest_output = c.write<uint32_t>(p.args[1], count_output);
     if (guest_output) std::fill_n(guest_output, count_output, 0u);
-    std::vector<IDXGIOutput*> native_output(count_output, nullptr);
+    sd_com::NativePointerArray<IDXGIOutput*> native_output(count_output);
     auto output = guest_output ? native_output.data() : nullptr;
     auto result = object->EnumOutputs(output_idx, output);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3065,7 +3065,7 @@ case 7: { // IDXGIAdapter1::EnumOutputs
     const uint32_t count_output = c.array_count(1);
     auto guest_output = c.write<uint32_t>(p.args[1], count_output);
     if (guest_output) std::fill_n(guest_output, count_output, 0u);
-    std::vector<IDXGIOutput*> native_output(count_output, nullptr);
+    sd_com::NativePointerArray<IDXGIOutput*> native_output(count_output);
     auto output = guest_output ? native_output.data() : nullptr;
     auto result = object->EnumOutputs(output_idx, output);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3126,7 +3126,7 @@ case 7: { // IDXGIDevice::GetAdapter
     const uint32_t count_adapter = c.array_count(1);
     auto guest_adapter = c.write<uint32_t>(p.args[0], count_adapter);
     if (guest_adapter) std::fill_n(guest_adapter, count_adapter, 0u);
-    std::vector<IDXGIAdapter*> native_adapter(count_adapter, nullptr);
+    sd_com::NativePointerArray<IDXGIAdapter*> native_adapter(count_adapter);
     auto adapter = guest_adapter ? native_adapter.data() : nullptr;
     auto result = object->GetAdapter(adapter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3141,7 +3141,7 @@ case 9: { // IDXGIDevice::QueryResourceResidency
     auto resource_count = (UINT)p.args[2];
     const uint32_t count_resources = c.array_count(1);
     auto tokens_resources = c.read<uint32_t>(p.args[0], count_resources);
-    std::vector<IUnknown*> native_resources(tokens_resources ? count_resources : 0);
+    sd_com::NativePointerArray<IUnknown*> native_resources(tokens_resources ? count_resources : 0);
     for (uint32_t i=0; i<native_resources.size(); ++i) native_resources[i] = c.object<IUnknown>(tokens_resources[i], SD_COM_IF_IUnknown);
     auto resources = tokens_resources ? native_resources.data() : nullptr;
     auto residency = c.write<DXGI_RESIDENCY>(p.args[1], c.array_count(1));
@@ -3201,7 +3201,7 @@ case 7: { // IDXGIDevice1::GetAdapter
     const uint32_t count_adapter = c.array_count(1);
     auto guest_adapter = c.write<uint32_t>(p.args[0], count_adapter);
     if (guest_adapter) std::fill_n(guest_adapter, count_adapter, 0u);
-    std::vector<IDXGIAdapter*> native_adapter(count_adapter, nullptr);
+    sd_com::NativePointerArray<IDXGIAdapter*> native_adapter(count_adapter);
     auto adapter = guest_adapter ? native_adapter.data() : nullptr;
     auto result = object->GetAdapter(adapter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3216,7 +3216,7 @@ case 9: { // IDXGIDevice1::QueryResourceResidency
     auto resource_count = (UINT)p.args[2];
     const uint32_t count_resources = c.array_count(1);
     auto tokens_resources = c.read<uint32_t>(p.args[0], count_resources);
-    std::vector<IUnknown*> native_resources(tokens_resources ? count_resources : 0);
+    sd_com::NativePointerArray<IUnknown*> native_resources(tokens_resources ? count_resources : 0);
     for (uint32_t i=0; i<native_resources.size(); ++i) native_resources[i] = c.object<IUnknown>(tokens_resources[i], SD_COM_IF_IUnknown);
     auto resources = tokens_resources ? native_resources.data() : nullptr;
     auto residency = c.write<DXGI_RESIDENCY>(p.args[1], c.array_count(1));
@@ -3336,7 +3336,7 @@ case 7: { // IDXGIFactory::EnumAdapters
     const uint32_t count_adapter = c.array_count(1);
     auto guest_adapter = c.write<uint32_t>(p.args[1], count_adapter);
     if (guest_adapter) std::fill_n(guest_adapter, count_adapter, 0u);
-    std::vector<IDXGIAdapter*> native_adapter(count_adapter, nullptr);
+    sd_com::NativePointerArray<IDXGIAdapter*> native_adapter(count_adapter);
     auto adapter = guest_adapter ? native_adapter.data() : nullptr;
     auto result = object->EnumAdapters(adapter_idx, adapter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3397,7 +3397,7 @@ case 7: { // IDXGIFactory1::EnumAdapters
     const uint32_t count_adapter = c.array_count(1);
     auto guest_adapter = c.write<uint32_t>(p.args[1], count_adapter);
     if (guest_adapter) std::fill_n(guest_adapter, count_adapter, 0u);
-    std::vector<IDXGIAdapter*> native_adapter(count_adapter, nullptr);
+    sd_com::NativePointerArray<IDXGIAdapter*> native_adapter(count_adapter);
     auto adapter = guest_adapter ? native_adapter.data() : nullptr;
     auto result = object->EnumAdapters(adapter_idx, adapter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3422,7 +3422,7 @@ case 12: { // IDXGIFactory1::EnumAdapters1
     const uint32_t count_ppAdapter = c.array_count(1);
     auto guest_ppAdapter = c.write<uint32_t>(p.args[1], count_ppAdapter);
     if (guest_ppAdapter) std::fill_n(guest_ppAdapter, count_ppAdapter, 0u);
-    std::vector<IDXGIAdapter1*> native_ppAdapter(count_ppAdapter, nullptr);
+    sd_com::NativePointerArray<IDXGIAdapter1*> native_ppAdapter(count_ppAdapter);
     auto ppAdapter = guest_ppAdapter ? native_ppAdapter.data() : nullptr;
     auto result = object->EnumAdapters1(Adapter, ppAdapter);
     if (FAILED(result)) { p.ret = result; return; }
@@ -3916,7 +3916,7 @@ case 15: { // IDXGISwapChain::GetContainingOutput
     const uint32_t count_output = c.array_count(1);
     auto guest_output = c.write<uint32_t>(p.args[0], count_output);
     if (guest_output) std::fill_n(guest_output, count_output, 0u);
-    std::vector<IDXGIOutput*> native_output(count_output, nullptr);
+    sd_com::NativePointerArray<IDXGIOutput*> native_output(count_output);
     auto output = guest_output ? native_output.data() : nullptr;
     auto result = object->GetContainingOutput(output);
     if (FAILED(result)) { p.ret = result; return; }

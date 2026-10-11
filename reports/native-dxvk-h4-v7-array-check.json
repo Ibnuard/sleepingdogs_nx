@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": 1436835,
+  "binding_calls": 10000,
+  "vector_allocations": 10000,
+  "inline_allocations": 0,
+  "live_allocations": 0,
+  "allocation_failure_checked": true,
+  "zero_initialization_checked": true,
+  "unwind_cleanup_checked": true,
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "inline_capacity": 128,
+  "counts_tested": [
+    0,
+    1,
+    12,
+    128,
+    129,
+    16384
+  ],
+  "source_files": {
+    "tests/native_dxvk_array_host.cpp": "50f773d0669016b6929353cdfba41cd6c4ee3d5df1e50ec1f4f684cd07a70de5",
+    "src/native_dxvk_com/com_native_array.h": "3e49d05f3272578fd3d854cf05fc8b1ec5490b9433a43e795ee298b97ed678bc",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6"
+  },
+  "runner_sha256": "55d7cb170bfa0b289fc922fa6dde8cebd611f8ca17c7befd1e6de0db69e77778",
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-no-pie",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_array_host.cpp",
+    "-o",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v7/array-checks/array-check"
+  ],
+  "executable_sha256": "f58c74f847a5e54af95165951c39cbedb039056467cb3c91553b2cfee914423d",
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Native temporary pointer-array allocation, initialization, failure and lifetime only; no COM proxy, FEX, GPU or game FPS measurement."
+}

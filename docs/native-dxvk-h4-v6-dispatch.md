@@ -2,6 +2,11 @@
 
 [Documentation](README.md) · [COM implementation](native-dxvk-h4-v1.md) · [Current status](STATUS.md)
 
+Subsequent feedback: v6 improves reported gameplay to 16–17 FPS, with
+12–13 facing crowds and peaks near 22. The [preserved observation](../reports/native-dxvk-h4-v6-gameplay-observation.json)
+records 16.67 FPS over the final four windows. This page retains the original
+v6 pre-test record; current tools target [H4 v7](native-dxvk-h4-v7-objects.md).
+
 V5 now reaches gameplay according to the user. Its last two native Present
 windows average **15.07 and 14.39 FPS**. V6 reduces diagnostic work in the
 bridge's frequent calls; it builds and passes local checks. **V6 has not been
@@ -155,7 +160,8 @@ python3 tools/analyze_native_dxvk_h4.py --mode com --log-dir /path/to/saved-com-
 python3 tools/analyze_native_dxvk_h4.py --mode game --runtime-root /path/to/copied-runtime
 ```
 
-The analyzer defaults to v6. Use `--expected-build native-dxvk-h4-v5` (or
+At this iteration the analyzer defaulted to v6. Current tools target v7;
+use `--expected-build native-dxvk-h4-v6` for these captures, or v5 (or
 v2/v3/v4) for earlier captures. `ROUTE_OBSERVED` establishes a native Present
 route without authenticating exact running binaries, clocks, visible scenes
 or every file's session. Save fresh COM files before testing game launch.

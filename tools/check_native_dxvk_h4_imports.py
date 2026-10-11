@@ -10,7 +10,7 @@ import json
 import struct
 
 ROOT=Path(__file__).resolve().parents[1]
-LOCAL=ROOT/'local/native-dxvk-h4-v6'
+LOCAL=ROOT/'local/native-dxvk-h4-v7'
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 

@@ -132,25 +132,36 @@ int main(int argc,char** argv){
         }
         require(c.call(0,SD_COM_CREATE_DEVICE,0,{0,D3D_DRIVER_TYPE_HARDWARE,0,0,address(level),1,D3D11_SDK_VERSION,address(device_out),address(actual),address(context_out)})==0);
         uint32_t device=*device_out,context=*context_out;require(device&&context&&*actual==D3D_FEATURE_LEVEL_11_0);
-        if(argc==2&&!std::strcmp(argv[1],"--dispatch-bench")) {
+        const bool array_bench=argc==2&&!std::strcmp(argv[1],"--array-dispatch-bench");
+        if(array_bench||(argc==2&&!std::strcmp(argv[1],"--dispatch-bench"))) {
             // Exercise the actual dispatcher without GPU work in the measured
             // region. Wine permissions are modeled; no PE32/FEX or game FPS.
             *c.packet={SD_COM_ABI,context,SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_GetType};
+            auto null_samplers=allocate<uint32_t>(12);
+            if(array_bench) {
+                c.packet->method=SD_COM_M_ID3D11DeviceContext_PSSetSamplers;
+                c.packet->args[0]=0;c.packet->args[1]=12;c.packet->args[2]=address(null_samplers);
+            }
             constexpr unsigned iterations=1000000;
             auto start=std::chrono::steady_clock::now();
             for(unsigned i=0;i<iterations;++i) {
                 auto rc=wine_nx_sd_com_wow64_unix_funcs[0](c.packet);
-                if(rc||c.packet->fault||c.packet->ret!=D3D11_DEVICE_CONTEXT_IMMEDIATE)throw std::runtime_error("dispatch benchmark result changed");
+                if(rc||c.packet->fault||c.packet->ret!=(array_bench?0:D3D11_DEVICE_CONTEXT_IMMEDIATE))throw std::runtime_error("dispatch benchmark result changed");
             }
             auto ns=std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now()-start).count();
 #ifdef SD_COM_PROGRESS_TEST
             using namespace sd_com_progress;Snapshot snapshot{};
-            require(sd_com_test_progress_snapshot(snapshot.data())&&snapshot[Phase]==Idle&&snapshot[Method]==SD_COM_M_ID3D11DeviceContext_GetType);
+            require(sd_com_test_progress_snapshot(snapshot.data())&&snapshot[Phase]==Idle&&snapshot[Method]==uint64_t(array_bench?SD_COM_M_ID3D11DeviceContext_PSSetSamplers:SD_COM_M_ID3D11DeviceContext_GetType));
             require(snapshot[Entry]%256==0&&snapshot[Calls]>iterations-256&&snapshot[Calls]<iterations+100,"periodic progress snapshot stayed fresh");
             c.packet->object=0xdeadbeef;
             require(wine_nx_sd_com_wow64_unix_funcs[0](c.packet)==0&&c.packet->fault==uint32_t(E_INVALIDARG));
             require(sd_com_test_progress_snapshot(snapshot.data())&&snapshot[Phase]==Idle&&snapshot[Object]==0xdeadbeef&&snapshot[FaultCode]==uint32_t(E_INVALIDARG),"unsampled call failure was not published");
 #endif
+            if(array_bench) {
+                auto observed=allocate<uint32_t>(12);for(unsigned i=0;i<12;++i)observed[i]=UINT32_MAX;
+                c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_PSGetSamplers,context,{0,12,address(observed)});
+                for(unsigned i=0;i<12;++i)require(observed[i]==0,"array benchmark changed sampler binding");
+            }
             c.release(context);c.release(device);sd_com_shutdown();
             std::printf("{\"status\":\"PASS\",\"iterations\":%u,\"elapsed_ns\":%lld,\"ns_per_call\":%.3f,\"game_fps_measured\":false}\n",iterations,(long long)ns,double(ns)/iterations);
             return 0;

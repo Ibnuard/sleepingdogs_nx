@@ -13586,7 +13586,7 @@
     "/home/blekjek/sleepingdogs-low-window-v1/native-source/include/d3d10.idl": "db36a91474062488622e8b815966866a58b0c27e3d5da69726f4e73fd3c1b9e1",
     "/home/blekjek/sleepingdogs-low-window-v1/native-source/include/unknwn.idl": "43362d54e6c857527fc45fba2979a484690fa313c34814419e9f66555a0e797b"
   },
-  "generator_sha256": "08126f34a21f10b59559313472b8255a958212c872e5326d779410f3ef368db6",
+  "generator_sha256": "cd2375345e75c2fe20ec1217271049bd5f42c88356130c1d831635721425a669",
   "unsupported_methods": [
     "CreateSoftwareAdapter",
     "CreateSurface",

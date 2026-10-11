@@ -6,8 +6,8 @@ Subsequent feedback: the user reports v5 now reaches gameplay around 15 FPS.
 The [preserved observation](../reports/native-dxvk-h4-v5-gameplay-observation.json)
 records the native route and last two Present windows, while the supplied COM
 runtime remains older v3 data. The current candidate is
-[H4 v6](native-dxvk-h4-v6-dispatch.md). This page retains the original v5
-pre-test record; current build/package/analyzer tools target v6.
+[H4 v7](native-dxvk-h4-v7-objects.md). This page retains the original v5
+pre-test record; current build/package/analyzer tools target v7.
 
 V4 now reaches the animated startup and “Press Start”, then exits with a guest
 access violation. V5 fixes two reproducible COM output defects found while
@@ -136,7 +136,7 @@ python3 tools/analyze_native_dxvk_h4.py --mode game --runtime-root /path/to/copi
 ```
 
 At this iteration the builder used `/home/blekjek/sleepingdogs-native-dxvk-h4-v5`.
-Current tools target v6; use `--expected-build native-dxvk-h4-v5` for these
+Current tools target v7; use `--expected-build native-dxvk-h4-v5` for these
 captures or the corresponding v2/v3/v4 label. The COM stage/counters remain
 required. `ROUTE_OBSERVED` only establishes a native
 Present route and does not rule out a later crash. Queued logging can lose

@@ -250,12 +250,12 @@ def host_method(interface, method, interfaces):
             if direction == 'out':
                 lines += [f'    auto guest_{pn} = c.write<uint32_t>({raw}, count_{pn});',
                           f'    if (guest_{pn}) std::fill_n(guest_{pn}, count_{pn}, 0u);',
-                          f'    std::vector<{base}*> native_{pn}(count_{pn}, nullptr);',
+                          f'    sd_com::NativePointerArray<{base}*> native_{pn}(count_{pn});',
                           f'    auto {pn} = guest_{pn} ? native_{pn}.data() : nullptr;']
                 after.append(f'    if (guest_{pn}) for (uint32_t i=0; i<count_{pn}; ++i) guest_{pn}[i] = c.adopt(native_{pn}[i], SD_COM_IF_{base});')
             else:
                 lines += [f'    auto tokens_{pn} = c.read<uint32_t>({raw}, count_{pn});',
-                          f'    std::vector<{base}*> native_{pn}(tokens_{pn} ? count_{pn} : 0);',
+                          f'    sd_com::NativePointerArray<{base}*> native_{pn}(tokens_{pn} ? count_{pn} : 0);',
                           f'    for (uint32_t i=0; i<native_{pn}.size(); ++i) native_{pn}[i] = c.object<{base}>(tokens_{pn}[i], SD_COM_IF_{base});',
                           f'    auto {pn} = tokens_{pn} ? native_{pn}.data() : nullptr;']
         elif base in interfaces and ptr == 1:

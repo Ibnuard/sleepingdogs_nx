@@ -32,14 +32,14 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 v6 native candidate](native-dxvk-h4-v6-dispatch.md) needs a passing COM self-test
+The [H4 v7 native candidate](native-dxvk-h4-v7-objects.md) needs a passing COM self-test
 before game validation. Its swapchain stays at 1280×720 and LSFG is forced
 OFF without changing the stored LSFG preference. Both existing x86 renderer
-choices remain available for comparisons. V6 retains `dxgi.syncInterval = 1`
+choices remain available for comparisons. V7 retains `dxgi.syncInterval = 1`
 in every native profile; confirm FIFO in the DXVK log. V4 passed the sponsor
 stage and crashed at Press Start; v5 fixes scalar DSV and COM output memory.
-The user subsequently reports v5 gameplay around 15 FPS; v6 reduces routine
-bridge diagnostic work and still needs Switch testing.
+V6 subsequently improves reported gameplay to 16–17 FPS, with 12–13 facing
+crowds. V7 optimizes proxy lookup and native arrays and needs Switch testing.
 Other profile options and x86 profiles stay canonical. H4 v2/v3 COM completion
 was observed on Switch. A native FPS gain and production readiness remain unproven.
 

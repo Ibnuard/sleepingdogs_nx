@@ -1,0 +1,240 @@
+{
+  "status": "GAMEPLAY_REPORTED_WITH_NATIVE_ROUTE_OBSERVED",
+  "observed_build": "native-dxvk-h4-v6",
+  "game_capture_report": "reports/native-dxvk-h4-game-e7db87b6b83a.json",
+  "game_capture_report_sha256": "a7be9bce9e9dd9a4b654f5728dd0bf0f45aa06494cb872797eb18842878eff60",
+  "original_bytes_archived": true,
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-e7db87b6b83a/runtime.txt",
+      "sha256": "e7db87b6b83ad29765e13adbc53aca83b0ecb6a90d6cf848641480138f591f4b",
+      "bytes": 136565
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-e7db87b6b83a/dxvk.txt",
+      "sha256": "01a7b1689f7810284ad9c182330a85c4725d384112052893915335b6126ecc6d",
+      "bytes": 26313
+    }
+  },
+  "additional_evidence": {
+    "older-com-runtime": {
+      "path": "reports/native-dxvk-h4-game-e7db87b6b83a/older-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026,
+      "role": "Byte-identical earlier v3 COM runtime, not a v6 COM self-test result"
+    }
+  },
+  "user_observation": {
+    "gameplay_reached": true,
+    "perceived_improvement": "Less slow motion than the previous candidate",
+    "reported_average_3d_fps": [
+      16,
+      17
+    ],
+    "reported_peak_3d_fps": 22,
+    "peak_view": "Camera facing up or down / confined view",
+    "reported_crowded_view_fps": [
+      12,
+      13
+    ],
+    "source": "Human report accompanying this capture; these camera/scene labels and visual playback speed are not encoded in the logs"
+  },
+  "runtime": {
+    "mode": "SleepingDogs",
+    "launch": "GUI",
+    "profile": "Performance",
+    "resolution": [
+      1280,
+      720
+    ],
+    "hud": "FPS",
+    "lsfg": "OFF",
+    "native_device_and_present_route": true,
+    "fifo": true,
+    "swapchain_images": 3,
+    "native_batch_enabled": false,
+    "binding_model": "Legacy",
+    "diagnostic_sampling_marker": "[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call",
+    "unknown_iids": [],
+    "renderer_unknown_interface_queries": [
+      "0ec870a6-5d7e-4c22-8cfc-5baae07616ed"
+    ],
+    "unsupported_or_faults": [],
+    "device_loss_observed": false,
+    "guest_process_exit_observed": false,
+    "final_stats": {
+      "calls": 21092352,
+      "draws": 3333943,
+      "presents": 4167,
+      "live_interfaces": 16649,
+      "maps": 0,
+      "map_copy_bytes": 39353210880,
+      "failures": 0
+    },
+    "final_stats_are_session_total": false,
+    "latest_present_count_observed": 4201,
+    "final_stats_limit": "Last complete COM stats line is at Present 4167; the later final FPS marker reaches Present 4201. No shutdown stats are present.",
+    "native_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 10985065,
+        "present_fps": 54.619613083764186,
+        "mean_frame_us": 18308,
+        "min_us": 5452,
+        "max_us": 327790,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 15590027,
+        "present_fps": 38.48614245504514,
+        "mean_frame_us": 25983,
+        "min_us": 3993,
+        "max_us": 3577334,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 26530786,
+        "present_fps": 22.61523650298186,
+        "mean_frame_us": 44217,
+        "min_us": 4313,
+        "max_us": 1296981,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 34039425,
+        "present_fps": 17.62661972110281,
+        "mean_frame_us": 56732,
+        "min_us": 27294,
+        "max_us": 148337,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 39114823,
+        "present_fps": 15.339453280921148,
+        "mean_frame_us": 65191,
+        "min_us": 24592,
+        "max_us": 116099,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 33342753,
+        "present_fps": 17.994914817021858,
+        "mean_frame_us": 55571,
+        "min_us": 20535,
+        "max_us": 140608,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 37470622,
+        "present_fps": 16.012544440815528,
+        "mean_frame_us": 62451,
+        "min_us": 18112,
+        "max_us": 126643,
+        "scene_identified": false
+      }
+    ],
+    "last_four_present_windows_combined": {
+      "intervals": 2400,
+      "elapsed_us": 143967623,
+      "present_fps": 16.67041484737162,
+      "scene_identified": false,
+      "limit": "Weighted by elapsed time over the last four full Present windows. The log does not identify gameplay, menu, loading, camera position or a matched benchmark route."
+    },
+    "last_interval_delta": {
+      "earlier_progress": {
+        "calls": 20430336,
+        "draws": 3248241,
+        "presents": 4055,
+        "maps": 0,
+        "refs": 16649,
+        "copy_bytes": 38296246272,
+        "failures": 0,
+        "gate_waiters": 1
+      },
+      "later_stats": {
+        "calls": 21092352,
+        "draws": 3333943,
+        "presents": 4167,
+        "live_interfaces": 16649,
+        "maps": 0,
+        "map_copy_bytes": 39353210880,
+        "failures": 0
+      },
+      "delta": {
+        "presents": 112,
+        "calls": 662016,
+        "draws": 85702,
+        "copy_bytes": 1056964608
+      },
+      "calls_per_present": 5910.857142857143,
+      "draws_per_present": 765.1964285714286,
+      "map_copy_bytes_per_present": 9437184.0,
+      "scene_identified": false,
+      "limit": "Earlier point is the penultimate sampled progress completion; later point is the last complete COM stats line. A Present interval is not a CPU/GPU timing breakdown."
+    },
+    "worker_markers": [
+      "[SD-NDX-WORKER] name=dxvk-submit handle=2884027 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-queue handle=2916794 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cs handle=2949561 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-shader-l handle=3244464 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+      "[SD-NDX-WORKER] name=dxvk-cache handle=3277231 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry"
+    ],
+    "progress_trace_limit": "Snapshots never acquire the COM gate. V6 samples ordinary calls every 256 entries; critical calls and failures retain detailed state. Totals describe the last sampled completion and idle is not proof that another unsampled call is idle. Missing snapshots may mean scheduling/I/O delay or lost queued output. These are not GPU timings.",
+    "gate_waiters_sample_max": 1,
+    "gate_waiters_limit": "Instantaneous counts without wait-duration attribution; they do not quantify contention cost or prove a deadlock."
+  },
+  "reference_clocks_mhz": {
+    "cpu": 1728,
+    "gpu": 768,
+    "ram": 1600,
+    "origin": "Earlier confirmed user comparison settings, not telemetry for this capture"
+  },
+  "fresh_v6_com_completion_validated": false,
+  "running_binary_authenticated": false,
+  "same_session_authenticated": false,
+  "matched_gameplay_fps_comparison": false,
+  "long_session_and_clean_exit_validated": false,
+  "stable_30fps_proven": false,
+  "source_audit": {
+    "baseline_commit": "b98557b28f0011c5eb75d934b20fe60b29cc1a18",
+    "guest_proxy_path": "src/native_dxvk_com/com_guest.c",
+    "guest_proxy_git_blob_sha256": "8d445e944a6df7d4ac98ccbc552be5c88c3a2f98bcf6fb8f610dacde278c90b8",
+    "proxy_wrap_lookup": "Linearly walks the entire live guest proxy linked list under proxy_lock, comparing token and interface_id.",
+    "proxy_release_lookup": "When guest references reach zero, linearly walks the same list under proxy_lock to unlink the object.",
+    "complexity": "O(N) worst case in live guest proxies for an identity lookup or unlink.",
+    "limits": [
+      "The log counts native live interface slots, not the exact number of guest proxies or the number/location of proxy_wrap hits.",
+      "Only operations that publish returned COM interfaces use proxy_wrap; it is not a scan on every draw or setter.",
+      "This establishes an avoidable algorithmic cost in the v6 implementation, not its measured share of the 3D frame time.",
+      "Identity, reference ownership, allocation failure and concurrent release behavior must stay correct in a replacement lookup."
+    ]
+  },
+  "conclusions": [
+    "The native ARM64 gameplay route and v6 sampled-diagnostic marker are observed; the user independently reports improved visible playback and 16-17 FPS average.",
+    "The final four 600-interval Present windows are 17.6266, 15.3395, 17.9949 and 16.0125 FPS; pooled rate is 16.6704 FPS. Scene labels are absent.",
+    "The camera-dependent user observation is consistent with scene-dependent draw/submission and GPU work. These logs cannot assign the drop to CPU, bridge, GPU, memory bandwidth or one specific resource.",
+    "Over the selected tail interval the bridge handles about 5911 calls and 765 draws per Present and copies exactly 9 MiB per Present. Fixed-size shadow copies remain a candidate cost, without a measured bandwidth bottleneck.",
+    "The x86 guest proxy still scans live objects for returned COM interface identity and zero-reference removal. Replacing those scans and avoiding small native array heap allocations are concrete candidates, with hardware FPS impact unmeasured.",
+    "Native DXVK removes FEX translation of DXVK implementation code; the game, guest proxy, Wine guest/native transitions, Map shadow copies and GPU work remain.",
+    "The DXVK renderer records an unknown interface query warning, while no bridge unsupported/fault or device-loss event is present. The warning alone does not identify a failure or the performance cause.",
+    "The active tail has 16649 live native interface slots and no guest-process shutdown marker. This does not establish a leak or clean long-session shutdown.",
+    "No current COM result or guest log was supplied; the byte-identical old v3 runtime cannot validate a v6 COM self-test.",
+    "Comparing this user improvement or these window rates with v5/x86 is not a controlled FPS benchmark because scene, camera, clocks and cache state are unmatched."
+  ],
+  "next_candidate": {
+    "build": "native-dxvk-h4-v7",
+    "planned_changes": [
+      "Hashed guest COM proxy identity lookup and removal",
+      "Inline storage for ordinary native COM array conversions"
+    ],
+    "hardware_tested": false,
+    "game_integration_tested": false,
+    "game_fps_measured": false
+  }
+}

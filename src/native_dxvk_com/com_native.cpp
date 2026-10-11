@@ -2,6 +2,7 @@
 #include "com_protocol.h"
 #include "com_methods.h"
 #include "com_progress.h"
+#include "com_native_array.h"
 #include <d3d11.h>
 #include <d3d10.h>
 #include <dxgi.h>
