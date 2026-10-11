@@ -1,5 +1,10 @@
 # v8 — diagnosis FPS pada Launch biasa
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Log v7 terbaru mengonfirmasi Performance aktif, DXVK 3.1.1, Fastest,
 HUD FPS, serta VSync mati sampai present mode native `IMMEDIATE`.
 Sebelas jendela lambat terakhir mencatat 1.885 frame dalam 110,56 detik:

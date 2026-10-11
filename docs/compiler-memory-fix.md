@@ -1,5 +1,10 @@
 # Compiler memory fix v1
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The 21:33 device logs in `dist/sleepingdogs-fex-memory-budget-fix/` confirm that
 the 128 MiB GPU reserve and small-stack recovery are active. Eight stack retries
 succeed. FEX then terminates on another 16 MiB compiler scratch allocation.

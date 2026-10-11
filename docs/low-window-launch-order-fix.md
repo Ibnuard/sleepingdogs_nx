@@ -1,5 +1,10 @@
 # Sleeping Dogs: perbaikan Launch Debug / Launch GUI
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Update NRO untuk launcher low-window yang sudah terbuka tetapi menolak Play.
 Memerlukan instalasi low-window dan NSP **StartupFix** yang sebelumnya sudah
 berhasil membuka launcher dari HOME.

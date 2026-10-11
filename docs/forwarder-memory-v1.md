@@ -1,5 +1,10 @@
 # Sleeping Dogs untuk FEXTendo Memory v1 TEST
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Forwarder ini meminta layout **39-bit + guest low-window** lewat descriptor
 `fxtmem` di ExeFS NSP, sesuai loader/kernel generik yang sudah lulus tes
 CONTROL dan OPTIN-A/B. Forwarder Sleeping Dogs lama tidak membawa descriptor

@@ -1,5 +1,10 @@
 # Sleeping Dogs: New Game / streaming memory v1
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The user reached the main menu and New Game loading with the previous GPU-budget
 update. The new logs show the paired loader and 256 MiB native GPU pool active.
 At the transition toward the first 3D scene, a 5,242,880-byte allocation fails.

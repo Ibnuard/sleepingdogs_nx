@@ -1,5 +1,10 @@
 # DXVK memory fix v1
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The 22:07 device log on 7 October confirms the compiler-memory pair is active.
 The user now reaches the Sleeping Dogs logo / transition toward the menu.
 There is no compiler-scratch STOP. Vulkan allocations of 8 MiB and then 5 MiB

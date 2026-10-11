@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v14.1 — koreksi cache v14
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Target tetap 720p. Log terbaru sesuai laporan gameplay sekitar 15–17 FPS, dengan peak 24 FPS yang dilihat pengguna. Ada kesalahan pada build v14: identitas cache pipeline berubah, tetapi objek pembuat Vulkan instance masih menggunakan ID v13 untuk cache disk Mesa. Ini kesalahan integrasi build kami; klaim pada dokumen v14 bahwa seluruh cache shader GPU sudah terpisah ternyata tidak benar.
 
 v14.1 memperbaiki build tersebut. **Belum ada pengukuran FPS v14.1 pada Switch, dan 30 FPS belum tercapai dalam bukti yang tersedia.** Ini koreksi kesempatan uji kedua, tanpa perubahan tambahan pada kebijakan optimasi shader.

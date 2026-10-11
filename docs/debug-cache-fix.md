@@ -1,5 +1,10 @@
 # Sleeping Dogs: debug-register loss after the first frames
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The latest hardware log is Sleeping Dogs even though it was saved under
 `pes13-nx/dist/pes13-as39-bias-bench-v1/`. Its SHA256 is
 `9cd2dc8a9d649e486517bc859f8d1570a6f6f0c6df77a9220c874f17d61f4286`.

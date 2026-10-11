@@ -1,5 +1,10 @@
 # Sleeping Dogs v6 — CPU topology / loading freeze
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket: `dist/sleepingdogs-fex-low-window-cpu-topology-fix.zip`.
 Ini update untuk instalasi low-window yang sudah mencapai menu/loading,
 termasuk forwarder **FEXTendo Memory v1** pada boot **FEXTendo Memory v1 TEST**.

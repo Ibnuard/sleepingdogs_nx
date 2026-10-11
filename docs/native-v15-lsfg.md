@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v15: native presentation, DXVK batching, optional LSFG
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 This is a hardware test candidate at 1280x720. Native FPS improvement and stable
 30 FPS are **not yet measured**. Test native rendering with LSFG OFF first.
 

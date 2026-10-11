@@ -1,5 +1,10 @@
 # Native memory headroom
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The 21:11 `SS/08` run is different from the preceding native PC-zero fault.
 `[SD-THREAD-DEBUG] build=v1` is present, multiple new threads receive DR0–DR3,
 and execution passes the former tid 76 worker to audio/other workers through

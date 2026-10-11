@@ -1,5 +1,10 @@
 # v9 — optimasi shader untuk FEXTendo
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket uji: `dist/sleepingdogs-fex-low-window-shader-optimizations.zip`.
 Ini menerapkan dua optimasi shader pada runtime Sleeping Dogs kita. Kenaikan
 FPS dan kestabilan gameplay di Switch belum diukur; target 30 FPS belum

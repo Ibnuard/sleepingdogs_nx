@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v10 — direct synchronization, 720p
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket ini melanjutkan v9 dan mempertahankan 1280×720. Ekstrak isi ZIP ke
 root SD, lalu timpa file update. Jalankan melalui jalur forwarder/title yang
 sudah berhasil pada v9, pilih profil Performance dan Launch GUI. HUD DXVK

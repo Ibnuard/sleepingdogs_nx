@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v11 — pengukuran frame 720p
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Update diagnostik ini memakai perilaku gameplay v10. Tujuannya memisahkan
 waktu tunggu thread utama, request Wine, dan Vulkan setelah log v10 masih
 mencatat sekitar 18,81 FPS pada segmen gameplay yang lambat. Ini belum

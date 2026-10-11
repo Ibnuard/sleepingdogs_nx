@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v13 — kesempatan uji 1 dari 2
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Target tetap **1280×720, 30 FPS gameplay**. Paket ini mengubah driver NVK
 dan pilihan memori GPU. Hasil FPS pada Switch belum diukur; keberhasilan
 kompilasi dan pengujian host tidak menjamin 30 FPS.

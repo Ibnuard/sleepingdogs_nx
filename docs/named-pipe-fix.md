@@ -1,5 +1,10 @@
 # Sleeping Dogs: local named-pipe compatibility
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The Switch log from 7 October 2026 (`0ce58e3f795e39cf5a2c98cbc15d92ec5f128f77f554a1ecc4e5e9f2d6bbfb7c`)
 shows seven FEX execution-breakpoint deliveries and a successful 1,000 MiB arena
 allocation. The previous corrupt-stack exception is gone. The game now reaches

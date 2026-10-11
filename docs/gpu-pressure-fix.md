@@ -1,5 +1,10 @@
 # Sleeping Dogs GPU pressure recovery v1
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The latest SD-card logs confirm the streaming-memory NRO and sdstream1 renderer
 were installed together. New Game still fails, now on small image/driver backing
 allocations. The final DXVK report is 259 MiB allocated / 252 MiB used. The first

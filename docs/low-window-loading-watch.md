@@ -1,5 +1,10 @@
 # Sleeping Dogs: diagnosis loading menuju 3D
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket: `sleepingdogs-fex-low-window-loading-watch.zip`.
 Ini update NRO untuk merekam titik macet setelah menu. Penyebab freeze belum
 terbukti; paket ini belum diklaim memperbaiki freeze.

@@ -1,5 +1,10 @@
 # Sleeping Dogs: tes pengurutan memori saat loading 3D
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket `sleepingdogs-fex-low-window-tso-test.zip` adalah **tes konfigurasi sementara**,
 bukan perbaikan freeze yang sudah dikonfirmasi. Gunakan di atas instalasi
 **low-window-loading-watch v3** yang menghasilkan log terakhir.

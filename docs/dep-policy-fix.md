@@ -1,5 +1,10 @@
 # Sleeping Dogs: guest execute-policy notification
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The device log from the named-pipe build reaches four Vulkan presents. Present
 2 returns SUBOPTIMAL and the renderer recreates its swapchain; present 3 and 4
 return success. The main thread then repeatedly raises access violations.

@@ -1,5 +1,10 @@
 # Sleeping Dogs v7 — DXVK HUD dan pilihan Performance
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Update untuk instalasi v6 low-window yang sudah mencapai gameplay.
 Paket: `sleepingdogs-fex-low-window-performance-hud.zip`.
 

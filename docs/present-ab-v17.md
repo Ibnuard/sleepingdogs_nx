@@ -1,5 +1,10 @@
 # Sleeping Dogs v17: perbandingan present FIFO dan IMMEDIATE
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket ini menguji satu pengaturan pada runtime v17 yang sudah berjalan di Switch:
 `dxgi.syncInterval = 1` menjadi `0`. Paket tidak mengganti NRO atau DXVK DLL dan
 tidak menambahkan frame hasil LSFG. Target tes tetap FPS asli pada 1280×720.

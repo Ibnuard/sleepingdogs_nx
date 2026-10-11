@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v12 — uji penggabungan submit DXVK
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket uji ini mempertahankan NRO v11 dan memasang DXVK `3.1.1-sdbatch1`.
 Target tetap **1280×720**. Perubahan membatasi submit otomatis kecil saat
 antrean GPU masih memiliki minimal dua submission yang belum selesai.

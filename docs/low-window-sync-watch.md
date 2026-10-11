@@ -1,5 +1,10 @@
 # Sleeping Dogs: semaphore dan objek queue saat freeze
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 **Catatan v4:** ditemukan bug startup pada akses CPU TLS sebelum WoW64 siap.
 Gunakan [perbaikan v5](low-window-sync-startup-fix.md) untuk percobaan baru.
 Catatan di bawah menjelaskan rancangan dan hasil pengujian awal v4; tes awal

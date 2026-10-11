@@ -1,5 +1,10 @@
 # Reuse retired large mapped buffers
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 SS/09 confirms the two-compiler Fastest build is active. DXVK reaches 300 MiB
 allocated / 291 MiB used before a 5,242,880-byte mapped buffer allocation fails.
 The native GPU pool has 3,276,800 free bytes, largest run 1,114,112 bytes. The

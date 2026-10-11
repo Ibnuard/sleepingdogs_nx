@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v16: scoped Wine notifications
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Experimental native FPS candidate, still 1280x720. No Switch FPS gain or stable
 30 FPS is claimed. This build addresses avoidable Wine wakeups; it does not
 establish that those wakeups are the dominant gameplay bottleneck.

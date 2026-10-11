@@ -1,5 +1,10 @@
 # Suspended thread debug context
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Input: `SS/08/fex-runtime.log` and `SS/08/crash.log`. The TEB cache v1 build
 is active; debug registers arm on the main thread only. The last created guest
 thread is tid 76, entry `0x549430`. Its native fault is PC zero, LR

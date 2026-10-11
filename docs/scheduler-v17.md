@@ -1,5 +1,10 @@
 # Sleeping Dogs v17: automatic application-core scheduling
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 This is a reversible native Wine scheduler candidate, not a measured FPS fix.
 The target remains 1280x720 with the project's own pes13-fex-derived FEX port.
 

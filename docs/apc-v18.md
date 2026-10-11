@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v18: notifikasi APC ke thread tujuan
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 v18 mempertahankan scheduler v17 dan membatasi notifikasi APC biasa pada antrean
 wait langsung ke thread penerimanya. Ini kandidat optimasi CPU; peningkatan FPS
 hardware belum diukur dan target 30 FPS belum terbukti.

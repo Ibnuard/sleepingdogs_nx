@@ -1,5 +1,10 @@
 # DXVK research for the first post-v12 trial
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Research performed on 2026-10-09. This note records the alternatives examined; it does not claim a Switch performance result.
 
 ## Decision

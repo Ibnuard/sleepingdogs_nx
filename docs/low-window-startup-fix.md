@@ -1,5 +1,10 @@
 # Sleeping Dogs: perbaikan startup forwarder low-window
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Patch NSP untuk crash segera setelah ikon Sleeping Dogs ditekan dari HOME.
 Pasang setelah paket `sleepingdogs-fex-low-window-fix.zip`. Boot kernel/loader
 low-window harus sudah aktif melalui **CFW EMUMMC SD Low Window**.

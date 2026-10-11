@@ -1,5 +1,10 @@
 # Sleeping Dogs: exception breakpoint saat startup
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Log perangkat terbaru memperlihatkan arena 1.000 MiB berhasil dialokasikan.
 Exception pertama adalah execute AV pada `EIP=fffffffe`, dengan `DR7=0x155`,
 DR0=`004c0a8a`, DR1=`005b2e92`, DR2=`0061ce88`, DR3=`0068d35a`.

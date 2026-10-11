@@ -1,5 +1,10 @@
 # Sleeping Dogs FEXTendo v14 — kesempatan uji 2 dari 2
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Target tetap **720p, 30 FPS gameplay**. v14 mengubah compiler shader GM20B di atas driver v13 yang sudah berhasil dipakai. **Belum ada pengukuran FPS v14 pada Switch.** Pengujian host dan binary tidak membuktikan target 30 FPS tercapai.
 
 ## Memasang

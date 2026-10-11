@@ -1,5 +1,10 @@
 # GPU backing budget after START (2026-10-07)
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The user confirms the sdmem1 build reaches the main menu and crashes after
 START. The new logs are in `reports/gpu-budget-input/`; their original location
 was `pes13-fex39/dist/pes13-fex39-0.5.0-SD/`, but the runtime identifies itself

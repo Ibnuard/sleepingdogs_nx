@@ -1,5 +1,10 @@
 # Sleeping Dogs: low-window v1
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 **Koreksi startup:** NSP v1 di ZIP ini telah dilaporkan crash langsung dari HOME.
 Bug allocator forwarder berhasil direproduksi dari binary. Setelah menyalin
 paket basis, instal NSP **StartupFix** dari

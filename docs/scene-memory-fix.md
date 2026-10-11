@@ -1,5 +1,10 @@
 # Scene loading: two compiler workspaces
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 The latest full logs are pinned in `reports/scene-memory-analysis.json`.
 GPU-pressure recovery ran 13 times, lending about 23 MiB. At the final failure
 the 256 MiB native GPU pool had 1,114,112 bytes free, but its largest run was

@@ -1,5 +1,10 @@
 # Sleeping Dogs: perbaikan startup Launch Debug v5
 
+> Experiment record. Setup steps and validation statements below describe
+> this specific build when it was prepared. For current guidance, see
+> [Installation](INSTALL.md), [Current status](STATUS.md), and
+> [Development history](HISTORY.md).
+
 Paket `sleepingdogs-fex-low-window-sync-startup-fix.zip` memperbaiki bug pada
 pencatat debug v4 dan tetap memakai **Fastest**. Freeze saat loading menuju 3D
 masih memerlukan hasil pengamatan dari Switch; paket ini belum mengklaim
