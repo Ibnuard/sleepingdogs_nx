@@ -124,13 +124,14 @@ def count_expr(interface, method, p, host=False):
             if 'NumClassInstances' in names:
                 return 'NumClassInstances'
             return '(pNumClassInstances ? *pNumClassInstances : 0)'
-        if 'ppRenderTargetViews' == name and 'NumRTVs' in names:
-            return 'NumRTVs'
-        if 'UnorderedAccessViews' in name:
-            for n in ('NumUAVs', 'NumViews'):
-                if n in names:
-                    return n
-        for n in ('NumBuffers', 'NumViews', 'NumSamplers', 'NumResources'):
+        # A method's count belongs to its named array, not every COM output.
+        # OMGetRenderTargets returns NumViews RTVs but exactly one DSV.
+        arrays = {'ppRenderTargetViews': ('NumRTVs','NumViews'),
+                  'ppUnorderedAccessViews': ('NumUAVs','NumViews'),
+                  'ppConstantBuffers': ('NumBuffers',), 'ppVertexBuffers': ('NumBuffers',),
+                  'ppSOTargets': ('NumBuffers',), 'ppShaderResourceViews': ('NumViews',),
+                  'ppSamplers': ('NumSamplers',), 'ppResources': ('NumResources',)}
+        for n in arrays.get(name, ()):
             if n in names:
                 return n
         return '1'
@@ -171,24 +172,33 @@ def guest_method(interface, method, interfaces):
         return '\n'.join([lines[0], '    return proxy_map(This, pResource, Subresource, MapType, MapFlags, pMappedResource);', '}'])
     if name == 'Unmap' and method['owner'] == 'ID3D11DeviceContext':
         return '\n'.join([lines[0], '    proxy_unmap(This, pResource, Subresource);', '}'])
+    if name == 'GetPrivateData':
+        return '\n'.join([lines[0], '    return proxy_private_get(This, '+str(method['index'])+', '+', '.join(p['name'] for p in params)+');', '}'])
     outputs, input_arrays = [], []
+    def cleanup():
+        return ' '.join([f'if(tokens_{pn} && count_{pn}>128) HeapFree(GetProcessHeap(),0,tokens_{pn});' for pn in input_arrays] +
+                        [f'proxy_output_dispose(&wire_{pn},{kind});' for pn,_,kind in outputs])
     for j, p in enumerate(params):
         ty, pn, base, ptr = p['type'], p['name'], p['base'], p['pointer']
-        if base in interfaces and ptr >= 2:
+        iid = next((x['name'] for x in params if x['type'] == 'REFIID'), None)
+        typed_output = base in interfaces and ptr >= 2 and p['direction'] == 'out'
+        iid_output = base == 'void' and ptr == 2 and iid
+        if typed_output or iid_output:
+            count = count_expr(interface, method, p) if typed_output else '1'
+            kind = f'SD_COM_IF_{base}' if typed_output else f'proxy_iid({iid})'
+            lines += [f'    struct proxy_output wire_{pn};',
+                      f'    if (!proxy_output_init(&wire_{pn},{pn},safe_array_count({count}))) {{ {cleanup()} {return_fail(ret)} }}',
+                      f'    packet.args[{j}] = guest_address(wire_{pn}.tokens);']
+            outputs.append((pn,count,kind))
+        elif base in interfaces and ptr >= 2:
             count = count_expr(interface, method, p)
-            if p['direction'] == 'out':
-                lines.append(f'    UINT cap_{pn} = safe_array_count({count});')
-                outputs.append((pn, count, base))
-                lines.append(f'    packet.args[{j}] = guest_address({pn});')
-            else:
-                cleanup=' '.join(f'if(tokens_{old} && count_{old}>128) HeapFree(GetProcessHeap(),0,tokens_{old});' for old in input_arrays)
-                lines += [f'    UINT count_{pn} = safe_array_count({count});',
-                          f'    uint32_t stack_{pn}[128];',
-                          f'    uint32_t *tokens_{pn} = {pn} && count_{pn} ? (count_{pn}<=128 ? stack_{pn} : HeapAlloc(GetProcessHeap(), 0, count_{pn}*4)) : NULL;',
-                          f'    if ({pn} && count_{pn} && !tokens_{pn}) {{ {cleanup} {return_fail(ret)} }}',
-                          f'    for (UINT i=0; i<count_{pn} && {pn}; ++i) tokens_{pn}[i] = proxy_token({pn}[i]);',
-                          f'    packet.args[{j}] = guest_address(tokens_{pn});']
-                input_arrays.append(pn)
+            lines += [f'    UINT count_{pn} = safe_array_count({count});',
+                      f'    uint32_t stack_{pn}[128];',
+                      f'    uint32_t *tokens_{pn} = {pn} && count_{pn} ? (count_{pn}<=128 ? stack_{pn} : HeapAlloc(GetProcessHeap(), 0, count_{pn}*4)) : NULL;',
+                      f'    if ({pn} && count_{pn} && !tokens_{pn}) {{ {cleanup()} {return_fail(ret)} }}',
+                      f'    for (UINT i=0; i<count_{pn} && {pn}; ++i) tokens_{pn}[i] = proxy_token({pn}[i]);',
+                      f'    packet.args[{j}] = guest_address(tokens_{pn});']
+            input_arrays.append(pn)
         elif base in interfaces and ptr == 1:
             lines.append(f'    packet.args[{j}] = proxy_token({pn});')
         elif ptr or ty.startswith('REF') or base in ('HANDLE','HWND','HDC','HMONITOR','HMODULE'):
@@ -200,25 +210,17 @@ def guest_method(interface, method, interfaces):
         else:
             lines.append(f'    packet.args[{j}] = (uint32_t){pn};')
     lines.append('    LONG status = proxy_call(&packet);')
-    for p in params:
-        if p['base'] in interfaces and p['pointer'] >= 2 and p['direction'] != 'out':
-            lines.append(f'    if (tokens_{p["name"]} && count_{p["name"]}>128) HeapFree(GetProcessHeap(), 0, tokens_{p["name"]});')
+    for pn in input_arrays:
+        lines.append(f'    if (tokens_{pn} && count_{pn}>128) HeapFree(GetProcessHeap(), 0, tokens_{pn});')
+    success='status >= 0'+(' && SUCCEEDED((HRESULT)packet.ret)' if ret=='HRESULT' else '')
+    for pn,count,kind in outputs:
+        lines.append(f'    if ({success} && !proxy_output_publish(&wire_{pn},{pn},safe_array_count({count}),{kind})) status=E_OUTOFMEMORY;')
+    for pn,count,kind in outputs:
+        lines.append(f'    if (!({success})) proxy_output_retract(&wire_{pn},{pn});')
+        lines.append(f'    proxy_output_dispose(&wire_{pn},{kind});')
     lines.append(f'    if (status < 0) {{ {"proxy_fatal(status); return;" if ret == "void" else "return ("+ret+")status;"} }}')
-    for pn, count, base in outputs:
-        lines.append(f'    if ({pn}) for (UINT i=0, n=safe_array_count({count}); i<n && i<cap_{pn}; ++i) {{ uint32_t token=((uint32_t*){pn})[i]; {pn}[i] = ({base}*)proxy_wrap(token, SD_COM_IF_{base}); if(token && !{pn}[i])proxy_fatal(E_OUTOFMEMORY); }}')
     if ret == 'void':
         lines.append('    if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);')
-    if name in ('GetParent','GetDevice','GetBuffer'):
-        # DXGI's iid-selected void** returns need the requested interface's vtable.
-        for p in params:
-            if p['base'] == 'void' and p['pointer'] == 2:
-                iid = next((x['name'] for x in params if x['type'] == 'REFIID'), None)
-                if not iid:
-                    raise ValueError((interface, name, pn, 'void** without iid'))
-                lines.append(f'    if (SUCCEEDED((HRESULT)packet.ret) && {p["name"]}) {{ uint32_t token=*(uint32_t*){p["name"]}; *{p["name"]} = proxy_wrap(token, proxy_iid({iid})); if(token && !*{p["name"]})proxy_fatal(E_OUTOFMEMORY); }}')
-    if name == 'GetPrivateData':
-        out = next(p['name'] for p in params if p['base']=='void')
-        lines.append(f'    if (packet.aux == SD_COM_PRIVATE_INTERFACE && {out} && SUCCEEDED((HRESULT)packet.ret)) {{ uint32_t token=*(uint32_t*){out}; *(void**){out} = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**){out})proxy_fatal(E_OUTOFMEMORY); }}')
     if name == 'GetDesc' and interface == 'IDXGIOutput':
         out = params[0]['name']
         lines.append(f'    if ({out} && SUCCEEDED((HRESULT)packet.ret)) {out}->Monitor = MonitorFromWindow(NULL, MONITOR_DEFAULTTOPRIMARY);')

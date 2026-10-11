@@ -111,17 +111,18 @@ records subsequent hardware results.
 
 ## Native DXVK H4 candidate
 
-The [H4 v4 recipe](native-dxvk-h4-v4-logging.md#build-checks-and-capture-analysis) overlays the pinned
+The [H4 v5 recipe](native-dxvk-h4-v5-com-outputs.md#rebuild-and-capture-analysis) overlays the pinned
 v18 link inputs and native H1 DXVK archive, first reproducing the baseline ELF.
 It builds PE32 COM DLLs, a real COM self-test client and the ARM64 runtime with
 three renderer choices. Separate host, compiled-ABI, window-handoff,
-logging/progress, launcher-transaction and static-game-import checks feed its
+logging/progress, PE32 output, launcher-transaction and static-game-import checks feed its
 folder packager.
 
 Run the listed checks before `tools/package_native_dxvk_h4.py`. The output is
-`dist/sd-dxvk-native-h4-v4-update/` with two-phase COM/game activation and the
+`dist/sd-dxvk-native-h4-v5-update/` with two-phase COM/game activation and the
 exact v18 rollback; no ZIP is created. Prepared sources/objects/SDK and pinned
-legacy DLLs remain necessary. Local PASS receipts do not establish H4 guest
+legacy DLLs remain necessary. Run the PE32 output check with Windows Python;
+other build/package steps run in WSL. Local PASS receipts do not establish H4 Switch guest
 execution, game API coverage, gameplay or a Switch FPS improvement.
 
 ## Forwarder and distribution

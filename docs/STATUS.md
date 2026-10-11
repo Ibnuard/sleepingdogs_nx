@@ -2,7 +2,7 @@
 
 [Documentation](README.md) · [Development history](HISTORY.md)
 
-Status reviewed **2026-10-11**. Version labels v7–v18 identify development
+Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
 ## What works
@@ -34,8 +34,14 @@ Presents; the trace cap hides the later stall. One bulk observer report took
 31.6 seconds including output/scheduling. The [preserved v3 evidence](../reports/native-dxvk-h4-v3-sponsor-analysis.json)
 separates the prior COM guest files, newly supplied COM runtime, and game logs.
 [H4 v4](native-dxvk-h4-v4-logging.md) moves routine native log writes out of
-the bridge call and adds ongoing compact progress. V4 Switch behavior and the
-freeze's cause remain unconfirmed; native gameplay/FPS validation is pending.
+the bridge call and adds ongoing compact progress. The latest v4 capture records
+1,020 native Presents before a guest access violation in PSSetSamplers; the
+user reports reaching Press Start. The supplied COM runtime is older v3 data,
+so a v4 COM test is not validated by those files. [H4 v5](native-dxvk-h4-v5-com-outputs.md)
+fixes a reproduced scalar DSV overrun and transient handle publication in COM
+outputs. PE32 regression and native host checks pass. The precise source of
+the game's invalid sampler value and v5 hardware behavior remain unconfirmed;
+native gameplay/FPS validation is pending.
 
 ## Performance evidence
 
@@ -93,8 +99,8 @@ baseline without that presentation path and its repeated logging.
   interfaces. The subsequent [H4 candidate](native-dxvk-h4-v1.md) implements
   those proxies and a third renderer choice. Native host correctness, compiled
   layouts, static game imports and launcher transactions are checked locally;
-  H4 v2 PE32/FEX COM execution has passed the observed self-test, and one native
-  game Present is recorded. The sponsor-screen freeze, remaining dynamic game
+  H4 v2/v3 PE32/FEX COM completion is observed, and v4 records 1,020 native
+  startup/menu Presents before a Press Start crash. That crash, remaining dynamic game
   API coverage and playable native rendering are unresolved. The confirmed
   gameplay still uses x86 DXVK.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
@@ -108,9 +114,10 @@ DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
 pass their supplied hardware captures. H4 v2/v3 ordinary PE32 COM completion
-is also observed. The [H4 v4 update folder](native-dxvk-h4-v4-logging.md#install-and-validate-on-switch)
-tests queued logging and compact progress after the continued FIFO freeze.
-Save COM files before the game overwrites the shared DXVK log. A v4 COM pass,
+is also observed. The [H4 v5 update folder](native-dxvk-h4-v5-com-outputs.md#install-and-validate-on-switch)
+tests COM output fixes after v4's Press Start crash. Its COM test requires 72
+sampler-slot and 16 scalar DSV/guard checks in addition to the prior coverage.
+Save COM files before the game overwrites the shared DXVK log. A v5 COM pass,
 game startup, actual game API use, resource lifetime and native worker behavior
 still need validation. Matched 720p gameplay and long-session evidence are
 required before production or a 30 FPS claim. See the

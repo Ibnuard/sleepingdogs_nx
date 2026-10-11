@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "game_name": "HKShip.exe",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "game_bytes": 16775320,
+  "game_machine": "i386",
+  "graphics_imports": [
+    {
+      "dll": "d3d11.dll",
+      "kind": "normal",
+      "functions": [
+        {
+          "name": "D3D11CreateDevice"
+        }
+      ],
+      "proxy_sha256": "4c0d1f23f4e24dfa17d14cdf8d5e26ca75b9ef55ef69a9f36ea54ffc9ddbb77d",
+      "proxy_exports": {
+        "D3D11CreateDevice": 1,
+        "D3D11CreateDeviceAndSwapChain": 2
+      }
+    },
+    {
+      "dll": "dxgi.dll",
+      "kind": "normal",
+      "functions": [
+        {
+          "name": "CreateDXGIFactory1"
+        }
+      ],
+      "proxy_sha256": "11f6a664e1c1cc509e2d5e14d26d55ad4bdd784375ebaf4808a8e7780f2b1f0e",
+      "proxy_exports": {
+        "CreateDXGIFactory": 1,
+        "CreateDXGIFactory1": 2,
+        "CreateDXGIFactory2": 3,
+        "DXGIGetDebugInterface1": 4
+      }
+    }
+  ],
+  "missing_graphics_exports": [],
+  "imported_dlls": [
+    {
+      "dll": "d3d11.dll",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "DINPUT8.dll",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "dxgi.dll",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "XINPUT1_3.dll",
+      "kind": "normal",
+      "functions": 3
+    },
+    {
+      "dll": "D3DCOMPILER_43.dll",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "binkw32.dll",
+      "kind": "normal",
+      "functions": 17
+    },
+    {
+      "dll": "steam_api.dll",
+      "kind": "normal",
+      "functions": 17
+    },
+    {
+      "dll": "ADVAPI32.dll",
+      "kind": "normal",
+      "functions": 10
+    },
+    {
+      "dll": "KERNEL32.dll",
+      "kind": "normal",
+      "functions": 174
+    },
+    {
+      "dll": "GDI32.dll",
+      "kind": "normal",
+      "functions": 3
+    },
+    {
+      "dll": "ole32.dll",
+      "kind": "normal",
+      "functions": 6
+    },
+    {
+      "dll": "OLEAUT32.dll",
+      "kind": "normal",
+      "functions": 2
+    },
+    {
+      "dll": "PSAPI.DLL",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "SHLWAPI.dll",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "USER32.dll",
+      "kind": "normal",
+      "functions": 40
+    },
+    {
+      "dll": "WINMM.dll",
+      "kind": "normal",
+      "functions": 4
+    },
+    {
+      "dll": "WSOCK32.dll",
+      "kind": "normal",
+      "functions": 26
+    },
+    {
+      "dll": "IPHLPAPI.DLL",
+      "kind": "normal",
+      "functions": 1
+    },
+    {
+      "dll": "WS2_32.dll",
+      "kind": "normal",
+      "functions": 4
+    },
+    {
+      "dll": "WININET.dll",
+      "kind": "normal",
+      "functions": 4
+    },
+    {
+      "dll": "CRYPT32.dll",
+      "kind": "normal",
+      "functions": 4
+    }
+  ],
+  "static_imports_only": true,
+  "dynamic_com_coverage_proven": false,
+  "game_data_included": false,
+  "runner_sha256": "5761408e5bd1a42c1889a41bb30d8b12e8dd06e81211da790b2c2182f335439a",
+  "hardware_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false
+}

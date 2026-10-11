@@ -2,6 +2,12 @@
 
 [Documentation](README.md) · [COM implementation](native-dxvk-h4-v1.md) · [Current status](STATUS.md)
 
+Subsequent hardware feedback: v4 passed the sponsor/animation stage and recorded
+1,020 native Presents, then crashed at Press Start. The current candidate is
+[H4 v5](native-dxvk-h4-v5-com-outputs.md), which fixes COM output memory. This
+page retains the original v4 implementation and validation record; current
+build/package/analyzer tools target v5.
+
 The v3 COM client completed on Switch, but the game still froze at the sponsor
 page with FIFO active. V4 moves routine native runtime file logging out of the
 bridge call and replaces the heavy startup observer with compact progress

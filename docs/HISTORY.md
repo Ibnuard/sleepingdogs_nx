@@ -11,7 +11,8 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
-| Native DXVK H4 v4 | [Queued logging and ongoing progress](native-dxvk-h4-v4-logging.md); host checks passed, Switch validation pending |
+| Native DXVK H4 v5 | [Correct COM output memory](native-dxvk-h4-v5-com-outputs.md); PE32 negative controls and native host checks pass; hardware test pending |
+| Native DXVK H4 v4 | [Queued logging and ongoing progress](native-dxvk-h4-v4-logging.md); subsequently 1,020 native Presents before Press Start crash |
 | Native DXVK H4 v3 | [Sponsor freeze investigation](native-dxvk-h4-v3-sponsor.md); COM PASS observed, game still freezes with FIFO; 128 traced calls all completed |
 | Native DXVK H4 v2 | [Launcher-to-native screen handoff fix](native-dxvk-h4-v2-window.md); subsequent COM PASS observed on Switch, game presents one frame then freezes before animated splash |
 | Native DXVK H4 v1 | [x86 COM bridge and native game launch candidate](native-dxvk-h4-v1.md); built and locally checked, H4 Switch/game/FPS validation pending; folder delivery only |

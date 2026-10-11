@@ -14,7 +14,7 @@
 void* memcpy(void *d,const void *s,size_t n){unsigned char *a=d;const unsigned char*b=s;while(n--)*a++=*b++;return d;}
 void* memset(void *d,int v,size_t n){unsigned char*a=d;while(n--)*a++=(unsigned char)v;return d;}
 static HANDLE log_file=INVALID_HANDLE_VALUE;
-static uint32_t checks,error,pixels,bad,presents,buffers,mip_bytes;
+static uint32_t checks,error,pixels,bad,presents,buffers,mip_bytes,sampler_slots,dsv_guards;
 static uint32_t stats[8],elapsed_ms;
 static char text[2048];static unsigned used;
 static const char* stage="startup";
@@ -30,6 +30,7 @@ static void result(int passed){
     append(",\"mip_array_bytes_verified\":");number(mip_bytes);append(",\"pixels_verified\":");number(pixels);append(",\"bad_pixels\":");number(bad);
     append(",\"present_calls\":");number(presents);append(",\"present_elapsed_ms\":");number(elapsed_ms);
     append(",\"bridge_calls\":");number(stats[0]);append(",\"native_draws\":");number(stats[1]);append(",\"live_interfaces\":");number(stats[3]);append(",\"live_maps\":");number(stats[4]);
+    append(",\"sampler_roundtrip_slots_verified\":");number(sampler_slots);append(",\"dsv_guard_checks\":");number(dsv_guards);
     append(",\"bridge_failures\":");number(stats[6]);append(",\"guest_execution\":true,\"com_proxy\":true,\"game_integration_tested\":false,\"game_fps_measured\":false}\r\n");
     flush(file);if(file!=INVALID_HANDLE_VALUE)CloseHandle(file);
 }
@@ -58,7 +59,7 @@ static int run(void){
     ID3D11Texture2D *target=NULL,*staging=NULL,*back=NULL,*bc=NULL,*bc_staging=NULL;
     ID3D11RenderTargetView *view=NULL,*back_view=NULL;ID3D11VertexShader *vs=NULL,*same_vs=NULL;ID3D11PixelShader *ps=NULL;
     ID3D11RasterizerState *raster=NULL;IUnknown *unknown_a=NULL,*unknown_b=NULL,*private_object=NULL;
-    ID3D10Multithread *multithread=NULL;
+    ID3D10Multithread *multithread=NULL;ID3D11SamplerState *sampler=NULL,*samplers[12]={0};
     D3D11_MAPPED_SUBRESOURCE map={0};D3D_FEATURE_LEVEL requested=D3D_FEATURE_LEVEL_11_0,actual=0;
     int passed=0;stats_fn get_stats=NULL;
     HMODULE d3d=LoadLibraryExA("C:\\SleepingDogs\\d3d11.dll",NULL,LOAD_WITH_ALTERED_SEARCH_PATH);
@@ -107,6 +108,28 @@ static int run(void){
     HR(ID3D11Device_CreateBuffer(device,&bd,&init,&immutable));ID3D11DeviceContext_CopyResource(context,(ID3D11Resource*)readback,(ID3D11Resource*)immutable);
     HR(ID3D11DeviceContext_Map(context,(ID3D11Resource*)readback,0,D3D11_MAP_READ,0,&map));
     for(UINT i=0;i<1024;++i){REQUIRE(((unsigned char*)map.pData)[i]==initial[i],0xe4010009u);++buffers;}ID3D11DeviceContext_Unmap(context,(ID3D11Resource*)readback,0);
+    record("scalar DSV guards and six-stage sampler roundtrips");result(-1);
+    struct {ID3D11DepthStencilView *depth;uint32_t guard[7];} guarded;
+    for(UINT pass=0;pass<2;++pass) {
+        guarded.depth=(void*)1;for(UINT i=0;i<7;++i)guarded.guard[i]=0x13572460u+i;
+        ID3D11DeviceContext_OMGetRenderTargets(context,pass?0:8,NULL,&guarded.depth);
+        REQUIRE(!guarded.depth,0xe4010200u);++dsv_guards;
+        for(UINT i=0;i<7;++i){REQUIRE(guarded.guard[i]==0x13572460u+i,0xe4010201u);++dsv_guards;}
+    }
+    D3D11_SAMPLER_DESC sampler_desc={0};sampler_desc.Filter=D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+    sampler_desc.AddressU=sampler_desc.AddressV=sampler_desc.AddressW=D3D11_TEXTURE_ADDRESS_CLAMP;
+    sampler_desc.MaxAnisotropy=1;sampler_desc.ComparisonFunc=D3D11_COMPARISON_NEVER;sampler_desc.MaxLOD=D3D11_FLOAT32_MAX;
+    HR(ID3D11Device_CreateSamplerState(device,&sampler_desc,&sampler));
+    ID3D11SamplerState *bound[12],*empty[12]={0};for(UINT i=0;i<12;++i)bound[i]=i%3?sampler:NULL;
+#define SAMPLER_STAGE(S) do { \
+    ID3D11DeviceContext_##S##SetSamplers(context,0,12,bound); \
+    ID3D11DeviceContext_##S##GetSamplers(context,0,12,samplers); \
+    for(UINT i=0;i<12;++i){REQUIRE(samplers[i]==bound[i],0xe4010202u);++sampler_slots;DROP(ID3D11SamplerState,samplers[i]);} \
+    ID3D11DeviceContext_##S##SetSamplers(context,0,12,empty); \
+} while(0)
+    SAMPLER_STAGE(PS);SAMPLER_STAGE(VS);SAMPLER_STAGE(GS);SAMPLER_STAGE(HS);SAMPLER_STAGE(DS);SAMPLER_STAGE(CS);
+#undef SAMPLER_STAGE
+    DROP(ID3D11SamplerState,sampler);
     record("BC1 mip/array upload and readback");result(-1);
     unsigned char blocks[4][32];D3D11_SUBRESOURCE_DATA bc_init[4];
     for(UINT i=0;i<4;++i){for(UINT j=0;j<32;++j)blocks[i][j]=(unsigned char)(i*33+j);bc_init[i].pSysMem=blocks[i];bc_init[i].SysMemPitch=i%2?8:16;bc_init[i].SysMemSlicePitch=i%2?8:32;}
@@ -143,6 +166,7 @@ done:
     DROP(IUnknown,private_object);DROP(IUnknown,unknown_a);DROP(IUnknown,unknown_b);DROP(ID3D11Resource,resource);
     DROP(ID3D11VertexShader,same_vs);DROP(ID3D11DeviceContext,same_context);DROP(ID3D11Device,same_device);
     DROP(ID3D10Multithread,multithread);
+    for(UINT i=0;i<12;++i)DROP(ID3D11SamplerState,samplers[i]);DROP(ID3D11SamplerState,sampler);
     DROP(ID3D11RenderTargetView,back_view);DROP(ID3D11RenderTargetView,view);DROP(ID3D11Texture2D,back);DROP(IDXGISwapChain,swap);
     DROP(ID3D11Texture2D,staging);DROP(ID3D11Texture2D,target);DROP(ID3D11Texture2D,bc_staging);DROP(ID3D11Texture2D,bc);
     DROP(ID3D11Buffer,dynamic);DROP(ID3D11Buffer,readback);DROP(ID3D11Buffer,immutable);

@@ -26,9 +26,9 @@ and peaks around 25 FPS. **Stable 30 FPS has not been achieved.**
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. Game still freezes at sponsors with FIFO; [H4 v4 removes synchronous bridge log I/O and adds ongoing progress](docs/native-dxvk-h4-v4-logging.md). Native gameplay/FPS remain unverified |
+| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V4 reaches Press Start then crashes; [H4 v5 corrects COM output memory](docs/native-dxvk-h4-v5-com-outputs.md) and passes local checks. V5 Switch/native gameplay/FPS remain unverified |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
-| Distribution | Source and test records; no packaged GitHub release as of 2026-10-11 |
+| Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 
 See [current status and test evidence](docs/STATUS.md) for known issues,
 hardware conditions and the difference between native FPS and frame generation.

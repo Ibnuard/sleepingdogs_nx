@@ -13,26 +13,26 @@ from build_native_dxvk_h4 import BUILD,APP_VERSION,LOCAL
 
 ROOT=Path(__file__).resolve().parents[1]
 PREFIX='switch/sleepingdogs-fex/'
-NAME='sd-dxvk-native-h4-v4-update'
+NAME='sd-dxvk-native-h4-v5-update'
 LAUNCHER_INPUTS=ROOT/'vendor/wine/native-dxvk-h4-launcher-inputs.json'
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def digest(data):return hashlib.sha256(data).hexdigest()
 def encode(data):return (json.dumps(data,indent=2)+'\n').encode()
 
-INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v4 - queued logging / progress
+INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v5 - COM output memory fixes
 
-H4 v3 COM sudah PASS, tetapi game masih freeze di sponsor meskipun FIFO aktif.
-Semua 128 panggilan yang ditelusuri kembali; log berhenti menelusuri sebelum
-stall terakhir terlihat. Satu laporan diagnostik memakan sekitar 31,6 detik,
-termasuk output dan penjadwalan. Ini bukan waktu GPU atau bukti penyebab pasti.
-V4 memindahkan penulisan log runtime native ke antrean terbatas dan thread
-maintenance, mengganti observer berat dengan status ringkas tiap 5 detik.
-Tujuannya melepas ketergantungan bridge pada I/O log dan melacak stall lanjutan.
-V4 belum diuji di Switch. FIFO, resolusi 720p dan clock tetap seperti v3.
+H4 v4 sudah melewati sponsor/animasi, lalu crash di Press Start. Log mencatat
+1.020 Present sebelum guest access violation di PSSetSamplers: nilai 0001119e
+terbaca sebagai pointer COM. Ini bukan bukti gameplay atau FPS game.
+V5 memperbaiki output depth/stencil yang keliru dihitung sebagai array,
+serta menyimpan handle native dalam buffer privat sampai proxy PE32 selesai.
+Tes PE32 mereproduksi kedua bug pada v4 dan lulus pada v5. Tes DXVK native
+di host juga lulus. Asal handle pada crash game belum terbukti sepenuhnya;
+V5 BELUM diuji di Switch. FIFO, resolusi 720p dan clock tetap seperti v4.
 
 FOLDER SIAP SALIN, TANPA ZIP. Update untuk instalasi v18 lengkap yang sudah
 berfungsi; game, save, Wine modules, aset launcher dan forwarder tetap dari SD.
-H1-H3 dan tes COM H4 v2/v3 sudah lolos di Switch. V4 lolos build/tes host;
+H1-H3 dan tes COM H4 v2/v3 sudah lolos di Switch. V5 lolos build/tes lokal;
 BELUM ada bukti gameplay atau kenaikan FPS di Switch pada versi ini.
 
 A. TES COM X86 DI SWITCH
@@ -42,7 +42,10 @@ A. TES COM X86 DI SWITCH
 3. Jalankan. Mode awal otomatis COM self-test, bukan HKShip.exe.
    Layar biru 720p dan 300 Present; tunggu console menampilkan exit 00000000.
    Tes ini juga mencoba thread guest, buffer, texture BC1, COM identity dan
-   private interface. Jika gagal/hang, simpan log dulu, jangan lanjut ke game.
+   private interface, 72 slot sampler di enam stage dan 16 pemeriksaan guard
+   depth/stencil. Hasil harus build native-dxvk-h4-v5, status PASS,
+   sampler_roundtrip_slots_verified=72, dsv_guard_checks=16. Jika gagal/hang,
+   simpan log dulu, jangan lanjut ke game.
 4. Tutup dari HOME. Ambil empat file:
    switch/sleepingdogs-fex/drive_c/native-dxvk-h4-result.json
    switch/sleepingdogs-fex/drive_c/native-dxvk-h4-guest.log
@@ -62,7 +65,7 @@ B. VALIDASI GAME NATIVE SETELAH HASIL COM PASS
    crash.log. UNKNOWN_IID/UNSUPPORTED/FAULT dicatat di runtime log.
    Catat FPS GAME dari HUD;
    FPS menu, loop COM biru, dan frame generation bukan hasil gameplay.
-7. Log game harus mencatat BUILD native-dxvk-h4-v4 mode=SleepingDogs,
+7. Log game harus mencatat BUILD native-dxvk-h4-v5 mode=SleepingDogs,
    [SD-NDX-WINDOW] handoff complete launcher_owned=0 console_active=0,
    dimensions rc=00000000, lalu
    D3D11CreateDevice native=ARM64 dan FIRST_PRESENT real COM path.
@@ -95,7 +98,7 @@ Native worker dicatat di log, di luar registry thread guest FEX.
 Target stable 30 FPS BELUM terbukti. Ini kandidat uji integrasi, bukan rilis.
 
 Checksum seluruh isi: SHA256SUMS.txt. Jangan salin source/ dan notices/ ke SD.
-Detail: source/project/docs/native-dxvk-h4-v4-logging.md.
+Detail: source/project/docs/native-dxvk-h4-v5-com-outputs.md.
 Prepared Wine/FEX/Mesa/SDK lokal tetap diperlukan untuk rebuild.
 '''
 
@@ -140,13 +143,18 @@ def launcher_payload():
 
 def main():
     LOCAL.mkdir(parents=True,exist_ok=True);lock=(LOCAL/'packaging.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports','window-check','logging-check')}
+    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports','window-check','logging-check','guest-output-check')}
     build=receipts['build'];assert build['status']=='BUILT' and build['baseline_reproduced']
-    assert all(receipts[n]['status']=='PASS' for n in ('host-test','abi-check','launcher-check','game-imports','window-check','logging-check'))
-    for receipt in (build,receipts['host-test']):
+    assert all(receipts[n]['status']=='PASS' for n in ('host-test','abi-check','launcher-check','game-imports','window-check','logging-check','guest-output-check'))
+    guest=receipts['guest-output-check']
+    assert guest['pe32_proxy_executed_on_windows'] and guest['modeled_native_endpoint']
+    assert guest['cases']['current']['exit_code']==0 and not guest['cases']['current']['expected_regression_failure']
+    for case in ('v4-scalar','v4-publication'):
+        assert guest['cases'][case]['exit_code']==1 and guest['cases'][case]['expected_regression_failure']
+    for receipt in (build,receipts['host-test'],guest):
         for name,expected in receipt['source_files'].items():assert sha(ROOT/name)==expected,('source changed',name)
     assert sha(ROOT/'tools/build_native_dxvk_h4.py')==build['builder_sha256']
-    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py'),('window-check','test_native_dxvk_h4_window.py'),('logging-check','test_native_dxvk_h4_logging.py')]:
+    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py'),('window-check','test_native_dxvk_h4_window.py'),('logging-check','test_native_dxvk_h4_logging.py'),('guest-output-check','test_native_dxvk_h4_guest_outputs.py')]:
         assert sha(ROOT/'tools'/tool)==receipts[name]['runner_sha256']
     for name,expected in build['inputs'].items():assert sha(name)==expected
     for name,expected in build['header_inputs'].items():assert sha(name)==expected
@@ -201,9 +209,10 @@ def main():
     paths=['tools/build_native_dxvk_h4.py','tools/generate_native_dxvk_com.py','tools/check_native_dxvk_h4_abi.py','tools/check_native_dxvk_h4_launcher.py',
            'tools/check_native_dxvk_h4_imports.py','tools/test_native_dxvk_h4_host.py','tools/test_native_dxvk_h4_window.py','tools/package_native_dxvk_h4.py','tools/analyze_native_dxvk_h4.py',
            'tools/build_native_dxvk_h3.py','tools/build_native_dxvk_h2.py','docs/native-dxvk-h4-v1.md','docs/native-dxvk-h3-v1.md',
-           'docs/STATUS.md','docs/native-dxvk-h4-v2-window.md','docs/native-dxvk-h4-v3-sponsor.md','docs/native-dxvk-h4-v4-logging.md',
+           'docs/STATUS.md','docs/native-dxvk-h4-v2-window.md','docs/native-dxvk-h4-v3-sponsor.md','docs/native-dxvk-h4-v4-logging.md','docs/native-dxvk-h4-v5-com-outputs.md',
            'README.md','docs/README.md','docs/BUILD.md','docs/CONFIGURATION.md','docs/HISTORY.md',
            'tools/test_native_dxvk_h4_logging.py','tests/native_dxvk_logging_host.cpp','reports/native-dxvk-h4-v3-sponsor-analysis.json',
+           'tools/test_native_dxvk_h4_guest_outputs.py','tests/native_dxvk_guest_outputs.c','reports/native-dxvk-h4-v4-press-start-analysis.json',
            'reports/native-dxvk-h4-v2-sponsor-observation.json','THIRD_PARTY.md','tests/native_dxvk_com_host.cpp','tests/native_dxvk_window_host.cpp','tests/check_native_dxvk_h4_capture.py',
            'vendor/wine/native-dxvk-h3-inputs.json','vendor/wine/native-dxvk-h4-launcher-inputs.json',
            'tools/port_common.py','tools/sleepingdogs_performance_hud.py','reports/native-v15-package.json']
@@ -237,6 +246,12 @@ def main():
     for dirname in ('native-dxvk-h4-game-a227d3dee3f4','native-dxvk-h4-v3-com-9678e556e955'):
         name='reports/'+dirname+'/.gitattributes';entries['source/project/'+name]=(ROOT/name).read_bytes()
     name='reports/native-dxvk-h4-game-a227d3dee3f4/extra-evidence.json';entries['source/project/'+name]=(ROOT/name).read_bytes()
+    analysis=json.loads((ROOT/'reports/native-dxvk-h4-v4-press-start-analysis.json').read_text())
+    capture_path=ROOT/analysis['game_capture_report'];assert sha(capture_path)==analysis['game_capture_report_sha256']
+    entries['source/project/'+capture_path.relative_to(ROOT).as_posix()]=capture_path.read_bytes()
+    for detail in json.loads(capture_path.read_text())['evidence'].values():
+        path=ROOT/detail['path'];assert sha(path)==detail['sha256'];entries['source/project/'+detail['path']]=path.read_bytes()
+    name='reports/native-dxvk-h4-game-deb1442c33dc/.gitattributes';entries['source/project/'+name]=(ROOT/name).read_bytes()
     work=Path(build['work']);pin=json.loads((ROOT/'vendor/wine/native-dxvk-h3-inputs.json').read_text())
     originals={'runtime':Path(pin['runtime_source']),'virtual':Path(pin['virtual_source']),
                'settings':Path(pin['runtime_source']).parent/'f1_settings.h',

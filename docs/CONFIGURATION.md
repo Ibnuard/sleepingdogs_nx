@@ -32,12 +32,12 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 v4 native candidate](native-dxvk-h4-v4-logging.md) needs a passing COM self-test
+The [H4 v5 native candidate](native-dxvk-h4-v5-com-outputs.md) needs a passing COM self-test
 before game validation. Its swapchain stays at 1280×720 and LSFG is forced
 OFF without changing the stored LSFG preference. Both existing x86 renderer
-choices remain available for comparisons. V4 retains `dxgi.syncInterval = 1`
-in every native profile; confirm FIFO in the DXVK log. V3 still froze with
-FIFO, so v4 targets diagnostic I/O and adds continuing progress records.
+choices remain available for comparisons. V5 retains `dxgi.syncInterval = 1`
+in every native profile; confirm FIFO in the DXVK log. V4 passed the sponsor
+stage and crashed at Press Start; v5 fixes scalar DSV and COM output memory.
 Other profile options and x86 profiles stay canonical. H4 v2/v3 COM completion
 was observed on Switch, but native gameplay and an FPS gain remain unproven.
 

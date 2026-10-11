@@ -215,6 +215,22 @@ int main(){
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_Draw,context,{3,0});image(c,context,target,staging);
         auto views=allocate<uint32_t>(),count=allocate<uint32_t>();*count=1;auto observed_viewport=allocate<D3D11_VIEWPORT>();
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_OMGetRenderTargets,context,{1,address(views),0});require(*views==view);c.release(*views);
+        auto depth_guard=allocate<uint32_t>(8);
+        for(uint32_t n:{8u,0u}) {
+            for(unsigned i=0;i<8;++i)depth_guard[i]=0x13572460u+i;
+            c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_OMGetRenderTargets,context,{n,0,address(depth_guard)});
+            require(depth_guard[0]==0,"scalar DSV output with zero/eight RTVs");
+            for(unsigned i=1;i<8;++i)require(depth_guard[i]==0x13572460u+i,"scalar DSV overwrote adjacent guest memory");
+        }
+        D3D11_SAMPLER_DESC sd={};sd.Filter=D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+        sd.AddressU=sd.AddressV=sd.AddressW=D3D11_TEXTURE_ADDRESS_CLAMP;sd.MaxAnisotropy=1;sd.ComparisonFunc=D3D11_COMPARISON_NEVER;sd.MaxLOD=D3D11_FLOAT32_MAX;
+        uint32_t sampler=c.create(SD_COM_IF_ID3D11Device,SD_COM_M_ID3D11Device_CreateSamplerState,device,{wire(sd),address(out)},out);
+        auto sample_in=allocate<uint32_t>(12),sample_out=allocate<uint32_t>(12);
+        for(unsigned i=0;i<12;++i)sample_in[i]=i%3?sampler:0;
+        c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_PSSetSamplers,context,{0,12,address(sample_in)});
+        c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_PSGetSamplers,context,{0,12,address(sample_out)});
+        for(unsigned i=0;i<12;++i){require(sample_out[i]==sample_in[i],"native sampler output identity");if(sample_out[i])c.release(sample_out[i]);sample_in[i]=0;}
+        c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_PSSetSamplers,context,{0,12,address(sample_in)});c.release(sampler);
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_RSGetViewports,context,{address(count),address(observed_viewport)});require(*count==1&&observed_viewport->Width==1280);
         c.reject(SD_COM_IF_ID3D11Buffer,SD_COM_M_ID3D11Buffer_GetDesc,ps,{desc});
         auto multithread=query(c,context,__uuidof(ID3D10Multithread));

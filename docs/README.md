@@ -15,7 +15,8 @@ installation for a first setup, or current status before comparing test builds.
 | [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 build, host correctness tests, standalone Horizon NRO and remaining game integration |
 | [Native DXVK H2](native-dxvk-h2-v1.md) | Real PE32 guest bridge diagnostic, hardware test instructions and v18 restoration |
 | [Native DXVK H3](native-dxvk-h3-v1.md) | Successful Switch guest-driven native Present capture, folder installation and production gates |
-| [Native DXVK H4 v4](native-dxvk-h4-v4-logging.md) | Current candidate: queued native logs, compact progress; v3 COM PASS and continuing game freeze |
+| [Native DXVK H4 v5](native-dxvk-h4-v5-com-outputs.md) | Current candidate: scalar DSV and COM output fixes; local checks pass, Switch test pending |
+| [Native DXVK H4 v4](native-dxvk-h4-v4-logging.md) | Queued native logs and compact progress; subsequently reaches Press Start then crashes |
 | [Native DXVK H4 v3](native-dxvk-h4-v3-sponsor.md) | Previous FIFO/startup trace candidate and v2 observations |
 | [Native DXVK H4 v2](native-dxvk-h4-v2-window.md) | Startup screen-handoff fix and original COM-first Switch validation |
 | [Native DXVK H4 implementation](native-dxvk-h4-v1.md) | Original x86 COM proxies, native ARM64 launcher/game route and local validation boundaries |

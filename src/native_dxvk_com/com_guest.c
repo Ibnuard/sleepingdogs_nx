@@ -43,6 +43,7 @@ static UINT safe_array_count(UINT n) { return n==UINT32_MAX ? 0 : n<=SD_COM_MAX_
 static const void *proxy_vtable(uint32_t interface_id);
 static uint32_t proxy_iid(REFIID iid);
 static void *proxy_wrap(uint32_t token,uint32_t interface_id);
+static ULONG proxy_release(void *object);
 
 static void proxy_fatal(LONG error) {
     ULONG_PTR detail=(ULONG_PTR)(uint32_t)error;
@@ -71,21 +72,62 @@ static LONG proxy_call(struct sd_com_packet *packet) {
     if(status<0)return status;
     return (LONG)packet->fault;
 }
+/* Keep wire handles private until a complete PE32 proxy can be published.
+ * A caller-visible COM output must never temporarily contain a native token. */
+struct proxy_output {
+    uint32_t *tokens;
+    UINT capacity,published;
+    uint32_t stack[128];
+};
+static int proxy_output_init(struct proxy_output *out,void *destination,UINT capacity) {
+    out->capacity=destination?capacity:0;out->tokens=NULL;out->published=0;
+    if(!out->capacity)return 1;
+    memset(destination,0,out->capacity*sizeof(void*));
+    out->tokens=out->capacity<=128?out->stack:HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,out->capacity*4);
+    if(!out->tokens)return 0;
+    if(out->capacity<=128)memset(out->tokens,0,out->capacity*4);
+    return 1;
+}
+static void proxy_output_dispose(struct proxy_output *out,uint32_t kind) {
+    if(!out->tokens)return;
+    for(UINT i=0;i<out->capacity;++i)if(out->tokens[i]) {
+        struct sd_com_packet release={SD_COM_ABI,out->tokens[i],kind,2};proxy_call(&release);
+    }
+    if(out->capacity>128)HeapFree(GetProcessHeap(),0,out->tokens);
+    out->tokens=NULL;
+}
+static int proxy_output_publish(struct proxy_output *out,void *destination,UINT count,uint32_t kind) {
+    if(!destination)return 1;
+    if(count>out->capacity)count=out->capacity;
+    for(UINT i=0;i<count;++i) {
+        uint32_t token=out->tokens[i];out->tokens[i]=0;
+        void *object=proxy_wrap(token,kind);
+        if(token&&!object)return 0; /* proxy_wrap balanced this token's reference */
+        memcpy((char*)destination+i*sizeof(void*),&object,sizeof(object));
+        ++out->published;
+    }
+    return 1;
+}
+static void proxy_output_retract(struct proxy_output *out,void *destination) {
+    for(UINT i=0;i<out->published;++i) {
+        void *object;memcpy(&object,(char*)destination+i*sizeof(void*),sizeof(object));
+        memset((char*)destination+i*sizeof(void*),0,sizeof(object));
+        if(object)proxy_release(object);
+    }
+    out->published=0;
+}
 static HRESULT proxy_query(void *object,REFIID iid,void **output) {
     if(!output)return E_POINTER;
     *output=NULL;
     uint32_t kind=proxy_iid(iid);
     struct proxy *self=object;
     struct sd_com_packet p={SD_COM_ABI,proxy_token(object),self->interface_id,0};
-    p.args[0]=guest_address(iid);p.args[1]=guest_address(output);
+    struct proxy_output wire;if(!proxy_output_init(&wire,output,1))return E_OUTOFMEMORY;
+    p.args[0]=guest_address(iid);p.args[1]=guest_address(wire.tokens);
     LONG status=proxy_call(&p);
-    if(status<0)return status;
-    if(SUCCEEDED((HRESULT)p.ret)) {
-        uint32_t token=*(uint32_t*)output;
-        *output=proxy_wrap(token,kind);
-        if(token && !*output)return E_OUTOFMEMORY;
-    }
-    return (HRESULT)p.ret;
+    if(status>=0&&SUCCEEDED((HRESULT)p.ret)&&!proxy_output_publish(&wire,output,1,kind))status=E_OUTOFMEMORY;
+    proxy_output_dispose(&wire,kind);
+    return status<0?status:(HRESULT)p.ret;
 }
 static ULONG proxy_addref(void *object) {
     struct proxy *self=object;
@@ -132,6 +174,30 @@ static void *proxy_wrap(uint32_t token,uint32_t kind) {
         struct sd_com_packet release={SD_COM_ABI,token,kind,2};proxy_call(&release);
     }
     return p;
+}
+static HRESULT proxy_private_get(void *object,uint32_t method,REFGUID guid,UINT *size,void *output) {
+    if(!size)return E_POINTER;
+    UINT capacity=output?*size:0;
+    void *wire=output?HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,capacity?capacity:1):NULL;
+    if(output&&!wire)return E_OUTOFMEMORY;
+    struct proxy *self=object;
+    struct sd_com_packet p={SD_COM_ABI,proxy_token(object),self->interface_id,method};
+    p.args[0]=guest_address(guid);p.args[1]=guest_address(size);p.args[2]=guest_address(wire);
+    LONG status=proxy_call(&p);
+    if(status>=0&&SUCCEEDED((HRESULT)p.ret)&&wire) {
+        if(p.aux==SD_COM_PRIVATE_INTERFACE) {
+            if(capacity<sizeof(void*)||*size!=sizeof(void*))status=E_INVALIDARG;
+            else {
+                uint32_t token;memcpy(&token,wire,sizeof(token));
+                void *wrapped=proxy_wrap(token,SD_COM_IF_IUnknown);
+                if(token&&!wrapped)status=E_OUTOFMEMORY;
+                else memcpy(output,&wrapped,sizeof(wrapped));
+            }
+        } else if(*size<=capacity)memcpy(output,wire,*size);
+        else status=E_INVALIDARG;
+    }
+    if(wire)HeapFree(GetProcessHeap(),0,wire);
+    return status<0?status:(HRESULT)p.ret;
 }
 static HRESULT proxy_map(void *context,void *resource,UINT subresource,D3D11_MAP type,UINT flags,D3D11_MAPPED_SUBRESOURCE *output) {
     if(!output)return E_POINTER;
@@ -191,29 +257,29 @@ __declspec(dllexport) HRESULT WINAPI SdCreateDevice(IDXGIAdapter *adapter,D3D_DR
     struct sd_com_packet p={SD_COM_ABI,0,0,SD_COM_CREATE_DEVICE};
     p.args[0]=proxy_token(adapter);p.args[1]=type;p.args[2]=guest_address(software);p.args[3]=flags;
     p.args[4]=guest_address(levels);p.args[5]=count;p.args[6]=sdk;
-    p.args[7]=guest_address(device);p.args[8]=guest_address(actual);p.args[9]=guest_address(context);
+    struct proxy_output wd,wc;
+    if(!proxy_output_init(&wd,device,1))return E_OUTOFMEMORY;
+    if(!proxy_output_init(&wc,context,1)){proxy_output_dispose(&wd,SD_COM_IF_ID3D11Device);return E_OUTOFMEMORY;}
+    p.args[7]=guest_address(wd.tokens);p.args[8]=guest_address(actual);p.args[9]=guest_address(wc.tokens);
     LONG status=proxy_call(&p);
-    if(status<0)return status;
-    if(SUCCEEDED((HRESULT)p.ret)) {
-        if(device)*device=proxy_wrap(*(uint32_t*)device,SD_COM_IF_ID3D11Device);
-        if(context)*context=proxy_wrap(*(uint32_t*)context,SD_COM_IF_ID3D11DeviceContext);
-        if((device&&!*device)||(context&&!*context)) {
-            if(device&&*device){proxy_release(*device);*device=NULL;}
-            if(context&&*context){proxy_release(*context);*context=NULL;}
-            return E_OUTOFMEMORY;
-        }
+    if(status>=0&&SUCCEEDED((HRESULT)p.ret)) {
+        if(!proxy_output_publish(&wd,device,1,SD_COM_IF_ID3D11Device)||
+           !proxy_output_publish(&wc,context,1,SD_COM_IF_ID3D11DeviceContext))status=E_OUTOFMEMORY;
     }
-    return (HRESULT)p.ret;
+    if(status<0||FAILED((HRESULT)p.ret)){proxy_output_retract(&wd,device);proxy_output_retract(&wc,context);}
+    proxy_output_dispose(&wd,SD_COM_IF_ID3D11Device);proxy_output_dispose(&wc,SD_COM_IF_ID3D11DeviceContext);
+    return status<0?status:(HRESULT)p.ret;
 }
 __declspec(dllexport) HRESULT WINAPI SdCreateFactory(UINT flags,REFIID iid,void **factory) {
     if(!factory)return E_POINTER;*factory=NULL;
     uint32_t kind=proxy_iid(iid);
     struct sd_com_packet p={SD_COM_ABI,0,0,SD_COM_CREATE_FACTORY};
-    p.args[0]=flags;p.args[1]=guest_address(iid);p.args[2]=guest_address(factory);
-    LONG status=proxy_call(&p);if(status<0)return status;
-    if(SUCCEEDED((HRESULT)p.ret))*factory=proxy_wrap(*(uint32_t*)factory,kind);
-    if(SUCCEEDED((HRESULT)p.ret)&&!*factory)return E_OUTOFMEMORY;
-    return (HRESULT)p.ret;
+    struct proxy_output wire;if(!proxy_output_init(&wire,factory,1))return E_OUTOFMEMORY;
+    p.args[0]=flags;p.args[1]=guest_address(iid);p.args[2]=guest_address(wire.tokens);
+    LONG status=proxy_call(&p);
+    if(status>=0&&SUCCEEDED((HRESULT)p.ret)&&!proxy_output_publish(&wire,factory,1,kind))status=E_OUTOFMEMORY;
+    proxy_output_dispose(&wire,kind);
+    return status<0?status:(HRESULT)p.ret;
 }
 __declspec(dllexport) LONG WINAPI SdComStats(uint32_t *stats) {
     struct sd_com_packet p={SD_COM_ABI,0,0,SD_COM_STATS};p.args[0]=guest_address(stats);return proxy_call(&p);

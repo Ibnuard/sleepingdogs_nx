@@ -8,14 +8,14 @@ import tempfile
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('h4_analyzer',ROOT/'tools/analyze_native_dxvk_h4.py')
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-result=dict(status='PASS',stage='PASS',error=0,build='native-dxvk-h4-v4',guest_execution=True,com_proxy=True,
+result=dict(status='PASS',stage='PASS',error=0,build='native-dxvk-h4-v5',guest_execution=True,com_proxy=True,
             buffer_bytes_verified=2048,mip_array_bytes_verified=80,pixels_verified=1843200,bad_pixels=0,
             present_calls=300,native_draws=302,live_interfaces=0,live_maps=0,bridge_failures=0,
-            game_integration_tested=False,game_fps_measured=False)
-runtime='\n'.join(['[SD-NDX-COM] BUILD native-dxvk-h4-v4 mode=COM-self-test target=/drive_c/sd-native-dxvk-h4-test.exe',
+            sampler_roundtrip_slots_verified=72,dsv_guard_checks=16,game_integration_tested=False,game_fps_measured=False)
+runtime='\n'.join(['[SD-NDX-COM] BUILD native-dxvk-h4-v5 mode=COM-self-test target=/drive_c/sd-native-dxvk-h4-test.exe',
                   '[SD-NDX-COM] D3D11CreateDevice hr=00000000 device=00010001 context=00010002 feature=b000 native=ARM64',
                   '[SD-NDX-COM] FIRST_PRESENT real COM path','[SD-EXIT] code=00000000'])
-guest='[SD-NDX-H4-GUEST] startup real PE32 COM client\n[SD-NDX-H4-GUEST] guest/native multithread references and critical section\n[SD-NDX-H4-GUEST] PASS checks=1843200'
+guest='[SD-NDX-H4-GUEST] startup real PE32 COM client\n[SD-NDX-H4-GUEST] guest/native multithread references and critical section\n[SD-NDX-H4-GUEST] scalar DSV guards and six-stage sampler roundtrips\n[SD-NDX-H4-GUEST] PASS checks=1843200'
 dxvk='DXVK: 3.1.1-sdbatch2-native-probe-v1\nBuild: horizon\nNVIDIA Tegra X1 (GM20B) NVK\nFound config file: sdmc:/switch/sleepingdogs-fex/native-dxvk-h4/com-test.conf\ndxgi.syncInterval = 1\nPresent mode: VK_PRESENT_MODE_FIFO_KHR'
 
 def main():
@@ -25,6 +25,11 @@ def main():
         checks+=1;assert test
     report=module.analyze('com',result,guest,runtime,dxvk);expect(report['status']=='PASS')
     expect(not report['stable_30fps_proven'] and not report['game_fps_measured'])
+    for key in ('sampler_roundtrip_slots_verified','dsv_guard_checks'):
+        altered=copy.deepcopy(result);altered.pop(key)
+        expect(module.analyze('com',altered,guest,runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
+        altered[key]=1;expect(module.analyze('com',altered,guest,runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
+    expect(module.analyze('com',result,guest.replace('scalar DSV guards and six-stage sampler roundtrips','missing'),runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
     for key,value in [('status','RUNNING'),('stage','startup'),('pixels_verified',921600),('bad_pixels',1),('live_maps',1),('live_interfaces',1),('bridge_failures',1),('present_calls',299),('com_proxy',False),('build','native-dxvk-h3-v1'),('build','native-dxvk-h4-v1'),('build','native-dxvk-h4-v2'),('build','native-dxvk-h4-v3')]:
         altered=copy.deepcopy(result);altered[key]=value
         expect(module.analyze('com',altered,guest,runtime,dxvk)['status']=='INCOMPLETE_OR_FAILED')
@@ -46,10 +51,14 @@ def main():
     for renderer in [game_dxvk.replace('syncInterval = 1','syncInterval = 0'),game_dxvk.replace('FIFO_KHR','IMMEDIATE_KHR')]:
         expect(module.analyze('game',{},'',game,renderer)['status']=='INCOMPLETE_OR_FAILED')
     old_result=copy.deepcopy(result);old_result['build']='native-dxvk-h4-v2'
-    expect(module.analyze('com',old_result,guest,runtime.replace('-v4','-v2'),dxvk,'native-dxvk-h4-v2')['status']=='PASS')
+    expect(module.analyze('com',old_result,guest,runtime.replace('-v5','-v2'),dxvk,'native-dxvk-h4-v2')['status']=='PASS')
     v3_result=copy.deepcopy(result);v3_result['build']='native-dxvk-h4-v3'
-    expect(module.analyze('com',v3_result,guest,runtime.replace('-v4','-v3'),dxvk,'native-dxvk-h4-v3')['status']=='PASS')
-    expect(module.analyze('com',v3_result,guest,runtime.replace('-v4','-v3'),dxvk.replace('FIFO_KHR','IMMEDIATE_KHR'),'native-dxvk-h4-v3')['status']=='INCOMPLETE_OR_FAILED')
+    expect(module.analyze('com',v3_result,guest,runtime.replace('-v5','-v3'),dxvk,'native-dxvk-h4-v3')['status']=='PASS')
+    expect(module.analyze('com',v3_result,guest,runtime.replace('-v5','-v3'),dxvk.replace('FIFO_KHR','IMMEDIATE_KHR'),'native-dxvk-h4-v3')['status']=='INCOMPLETE_OR_FAILED')
+    v4_result=copy.deepcopy(result);v4_result['build']='native-dxvk-h4-v4'
+    for key in ('sampler_roundtrip_slots_verified','dsv_guard_checks'):v4_result.pop(key)
+    expect(module.analyze('com',v4_result,guest,runtime.replace('-v5','-v4'),dxvk,'native-dxvk-h4-v4')['status']=='PASS')
+    expect(module.analyze('com',v4_result,guest,runtime.replace('-v5','-v4'),dxvk.replace('FIFO_KHR','IMMEDIATE_KHR'),'native-dxvk-h4-v4')['status']=='INCOMPLETE_OR_FAILED')
     progress=module.progress_trace('\n'.join([
         '[SD-NDX-LOG] async queue=512 batch=32',
         '[SD-NDX-PROGRESS] calls=5213 draws=2 presents=2 maps=0 refs=4753 copy_bytes=47185920 failures=0 gate_waiters=2; totals are last completed call',

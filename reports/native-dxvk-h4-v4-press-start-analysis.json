@@ -1,0 +1,130 @@
+{
+  "status": "GUEST_ACCESS_VIOLATION_AFTER_NATIVE_STARTUP",
+  "tested_build": "native-dxvk-h4-v4",
+  "candidate_build": "native-dxvk-h4-v5",
+  "game_capture_report": "reports/native-dxvk-h4-game-deb1442c33dc.json",
+  "game_capture_report_sha256": "a7ac6c45d35194399c297c8414a1abf22ebf1e5019fb7079842e8a1641331ffc",
+  "game_observation": {
+    "user_last_visible_screen": "Press Start after startup animation",
+    "guest_exit_code": "c0000005",
+    "native_calls": 308054,
+    "native_draws": 19516,
+    "presents_observed": 1020,
+    "map_copy_bytes": 9663682560,
+    "bridge_failures": 0,
+    "shutdown_live_interfaces": 0,
+    "shutdown_live_maps": 0,
+    "shutdown_cleanup_not_precrash_allocation_proof": true,
+    "native_fifo": true,
+    "resolution": [
+      1280,
+      720
+    ],
+    "native_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 10710972,
+        "present_fps": 56.017325038287844,
+        "mean_frame_us": 17851,
+        "min_us": 2563,
+        "max_us": 229216,
+        "scene_identified": false
+      }
+    ],
+    "menu_startup_present_fps_not_gameplay": true,
+    "no_device_lost_captured": true,
+    "no_bridge_fault_captured": true,
+    "logging_dropped_lines": 1
+  },
+  "fault": {
+    "code": "c0000005",
+    "eip": "fffc9c07",
+    "read_address": "000111a2",
+    "eax": "0001119e",
+    "sampler_count": 12,
+    "sampler_array": "03aafe50",
+    "matched_local_symbol": "_g_ID3D11DeviceContext_PSSetSamplers@16",
+    "local_rva": "00009c07",
+    "operation": "check proxy magic at [eax+4]",
+    "recorded_code_words": [
+      "34047881",
+      "74534443",
+      "2404c7e0",
+      "80070057"
+    ],
+    "local_disassembly_instruction": "10009c07: 81 78 04 34 43 44 53         \tcmpl\t$0x53444334, 0x4(%eax)  # imm = 0x53444334",
+    "local_v4_dll_sha256": "8d16e29d206c02f532159535a5671e0676c40070ca9cdfaafcbc9fd5cdad4760",
+    "running_binary_authenticated": false,
+    "upstream_writer_identified": false
+  },
+  "supplied_com_runtime": {
+    "older_build": "native-dxvk-h4-v3",
+    "byte_identical_to": "reports/native-dxvk-h4-game-a227d3dee3f4/com-runtime.txt",
+    "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+    "v4_com_hardware_pass_established": false,
+    "missing": [
+      "v4 COM result",
+      "v4 COM guest log",
+      "v4 COM renderer log"
+    ]
+  },
+  "confirmed_source_defects": [
+    {
+      "name": "scalar DSV counted as RTV array",
+      "old_negative_control": {
+        "exit_code": 1,
+        "output": "FAIL: scalar DSV output overwrites adjacent caller storage",
+        "exe_sha256": "e46b1df57d6517047aeb504bc6e3cc79081b65a0f9c2f57915d8a67279b2df19",
+        "expected_regression_failure": true
+      },
+      "new_regression_passed": true,
+      "effect": "OMGetRenderTargets with 8 RTVs overwrites seven neighboring output words; zero RTVs suppresses its scalar output",
+      "api_reference": "https://learn.microsoft.com/en-us/windows/win32/api/d3d11/nf-d3d11-id3d11devicecontext-omgetrendertargets"
+    },
+    {
+      "name": "transient native token in caller-owned COM output",
+      "old_negative_control": {
+        "exit_code": 1,
+        "output": "FAIL: native token exposed in caller COM output during transport",
+        "exe_sha256": "11adfe2df1602d626282a8673b6b231bb1222b33cfcae31825968fd6b56dbc2f",
+        "expected_regression_failure": true
+      },
+      "new_regression_passed": true,
+      "effect": "modeled endpoint observes native token in caller output before guest wrapper replaces it with a PE32 proxy"
+    }
+  ],
+  "fix": {
+    "scalar_output_count": 1,
+    "private_wire_storage": true,
+    "published_values": "PE32 proxies or NULL",
+    "failed_unpublished_references_balanced": true,
+    "switch_com_sampler_slots_required": 72,
+    "switch_com_dsv_guard_checks_required": 16,
+    "exact_game_causal_chain_confirmed": false,
+    "scope": "The source defects are reproduced. A handle-shaped value reaches the sampler setter in this capture; the earlier write and any concurrent game observation remain unproved."
+  },
+  "local_validation": {
+    "guest_output_receipt": "reports/native-dxvk-h4-v5-guest-output-check.json",
+    "guest_output_sha256": "1113ec5c79222ec1bb9ab7e79d560bc273bf7b364f3258d52a2e218bc6a5b71a",
+    "real_pe32_proxy_executed_on_windows": true,
+    "native_endpoint_modeled": true,
+    "host_checks": 7384876,
+    "native_dxvk_host_passed": true,
+    "host_scope": "Actual DXVK/lavapipe and low mmap; modeled Wine permission checks and host-only allocation failures; direct table entry. No PE32/FEX execution or game test.",
+    "candidate_nro_sha256": "9f9fdc7ac9db7f0e607b2c253b208a51acbac6950a139071c412ce11ba7af811"
+  },
+  "root_cause_confirmed": false,
+  "fix_hardware_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false,
+  "running_binary_authenticated": false,
+  "same_session_authenticated": false,
+  "limits": [
+    "ROUTE_OBSERVED is native route evidence, not a clean-exit or gameplay result.",
+    "Startup/menu FPS does not establish gameplay performance.",
+    "Code-byte comparison does not authenticate the whole installed DLL.",
+    "Queued logs can drop events or lose a tail. Cross-file exact session and clocks are not authenticated.",
+    "The two regression tests reproduce source defects but not the exact earlier writer of the game sampler array."
+  ]
+}

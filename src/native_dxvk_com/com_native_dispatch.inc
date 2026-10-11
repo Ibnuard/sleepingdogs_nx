@@ -1819,7 +1819,7 @@ case 89: { // ID3D11DeviceContext::OMGetRenderTargets
     if (guest_ppRenderTargetViews) std::fill_n(guest_ppRenderTargetViews, count_ppRenderTargetViews, 0u);
     std::vector<ID3D11RenderTargetView*> native_ppRenderTargetViews(count_ppRenderTargetViews, nullptr);
     auto ppRenderTargetViews = guest_ppRenderTargetViews ? native_ppRenderTargetViews.data() : nullptr;
-    const uint32_t count_ppDepthStencilView = c.array_count(NumViews);
+    const uint32_t count_ppDepthStencilView = c.array_count(1);
     auto guest_ppDepthStencilView = c.write<uint32_t>(p.args[2], count_ppDepthStencilView);
     if (guest_ppDepthStencilView) std::fill_n(guest_ppDepthStencilView, count_ppDepthStencilView, 0u);
     std::vector<ID3D11DepthStencilView*> native_ppDepthStencilView(count_ppDepthStencilView, nullptr);

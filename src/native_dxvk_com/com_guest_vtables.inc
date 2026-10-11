@@ -52,22 +52,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Asynchronous_Release(ID3D11Asynchronous *
 }
 static void STDMETHODCALLTYPE g_ID3D11Asynchronous_GetDevice(ID3D11Asynchronous *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Asynchronous, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Asynchronous_GetPrivateData(ID3D11Asynchronous *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Asynchronous, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Asynchronous_SetPrivateData(ID3D11Asynchronous *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Asynchronous, 5};
@@ -113,22 +109,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11BlendState_Release(ID3D11BlendState *This
 }
 static void STDMETHODCALLTYPE g_ID3D11BlendState_GetDevice(ID3D11BlendState *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11BlendState, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11BlendState_GetPrivateData(ID3D11BlendState *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11BlendState, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11BlendState_SetPrivateData(ID3D11BlendState *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11BlendState, 5};
@@ -175,22 +167,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Buffer_Release(ID3D11Buffer *This) {
 }
 static void STDMETHODCALLTYPE g_ID3D11Buffer_GetDevice(ID3D11Buffer *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Buffer, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Buffer_GetPrivateData(ID3D11Buffer *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Buffer, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Buffer_SetPrivateData(ID3D11Buffer *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Buffer, 5};
@@ -260,22 +248,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11ClassInstance_Release(ID3D11ClassInstance
 }
 static void STDMETHODCALLTYPE g_ID3D11ClassInstance_GetDevice(ID3D11ClassInstance *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassInstance, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ClassInstance_GetPrivateData(ID3D11ClassInstance *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassInstance, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ClassInstance_SetPrivateData(ID3D11ClassInstance *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassInstance, 5};
@@ -296,11 +280,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11ClassInstance_SetPrivateDataInterface(I
 }
 static void STDMETHODCALLTYPE g_ID3D11ClassInstance_GetClassLinkage(ID3D11ClassInstance *This, ID3D11ClassLinkage ** ppLinkage) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassInstance, 7};
-    UINT cap_ppLinkage = safe_array_count(1);
-    packet.args[0] = guest_address(ppLinkage);
+    struct proxy_output wire_ppLinkage;
+    if (!proxy_output_init(&wire_ppLinkage,ppLinkage,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppLinkage.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppLinkage,ppLinkage,safe_array_count(1),SD_COM_IF_ID3D11ClassLinkage)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppLinkage,ppLinkage);
+    proxy_output_dispose(&wire_ppLinkage,SD_COM_IF_ID3D11ClassLinkage);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppLinkage) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppLinkage; ++i) { uint32_t token=((uint32_t*)ppLinkage)[i]; ppLinkage[i] = (ID3D11ClassLinkage*)proxy_wrap(token, SD_COM_IF_ID3D11ClassLinkage); if(token && !ppLinkage[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11ClassInstance_GetDesc(ID3D11ClassInstance *This, D3D11_CLASS_INSTANCE_DESC * pDesc) {
@@ -350,22 +337,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11ClassLinkage_Release(ID3D11ClassLinkage *
 }
 static void STDMETHODCALLTYPE g_ID3D11ClassLinkage_GetDevice(ID3D11ClassLinkage *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassLinkage, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ClassLinkage_GetPrivateData(ID3D11ClassLinkage *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassLinkage, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ClassLinkage_SetPrivateData(ID3D11ClassLinkage *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassLinkage, 5};
@@ -388,11 +371,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11ClassLinkage_GetClassInstance(ID3D11Cla
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ClassLinkage, 7};
     packet.args[0] = guest_address(pClassInstanceName);
     packet.args[1] = (uint32_t)InstanceIndex;
-    UINT cap_ppInstance = safe_array_count(1);
-    packet.args[2] = guest_address(ppInstance);
+    struct proxy_output wire_ppInstance;
+    if (!proxy_output_init(&wire_ppInstance,ppInstance,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppInstance.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppInstance,ppInstance,safe_array_count(1),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppInstance,ppInstance);
+    proxy_output_dispose(&wire_ppInstance,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { return (HRESULT)status; }
-    if (ppInstance) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppInstance; ++i) { uint32_t token=((uint32_t*)ppInstance)[i]; ppInstance[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppInstance[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ClassLinkage_CreateClassInstance(ID3D11ClassLinkage *This, const char * pClassTypeName, UINT ConstantBufferOffset, UINT ConstantVectorOffset, UINT TextureOffset, UINT SamplerOffset, ID3D11ClassInstance ** ppInstance) {
@@ -402,11 +388,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11ClassLinkage_CreateClassInstance(ID3D11
     packet.args[2] = (uint32_t)ConstantVectorOffset;
     packet.args[3] = (uint32_t)TextureOffset;
     packet.args[4] = (uint32_t)SamplerOffset;
-    UINT cap_ppInstance = safe_array_count(1);
-    packet.args[5] = guest_address(ppInstance);
+    struct proxy_output wire_ppInstance;
+    if (!proxy_output_init(&wire_ppInstance,ppInstance,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[5] = guest_address(wire_ppInstance.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppInstance,ppInstance,safe_array_count(1),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppInstance,ppInstance);
+    proxy_output_dispose(&wire_ppInstance,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { return (HRESULT)status; }
-    if (ppInstance) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppInstance; ++i) { uint32_t token=((uint32_t*)ppInstance)[i]; ppInstance[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppInstance[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static const ID3D11ClassLinkageVtbl vtbl_ID3D11ClassLinkage = {
@@ -431,22 +420,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11CommandList_Release(ID3D11CommandList *Th
 }
 static void STDMETHODCALLTYPE g_ID3D11CommandList_GetDevice(ID3D11CommandList *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11CommandList, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11CommandList_GetPrivateData(ID3D11CommandList *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11CommandList, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11CommandList_SetPrivateData(ID3D11CommandList *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11CommandList, 5};
@@ -492,22 +477,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11ComputeShader_Release(ID3D11ComputeShader
 }
 static void STDMETHODCALLTYPE g_ID3D11ComputeShader_GetDevice(ID3D11ComputeShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ComputeShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ComputeShader_GetPrivateData(ID3D11ComputeShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ComputeShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ComputeShader_SetPrivateData(ID3D11ComputeShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ComputeShader, 5};
@@ -546,22 +527,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Counter_Release(ID3D11Counter *This) {
 }
 static void STDMETHODCALLTYPE g_ID3D11Counter_GetDevice(ID3D11Counter *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Counter, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Counter_GetPrivateData(ID3D11Counter *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Counter, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Counter_SetPrivateData(ID3D11Counter *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Counter, 5};
@@ -615,22 +592,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11DepthStencilState_Release(ID3D11DepthSten
 }
 static void STDMETHODCALLTYPE g_ID3D11DepthStencilState_GetDevice(ID3D11DepthStencilState *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilState, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DepthStencilState_GetPrivateData(ID3D11DepthStencilState *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilState, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DepthStencilState_SetPrivateData(ID3D11DepthStencilState *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilState, 5};
@@ -677,22 +650,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11DepthStencilView_Release(ID3D11DepthStenc
 }
 static void STDMETHODCALLTYPE g_ID3D11DepthStencilView_GetDevice(ID3D11DepthStencilView *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilView, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DepthStencilView_GetPrivateData(ID3D11DepthStencilView *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilView, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DepthStencilView_SetPrivateData(ID3D11DepthStencilView *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilView, 5};
@@ -713,11 +682,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11DepthStencilView_SetPrivateDataInterfac
 }
 static void STDMETHODCALLTYPE g_ID3D11DepthStencilView_GetResource(ID3D11DepthStencilView *This, ID3D11Resource ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DepthStencilView, 7};
-    UINT cap_ppResource = safe_array_count(1);
-    packet.args[0] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),SD_COM_IF_ID3D11Resource)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,SD_COM_IF_ID3D11Resource);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppResource) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppResource; ++i) { uint32_t token=((uint32_t*)ppResource)[i]; ppResource[i] = (ID3D11Resource*)proxy_wrap(token, SD_COM_IF_ID3D11Resource); if(token && !ppResource[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DepthStencilView_GetDesc(ID3D11DepthStencilView *This, D3D11_DEPTH_STENCIL_VIEW_DESC * pDesc) {
@@ -751,88 +723,112 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateBuffer(ID3D11Device *This,
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 3};
     packet.args[0] = guest_address(pDesc);
     packet.args[1] = guest_address(pInitialData);
-    UINT cap_ppBuffer = safe_array_count(1);
-    packet.args[2] = guest_address(ppBuffer);
+    struct proxy_output wire_ppBuffer;
+    if (!proxy_output_init(&wire_ppBuffer,ppBuffer,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppBuffer.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppBuffer,ppBuffer,safe_array_count(1),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppBuffer,ppBuffer);
+    proxy_output_dispose(&wire_ppBuffer,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { return (HRESULT)status; }
-    if (ppBuffer) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppBuffer; ++i) { uint32_t token=((uint32_t*)ppBuffer)[i]; ppBuffer[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppBuffer[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateTexture1D(ID3D11Device *This, const D3D11_TEXTURE1D_DESC * pDesc, const D3D11_SUBRESOURCE_DATA * pInitialData, ID3D11Texture1D ** ppTexture1D) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 4};
     packet.args[0] = guest_address(pDesc);
     packet.args[1] = guest_address(pInitialData);
-    UINT cap_ppTexture1D = safe_array_count(1);
-    packet.args[2] = guest_address(ppTexture1D);
+    struct proxy_output wire_ppTexture1D;
+    if (!proxy_output_init(&wire_ppTexture1D,ppTexture1D,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppTexture1D.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppTexture1D,ppTexture1D,safe_array_count(1),SD_COM_IF_ID3D11Texture1D)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppTexture1D,ppTexture1D);
+    proxy_output_dispose(&wire_ppTexture1D,SD_COM_IF_ID3D11Texture1D);
     if (status < 0) { return (HRESULT)status; }
-    if (ppTexture1D) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppTexture1D; ++i) { uint32_t token=((uint32_t*)ppTexture1D)[i]; ppTexture1D[i] = (ID3D11Texture1D*)proxy_wrap(token, SD_COM_IF_ID3D11Texture1D); if(token && !ppTexture1D[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateTexture2D(ID3D11Device *This, const D3D11_TEXTURE2D_DESC * pDesc, const D3D11_SUBRESOURCE_DATA * pInitialData, ID3D11Texture2D ** ppTexture2D) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 5};
     packet.args[0] = guest_address(pDesc);
     packet.args[1] = guest_address(pInitialData);
-    UINT cap_ppTexture2D = safe_array_count(1);
-    packet.args[2] = guest_address(ppTexture2D);
+    struct proxy_output wire_ppTexture2D;
+    if (!proxy_output_init(&wire_ppTexture2D,ppTexture2D,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppTexture2D.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppTexture2D,ppTexture2D,safe_array_count(1),SD_COM_IF_ID3D11Texture2D)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppTexture2D,ppTexture2D);
+    proxy_output_dispose(&wire_ppTexture2D,SD_COM_IF_ID3D11Texture2D);
     if (status < 0) { return (HRESULT)status; }
-    if (ppTexture2D) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppTexture2D; ++i) { uint32_t token=((uint32_t*)ppTexture2D)[i]; ppTexture2D[i] = (ID3D11Texture2D*)proxy_wrap(token, SD_COM_IF_ID3D11Texture2D); if(token && !ppTexture2D[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateTexture3D(ID3D11Device *This, const D3D11_TEXTURE3D_DESC * pDesc, const D3D11_SUBRESOURCE_DATA * pInitialData, ID3D11Texture3D ** ppTexture3D) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 6};
     packet.args[0] = guest_address(pDesc);
     packet.args[1] = guest_address(pInitialData);
-    UINT cap_ppTexture3D = safe_array_count(1);
-    packet.args[2] = guest_address(ppTexture3D);
+    struct proxy_output wire_ppTexture3D;
+    if (!proxy_output_init(&wire_ppTexture3D,ppTexture3D,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppTexture3D.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppTexture3D,ppTexture3D,safe_array_count(1),SD_COM_IF_ID3D11Texture3D)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppTexture3D,ppTexture3D);
+    proxy_output_dispose(&wire_ppTexture3D,SD_COM_IF_ID3D11Texture3D);
     if (status < 0) { return (HRESULT)status; }
-    if (ppTexture3D) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppTexture3D; ++i) { uint32_t token=((uint32_t*)ppTexture3D)[i]; ppTexture3D[i] = (ID3D11Texture3D*)proxy_wrap(token, SD_COM_IF_ID3D11Texture3D); if(token && !ppTexture3D[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateShaderResourceView(ID3D11Device *This, ID3D11Resource * pResource, const D3D11_SHADER_RESOURCE_VIEW_DESC * pDesc, ID3D11ShaderResourceView ** ppSRView) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 7};
     packet.args[0] = proxy_token(pResource);
     packet.args[1] = guest_address(pDesc);
-    UINT cap_ppSRView = safe_array_count(1);
-    packet.args[2] = guest_address(ppSRView);
+    struct proxy_output wire_ppSRView;
+    if (!proxy_output_init(&wire_ppSRView,ppSRView,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppSRView.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppSRView,ppSRView,safe_array_count(1),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppSRView,ppSRView);
+    proxy_output_dispose(&wire_ppSRView,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { return (HRESULT)status; }
-    if (ppSRView) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppSRView; ++i) { uint32_t token=((uint32_t*)ppSRView)[i]; ppSRView[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppSRView[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateUnorderedAccessView(ID3D11Device *This, ID3D11Resource * pResource, const D3D11_UNORDERED_ACCESS_VIEW_DESC * pDesc, ID3D11UnorderedAccessView ** ppUAView) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 8};
     packet.args[0] = proxy_token(pResource);
     packet.args[1] = guest_address(pDesc);
-    UINT cap_ppUAView = safe_array_count(1);
-    packet.args[2] = guest_address(ppUAView);
+    struct proxy_output wire_ppUAView;
+    if (!proxy_output_init(&wire_ppUAView,ppUAView,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppUAView.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppUAView,ppUAView,safe_array_count(1),SD_COM_IF_ID3D11UnorderedAccessView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppUAView,ppUAView);
+    proxy_output_dispose(&wire_ppUAView,SD_COM_IF_ID3D11UnorderedAccessView);
     if (status < 0) { return (HRESULT)status; }
-    if (ppUAView) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppUAView; ++i) { uint32_t token=((uint32_t*)ppUAView)[i]; ppUAView[i] = (ID3D11UnorderedAccessView*)proxy_wrap(token, SD_COM_IF_ID3D11UnorderedAccessView); if(token && !ppUAView[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateRenderTargetView(ID3D11Device *This, ID3D11Resource * pResource, const D3D11_RENDER_TARGET_VIEW_DESC * pDesc, ID3D11RenderTargetView ** ppRTView) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 9};
     packet.args[0] = proxy_token(pResource);
     packet.args[1] = guest_address(pDesc);
-    UINT cap_ppRTView = safe_array_count(1);
-    packet.args[2] = guest_address(ppRTView);
+    struct proxy_output wire_ppRTView;
+    if (!proxy_output_init(&wire_ppRTView,ppRTView,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppRTView.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppRTView,ppRTView,safe_array_count(1),SD_COM_IF_ID3D11RenderTargetView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppRTView,ppRTView);
+    proxy_output_dispose(&wire_ppRTView,SD_COM_IF_ID3D11RenderTargetView);
     if (status < 0) { return (HRESULT)status; }
-    if (ppRTView) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppRTView; ++i) { uint32_t token=((uint32_t*)ppRTView)[i]; ppRTView[i] = (ID3D11RenderTargetView*)proxy_wrap(token, SD_COM_IF_ID3D11RenderTargetView); if(token && !ppRTView[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateDepthStencilView(ID3D11Device *This, ID3D11Resource * pResource, const D3D11_DEPTH_STENCIL_VIEW_DESC * pDesc, ID3D11DepthStencilView ** ppDepthStencilView) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 10};
     packet.args[0] = proxy_token(pResource);
     packet.args[1] = guest_address(pDesc);
-    UINT cap_ppDepthStencilView = safe_array_count(1);
-    packet.args[2] = guest_address(ppDepthStencilView);
+    struct proxy_output wire_ppDepthStencilView;
+    if (!proxy_output_init(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppDepthStencilView.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1),SD_COM_IF_ID3D11DepthStencilView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppDepthStencilView,ppDepthStencilView);
+    proxy_output_dispose(&wire_ppDepthStencilView,SD_COM_IF_ID3D11DepthStencilView);
     if (status < 0) { return (HRESULT)status; }
-    if (ppDepthStencilView) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDepthStencilView; ++i) { uint32_t token=((uint32_t*)ppDepthStencilView)[i]; ppDepthStencilView[i] = (ID3D11DepthStencilView*)proxy_wrap(token, SD_COM_IF_ID3D11DepthStencilView); if(token && !ppDepthStencilView[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateInputLayout(ID3D11Device *This, const D3D11_INPUT_ELEMENT_DESC * pInputElementDescs, UINT NumElements, const void * pShaderBytecodeWithInputSignature, SIZE_T BytecodeLength, ID3D11InputLayout ** ppInputLayout) {
@@ -841,11 +837,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateInputLayout(ID3D11Device *
     packet.args[1] = (uint32_t)NumElements;
     packet.args[2] = guest_address(pShaderBytecodeWithInputSignature);
     packet.args[3] = (uint32_t)BytecodeLength;
-    UINT cap_ppInputLayout = safe_array_count(1);
-    packet.args[4] = guest_address(ppInputLayout);
+    struct proxy_output wire_ppInputLayout;
+    if (!proxy_output_init(&wire_ppInputLayout,ppInputLayout,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[4] = guest_address(wire_ppInputLayout.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppInputLayout,ppInputLayout,safe_array_count(1),SD_COM_IF_ID3D11InputLayout)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppInputLayout,ppInputLayout);
+    proxy_output_dispose(&wire_ppInputLayout,SD_COM_IF_ID3D11InputLayout);
     if (status < 0) { return (HRESULT)status; }
-    if (ppInputLayout) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppInputLayout; ++i) { uint32_t token=((uint32_t*)ppInputLayout)[i]; ppInputLayout[i] = (ID3D11InputLayout*)proxy_wrap(token, SD_COM_IF_ID3D11InputLayout); if(token && !ppInputLayout[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateVertexShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11VertexShader ** ppVertexShader) {
@@ -853,11 +852,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateVertexShader(ID3D11Device 
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppVertexShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppVertexShader);
+    struct proxy_output wire_ppVertexShader;
+    if (!proxy_output_init(&wire_ppVertexShader,ppVertexShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppVertexShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppVertexShader,ppVertexShader,safe_array_count(1),SD_COM_IF_ID3D11VertexShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppVertexShader,ppVertexShader);
+    proxy_output_dispose(&wire_ppVertexShader,SD_COM_IF_ID3D11VertexShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppVertexShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppVertexShader; ++i) { uint32_t token=((uint32_t*)ppVertexShader)[i]; ppVertexShader[i] = (ID3D11VertexShader*)proxy_wrap(token, SD_COM_IF_ID3D11VertexShader); if(token && !ppVertexShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateGeometryShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11GeometryShader ** ppGeometryShader) {
@@ -865,11 +867,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateGeometryShader(ID3D11Devic
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppGeometryShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppGeometryShader);
+    struct proxy_output wire_ppGeometryShader;
+    if (!proxy_output_init(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppGeometryShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1),SD_COM_IF_ID3D11GeometryShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppGeometryShader,ppGeometryShader);
+    proxy_output_dispose(&wire_ppGeometryShader,SD_COM_IF_ID3D11GeometryShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppGeometryShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppGeometryShader; ++i) { uint32_t token=((uint32_t*)ppGeometryShader)[i]; ppGeometryShader[i] = (ID3D11GeometryShader*)proxy_wrap(token, SD_COM_IF_ID3D11GeometryShader); if(token && !ppGeometryShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateGeometryShaderWithStreamOutput(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, const D3D11_SO_DECLARATION_ENTRY * pSODeclaration, UINT NumEntries, const UINT * pBufferStrides, UINT NumStrides, UINT RasterizedStream, ID3D11ClassLinkage * pClassLinkage, ID3D11GeometryShader ** ppGeometryShader) {
@@ -882,11 +887,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateGeometryShaderWithStreamOu
     packet.args[5] = (uint32_t)NumStrides;
     packet.args[6] = (uint32_t)RasterizedStream;
     packet.args[7] = proxy_token(pClassLinkage);
-    UINT cap_ppGeometryShader = safe_array_count(1);
-    packet.args[8] = guest_address(ppGeometryShader);
+    struct proxy_output wire_ppGeometryShader;
+    if (!proxy_output_init(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[8] = guest_address(wire_ppGeometryShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1),SD_COM_IF_ID3D11GeometryShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppGeometryShader,ppGeometryShader);
+    proxy_output_dispose(&wire_ppGeometryShader,SD_COM_IF_ID3D11GeometryShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppGeometryShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppGeometryShader; ++i) { uint32_t token=((uint32_t*)ppGeometryShader)[i]; ppGeometryShader[i] = (ID3D11GeometryShader*)proxy_wrap(token, SD_COM_IF_ID3D11GeometryShader); if(token && !ppGeometryShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreatePixelShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11PixelShader ** ppPixelShader) {
@@ -894,11 +902,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreatePixelShader(ID3D11Device *
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppPixelShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppPixelShader);
+    struct proxy_output wire_ppPixelShader;
+    if (!proxy_output_init(&wire_ppPixelShader,ppPixelShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppPixelShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppPixelShader,ppPixelShader,safe_array_count(1),SD_COM_IF_ID3D11PixelShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppPixelShader,ppPixelShader);
+    proxy_output_dispose(&wire_ppPixelShader,SD_COM_IF_ID3D11PixelShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppPixelShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppPixelShader; ++i) { uint32_t token=((uint32_t*)ppPixelShader)[i]; ppPixelShader[i] = (ID3D11PixelShader*)proxy_wrap(token, SD_COM_IF_ID3D11PixelShader); if(token && !ppPixelShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateHullShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11HullShader ** ppHullShader) {
@@ -906,11 +917,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateHullShader(ID3D11Device *T
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppHullShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppHullShader);
+    struct proxy_output wire_ppHullShader;
+    if (!proxy_output_init(&wire_ppHullShader,ppHullShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppHullShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppHullShader,ppHullShader,safe_array_count(1),SD_COM_IF_ID3D11HullShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppHullShader,ppHullShader);
+    proxy_output_dispose(&wire_ppHullShader,SD_COM_IF_ID3D11HullShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppHullShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppHullShader; ++i) { uint32_t token=((uint32_t*)ppHullShader)[i]; ppHullShader[i] = (ID3D11HullShader*)proxy_wrap(token, SD_COM_IF_ID3D11HullShader); if(token && !ppHullShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateDomainShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11DomainShader ** ppDomainShader) {
@@ -918,11 +932,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateDomainShader(ID3D11Device 
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppDomainShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppDomainShader);
+    struct proxy_output wire_ppDomainShader;
+    if (!proxy_output_init(&wire_ppDomainShader,ppDomainShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppDomainShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppDomainShader,ppDomainShader,safe_array_count(1),SD_COM_IF_ID3D11DomainShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppDomainShader,ppDomainShader);
+    proxy_output_dispose(&wire_ppDomainShader,SD_COM_IF_ID3D11DomainShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppDomainShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDomainShader; ++i) { uint32_t token=((uint32_t*)ppDomainShader)[i]; ppDomainShader[i] = (ID3D11DomainShader*)proxy_wrap(token, SD_COM_IF_ID3D11DomainShader); if(token && !ppDomainShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateComputeShader(ID3D11Device *This, const void * pShaderBytecode, SIZE_T BytecodeLength, ID3D11ClassLinkage * pClassLinkage, ID3D11ComputeShader ** ppComputeShader) {
@@ -930,108 +947,143 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateComputeShader(ID3D11Device
     packet.args[0] = guest_address(pShaderBytecode);
     packet.args[1] = (uint32_t)BytecodeLength;
     packet.args[2] = proxy_token(pClassLinkage);
-    UINT cap_ppComputeShader = safe_array_count(1);
-    packet.args[3] = guest_address(ppComputeShader);
+    struct proxy_output wire_ppComputeShader;
+    if (!proxy_output_init(&wire_ppComputeShader,ppComputeShader,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[3] = guest_address(wire_ppComputeShader.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppComputeShader,ppComputeShader,safe_array_count(1),SD_COM_IF_ID3D11ComputeShader)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppComputeShader,ppComputeShader);
+    proxy_output_dispose(&wire_ppComputeShader,SD_COM_IF_ID3D11ComputeShader);
     if (status < 0) { return (HRESULT)status; }
-    if (ppComputeShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppComputeShader; ++i) { uint32_t token=((uint32_t*)ppComputeShader)[i]; ppComputeShader[i] = (ID3D11ComputeShader*)proxy_wrap(token, SD_COM_IF_ID3D11ComputeShader); if(token && !ppComputeShader[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateClassLinkage(ID3D11Device *This, ID3D11ClassLinkage ** ppLinkage) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 19};
-    UINT cap_ppLinkage = safe_array_count(1);
-    packet.args[0] = guest_address(ppLinkage);
+    struct proxy_output wire_ppLinkage;
+    if (!proxy_output_init(&wire_ppLinkage,ppLinkage,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[0] = guest_address(wire_ppLinkage.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppLinkage,ppLinkage,safe_array_count(1),SD_COM_IF_ID3D11ClassLinkage)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppLinkage,ppLinkage);
+    proxy_output_dispose(&wire_ppLinkage,SD_COM_IF_ID3D11ClassLinkage);
     if (status < 0) { return (HRESULT)status; }
-    if (ppLinkage) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppLinkage; ++i) { uint32_t token=((uint32_t*)ppLinkage)[i]; ppLinkage[i] = (ID3D11ClassLinkage*)proxy_wrap(token, SD_COM_IF_ID3D11ClassLinkage); if(token && !ppLinkage[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateBlendState(ID3D11Device *This, const D3D11_BLEND_DESC * pBlendStateDesc, ID3D11BlendState ** ppBlendState) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 20};
     packet.args[0] = guest_address(pBlendStateDesc);
-    UINT cap_ppBlendState = safe_array_count(1);
-    packet.args[1] = guest_address(ppBlendState);
+    struct proxy_output wire_ppBlendState;
+    if (!proxy_output_init(&wire_ppBlendState,ppBlendState,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppBlendState.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppBlendState,ppBlendState,safe_array_count(1),SD_COM_IF_ID3D11BlendState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppBlendState,ppBlendState);
+    proxy_output_dispose(&wire_ppBlendState,SD_COM_IF_ID3D11BlendState);
     if (status < 0) { return (HRESULT)status; }
-    if (ppBlendState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppBlendState; ++i) { uint32_t token=((uint32_t*)ppBlendState)[i]; ppBlendState[i] = (ID3D11BlendState*)proxy_wrap(token, SD_COM_IF_ID3D11BlendState); if(token && !ppBlendState[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateDepthStencilState(ID3D11Device *This, const D3D11_DEPTH_STENCIL_DESC * pDepthStencilDesc, ID3D11DepthStencilState ** ppDepthStencilState) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 21};
     packet.args[0] = guest_address(pDepthStencilDesc);
-    UINT cap_ppDepthStencilState = safe_array_count(1);
-    packet.args[1] = guest_address(ppDepthStencilState);
+    struct proxy_output wire_ppDepthStencilState;
+    if (!proxy_output_init(&wire_ppDepthStencilState,ppDepthStencilState,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppDepthStencilState.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppDepthStencilState,ppDepthStencilState,safe_array_count(1),SD_COM_IF_ID3D11DepthStencilState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppDepthStencilState,ppDepthStencilState);
+    proxy_output_dispose(&wire_ppDepthStencilState,SD_COM_IF_ID3D11DepthStencilState);
     if (status < 0) { return (HRESULT)status; }
-    if (ppDepthStencilState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDepthStencilState; ++i) { uint32_t token=((uint32_t*)ppDepthStencilState)[i]; ppDepthStencilState[i] = (ID3D11DepthStencilState*)proxy_wrap(token, SD_COM_IF_ID3D11DepthStencilState); if(token && !ppDepthStencilState[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateRasterizerState(ID3D11Device *This, const D3D11_RASTERIZER_DESC * pRasterizerDesc, ID3D11RasterizerState ** ppRasterizerState) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 22};
     packet.args[0] = guest_address(pRasterizerDesc);
-    UINT cap_ppRasterizerState = safe_array_count(1);
-    packet.args[1] = guest_address(ppRasterizerState);
+    struct proxy_output wire_ppRasterizerState;
+    if (!proxy_output_init(&wire_ppRasterizerState,ppRasterizerState,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppRasterizerState.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppRasterizerState,ppRasterizerState,safe_array_count(1),SD_COM_IF_ID3D11RasterizerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppRasterizerState,ppRasterizerState);
+    proxy_output_dispose(&wire_ppRasterizerState,SD_COM_IF_ID3D11RasterizerState);
     if (status < 0) { return (HRESULT)status; }
-    if (ppRasterizerState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppRasterizerState; ++i) { uint32_t token=((uint32_t*)ppRasterizerState)[i]; ppRasterizerState[i] = (ID3D11RasterizerState*)proxy_wrap(token, SD_COM_IF_ID3D11RasterizerState); if(token && !ppRasterizerState[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateSamplerState(ID3D11Device *This, const D3D11_SAMPLER_DESC * pSamplerDesc, ID3D11SamplerState ** ppSamplerState) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 23};
     packet.args[0] = guest_address(pSamplerDesc);
-    UINT cap_ppSamplerState = safe_array_count(1);
-    packet.args[1] = guest_address(ppSamplerState);
+    struct proxy_output wire_ppSamplerState;
+    if (!proxy_output_init(&wire_ppSamplerState,ppSamplerState,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppSamplerState.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppSamplerState,ppSamplerState,safe_array_count(1),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppSamplerState,ppSamplerState);
+    proxy_output_dispose(&wire_ppSamplerState,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { return (HRESULT)status; }
-    if (ppSamplerState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppSamplerState; ++i) { uint32_t token=((uint32_t*)ppSamplerState)[i]; ppSamplerState[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplerState[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateQuery(ID3D11Device *This, const D3D11_QUERY_DESC * pQueryDesc, ID3D11Query ** ppQuery) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 24};
     packet.args[0] = guest_address(pQueryDesc);
-    UINT cap_ppQuery = safe_array_count(1);
-    packet.args[1] = guest_address(ppQuery);
+    struct proxy_output wire_ppQuery;
+    if (!proxy_output_init(&wire_ppQuery,ppQuery,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppQuery.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppQuery,ppQuery,safe_array_count(1),SD_COM_IF_ID3D11Query)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppQuery,ppQuery);
+    proxy_output_dispose(&wire_ppQuery,SD_COM_IF_ID3D11Query);
     if (status < 0) { return (HRESULT)status; }
-    if (ppQuery) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppQuery; ++i) { uint32_t token=((uint32_t*)ppQuery)[i]; ppQuery[i] = (ID3D11Query*)proxy_wrap(token, SD_COM_IF_ID3D11Query); if(token && !ppQuery[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreatePredicate(ID3D11Device *This, const D3D11_QUERY_DESC * pPredicateDesc, ID3D11Predicate ** ppPredicate) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 25};
     packet.args[0] = guest_address(pPredicateDesc);
-    UINT cap_ppPredicate = safe_array_count(1);
-    packet.args[1] = guest_address(ppPredicate);
+    struct proxy_output wire_ppPredicate;
+    if (!proxy_output_init(&wire_ppPredicate,ppPredicate,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppPredicate.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppPredicate,ppPredicate,safe_array_count(1),SD_COM_IF_ID3D11Predicate)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppPredicate,ppPredicate);
+    proxy_output_dispose(&wire_ppPredicate,SD_COM_IF_ID3D11Predicate);
     if (status < 0) { return (HRESULT)status; }
-    if (ppPredicate) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppPredicate; ++i) { uint32_t token=((uint32_t*)ppPredicate)[i]; ppPredicate[i] = (ID3D11Predicate*)proxy_wrap(token, SD_COM_IF_ID3D11Predicate); if(token && !ppPredicate[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateCounter(ID3D11Device *This, const D3D11_COUNTER_DESC * pCounterDesc, ID3D11Counter ** ppCounter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 26};
     packet.args[0] = guest_address(pCounterDesc);
-    UINT cap_ppCounter = safe_array_count(1);
-    packet.args[1] = guest_address(ppCounter);
+    struct proxy_output wire_ppCounter;
+    if (!proxy_output_init(&wire_ppCounter,ppCounter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppCounter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppCounter,ppCounter,safe_array_count(1),SD_COM_IF_ID3D11Counter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppCounter,ppCounter);
+    proxy_output_dispose(&wire_ppCounter,SD_COM_IF_ID3D11Counter);
     if (status < 0) { return (HRESULT)status; }
-    if (ppCounter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppCounter; ++i) { uint32_t token=((uint32_t*)ppCounter)[i]; ppCounter[i] = (ID3D11Counter*)proxy_wrap(token, SD_COM_IF_ID3D11Counter); if(token && !ppCounter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CreateDeferredContext(ID3D11Device *This, UINT ContextFlags, ID3D11DeviceContext ** ppDeferredContext) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 27};
     packet.args[0] = (uint32_t)ContextFlags;
-    UINT cap_ppDeferredContext = safe_array_count(1);
-    packet.args[1] = guest_address(ppDeferredContext);
+    struct proxy_output wire_ppDeferredContext;
+    if (!proxy_output_init(&wire_ppDeferredContext,ppDeferredContext,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppDeferredContext.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppDeferredContext,ppDeferredContext,safe_array_count(1),SD_COM_IF_ID3D11DeviceContext)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppDeferredContext,ppDeferredContext);
+    proxy_output_dispose(&wire_ppDeferredContext,SD_COM_IF_ID3D11DeviceContext);
     if (status < 0) { return (HRESULT)status; }
-    if (ppDeferredContext) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDeferredContext; ++i) { uint32_t token=((uint32_t*)ppDeferredContext)[i]; ppDeferredContext[i] = (ID3D11DeviceContext*)proxy_wrap(token, SD_COM_IF_ID3D11DeviceContext); if(token && !ppDeferredContext[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_OpenSharedResource(ID3D11Device *This, HANDLE hResource, REFIID ReturnedInterface, void ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 28};
     packet.args[0] = guest_address(hResource);
     packet.args[1] = guest_address(ReturnedInterface);
-    packet.args[2] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),proxy_iid(ReturnedInterface))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,proxy_iid(ReturnedInterface));
     if (status < 0) { return (HRESULT)status; }
     return (HRESULT)packet.ret;
 }
@@ -1084,14 +1136,7 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_CheckFeatureSupport(ID3D11Device
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_GetPrivateData(ID3D11Device *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 34};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 34, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_SetPrivateData(ID3D11Device *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 35};
@@ -1130,11 +1175,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11Device_GetDeviceRemovedReason(ID3D11Dev
 }
 static void STDMETHODCALLTYPE g_ID3D11Device_GetImmediateContext(ID3D11Device *This, ID3D11DeviceContext ** ppImmediateContext) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Device, 40};
-    UINT cap_ppImmediateContext = safe_array_count(1);
-    packet.args[0] = guest_address(ppImmediateContext);
+    struct proxy_output wire_ppImmediateContext;
+    if (!proxy_output_init(&wire_ppImmediateContext,ppImmediateContext,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppImmediateContext.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppImmediateContext,ppImmediateContext,safe_array_count(1),SD_COM_IF_ID3D11DeviceContext)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppImmediateContext,ppImmediateContext);
+    proxy_output_dispose(&wire_ppImmediateContext,SD_COM_IF_ID3D11DeviceContext);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppImmediateContext) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppImmediateContext; ++i) { uint32_t token=((uint32_t*)ppImmediateContext)[i]; ppImmediateContext[i] = (ID3D11DeviceContext*)proxy_wrap(token, SD_COM_IF_ID3D11DeviceContext); if(token && !ppImmediateContext[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Device_SetExceptionMode(ID3D11Device *This, UINT RaiseFlags) {
@@ -1206,22 +1254,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11DeviceChild_Release(ID3D11DeviceChild *Th
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceChild_GetDevice(ID3D11DeviceChild *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceChild, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DeviceChild_GetPrivateData(ID3D11DeviceChild *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceChild, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DeviceChild_SetPrivateData(ID3D11DeviceChild *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceChild, 5};
@@ -1260,22 +1304,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11DeviceContext_Release(ID3D11DeviceContext
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GetDevice(ID3D11DeviceContext *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DeviceContext_GetPrivateData(ID3D11DeviceContext *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DeviceContext_SetPrivateData(ID3D11DeviceContext *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 5};
@@ -2042,127 +2082,169 @@ static void STDMETHODCALLTYPE g_ID3D11DeviceContext_VSGetConstantBuffers(ID3D11D
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 72};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_PSGetShaderResources(ID3D11DeviceContext *This, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView ** ppShaderResourceViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 73};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_PSGetShader(ID3D11DeviceContext *This, ID3D11PixelShader ** ppPixelShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 74};
-    UINT cap_ppPixelShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppPixelShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppPixelShader;
+    if (!proxy_output_init(&wire_ppPixelShader,ppPixelShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppPixelShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppPixelShader,SD_COM_IF_ID3D11PixelShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppPixelShader,ppPixelShader,safe_array_count(1),SD_COM_IF_ID3D11PixelShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppPixelShader,ppPixelShader);
+    proxy_output_dispose(&wire_ppPixelShader,SD_COM_IF_ID3D11PixelShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppPixelShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppPixelShader; ++i) { uint32_t token=((uint32_t*)ppPixelShader)[i]; ppPixelShader[i] = (ID3D11PixelShader*)proxy_wrap(token, SD_COM_IF_ID3D11PixelShader); if(token && !ppPixelShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_PSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 75};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_VSGetShader(ID3D11DeviceContext *This, ID3D11VertexShader ** ppVertexShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 76};
-    UINT cap_ppVertexShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppVertexShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppVertexShader;
+    if (!proxy_output_init(&wire_ppVertexShader,ppVertexShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppVertexShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppVertexShader,SD_COM_IF_ID3D11VertexShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppVertexShader,ppVertexShader,safe_array_count(1),SD_COM_IF_ID3D11VertexShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppVertexShader,ppVertexShader);
+    proxy_output_dispose(&wire_ppVertexShader,SD_COM_IF_ID3D11VertexShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppVertexShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppVertexShader; ++i) { uint32_t token=((uint32_t*)ppVertexShader)[i]; ppVertexShader[i] = (ID3D11VertexShader*)proxy_wrap(token, SD_COM_IF_ID3D11VertexShader); if(token && !ppVertexShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_PSGetConstantBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppConstantBuffers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 77};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_IAGetInputLayout(ID3D11DeviceContext *This, ID3D11InputLayout ** ppInputLayout) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 78};
-    UINT cap_ppInputLayout = safe_array_count(1);
-    packet.args[0] = guest_address(ppInputLayout);
+    struct proxy_output wire_ppInputLayout;
+    if (!proxy_output_init(&wire_ppInputLayout,ppInputLayout,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppInputLayout.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppInputLayout,ppInputLayout,safe_array_count(1),SD_COM_IF_ID3D11InputLayout)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppInputLayout,ppInputLayout);
+    proxy_output_dispose(&wire_ppInputLayout,SD_COM_IF_ID3D11InputLayout);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppInputLayout) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppInputLayout; ++i) { uint32_t token=((uint32_t*)ppInputLayout)[i]; ppInputLayout[i] = (ID3D11InputLayout*)proxy_wrap(token, SD_COM_IF_ID3D11InputLayout); if(token && !ppInputLayout[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_IAGetVertexBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppVertexBuffers, UINT * pStrides, UINT * pOffsets) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 79};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppVertexBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppVertexBuffers);
+    struct proxy_output wire_ppVertexBuffers;
+    if (!proxy_output_init(&wire_ppVertexBuffers,ppVertexBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppVertexBuffers.tokens);
     packet.args[3] = guest_address(pStrides);
     packet.args[4] = guest_address(pOffsets);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppVertexBuffers,ppVertexBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppVertexBuffers,ppVertexBuffers);
+    proxy_output_dispose(&wire_ppVertexBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppVertexBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppVertexBuffers; ++i) { uint32_t token=((uint32_t*)ppVertexBuffers)[i]; ppVertexBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppVertexBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_IAGetIndexBuffer(ID3D11DeviceContext *This, ID3D11Buffer ** pIndexBuffer, DXGI_FORMAT * Format, UINT * Offset) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 80};
-    UINT cap_pIndexBuffer = safe_array_count(1);
-    packet.args[0] = guest_address(pIndexBuffer);
+    struct proxy_output wire_pIndexBuffer;
+    if (!proxy_output_init(&wire_pIndexBuffer,pIndexBuffer,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_pIndexBuffer.tokens);
     packet.args[1] = guest_address(Format);
     packet.args[2] = guest_address(Offset);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_pIndexBuffer,pIndexBuffer,safe_array_count(1),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_pIndexBuffer,pIndexBuffer);
+    proxy_output_dispose(&wire_pIndexBuffer,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (pIndexBuffer) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_pIndexBuffer; ++i) { uint32_t token=((uint32_t*)pIndexBuffer)[i]; pIndexBuffer[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !pIndexBuffer[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GSGetConstantBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppConstantBuffers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 81};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GSGetShader(ID3D11DeviceContext *This, ID3D11GeometryShader ** ppGeometryShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 82};
-    UINT cap_ppGeometryShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppGeometryShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppGeometryShader;
+    if (!proxy_output_init(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppGeometryShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppGeometryShader,SD_COM_IF_ID3D11GeometryShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppGeometryShader,ppGeometryShader,safe_array_count(1),SD_COM_IF_ID3D11GeometryShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppGeometryShader,ppGeometryShader);
+    proxy_output_dispose(&wire_ppGeometryShader,SD_COM_IF_ID3D11GeometryShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppGeometryShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppGeometryShader; ++i) { uint32_t token=((uint32_t*)ppGeometryShader)[i]; ppGeometryShader[i] = (ID3D11GeometryShader*)proxy_wrap(token, SD_COM_IF_ID3D11GeometryShader); if(token && !ppGeometryShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_IAGetPrimitiveTopology(ID3D11DeviceContext *This, D3D11_PRIMITIVE_TOPOLOGY * pTopology) {
@@ -2176,125 +2258,167 @@ static void STDMETHODCALLTYPE g_ID3D11DeviceContext_VSGetShaderResources(ID3D11D
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 84};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_VSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 85};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GetPredication(ID3D11DeviceContext *This, ID3D11Predicate ** ppPredicate, WINBOOL * pPredicateValue) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 86};
-    UINT cap_ppPredicate = safe_array_count(1);
-    packet.args[0] = guest_address(ppPredicate);
+    struct proxy_output wire_ppPredicate;
+    if (!proxy_output_init(&wire_ppPredicate,ppPredicate,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppPredicate.tokens);
     packet.args[1] = guest_address(pPredicateValue);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppPredicate,ppPredicate,safe_array_count(1),SD_COM_IF_ID3D11Predicate)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppPredicate,ppPredicate);
+    proxy_output_dispose(&wire_ppPredicate,SD_COM_IF_ID3D11Predicate);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppPredicate) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppPredicate; ++i) { uint32_t token=((uint32_t*)ppPredicate)[i]; ppPredicate[i] = (ID3D11Predicate*)proxy_wrap(token, SD_COM_IF_ID3D11Predicate); if(token && !ppPredicate[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GSGetShaderResources(ID3D11DeviceContext *This, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView ** ppShaderResourceViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 87};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_GSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 88};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_OMGetRenderTargets(ID3D11DeviceContext *This, UINT NumViews, ID3D11RenderTargetView ** ppRenderTargetViews, ID3D11DepthStencilView ** ppDepthStencilView) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 89};
     packet.args[0] = (uint32_t)NumViews;
-    UINT cap_ppRenderTargetViews = safe_array_count(NumViews);
-    packet.args[1] = guest_address(ppRenderTargetViews);
-    UINT cap_ppDepthStencilView = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppDepthStencilView);
+    struct proxy_output wire_ppRenderTargetViews;
+    if (!proxy_output_init(&wire_ppRenderTargetViews,ppRenderTargetViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppRenderTargetViews.tokens);
+    struct proxy_output wire_ppDepthStencilView;
+    if (!proxy_output_init(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1))) { proxy_output_dispose(&wire_ppRenderTargetViews,SD_COM_IF_ID3D11RenderTargetView); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppDepthStencilView.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppRenderTargetViews,ppRenderTargetViews,safe_array_count(NumViews),SD_COM_IF_ID3D11RenderTargetView)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1),SD_COM_IF_ID3D11DepthStencilView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppRenderTargetViews,ppRenderTargetViews);
+    proxy_output_dispose(&wire_ppRenderTargetViews,SD_COM_IF_ID3D11RenderTargetView);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDepthStencilView,ppDepthStencilView);
+    proxy_output_dispose(&wire_ppDepthStencilView,SD_COM_IF_ID3D11DepthStencilView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppRenderTargetViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppRenderTargetViews; ++i) { uint32_t token=((uint32_t*)ppRenderTargetViews)[i]; ppRenderTargetViews[i] = (ID3D11RenderTargetView*)proxy_wrap(token, SD_COM_IF_ID3D11RenderTargetView); if(token && !ppRenderTargetViews[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppDepthStencilView) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppDepthStencilView; ++i) { uint32_t token=((uint32_t*)ppDepthStencilView)[i]; ppDepthStencilView[i] = (ID3D11DepthStencilView*)proxy_wrap(token, SD_COM_IF_ID3D11DepthStencilView); if(token && !ppDepthStencilView[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_OMGetRenderTargetsAndUnorderedAccessViews(ID3D11DeviceContext *This, UINT NumRTVs, ID3D11RenderTargetView ** ppRenderTargetViews, ID3D11DepthStencilView ** ppDepthStencilView, UINT UAVStartSlot, UINT NumUAVs, ID3D11UnorderedAccessView ** ppUnorderedAccessViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 90};
     packet.args[0] = (uint32_t)NumRTVs;
-    UINT cap_ppRenderTargetViews = safe_array_count(NumRTVs);
-    packet.args[1] = guest_address(ppRenderTargetViews);
-    UINT cap_ppDepthStencilView = safe_array_count(1);
-    packet.args[2] = guest_address(ppDepthStencilView);
+    struct proxy_output wire_ppRenderTargetViews;
+    if (!proxy_output_init(&wire_ppRenderTargetViews,ppRenderTargetViews,safe_array_count(NumRTVs))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppRenderTargetViews.tokens);
+    struct proxy_output wire_ppDepthStencilView;
+    if (!proxy_output_init(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1))) { proxy_output_dispose(&wire_ppRenderTargetViews,SD_COM_IF_ID3D11RenderTargetView); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppDepthStencilView.tokens);
     packet.args[3] = (uint32_t)UAVStartSlot;
     packet.args[4] = (uint32_t)NumUAVs;
-    UINT cap_ppUnorderedAccessViews = safe_array_count(NumUAVs);
-    packet.args[5] = guest_address(ppUnorderedAccessViews);
+    struct proxy_output wire_ppUnorderedAccessViews;
+    if (!proxy_output_init(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews,safe_array_count(NumUAVs))) { proxy_output_dispose(&wire_ppRenderTargetViews,SD_COM_IF_ID3D11RenderTargetView); proxy_output_dispose(&wire_ppDepthStencilView,SD_COM_IF_ID3D11DepthStencilView); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[5] = guest_address(wire_ppUnorderedAccessViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppRenderTargetViews,ppRenderTargetViews,safe_array_count(NumRTVs),SD_COM_IF_ID3D11RenderTargetView)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppDepthStencilView,ppDepthStencilView,safe_array_count(1),SD_COM_IF_ID3D11DepthStencilView)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews,safe_array_count(NumUAVs),SD_COM_IF_ID3D11UnorderedAccessView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppRenderTargetViews,ppRenderTargetViews);
+    proxy_output_dispose(&wire_ppRenderTargetViews,SD_COM_IF_ID3D11RenderTargetView);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDepthStencilView,ppDepthStencilView);
+    proxy_output_dispose(&wire_ppDepthStencilView,SD_COM_IF_ID3D11DepthStencilView);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews);
+    proxy_output_dispose(&wire_ppUnorderedAccessViews,SD_COM_IF_ID3D11UnorderedAccessView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppRenderTargetViews) for (UINT i=0, n=safe_array_count(NumRTVs); i<n && i<cap_ppRenderTargetViews; ++i) { uint32_t token=((uint32_t*)ppRenderTargetViews)[i]; ppRenderTargetViews[i] = (ID3D11RenderTargetView*)proxy_wrap(token, SD_COM_IF_ID3D11RenderTargetView); if(token && !ppRenderTargetViews[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppDepthStencilView) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDepthStencilView; ++i) { uint32_t token=((uint32_t*)ppDepthStencilView)[i]; ppDepthStencilView[i] = (ID3D11DepthStencilView*)proxy_wrap(token, SD_COM_IF_ID3D11DepthStencilView); if(token && !ppDepthStencilView[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppUnorderedAccessViews) for (UINT i=0, n=safe_array_count(NumUAVs); i<n && i<cap_ppUnorderedAccessViews; ++i) { uint32_t token=((uint32_t*)ppUnorderedAccessViews)[i]; ppUnorderedAccessViews[i] = (ID3D11UnorderedAccessView*)proxy_wrap(token, SD_COM_IF_ID3D11UnorderedAccessView); if(token && !ppUnorderedAccessViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_OMGetBlendState(ID3D11DeviceContext *This, ID3D11BlendState ** ppBlendState, FLOAT BlendFactor[4], UINT * pSampleMask) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 91};
-    UINT cap_ppBlendState = safe_array_count(1);
-    packet.args[0] = guest_address(ppBlendState);
+    struct proxy_output wire_ppBlendState;
+    if (!proxy_output_init(&wire_ppBlendState,ppBlendState,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppBlendState.tokens);
     packet.args[1] = guest_address(BlendFactor);
     packet.args[2] = guest_address(pSampleMask);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppBlendState,ppBlendState,safe_array_count(1),SD_COM_IF_ID3D11BlendState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppBlendState,ppBlendState);
+    proxy_output_dispose(&wire_ppBlendState,SD_COM_IF_ID3D11BlendState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppBlendState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppBlendState; ++i) { uint32_t token=((uint32_t*)ppBlendState)[i]; ppBlendState[i] = (ID3D11BlendState*)proxy_wrap(token, SD_COM_IF_ID3D11BlendState); if(token && !ppBlendState[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_OMGetDepthStencilState(ID3D11DeviceContext *This, ID3D11DepthStencilState ** ppDepthStencilState, UINT * pStencilRef) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 92};
-    UINT cap_ppDepthStencilState = safe_array_count(1);
-    packet.args[0] = guest_address(ppDepthStencilState);
+    struct proxy_output wire_ppDepthStencilState;
+    if (!proxy_output_init(&wire_ppDepthStencilState,ppDepthStencilState,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDepthStencilState.tokens);
     packet.args[1] = guest_address(pStencilRef);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDepthStencilState,ppDepthStencilState,safe_array_count(1),SD_COM_IF_ID3D11DepthStencilState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDepthStencilState,ppDepthStencilState);
+    proxy_output_dispose(&wire_ppDepthStencilState,SD_COM_IF_ID3D11DepthStencilState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDepthStencilState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDepthStencilState; ++i) { uint32_t token=((uint32_t*)ppDepthStencilState)[i]; ppDepthStencilState[i] = (ID3D11DepthStencilState*)proxy_wrap(token, SD_COM_IF_ID3D11DepthStencilState); if(token && !ppDepthStencilState[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_SOGetTargets(ID3D11DeviceContext *This, UINT NumBuffers, ID3D11Buffer ** ppSOTargets) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 93};
     packet.args[0] = (uint32_t)NumBuffers;
-    UINT cap_ppSOTargets = safe_array_count(NumBuffers);
-    packet.args[1] = guest_address(ppSOTargets);
+    struct proxy_output wire_ppSOTargets;
+    if (!proxy_output_init(&wire_ppSOTargets,ppSOTargets,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppSOTargets.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSOTargets,ppSOTargets,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSOTargets,ppSOTargets);
+    proxy_output_dispose(&wire_ppSOTargets,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSOTargets) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppSOTargets; ++i) { uint32_t token=((uint32_t*)ppSOTargets)[i]; ppSOTargets[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppSOTargets[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_RSGetState(ID3D11DeviceContext *This, ID3D11RasterizerState ** ppRasterizerState) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 94};
-    UINT cap_ppRasterizerState = safe_array_count(1);
-    packet.args[0] = guest_address(ppRasterizerState);
+    struct proxy_output wire_ppRasterizerState;
+    if (!proxy_output_init(&wire_ppRasterizerState,ppRasterizerState,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppRasterizerState.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppRasterizerState,ppRasterizerState,safe_array_count(1),SD_COM_IF_ID3D11RasterizerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppRasterizerState,ppRasterizerState);
+    proxy_output_dispose(&wire_ppRasterizerState,SD_COM_IF_ID3D11RasterizerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppRasterizerState) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppRasterizerState; ++i) { uint32_t token=((uint32_t*)ppRasterizerState)[i]; ppRasterizerState[i] = (ID3D11RasterizerState*)proxy_wrap(token, SD_COM_IF_ID3D11RasterizerState); if(token && !ppRasterizerState[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_RSGetViewports(ID3D11DeviceContext *This, UINT * pNumViewports, D3D11_VIEWPORT * pViewports) {
@@ -2317,149 +2441,197 @@ static void STDMETHODCALLTYPE g_ID3D11DeviceContext_HSGetShaderResources(ID3D11D
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 97};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_HSGetShader(ID3D11DeviceContext *This, ID3D11HullShader ** ppHullShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 98};
-    UINT cap_ppHullShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppHullShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppHullShader;
+    if (!proxy_output_init(&wire_ppHullShader,ppHullShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppHullShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppHullShader,SD_COM_IF_ID3D11HullShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppHullShader,ppHullShader,safe_array_count(1),SD_COM_IF_ID3D11HullShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppHullShader,ppHullShader);
+    proxy_output_dispose(&wire_ppHullShader,SD_COM_IF_ID3D11HullShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppHullShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppHullShader; ++i) { uint32_t token=((uint32_t*)ppHullShader)[i]; ppHullShader[i] = (ID3D11HullShader*)proxy_wrap(token, SD_COM_IF_ID3D11HullShader); if(token && !ppHullShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_HSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 99};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_HSGetConstantBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppConstantBuffers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 100};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_DSGetShaderResources(ID3D11DeviceContext *This, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView ** ppShaderResourceViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 101};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_DSGetShader(ID3D11DeviceContext *This, ID3D11DomainShader ** ppDomainShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 102};
-    UINT cap_ppDomainShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppDomainShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppDomainShader;
+    if (!proxy_output_init(&wire_ppDomainShader,ppDomainShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDomainShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppDomainShader,SD_COM_IF_ID3D11DomainShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDomainShader,ppDomainShader,safe_array_count(1),SD_COM_IF_ID3D11DomainShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDomainShader,ppDomainShader);
+    proxy_output_dispose(&wire_ppDomainShader,SD_COM_IF_ID3D11DomainShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDomainShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDomainShader; ++i) { uint32_t token=((uint32_t*)ppDomainShader)[i]; ppDomainShader[i] = (ID3D11DomainShader*)proxy_wrap(token, SD_COM_IF_ID3D11DomainShader); if(token && !ppDomainShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_DSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 103};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_DSGetConstantBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppConstantBuffers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 104};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_CSGetShaderResources(ID3D11DeviceContext *This, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView ** ppShaderResourceViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 105};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumViews;
-    UINT cap_ppShaderResourceViews = safe_array_count(NumViews);
-    packet.args[2] = guest_address(ppShaderResourceViews);
+    struct proxy_output wire_ppShaderResourceViews;
+    if (!proxy_output_init(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppShaderResourceViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppShaderResourceViews,ppShaderResourceViews,safe_array_count(NumViews),SD_COM_IF_ID3D11ShaderResourceView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppShaderResourceViews,ppShaderResourceViews);
+    proxy_output_dispose(&wire_ppShaderResourceViews,SD_COM_IF_ID3D11ShaderResourceView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppShaderResourceViews) for (UINT i=0, n=safe_array_count(NumViews); i<n && i<cap_ppShaderResourceViews; ++i) { uint32_t token=((uint32_t*)ppShaderResourceViews)[i]; ppShaderResourceViews[i] = (ID3D11ShaderResourceView*)proxy_wrap(token, SD_COM_IF_ID3D11ShaderResourceView); if(token && !ppShaderResourceViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_CSGetUnorderedAccessViews(ID3D11DeviceContext *This, UINT StartSlot, UINT NumUAVs, ID3D11UnorderedAccessView ** ppUnorderedAccessViews) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 106};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumUAVs;
-    UINT cap_ppUnorderedAccessViews = safe_array_count(NumUAVs);
-    packet.args[2] = guest_address(ppUnorderedAccessViews);
+    struct proxy_output wire_ppUnorderedAccessViews;
+    if (!proxy_output_init(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews,safe_array_count(NumUAVs))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppUnorderedAccessViews.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews,safe_array_count(NumUAVs),SD_COM_IF_ID3D11UnorderedAccessView)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppUnorderedAccessViews,ppUnorderedAccessViews);
+    proxy_output_dispose(&wire_ppUnorderedAccessViews,SD_COM_IF_ID3D11UnorderedAccessView);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppUnorderedAccessViews) for (UINT i=0, n=safe_array_count(NumUAVs); i<n && i<cap_ppUnorderedAccessViews; ++i) { uint32_t token=((uint32_t*)ppUnorderedAccessViews)[i]; ppUnorderedAccessViews[i] = (ID3D11UnorderedAccessView*)proxy_wrap(token, SD_COM_IF_ID3D11UnorderedAccessView); if(token && !ppUnorderedAccessViews[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_CSGetShader(ID3D11DeviceContext *This, ID3D11ComputeShader ** ppComputeShader, ID3D11ClassInstance ** ppClassInstances, UINT * pNumClassInstances) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 107};
-    UINT cap_ppComputeShader = safe_array_count(1);
-    packet.args[0] = guest_address(ppComputeShader);
-    UINT cap_ppClassInstances = safe_array_count((pNumClassInstances ? *pNumClassInstances : 0));
-    packet.args[1] = guest_address(ppClassInstances);
+    struct proxy_output wire_ppComputeShader;
+    if (!proxy_output_init(&wire_ppComputeShader,ppComputeShader,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppComputeShader.tokens);
+    struct proxy_output wire_ppClassInstances;
+    if (!proxy_output_init(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)))) { proxy_output_dispose(&wire_ppComputeShader,SD_COM_IF_ID3D11ComputeShader); proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[1] = guest_address(wire_ppClassInstances.tokens);
     packet.args[2] = guest_address(pNumClassInstances);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppComputeShader,ppComputeShader,safe_array_count(1),SD_COM_IF_ID3D11ComputeShader)) status=E_OUTOFMEMORY;
+    if (status >= 0 && !proxy_output_publish(&wire_ppClassInstances,ppClassInstances,safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)),SD_COM_IF_ID3D11ClassInstance)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppComputeShader,ppComputeShader);
+    proxy_output_dispose(&wire_ppComputeShader,SD_COM_IF_ID3D11ComputeShader);
+    if (!(status >= 0)) proxy_output_retract(&wire_ppClassInstances,ppClassInstances);
+    proxy_output_dispose(&wire_ppClassInstances,SD_COM_IF_ID3D11ClassInstance);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppComputeShader) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppComputeShader; ++i) { uint32_t token=((uint32_t*)ppComputeShader)[i]; ppComputeShader[i] = (ID3D11ComputeShader*)proxy_wrap(token, SD_COM_IF_ID3D11ComputeShader); if(token && !ppComputeShader[i])proxy_fatal(E_OUTOFMEMORY); }
-    if (ppClassInstances) for (UINT i=0, n=safe_array_count((pNumClassInstances ? *pNumClassInstances : 0)); i<n && i<cap_ppClassInstances; ++i) { uint32_t token=((uint32_t*)ppClassInstances)[i]; ppClassInstances[i] = (ID3D11ClassInstance*)proxy_wrap(token, SD_COM_IF_ID3D11ClassInstance); if(token && !ppClassInstances[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_CSGetSamplers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState ** ppSamplers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 108};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumSamplers;
-    UINT cap_ppSamplers = safe_array_count(NumSamplers);
-    packet.args[2] = guest_address(ppSamplers);
+    struct proxy_output wire_ppSamplers;
+    if (!proxy_output_init(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppSamplers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppSamplers,ppSamplers,safe_array_count(NumSamplers),SD_COM_IF_ID3D11SamplerState)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppSamplers,ppSamplers);
+    proxy_output_dispose(&wire_ppSamplers,SD_COM_IF_ID3D11SamplerState);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppSamplers) for (UINT i=0, n=safe_array_count(NumSamplers); i<n && i<cap_ppSamplers; ++i) { uint32_t token=((uint32_t*)ppSamplers)[i]; ppSamplers[i] = (ID3D11SamplerState*)proxy_wrap(token, SD_COM_IF_ID3D11SamplerState); if(token && !ppSamplers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_CSGetConstantBuffers(ID3D11DeviceContext *This, UINT StartSlot, UINT NumBuffers, ID3D11Buffer ** ppConstantBuffers) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 109};
     packet.args[0] = (uint32_t)StartSlot;
     packet.args[1] = (uint32_t)NumBuffers;
-    UINT cap_ppConstantBuffers = safe_array_count(NumBuffers);
-    packet.args[2] = guest_address(ppConstantBuffers);
+    struct proxy_output wire_ppConstantBuffers;
+    if (!proxy_output_init(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[2] = guest_address(wire_ppConstantBuffers.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppConstantBuffers,ppConstantBuffers,safe_array_count(NumBuffers),SD_COM_IF_ID3D11Buffer)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppConstantBuffers,ppConstantBuffers);
+    proxy_output_dispose(&wire_ppConstantBuffers,SD_COM_IF_ID3D11Buffer);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppConstantBuffers) for (UINT i=0, n=safe_array_count(NumBuffers); i<n && i<cap_ppConstantBuffers; ++i) { uint32_t token=((uint32_t*)ppConstantBuffers)[i]; ppConstantBuffers[i] = (ID3D11Buffer*)proxy_wrap(token, SD_COM_IF_ID3D11Buffer); if(token && !ppConstantBuffers[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11DeviceContext_ClearState(ID3D11DeviceContext *This) {
@@ -2489,11 +2661,14 @@ static UINT STDMETHODCALLTYPE g_ID3D11DeviceContext_GetContextFlags(ID3D11Device
 static HRESULT STDMETHODCALLTYPE g_ID3D11DeviceContext_FinishCommandList(ID3D11DeviceContext *This, WINBOOL RestoreDeferredContextState, ID3D11CommandList ** ppCommandList) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DeviceContext, 114};
     packet.args[0] = (uint32_t)RestoreDeferredContextState;
-    UINT cap_ppCommandList = safe_array_count(1);
-    packet.args[1] = guest_address(ppCommandList);
+    struct proxy_output wire_ppCommandList;
+    if (!proxy_output_init(&wire_ppCommandList,ppCommandList,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppCommandList.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppCommandList,ppCommandList,safe_array_count(1),SD_COM_IF_ID3D11CommandList)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppCommandList,ppCommandList);
+    proxy_output_dispose(&wire_ppCommandList,SD_COM_IF_ID3D11CommandList);
     if (status < 0) { return (HRESULT)status; }
-    if (ppCommandList) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppCommandList; ++i) { uint32_t token=((uint32_t*)ppCommandList)[i]; ppCommandList[i] = (ID3D11CommandList*)proxy_wrap(token, SD_COM_IF_ID3D11CommandList); if(token && !ppCommandList[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static const ID3D11DeviceContextVtbl vtbl_ID3D11DeviceContext = {
@@ -2624,22 +2799,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11DomainShader_Release(ID3D11DomainShader *
 }
 static void STDMETHODCALLTYPE g_ID3D11DomainShader_GetDevice(ID3D11DomainShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DomainShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DomainShader_GetPrivateData(ID3D11DomainShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DomainShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11DomainShader_SetPrivateData(ID3D11DomainShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11DomainShader, 5};
@@ -2678,22 +2849,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11GeometryShader_Release(ID3D11GeometryShad
 }
 static void STDMETHODCALLTYPE g_ID3D11GeometryShader_GetDevice(ID3D11GeometryShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11GeometryShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11GeometryShader_GetPrivateData(ID3D11GeometryShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11GeometryShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11GeometryShader_SetPrivateData(ID3D11GeometryShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11GeometryShader, 5};
@@ -2732,22 +2899,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11HullShader_Release(ID3D11HullShader *This
 }
 static void STDMETHODCALLTYPE g_ID3D11HullShader_GetDevice(ID3D11HullShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11HullShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11HullShader_GetPrivateData(ID3D11HullShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11HullShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11HullShader_SetPrivateData(ID3D11HullShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11HullShader, 5};
@@ -2786,22 +2949,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11InputLayout_Release(ID3D11InputLayout *Th
 }
 static void STDMETHODCALLTYPE g_ID3D11InputLayout_GetDevice(ID3D11InputLayout *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11InputLayout, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11InputLayout_GetPrivateData(ID3D11InputLayout *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11InputLayout, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11InputLayout_SetPrivateData(ID3D11InputLayout *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11InputLayout, 5};
@@ -2840,22 +2999,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11PixelShader_Release(ID3D11PixelShader *Th
 }
 static void STDMETHODCALLTYPE g_ID3D11PixelShader_GetDevice(ID3D11PixelShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11PixelShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11PixelShader_GetPrivateData(ID3D11PixelShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11PixelShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11PixelShader_SetPrivateData(ID3D11PixelShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11PixelShader, 5};
@@ -2894,22 +3049,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Predicate_Release(ID3D11Predicate *This) 
 }
 static void STDMETHODCALLTYPE g_ID3D11Predicate_GetDevice(ID3D11Predicate *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Predicate, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Predicate_GetPrivateData(ID3D11Predicate *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Predicate, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Predicate_SetPrivateData(ID3D11Predicate *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Predicate, 5};
@@ -2963,22 +3114,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Query_Release(ID3D11Query *This) {
 }
 static void STDMETHODCALLTYPE g_ID3D11Query_GetDevice(ID3D11Query *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Query, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Query_GetPrivateData(ID3D11Query *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Query, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Query_SetPrivateData(ID3D11Query *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Query, 5};
@@ -3032,22 +3179,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11RasterizerState_Release(ID3D11RasterizerS
 }
 static void STDMETHODCALLTYPE g_ID3D11RasterizerState_GetDevice(ID3D11RasterizerState *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RasterizerState, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11RasterizerState_GetPrivateData(ID3D11RasterizerState *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RasterizerState, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11RasterizerState_SetPrivateData(ID3D11RasterizerState *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RasterizerState, 5};
@@ -3094,22 +3237,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11RenderTargetView_Release(ID3D11RenderTarg
 }
 static void STDMETHODCALLTYPE g_ID3D11RenderTargetView_GetDevice(ID3D11RenderTargetView *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RenderTargetView, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11RenderTargetView_GetPrivateData(ID3D11RenderTargetView *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RenderTargetView, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11RenderTargetView_SetPrivateData(ID3D11RenderTargetView *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RenderTargetView, 5};
@@ -3130,11 +3269,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11RenderTargetView_SetPrivateDataInterfac
 }
 static void STDMETHODCALLTYPE g_ID3D11RenderTargetView_GetResource(ID3D11RenderTargetView *This, ID3D11Resource ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11RenderTargetView, 7};
-    UINT cap_ppResource = safe_array_count(1);
-    packet.args[0] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),SD_COM_IF_ID3D11Resource)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,SD_COM_IF_ID3D11Resource);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppResource) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppResource; ++i) { uint32_t token=((uint32_t*)ppResource)[i]; ppResource[i] = (ID3D11Resource*)proxy_wrap(token, SD_COM_IF_ID3D11Resource); if(token && !ppResource[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11RenderTargetView_GetDesc(ID3D11RenderTargetView *This, D3D11_RENDER_TARGET_VIEW_DESC * pDesc) {
@@ -3166,22 +3308,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Resource_Release(ID3D11Resource *This) {
 }
 static void STDMETHODCALLTYPE g_ID3D11Resource_GetDevice(ID3D11Resource *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Resource, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Resource_GetPrivateData(ID3D11Resource *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Resource, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Resource_SetPrivateData(ID3D11Resource *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Resource, 5};
@@ -3243,22 +3381,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11SamplerState_Release(ID3D11SamplerState *
 }
 static void STDMETHODCALLTYPE g_ID3D11SamplerState_GetDevice(ID3D11SamplerState *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11SamplerState, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11SamplerState_GetPrivateData(ID3D11SamplerState *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11SamplerState, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11SamplerState_SetPrivateData(ID3D11SamplerState *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11SamplerState, 5};
@@ -3305,22 +3439,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11ShaderResourceView_Release(ID3D11ShaderRe
 }
 static void STDMETHODCALLTYPE g_ID3D11ShaderResourceView_GetDevice(ID3D11ShaderResourceView *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ShaderResourceView, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ShaderResourceView_GetPrivateData(ID3D11ShaderResourceView *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ShaderResourceView, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11ShaderResourceView_SetPrivateData(ID3D11ShaderResourceView *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ShaderResourceView, 5};
@@ -3341,11 +3471,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11ShaderResourceView_SetPrivateDataInterf
 }
 static void STDMETHODCALLTYPE g_ID3D11ShaderResourceView_GetResource(ID3D11ShaderResourceView *This, ID3D11Resource ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11ShaderResourceView, 7};
-    UINT cap_ppResource = safe_array_count(1);
-    packet.args[0] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),SD_COM_IF_ID3D11Resource)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,SD_COM_IF_ID3D11Resource);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppResource) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppResource; ++i) { uint32_t token=((uint32_t*)ppResource)[i]; ppResource[i] = (ID3D11Resource*)proxy_wrap(token, SD_COM_IF_ID3D11Resource); if(token && !ppResource[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11ShaderResourceView_GetDesc(ID3D11ShaderResourceView *This, D3D11_SHADER_RESOURCE_VIEW_DESC * pDesc) {
@@ -3377,22 +3510,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Texture1D_Release(ID3D11Texture1D *This) 
 }
 static void STDMETHODCALLTYPE g_ID3D11Texture1D_GetDevice(ID3D11Texture1D *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture1D, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture1D_GetPrivateData(ID3D11Texture1D *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture1D, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture1D_SetPrivateData(ID3D11Texture1D *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture1D, 5};
@@ -3462,22 +3591,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Texture2D_Release(ID3D11Texture2D *This) 
 }
 static void STDMETHODCALLTYPE g_ID3D11Texture2D_GetDevice(ID3D11Texture2D *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture2D, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture2D_GetPrivateData(ID3D11Texture2D *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture2D, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture2D_SetPrivateData(ID3D11Texture2D *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture2D, 5};
@@ -3547,22 +3672,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11Texture3D_Release(ID3D11Texture3D *This) 
 }
 static void STDMETHODCALLTYPE g_ID3D11Texture3D_GetDevice(ID3D11Texture3D *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture3D, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture3D_GetPrivateData(ID3D11Texture3D *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture3D, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11Texture3D_SetPrivateData(ID3D11Texture3D *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11Texture3D, 5};
@@ -3632,22 +3753,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_Release(ID3D11Unorder
 }
 static void STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_GetDevice(ID3D11UnorderedAccessView *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11UnorderedAccessView, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_GetPrivateData(ID3D11UnorderedAccessView *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11UnorderedAccessView, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_SetPrivateData(ID3D11UnorderedAccessView *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11UnorderedAccessView, 5};
@@ -3668,11 +3785,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_SetPrivateDataInter
 }
 static void STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_GetResource(ID3D11UnorderedAccessView *This, ID3D11Resource ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11UnorderedAccessView, 7};
-    UINT cap_ppResource = safe_array_count(1);
-    packet.args[0] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),SD_COM_IF_ID3D11Resource)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,SD_COM_IF_ID3D11Resource);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppResource) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppResource; ++i) { uint32_t token=((uint32_t*)ppResource)[i]; ppResource[i] = (ID3D11Resource*)proxy_wrap(token, SD_COM_IF_ID3D11Resource); if(token && !ppResource[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static void STDMETHODCALLTYPE g_ID3D11UnorderedAccessView_GetDesc(ID3D11UnorderedAccessView *This, D3D11_UNORDERED_ACCESS_VIEW_DESC * pDesc) {
@@ -3704,22 +3824,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11VertexShader_Release(ID3D11VertexShader *
 }
 static void STDMETHODCALLTYPE g_ID3D11VertexShader_GetDevice(ID3D11VertexShader *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11VertexShader, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11VertexShader_GetPrivateData(ID3D11VertexShader *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11VertexShader, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11VertexShader_SetPrivateData(ID3D11VertexShader *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11VertexShader, 5};
@@ -3758,22 +3874,18 @@ static ULONG STDMETHODCALLTYPE g_ID3D11View_Release(ID3D11View *This) {
 }
 static void STDMETHODCALLTYPE g_ID3D11View_GetDevice(ID3D11View *This, ID3D11Device ** ppDevice) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11View, 3};
-    UINT cap_ppDevice = safe_array_count(1);
-    packet.args[0] = guest_address(ppDevice);
+    struct proxy_output wire_ppDevice;
+    if (!proxy_output_init(&wire_ppDevice,ppDevice,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppDevice.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppDevice,ppDevice,safe_array_count(1),SD_COM_IF_ID3D11Device)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppDevice,ppDevice);
+    proxy_output_dispose(&wire_ppDevice,SD_COM_IF_ID3D11Device);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppDevice) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppDevice; ++i) { uint32_t token=((uint32_t*)ppDevice)[i]; ppDevice[i] = (ID3D11Device*)proxy_wrap(token, SD_COM_IF_ID3D11Device); if(token && !ppDevice[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11View_GetPrivateData(ID3D11View *This, REFGUID guid, UINT * pDataSize, void * pData) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11View, 4};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(pDataSize);
-    packet.args[2] = guest_address(pData);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && pData && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)pData; *(void**)pData = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)pData)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 4, guid, pDataSize, pData);
 }
 static HRESULT STDMETHODCALLTYPE g_ID3D11View_SetPrivateData(ID3D11View *This, REFGUID guid, UINT DataSize, const void * pData) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11View, 5};
@@ -3794,11 +3906,14 @@ static HRESULT STDMETHODCALLTYPE g_ID3D11View_SetPrivateDataInterface(ID3D11View
 }
 static void STDMETHODCALLTYPE g_ID3D11View_GetResource(ID3D11View *This, ID3D11Resource ** ppResource) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_ID3D11View, 7};
-    UINT cap_ppResource = safe_array_count(1);
-    packet.args[0] = guest_address(ppResource);
+    struct proxy_output wire_ppResource;
+    if (!proxy_output_init(&wire_ppResource,ppResource,safe_array_count(1))) {  proxy_fatal(E_OUTOFMEMORY); return; }
+    packet.args[0] = guest_address(wire_ppResource.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && !proxy_output_publish(&wire_ppResource,ppResource,safe_array_count(1),SD_COM_IF_ID3D11Resource)) status=E_OUTOFMEMORY;
+    if (!(status >= 0)) proxy_output_retract(&wire_ppResource,ppResource);
+    proxy_output_dispose(&wire_ppResource,SD_COM_IF_ID3D11Resource);
     if (status < 0) { proxy_fatal(status); return; }
-    if (ppResource) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppResource; ++i) { uint32_t token=((uint32_t*)ppResource)[i]; ppResource[i] = (ID3D11Resource*)proxy_wrap(token, SD_COM_IF_ID3D11Resource); if(token && !ppResource[i])proxy_fatal(E_OUTOFMEMORY); }
     if ((LONG)packet.fault < 0) proxy_fatal((LONG)packet.fault);
 }
 static const ID3D11ViewVtbl vtbl_ID3D11View = {
@@ -3838,32 +3953,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter_SetPrivateDataInterface(IDXGIAda
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter_GetPrivateData(IDXGIAdapter *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter_GetParent(IDXGIAdapter *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter_EnumOutputs(IDXGIAdapter *This, UINT output_idx, IDXGIOutput ** output) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter, 7};
     packet.args[0] = (uint32_t)output_idx;
-    UINT cap_output = safe_array_count(1);
-    packet.args[1] = guest_address(output);
+    struct proxy_output wire_output;
+    if (!proxy_output_init(&wire_output,output,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_output.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_output,output,safe_array_count(1),SD_COM_IF_IDXGIOutput)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_output,output);
+    proxy_output_dispose(&wire_output,SD_COM_IF_IDXGIOutput);
     if (status < 0) { return (HRESULT)status; }
-    if (output) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_output; ++i) { uint32_t token=((uint32_t*)output)[i]; output[i] = (IDXGIOutput*)proxy_wrap(token, SD_COM_IF_IDXGIOutput); if(token && !output[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter_GetDesc(IDXGIAdapter *This, DXGI_ADAPTER_DESC * desc) {
@@ -3920,32 +4035,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter1_SetPrivateDataInterface(IDXGIAd
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter1_GetPrivateData(IDXGIAdapter1 *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter1, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter1_GetParent(IDXGIAdapter1 *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter1, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter1_EnumOutputs(IDXGIAdapter1 *This, UINT output_idx, IDXGIOutput ** output) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIAdapter1, 7};
     packet.args[0] = (uint32_t)output_idx;
-    UINT cap_output = safe_array_count(1);
-    packet.args[1] = guest_address(output);
+    struct proxy_output wire_output;
+    if (!proxy_output_init(&wire_output,output,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_output.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_output,output,safe_array_count(1),SD_COM_IF_IDXGIOutput)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_output,output);
+    proxy_output_dispose(&wire_output,SD_COM_IF_IDXGIOutput);
     if (status < 0) { return (HRESULT)status; }
-    if (output) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_output; ++i) { uint32_t token=((uint32_t*)output)[i]; output[i] = (IDXGIOutput*)proxy_wrap(token, SD_COM_IF_IDXGIOutput); if(token && !output[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIAdapter1_GetDesc(IDXGIAdapter1 *This, DXGI_ADAPTER_DESC * desc) {
@@ -4010,31 +4125,31 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_SetPrivateDataInterface(IDXGIDevi
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_GetPrivateData(IDXGIDevice *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_GetParent(IDXGIDevice *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_GetAdapter(IDXGIDevice *This, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice, 7};
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[0] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[0] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_CreateSurface(IDXGIDevice *This, const DXGI_SURFACE_DESC * desc, UINT surface_count, DXGI_USAGE usage, const DXGI_SHARED_RESOURCE * shared_resource, IDXGISurface ** surface) {
@@ -4043,11 +4158,14 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_CreateSurface(IDXGIDevice *This, 
     packet.args[1] = (uint32_t)surface_count;
     packet.args[2] = (uint32_t)usage;
     packet.args[3] = guest_address(shared_resource);
-    UINT cap_surface = safe_array_count(1);
-    packet.args[4] = guest_address(surface);
+    struct proxy_output wire_surface;
+    if (!proxy_output_init(&wire_surface,surface,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[4] = guest_address(wire_surface.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_surface,surface,safe_array_count(1),SD_COM_IF_IDXGISurface)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_surface,surface);
+    proxy_output_dispose(&wire_surface,SD_COM_IF_IDXGISurface);
     if (status < 0) { return (HRESULT)status; }
-    if (surface) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_surface; ++i) { uint32_t token=((uint32_t*)surface)[i]; surface[i] = (IDXGISurface*)proxy_wrap(token, SD_COM_IF_IDXGISurface); if(token && !surface[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice_QueryResourceResidency(IDXGIDevice *This, IUnknown *const * resources, DXGI_RESIDENCY * residency, UINT resource_count) {
@@ -4120,31 +4238,31 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_SetPrivateDataInterface(IDXGIDev
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_GetPrivateData(IDXGIDevice1 *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice1, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_GetParent(IDXGIDevice1 *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice1, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_GetAdapter(IDXGIDevice1 *This, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDevice1, 7};
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[0] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[0] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_CreateSurface(IDXGIDevice1 *This, const DXGI_SURFACE_DESC * desc, UINT surface_count, DXGI_USAGE usage, const DXGI_SHARED_RESOURCE * shared_resource, IDXGISurface ** surface) {
@@ -4153,11 +4271,14 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_CreateSurface(IDXGIDevice1 *This
     packet.args[1] = (uint32_t)surface_count;
     packet.args[2] = (uint32_t)usage;
     packet.args[3] = guest_address(shared_resource);
-    UINT cap_surface = safe_array_count(1);
-    packet.args[4] = guest_address(surface);
+    struct proxy_output wire_surface;
+    if (!proxy_output_init(&wire_surface,surface,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[4] = guest_address(wire_surface.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_surface,surface,safe_array_count(1),SD_COM_IF_IDXGISurface)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_surface,surface);
+    proxy_output_dispose(&wire_surface,SD_COM_IF_IDXGISurface);
     if (status < 0) { return (HRESULT)status; }
-    if (surface) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_surface; ++i) { uint32_t token=((uint32_t*)surface)[i]; surface[i] = (IDXGISurface*)proxy_wrap(token, SD_COM_IF_IDXGISurface); if(token && !surface[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDevice1_QueryResourceResidency(IDXGIDevice1 *This, IUnknown *const * resources, DXGI_RESIDENCY * residency, UINT resource_count) {
@@ -4246,31 +4367,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIDeviceSubObject_SetPrivateDataInterface(
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDeviceSubObject_GetPrivateData(IDXGIDeviceSubObject *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDeviceSubObject, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDeviceSubObject_GetParent(IDXGIDeviceSubObject *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDeviceSubObject, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIDeviceSubObject_GetDevice(IDXGIDeviceSubObject *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIDeviceSubObject, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static const IDXGIDeviceSubObjectVtbl vtbl_IDXGIDeviceSubObject = {
@@ -4310,32 +4432,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_SetPrivateDataInterface(IDXGIFac
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_GetPrivateData(IDXGIFactory *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_GetParent(IDXGIFactory *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_EnumAdapters(IDXGIFactory *This, UINT adapter_idx, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory, 7};
     packet.args[0] = (uint32_t)adapter_idx;
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[1] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_MakeWindowAssociation(IDXGIFactory *This, HWND window, UINT flags) {
@@ -4357,21 +4479,27 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_CreateSwapChain(IDXGIFactory *Th
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory, 10};
     packet.args[0] = proxy_token(device);
     packet.args[1] = guest_address(desc);
-    UINT cap_swapchain = safe_array_count(1);
-    packet.args[2] = guest_address(swapchain);
+    struct proxy_output wire_swapchain;
+    if (!proxy_output_init(&wire_swapchain,swapchain,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_swapchain.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_swapchain,swapchain,safe_array_count(1),SD_COM_IF_IDXGISwapChain)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_swapchain,swapchain);
+    proxy_output_dispose(&wire_swapchain,SD_COM_IF_IDXGISwapChain);
     if (status < 0) { return (HRESULT)status; }
-    if (swapchain) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_swapchain; ++i) { uint32_t token=((uint32_t*)swapchain)[i]; swapchain[i] = (IDXGISwapChain*)proxy_wrap(token, SD_COM_IF_IDXGISwapChain); if(token && !swapchain[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory_CreateSoftwareAdapter(IDXGIFactory *This, HMODULE swrast, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory, 11};
     packet.args[0] = guest_address(swrast);
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[1] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static const IDXGIFactoryVtbl vtbl_IDXGIFactory = {
@@ -4415,32 +4543,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_SetPrivateDataInterface(IDXGIFa
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_GetPrivateData(IDXGIFactory1 *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_GetParent(IDXGIFactory1 *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_EnumAdapters(IDXGIFactory1 *This, UINT adapter_idx, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 7};
     packet.args[0] = (uint32_t)adapter_idx;
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[1] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_MakeWindowAssociation(IDXGIFactory1 *This, HWND window, UINT flags) {
@@ -4462,31 +4590,40 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_CreateSwapChain(IDXGIFactory1 *
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 10};
     packet.args[0] = proxy_token(device);
     packet.args[1] = guest_address(desc);
-    UINT cap_swapchain = safe_array_count(1);
-    packet.args[2] = guest_address(swapchain);
+    struct proxy_output wire_swapchain;
+    if (!proxy_output_init(&wire_swapchain,swapchain,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_swapchain.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_swapchain,swapchain,safe_array_count(1),SD_COM_IF_IDXGISwapChain)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_swapchain,swapchain);
+    proxy_output_dispose(&wire_swapchain,SD_COM_IF_IDXGISwapChain);
     if (status < 0) { return (HRESULT)status; }
-    if (swapchain) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_swapchain; ++i) { uint32_t token=((uint32_t*)swapchain)[i]; swapchain[i] = (IDXGISwapChain*)proxy_wrap(token, SD_COM_IF_IDXGISwapChain); if(token && !swapchain[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_CreateSoftwareAdapter(IDXGIFactory1 *This, HMODULE swrast, IDXGIAdapter ** adapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 11};
     packet.args[0] = guest_address(swrast);
-    UINT cap_adapter = safe_array_count(1);
-    packet.args[1] = guest_address(adapter);
+    struct proxy_output wire_adapter;
+    if (!proxy_output_init(&wire_adapter,adapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_adapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_adapter,adapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_adapter,adapter);
+    proxy_output_dispose(&wire_adapter,SD_COM_IF_IDXGIAdapter);
     if (status < 0) { return (HRESULT)status; }
-    if (adapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_adapter; ++i) { uint32_t token=((uint32_t*)adapter)[i]; adapter[i] = (IDXGIAdapter*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter); if(token && !adapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIFactory1_EnumAdapters1(IDXGIFactory1 *This, UINT Adapter, IDXGIAdapter1 ** ppAdapter) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIFactory1, 12};
     packet.args[0] = (uint32_t)Adapter;
-    UINT cap_ppAdapter = safe_array_count(1);
-    packet.args[1] = guest_address(ppAdapter);
+    struct proxy_output wire_ppAdapter;
+    if (!proxy_output_init(&wire_ppAdapter,ppAdapter,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_ppAdapter.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_ppAdapter,ppAdapter,safe_array_count(1),SD_COM_IF_IDXGIAdapter1)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_ppAdapter,ppAdapter);
+    proxy_output_dispose(&wire_ppAdapter,SD_COM_IF_IDXGIAdapter1);
     if (status < 0) { return (HRESULT)status; }
-    if (ppAdapter) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_ppAdapter; ++i) { uint32_t token=((uint32_t*)ppAdapter)[i]; ppAdapter[i] = (IDXGIAdapter1*)proxy_wrap(token, SD_COM_IF_IDXGIAdapter1); if(token && !ppAdapter[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static WINBOOL STDMETHODCALLTYPE g_IDXGIFactory1_IsCurrent(IDXGIFactory1 *This) {
@@ -4538,31 +4675,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIKeyedMutex_SetPrivateDataInterface(IDXGI
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIKeyedMutex_GetPrivateData(IDXGIKeyedMutex *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIKeyedMutex, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIKeyedMutex_GetParent(IDXGIKeyedMutex *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIKeyedMutex, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIKeyedMutex_GetDevice(IDXGIKeyedMutex *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIKeyedMutex, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIKeyedMutex_AcquireSync(IDXGIKeyedMutex *This, UINT64 Key, DWORD dwMilliseconds) {
@@ -4621,22 +4759,19 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIObject_SetPrivateDataInterface(IDXGIObje
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIObject_GetPrivateData(IDXGIObject *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIObject, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIObject_GetParent(IDXGIObject *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIObject, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static const IDXGIObjectVtbl vtbl_IDXGIObject = {
@@ -4675,22 +4810,19 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIOutput_SetPrivateDataInterface(IDXGIOutp
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIOutput_GetPrivateData(IDXGIOutput *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIOutput, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIOutput_GetParent(IDXGIOutput *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIOutput, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIOutput_GetDesc(IDXGIOutput *This, DXGI_OUTPUT_DESC * desc) {
@@ -4830,31 +4962,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGIResource_SetPrivateDataInterface(IDXGIRe
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIResource_GetPrivateData(IDXGIResource *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIResource, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIResource_GetParent(IDXGIResource *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIResource, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIResource_GetDevice(IDXGIResource *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGIResource, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGIResource_GetSharedHandle(IDXGIResource *This, HANDLE * pSharedHandle) {
@@ -4926,31 +5059,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISurface_SetPrivateDataInterface(IDXGISur
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface_GetPrivateData(IDXGISurface *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface_GetParent(IDXGISurface *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface_GetDevice(IDXGISurface *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface_GetDesc(IDXGISurface *This, DXGI_SURFACE_DESC * desc) {
@@ -5014,31 +5148,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISurface1_SetPrivateDataInterface(IDXGISu
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface1_GetPrivateData(IDXGISurface1 *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface1, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface1_GetParent(IDXGISurface1 *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface1, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface1_GetDevice(IDXGISurface1 *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISurface1, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISurface1_GetDesc(IDXGISurface1 *This, DXGI_SURFACE_DESC * desc) {
@@ -5119,31 +5254,32 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_SetPrivateDataInterface(IDXGIS
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetPrivateData(IDXGISwapChain *This, REFGUID guid, UINT * data_size, void * data) {
-    struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 5};
-    packet.args[0] = guest_address(guid);
-    packet.args[1] = guest_address(data_size);
-    packet.args[2] = guest_address(data);
-    LONG status = proxy_call(&packet);
-    if (status < 0) { return (HRESULT)status; }
-    if (packet.aux == SD_COM_PRIVATE_INTERFACE && data && SUCCEEDED((HRESULT)packet.ret)) { uint32_t token=*(uint32_t*)data; *(void**)data = proxy_wrap(token, SD_COM_IF_IUnknown); if(token && !*(void**)data)proxy_fatal(E_OUTOFMEMORY); }
-    return (HRESULT)packet.ret;
+    return proxy_private_get(This, 5, guid, data_size, data);
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetParent(IDXGISwapChain *This, REFIID riid, void ** parent) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 6};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(parent);
+    struct proxy_output wire_parent;
+    if (!proxy_output_init(&wire_parent,parent,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_parent.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_parent,parent,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_parent,parent);
+    proxy_output_dispose(&wire_parent,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && parent) { uint32_t token=*(uint32_t*)parent; *parent = proxy_wrap(token, proxy_iid(riid)); if(token && !*parent)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetDevice(IDXGISwapChain *This, REFIID riid, void ** device) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 7};
     packet.args[0] = guest_address(riid);
-    packet.args[1] = guest_address(device);
+    struct proxy_output wire_device;
+    if (!proxy_output_init(&wire_device,device,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_device.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_device,device,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_device,device);
+    proxy_output_dispose(&wire_device,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && device) { uint32_t token=*(uint32_t*)device; *device = proxy_wrap(token, proxy_iid(riid)); if(token && !*device)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_Present(IDXGISwapChain *This, UINT sync_interval, UINT flags) {
@@ -5158,10 +5294,14 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetBuffer(IDXGISwapChain *This
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 9};
     packet.args[0] = (uint32_t)buffer_idx;
     packet.args[1] = guest_address(riid);
-    packet.args[2] = guest_address(surface);
+    struct proxy_output wire_surface;
+    if (!proxy_output_init(&wire_surface,surface,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[2] = guest_address(wire_surface.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_surface,surface,safe_array_count(1),proxy_iid(riid))) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_surface,surface);
+    proxy_output_dispose(&wire_surface,proxy_iid(riid));
     if (status < 0) { return (HRESULT)status; }
-    if (SUCCEEDED((HRESULT)packet.ret) && surface) { uint32_t token=*(uint32_t*)surface; *surface = proxy_wrap(token, proxy_iid(riid)); if(token && !*surface)proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_SetFullscreenState(IDXGISwapChain *This, WINBOOL fullscreen, IDXGIOutput * target) {
@@ -5175,11 +5315,14 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_SetFullscreenState(IDXGISwapCh
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetFullscreenState(IDXGISwapChain *This, WINBOOL * fullscreen, IDXGIOutput ** target) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 11};
     packet.args[0] = guest_address(fullscreen);
-    UINT cap_target = safe_array_count(1);
-    packet.args[1] = guest_address(target);
+    struct proxy_output wire_target;
+    if (!proxy_output_init(&wire_target,target,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[1] = guest_address(wire_target.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_target,target,safe_array_count(1),SD_COM_IF_IDXGIOutput)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_target,target);
+    proxy_output_dispose(&wire_target,SD_COM_IF_IDXGIOutput);
     if (status < 0) { return (HRESULT)status; }
-    if (target) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_target; ++i) { uint32_t token=((uint32_t*)target)[i]; target[i] = (IDXGIOutput*)proxy_wrap(token, SD_COM_IF_IDXGIOutput); if(token && !target[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetDesc(IDXGISwapChain *This, DXGI_SWAP_CHAIN_DESC * desc) {
@@ -5209,11 +5352,14 @@ static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_ResizeTarget(IDXGISwapChain *T
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetContainingOutput(IDXGISwapChain *This, IDXGIOutput ** output) {
     struct sd_com_packet packet = {SD_COM_ABI, proxy_token(This), SD_COM_IF_IDXGISwapChain, 15};
-    UINT cap_output = safe_array_count(1);
-    packet.args[0] = guest_address(output);
+    struct proxy_output wire_output;
+    if (!proxy_output_init(&wire_output,output,safe_array_count(1))) {  return (HRESULT)E_OUTOFMEMORY; }
+    packet.args[0] = guest_address(wire_output.tokens);
     LONG status = proxy_call(&packet);
+    if (status >= 0 && SUCCEEDED((HRESULT)packet.ret) && !proxy_output_publish(&wire_output,output,safe_array_count(1),SD_COM_IF_IDXGIOutput)) status=E_OUTOFMEMORY;
+    if (!(status >= 0 && SUCCEEDED((HRESULT)packet.ret))) proxy_output_retract(&wire_output,output);
+    proxy_output_dispose(&wire_output,SD_COM_IF_IDXGIOutput);
     if (status < 0) { return (HRESULT)status; }
-    if (output) for (UINT i=0, n=safe_array_count(1); i<n && i<cap_output; ++i) { uint32_t token=((uint32_t*)output)[i]; output[i] = (IDXGIOutput*)proxy_wrap(token, SD_COM_IF_IDXGIOutput); if(token && !output[i])proxy_fatal(E_OUTOFMEMORY); }
     return (HRESULT)packet.ret;
 }
 static HRESULT STDMETHODCALLTYPE g_IDXGISwapChain_GetFrameStatistics(IDXGISwapChain *This, DXGI_FRAME_STATISTICS * stats) {
