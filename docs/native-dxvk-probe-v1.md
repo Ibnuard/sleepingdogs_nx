@@ -189,17 +189,19 @@ the host test afterward.
 ## Remaining integration work
 
 The [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) now implements a small
-real guest-to-native offscreen test. Its build and host checks pass; the actual
-Switch Wine/FEX path remains awaiting a hardware result. H1 and H2 are separate
+real guest-to-native offscreen test. Its actual Switch Wine/FEX path now passes
+the [supplied H2 capture](../reports/native-dxvk-h2-748072991d01.json).
+The [H3 diagnostic](native-dxvk-h3-v1.md) next tests guest-driven native Present.
+H1, H2 and H3 are separate
 artifacts and neither is integrated with Sleeping Dogs.
 
 1. Expand the successful H1 hardware subset before production use: handle
    lifetime, repeated device/swapchain recreation, memory pressure and visual
    scanout. H1 proves the supplied native device/draw/Map/present run, not
    general D3D11 compatibility or production handle behavior.
-2. Register a probe Unix-call table through Wine's existing static WOW64
-   bridge and execute requests from a real PE32/FEX guest. The current packet
-   dispatcher has no Wine table registration or x86 COM proxies.
+2. H2 now registers a probe Unix-call table through Wine's existing static
+   WOW64 bridge and passes requests from a real PE32/FEX guest on Switch.
+   H3 extends this route to presentation; x86 COM proxies remain unimplemented.
 3. Implement the D3D11/DXGI COM interfaces needed by the game, with explicit
    x86/native struct conversion, reference lifetime and callbacks. Native
    `WCHAR` and pointers cannot be copied as if they had Windows x86 layouts.

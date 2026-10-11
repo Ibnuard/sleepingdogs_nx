@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-h3-v1",
+  "distribution_format": "directory",
+  "zip_created": false,
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sd-dxvk-native-h3-v1-update",
+  "files": 1321,
+  "total_bytes": 136764454,
+  "checksums_sha256": "d48c2bf9c78191e96638afcf172c001674778e6c0abe01fb8ddc7c46df64f1f1",
+  "all_file_hashes_verified": true,
+  "wine_overlay_patches_reproduced": true,
+  "nro_sha256": "61922b58342983afea72350ab80fc488650856a037fd9907c2aa0830502fb19a",
+  "rollback_nro_sha256": "9f33c1709119c43f4915ea9da0747447988e8e91f031805af0117ce8c87eb0a1",
+  "sd_payload": [
+    "switch/sleepingdogs-fex/drive_c/sd-native-dxvk-h3-guest.exe",
+    "switch/sleepingdogs-fex/drive_c/sdndx3.dll",
+    "switch/sleepingdogs-fex/sleepingdogs-fex.nro"
+  ],
+  "guest_pe32_files": {
+    "sd-native-dxvk-h3-guest.exe": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "bytes": 19968,
+      "sha256": "e4be7f765dc0380fa64ddb564f03faeef015c6361a9aeb6b22d5117588234b69",
+      "exports": [],
+      "dll_export_name": null
+    },
+    "sdndx3.dll": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "bytes": 3584,
+      "sha256": "ffa354d3140af0dab473179af8bfb1edd883ae561694db9485d7f2a832250c81",
+      "exports": [
+        "SdNdxCall"
+      ],
+      "dll_export_name": "sdndx3.dll"
+    }
+  },
+  "h2_hardware_report_sha256": "b5fed2edf742624a489fb5d372fd4ea4b673d90c25397570a9e020f9919dcc54",
+  "hardware_tested": false,
+  "guest_execution_tested": false,
+  "game_integration": false,
+  "game_fps_measured": false,
+  "packager_sha256": "3f4572ca2148e4f451ee36562b039d3811dc7c7848a94316086c4ee6d5a5c2e0",
+  "build_receipt_sha256": "8b2ec1af3edac5352fe65ec5c55340f68641d2bc29f6c3d63778efcbdf54b47a",
+  "host_receipt_sha256": "b4a769520fd2aa9779865c705f30b0c3ec288fca9ad3b31cced3acef616bd576",
+  "instructions_sha256": "c6cec8ccd405ce2ef202504de173b9f96cae433dfa4870e7ae772dcc8c27d118"
+}

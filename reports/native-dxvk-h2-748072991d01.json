@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-h2-v1",
+  "validation": {
+    "result_pass": true,
+    "build": true,
+    "guest_target": true,
+    "guest_completed": true,
+    "guest_exit_zero": true,
+    "guest_execution": true,
+    "no_game_claim": true,
+    "buffer_readback": true,
+    "720p_readback": true,
+    "native_device": true,
+    "native_closed": true,
+    "actual_gpu": true,
+    "native_version": true,
+    "no_device_lost": true,
+    "two_native_generations": true,
+    "expected_call_count": true,
+    "guest_native_arena_match": true
+  },
+  "result": {
+    "status": "PASS",
+    "build": "native-dxvk-h2-v1",
+    "stage": "PASS",
+    "error": 0,
+    "checks": 1096,
+    "rejected_requests": 5,
+    "bridge_calls": 35,
+    "guest_arena": 27787264,
+    "buffer_bytes_verified": 1024,
+    "draw_pixels_verified": 921600,
+    "bad_pixels": 0,
+    "guest_execution": true,
+    "game_integration": false,
+    "present_calls": 0,
+    "game_fps_measured": false
+  },
+  "evidence": {
+    "result": {
+      "path": "reports/native-dxvk-h2-748072991d01/result.json",
+      "sha256": "8518b0742bc326d060ff5b88ac28c4505d418a877db4a158b1bf7c177295dc72",
+      "bytes": 315
+    },
+    "guest": {
+      "path": "reports/native-dxvk-h2-748072991d01/guest.txt",
+      "sha256": "f0c1c2bd307d5a0b244b0d6629666df010e6b98665a66fb26e17bb004ef474b9",
+      "bytes": 1072
+    },
+    "runtime": {
+      "path": "reports/native-dxvk-h2-748072991d01/runtime.txt",
+      "sha256": "748072991d01518b308bb9cbf3082d8a0a1ce35cb214d9d059cd6621efc83b49",
+      "bytes": 20014
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h2-748072991d01/dxvk.txt",
+      "sha256": "26b2539788e5e2952568f45e5555c723de90b87b322253d0a853a9972a9b5120",
+      "bytes": 13561
+    }
+  },
+  "hardware_tested": true,
+  "real_pe32_guest_bridge_passed": true,
+  "game_integration": false,
+  "game_fps_measured": false,
+  "guest_arena_hex": "0x01a80000",
+  "shader_cache_created": true,
+  "gpu_allocator_cleanup_line": "[SD-GPU-ARENA] capacity=268435456 used=0 free=268435456 largest=268435456 peak=19726336 live=0 takes=24 misses=0 returned=24 invalid=0",
+  "expected_hresult_rejections": {
+    "80004001": "Offscreen swapchain is deliberately unsupported.",
+    "80070057": "Stale resource token is deliberately rejected."
+  },
+  "clocks_mhz": null,
+  "analyzer_sha256": "60442cce6002aaafe2abf8f23c92e4130d94155deab5cc186d3f8cdf16948a58",
+  "limits": [
+    "Offscreen bounded API subset; no COM proxy or game.",
+    "Shadow copies and full-arena page checks are diagnostic, not optimized.",
+    "Logs identify H2 but do not authenticate a running binary hash."
+  ]
+}

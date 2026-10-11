@@ -60,20 +60,28 @@ The build recipe reproduces the complete v18 ELF before applying the overlay,
 compiles the ABI for both PE32 and ARM64, checks DLL names/exports and CRT-free
 imports, and links/audits the native renderer, Unix dispatcher and FEX context
 symbols in the resulting Horizon executable. Build/host PASS is distinct from
-the guest's result JSON on Switch. No H2 hardware result or game FPS gain has
-been recorded yet. The [build receipt](../reports/native-dxvk-h2-v1-build.json)
+the guest's result JSON on Switch. The supplied **H2 Switch capture now passes**:
+1,096 checks, five expected rejections, 35 actual Wine/FEX bridge calls,
+1,024 verified buffer bytes and all 921,600 correct 720p pixels. Its actual
+shared guest/native arena is `0x01a80000`, and both session generations close
+before a zero guest exit. See the [preserved hardware capture](../reports/native-dxvk-h2-748072991d01.json).
+The two failing D3D HRESULTs deliberately test the unsupported offscreen
+swapchain and a stale resource. The shader cache was created successfully;
+the final GPU arena has zero live allocations, with 24 allocations returned.
+Clocks and a running binary hash are not authenticated by these logs.
+No game FPS is measured. The [build receipt](../reports/native-dxvk-h2-v1-build.json)
 and [package verification](../reports/native-dxvk-h2-v1-package.json) record
 the NRO, PE32 binaries, original v18 rollback and source hashes.
 
 ## Switch test
 
-Use the local `sd-dxvk-native-h2-v1-update.zip` on an existing working
-Sleeping Dogs/FEXTendo v18 installation. The ZIP is a diagnostic update,
+Use the local `sd-dxvk-native-h2-v1-update/` folder on an existing working
+Sleeping Dogs/FEXTendo v18 installation. The folder is a diagnostic update,
 not a complete game/runtime installation.
 
 1. Fully close FEXTendo from HOME. Back up your SD copy of
    `switch/sleepingdogs-fex/sleepingdogs-fex.nro` before copying the update.
-2. Copy only the ZIP's `switch/` folder to SD root. This replaces the NRO
+2. Copy only its `switch/` folder to SD root. This replaces the NRO
    and adds `drive_c/sd-native-dxvk-guest.exe` and `drive_c/sdndx.dll`.
 3. Start it using the same working Sleeping Dogs low-window/full-memory
    forwarder used for gameplay. H1's standalone hbmenu route does not test
@@ -86,7 +94,7 @@ not a complete game/runtime installation.
    - `switch/sleepingdogs-fex/drive_c/native-dxvk-h2-guest.log`
    - `switch/sleepingdogs-fex/native-dxvk-h2/runtime.log`
    - `switch/sleepingdogs-fex/native-dxvk-h2/sd-dxvk-native-probe_d3d11.log`
-6. Restore your backed-up game NRO to resume gameplay. The ZIP also contains
+6. Restore your backed-up game NRO to resume gameplay. The folder also contains
    the hash-verified original v18 NRO under `rollback-v18/`; it is a fallback
    for an installation using that exact v18 build. The added diagnostic files
    can remain on SD; the restored runtime does not select them.
@@ -104,7 +112,7 @@ inputs:
 ```sh
 python3 tools/test_native_dxvk_h2_host.py
 python3 tools/build_native_dxvk_h2.py
-python3 tools/package_native_dxvk_h2.py
+python3 tools/analyze_native_dxvk_h2.py --log-dir /path/to/copied-four-files
 ```
 
 The required v18 source/objects and H1 libraries remain prepared local inputs;
@@ -114,7 +122,13 @@ build receipt. Only original diagnostic sources and Wine overlay patches are
 added to this experiment; the FEX engine, baseline runtime and installed SDK
 are not edited.
 
-H2 success would validate a small guest-to-native rendering subset. Full
+The historical H2 packager produces a ZIP; it is retained to reproduce that
+artifact, not used for new deliveries. The [H3 packager](native-dxvk-h3-v1.md)
+produces a ready folder only.
+
+H2 hardware success validates a small guest-to-native rendering subset. Full
 x86 COM interfaces, D3D11/DXGI coverage, HWND/swapchain conversion, production
 resource lifetime rules and profiling are still needed before the game can
 use native DXVK. A route to stable 30 FPS has not been demonstrated.
+The [H3 diagnostic](native-dxvk-h3-v1.md) next tests guest-driven native
+swapchain/backbuffer/Present with a trusted Horizon window.

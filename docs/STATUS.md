@@ -64,8 +64,10 @@ baseline without that presentation path and its repeated logging.
   a real x86/FEX guest. The v15 term "native presentation" refers to the host presentation
   bridge; its DXVK DLLs still execute as x86.
   The separate [H2 PE32 bridge diagnostic](native-dxvk-h2-v1.md) has passed
-  build and host checks and is packaged for Switch testing. Its actual
-  Wine/FEX guest path has not yet been validated on hardware.
+  the actual Switch Wine/FEX guest path: 1,096 checks, the 1 KiB buffer and all
+  720p offscreen pixels match. The [H3 native Present diagnostic](native-dxvk-h3-v1.md)
+  passes build/host tests and is delivered as a ready folder for its next
+  hardware test. Neither diagnostic implements game COM interfaces.
 - Only the original x86 game is targeted. Definitive Edition is unsupported.
 - A complete GitHub runtime release and a self-contained clean-clone v18
   build are not yet provided. See [Installation](INSTALL.md) and [Building](BUILD.md).
@@ -75,8 +77,9 @@ baseline without that presentation path and its repeated logging.
 The open performance work is to measure time spent in game execution, translated
 DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
-its next hardware gate is the H2 Wine/FEX guest bridge diagnostic, followed
-by x86 COM interfaces and host-thread integration. It is not an available launcher mode or a proven
+the H2 Wine/FEX guest bridge also passes the supplied hardware capture. The
+next hardware gate is H3 guest-driven native swapchain/Present, followed by
+x86 COM interfaces and host-thread integration. It is not an available launcher mode or a proven
 route to 30 FPS. See the [probe record](native-dxvk-probe-v1.md) for exact coverage.
 
 Memory statistics must also be interpreted at the correct layer: remaining

@@ -1,0 +1,86 @@
+--- a/wine-nx-probe/source/runtime.c
++++ b/wine-nx-probe/source/runtime.c
+@@ -58,11 +58,13 @@
+ #ifdef WINE_NX_BOX64_DYNAREC
+ #define WINE_NX_RUNTIME_BUILD "pes13-nx-0.2.0-vk1-production"
+ #else
+-#define WINE_NX_RUNTIME_BUILD "sleepingdogs-fextendo-0.1.0-v18-apc"
++#define WINE_NX_RUNTIME_BUILD "sleepingdogs-native-dxvk-h3-v1"
+ #endif
+ #define MAX_RUNTIME_MODULES 64
+ #define MAX_IMPORT_DEPTH 16
+ 
++extern int sd_ndx_h3_window_prepare(void);
++extern void sd_ndx_h3_shutdown(void);
+ extern void wine_nx_runtime_platform_init(void);
+ extern void wine_nx_runtime_environment_init(void);
+ extern NTSTATUS wine_nx_loader_bootstrap( const UNICODE_STRING *main_nt_name );
+@@ -4652,6 +4654,11 @@
+     __atomic_compare_exchange_n(&f1_guest_exit_state,&empty,(1ULL<<32)|code,0,__ATOMIC_RELEASE,__ATOMIC_RELAXED);
+     wine_nx_f1_crash_stage("guest-process-exit",(int)code,0,0);
+     log_line("[SD-EXIT] code=%08x first_present=%d",code,__atomic_load_n(&fx_first_present,__ATOMIC_ACQUIRE));
++    sd_ndx_h3_shutdown();
++    consoleInit(NULL);wine_nx_console_active=1;
++    printf("\nH3 guest exited: %08x\nSee result JSON and logs. Close from HOME.\n",code);
++    consoleUpdate(NULL);
++    return; /* diagnostic: preserve result and do not relaunch game */
+     if(wine_nx_f1_relaunch_request(F1_RETURN_GUEST,code))return;
+     char message[160];
+     if (code == 0xc0000142u)
+@@ -4700,6 +4707,19 @@
+     mkdir( WINE_DRIVE_C "/windows", 0777 );
+     mkdir( WINE_DRIVE_C "/windows/temp", 0777 );
+     mkdir( WINE_SYSTEM_DIR, 0777 );
++    mkdir(RUNTIME_DIR "/native-dxvk-h3",0777);
++    mkdir(RUNTIME_DIR "/native-dxvk-h3/cache",0777);
++    fx_debug_file=fopen(RUNTIME_DIR "/native-dxvk-h3/runtime.log","w");
++    remove(WINE_DRIVE_C "/native-dxvk-h3-result.json");
++    __atomic_store_n(&fx_debug_live,1,__ATOMIC_RELEASE);
++    setenv("DXVK_LOG_PATH",RUNTIME_DIR "/native-dxvk-h3",1);
++    setenv("DXVK_SHADER_CACHE_PATH",RUNTIME_DIR "/native-dxvk-h3/cache",1);
++    setenv("MESA_SHADER_CACHE_DIR",RUNTIME_DIR "/native-dxvk-h3/cache",1);
++    setenv("DXVK_CONFIG_FILE",RUNTIME_DIR "/native-dxvk-h3/probe.conf",1);
++    FILE *h3_config=fopen(RUNTIME_DIR "/native-dxvk-h3/probe.conf","w");
++    if(!h3_config || fprintf(h3_config,"dxvk.numCompilerThreads = 2\nd3d11.fextendoCoalesceVertexBuffers = False\n")<0) return 1;
++    fclose(h3_config);
++    log_line("[SD-NDX-H3] BUILD native-dxvk-h3-v1; PE32/Wine/FEX/native-DXVK; no game; guest-driven native present");
+     /* Start required maintenance independently of a log file. */
+     pthread_t maintenance;
+     if (pthread_create(&maintenance, NULL, log_flusher, NULL)) {
+@@ -4714,13 +4734,15 @@
+     }
+     pthread_detach(startup_monitor);
+ 
+-    const int guest_tests = wine_nx_config_file_bool(RUNTIME_DIR "/run-guest-tests.txt", 0);
++    const int guest_tests = 1; /* H3 standalone PE32 diagnostic */
+     __atomic_store_n(&fex_short_enabled, !guest_tests && log_flusher_running &&
+         !wine_nx_config_file_bool(RUNTIME_DIR "/fex_short_trace_off", 0), __ATOMIC_RELEASE);
+     log_line("[FEX3-SHORT] v1 enabled=%d threshold_us=20000 rows=256 jit_rows=128; fex_short_trace_off=1 disables; kinds 0=acquire 1=submit 2=fence 3=semaphore 5=alert_wait 6=present_map", fex_short_enabled);
+     if (guest_tests) {
+         char memory_error[192];
+         consoleInit(NULL); wine_nx_console_active = 1;
++        printf("FEXTendo native DXVK H3\nPE32 -> Wine/FEX -> ARM64 DXVK\n720p readback and 300 native presents. Blue screen expected.\nSee native-dxvk-h3/runtime.log and drive_c/native-dxvk-h3-result.json.\n");
++        consoleUpdate(NULL);
+         if (!sd_launch_memory_prepare(memory_error,sizeof(memory_error))) {
+             fx_native_error(memory_error); return 1;
+         }
+@@ -4740,7 +4762,7 @@
+     log_line("[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved");
+     log_line("[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change");
+     log_line("[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet");
+-    if (guest_tests) snprintf(target, sizeof(target), "%s/fex-stress.exe", WINE_DRIVE_C);
++    if (guest_tests) snprintf(target, sizeof(target), "%s/sd-native-dxvk-h3-guest.exe", WINE_DRIVE_C);
+     wine_nx_runtime_trace("[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query");
+     wine_nx_runtime_trace("[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups");
+     wine_nx_runtime_trace("[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay");
+@@ -4748,7 +4770,9 @@
+     wine_nx_runtime_trace("[FEX3-YIELD] same-core Sleep(0) experiment");
+     fx_stage("Preparing your game...");
+     if (!pes13_fex_context_preflight()) {log_line("[FAIL] FEX context preflight");fx_fail("FEX context preflight failed.");park_forever();}
+-    if (guest_tests && !pes13_fex_fault_stress()) park_forever();
++    /* Release text framebuffer before the trusted native Vulkan window. */
++    if (wine_nx_console_active) {consoleExit(NULL);wine_nx_console_active=0;}
++    if (!sd_ndx_h3_window_prepare()) {log_line("[SD-NDX-H3] FAIL native-window");return 1;}
+     if (setenv("WINEDLLOVERRIDES", "d3d9,d3d11,dxgi=n,b", 1) ||
+         setenv("WINEPREFIX", "/switch/sleepingdogs-fex", 1))
+     { log_line("[FAIL] WINEPREFIX setup");fx_fail("WINEPREFIX setup failed.");park_forever(); }

@@ -1,0 +1,18 @@
+{
+  "baseline": "Sleeping Dogs v18 APC route",
+  "runtime_source": "/home/blekjek/sleepingdogs-apc-v18/native-source/wine-nx-probe/source/runtime.c",
+  "runtime_sha256": "e1d2c9bde47881575f10db73965605834b9f2bc22ebc2e16d4ede1268127d5bb",
+  "virtual_source": "/home/blekjek/sleepingdogs-low-window-v1/native-source/dlls/ntdll/unix/virtual.c",
+  "virtual_sha256": "2aeee24edb241f142697f3c315b05e88a59bf3b7e04e3aff34b71f6c851626bd",
+  "winternl_header": "/home/blekjek/sleepingdogs-low-window-v1/native-source/include/winternl.h",
+  "winternl_sha256": "1aee97ea9319d9763d2184a1da02b8f0ba109b667c84ab7fd71276daf4d223bd",
+  "wow64_virtual_source": "/home/blekjek/sleepingdogs-low-window-v1/native-source/dlls/wow64/virtual.c",
+  "wow64_virtual_sha256": "b6e0203097eb03bcabe584e9672d4ea7f9225e26b17f4ad9bfc92b00b0c84781",
+  "guest_unix_memory_class": 1000,
+  "host_wow64_unix_memory_class": 1001,
+  "baseline_elf_sha256": "08597fa14bcd39f5bcec9cbb49b2a0fa092ab0cb51c9d50cdcc6ead113a0f105",
+  "baseline_nro_sha256": "9f33c1709119c43f4915ea9da0747447988e8e91f031805af0117ce8c87eb0a1",
+  "baseline_receipt_sha256": "3beb83a24158cc74c4015c2cfaa5bd2db22fc4b1aa7d917b2a0c203d2f21d0d5",
+  "h2_hardware_report": "reports/native-dxvk-h2-748072991d01.json",
+  "h2_hardware_report_sha256": "b5fed2edf742624a489fb5d372fd4ea4b673d90c25397570a9e020f9919dcc54"
+}

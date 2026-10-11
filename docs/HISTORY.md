@@ -11,7 +11,8 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
-| Native DXVK H2 v1 | [PE32 Wine/FEX bridge diagnostic](native-dxvk-h2-v1.md); build and host checks pass, Switch result pending |
+| Native DXVK H3 v1 | [Guest-driven native swapchain/Present](native-dxvk-h3-v1.md); build and host tests pass, Switch test pending, folder delivery only |
+| Native DXVK H2 v1 | [PE32 Wine/FEX bridge diagnostic](native-dxvk-h2-v1.md); supplied Switch capture passes 1,096 checks and both readbacks |
 | Native DXVK probe v1 / H1 | [ARM64 build, host tests and successful standalone Switch capture](native-dxvk-probe-v1.md); no real x86 guest or game integration |
 | v18 | [Targeted queued-APC notification](apc-v18.md) |
 | v17 | [Automatic application-core scheduling](scheduler-v17.md) |
