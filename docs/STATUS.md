@@ -5,13 +5,14 @@
 Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
-The newest [Compact COM + launcher candidate](launcher-compact-v1.md) reduces
-packet marshalling for 46 native context methods and imports the latest PES13
-keyboard, a mandatory active-patch checker and a Settings debug toggle. It
-retains H4 v9 / FEX context v1 / Native Ref v1 and 720p. Host validation passes;
-its Switch gameplay gain and release readiness remain unverified. The user
-reports the preceding build is lighter; the latest capture's later Present
-windows remain around 19–20 FPS and are not a matched benchmark.
+The newest [launcher v2 candidate](launcher-v2.md) caches successful full-file
+verification, requires Light 720p and connects optional LSFG to native DXVK.
+It retains H4 v9 / Compact COM / FEX context v1 / Native Ref v1. The latest
+hardware log confirms compact dispatch but its final game-Present windows are
+17.53 and 18.51 FPS; no significant native gain has been established. That build
+forced LSFG OFF despite the stored launcher option. The new native LSFG path
+produces interpolated presents in host Vulkan validation, with zero validation
+errors. Switch generation/scanout and performance remain unverified.
 
 ## What works
 

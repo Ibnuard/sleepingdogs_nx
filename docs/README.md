@@ -1,6 +1,6 @@
 # Documentation
 
-Latest test candidate: [Compact COM v1 and launcher preparation](launcher-compact-v1.md).
+Latest test candidate: [Launcher v2: cached checks, Light 720p and native LSFG](launcher-v2.md).
 
 [Project home](../README.md)
 
@@ -9,6 +9,7 @@ installation for a first setup, or current status before comparing test builds.
 
 | Guide | What it covers |
 | --- | --- |
+| [Launcher v2](launcher-v2.md) | Cached verification, mandatory Light 720p and native LSFG; latest real-FPS result and host-validation limits |
 | [Installation](INSTALL.md) | Required game edition, complete packages, forwarder, SD layout and updates |
 | [Settings](CONFIGURATION.md) | DXVK profiles, Light 720p game detail, HUD, FEX, resolution and optional LSFG |
 | [Troubleshooting](TROUBLESHOOTING.md) | Startup failures, graphics labels, logs and useful performance reports |

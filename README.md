@@ -24,6 +24,11 @@ drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
 20–22 FPS, with crowded-area lows near 16 and confined-view peaks near 30.
 **Stable 30 FPS has not been achieved.**
 
+The latest [launcher v2 test update](docs/launcher-v2.md) caches verification,
+enforces Light 720p and connects optional LSFG to native DXVK. The latest
+compact-build log still ends around 17.5–18.5 real FPS; this update makes no
+new native-FPS claim.
+
 | Area | Status |
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
@@ -74,8 +79,9 @@ switch/sleepingdogs-fex/
 └── share/wine/                       # runtime fonts and NLS data
 ```
 
-The launcher graphics profiles configure DXVK. The H4 v8 candidate also adds
-Game detail → Light 720p, a reversible preset for the game's own display options. The `Graphics Level: undefined` label remains unresolved.
+The launcher graphics profiles configure DXVK. Launcher v2 always applies
+Light 720p to the game's display options before Play/Debug; there is no quality
+selector. The `Graphics Level: undefined` label remains unresolved.
 Installation details, updates and log locations are in the
 [documentation index](docs/README.md).
 

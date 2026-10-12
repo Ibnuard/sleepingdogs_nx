@@ -65,9 +65,12 @@ timestamp measurements.
 
 ## LSFG is on but does not help
 
-Check for a generated-frame marker rather than relying on the launcher toggle.
-The latest analyzed v18 session repeatedly bypassed generation for its present
-path. See [LSFG settings and limits](CONFIGURATION.md#optional-lsfg).
+H4 through launcher v1 forced LSFG OFF on native DXVK even when the stored
+launcher preference was ON. [Launcher v2](launcher-v2.md) connects that route.
+Check for `first interpolated present submitted`; requested/initialized alone
+is insufficient, and repeated bypass reasons mean interpolation is being
+skipped. DXVK HUD reports real game FPS. See
+[LSFG settings and limits](CONFIGURATION.md#optional-lsfg).
 
 Compare native performance with LSFG OFF first. Frame generation cannot repair
 slow game simulation caused by low native FPS.

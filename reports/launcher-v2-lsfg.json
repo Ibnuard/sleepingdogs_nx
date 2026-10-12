@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "validation_errors": 0,
+  "generated_sessions": 3,
+  "real_host_loader": true,
+  "wine_osk_route_preserved": true,
+  "source_files": {
+    "/home/blekjek/sleepingdogs-launcher-v2/tests/lsfg-native.cpp": "ba2e48e6c6754b06c22e94849141441cb725963f224a22b1af1fedd47fe5fed9",
+    "/home/blekjek/sleepingdogs-launcher-v2/source/osk.cpp": "d26d7c2cc82d851914bc5227e71fd5c942e97344c5e1c512aaf2b72621129eb8",
+    "/home/blekjek/sleepingdogs-launcher-v2/source/lsfg.cpp": "2e4e62cd878c8a71714a482e070e94bd16ebe2fa8fa3130a90ca7f601c6a65e9",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/launcher/lsfg_vulkan.cpp": "e044a889f5f7f3fc81b0fc8174cc1a50ae189d9e1870a8f063e3909497a5c84d"
+  },
+  "output": "[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] configured off; native presentation\n[SD-LSFG-NATIVE] inactive for this swapchain; see capability/pack reason\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 12.5%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\nPASS: real native host-loader + OSK + LSFG bridge; off, 2x, recreate, warmup, generated presents; validation_errors=0\n",
+  "hardware_tested": false,
+  "switch_fps_measured": false
+}

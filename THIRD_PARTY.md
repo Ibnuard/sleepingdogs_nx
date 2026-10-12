@@ -34,7 +34,10 @@ Imported headers/tests retain LGPL-2.1-or-later notices; exact hashes are in
 [vendor/pes13-launcher.json](vendor/pes13-launcher.json). The in-frame keyboard
 design also credits Wine-NX / Autorun. The Sleeping Dogs host Vulkan adapter,
 offline file catalog and mandatory low-window gate are documented in
-[the candidate notes](docs/launcher-compact-v1.md).
+[the candidate notes](docs/launcher-compact-v1.md). Native LSFG host-loader
+adaptation is GPL-3.0-or-later, following the existing LSFG glue/backend;
+see [launcher v2](docs/launcher-v2.md). The personal shader pack remains
+outside source control and public releases.
 
 ## Runtime components
 

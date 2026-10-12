@@ -72,9 +72,11 @@ or rebooting while the compatible boot environment remains active.
 See the [SD directory layout](../README.md#setup). The package's Wine runtime,
 launcher resources and `share/wine/` files are required alongside the NRO.
 
-For the initial native-rendering baseline, select DXVK 3.1.1, FEX Fastest,
-LSFG OFF and 1280×720. Choose game quality through its own menus; launcher
-profiles do not set the game's world-detail preset.
+For the current native-rendering baseline, select DXVK Native ARM64, FEX
+Fastest and LSFG OFF. [Launcher v2](launcher-v2.md) always applies Light
+1280×720 before launch and caches successful runtime verification. The x86
+DXVK 3.1.1 route remains available as a comparison. Graphics profiles set
+DXVK options independently of the mandatory Light game-detail profile.
 
 ## Updating an existing installation
 

@@ -1,6 +1,8 @@
 /* SPDX-License-Identifier: LGPL-2.1-or-later. UI worker never runs checks. */
 static struct fx_art sd_checked_art;
 static int sd_check_ready;
+static int sd_check_force;
+#include "check_cache.h"
 static int sd_check_cancelled(void){return __atomic_load_n(&fx_ui_command,__ATOMIC_ACQUIRE)<0||__atomic_load_n(&fx_ui_stop,__ATOMIC_ACQUIRE);}
 static void sd_check_progress(int stage,int percent){
     pthread_mutex_lock(&fx_ui_lock);fx_ui_view.check.stage=stage;fx_ui_view.check.percent=percent;pthread_mutex_unlock(&fx_ui_lock);
@@ -9,11 +11,13 @@ static void sd_check_done(int stage){
     pthread_mutex_lock(&fx_ui_lock);fx_ui_view.check.done[stage]=1;pthread_mutex_unlock(&fx_ui_lock);
 }
 static void sd_check_request(void){ /* UI lock held; main thread executes. */
+    sd_check_force=1;
     sd_check_ready=0;fx_ui_view.check=(struct sd_check_view){.visible=1,.percent=-1};
     __atomic_store_n(&fx_ui_command,2,__ATOMIC_RELEASE);
 }
 static void sd_check_run(void){
     struct sd_check_job job={.root=RUNTIME_DIR,.cancelled=sd_check_cancelled,.progress=sd_check_progress};
+    int cache_hit=0,cache_saved=0;
     int ok=appletGetAppletType()==AppletType_Application;
     sd_boot_memory_compatible();
     if(!ok||sd_boot.rc[2]||sd_boot.rc[3]||sd_boot.title!=UINT64_C(0x059a3db219b42000)||sd_boot.total<=UINT64_C(0x80000000)){
@@ -29,7 +33,8 @@ static void sd_check_run(void){
         sd_check_done(SD_CHECK_PATCH);sd_check_progress(SD_CHECK_GAME,-1);ok=sd_check_game(&job);
     }
     if(ok&&!sd_check_cancelled()){
-        sd_check_done(SD_CHECK_GAME);sd_check_progress(SD_CHECK_RUNTIME,0);ok=sd_check_runtime(&job);
+        sd_check_done(SD_CHECK_GAME);sd_check_progress(SD_CHECK_RUNTIME,0);
+        ok=sd_check_runtime_cached(&job,sd_check_force,&cache_hit,&cache_saved);
     }
     if(ok&&!sd_check_cancelled()){
         sd_check_done(SD_CHECK_RUNTIME);sd_check_progress(SD_CHECK_ART,-1);
@@ -42,9 +47,10 @@ static void sd_check_run(void){
     else{fx_ui_view.check.failed=1;snprintf(fx_ui_view.check.error,sizeof(fx_ui_view.check.error),"%s",job.error);}
     if(!sd_check_cancelled())__atomic_store_n(&fx_ui_command,0,__ATOMIC_RELEASE);
     pthread_mutex_unlock(&fx_ui_lock);
+    if(!ok)sd_check_cache_invalidate(&job);
     /* Small standalone report also exists when the Play log was never opened. */
     char path[768];snprintf(path,sizeof(path),"%s/system-check.log",RUNTIME_DIR);
-    FILE *f=fopen(path,"w");if(f){fprintf(f,"launcher-v1\nresult=%s\nbase=%llx size=%llx title=%016llx quota=%llu\nqueries=%08x/%08x/%08x/%08x\nlow_window=%d\n%s\n",
-        ok?"PASS":"FAIL",(unsigned long long)sd_boot.base,(unsigned long long)sd_boot.size,(unsigned long long)sd_boot.title,
+    FILE *f=fopen(path,"w");if(f){fprintf(f,"launcher-v2\nresult=%s\nruntime_check=%s\ncache_saved=%d\nbase=%llx size=%llx title=%016llx quota=%llu\nqueries=%08x/%08x/%08x/%08x\nlow_window=%d\n%s\n",
+        ok?"PASS":"FAIL",cache_hit?"cached":"full",cache_saved,(unsigned long long)sd_boot.base,(unsigned long long)sd_boot.size,(unsigned long long)sd_boot.title,
         (unsigned long long)sd_boot.total,sd_boot.rc[0],sd_boot.rc[1],sd_boot.rc[2],sd_boot.rc[3],sd_low_window_ready(),job.error);fclose(f);}
 }

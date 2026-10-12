@@ -2,10 +2,13 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
-The [launcher/compact candidate](launcher-compact-v1.md) adds **Settings →
-Keyboard**, **System Check**, and **Show debug launch**. Debug is hidden until
-enabled. System Check requires active low-memory support and blocks Play if
-the patch, matching HOME launch, game files or runtime verification fails.
+The [launcher v2 candidate](launcher-v2.md) retains **Settings → Keyboard**,
+**System Check**, and **Show debug launch**. Debug is hidden until enabled.
+Successful full runtime hashing is cached across launches; updates, changed
+file metadata and manual System Check trigger a full scan. Current HOME and
+low-memory mapping checks still run each process. **Light 720p is mandatory**;
+there is no Original/Game detail selection. LSFG now also connects to native
+DXVK instead of silently being forced off.
 
 ## Native-FPS baseline
 
@@ -19,7 +22,7 @@ consistent improvement over one another in the reported hardware tests.
 
 | Control | Effect |
 | --- | --- |
-| Settings → Game detail (H4 v8) | Game settings, reversible Light 720p, or Restore original |
+| Game detail | Light 1280×720 enforced at each launch; no quality selector in launcher v2 |
 | Settings → Graphics | Selects a DXVK configuration profile: Balanced, Low latency, Stable, Quality or Performance |
 | Settings → Renderer | Selects the DXVK 3.1.1 family or DXVK 2.7.1 async; the H4 candidate adds experimental DXVK Native ARM64 |
 | FEX mode | Selects the CPU-translation profile; Fastest is the current test baseline |
@@ -39,41 +42,26 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 v8.1 native candidate](native-dxvk-h4-v8.1-transport.md) needs a passing COM self-test
-before game validation. Its swapchain stays at 1280×720 and LSFG is forced
-OFF without changing the stored LSFG preference. Both existing x86 renderer
-choices remain available for comparisons. V8 retains `dxgi.syncInterval = 1`
-in every native profile; confirm FIFO in the DXVK log. V4 passed the sponsor
-stage and crashed at Press Start; v5 fixes scalar DSV and COM output memory.
-V6 subsequently improves reported gameplay to 16–17 FPS, with 12–13 facing
-crowds. V7 is reported around 20 FPS, peak 25 and crowded-running lows near 13.
-V8 adds bounded Map reuse and optional lower game detail. V8.1 removes repeated
-guest discovery locking and fixes the supplied XML rejection; its Switch test is pending.
-Other profile options and x86 profiles stay canonical. H4 v2/v3 COM completion
-was observed on Switch. A native FPS gain and production readiness remain unproven.
+The earlier H4 builds forced LSFG OFF for the native renderer. Launcher v2
+adds the missing native presentation adapter. Native profiles retain FIFO;
+verify the selected route and active mode in the runtime/DXVK logs. Hardware
+COM completion has been observed, but it does not prove every later build's
+gameplay or LSFG behavior. See [status](STATUS.md) for the separate test records.
 
 ## Light 720p game detail
 
-The H4 v8 menu **Settings → Game detail → Light 720p** lowers WorldDensity,
-shadow resolution/filtering, motion blur, SSAO, AA quality and high-resolution
-textures to the first built-in preset's minimum numeric values. Resolution
-stays **1280×720**. `GlobalSetting=0` prevents a higher preset from overriding
-those individual fields. AA at minimum is not a claim of AA entirely disabled.
+Launcher v2 applies the Light profile automatically before Play/Debug. It
+lowers WorldDensity, shadow resolution/filtering, motion blur, SSAO, AA quality
+and high-resolution textures to the minimum supported numeric values, with
+**1280×720** and `GlobalSetting=0`. AA at minimum does not mean all AA is disabled.
+Legacy `launcher/game-quality.txt` is ignored. There is no Restore option in
+the current launcher; in-game changes are overwritten by Light on next launch.
 
 An existing valid `drive_c/SleepingDogs/Data/DisplaySettings.xml` is required.
-The first original is backed up alongside it as `.fextendo-original`. Other
-supported display fields, `UserOptions.dat` and saves are preserved. If XML
-is missing, select Game settings, save Display Options in game once, then
-enable Light. An unsupported file is rejected instead of guessed.
-
-Game settings stops enforcement and retains the current file. **Restore
-original** restores pre-Light quality and disables the preset. If all quality
-values were already minimum, Light has no demonstrated additional benefit.
-V8.1 accepts GlobalSetting=-1 and normalizes it to 0 for Light. The captured
-file already has zero individual fields; the original executable's unsigned
-preset reader can fall back to preset 2 for minus-prefixed text. This is a
-static finding, not a measurement of live quality or FPS. Compare the same
-route and camera; v8.1 FPS remains unmeasured.
+The first original remains backed up as `.fextendo-original`; unrelated XML
+fields, `UserOptions.dat` and saves are preserved. Missing/unsupported XML
+blocks launch and needs a valid original game settings file. If every value
+was already minimum, enforcing Light does not imply another FPS gain.
 
 ## DXVK HUD
 
