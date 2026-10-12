@@ -2,6 +2,11 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
+Production v1 does not create or refresh logs during normal Play. For the
+checks below, enable **Settings → Show debug launch**, then reproduce with
+**Launch Debug**. An old log can remain from a previous build; preserve it if
+needed and verify the timestamp/build before treating it as a new capture.
+
 ## Launcher will not start or memory preflight fails
 
 Confirm that the current boot environment and Sleeping Dogs forwarder match

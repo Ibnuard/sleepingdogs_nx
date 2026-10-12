@@ -1,0 +1,21 @@
+{
+  "explicit_debug_supported": true,
+  "files": 653,
+  "forwarder_sha256": "f893d51849443ae6da59925aeec8659f68e94b15347d8528ce56412fbad52598",
+  "hardware_tested": false,
+  "last_played_independent": true,
+  "no_game_data": true,
+  "no_lossless_dll": true,
+  "no_proprietary_shader_pack": true,
+  "normal_logs": false,
+  "nro_sha256": "e6169af1a3ead1aeaf53c0ee9c70f8e322cc70a4d6f9a26bc765ea24ddc734b3",
+  "policy": {
+    "environment": "PASS 240 environment/boundary cases",
+    "maintenance": "PASS actual maintenance: quiet registry/balance, first-frame last played exactly once, explicit Debug",
+    "native_logger": "PASS actual DXVK Logger: static constructor, 2000 quiet calls, explicit Debug, quiet again"
+  },
+  "runtime_bytes": 87407351,
+  "runtime_sha256": "482f666ad0710d10c2a15870ff4f929eaf93e607bb57ab54a4f4b1fa157ffad1",
+  "saved_lsfg_preserved": true,
+  "status": "PASS"
+}

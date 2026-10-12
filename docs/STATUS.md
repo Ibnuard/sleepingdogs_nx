@@ -5,6 +5,13 @@
 Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
+**Production v1** now retains v4 and removes normal diagnostic file writes,
+with last played independent of logging. The user reports v4 working well and
+provided six gameplay/menu screenshots. No fresh numeric benchmark accompanied
+that report. The production NRO has passed host/build checks; its quiet policy
+still needs a Switch test. See [production v1](production-v1.md) and the
+[GitHub package/release workflow](RELEASE.md).
+
 The newest [launcher v4 candidate](launcher-v4.md) reuses validated packet
 storage for small COM input arrays, admits deferred-context work during
 Present, and removes native diagnostic accounting that had no report consumer.

@@ -1,6 +1,6 @@
 # Documentation
 
-Latest test candidate: [Launcher v4: inline COM and deferred work during Present](launcher-v4.md).
+Current build: [Production v1: quiet Play](production-v1.md), retaining launcher v4 optimizations.
 
 [Project home](../README.md)
 
@@ -9,6 +9,8 @@ installation for a first setup, or current status before comparing test builds.
 
 | Guide | What it covers |
 | --- | --- |
+| [Production v1](production-v1.md) | Quiet normal Play, independent last played, explicit Debug and public runtime package |
+| [Release pipeline](RELEASE.md) | Pinned inputs, GitHub packaging, merged-PR releases and excluded private payloads |
 | [Launcher v4](launcher-v4.md) | Inline COM input, deferred work during Present, native counter policy, exhaustive host checks and unmeasured hardware target |
 | [Launcher v3](launcher-v3.md) | Redundant binding filter before FEX, corrected FIFO LSFG handling, test evidence and paired comparison |
 | [Launcher v2](launcher-v2.md) | Cached verification, mandatory Light 720p and native LSFG; latest real-FPS result and host-validation limits |

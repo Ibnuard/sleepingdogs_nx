@@ -8,7 +8,12 @@ The repository contains runtime overlays, pinned vendor inputs and versioned
 build/packaging scripts. It does **not yet provide a self-contained build of
 v18 from a clean clone**. The current recipes reuse prepared Wine/FEX/Mesa
 trees, compiled dependencies and hash-checked receipts from the development
-workspace. There is no automated GitHub runtime-release workflow.
+workspace. [GitHub release automation](RELEASE.md) packages the hash-pinned
+production input after merged PRs; it does not perform a clean runtime build.
+
+The current production recipe is [production v1](production-v1.md), based on
+the pinned launcher-v4 ELF and link inputs. The older recipes below are kept
+for source provenance and reproducing their specific experiments.
 
 There are two distinct entry points:
 
@@ -150,8 +155,9 @@ derived from a proprietary input also remain personal test inputs.
 Preserve component notices and the matching modified sources/build recipes in
 any distributed runtime package. [THIRD_PARTY.md](../THIRD_PARTY.md) is the
 current project overview; the original baseline packager still copies the
-inherited PES13 notice snapshot. A future consolidated release must account
-for the later renderer, Mesa and optional LSFG components as well.
+inherited PES13 notice snapshot. Production v1 retains the current project
+notices, generated native/launcher units, attributed LSFG backend source and
+pinned build receipts; its public runtime omits the proprietary shader pack.
 
 ## Validation boundaries
 

@@ -2,6 +2,13 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
+[Production v1](production-v1.md) retains these controls. **Normal Play creates
+no diagnostic logs**; settings, caches, registry, saves and last played still
+persist. Enable **Settings → Show debug launch** and select **Launch Debug**
+when following any log-based checks below. Old logs are not deleted or refreshed
+by normal Play. The public package excludes the optional private LSFG pack and
+does not change the saved LSFG setting.
+
 The [launcher v4 candidate](launcher-v4.md) retains **Settings → Keyboard**,
 **System Check**, and **Show debug launch**. Debug is hidden until enabled.
 Successful full runtime hashing is cached across launches; updates, changed
