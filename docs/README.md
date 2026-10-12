@@ -15,7 +15,8 @@ installation for a first setup, or current status before comparing test builds.
 | [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 build, host correctness tests, standalone Horizon NRO and remaining game integration |
 | [Native DXVK H2](native-dxvk-h2-v1.md) | Real PE32 guest bridge diagnostic, hardware test instructions and v18 restoration |
 | [Native DXVK H3](native-dxvk-h3-v1.md) | Successful Switch guest-driven native Present capture, folder installation and production gates |
-| [Native DXVK H4 v8.1](native-dxvk-h4-v8.1-transport.md) | Current candidate and subsequent Light capture: 20–22 FPS reported, crowded lows near 16; remaining bridge, Map and submission candidates |
+| [Native DXVK H4 v9](native-dxvk-h4-v9-memory-batching.md) | Current candidate: single read/write probes, skip repeated DISCARD zero-fill, native batching ON/OFF and v8.1 rollback; hardware test pending |
+| [Native DXVK H4 v8.1](native-dxvk-h4-v8.1-transport.md) | Previous candidate and Light reference: 20–22 FPS reported, crowded lows near 16, confined peak 30 |
 | [Native DXVK H4 v8](native-dxvk-h4-v8-game-detail.md) | Map reuse and Light 720p introduction; later normal-settings feedback 17–20 FPS |
 | [Native DXVK H4 v7](native-dxvk-h4-v7-objects.md) | Hashed proxy lookup and inline arrays; subsequent user report around 20 FPS, crowded-running lows near 13 |
 | [Native DXVK H4 v6](native-dxvk-h4-v6-dispatch.md) | Reduced diagnostic cost; subsequent user report 16–17 FPS, crowded view 12–13 |

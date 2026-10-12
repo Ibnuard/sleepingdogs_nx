@@ -73,8 +73,8 @@ static LONG WINAPI native_call(uint64_t handle,unsigned index,void *request){
         if(consume_failure(&fail_bind))p->ret=p->fault=E_POINTER;
         else{r->guest=memory;
             if(r->mode!=D3D11_MAP_WRITE_DISCARD)memcpy(memory,r->data,r->bytes);
-#ifdef TEST_SHADOW_CACHE
-            else memset(memory,0,r->bytes); /* v7 relied on fresh VirtualAlloc zeros. */
+#ifdef TEST_ZERO_DISCARD
+            else memset(memory,0,r->bytes); /* Pinned v8.1 native policy. */
 #endif
         }
     } else if(!p->interface_id&&p->method==SD_COM_ABORT_MAP){close_map(map_for(p->args[0]));++abort_calls;}
@@ -116,7 +116,8 @@ static void mode_tests(void){
     for(UINT type=D3D11_MAP_READ;type<=D3D11_MAP_WRITE_NO_OVERWRITE;++type){
         for(UINT i=0;i<4096;++i)resources[0].data[i]=previous[i]=(unsigned char)(i*13+type);
         D3D11_MAPPED_SUBRESOURCE out={0};require(SUCCEEDED(map_resource(0,(D3D11_MAP)type,&out)),"Map mode failed");
-        for(UINT i=0;i<4096;++i)require(((unsigned char*)out.pData)[i]==(type==D3D11_MAP_WRITE_DISCARD?0:previous[i]),"Map initialized bytes incorrectly");
+        if(type!=D3D11_MAP_WRITE_DISCARD)
+            for(UINT i=0;i<4096;++i)require(((unsigned char*)out.pData)[i]==previous[i],"preserving Map changed bytes");
         memset(out.pData,0x6b,4096);unmap_resource(0);
         for(UINT i=0;i<4096;++i)require(resources[0].data[i]==(type==D3D11_MAP_READ?previous[i]:0x6b),"Unmap copy direction incorrect");
         check_cache();
@@ -127,8 +128,12 @@ static void mode_tests(void){
 #ifdef TEST_SHADOW_CACHE
     require(a.pData==b.pData&&virtual_calls==before,"exact-size shadow was not reused");
 #endif
-    for(UINT i=0;i<4096;++i)require(!((unsigned char*)b.pData)[i],"reused DISCARD shadow exposes old bytes");
-    unmap_resource(0);destroy_resource(0);drain_cache();
+    /* DISCARD has no initial-content guarantee. Initialize only a middle
+     * range, then check exactly the data the application has written. */
+    memset((unsigned char*)b.pData+137,0x57,61);
+    unmap_resource(0);
+    for(UINT i=137;i<198;++i)require(resources[0].data[i]==0x57,"partial DISCARD write was lost");
+    destroy_resource(0);drain_cache();
 }
 static void overlap_tests(void){
     for(UINT i=0;i<3;++i)create_resource(i,4096);D3D11_MAPPED_SUBRESOURCE a,b,c;
@@ -150,8 +155,11 @@ static DWORD WINAPI worker(void *arg){
     for(UINT j=0;j<THREAD_COUNT;++j)if(j!=i)require(thread_memory[j]!=out.pData,"concurrent active shadows alias");
     memset(out.pData,(int)i+1,resources[i].bytes);unmap_resource(i);
     for(UINT n=0;n<32;++n){require(SUCCEEDED(map_resource(i,D3D11_MAP_WRITE_DISCARD,&out)),"thread repeated Map failed");
+#if !defined(TEST_SHADOW_CACHE) || defined(TEST_ZERO_DISCARD)
         require(!((unsigned char*)out.pData)[0]&&!((unsigned char*)out.pData)[resources[i].bytes-1],"thread shadow not reinitialized");
-        memset(out.pData,(int)i+1,resources[i].bytes);unmap_resource(i);}
+#endif
+        memset(out.pData,(int)i+1,resources[i].bytes);unmap_resource(i);
+        require(resources[i].data[0]==i+1&&resources[i].data[resources[i].bytes-1]==i+1,"concurrent discard write lost data");}
     return 0;
 }
 static void concurrency_tests(void){

@@ -110,6 +110,13 @@ has been established in the current test record.
 
 ## Developer comparison switches
 
+The [native H4 v9 candidate](native-dxvk-h4-v9-memory-batching.md) enables
+`d3d11.sdSubmissionBatching` only for native Performance. Its `batch-off/`
+and `batch-on/` overlays change that single option without changing Light
+720p or the other v9 runtime optimizations. Close from HOME, copy the selected
+overlay's `switch/` folder, and select Performance again. Other native profiles
+and both x86 renderer defaults retain their previous batching behavior.
+
 These are optional files in `switch/sleepingdogs-fex/`, not settings required
 for installation. Write the value followed by a newline, then close from HOME
 and relaunch.

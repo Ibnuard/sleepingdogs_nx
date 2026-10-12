@@ -195,7 +195,7 @@ int main(int argc,char** argv){
         auto expected=allocate<unsigned char>(1024);for(unsigned i=0;i<1024;++i)expected[i]=uint8_t(i*13+3);
         std::memset(arena+shadow-base,0xa5,1024);
         auto m=map(c,context,dynamic,0,D3D11_MAP_WRITE_DISCARD);
-        for(unsigned i=0;i<1024;++i)require(!arena[shadow-base+i],"WRITE_DISCARD reinitializes reused shadow bytes");
+        for(unsigned i=0;i<1024;++i)require(arena[shadow-base+i]==0xa5,"WRITE_DISCARD needlessly cleared guest shadow storage");
         std::memcpy(arena+shadow-base,expected,1024);unmap(c,context,dynamic,0,m.id);
         m=map(c,context,dynamic,0,D3D11_MAP_WRITE_NO_OVERWRITE);require(!std::memcmp(arena+shadow-base,expected,1024),"NO_OVERWRITE preserves data");
         for(unsigned i=512;i<544;++i){expected[i]^=0x55;arena[shadow-base+i]=expected[i];}unmap(c,context,dynamic,0,m.id);
@@ -214,6 +214,15 @@ int main(int argc,char** argv){
             require(c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_UpdateSubresource,context,{update_target,0,wire(empty),0,0,0})==0,"empty UpdateSubresource box must not read a null source");
         c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_CopyResource,context,{readback,update_target});
         m=map(c,context,readback,0,D3D11_MAP_READ);for(unsigned i=0;i<1024;++i){require(arena[shadow-base+i]==expected[i],"empty updates must preserve native buffer contents");++verified_bytes;}unmap(c,context,readback,0,m.id);
+        for(unsigned pass=0;pass<3;++pass) {
+            m=map(c,context,dynamic,0,D3D11_MAP_WRITE_DISCARD);
+            for(unsigned i=137;i<198;++i)arena[shadow-base+i]=uint8_t(i+pass*17);
+            unmap(c,context,dynamic,0,m.id);
+            c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_CopyResource,context,{readback,dynamic});
+            m=map(c,context,readback,0,D3D11_MAP_READ);
+            for(unsigned i=137;i<198;++i)require(arena[shadow-base+i]==uint8_t(i+pass*17),"partial DISCARD native GPU readback lost written bytes");
+            unmap(c,context,readback,0,m.id);
+        }
         auto mapped=allocate<sd_com_mapped32>();require(c.call(SD_COM_IF_ID3D11DeviceContext,SD_COM_M_ID3D11DeviceContext_Map,context,{readback,0,D3D11_MAP_READ,0,address(mapped)})==0);
         uint32_t map_id=c.packet->aux,map_length=c.packet->high[0];deny_write=shadow;
         c.reject(0,SD_COM_BIND_MAP,0,{map_id,shadow,map_length});deny_write=0;c.call(0,SD_COM_ABORT_MAP,0,{map_id});

@@ -65,6 +65,13 @@ comparison with v8, so the runtime and Light contributions cannot be separated.
 The supplied COM runtime remains byte-identical to the older v3 file; fresh
 v8.1 COM, clean exit and stable 30 FPS remain unverified.
 
+[H4 v9](native-dxvk-h4-v9-memory-batching.md) now implements the immediate
+bridge/Map/submission candidates: one Wine read/write probe per writable
+range, no repeated WRITE_DISCARD zero-fill, and bounded batching in native
+Performance. It includes batching ON/OFF overlays and verified v8.1 rollback.
+Native host, actual PE32, page-protection differential and tracker checks pass;
+v9 Switch behavior and FPS have not yet been measured.
+
 ## Performance evidence
 
 | Observation | Result and scope |
@@ -81,6 +88,7 @@ v8.1 COM, clean exit and stable 30 FPS remain unverified.
 | Native H4 v7 gameplay feedback/log | User reports around 20 FPS, peak 25 and crowded-running lows near 13; final five Present windows pooled 19.07 FPS |
 | Native H4 v8 gameplay feedback/log | User reports 17–20 FPS, crowds 13–16, peak 26; final five Present windows pooled 18.76 FPS; no matched scene/clock comparison |
 | Native H4 v8.1 Light gameplay | User reports 20–22 FPS, crowded lows near 16, confined peak 30; final five Present windows pool to 20.67 FPS at logged 1280×720. No matched scene/clock/quality comparison |
+| Native H4 v9 candidate | Bridge probes, DISCARD memory traffic and native batching changed; local correctness checks pass, Switch COM/game/FPS pending |
 | Stable 30 FPS | Not achieved |
 
 The v18 figures refer to the log with SHA-256
@@ -145,12 +153,12 @@ DXVK work and native presentation, then test changes on the same 720p scene.
 The native ARM64 DXVK probe has passed the supplied standalone hardware test;
 the H2 Wine/FEX guest bridge and H3 guest-driven native swapchain/Present also
 pass their supplied hardware captures. H4 v2/v3 ordinary PE32 COM completion
-is also observed. The [H4 v8.1 update folder](native-dxvk-h4-v8.1-transport.md#install-and-compare)
-removes warm guest endpoint locking based on v8's approximately 9,634 bridge
-calls per Present, and corrects Light's rejection of GlobalSetting=-1.
-Its COM test requires 72
-sampler-slot and 16 scalar DSV/guard checks in addition to the prior coverage.
-Save COM files before the game overwrites the shared DXVK log. A fresh v8.1 COM pass,
+is also observed. The [H4 v9 update folder](native-dxvk-h4-v9-memory-batching.md#install-and-compare)
+reduces writable-range probing and DISCARD memory traffic and enables bounded
+batching in native Performance. Its COM test requires eight memory guards,
+183 partial-DISCARD bytes, 72 sampler slots and 16 scalar DSV/guard checks
+in addition to the prior coverage.
+Save COM files before the game overwrites the shared DXVK log. A fresh v9 COM pass,
 game startup, actual game API use, resource lifetime and native worker behavior
 still need validation. Matched 720p gameplay and long-session evidence are
 required before production or a 30 FPS claim. See the

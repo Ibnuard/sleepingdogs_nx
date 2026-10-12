@@ -79,7 +79,8 @@ def main():
     payload=launcher_payload()
     from port_common import profile_config
     from sleepingdogs_performance_hud import performance_config
-    # Every x86 profile remains canonical; native differs only in syncInterval.
+    # Every x86 profile remains canonical. Native keeps FIFO and opts in to
+    # bounded batching only in Performance; the other native profiles stay off.
     native_configs=0
     for name,data in payload.items():
         if not name.endswith('/dxvk.conf'):continue
@@ -89,7 +90,8 @@ def main():
         canonical=(performance_config(async_mode) if profile=='performance' else profile_config(profile,async_mode)).encode()
         if native:
             assert re.findall(rb'(?m)^dxgi\.syncInterval\s*=\s*(\d+)',data)==[b'1']
-            strip=lambda value:re.sub(rb'(?m)^dxgi\.syncInterval\s*=\s*[^\r\n]+$',b'',value)
+            assert re.findall(rb'(?m)^d3d11\.sdSubmissionBatching\s*=\s*(\w+)',data)==[b'True' if profile=='performance' else b'False']
+            strip=lambda value:re.sub(rb'(?m)^dxgi\.syncInterval\s*=\s*[^\r\n]+$',b'',re.sub(rb'(?m)^d3d11\.sdSubmissionBatching[^\r\n]+\r?\n',b'',value))
             assert strip(data)==strip(canonical),name
             native_configs+=1
         else:assert data==canonical,name
@@ -103,7 +105,7 @@ def main():
         if result.returncode:raise RuntimeError(result.stderr)
     receipt=dict(status='PASS',renderers=3,presets=15,transaction_targets=8,missing_companion_rejected=True,
                  rename_failure_rolled_back=True,staging_sync_failure_preserved=True,power_loss_recovery=True,legacy_fallback_verified=True,sanitizers=['address','undefined'],
-                 modeled_fsync=True,native_fifo_configs_verified=native_configs,legacy_configs_unchanged=True,native_only_sync_interval_changed=True,
+                 modeled_fsync=True,native_fifo_configs_verified=native_configs,legacy_configs_unchanged=True,native_performance_batching_only=True,
                  scope='Actual file payload/transaction under modeled Horizon rename and sync outcomes; interrupted file layout recovery. Not physical filesystem durability.',
                  source_sha256=hashlib.sha256(after.encode()).hexdigest(),fixture_sha256=sha(fixture),runner_sha256=sha(__file__),compile_argv=command,
                  payload_sha256={name:hashlib.sha256(data).hexdigest() for name,data in payload.items()},hardware_tested=False)

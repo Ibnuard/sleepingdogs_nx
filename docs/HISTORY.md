@@ -11,6 +11,7 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
+| Native DXVK H4 v9 | [Bridge probes, Map traffic and batching](native-dxvk-h4-v9-memory-batching.md); source-bound local checks pass, native Performance batching with ON/OFF overlays; hardware FPS pending |
 | Native DXVK H4 v8.1 | [Guest transport and Light fix](native-dxvk-h4-v8.1-transport.md); subsequent Light report 20–22 FPS, crowded lows 16, confined peak 30; last five Present windows 20.67 FPS |
 | Native DXVK H4 v8 | [Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md); later feedback 17–20 FPS, Light rejected GlobalSetting=-1 |
 | Native DXVK H4 v7 | [Object lookup and temporary arrays](native-dxvk-h4-v7-objects.md); subsequent user report around 20 FPS, peak 25 and crowded-running lows near 13 |

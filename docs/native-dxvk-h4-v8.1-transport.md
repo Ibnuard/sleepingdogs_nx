@@ -6,6 +6,9 @@ PE32-to-native dispatch path and fixes Light rejecting the supplied
 reaches gameplay, with user-reported 20–22 FPS and crowded lows near 16.
 This remains an experiment; stable 30 FPS and production readiness are unproven.
 
+The subsequent [v9 candidate](native-dxvk-h4-v9-memory-batching.md) implements
+the immediate probe, Map and batching experiments described below.
+
 ## Subsequent Light 720p capture
 
 The [preserved Light observation](../reports/native-dxvk-h4-v8.1-light-observation.json)

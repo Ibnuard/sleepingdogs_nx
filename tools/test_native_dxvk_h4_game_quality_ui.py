@@ -332,19 +332,28 @@ def main():
     for name in ("background.rgba", "blur.rgba", "icon.rgba"):
         assets[name] = preview / name
     asset_hashes = {name: {"source": str(path), "sha256": sha(path)} for name, path in assets.items()}
-    with tempfile.TemporaryDirectory(dir=work, prefix="fixture-") as temporary:
+    # These fixtures verify UI/file-call behavior, not persistent-media durability.
+    # Use the host temporary filesystem, avoiding WSL virtual-disk journal stalls.
+    with tempfile.TemporaryDirectory(prefix="sd-h4-ui-") as temporary:
         root = Path(temporary)
+        # Render on the Linux filesystem before copying previews across /mnt.
+        # Host-mount I/O must not consume the executable's 90-second test limit.
+        rendered = root / "renders"
+        rendered.mkdir()
         (root / "launcher").mkdir()
         (root / "drive_c/SleepingDogs/Data").mkdir(parents=True)
         for name, path in assets.items():
             shutil.copyfile(path, root / "launcher" / name)
-        run = subprocess.run([str(executable), str(root), str(output)], capture_output=True, text=True, timeout=90)
+        run = subprocess.run([str(executable), str(root), str(rendered)], capture_output=True, text=True, timeout=90)
         (LOCAL / "game-quality-ui.stdout.log").write_text(run.stdout)
         (LOCAL / "game-quality-ui.stderr.log").write_text(run.stderr)
         if run.returncode:
             raise RuntimeError(run.stdout + run.stderr)
-    for ppm in sorted(output.glob("*.ppm")):
-        png_from_ppm(ppm)
+        for ppm in sorted(rendered.glob("*.ppm")):
+            png_from_ppm(ppm)
+            shutil.copyfile(ppm, output / ppm.name)
+            png = ppm.with_suffix(".png")
+            shutil.copyfile(png, output / png.name)
     for name, digest in source_files.items():
         assert sha(ROOT / name) == digest, "source changed during test: " + name
     headers = {}
@@ -363,6 +372,7 @@ def main():
         fixture_sha256=sha(program), compiled_headers=headers, compile_argv=command,
         sanitizers=["address", "undefined"], horizon_no_replace_rename=True,
         real_host_fsync_with_injected_failures=2, settings_pages=8, root_rows=8, detail_rows=3,
+        fixture_storage_root=tempfile.gettempdir(), persistent_media_durability_tested=False,
         group_enter_back_routes=7, renderer_choices_persisted=3,
         deferred_apply_verified=True, resolution_1280x720_preserved=True, exact_original_restore=True,
         stop_enforcement_keeps_current_options=True, unrelated_user_options_preserved=True,

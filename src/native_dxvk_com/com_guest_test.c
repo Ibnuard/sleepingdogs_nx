@@ -6,6 +6,7 @@
 #include <d3d10.h>
 #include <dxgi.h>
 #include <stdint.h>
+#include "com_protocol.h"
 #include "../native_dxvk/probe_shaders.h"
 #ifndef SD_COM_BUILD
 #error SD_COM_BUILD must identify the packaged native runtime
@@ -15,6 +16,7 @@ void* memcpy(void *d,const void *s,size_t n){unsigned char *a=d;const unsigned c
 void* memset(void *d,int v,size_t n){unsigned char*a=d;while(n--)*a++=(unsigned char)v;return d;}
 static HANDLE log_file=INVALID_HANDLE_VALUE;
 static uint32_t checks,error,pixels,bad,presents,buffers,mip_bytes,sampler_slots,dsv_guards;
+static uint32_t memory_guards,discard_partial_bytes;
 static uint32_t stats[8],elapsed_ms;
 static char text[2048];static unsigned used;
 static const char* stage="startup";
@@ -31,12 +33,43 @@ static void result(int passed){
     append(",\"present_calls\":");number(presents);append(",\"present_elapsed_ms\":");number(elapsed_ms);
     append(",\"bridge_calls\":");number(stats[0]);append(",\"native_draws\":");number(stats[1]);append(",\"live_interfaces\":");number(stats[3]);append(",\"live_maps\":");number(stats[4]);
     append(",\"sampler_roundtrip_slots_verified\":");number(sampler_slots);append(",\"dsv_guard_checks\":");number(dsv_guards);
+    append(",\"memory_guard_checks\":");number(memory_guards);append(",\"discard_partial_bytes_verified\":");number(discard_partial_bytes);
     append(",\"bridge_failures\":");number(stats[6]);append(",\"guest_execution\":true,\"com_proxy\":true,\"game_integration_tested\":false,\"game_fps_measured\":false}\r\n");
     flush(file);if(file!=INVALID_HANDLE_VALUE)CloseHandle(file);
 }
 typedef HRESULT (WINAPI* create_device_fn)(IDXGIAdapter*,D3D_DRIVER_TYPE,HMODULE,UINT,const D3D_FEATURE_LEVEL*,UINT,UINT,ID3D11Device**,D3D_FEATURE_LEVEL*,ID3D11DeviceContext**);
 typedef HRESULT (WINAPI* create_factory_fn)(REFIID,void**);
 typedef LONG (WINAPI* stats_fn)(uint32_t*);
+typedef LONG (WINAPI* query_memory_fn)(HANDLE,const void*,int,void*,SIZE_T,SIZE_T*);
+typedef LONG (WINAPI* unix_call_fn)(uint64_t,unsigned,void*);
+static int memory_probe_test(void) {
+    HMODULE ntdll=GetModuleHandleA("ntdll.dll"),bridge=GetModuleHandleA("sdndx4.dll");
+    query_memory_fn query=(query_memory_fn)GetProcAddress(ntdll,"NtQueryVirtualMemory");
+    unix_call_fn call=(unix_call_fn)GetProcAddress(ntdll,"__wine_unix_call");
+    uint64_t handle=0;DWORD old=0;unsigned char* memory=NULL;int ok=0;
+    if(!check(query&&call&&query((HANDLE)(intptr_t)-1,bridge,1000,&handle,sizeof(handle),NULL)>=0&&handle,0xe4010300u))return 0;
+    memory=VirtualAlloc(NULL,12288,MEM_RESERVE|MEM_COMMIT,PAGE_READWRITE);
+    if(!check(memory!=NULL,0xe4010301u))return 0;
+#define PROBE_REJECT(ptr) do { if(!check(call(handle,0,(void*)(ptr))==(LONG)0xc0000005u,0xe4010302u))goto done; ++memory_guards; } while(0)
+    PROBE_REJECT(NULL);PROBE_REJECT((void*)1);PROBE_REJECT((void*)(uintptr_t)0xfffffff0u);
+    if(!check(VirtualProtect(memory,4096,PAGE_READONLY,&old),0xe4010303u))goto done;
+    PROBE_REJECT(memory);
+    if(!check(VirtualProtect(memory,4096,PAGE_NOACCESS,&old),0xe4010304u))goto done;
+    PROBE_REJECT(memory);
+    if(!check(VirtualProtect(memory,4096,PAGE_READWRITE,&old)&&VirtualProtect(memory+4096,4096,PAGE_NOACCESS,&old),0xe4010305u))goto done;
+    PROBE_REJECT(memory+4096-80);
+    if(!check(VirtualProtect(memory+4096,4096,PAGE_READWRITE,&old),0xe4010306u))goto done;
+    struct sd_com_packet* packet=(void*)memory;memset(packet,0,sizeof(*packet));packet->abi=SD_COM_ABI;packet->method=SD_COM_STATS;
+    packet->args[0]=(uint32_t)(uintptr_t)(memory+4096-16);
+    if(!check(call(handle,0,packet)==0&&!packet->fault&&((uint32_t*)(memory+4096-16))[7]==SD_COM_ABI,0xe4010307u))goto done;
+    ++memory_guards;
+    void* freed=memory;if(!check(VirtualFree(memory,0,MEM_RELEASE),0xe4010308u))goto done;memory=NULL;
+    PROBE_REJECT(freed);ok=1;
+done:
+    if(memory)VirtualFree(memory,0,MEM_RELEASE);
+#undef PROBE_REJECT
+    return ok;
+}
 struct ref_worker {ID3D11Buffer *buffer;HANDLE ready;volatile LONG pairs;};
 static DWORD WINAPI ref_thread(void* data){struct ref_worker* w=data;SetEvent(w->ready);
     for(UINT i=0;i<256;++i){ID3D11Buffer_AddRef(w->buffer);ID3D11Buffer_Release(w->buffer);InterlockedIncrement(&w->pairs);}return 0;}
@@ -69,6 +102,8 @@ static int run(void){
     create_factory_fn create_factory=(create_factory_fn)GetProcAddress(dxgi,"CreateDXGIFactory1");
     get_stats=(stats_fn)GetProcAddress(GetModuleHandleA("sdndx4.dll"),"SdComStats");
     REQUIRE(create_device&&create_factory&&get_stats,GetLastError());
+    record("native memory probe page protections");result(-1);
+    REQUIRE(memory_probe_test()&&memory_guards==8,0xe4010309u);
     record("COM factory, adapter, device and identity");result(-1);
     HR(create_factory(&IID_IDXGIFactory1,(void**)&factory));HR(IDXGIFactory1_EnumAdapters1(factory,0,&adapter));
     struct {DXGI_ADAPTER_DESC1 desc;uint32_t guard;} ad={0};ad.guard=0x1234abcdu;
@@ -108,6 +143,16 @@ static int run(void){
     HR(ID3D11Device_CreateBuffer(device,&bd,&init,&immutable));ID3D11DeviceContext_CopyResource(context,(ID3D11Resource*)readback,(ID3D11Resource*)immutable);
     HR(ID3D11DeviceContext_Map(context,(ID3D11Resource*)readback,0,D3D11_MAP_READ,0,&map));
     for(UINT i=0;i<1024;++i){REQUIRE(((unsigned char*)map.pData)[i]==initial[i],0xe4010009u);++buffers;}ID3D11DeviceContext_Unmap(context,(ID3D11Resource*)readback,0);
+    record("partial WRITE_DISCARD readback");result(-1);
+    for(UINT pass=0;pass<3;++pass) {
+        HR(ID3D11DeviceContext_Map(context,(ID3D11Resource*)dynamic,0,D3D11_MAP_WRITE_DISCARD,0,&map));
+        for(UINT i=137;i<198;++i)((unsigned char*)map.pData)[i]=(unsigned char)(i+pass*17);
+        ID3D11DeviceContext_Unmap(context,(ID3D11Resource*)dynamic,0);
+        ID3D11DeviceContext_CopyResource(context,(ID3D11Resource*)readback,(ID3D11Resource*)dynamic);
+        HR(ID3D11DeviceContext_Map(context,(ID3D11Resource*)readback,0,D3D11_MAP_READ,0,&map));
+        for(UINT i=137;i<198;++i){REQUIRE(((unsigned char*)map.pData)[i]==(unsigned char)(i+pass*17),0xe401030au);++discard_partial_bytes;}
+        ID3D11DeviceContext_Unmap(context,(ID3D11Resource*)readback,0);
+    }
     record("scalar DSV guards and six-stage sampler roundtrips");result(-1);
     struct {ID3D11DepthStencilView *depth;uint32_t guard[7];} guarded;
     for(UINT pass=0;pass<2;++pass) {

@@ -28,7 +28,7 @@ drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. [H4 v8.1 Light gameplay](docs/native-dxvk-h4-v8.1-transport.md#subsequent-light-720p-capture) is reported at 20–22 FPS; final five Present windows pool to 20.67 FPS. Fresh v8.1 COM and matched-scene comparison remain pending |
+| Native DXVK research | [H4 v8.1 Light gameplay](docs/native-dxvk-h4-v8.1-transport.md#subsequent-light-720p-capture) is reported at 20–22 FPS. [H4 v9](docs/native-dxvk-h4-v9-memory-batching.md) reduces bridge/Map work and adds native batching comparisons; local checks pass, v9 Switch testing is pending |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 

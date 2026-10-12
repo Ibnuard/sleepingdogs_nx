@@ -11,7 +11,7 @@ import statistics
 import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
-LOCAL=ROOT/'local/native-dxvk-h4-v8.1'
+LOCAL=ROOT/'local/native-dxvk-h4-v9'
 BASELINE='951ffdc4192b01a88a8fc51224ea02804f5776ab'
 MINGW='/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc'
 GIT='C:/devkitPro/msys2/usr/bin/git.exe'

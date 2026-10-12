@@ -47,7 +47,7 @@ def main():
         log_preset='fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack',
         reference='https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/Learn%20the%20Architecture/Armv8-A%20memory%20model%20guide.pdf?revision=58b1dd0a-3800-4218-b21a-f95a0332034c',
         limits='Static checks of pinned compiler output and FEX source, not FEX execution or hardware concurrency proof. Switch COM/game validation remains required.',hardware_tested=False,game_fps_measured=False)
-    (ROOT/'reports/native-dxvk-h4-v8.1-endpoint-audit.json').write_text(json.dumps(report,indent=2)+'\n')
+    (ROOT/'reports/native-dxvk-h4-v9-endpoint-audit.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(status=report['status'],proxy_sha256=report['proxy_sha256'],hot_address_dependency=True,cold_xchg=True,fex_source_hashes_match_vendor=True)))
 
 if __name__=='__main__':main()

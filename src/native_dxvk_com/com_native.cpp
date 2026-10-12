@@ -61,6 +61,7 @@ struct Context {
     uint32_t next_map=1;
     bool stopped=false;
     uint64_t calls=0,presents=0,draws=0,map_bytes=0,failures=0,last_stats_ns=0;
+    uint64_t discard_maps=0,discard_zero_bytes_skipped=0;
     uint32_t startup_traces=0;
 #ifdef SD_COM_HOST_FAULT_TESTS
     int32_t adopt_failure_after=-1;
@@ -74,9 +75,14 @@ struct Context {
     }
     template<typename T> T* write(uint32_t address,uint64_t count=1) {
         if(!address || !count)return nullptr;
-        T* result=read<T>(address,count);
-        if(!virtual_check_buffer_for_write(result,size_t(count*sizeof(T))))throw Fault(E_POINTER);
-        return result;
+        uint64_t bytes=count*sizeof(T);
+        // The pinned Wine write probe uses volatile read-modify-write on each
+        // page and both endpoints, inside its exception handler. It validates
+        // readability as well as writability; do not repeat the read probe.
+        // Retain all bounds checks and probe every call (no permission cache).
+        if(count>UINT32_MAX/sizeof(T)||address<0x10000||uint64_t(address)+bytes>(uint64_t(1)<<32)||
+           !virtual_check_buffer_for_write(reinterpret_cast<void*>(uintptr_t(address)),size_t(bytes)))throw Fault(E_POINTER);
+        return reinterpret_cast<T*>(uintptr_t(address));
     }
     template<typename T> T* required_read(uint32_t address,uint64_t count=1) {
         T* p=read<T>(address,count);if(!p)throw Fault(E_POINTER);return p;
@@ -170,6 +176,9 @@ struct Context {
         last_stats_ns=now;char line[256];
         std::snprintf(line,sizeof(line),"[SD-NDX-COM] calls=%llu draws=%llu presents=%llu live_interfaces=%zu maps=%zu map_copy_bytes=%llu failures=%llu; ARM64 DXVK, real COM",
             (unsigned long long)calls,(unsigned long long)draws,(unsigned long long)presents,index.size(),maps.size(),(unsigned long long)map_bytes,(unsigned long long)failures);
+        wine_nx_runtime_trace(line);
+        std::snprintf(line,sizeof(line),"[SD-NDX-MAP] discard_maps=%llu zero_fill_skipped_bytes=%llu; preserving copy-in and full copy-out retained",
+            (unsigned long long)discard_maps,(unsigned long long)discard_zero_bytes_skipped);
         wine_nx_runtime_trace(line);
     }
     void abort_map(uint32_t id) {
@@ -326,7 +335,13 @@ void global_call(Context& c,sd_com_packet& p) {
         if(m.guest||p.args[2]!=m.bytes)throw Fault(E_INVALIDARG);
         auto shadow=c.required_write<unsigned char>(p.args[1],m.bytes);m.guest=p.args[1];
         if(m.type!=D3D11_MAP_WRITE_DISCARD){std::memcpy(shadow,m.native.pData,m.bytes);c.map_bytes+=m.bytes;}
-        else std::memset(shadow,0,m.bytes); // Reused guest shadows retain fresh VirtualAlloc's zero-filled behavior.
+        else {
+            // WRITE_DISCARD defines prior contents as undefined. Reused guest
+            // storage need not be zeroed; the application initializes the data
+            // it consumes. All preserving modes still copy in, and Unmap still
+            // copies out. Writable-range validation above remains mandatory.
+            ++c.discard_maps;c.discard_zero_bytes_skipped+=m.bytes;
+        }
         p.ret=0;return;
     }
     case SD_COM_ABORT_MAP:c.abort_map(p.args[0]);p.ret=0;return;

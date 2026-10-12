@@ -259,8 +259,8 @@ static struct mapped_shadow *shadow_take(uint32_t bytes) {
     while(*at&&(*at)->bytes!=bytes)at=&(*at)->next;
     if(*at){shadow=*at;*at=shadow->next;--idle_shadow_count;idle_shadow_bytes-=bytes;shadow->next=NULL;}
     LeaveCriticalSection(&proxy_lock);
-    /* BindMap initializes every byte natively after writable-range validation:
-     * copy-in for preserving modes, zero-fill for WRITE_DISCARD. */
+    /* BindMap validates the full writable range and copies preserving modes.
+     * WRITE_DISCARD contents are undefined, including on an exact-size reuse. */
     if(shadow)return shadow;
     for(unsigned attempt=0;attempt<2;++attempt) {
         shadow=HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*shadow));
