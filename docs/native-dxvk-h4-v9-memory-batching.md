@@ -113,3 +113,17 @@ suite, run `tools/test_native_dxvk_h4_memory.py` and
 guest tests. Package with `tools/package_native_dxvk_h4.py` only after the
 build and all matching receipts pass. Preserve the v8.1 folder: the packager
 verifies it as the source of the native rollback.
+
+## Subsequent game capture
+
+The [preserved v9 observation](../reports/native-dxvk-h4-v9-gameplay-observation.json)
+confirms native ARM64 rendering, Light 1280×720, the memory changes and
+batching ON. The user reports no meaningful FPS improvement. The last five
+complete Present windows pool to 20.59 FPS, compared with 20.67 FPS for v8.1;
+these are not authenticated same-scene/clock A/B runs. Deferred batching
+hints and 55.30 GB of avoided zero-fill establish activity, not saved time.
+
+The supplied COM runtime is byte-identical to the older v3 file, so it does
+not validate a fresh v9 COM pass. The next [FEX context candidate](fex-context-v1.md)
+investigates recurring guest/native context work while retaining this v9
+NRO, DXVK and graphics configuration.

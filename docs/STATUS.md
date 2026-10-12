@@ -69,8 +69,18 @@ v8.1 COM, clean exit and stable 30 FPS remain unverified.
 bridge/Map/submission candidates: one Wine read/write probe per writable
 range, no repeated WRITE_DISCARD zero-fill, and bounded batching in native
 Performance. It includes batching ON/OFF overlays and verified v8.1 rollback.
-Native host, actual PE32, page-protection differential and tracker checks pass;
-v9 Switch behavior and FPS have not yet been measured.
+Native host, actual PE32, page-protection differential and tracker checks pass.
+The [subsequent v9 capture](../reports/native-dxvk-h4-v9-gameplay-observation.json)
+confirms the native Light 720p route and batching ON. The user reports no
+meaningful improvement; the last five Present windows pool to 20.59 FPS,
+compared with 20.67 FPS for v8.1. This is not a matched scene/clock comparison.
+The separately supplied COM runtime remains older v3 evidence.
+
+The [FEX context v1 candidate](fex-context-v1.md) now targets repeated x87
+context import in the FEX/Wine boundary. It preserves rounding, precision,
+callbacks and suspension. Host numerical/oracle and actual ARM64-function
+checks pass. Its update folder supplies a FEX-only A/B and exact rollback on
+the existing native H4 v9 runtime; Switch performance remains unmeasured.
 
 ## Performance evidence
 
@@ -88,7 +98,8 @@ v9 Switch behavior and FPS have not yet been measured.
 | Native H4 v7 gameplay feedback/log | User reports around 20 FPS, peak 25 and crowded-running lows near 13; final five Present windows pooled 19.07 FPS |
 | Native H4 v8 gameplay feedback/log | User reports 17–20 FPS, crowds 13–16, peak 26; final five Present windows pooled 18.76 FPS; no matched scene/clock comparison |
 | Native H4 v8.1 Light gameplay | User reports 20–22 FPS, crowded lows near 16, confined peak 30; final five Present windows pool to 20.67 FPS at logged 1280×720. No matched scene/clock/quality comparison |
-| Native H4 v9 candidate | Bridge probes, DISCARD memory traffic and native batching changed; local correctness checks pass, Switch COM/game/FPS pending |
+| Native H4 v9 gameplay | Native Light 720p and batching ON confirmed; last five windows 20.59 FPS; user reports no meaningful gain. Fresh COM/clean exit unconfirmed |
+| FEX context v1 candidate | Exact conversion shortcut; 9,698,949 host checks and 15,616 ARM64 comparisons pass; FEX-only hardware A/B pending |
 | Stable 30 FPS | Not achieved |
 
 The v18 figures refer to the log with SHA-256
@@ -158,10 +169,11 @@ reduces writable-range probing and DISCARD memory traffic and enables bounded
 batching in native Performance. Its COM test requires eight memory guards,
 183 partial-DISCARD bytes, 72 sampler slots and 16 scalar DSV/guard checks
 in addition to the prior coverage.
-Save COM files before the game overwrites the shared DXVK log. A fresh v9 COM pass,
-game startup, actual game API use, resource lifetime and native worker behavior
-still need validation. Matched 720p gameplay and long-session evidence are
-required before production or a 30 FPS claim. See the
+Save COM files before the game overwrites the shared DXVK log. V9 game startup
+and native gameplay calls are now observed. A fresh v9 COM pass, the new FEX
+candidate, sustained resource lifetime and native worker behavior still need
+validation. Matched 720p gameplay and long-session evidence are required
+before production or a 30 FPS claim. See the
 [production gates](native-dxvk-h3-v1.md#production-readiness) for what remains.
 
 Memory statistics must also be interpreted at the correct layer: remaining

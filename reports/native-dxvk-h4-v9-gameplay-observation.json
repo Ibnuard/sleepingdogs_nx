@@ -1,0 +1,138 @@
+{
+  "status": "V9_GAME_ROUTE_OBSERVED_NO_MEANINGFUL_GAIN_REPORTED",
+  "capture_report": "reports/native-dxvk-h4-game-71534a073915.json",
+  "capture_report_sha256": "7e8e1d8caec1d4476e571533d7c7e0dc27fb0f40a3384acedec24082ee3a8349",
+  "evidence": {
+    "runtime.txt": {
+      "path": "reports/native-dxvk-h4-game-71534a073915/runtime.txt",
+      "sha256": "71534a073915aa7d643916e224134254354f6fbb59a79751bc60ae8327ac042d",
+      "bytes": 147091
+    },
+    "dxvk.txt": {
+      "path": "reports/native-dxvk-h4-game-71534a073915/dxvk.txt",
+      "sha256": "6e76673285ee5e4c507fb538bd4ffcab9d47d5135c6fcb74f32b9ea9f68adc96",
+      "bytes": 26119
+    },
+    "supplied-com-runtime.txt": {
+      "path": "reports/native-dxvk-h4-game-71534a073915/supplied-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    }
+  },
+  "user_feedback": "masih blm ada kenaikan signifikan sih",
+  "resolution": [
+    1280,
+    720
+  ],
+  "quality": "Light720p",
+  "last_five_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 30648430,
+      "mean_frame_us": 51080,
+      "min_us": 31028,
+      "max_us": 90530,
+      "total_presents": 3601,
+      "present_fps": 19.57685923879298
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 31893273,
+      "mean_frame_us": 53155,
+      "min_us": 26086,
+      "max_us": 97612,
+      "total_presents": 4201,
+      "present_fps": 18.812744618590887
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 24536983,
+      "mean_frame_us": 40894,
+      "min_us": 19770,
+      "max_us": 88547,
+      "total_presents": 4801,
+      "present_fps": 24.452884040389154
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 26011519,
+      "mean_frame_us": 43352,
+      "min_us": 24369,
+      "max_us": 92203,
+      "total_presents": 5401,
+      "present_fps": 23.066703640029633
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 32615902,
+      "mean_frame_us": 54359,
+      "min_us": 19610,
+      "max_us": 108976,
+      "total_presents": 6001,
+      "present_fps": 18.39593459656581
+    }
+  ],
+  "last_five_pooled_fps": 20.58939094433427,
+  "v81_last_five_pooled_fps": 20.670136718692,
+  "compared_scenes_and_clocks_authenticated": false,
+  "clean_exit_confirmed": false,
+  "fresh_v9_com_confirmed": false,
+  "auxiliary_runtime": "Byte-identical previously supplied v3 COM runtime; does not validate this v9 self-test.",
+  "zero_active_maps_at_endpoints_interval": {
+    "start": {
+      "calls": 28021248,
+      "draws": 4328743,
+      "presents": 5668,
+      "maps": 0,
+      "refs": 16540,
+      "copy_bytes": 53518407680,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "end": {
+      "calls": 28856832,
+      "draws": 4464687,
+      "presents": 5759,
+      "maps": 0,
+      "refs": 16540,
+      "copy_bytes": 54377191424,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "delta": {
+      "calls": 835584,
+      "draws": 135944,
+      "presents": 91,
+      "copy_bytes": 858783744,
+      "failures": 0
+    },
+    "calls_per_present": 9182.241758241758,
+    "draws_per_present": 1493.89010989011,
+    "copy_bytes_per_present": 9437184.0
+  },
+  "map_counters": {
+    "discard_maps": 11721,
+    "zero_fill_skipped_bytes": 55301904384
+  },
+  "batching": {
+    "enabled": 1,
+    "flushes": 14080,
+    "explicit": 6009,
+    "sync": 438,
+    "strong": 4,
+    "weak": 7629,
+    "deferred_hints": 535941
+  },
+  "scheduler": "v17 automatic application cores; native DXVK host workers outside guest registry",
+  "existing_fex_settings": "fastest x87=64 scalar/vector/memcpy TSO=0 multiblock=1 smc=mtrack; QPC/delay fast gateway active",
+  "limitations": [
+    "Present windows can contain menu/loading and are not labeled same-scene A/B.",
+    "Deferred hints are requests, not eliminated GPU submissions.",
+    "COM snapshots favor critical calls; apparent CreateSamplerState prevalence is not a frequency or CPU profile.",
+    "Compile totals contain nested scopes and do not measure translated game execution.",
+    "Call/copy counts do not identify a bottleneck or quantify potential FPS gain."
+  ],
+  "recorder_sha256": "5411bf864d6b849afa3c9093c0a064732734001b85a7b3b8423126a5e74d256c"
+}
