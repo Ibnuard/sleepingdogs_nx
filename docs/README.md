@@ -15,7 +15,8 @@ installation for a first setup, or current status before comparing test builds.
 | [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 build, host correctness tests, standalone Horizon NRO and remaining game integration |
 | [Native DXVK H2](native-dxvk-h2-v1.md) | Real PE32 guest bridge diagnostic, hardware test instructions and v18 restoration |
 | [Native DXVK H3](native-dxvk-h3-v1.md) | Successful Switch guest-driven native Present capture, folder installation and production gates |
-| [Native DXVK H4 v8](native-dxvk-h4-v8-game-detail.md) | Current candidate: Map allocation reuse and reversible Light 720p game preset; Switch/FPS testing pending |
+| [Native DXVK H4 v8.1](native-dxvk-h4-v8.1-transport.md) | Current candidate: reduce per-call guest locking and fix Light rejecting GlobalSetting=-1; Switch/FPS testing pending |
+| [Native DXVK H4 v8](native-dxvk-h4-v8-game-detail.md) | Map reuse and Light 720p introduction; later normal-settings feedback 17–20 FPS |
 | [Native DXVK H4 v7](native-dxvk-h4-v7-objects.md) | Hashed proxy lookup and inline arrays; subsequent user report around 20 FPS, crowded-running lows near 13 |
 | [Native DXVK H4 v6](native-dxvk-h4-v6-dispatch.md) | Reduced diagnostic cost; subsequent user report 16–17 FPS, crowded view 12–13 |
 | [Native DXVK H4 v5](native-dxvk-h4-v5-com-outputs.md) | Scalar DSV and COM output fixes; user subsequently reports gameplay around 15 FPS |

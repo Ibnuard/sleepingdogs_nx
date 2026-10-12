@@ -22,8 +22,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SDK=Path('/opt/devkitpro')
 A64=SDK/'devkitA64/bin'
 MINGW=Path('/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin')
-BUILD='native-dxvk-h4-v8'
-APP_VERSION='0.1.0-h4.8'
+BUILD='native-dxvk-h4-v8.1'
+APP_VERSION='0.1.0-h4.8.1'
 WORK=Path('/home/blekjek/sleepingdogs-'+BUILD)
 LOCAL=ROOT/'local'/BUILD
 SOURCES=ROOT/'src/native_dxvk_com'
@@ -159,6 +159,7 @@ static int sd_com_prepare_screen(void) {
         '        log_line("[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call");\n'
         '        log_line("[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128; game FPS requires hardware comparison");\n'
         '        log_line("[SD-NDX-PERF] map_shadow_cache=16MiB/4 exact-size idle entries; discard zeroing=native; full copies preserved");\n'
+        '        log_line("[SD-NDX-PERF] guest_endpoint=acquire-release; hot dispatch skips discovery lock; native gate and pointer guards preserved");\n'
         '        if(!sd_com_diagnostic)wine_nx_f1_crash_note("[SD-NDX-COM] build='+BUILD+' renderer=DXVK Native ARM64");\n'
         '        if(!sd_com_prepare_screen()){log_line("[SD-NDX-COM] FAIL trusted native window");return 1;}\n'
         '    }')

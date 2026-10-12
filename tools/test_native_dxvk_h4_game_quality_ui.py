@@ -83,7 +83,7 @@ static const char original_xml[]=
     "<VSync>1</VSync><AAQuality>2</AAQuality><HighResTextures>1</HighResTextures>\r\n"
     "<ShadowRes>2</ShadowRes><ShadowFilter>1</ShadowFilter><MotionBlur>2</MotionBlur><SSAO>1</SSAO>\r\n"
     "<FPSLimiter>0</FPSLimiter><Option3DDepth>1</Option3DDepth><Option3DConvergence>10</Option3DConvergence>\r\n"
-    "<WorldDensity>2</WorldDensity><GlobalSetting>4</GlobalSetting>\r\n</DisplaySettings>\r\n";
+    "<WorldDensity>2</WorldDensity><GlobalSetting>-1</GlobalSetting>\r\n</DisplaySettings>\r\n";
 
 static void same_bytes(const char *path,const char *expected,size_t n){
     char buffer[8192];assert(n<sizeof(buffer));

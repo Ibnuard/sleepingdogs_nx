@@ -1,0 +1,116 @@
+[SD-FEX] target=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe
+[SD-FEX] launch_mode=gui
+[SD-FIRSTFAULT] build=v3 first 4 faults; skip debug/thread-name; code bytes; first snapshot also in crash.log
+[SD-TEB-DEBUG] build=v1 exception debug cache sync
+[SD-THREAD-DEBUG] build=v1 suspended thread debug context
+[SD-MEMORY-BUDGET] build=v2 gpu_reserve_max_mib=256 stack_reserve_max_kib=1024
+[SD-COMPILER-MEM] native=v2 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=2
+[SD-PIPE] local named pipes v1; event/IOCP completion; per-request WoW64 IOSB
+[SD-FEX] live debug active; startup log=fex-runtime.log
+[FEXTENDO-TIME] origin_tick=873997733998 enabled=0 units=19200000_ticks_per_second; T+ starts at Play
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=96642688 arena_free=665984 heap_arena=97308672 heap_capacity=3342032896 heap_unclaimed=3244724224 heap_available=3245390208
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=200704 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=2097152 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=141552 heap_unclaimed=3244068864
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=0 idle=0 inuse=0 quarantine=0 bytes=0 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0
+[SD-INIT] v2 preparing memory before launch validation
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-LOWVA] v1 host=200000+7fffe00000 quota=3444572160 title=059a3db219b42000 query=00000000/00000000/00000000/00000000
+[SD-LOWVA] RX execute low=400000 PASS rc=00000000
+[SD-LOWVA] RW/NONE/RW alias low=ffff0000 PASS rc=00000000
+[SD-LOWVA] PASS: native above 4 GiB; guest low window available
+[SD-ALIAS] v1 requested=1048576000 reserved=1048576000 low=0x30000000 high=0x5cd4c0000 rc=00000000 unmap=00000000 physical_copies=1
+[SD-INIT] v2 ready probe=1 arena=1048576000
+[SD-ADDRESS] low-window-v2 host=200000+7fffe00000 query=00000000/00000000 probe=1 arena=1048576000
+[SD-GAME-QUALITY] FAIL unsupported Version or nonnumeric graphics value
+[SD-QUALITY] launch stopped: unsupported Version or nonnumeric graphics value
+[SD-RENDERER] Cannot apply graphics preset
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=1161125664 arena_free=741600 heap_arena=1161867264 heap_capacity=3342032896 heap_unclaimed=2180165632 heap_available=2180907232
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=2265088 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=0 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=741600 heap_unclaimed=2180165632
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0
+[SD-FEX] target=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe
+[SD-FEX] launch_mode=gui
+[SD-FIRSTFAULT] build=v3 first 4 faults; skip debug/thread-name; code bytes; first snapshot also in crash.log
+[SD-TEB-DEBUG] build=v1 exception debug cache sync
+[SD-THREAD-DEBUG] build=v1 suspended thread debug context
+[SD-MEMORY-BUDGET] build=v2 gpu_reserve_max_mib=256 stack_reserve_max_kib=1024
+[SD-COMPILER-MEM] native=v2 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=2
+[SD-PIPE] local named pipes v1; event/IOCP completion; per-request WoW64 IOSB
+[SD-FEX] live debug active; startup log=fex-runtime.log
+[FEXTENDO-TIME] origin_tick=874217888857 enabled=0 units=19200000_ticks_per_second; T+ starts at Play
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=1162177424 arena_free=283760 heap_arena=1162461184 heap_capacity=3342032896 heap_unclaimed=2179571712 heap_available=2179855472
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=2265088 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=1048576 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=266400 heap_unclaimed=2180112384
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0
+[SD-INIT] v2 preparing memory before launch validation
+[SD-INIT] v2 ready probe=1 arena=1048576000
+[SD-ADDRESS] low-window-v2 host=200000+7fffe00000 query=00000000/00000000 probe=1 arena=1048576000
+[SD-GAME-QUALITY] FAIL unsupported Version or nonnumeric graphics value
+[SD-QUALITY] launch stopped: unsupported Version or nonnumeric graphics value
+[SD-RENDERER] Cannot apply graphics preset
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=1161125664 arena_free=659680 heap_arena=1161785344 heap_capacity=3342032896 heap_unclaimed=2180247552 heap_available=2180907232
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=2265088 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=0 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=659680 heap_unclaimed=2180247552
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=1161125664 arena_free=659680 heap_arena=1161785344 heap_capacity=3342032896 heap_unclaimed=2180247552 heap_available=2180907232
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=2265088 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=0 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=659680 heap_unclaimed=2180247552
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0
+[SD-RESOURCE] reason=startup free_threads=252 query_rc=00000000 heap_used=1161125664 arena_free=659680 heap_arena=1161785344 heap_capacity=3342032896 heap_unclaimed=2180247552 heap_available=2180907232
+[SD-MEMBUDGET] reason=startup total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=2265088 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=startup wine_backing=0 backing_peak=0 pooled=0 sections=0 sections_peak=0 page_arenas=0 sd_cache=0 reported_total=3444572160 reported_used=3406897152
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=0 used=0 free=0 largest=0 peak=0 live=0 takes=0 misses=0 returned=0 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=0 large_largest=0 heap_free=659680 heap_unclaimed=2180247552
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0

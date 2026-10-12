@@ -1,0 +1,14 @@
+[SD-NDX-H4-GUEST] startup real PE32 COM client checks=0
+[SD-NDX-H4-GUEST] COM factory, adapter, device and identity checks=2
+[SD-NDX-H4-GUEST] guest/native multithread references and critical section checks=18
+[SD-NDX-H4-GUEST] dynamic Map DISCARD, NO_OVERWRITE and initial-data conversion checks=21
+[SD-NDX-H4-GUEST] BC1 mip/array upload and readback checks=2076
+[SD-NDX-H4-GUEST] native shaders, state arrays and private interface conversion checks=2162
+[SD-NDX-H4-GUEST] COM swapchain, guest HWND metadata and backbuffer draw checks=923777
+[SD-NDX-H4-GUEST] 300 native Present calls through COM checks=1845385
+[SD-NDX-H4-GUEST] COM Present progress checks=1845445
+[SD-NDX-H4-GUEST] COM Present progress checks=1845505
+[SD-NDX-H4-GUEST] COM Present progress checks=1845565
+[SD-NDX-H4-GUEST] COM Present progress checks=1845625
+[SD-NDX-H4-GUEST] COM Present progress checks=1845685
+[SD-NDX-H4-GUEST] PASS checks=1845687

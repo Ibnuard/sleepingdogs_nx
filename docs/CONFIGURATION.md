@@ -33,7 +33,7 @@ log. Preserve those files when comparing NRO-only changes.
 The persistent `Graphics Level: undefined` issue is covered in
 [Troubleshooting](TROUBLESHOOTING.md#graphics-level-is-undefined).
 
-The [H4 v8 native candidate](native-dxvk-h4-v8-game-detail.md) needs a passing COM self-test
+The [H4 v8.1 native candidate](native-dxvk-h4-v8.1-transport.md) needs a passing COM self-test
 before game validation. Its swapchain stays at 1280×720 and LSFG is forced
 OFF without changing the stored LSFG preference. Both existing x86 renderer
 choices remain available for comparisons. V8 retains `dxgi.syncInterval = 1`
@@ -41,7 +41,8 @@ in every native profile; confirm FIFO in the DXVK log. V4 passed the sponsor
 stage and crashed at Press Start; v5 fixes scalar DSV and COM output memory.
 V6 subsequently improves reported gameplay to 16–17 FPS, with 12–13 facing
 crowds. V7 is reported around 20 FPS, peak 25 and crowded-running lows near 13.
-V8 adds bounded Map reuse and optional lower game detail; Switch testing is pending.
+V8 adds bounded Map reuse and optional lower game detail. V8.1 removes repeated
+guest discovery locking and fixes the supplied XML rejection; its Switch test is pending.
 Other profile options and x86 profiles stay canonical. H4 v2/v3 COM completion
 was observed on Switch. A native FPS gain and production readiness remain unproven.
 
@@ -62,7 +63,11 @@ enable Light. An unsupported file is rejected instead of guessed.
 Game settings stops enforcement and retains the current file. **Restore
 original** restores pre-Light quality and disables the preset. If all quality
 values were already minimum, Light has no demonstrated additional benefit.
-Compare the same route and camera; v8 FPS remains unmeasured.
+V8.1 accepts GlobalSetting=-1 and normalizes it to 0 for Light. The captured
+file already has zero individual fields; the original executable's unsigned
+preset reader can fall back to preset 2 for minus-prefixed text. This is a
+static finding, not a measurement of live quality or FPS. Compare the same
+route and camera; v8.1 FPS remains unmeasured.
 
 ## DXVK HUD
 

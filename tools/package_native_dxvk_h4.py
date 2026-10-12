@@ -13,101 +13,85 @@ from build_native_dxvk_h4 import BUILD,APP_VERSION,LOCAL
 
 ROOT=Path(__file__).resolve().parents[1]
 PREFIX='switch/sleepingdogs-fex/'
-NAME='sd-dxvk-native-h4-v8-update'
+NAME='sd-dxvk-native-h4-v8.1-update'
 LAUNCHER_INPUTS=ROOT/'vendor/wine/native-dxvk-h4-launcher-inputs.json'
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def digest(data):return hashlib.sha256(data).hexdigest()
 def encode(data):return (json.dumps(data,indent=2)+'\n').encode()
 
-INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v8 - Map reuse + Light 720p
+INSTRUCTIONS='''FEXTendo / Sleeping Dogs Native DXVK H4 v8.1 - transport + Light fix
 
 FOLDER SIAP SALIN, TANPA ZIP. Update untuk instalasi lengkap yang sudah jalan.
-Game, save, UserOptions.dat, aset launcher dan forwarder tetap dari SD.
 
-V7 dilaporkan rata-rata 20 FPS, peak 25, turun 13 di kerumunan. Lima jendela
-Present akhir log rata-rata 19,07 FPS; adegan dan clock tidak diautentikasi.
-Tiga file COM yang dikirim masih hasil v3, bukan validasi COM v7.
+V8 normal dilaporkan 17-20 FPS, kerumunan 13-16, peak ruang sempit 26.
+Lima jendela Present akhir log: 18,76 FPS. Sampel terakhir sekitar 9.634
+panggilan bridge, 1.560 draw, dan 9 MiB copy Map per Present. Ini hitungan
+kerja, bukan bukti pembagian waktu CPU/GPU. COM yang dikirim masih v3.
 
-V8 mengurangi VirtualAlloc/VirtualFree berulang dengan memakai ulang shadow
-Map yang sudah tidak aktif. Cache exact-size dibatasi 16 MiB / 4 entri.
-Validasi pointer, copy-in/copy-out dan lifetime tetap; WRITE_DISCARD dikosongkan
-di sisi native. Ini belum zero-copy dan BELUM ada hasil FPS v8 di Switch.
+V8.1 mengurangi lock/unlock Wine pada SETIAP panggilan guest setelah endpoint
+berhasil diinisialisasi. Publikasi handle memakai acquire/release, inisialisasi
+gagal bisa dicoba lagi. Publikasi awal memakai locked exchange; pembacaan
+handle berikutnya bergantung alamat descriptor untuk FEX Fastest/TSO OFF.
+Lock objek, gate native, validasi pointer, urutan
+render, cache Map 16 MiB / 4 entri dan copy Map tetap. Ini bukan zero-copy.
+Tes PE32 di PC: 10.000 panggilan hangat dari 10.000 lock pair menjadi 0.
+Belum ada hasil FPS v8.1 di Switch; bukan jaminan 30 FPS.
 
-Menu baru Settings > Game detail:
-- Game settings: memakai opsi game saat ini, berhenti menerapkan Light.
-- Light 720p: tetap 1280x720; WorldDensity, ShadowRes, ShadowFilter,
-  MotionBlur, SSAO, AAQuality dan HighResTextures diset 0, GlobalSetting=0.
-  Ini nilai minimum dari preset bawaan executable asli yang diperiksa;
-  AAQuality=0 tidak berarti semua anti-aliasing pasti mati.
-- Restore original: pulihkan XML sebelum Light pertama dan matikan Light.
-  Memilih Game settings saja tidak mengembalikan kualitas awal.
+Light 720p juga diperbaiki untuk menerima GlobalSetting=-1 pada XML kiriman.
+Pada file tersebut hanya GlobalSetting yang berubah -1 menjadi 0; tujuh nilai
+detail lainnya sudah nol dan resolusi tetap 1280x720. Backup/restore menjaga
+XML asli. Field invalid lain sekarang disebutkan pada pesan error.
+Pembaca preset executable asli dapat memakai preset 2 untuk teks negatif;
+temuan statis ini belum membuktikan nilai kualitas dalam memori saat bermain.
 
-Light menyimpan backup asli dan mempertahankan field lain. Tidak mengubah
-UserOptions.dat atau save. Jika opsi sebelumnya sudah minimum, profil ini
-mungkin tidak memberi keuntungan tambahan. Tidak ada patch penghapusan NPC;
-WorldDensity mengikuti pengaturan detail dunia yang tersedia di game.
-File Data/DisplaySettings.xml harus sudah ada dan valid. Jika belum ada,
-pilih Game settings, masuk game, simpan Display Options, keluar lalu pilih
-Light 720p. XML tidak dibuat dari tebakan adapter/refresh rate.
-
-A. TES COM V8 TERLEBIH DAHULU
-1. Tutup sepenuhnya dari HOME. Backup NRO di SD.
-2. Salin HANYA switch/ dari folder ini ke root SD, timpa file terkait.
-   Gunakan forwarder low-window/full-memory yang sudah berhasil, bukan Album.
-3. Jalankan: mode awal COM self-test, layar biru 720p dan 300 Present.
-   Tunggu exit 00000000. Hasil harus build native-dxvk-h4-v8, status PASS,
-   sampler_roundtrip_slots_verified=72 dan dsv_guard_checks=16.
-   Jika gagal/hang, simpan log dahulu sebelum mencoba game.
-4. Tutup HOME dan simpan file relatif terhadap switch/sleepingdogs-fex/:
+A. TES COM TERLEBIH DAHULU
+1. Tutup sepenuhnya dari HOME. Backup NRO SD. Salin HANYA switch/ dari folder
+   ini ke root SD, timpa file terkait. Gunakan forwarder full-memory yang
+   sudah berhasil, bukan Album. Jangan salin source/ atau notices/ ke SD.
+2. Jalankan COM self-test, layar biru 720p dan 300 Present. Tunggu exit
+   00000000, build native-dxvk-h4-v8.1, status PASS, 72 sampler slots dan
+   16 dsv_guard_checks. Jika gagal/hang, simpan log sebelum mencoba game.
+3. Arsipkan relatif terhadap switch/sleepingdogs-fex/:
    drive_c/native-dxvk-h4-result.json
    drive_c/native-dxvk-h4-guest.log
    native-dxvk-h4/runtime.log
    native-dxvk-h4/HKShip.exe_d3d11.log
-   Log DXVK COM dapat ditimpa game; arsipkan dulu keempat file.
+   Game bisa menimpa log DXVK COM, jadi simpan dahulu.
 
-B. GAME 720P
-5. Sesudah COM PASS pilih salah satu:
-   start-game-light/switch/ -> Native ARM64 + Light 720p.
-   start-game/switch/       -> Native ARM64 + opsi game saat ini (A/B).
-   Salin isi switch/ pilihan ke root SD. Restart penuh dari HOME.
-   Game detail juga dapat dipilih dari Settings launcher.
-6. Gunakan Launch GUI, Performance, FPS HUD, 1280x720. LSFG otomatis OFF
-   pada native. Clock referensi CPU 1728 / GPU 768 / RAM 1600 MHz;
-   build tidak mengubah clock.
-7. Hangatkan cache lalu bandingkan save, lokasi, arah kamera dan rute lari
-   yang sama, termasuk kerumunan. Uji pause/resume dan keluar normal.
-   Catat FPS biasa dan minimum, bukan hanya peak atau FPS menu.
-8. Kirim fex-runtime.log dan native-dxvk-h4/HKShip.exe_d3d11.log sesi baru,
-   serta crash.log hanya jika ada crash baru. Bila Light menolak XML,
-   kirim juga Data/DisplaySettings.xml dari drive_c/SleepingDogs/.
+B. GAME DAN PERBANDINGAN 720P
+4. Sesudah COM PASS, salin salah satu overlay switch/ ke root SD:
+   start-game/switch/       -> Native ARM64, opsi game saat ini.
+   start-game-light/switch/ -> Native ARM64, Light 720p yang sudah diperbaiki.
+   Untuk memisahkan pengaruh runtime, uji start-game dengan opsi sama seperti
+   v8 dahulu, lalu Light. Restart penuh dari HOME setelah menyalin.
+5. GUI, Performance, FPS HUD, 1280x720. LSFG OFF pada native. Bandingkan save,
+   lokasi, kamera, rute ramai dan cache hangat yang sama. Clock referensi
+   CPU 1728 / GPU 768 / RAM 1600 MHz; build tidak mengubah clock.
+6. Catat FPS biasa/minimum, uji pause/resume dan keluar normal. Kirim
+   fex-runtime.log dan native-dxvk-h4/HKShip.exe_d3d11.log dari masing-masing
+   sesi. Kirim crash.log jika crash baru; DisplaySettings.xml jika Light error.
 
-LOG YANG DIHARAPKAN
-- BUILD native-dxvk-h4-v8 mode=SleepingDogs
-- [SD-NDX-WINDOW] handoff complete launcher_owned=0 console_active=0
-- D3D11CreateDevice native=ARM64 dan FIRST_PRESENT real COM path
-- [SD-NDX-PERF] map_shadow_cache=16MiB/4 ... discard zeroing=native
-- [SD-GAME-QUALITY] mencatat pilihan dan nilai kualitas yang diterapkan.
-- DXVK syncInterval=1 dan VK_PRESENT_MODE_FIFO_KHR.
-Progress biasa disampling setiap 256 panggilan; idle bukan bukti semua
-panggilan sedang idle. Log async dapat kehilangan akhir saat force restart.
-Jendela [SD-NDX-FPS] bisa mencakup menu/loading, bukan benchmark terkontrol.
+LOG: BUILD native-dxvk-h4-v8.1 mode=SleepingDogs; guest_endpoint=acquire-release;
+D3D11CreateDevice native=ARM64; FIRST_PRESENT real COM path; game-quality
+mencatat nilai pilihan. Native tetap syncInterval=1 / FIFO. Progress disampling
+256 panggilan; idle bukan bukti semua panggilan idle. Log async dapat kehilangan
+akhir saat force restart. Jendela Present bisa mencakup menu/loading.
 
-PEMULIHAN
-- Settings > Game detail > Restore original memulihkan kualitas awal.
-- Untuk kembali penuh ke x86 v18, pulihkan kualitas dahulu bila diinginkan,
-  tutup HOME, lalu salin rollback-v18/switch/. Ini juga mematikan Light.
-- DXVK 3.1.1 dan 2.7.1 async tetap tersedia untuk pembanding di launcher.
-- start-com-test/switch/ mengulang COM. Simpan hasil sebelum sesi baru.
-- Folder v7 tetap terpisah untuk pembanding versi sebelumnya.
+Settings > Game detail: Game settings berhenti menerapkan Light tanpa restore;
+Light 720p menurunkan tujuh nilai detail bawaan, GlobalSetting=0 dan 1280x720;
+Restore original mengembalikan XML sebelum Light pertama dan mematikan Light.
+Data/DisplaySettings.xml harus ada dan valid. Jika belum ada, simpan Display
+Options dari game dahulu. Tidak ada patch penghapusan NPC atau perubahan save.
 
-DXVK C++ berjalan ARM64; game dan proxy PE32 tetap memakai Wine/FEX.
-Cache Map mengurangi alokasi, bukan menghilangkan semua biaya bridge/GPU.
-Build dan tes lokal tidak membuktikan kenaikan FPS di Switch. Stabil 30 FPS
-dan kesiapan produksi masih perlu validasi hardware. Ini kandidat eksperimen.
+PEMULIHAN: Restore original bila ingin kualitas awal. Tutup HOME lalu salin
+rollback-v18/switch/ untuk kembali x86 v18; overlay ini juga mematikan Light.
+DXVK 3.1.1 dan 2.7.1 async tetap tersedia. start-com-test/switch/ mengulang COM.
+Folder v8 tetap terpisah. Tidak ada game, save atau UserOptions.dat disertakan.
 
-Checksum: SHA256SUMS.txt. Jangan salin source/ dan notices/ ke SD.
-Detail: source/project/docs/native-dxvk-h4-v8-game-detail.md.
-Rebuild memerlukan prepared Wine/FEX/Mesa/SDK lokal yang dicatat receipt.
+DXVK C++ berjalan ARM64, game/proxy PE32 tetap Wine/FEX. Ini eksperimen;
+produksi dan stabil 30 FPS memerlukan validasi hardware. SHA256SUMS.txt memuat
+checksum. Detail: source/project/docs/native-dxvk-h4-v8.1-transport.md.
+Rebuild memerlukan prepared Wine/FEX/Mesa/SDK lokal yang tercatat di receipt.
 '''
 
 def native_fifo_config(data):
@@ -151,7 +135,7 @@ def launcher_payload():
 
 def main():
     LOCAL.mkdir(parents=True,exist_ok=True);lock=(LOCAL/'packaging.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports','window-check','logging-check','guest-output-check','dispatch-benchmark','guest-lookup','array-check','guest-maps','game-quality','game-quality-ui')}
+    receipts={name:json.loads((LOCAL/(name+'.json')).read_text()) for name in ('build','host-test','abi-check','launcher-check','game-imports','window-check','logging-check','guest-output-check','dispatch-benchmark','guest-lookup','array-check','guest-maps','game-quality','game-quality-ui','guest-transport')}
     build=receipts['build'];assert build['status']=='BUILT' and build['baseline_reproduced']
     assert all(receipts[n]['status']=='PASS' for n in receipts if n!='build')
     guest=receipts['guest-output-check']
@@ -159,10 +143,10 @@ def main():
     assert guest['cases']['current']['exit_code']==0 and not guest['cases']['current']['expected_regression_failure']
     for case in ('v4-scalar','v4-publication'):
         assert guest['cases'][case]['exit_code']==1 and guest['cases'][case]['expected_regression_failure']
-    for receipt in (build,receipts['host-test'],guest,receipts['dispatch-benchmark'],receipts['guest-lookup'],receipts['array-check'],receipts['guest-maps'],receipts['game-quality'],receipts['game-quality-ui']):
+    for receipt in (build,receipts['host-test'],guest,receipts['dispatch-benchmark'],receipts['guest-lookup'],receipts['array-check'],receipts['guest-maps'],receipts['game-quality'],receipts['game-quality-ui'],receipts['guest-transport']):
         for name,expected in receipt['source_files'].items():assert sha(ROOT/name)==expected,('source changed',name)
     assert sha(ROOT/'tools/build_native_dxvk_h4.py')==build['builder_sha256']
-    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py'),('window-check','test_native_dxvk_h4_window.py'),('logging-check','test_native_dxvk_h4_logging.py'),('guest-output-check','test_native_dxvk_h4_guest_outputs.py'),('dispatch-benchmark','benchmark_native_dxvk_h4_dispatch.py'),('guest-lookup','test_native_dxvk_h4_guest_lookup.py'),('array-check','test_native_dxvk_h4_arrays.py'),('guest-maps','test_native_dxvk_h4_guest_maps.py'),('game-quality','test_native_dxvk_h4_game_quality.py'),('game-quality-ui','test_native_dxvk_h4_game_quality_ui.py')]:
+    for name,tool in [('host-test','test_native_dxvk_h4_host.py'),('abi-check','check_native_dxvk_h4_abi.py'),('launcher-check','check_native_dxvk_h4_launcher.py'),('game-imports','check_native_dxvk_h4_imports.py'),('window-check','test_native_dxvk_h4_window.py'),('logging-check','test_native_dxvk_h4_logging.py'),('guest-output-check','test_native_dxvk_h4_guest_outputs.py'),('dispatch-benchmark','benchmark_native_dxvk_h4_dispatch.py'),('guest-lookup','test_native_dxvk_h4_guest_lookup.py'),('array-check','test_native_dxvk_h4_arrays.py'),('guest-maps','test_native_dxvk_h4_guest_maps.py'),('game-quality','test_native_dxvk_h4_game_quality.py'),('game-quality-ui','test_native_dxvk_h4_game_quality_ui.py'),('guest-transport','test_native_dxvk_h4_guest_transport.py')]:
         assert sha(ROOT/'tools'/tool)==receipts[name]['runner_sha256']
     for name,expected in build['inputs'].items():assert sha(name)==expected
     for name,expected in build['header_inputs'].items():assert sha(name)==expected
@@ -171,7 +155,7 @@ def main():
     nro=(LOCAL/'sleepingdogs-fex.nro').read_bytes();assert nro[0x10:0x14]==b'NRO0'
     for marker in (('sleepingdogs-'+BUILD).encode(),b'dxvk-native-h4',b'DXVK Native ARM64',b'[SD-NDX-WINDOW] handoff complete',
                    b'sd-native-dxvk-h4-test.exe',b'sdndx4.dll',b'd3d11,dxgi,sdndx4=n;d3d9=n,b',b'[SD-NDX-COM] FIRST_PRESENT',b'[SD-NDX-WORKER]',
-                   b'[SD-NDX-CALL] BEGIN',b'[SD-NDX-CALL] END',b'[SD-NDX-PROGRESS]',b'[SD-NDX-ACTIVE]',b'[SD-NDX-LOG] async queue=512',b'[SD-NDX-PERF] progress_stride=256',b'[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128',b'[SD-NDX-PERF] map_shadow_cache=16MiB/4',b'Light 720p',b'Restore original'):
+                   b'[SD-NDX-CALL] BEGIN',b'[SD-NDX-CALL] END',b'[SD-NDX-PROGRESS]',b'[SD-NDX-ACTIVE]',b'[SD-NDX-LOG] async queue=512',b'[SD-NDX-PERF] progress_stride=256',b'[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128',b'[SD-NDX-PERF] map_shadow_cache=16MiB/4',b'Light 720p',b'Restore original',b'[SD-NDX-PERF] guest_endpoint=acquire-release'):
         assert marker in nro,('missing binary marker',marker)
     asset=struct.unpack_from('<I',nro,0x18)[0];assert nro[asset:asset+4]==b'ASET'
     nacp_offset,nacp_size=struct.unpack_from('<QQ',nro,asset+0x18);nacp=nro[asset+nacp_offset:asset+nacp_offset+nacp_size]
@@ -229,6 +213,8 @@ def main():
            'tools/test_native_dxvk_h4_guest_lookup.py','tests/native_dxvk_guest_lookup.c',
            'tools/test_native_dxvk_h4_arrays.py','tests/native_dxvk_array_host.cpp',
            'docs/native-dxvk-h4-v7-objects.md','reports/native-dxvk-h4-v6-gameplay-observation.json',
+           'docs/native-dxvk-h4-v8.1-transport.md','reports/native-dxvk-h4-v8-gameplay-observation.json','reports/original-game-global-setting-audit.json','reports/native-dxvk-h4-v8.1-endpoint-audit.json',
+           'tools/test_native_dxvk_h4_guest_transport.py','tools/check_native_dxvk_h4_endpoint.py','tests/native_dxvk_guest_transport.c','tests/native_dxvk_game_quality_capture.c',
            'docs/native-dxvk-h4-v8-game-detail.md','reports/native-dxvk-h4-v7-gameplay-observation.json','reports/original-game-display-settings-audit.json',
            'tools/test_native_dxvk_h4_guest_maps.py','tests/native_dxvk_guest_maps.c',
            'tools/test_native_dxvk_h4_game_quality.py','tests/native_dxvk_game_quality_host.c','tools/test_native_dxvk_h4_game_quality_ui.py',
@@ -293,6 +279,19 @@ def main():
         for detail in collection.values():
             path=ROOT/detail['path'];assert sha(path)==detail['sha256'];entries['source/project/'+detail['path']]=path.read_bytes()
     name='reports/native-dxvk-h4-game-75cd47bd67fe/.gitattributes';entries['source/project/'+name]=(ROOT/name).read_bytes()
+    observation=json.loads((ROOT/'reports/native-dxvk-h4-v8-gameplay-observation.json').read_text())
+    capture_path=ROOT/observation['game_capture_report'];assert sha(capture_path)==observation['game_capture_report_sha256']
+    entries['source/project/'+capture_path.relative_to(ROOT).as_posix()]=capture_path.read_bytes()
+    for collection in (json.loads(capture_path.read_text())['evidence'],observation['additional_evidence']):
+        for detail in collection.values():
+            path=ROOT/detail['path'];assert sha(path)==detail['sha256'];entries['source/project/'+detail['path']]=path.read_bytes()
+    name='reports/native-dxvk-h4-game-7d1ee877d066/.gitattributes';entries['source/project/'+name]=(ROOT/name).read_bytes()
+    transport=receipts['guest-transport']
+    assert transport['hot_lock_pairs_per_10000_calls']=={'v8':10000,'current':0}
+    assert transport['pe32_proxy_executed_on_windows'] and not transport['game_fps_measured']
+    endpoint=json.loads((ROOT/'reports/native-dxvk-h4-v8.1-endpoint-audit.json').read_text())
+    assert endpoint['guest_sha256']==sha(ROOT/'src/native_dxvk_com/com_guest.c') and endpoint['proxy_sha256']==sha(LOCAL/'sdndx4.dll')
+    assert endpoint['checker_sha256']==sha(ROOT/'tools/check_native_dxvk_h4_endpoint.py')
     work=Path(build['work']);pin=json.loads((ROOT/'vendor/wine/native-dxvk-h3-inputs.json').read_text())
     originals={'runtime':Path(pin['runtime_source']),'virtual':Path(pin['virtual_source']),
                'settings':Path(pin['runtime_source']).parent/'f1_settings.h',
@@ -330,6 +329,7 @@ def main():
                 receipts={name:sha(LOCAL/(name+'.json')) for name in receipts},packager_sha256=sha(__file__),instructions_sha256=digest(INSTRUCTIONS.encode()),
                 launcher_inputs_sha256=sha(LAUNCHER_INPUTS),canonical_profiles_regenerated=True,native_sync_interval=1,native_fifo_diagnostic=True,
                 native_log_queue_slots=512,native_log_batch_lines=32,native_progress_interval_seconds=5,native_bulk_observer_disabled=True,
+                guest_endpoint_publication='acquire-release',guest_hot_discovery_lock=False,global_setting_minus_one_supported=True,
                 guest_map_cache_bytes=16*1024*1024,guest_map_cache_entries=4,native_discard_zeroing=True,game_quality_menu=True,light_resolution=[1280,720],
                 game_quality_requires_existing_xml=True,game_quality_original_backup=True,guest_proxy_lookup='hash',native_pointer_array_inline=128,native_progress_sample_stride=256,native_stats_clock_stride=1024,native_critical_and_fault_snapshots_preserved=True,
                 sd_payload=sorted(name for name in entries if name.startswith(PREFIX)),game_data_included=False)

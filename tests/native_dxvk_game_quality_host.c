@@ -120,6 +120,18 @@ int main(void){
     const char *from[]={"<Version>1</Version>","<WorldDensity>2</WorldDensity>","<DisplaySettings>","<ShadowRes>3</ShadowRes>","<MotionBlur>1</MotionBlur>","<SSAO>2</SSAO>","</DisplaySettings>"};
     const char *to[]={"<Version>2</Version>","<WorldDensity>2</WorldDensity><WorldDensity>1</WorldDensity>","<DisplaySettings attr=\"x\">", "<ShadowRes><x>3</x></ShadowRes>","<MotionBlur>false</MotionBlur>","<SSAO>&zero;</SSAO>","<Unexpected>1</Unexpected></DisplaySettings>"};
     for(unsigned i=0;i<7;++i){char *bad=replace(original_xml,from[i],to[i]);rejected_xml(bad);free(bad);}
+    const char *bad_global[]={"-2","--1","-01","-1junk","4294967296","1\n2"};
+    for(unsigned i=0;i<sizeof(bad_global)/sizeof(*bad_global);++i){
+        char tag[96];snprintf(tag,sizeof(tag),"<GlobalSetting>%s</GlobalSetting>",bad_global[i]);
+        char *bad=replace(original_xml,"<GlobalSetting>4</GlobalSetting>",tag);rejected_xml(bad);free(bad);
+        CHECK(strstr(sd_game_quality_error,"GlobalSetting"));CHECK(!strchr(sd_game_quality_error,'\n'));
+    }
+    char *negative=replace(original_xml,"<WorldDensity>2</WorldDensity>","<WorldDensity>-1</WorldDensity>");
+    rejected_xml(negative);CHECK(strstr(sd_game_quality_error,"WorldDensity"));free(negative);
+    char *custom=replace(original_xml,"<GlobalSetting>4</GlobalSetting>","<GlobalSetting> \t-1\r\n </GlobalSetting>");
+    reset();put(target,custom);CHECK(sd_game_quality_apply(root,1));same(backup,custom);
+    char *normalized=get(target);CHECK(strstr(normalized,"<GlobalSetting> \t0\r\n </GlobalSetting>"));free(normalized);
+    CHECK(sd_game_quality_restore(root));same(target,custom);same(backup,custom);free(custom);
     char *bad_declaration=replace(original_xml,"<?xml version=\"1.0\" encoding=\"ascii\"?>","<?xml garbage?>");
     rejected_xml(bad_declaration);free(bad_declaration);
     reset();put(modefile,"1broken\n");CHECK(sd_game_quality_load(root)==0);same(modefile,"1broken\n");

@@ -30,8 +30,12 @@ struct mapped_shadow {
 typedef LONG (WINAPI *query_memory_fn)(HANDLE,const void*,int,void*,SIZE_T,SIZE_T*);
 typedef LONG (WINAPI *unix_call_fn)(uint64_t,unsigned,void*);
 static HINSTANCE module;
-static uint64_t unix_handle;
-static unix_call_fn unix_call;
+struct unix_endpoint { uint64_t handle;unix_call_fn call; };
+static struct unix_endpoint endpoint_storage;
+static struct unix_endpoint *published_endpoint;
+/* Names also used by the modeled-endpoint regression fixtures. */
+#define unix_handle endpoint_storage.handle
+#define unix_call endpoint_storage.call
 static CRITICAL_SECTION proxy_lock;
 static struct proxy *proxies;
 /* Keep every generation bit in the key. Fixed storage avoids resize failures
@@ -73,19 +77,29 @@ static uint32_t proxy_token(const void *object) {
     return p->token;
 }
 static LONG proxy_call(struct sd_com_packet *packet) {
-    unix_call_fn call;
-    EnterCriticalSection(&proxy_lock);
-    if(!unix_call) {
-        HMODULE ntdll=GetModuleHandleA("ntdll.dll");
-        query_memory_fn query=(query_memory_fn)GetProcAddress(ntdll,"NtQueryVirtualMemory");
-        unix_call_fn entry=(unix_call_fn)GetProcAddress(ntdll,"__wine_unix_call");
-        LONG status=query && entry ? query((HANDLE)(intptr_t)-1,module,1000,&unix_handle,sizeof(unix_handle),NULL) : (LONG)0xc0000139u;
-        if(status<0 || !unix_handle){LeaveCriticalSection(&proxy_lock);return status<0?status:(LONG)0xc0000008u;}
-        unix_call=entry;
+    /* Publish one immutable descriptor, including the complete 64-bit handle.
+     * The one-time locked exchange orders its initialization even with FEX's
+     * optional ordinary-store TSO disabled. Hot loads of handle/function stay
+     * address-dependent on the published pointer (also checked in PE codegen).
+     * Keep proxy/object locks elsewhere; never hold this lock across DXVK. */
+    struct unix_endpoint *endpoint=__atomic_load_n(&published_endpoint,__ATOMIC_ACQUIRE);
+    if(!endpoint) {
+        EnterCriticalSection(&proxy_lock);
+        if(!unix_call) {
+            HMODULE ntdll=GetModuleHandleA("ntdll.dll");
+            query_memory_fn query=(query_memory_fn)GetProcAddress(ntdll,"NtQueryVirtualMemory");
+            unix_call_fn entry=(unix_call_fn)GetProcAddress(ntdll,"__wine_unix_call");
+            uint64_t handle=0;
+            LONG status=query && entry ? query((HANDLE)(intptr_t)-1,module,1000,&handle,sizeof(handle),NULL) : (LONG)0xc0000139u;
+            if(status<0 || !handle){LeaveCriticalSection(&proxy_lock);return status<0?status:(LONG)0xc0000008u;}
+            unix_handle=handle;
+            unix_call=entry;
+        }
+        endpoint=&endpoint_storage;
+        __atomic_store_n(&published_endpoint,endpoint,__ATOMIC_SEQ_CST);
+        LeaveCriticalSection(&proxy_lock);
     }
-    call=unix_call;
-    LeaveCriticalSection(&proxy_lock);
-    LONG status=call(unix_handle,0,packet);
+    LONG status=endpoint->call(endpoint->handle,0,packet);
     if(status<0)return status;
     return (LONG)packet->fault;
 }

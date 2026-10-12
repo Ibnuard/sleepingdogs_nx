@@ -1,5 +1,10 @@
 # Native DXVK H4 v8: Map reuse and Light 720p
 
+Later feedback: normal settings were reported at 17–20 FPS, crowds 13–16,
+peak 26. Light rejected the supplied GlobalSetting=-1. See the
+[v8.1 transport optimization and correction](native-dxvk-h4-v8.1-transport.md).
+The original v8 recipe below remains a historical record.
+
 [Documentation](README.md) · [Current status](STATUS.md) · [Previous v7](native-dxvk-h4-v7-objects.md)
 
 V7 is reported to run around 20 FPS, with peaks near 25 in confined views and
@@ -156,7 +161,9 @@ per-device XML backup by a static file copy. Previous v7 remains separate.
 
 ## Rebuild
 
-Prepared pinned Wine/FEX/Mesa/SDK inputs are required. Current tools target v8.
+Prepared pinned Wine/FEX/Mesa/SDK inputs are required. Reproduce this historical
+v8 recipe at commit `951ffdc4192b01a88a8fc51224ea02804f5776ab`; current tools
+target v8.1.
 The map comparison requires commit `e0995ccfc2819d20b5df8f60bff784996fb479c1`;
 the inherited lookup/dispatcher controls use v6 and output controls use v4.
 
@@ -186,6 +193,6 @@ python3 tests/check_native_dxvk_h4_capture.py
 python3 tools/package_native_dxvk_h4.py
 ```
 
-The analyzer defaults to v8; use `--expected-build native-dxvk-h4-v7` for the
+At that commit the analyzer defaults to v8; use `--expected-build native-dxvk-h4-v7` for the
 previous capture. Local checks do not establish stable 30 FPS or production
 readiness. Sustained hardware resource lifetime and matched gameplay remain open.

@@ -11,7 +11,8 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
-| Native DXVK H4 v8 | [Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md); bounded idle cache and reversible game-detail preset; Switch test pending |
+| Native DXVK H4 v8.1 | [Guest transport and Light fix](native-dxvk-h4-v8.1-transport.md); remove warm discovery locking and accept supplied GlobalSetting=-1; hardware test pending |
+| Native DXVK H4 v8 | [Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md); later feedback 17–20 FPS, Light rejected GlobalSetting=-1 |
 | Native DXVK H4 v7 | [Object lookup and temporary arrays](native-dxvk-h4-v7-objects.md); subsequent user report around 20 FPS, peak 25 and crowded-running lows near 13 |
 | Native DXVK H4 v6 | [Reduce bridge diagnostic cost](native-dxvk-h4-v6-dispatch.md); user reports less slow motion, 16–17 FPS; final log windows average 16.67 FPS |
 | Native DXVK H4 v5 | [Correct COM output memory](native-dxvk-h4-v5-com-outputs.md); local checks pass; subsequent user report reaches gameplay around 15 FPS |

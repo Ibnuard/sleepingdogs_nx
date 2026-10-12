@@ -192,6 +192,15 @@ static int sdq_integer(const char *start,const char *end,uint32_t *value) {
     }
     *value=(uint32_t)n;return 1;
 }
+static int sdq_field_error(const char *field,const char *start,const char *end,const char *reason) {
+    static char message[128];char preview[25];size_t n=0;
+    while(start<end&&n<sizeof(preview)-1){
+        unsigned char c=(unsigned char)*start++;preview[n++]=c>=32&&c<127?(char)c:'?';
+    }
+    preview[n]=0;
+    snprintf(message,sizeof(message),"%s %s: '%s'%s",reason,field,preview,start<end?"...":"");
+    return sdq_fail(message);
+}
 /* Flat scalar schema is verified against the original game's reader/writer.
  * ScalingMode/ScanlineMode are strings and StereoEyeDistance is a float.
  * Their text is left untouched. Missing targets cannot safely be synthesized. */
@@ -232,9 +241,14 @@ static int sdq_light_xml(const char *source,size_t length,char **output,size_t *
         while(start<end&&sdq_space(*start))++start;
         while(end>start&&sdq_space(end[-1]))--end;
         if(index==0||values[index]){
-            uint32_t number;
-            if(!sdq_integer(start,end,&number)||(index==0&&number!=1)||((index==3||index==4)&&!number))
-                return sdq_fail("unsupported Version or nonnumeric graphics value");
+            /* The supplied original-game XML stores GlobalSetting=-1. Accept
+             * that one sentinel, then normalize it to0 along with the Light
+             * values. Keep all other negative/malformed scalars rejected. */
+            int custom=index==23&&end-start==2&&start[0]=='-'&&start[1]=='1';
+            uint32_t number=0;
+            if(!custom&&!sdq_integer(start,end,&number))return sdq_field_error(fields[index],start,end,"Invalid numeric");
+            if(index==0&&number!=1)return sdq_field_error(fields[index],start,end,"Unsupported");
+            if((index==3||index==4)&&!number)return sdq_field_error(fields[index],start,end,"Invalid zero");
         }
         if(values[index])replacements[edits++]=(struct replacement){start,end,values[index]};
     }

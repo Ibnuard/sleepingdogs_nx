@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def main():
-    output=ROOT/'local/native-dxvk-h4-v8';output.mkdir(parents=True,exist_ok=True)
+    output=ROOT/'local/native-dxvk-h4-v8.1';output.mkdir(parents=True,exist_ok=True)
     build_receipt=ROOT/'local/native-dxvk-probe-v1/build-host.json';build=json.loads(build_receipt.read_text());library=Path(build['library'])
     assert sha(library)==build['sha256']
     source=library.parent.parent/'source';headers=library.parent.parent/'host-deps/usr/include'
