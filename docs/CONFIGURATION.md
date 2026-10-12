@@ -2,13 +2,14 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
-The [launcher v2 candidate](launcher-v2.md) retains **Settings → Keyboard**,
+The [launcher v3 candidate](launcher-v3.md) retains **Settings → Keyboard**,
 **System Check**, and **Show debug launch**. Debug is hidden until enabled.
 Successful full runtime hashing is cached across launches; updates, changed
 file metadata and manual System Check trigger a full scan. Current HOME and
 low-memory mapping checks still run each process. **Light 720p is mandatory**;
 there is no Original/Game detail selection. LSFG now also connects to native
-DXVK instead of silently being forced off.
+DXVK instead of silently being forced off. V3 fixes v2 rejecting FIFO present
+metadata; physical Switch generation remains to be verified.
 
 ## Native-FPS baseline
 

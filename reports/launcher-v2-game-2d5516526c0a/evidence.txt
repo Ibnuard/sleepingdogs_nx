@@ -1,0 +1,78 @@
+[SD-LSFG-NATIVE] requested=1 route=native motion=2; initialization/generation logged separately
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=809 draws=0 presents=0 maps=0 refs=684 copy_bytes=18874368 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=0 native_copy_bytes_saved=0; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=5809 draws=0 presents=0 maps=0 refs=4111 copy_bytes=18874368 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending
+[SD-NDX-PROGRESS] calls=23810 draws=261 presents=261 maps=2 refs=6535 copy_bytes=2491422720 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=5547 native_copy_bytes_saved=1472836; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=107476 draws=6377 presents=532 maps=2 refs=6563 copy_bytes=5039462400 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=10804953 mean_frame_us=18008 min_us=1861 max_us=345156 total_presents=601 source=game-present
+[SD-NDX-PROGRESS] calls=228953 draws=24986 presents=720 maps=0 refs=6571 copy_bytes=6813652992 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=172413 native_copy_bytes_saved=45462216; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=341120 draws=44302 presents=883 maps=2 refs=6614 copy_bytes=8351913984 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=610266 draws=97370 presents=1124 maps=2 refs=9009 copy_bytes=10626275328 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=551120 native_copy_bytes_saved=144981276; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=15892226 mean_frame_us=26487 min_us=2085 max_us=3297898 total_presents=1201 source=game-present
+[SD-NDX-PROGRESS] calls=779504 draws=124992 presents=1321 maps=0 refs=16173 copy_bytes=12485400576 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=1101568 draws=182061 presents=1430 maps=0 refs=15132 copy_bytes=13533046784 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=1023618 native_copy_bytes_saved=269485812; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=1555712 draws=248864 presents=1526 maps=2 refs=15286 copy_bytes=14429587456 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=2225664 draws=369468 presents=1622 maps=2 refs=16228 copy_bytes=15335557120 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=1995571 native_copy_bytes_saved=525616784; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=2993278 draws=511719 presents=1715 maps=0 refs=16254 copy_bytes=16213215232 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=27266267 mean_frame_us=45443 min_us=7281 max_us=1258759 total_presents=1801 source=game-present
+[SD-NDX-PROGRESS] calls=3806720 draws=664337 presents=1810 maps=0 refs=16256 copy_bytes=17109747712 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=3181754 native_copy_bytes_saved=837930828; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=4534729 draws=790937 presents=1916 maps=2 refs=16256 copy_bytes=18100652032 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=5264640 draws=910138 presents=2032 maps=0 refs=16258 copy_bytes=19204802560 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=4312631 native_copy_bytes_saved=1136061632; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=6089472 draws=1043628 presents=2157 maps=0 refs=16367 copy_bytes=20384450560 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=6759424 draws=1156724 presents=2274 maps=0 refs=16390 copy_bytes=21488601088 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=5411206 native_copy_bytes_saved=1425599808; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=7388329 draws=1258909 presents=2369 maps=2 refs=16520 copy_bytes=22375696384 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=27342082 mean_frame_us=45570 min_us=26123 max_us=114474 total_presents=2401 source=game-present
+[SD-NDX-PROGRESS] calls=8227840 draws=1405545 presents=2452 maps=0 refs=16553 copy_bytes=23168419840 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=6604666 native_copy_bytes_saved=1739955688; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=9026304 draws=1542399 presents=2537 maps=0 refs=16560 copy_bytes=23970580480 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=9789952 draws=1671005 presents=2624 maps=0 refs=16569 copy_bytes=24791615488 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=7769450 native_copy_bytes_saved=2046866232; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=10552109 draws=1795445 presents=2719 maps=2 refs=16569 copy_bytes=25678710784 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=11327356 draws=1928700 presents=2813 maps=2 refs=16569 copy_bytes=26565806080 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=8939397 native_copy_bytes_saved=2355054404; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=12084323 draws=2057796 presents=2910 maps=2 refs=16569 copy_bytes=27481212928 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=32657871 mean_frame_us=54429 min_us=32445 max_us=100075 total_presents=3001 source=game-present
+[SD-NDX-PROGRESS] calls=12812678 draws=2178058 presents=3009 maps=0 refs=16571 copy_bytes=28424931328 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=10070820 native_copy_bytes_saved=2653062748; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=13536438 draws=2294528 presents=3113 maps=1 refs=16571 copy_bytes=29401155584 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=14158848 draws=2391654 presents=3210 maps=0 refs=16571 copy_bytes=30321805312 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=11034095 native_copy_bytes_saved=2906961248; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=14663936 draws=2462454 presents=3321 maps=0 refs=16571 copy_bytes=31369332736 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=15173376 draws=2533924 presents=3433 maps=0 refs=16576 copy_bytes=32426297344 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=11828168 native_copy_bytes_saved=3116467080; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=15739908 draws=2618237 presents=3533 maps=2 refs=16599 copy_bytes=33360578560 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=29132423 mean_frame_us=48554 min_us=21961 max_us=92154 total_presents=3601 source=game-present
+[SD-NDX-PROGRESS] calls=16390400 draws=2723382 presents=3623 maps=0 refs=16608 copy_bytes=34219362304 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=12844149 native_copy_bytes_saved=3384208184; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=17251328 draws=2857377 presents=3711 maps=2 refs=16608 copy_bytes=35049834496 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=18182656 draws=3007376 presents=3796 maps=0 refs=16608 copy_bytes=35851995136 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=14236819 native_copy_bytes_saved=3751151512; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=19055520 draws=3146416 presents=3891 maps=2 refs=16608 copy_bytes=36739090432 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=19743868 draws=3247210 presents=4006 maps=2 refs=16608 copy_bytes=37824366592 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=15343838 native_copy_bytes_saved=4042945984; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=20406016 draws=3340154 presents=4134 maps=0 refs=16614 copy_bytes=39041763328 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=28899423 mean_frame_us=48165 min_us=26975 max_us=103597 total_presents=4201 source=game-present
+[SD-NDX-PROGRESS] calls=21068148 draws=3436297 presents=4264 maps=2 refs=16614 copy_bytes=40259160064 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=16370714 native_copy_bytes_saved=4313758104; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=21705216 draws=3522415 presents=4386 maps=0 refs=16614 copy_bytes=41419933696 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=22385152 draws=3617186 presents=4507 maps=0 refs=16616 copy_bytes=42561832960 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=17394846 native_copy_bytes_saved=4583954492; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=23003904 draws=3706684 presents=4629 maps=0 refs=16618 copy_bytes=43713169408 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=23783801 draws=3831477 presents=4732 maps=2 refs=16619 copy_bytes=44675762176 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=18523471 native_copy_bytes_saved=4881449760; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=26032798 mean_frame_us=43387 min_us=26315 max_us=93895 total_presents=4801 source=game-present
+[SD-NDX-PROGRESS] calls=24584960 draws=3961195 presents=4826 maps=0 refs=16637 copy_bytes=45572294656 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=25557262 draws=4124935 presents=4929 maps=2 refs=16637 copy_bytes=46544324608 failures=0 gate_waiters=2 sample_stride=256; totals are last sampled completed call
+[SD-NDX-WIRE] compact-v1 calls=19870550 native_copy_bytes_saved=5236401752; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=26397952 draws=4264441 presents=5025 maps=0 refs=16637 copy_bytes=47450294272 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call

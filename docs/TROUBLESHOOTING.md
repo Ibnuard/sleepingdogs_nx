@@ -66,7 +66,9 @@ timestamp measurements.
 ## LSFG is on but does not help
 
 H4 through launcher v1 forced LSFG OFF on native DXVK even when the stored
-launcher preference was ON. [Launcher v2](launcher-v2.md) connects that route.
+launcher preference was ON. Launcher v2 connects that route, but its first
+hardware capture bypassed all interpolation because DXVK passed FIFO mode
+metadata. [Launcher v3](launcher-v3.md) fixes that rejection.
 Check for `first interpolated present submitted`; requested/initialized alone
 is insufficient, and repeated bypass reasons mean interpolation is being
 skipped. DXVK HUD reports real game FPS. See

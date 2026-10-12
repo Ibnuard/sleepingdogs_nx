@@ -5,14 +5,15 @@
 Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
-The newest [launcher v2 candidate](launcher-v2.md) caches successful full-file
-verification, requires Light 720p and connects optional LSFG to native DXVK.
-It retains H4 v9 / Compact COM / FEX context v1 / Native Ref v1. The latest
-hardware log confirms compact dispatch but its final game-Present windows are
-17.53 and 18.51 FPS; no significant native gain has been established. That build
-forced LSFG OFF despite the stored launcher option. The new native LSFG path
-produces interpolated presents in host Vulkan validation, with zero validation
-errors. Switch generation/scanout and performance remain unverified.
+The newest [launcher v3 candidate](launcher-v3.md) filters 25 independent
+binding setters in the x86 proxy before FEX transport. It also fixes the
+launcher-v2 LSFG backend rejecting FIFO present metadata. The latest hardware
+capture requested LSFG ON but bypassed all 5,034 Presents, with no generated
+frames; gameplay windows were roughly 18–23 real FPS. V3 passes PE32, native
+DXVK and Vulkan host tests, including FIFO metadata and present fences.
+Its Switch speedup, LSFG generation/scanout and crowded-scene result remain
+unverified. Cached checks, mandatory Light 720p, keyboard and prior native
+optimizations remain in place.
 
 ## What works
 

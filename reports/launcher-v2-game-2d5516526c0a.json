@@ -1,0 +1,94 @@
+{
+  "inputs": {
+    "fex-runtime.log": {
+      "bytes": 450166,
+      "sha256": "2d5516526c0acf48a4956a98498512edeb96a752f8777b1d763eccdecda415e1"
+    },
+    "HKShip.exe_d3d11.log": {
+      "bytes": 25210,
+      "sha256": "9efb0de15374c04743fe71307ab401f55b8694c8b5cbd1c56e2f13128b12a6d5"
+    },
+    "runtime.log": {
+      "bytes": 42026,
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331"
+    }
+  },
+  "build": "sleepingdogs-launcher-v2-native-h4-v9",
+  "lsfg_requested": true,
+  "lsfg_attached": true,
+  "per_present_mode_bypasses": 5034,
+  "generated_frame_markers": 0,
+  "initialized_markers": 0,
+  "native_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 10804953,
+      "total_presents": 601,
+      "fps": 55.53
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 15892226,
+      "total_presents": 1201,
+      "fps": 37.754
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 27266267,
+      "total_presents": 1801,
+      "fps": 22.005
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 27342082,
+      "total_presents": 2401,
+      "fps": 21.944
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 32657871,
+      "total_presents": 3001,
+      "fps": 18.372
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 29132423,
+      "total_presents": 3601,
+      "fps": 20.596
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28899423,
+      "total_presents": 4201,
+      "fps": 20.762
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 26032798,
+      "total_presents": 4801,
+      "fps": 23.048
+    }
+  ],
+  "native_fps_gameplay_600_frame_windows": [
+    22.005,
+    21.944,
+    18.372,
+    20.596,
+    20.762,
+    23.048
+  ],
+  "sampled_context_threads": {
+    "00010011": [
+      "3381ac"
+    ],
+    "00010010": [
+      "81ff"
+    ],
+    "00010005": [
+      "2a01bf"
+    ]
+  },
+  "qualification": "Unpaired scene-dependent windows; not evidence of a regression or measured speedup. runtime.log is the old H4 v3 COM self-test.",
+  "optimization": "25 independent binding setters filtered in PE32; no draws, resource hazards, Map copies or resolution change.",
+  "switch_fps_measured_for_candidate": false
+}

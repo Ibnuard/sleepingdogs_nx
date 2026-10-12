@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-launcher-v3-update",
+  "files": 469,
+  "bytes": 282161754,
+  "all_hashes_verified": true,
+  "nro_sha256": "2a35cf9f3ac92caaa0b0a9d03107f54e90e6ae8d01ddaf7d213fafc93ec79e22",
+  "proxy_sha256": "d5bd49abbc9341089f4695138ee62bc4fec6cb41a3e2e96c695d7da88939b8f7",
+  "manifest_sha256": "406ca4de90849f180b282cd775c6905bc19e85a796a467d132e0bc8271833000",
+  "zip_created": false,
+  "game_data_included": false,
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

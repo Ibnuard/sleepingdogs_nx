@@ -24,10 +24,11 @@ drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
 20–22 FPS, with crowded-area lows near 16 and confined-view peaks near 30.
 **Stable 30 FPS has not been achieved.**
 
-The latest [launcher v2 test update](docs/launcher-v2.md) caches verification,
-enforces Light 720p and connects optional LSFG to native DXVK. The latest
-compact-build log still ends around 17.5–18.5 real FPS; this update makes no
-new native-FPS claim.
+The latest [launcher v3 test update](docs/launcher-v3.md) filters redundant
+render bindings before FEX transport and fixes LSFG rejecting FIFO metadata.
+It retains cached verification and mandatory Light 720p. The previous capture
+shows roughly 18–23 real FPS and no generated frames; v3 hardware gains remain
+unmeasured.
 
 | Area | Status |
 | --- | --- |
