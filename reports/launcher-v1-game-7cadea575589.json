@@ -1,0 +1,53 @@
+{
+  "input": {
+    "fex-runtime.log": {
+      "sha256": "7cadea575589af80b8fdec67530a98099d799e8ca40ad13205c798be85599b48",
+      "bytes": 132988
+    },
+    "HKShip.exe_d3d11.log": {
+      "sha256": "1e3db2c5d9903ad21ad5044aea1df371ec06b66ecff0732d02b5a664f6e8c585",
+      "bytes": 21865
+    },
+    "runtime.log": {
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    }
+  },
+  "real_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 11020968,
+      "fps": 54.44167880716104
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 16561082,
+      "fps": 36.229516887845854
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 32858591,
+      "fps": 18.26006477271043
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28025467,
+      "fps": 21.4090990883399
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 34223268,
+      "fps": 17.531931783954708
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 32407299,
+      "fps": 18.514347647423502
+    }
+  ],
+  "lsfg_forced_off": true,
+  "compact_active": true,
+  "bridge_faults": [],
+  "runtime_log_is_old_com_session": true,
+  "matched_ab": false
+}

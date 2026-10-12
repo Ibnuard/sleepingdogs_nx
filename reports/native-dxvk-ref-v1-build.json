@@ -1,0 +1,161 @@
+{
+  "status": "BUILT",
+  "build": "native-dxvk-ref-v1",
+  "baseline_commit": "407b3201a6ec7ee1596d600601c30119f36880f6",
+  "baseline_reproduced": true,
+  "baseline_proxy_sha256": "886a969f68e969cc52fa7dd9b199dcb4fcf1d982d47a53ae7b81fa7c06b2a7e7",
+  "proxy_sha256": "a03a58b6023a7b74ff0d96d0460ce247715fa1210b6f6d02428f206908541344",
+  "com_client_sha256": "9c65f6638ca102ea68997fa975968394b037cdf3bc26e73b41bae772c446db46",
+  "unchanged_nro_sha256": "4b7270cc3e132966f75b84a99e6a5c872752be636af56b07b6226675fb3edeb4",
+  "protocol_abi": 4,
+  "compiler_sha256": "c9b86311ade81d53235c93fafabdf98328d094de344ea9a9038e0dab6695ee9f",
+  "source_files": {
+    "baseline": {
+      "source/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+      "source/native_dxvk_com/com_guest.c": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+      "source/native_dxvk_com/com_guest_test.c": "52909ca1a30e6de6fff46650a3f831c14f35fdc2f87e470c906945b8521163d7",
+      "source/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "source/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "source/native_dxvk_com/com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1",
+      "source/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "source/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+      "source/native_dxvk_com/com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+      "source/native_dxvk_com/com_native_array.h": "3e49d05f3272578fd3d854cf05fc8b1ec5490b9433a43e795ee298b97ed678bc",
+      "source/native_dxvk_com/com_native_dispatch.inc": "9e577038c3e2e81dcb89c592154e488ae4a88b8615fb6e8d94822ec34cf6c044",
+      "source/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+      "source/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "source/native_dxvk_com/d3d11_guest.c": "a3f6aa246040b1d64ae83d2060ac428083f28cf9b4ba2617585f50131554cc2e",
+      "source/native_dxvk_com/dxgi_guest.c": "4fba37ec5b008c5cec1ff0208b013296a7d1d915018515b6c13f1b63dc787533",
+      "source/native_dxvk_com/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f",
+      "source/native_dxvk_com/native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4"
+    },
+    "candidate": {
+      "source/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+      "source/native_dxvk_com/com_guest.c": "5cc4e3875c18a76f31f4f848597b91c93e1ee22978e0a3559fcf9c0c2350cfc6",
+      "source/native_dxvk_com/com_guest_test.c": "22207b534b02ce05de44f4f0300a4a29f22fbc2cbf9406e418c8684fb80c46a0",
+      "source/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "source/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "source/native_dxvk_com/com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1",
+      "source/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "source/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+      "source/native_dxvk_com/com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+      "source/native_dxvk_com/com_native_array.h": "3e49d05f3272578fd3d854cf05fc8b1ec5490b9433a43e795ee298b97ed678bc",
+      "source/native_dxvk_com/com_native_dispatch.inc": "9e577038c3e2e81dcb89c592154e488ae4a88b8615fb6e8d94822ec34cf6c044",
+      "source/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+      "source/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "source/native_dxvk_com/d3d11_guest.c": "a3f6aa246040b1d64ae83d2060ac428083f28cf9b4ba2617585f50131554cc2e",
+      "source/native_dxvk_com/dxgi_guest.c": "4fba37ec5b008c5cec1ff0208b013296a7d1d915018515b6c13f1b63dc787533",
+      "source/native_dxvk_com/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f",
+      "source/native_dxvk_com/native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4"
+    }
+  },
+  "compile_argv": {
+    "baseline/sdndx4.dll": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-DSD_COM_BUILD=\"native-dxvk-h4-v9\"",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--kill-at",
+      "-Wl,--entry,DllMain@12",
+      "-shared",
+      "-Wl,--out-implib,/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/baseline/sdndx4.a",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/baseline/source/native_dxvk_com/com_guest.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/baseline/sdndx4.dll",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "candidate/sdndx4.dll": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-DSD_COM_BUILD=\"native-dxvk-h4-v9\"",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--kill-at",
+      "-Wl,--entry,DllMain@12",
+      "-shared",
+      "-Wl,--out-implib,/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/candidate/sdndx4.a",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/candidate/source/native_dxvk_com/com_guest.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/candidate/sdndx4.dll",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "candidate/sd-native-dxvk-h4-test.exe": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-DSD_COM_BUILD=\"native-dxvk-h4-v9\"",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--kill-at",
+      "-Wl,--entry,start@0",
+      "-DSD_COM_REF_TEST",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/candidate/source/native_dxvk_com/com_guest_test.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-ref-v1/candidate/sd-native-dxvk-h4-test.exe",
+      "-lkernel32"
+    ]
+  },
+  "pe_audits": {
+    "baseline/sdndx4.dll": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll",
+        "USER32.dll"
+      ],
+      "bytes": 290304,
+      "sha256": "886a969f68e969cc52fa7dd9b199dcb4fcf1d982d47a53ae7b81fa7c06b2a7e7",
+      "exports": [
+        "SdComStats",
+        "SdCreateDevice",
+        "SdCreateFactory"
+      ]
+    },
+    "candidate/sdndx4.dll": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll",
+        "USER32.dll"
+      ],
+      "bytes": 287744,
+      "sha256": "a03a58b6023a7b74ff0d96d0460ce247715fa1210b6f6d02428f206908541344",
+      "exports": [
+        "SdComRefStats",
+        "SdComStats",
+        "SdCreateDevice",
+        "SdCreateFactory"
+      ]
+    },
+    "candidate/sd-native-dxvk-h4-test.exe": {
+      "machine": "i386",
+      "format": "PE32",
+      "imports": [
+        "KERNEL32.dll"
+      ],
+      "bytes": 61440,
+      "sha256": "9c65f6638ca102ea68997fa975968394b037cdf3bc26e73b41bae772c446db46",
+      "exports": []
+    }
+  },
+  "builder_sha256": "a3bedad3fac2d1902e3fc73497dc43bc094f9c7aaf5dc20fa0ac6777c950f6e9",
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

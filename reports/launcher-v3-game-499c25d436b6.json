@@ -1,0 +1,354 @@
+{
+  "inputs": {
+    "fex-runtime.log": {
+      "bytes": 145912,
+      "sha256": "499c25d436b6510f4b140c030526a214461381fce4b75310f23097a9b84c8d51"
+    },
+    "HKShip.exe_d3d11.log": {
+      "bytes": 21483,
+      "sha256": "2809bea84a9a7999176fdf9c708fb0adb39ad6f6ae96c8348f396fd10905de2f"
+    },
+    "runtime.log": {
+      "bytes": 42026,
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331"
+    }
+  },
+  "build": "sleepingdogs-launcher-v3-state-v1",
+  "user_observation": "Feels slower than the previous build; apparent maximum of 30 FPS.",
+  "lsfg": {
+    "requested": true,
+    "motion_percent": 50,
+    "first_generated_markers": 1,
+    "windows": [
+      {
+        "window_ms": 10037,
+        "real": 293,
+        "generated": 292,
+        "presented": 585,
+        "real_fps": 29.192,
+        "submitted_fps": 58.284
+      },
+      {
+        "window_ms": 10010,
+        "real": 186,
+        "generated": 185,
+        "presented": 371,
+        "real_fps": 18.581,
+        "submitted_fps": 37.063
+      },
+      {
+        "window_ms": 10000,
+        "real": 265,
+        "generated": 266,
+        "presented": 531,
+        "real_fps": 26.5,
+        "submitted_fps": 53.1
+      },
+      {
+        "window_ms": 10035,
+        "real": 199,
+        "generated": 198,
+        "presented": 397,
+        "real_fps": 19.831,
+        "submitted_fps": 39.562
+      },
+      {
+        "window_ms": 10035,
+        "real": 173,
+        "generated": 173,
+        "presented": 346,
+        "real_fps": 17.24,
+        "submitted_fps": 34.479
+      },
+      {
+        "window_ms": 10043,
+        "real": 169,
+        "generated": 169,
+        "presented": 338,
+        "real_fps": 16.828,
+        "submitted_fps": 33.655
+      },
+      {
+        "window_ms": 10010,
+        "real": 197,
+        "generated": 197,
+        "presented": 394,
+        "real_fps": 19.68,
+        "submitted_fps": 39.361
+      },
+      {
+        "window_ms": 10032,
+        "real": 212,
+        "generated": 212,
+        "presented": 424,
+        "real_fps": 21.132,
+        "submitted_fps": 42.265
+      },
+      {
+        "window_ms": 10044,
+        "real": 168,
+        "generated": 169,
+        "presented": 337,
+        "real_fps": 16.726,
+        "submitted_fps": 33.552
+      },
+      {
+        "window_ms": 10013,
+        "real": 172,
+        "generated": 172,
+        "presented": 344,
+        "real_fps": 17.178,
+        "submitted_fps": 34.355
+      },
+      {
+        "window_ms": 10017,
+        "real": 179,
+        "generated": 179,
+        "presented": 358,
+        "real_fps": 17.87,
+        "submitted_fps": 35.739
+      },
+      {
+        "window_ms": 10005,
+        "real": 184,
+        "generated": 184,
+        "presented": 368,
+        "real_fps": 18.391,
+        "submitted_fps": 36.782
+      },
+      {
+        "window_ms": 10016,
+        "real": 189,
+        "generated": 188,
+        "presented": 377,
+        "real_fps": 18.87,
+        "submitted_fps": 37.64
+      },
+      {
+        "window_ms": 10037,
+        "real": 183,
+        "generated": 184,
+        "presented": 367,
+        "real_fps": 18.233,
+        "submitted_fps": 36.565
+      },
+      {
+        "window_ms": 10014,
+        "real": 172,
+        "generated": 172,
+        "presented": 344,
+        "real_fps": 17.176,
+        "submitted_fps": 34.352
+      },
+      {
+        "window_ms": 10005,
+        "real": 165,
+        "generated": 165,
+        "presented": 330,
+        "real_fps": 16.492,
+        "submitted_fps": 32.984
+      },
+      {
+        "window_ms": 10026,
+        "real": 204,
+        "generated": 203,
+        "presented": 407,
+        "real_fps": 20.347,
+        "submitted_fps": 40.594
+      },
+      {
+        "window_ms": 10008,
+        "real": 204,
+        "generated": 204,
+        "presented": 408,
+        "real_fps": 20.384,
+        "submitted_fps": 40.767
+      },
+      {
+        "window_ms": 10012,
+        "real": 205,
+        "generated": 206,
+        "presented": 411,
+        "real_fps": 20.475,
+        "submitted_fps": 41.051
+      },
+      {
+        "window_ms": 10041,
+        "real": 190,
+        "generated": 190,
+        "presented": 380,
+        "real_fps": 18.922,
+        "submitted_fps": 37.845
+      }
+    ],
+    "scanout_measured": false
+  },
+  "native_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 30753140,
+      "total_presents": 601,
+      "fps": 19.51
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 30759036,
+      "total_presents": 1201,
+      "fps": 19.506
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 30873195,
+      "total_presents": 1801,
+      "fps": 19.434
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 34317234,
+      "total_presents": 2401,
+      "fps": 17.484
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 33475246,
+      "total_presents": 3001,
+      "fps": 17.924
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 30470914,
+      "total_presents": 3601,
+      "fps": 19.691
+    }
+  ],
+  "later_windows": {
+    "selection": "After the first two 600-interval windows; scenes are not authenticated.",
+    "fps": [
+      19.434,
+      17.484,
+      17.924,
+      19.691
+    ],
+    "pooled_fps": 18.585
+  },
+  "previous_capture": {
+    "sha256": "2d5516526c0acf48a4956a98498512edeb96a752f8777b1d763eccdecda415e1",
+    "lsfg_bypassed": true,
+    "later_fps": [
+      22.005,
+      21.944,
+      18.372,
+      20.596,
+      20.762,
+      23.048
+    ],
+    "pooled_fps": 21.012
+  },
+  "state_filter": {
+    "snapshots": [
+      {
+        "presents": 1,
+        "attempts": 11,
+        "skipped": 0,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 0,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 600,
+        "attempts": 70789,
+        "skipped": 4521,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 4521,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 1200,
+        "attempts": 764706,
+        "skipped": 24343,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 24343,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 1800,
+        "attempts": 1924013,
+        "skipped": 57010,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 57010,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 2400,
+        "attempts": 3177022,
+        "skipped": 83253,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 83253,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 3000,
+        "attempts": 4363532,
+        "skipped": 106440,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 106440,
+        "shader": 0,
+        "fixed": 0
+      },
+      {
+        "presents": 3600,
+        "attempts": 5617077,
+        "skipped": 134017,
+        "disabled_contexts": 0,
+        "contexts": 5,
+        "cb": 0,
+        "sampler": 134017,
+        "shader": 0,
+        "fixed": 0
+      }
+    ],
+    "last_skip_percent": 2.3859,
+    "skipped_types": [
+      "sampler"
+    ],
+    "overhead_measured": false
+  },
+  "dxvk_config": {
+    "d3d11.sdSubmissionBatching": "True",
+    "d3d11.samplerAnisotropy": "0",
+    "dxvk.hud": "fps",
+    "dxgi.maxFrameLatency": "3",
+    "dxvk.enableDescriptorHeap": "False",
+    "dxvk.enableDescriptorBuffer": "False",
+    "dxgi.maxSharedMemory": "128",
+    "dxgi.maxDeviceMemory": "256",
+    "dxvk.numCompilerThreads": "1",
+    "dxgi.syncInterval": "1",
+    "d3d9.presentInterval": "0"
+  },
+  "present_mode": "FIFO",
+  "resolution": "1280x720",
+  "explicit_30_fps_limit_in_logged_config": false,
+  "ceiling_interpretation": "The current LSFG backend submits an interpolated and a real image in FIFO for each game frame. At 60 Hz, one FIFO image per refresh implies a steady-state real-frame ceiling near 30 FPS. This is derived from the implementation and FIFO semantics, not a measured scanout rate or a new 30 FPS limiter.",
+  "stale_runtime_log": true,
+  "qualification": "Scenes and clocks are not paired. Both actual LSFG work and the broad state filter changed together. Their individual performance costs cannot be established from this capture.",
+  "next_candidate": "Replace the low-hit broad binding cache with synchronous inline COM argument transport; remove native production accounting with no report consumer. Preserve saved LSFG settings and Light 720p. Admit verified deferred-context work during Present with lifetime, Multithread Enter and nested-call safeguards; validate the composed path before delivery.",
+  "next_candidate_hardware_tested": false
+}

@@ -10,6 +10,10 @@ using Type = dxvk::GpuFlushType;
 using OldType = baseline::GpuFlushType;
 using Tracker = dxvk::GpuFlushTracker;
 using OldTracker = baseline::GpuFlushTracker;
+#ifndef SD_TEST_BATCH_BOUND
+#define SD_TEST_BATCH_BOUND 12
+#endif
+constexpr uint32_t batchBound = SD_TEST_BATCH_BOUND;
 
 int main() {
   uint64_t grid = 0;
@@ -33,7 +37,7 @@ int main() {
             assert(off.sdDeferredHints() == 0);
             // Only hints may change, and only by postponing a small batch.
             assert(!batched || expected);
-            if (type < 2 || chunks >= 12 || pending < 2 || cost >= 1500 || type > maxType)
+            if (type < 2 || chunks >= batchBound || pending < 2 || cost >= 1500 || type > maxType)
               assert(batched == expected);
             grid++;
           }
@@ -77,20 +81,20 @@ int main() {
   assert(!readback.considerFlush(Type::ExplicitFlush, 23, 9, 10)); // no commands
   assert(readback.considerFlush(Type::ExplicitFlush, 24, 9, 10));
 
-  // Deferred hints are bounded by 12 chunks and the existing cost gate.
+  // Deferred hints remain bounded by the candidate's chunk and cost gates.
   Tracker bounded{Type::ImplicitWeakHint, true};
   bounded.notifyFlush(0, 10);
-  for (unsigned i = 1; i < 12; i++)
+  for (unsigned i = 1; i < batchBound; i++)
     assert(!bounded.considerFlush(Type::ImplicitStrongHint, i, 8, 10));
-  assert(bounded.sdDeferredHints() == 11);
-  assert(bounded.considerFlush(Type::ImplicitStrongHint, 12, 8, 10));
-  bounded.notifyFlush(12, 11);
-  assert(bounded.considerFlush(Type::ImplicitStrongHint, 15, 9, 1500));
+  assert(bounded.sdDeferredHints() == batchBound - 1);
+  assert(bounded.considerFlush(Type::ImplicitStrongHint, batchBound, 8, 10));
+  bounded.notifyFlush(batchBound, 11);
+  assert(bounded.considerFlush(Type::ImplicitStrongHint, batchBound + 3, 9, 1500));
 
   // Default-constructed policy remains off (other DXVK users/D3D9).
   Tracker defaultPolicy{Type::ImplicitWeakHint};
   assert(!defaultPolicy.sdBatchingEnabled());
   assert(bounded.sdBatchingEnabled());
-  std::printf("PASS grid=%llu stateful=200000 readback=progress explicit=preserved bound=12 defaults=off\n",
-              (unsigned long long)grid);
+  std::printf("PASS grid=%llu stateful=200000 readback=progress explicit=preserved bound=%u defaults=off\n",
+      (unsigned long long)grid,batchBound);
 }

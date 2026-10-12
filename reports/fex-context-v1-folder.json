@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "build": "sd-fex-context-v1",
+  "path": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/dist/sd-fex-context-v1-update",
+  "files": 37,
+  "bytes": 18231763,
+  "all_file_hashes_verified": true,
+  "zip_created": false,
+  "scope": "FEX-only delta on installed H4 v9; COM client unchanged",
+  "fex_sha256": "3660e8bce046dbf11080a7ba8397bd9af72fab6e3d6e821e029e48acc81b67b7",
+  "rollback_fex_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "nro_included": false,
+  "game_data_included": false,
+  "resolution": [
+    1280,
+    720
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "previous_manifest_sha256": "0c3f794d2f39f37c981a8ee187834486b6fa61e0c683529aa92a503ac627ab02",
+  "checksums_sha256": "3eebc2d932116599a1d725c114ce350512463a2c9ce4f47228a0919c6f1aa683",
+  "receipts": {
+    "build": "98ada44bfb71564bc77cfb1db790739f0be3dd38d5b684d0c3dd5c7033bbdbfc",
+    "host-test": "13b72ba58a645148fee6b353eb24e1f50bc3b269129c93e36956d9394ee16dc2",
+    "arm64-test": "f2e7a20ed505bdefc138b27ad7fc381bfd5143d053bcedbc09399ac5760702ad"
+  },
+  "packager_sha256": "4d853cb922de9fd4c326c6d9f4689fdfe17bc15302cc59f93eb5c819814fed1a"
+}

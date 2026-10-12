@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-h4-v8.1",
+  "source_files": {
+    "tools/build_native_dxvk_h4.py": "2057c9e624df27cfcf7c1a5b3dfc5c9fb90d29efd603adfc8853211528ef1b3c",
+    "tools/test_native_dxvk_h4_game_quality_ui.py": "a3e2a307c6ed587b90570c0f2801b027fb177d862e1d425ac4ab1c84080b1a22",
+    "src/native_dxvk_com/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f"
+  },
+  "runner_sha256": "a3e2a307c6ed587b90570c0f2801b027fb177d862e1d425ac4ab1c84080b1a22",
+  "runtime_sha256": "4926718e488ec1999e713694426627e15abecd9a7cbf7cac4d2a08d18b22d737",
+  "settings_sha256": "afd5893090a54322126a319d5d93380243788f90ac3495f447bd3085c3aaed45",
+  "baseline_runtime_sha256": "e1d2c9bde47881575f10db73965605834b9f2bc22ebc2e16d4ede1268127d5bb",
+  "baseline_settings_sha256": "a06474a5c109d974b4e9bd79cea629cd2002983e17576ed299e7d1bf21dcbaa2",
+  "fixture_sha256": "6521a2a556a8d1b605f4a8575cbdf4caf3e5e0352bb327e411c0e5b423c894cf",
+  "compiled_headers": {
+    "/home/blekjek/sleepingdogs-apc-v18/native-source/wine-nx-probe/source/f1_dx_hud.h": "973f4a2e5b1a4339da30f2f0e6f4929a007746f1f386408a0131f48972c7f24e",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui/f1_settings.h": "afd5893090a54322126a319d5d93380243788f90ac3495f447bd3085c3aaed45",
+    "/home/blekjek/sleepingdogs-apc-v18/native-source/wine-nx-probe/source/sd_lsfg_settings.h": "b1f5e09cd6888ebd6cd5d1f825ee99dd19965dd9f6efaf2a37fc649b198a232c",
+    "/home/blekjek/sleepingdogs-apc-v18/native-source/wine-nx-probe/source/lsfg_config.h": "2d0ac216b95f4bdac0c1300186331696c6200b7bea78d55dc129c96e35370573"
+  },
+  "compile_argv": [
+    "/usr/bin/gcc",
+    "-std=c11",
+    "-O1",
+    "-g",
+    "-D_POSIX_C_SOURCE=200809L",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-I/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui",
+    "-I/home/blekjek/sleepingdogs-apc-v18/native-source/wine-nx-probe/source",
+    "-MMD",
+    "-MF",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui/game-quality-ui.d",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui/game-quality-ui.c",
+    "-pthread",
+    "-lm",
+    "-o",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v8.1/game-quality-ui/game-quality-ui"
+  ],
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "horizon_no_replace_rename": true,
+  "real_host_fsync_with_injected_failures": 2,
+  "settings_pages": 8,
+  "root_rows": 8,
+  "detail_rows": 3,
+  "group_enter_back_routes": 7,
+  "renderer_choices_persisted": 3,
+  "deferred_apply_verified": true,
+  "resolution_1280x720_preserved": true,
+  "exact_original_restore": true,
+  "stop_enforcement_keeps_current_options": true,
+  "unrelated_user_options_preserved": true,
+  "restore_failure_after_mode_saved_reloads_memory": true,
+  "save_and_restore_failure_before_mode_saved_reloads_memory": true,
+  "precise_error_message_survives_reload": true,
+  "successful_save_and_restore_with_corrupt_reload_reported": true,
+  "preference_corruptions_injected": 2,
+  "actual_startup_logs_corrupt_preference": true,
+  "actual_prelaunch_rejects_corrupt_preference": true,
+  "actual_prelaunch_short_circuit_skips_apply": true,
+  "startup_fragment_sha256": "130ddcb24b66e9a6b89eee5089d8e63b6ea74efa4549cf88a10fe6bc94b6c364",
+  "prelaunch_fragment_sha256": "ed9103f2c977a1dcf5ef77724e7e824f9c58265682a986a780276322cf7237a2",
+  "actual_glyph_pixel_bounds_checked": true,
+  "padded_framebuffer_preserved": true,
+  "previews": {
+    "game-detail-game.png": "64917ecf874b43306ecba2f0e26aff96fcb4f0f60a6588190eddd221b842afed",
+    "game-detail-light-720p.png": "6e5681cd557205e878cc94e01ba1ceeef0d94f8d516eaf0abd3b73791416c6d6",
+    "game-detail-restore-failed.png": "01fe9ba7e1579b7b36c60957196d2e4e8e2bf4ee1c337567488d1fc904da9d3e",
+    "game-detail-restore.png": "79ae9fd70c7f0bb6bcd267c02155f8041edfda6892e185741fa2b483af40c893",
+    "renderer-native.png": "e16a6de126f0ac50450e992705a2ae2f291bef4a717cb359b255adaab296ac83",
+    "settings-game-detail.png": "b112cb5d78f2afeec79a88985a5bb7b1b6340acb9bd9141173fe8498f038d8ce"
+  },
+  "preview_assets": {
+    "background-music.bin": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/background-music.bin",
+      "sha256": "e23e8c29642fd405e3bbc9fcf898b73e067aaf9399ad408354a6597097cf81ce"
+    },
+    "background.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/preview-assets/background.rgba",
+      "sha256": "8bd2ff9cc14f8ab64bc072dee32174554180e19910c58453fc74f1d33ceda828"
+    },
+    "blur.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/preview-assets/blur.rgba",
+      "sha256": "5db0c4914a312465dde5184f594b7affb5c2047111ebe4285213c1eeb2079dc4"
+    },
+    "buttons.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/buttons.rgba",
+      "sha256": "2bef5adb071a1eac3f54c39a054e705f242284ba876ef64dca2c6676bc3b882a"
+    },
+    "credits-icon.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/credits-icon.rgba",
+      "sha256": "8123bfdcfa437241470cb00773c3ca1614d7f446003e15d066e7811c791f3106"
+    },
+    "font.bin": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/font.bin",
+      "sha256": "d11b74e220b5b2ffdb90fa15155022879732f736426d36e50e21c33dfef1cae2"
+    },
+    "gamepad.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/gamepad.rgba",
+      "sha256": "00197a359eecac54225ef1958842345e434b0fe425d35a683228954c3a85b84f"
+    },
+    "icon.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/lsfg-launcher-check/preview-assets/icon.rgba",
+      "sha256": "b65c579ac8c6df2f4f48950c50a4f7edf52168b6a52cabbb698b6a3d793e883f"
+    },
+    "logo.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/logo.rgba",
+      "sha256": "842e7b6d0a3472eb79735a4ec1d9391cbf2886453e4dbd2bece17646aa78c6a5"
+    },
+    "settings-icon.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/settings-icon.rgba",
+      "sha256": "cef125ddd579a2e9953dd30cc226f6b3f919f2a35060026d412092cec2c911d9"
+    },
+    "timestamp-font.bin": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/timestamp-font.bin",
+      "sha256": "72bd9f90332e9cfdc784f6d49890ab08ba04dd66facafdfe06c9a385a116de80"
+    },
+    "wordmark.rgba": {
+      "source": "/mnt/d/Dev/Switch/SwitchHub/pes13-nx/local/production-input-fix/approved/switch/pes13-fex/launcher/wordmark.rgba",
+      "sha256": "13e55184bc6bef84a06abf6beec4768f19d911274a9e5ff7643a1bf145d13074"
+    }
+  },
+  "hardware_tested": false,
+  "game_tested": false,
+  "measured_fps": null,
+  "scope": "Actual overlaid launcher C navigation/rendering and helper on temporary host files; host fsync with injected errors and modeled Horizon rename. No controller/Horizon filesystem/game performance validation.",
+  "result": "PASS: actual startup/prelaunch rejects corrupt mode; eight settings pages; seven group enter/back routes; three persisted renderers; Light choice deferred to launch; 720p retained; exact restore; operation/reload errors preserved; successful save/restore with corrupt reload rejected; six bounded renders; unrelated user options preserved."
+}

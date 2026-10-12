@@ -11,6 +11,21 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
+| Native Ref v1 | [Guest-local reference ownership](native-dxvk-ref-v1.md); avoids temporary FEX/Wine/native calls with native lifetime credits; PE32 checks pass, Switch FPS pending |
+| FEX context v1 | [Exact x87 import shortcut](fex-context-v1.md); subsequent Light 720p capture confirms activation, slight improvement reported, final windows 20.56 FPS |
+| Native DXVK H4 v9 | [Bridge probes, Map traffic and batching](native-dxvk-h4-v9-memory-batching.md); later Light 720p/batching capture pools to 20.59 FPS, no meaningful gain reported |
+| Native DXVK H4 v8.1 | [Guest transport and Light fix](native-dxvk-h4-v8.1-transport.md); subsequent Light report 20–22 FPS, crowded lows 16, confined peak 30; last five Present windows 20.67 FPS |
+| Native DXVK H4 v8 | [Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md); later feedback 17–20 FPS, Light rejected GlobalSetting=-1 |
+| Native DXVK H4 v7 | [Object lookup and temporary arrays](native-dxvk-h4-v7-objects.md); subsequent user report around 20 FPS, peak 25 and crowded-running lows near 13 |
+| Native DXVK H4 v6 | [Reduce bridge diagnostic cost](native-dxvk-h4-v6-dispatch.md); user reports less slow motion, 16–17 FPS; final log windows average 16.67 FPS |
+| Native DXVK H4 v5 | [Correct COM output memory](native-dxvk-h4-v5-com-outputs.md); local checks pass; subsequent user report reaches gameplay around 15 FPS |
+| Native DXVK H4 v4 | [Queued logging and ongoing progress](native-dxvk-h4-v4-logging.md); subsequently 1,020 native Presents before Press Start crash |
+| Native DXVK H4 v3 | [Sponsor freeze investigation](native-dxvk-h4-v3-sponsor.md); COM PASS observed, game still freezes with FIFO; 128 traced calls all completed |
+| Native DXVK H4 v2 | [Launcher-to-native screen handoff fix](native-dxvk-h4-v2-window.md); subsequent COM PASS observed on Switch, game presents one frame then freezes before animated splash |
+| Native DXVK H4 v1 | [x86 COM bridge and native game launch candidate](native-dxvk-h4-v1.md); built and locally checked, H4 Switch/game/FPS validation pending; folder delivery only |
+| Native DXVK H3 v1 | [Guest-driven native swapchain/Present](native-dxvk-h3-v1.md); supplied Switch capture passes 2,331 checks and 300 Present calls, folder delivery only; no game COM integration |
+| Native DXVK H2 v1 | [PE32 Wine/FEX bridge diagnostic](native-dxvk-h2-v1.md); supplied Switch capture passes 1,096 checks and both readbacks |
+| Native DXVK probe v1 / H1 | [ARM64 build, host tests and successful standalone Switch capture](native-dxvk-probe-v1.md); no real x86 guest or game integration |
 | v18 | [Targeted queued-APC notification](apc-v18.md) |
 | v17 | [Automatic application-core scheduling](scheduler-v17.md) |
 | v17 comparison | [FIFO versus IMMEDIATE presentation](present-ab-v17.md) |

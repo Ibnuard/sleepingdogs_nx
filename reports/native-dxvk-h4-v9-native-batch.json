@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "result": "PASS grid=31488 stateful=200000 readback=progress explicit=preserved bound=24 defaults=off",
+  "runner_sha256": "b01071277e36c46d7356fb977842e5590799c4b3c0b2300a429cfd6aa874b07c",
+  "source_files": {
+    "tests/dxvk_batch.cpp": "b5dc851a09d72867cd186c2b3496cf171713f7b4cebe7febe9b35d67954f1324"
+  },
+  "compiled_tracker_inputs": {
+    "/home/blekjek/sleepingdogs-buffer-reuse-v2/source/src/util/util_flush.h": "934aec00c3bd7702d9808a8660d4d4e234ba47ba117fd2b31e9bac6e35bf0eae",
+    "/home/blekjek/sleepingdogs-buffer-reuse-v2/source/src/util/util_flush.cpp": "5e09453e1bfa79a9e21041f14c6efcb7a3e0a4cceb83e8563a90c52c59db7f07",
+    "/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/src/util/util_flush.h": "e21dcc360962072ead5128cfefdf2f43ba95298a1368cb120a8870fa8fd1c8b6",
+    "/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/src/util/util_flush.cpp": "6bbe53c86081054cee3d930db9b72b7819f84d843c8c1a976863f78843f0d82c"
+  },
+  "native_dxvk_receipt_sha256": "aa9de05e17a07bbcca5ee3d1866ab8053243583306dc984e00a044dab663ea1e",
+  "native_dxvk_sha256": "13a7b132c0d012a94ed3f2a5b239d2854e42dc1cb55925c56edc905042fc1992",
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O1",
+    "-g",
+    "-DSD_TEST_BATCH_BOUND=24",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-fno-pie",
+    "-no-pie",
+    "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/batch-check",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/dxvk_batch.cpp",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/batch-check/baseline.cpp",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/batch-check/candidate.cpp",
+    "-o",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/batch-check/batch-check"
+  ],
+  "executable_sha256": "a00297ebc77e3ef0e97a9a949a0e3d1cc0c2c061b04eb3ba478895982aa2b60a",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "max_deferred_hint_chunks": 24,
+  "min_pending_submissions": 2,
+  "mandatory_flushes_preserved": true,
+  "disabled_equivalent_to_baseline": true,
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Actual pinned native tracker bodies: decision grid, stateful off-mode differential, readback progress, cost/chunk limits and submission-ID wraparound. Host fixture does not execute NVK or measure GPU queue performance."
+}

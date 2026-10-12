@@ -16,22 +16,24 @@ minimum requirements or a guarantee of performance. See [Current status](STATUS.
 
 ## Packages
 
-As of **2026-10-11**, this repository has no packaged GitHub release. Existing
-test builds were distributed from the development workspace. GitHub's source
-download is not an installable runtime, and the ignored `dist/` folder is not
-included in a clone.
+[Production v1](production-v1.md) supplies a complete runtime folder locally.
+The [GitHub pipeline](RELEASE.md) creates complete SD packages after merged
+PRs. Use the assets on the [Releases page](https://github.com/Ibnuard/sleepingdogs_nx/releases)
+when a release is published. GitHub's source download is not an installable
+runtime, and the ignored `dist/` folder is not included in a clone.
 
 | Package | Intended use |
 | --- | --- |
 | Complete runtime package | Fresh setup: NRO, Wine/FEX modules, renderer DLLs, assets and configuration; use its matching forwarder |
-| Versioned update ZIP | Update an already working installation; follow the package's prerequisite and install notes |
+| Versioned update folder or historical ZIP | Update an already working installation; follow the package's prerequisite and install notes |
 | Rollback ZIP | Restore the corresponding earlier runtime files after a test |
 | Standalone NRO | Replace only the launcher/runtime binary in an otherwise compatible installation |
 | GitHub source ZIP | Inspect or develop the project; see [Building](BUILD.md) |
 
-The v18 APC update is an update to the existing low-window installation, not
-a complete first-install bundle. Do not reconstruct a fresh installation by
-applying every ZIP listed in the development history.
+Production packages include the runtime, forwarder, launcher assets and Wine
+data. They exclude game data, saves, keys, `lossless.dll` and private LSFG
+shaders. Historical update folders may be partial; do not reconstruct a fresh
+installation by applying every experiment in the development history.
 
 ## Boot and forwarder
 
@@ -64,17 +66,20 @@ or rebooting while the compatible boot environment remains active.
    `switch/sleepingdogs-fex/drive_c/SleepingDogs/`.
 3. Include `HKShip.exe`, all BIG/BIX archives, `Data/`, original game DLLs and
    other supporting files. Avoid an extra nested `Sleeping Dogs/` directory.
-4. Keep the package's `d3d9.dll`, `d3d11.dll`, `dxgi.dll` and `dxvk.conf` when
+4. Keep the package's `d3d9.dll`, `d3d11.dll`, `dxgi.dll`, `sdndx4.dll` and `dxvk.conf` when
    file names overlap. The game and launcher renderer copies must match.
 5. Open Sleeping Dogs from HOME. Use normal Launch / Launch GUI for play;
-   use Launch Debug when investigating startup or a crash.
+   enable Settings → Show debug launch and use Launch Debug when investigating
+   startup or a crash. Normal production Play writes no diagnostic files.
 
 See the [SD directory layout](../README.md#setup). The package's Wine runtime,
 launcher resources and `share/wine/` files are required alongside the NRO.
 
-For the initial native-rendering baseline, select DXVK 3.1.1, FEX Fastest,
-LSFG OFF and 1280×720. Choose game quality through its own menus; launcher
-profiles do not set the game's world-detail preset.
+For the current native-rendering baseline, select DXVK Native ARM64, FEX
+Fastest and LSFG OFF. [Launcher v2](launcher-v2.md) always applies Light
+1280×720 before launch and caches successful runtime verification. The x86
+DXVK 3.1.1 route remains available as a comparison. Graphics profiles set
+DXVK options independently of the mandatory Light game-detail profile.
 
 ## Updating an existing installation
 
@@ -83,14 +88,15 @@ profiles do not set the game's world-detail preset.
 2. Close Sleeping Dogs **completely from HOME**.
 3. Merge the update's `switch/` directory into the SD root, replacing the
    files included in that update. Do not delete the existing game installation.
-4. Read the update's notes for any required renderer or forwarder replacement.
-   In particular, the v18 APC update retains existing presets and preferences.
-5. Relaunch and verify the build in `switch/sleepingdogs-fex/fex-runtime.log`.
+4. No `start-game` folder is needed for production. Keep your game, saves and
+   existing personal LSFG pack. The package does not change saved LSFG choices.
+5. Relaunch. Normal Play is quiet; verify the NRO version/hash against the
+   package manifest. Use explicit Launch Debug only when logs are needed.
 
-For v18, the build and memory markers include:
+For a production Debug launch, the build and memory markers include:
 
 ```text
-[BUILD] sleepingdogs-fextendo-0.1.0-v18-apc
+[BUILD] sleepingdogs-production-v1
 [SD-LOWVA] PASS: native above 4 GiB; guest low window available
 [SD-SCHED-V17] mode=auto
 ```

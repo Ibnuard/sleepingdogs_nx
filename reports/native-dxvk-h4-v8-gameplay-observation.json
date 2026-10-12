@@ -1,0 +1,184 @@
+{
+  "status": "GAMEPLAY_REPORTED_WITH_NATIVE_ROUTE_OBSERVED",
+  "observed_build": "native-dxvk-h4-v8",
+  "game_capture_report": "reports/native-dxvk-h4-game-7d1ee877d066.json",
+  "game_capture_report_sha256": "63b64cc1f209f661d3e0994bd22636ce949b2983645136495dd23a70d8530df1",
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/runtime.txt",
+      "sha256": "7d1ee877d066cc64a8ba388d3b5351394364e01cb82d7f6d7be45849b31c7a46",
+      "bytes": 145330
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/dxvk.txt",
+      "sha256": "3dd538a3a3aec956909dbe606d8cfe0005498d27b7fcae77920380fb320336f1",
+      "bytes": 31598
+    }
+  },
+  "additional_evidence": {
+    "DisplaySettings.xml": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/DisplaySettings.xml",
+      "sha256": "27bdc2ab3d16dfad4ee0078349a855fef43985351c89c73f72cdc25d5e350c89",
+      "bytes": 881
+    },
+    "native-dxvk-h4-result.json": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/older-com-result.json",
+      "sha256": "9678e556e955b87678bedb2d4ea2b6f9b580413c7bba26569c10103edd2e4813",
+      "bytes": 426
+    },
+    "native-dxvk-h4-guest.log": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/older-com-guest.txt",
+      "sha256": "0f78b79613f8d73e0fbcdd4a9987effbe475196745f318dacceddd234c53c3f6",
+      "bytes": 935
+    },
+    "runtime.log": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/older-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    },
+    "earlier-light-fex-runtime.log": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/light-error-fex-runtime.txt",
+      "sha256": "b10af0dd7cd9573c21e69f4d4328925d7276a077490e537899a2e53ca82ddbf5",
+      "bytes": 11239
+    },
+    "earlier-light-crash.log": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/light-error-crash.txt",
+      "sha256": "b3fe3f6171c122fb5b91dc5ad288d6409e0cfde8d0a026bcaaf777c1dccf903c",
+      "bytes": 32768
+    }
+  },
+  "user_observation": {
+    "reported_typical_fps": [
+      17,
+      20
+    ],
+    "reported_crowded_running_fps": [
+      13,
+      16
+    ],
+    "reported_peak_confined_fps": 26,
+    "reported_gain_fps": [
+      1,
+      2
+    ],
+    "controlled_comparison": false
+  },
+  "runtime": {
+    "route_validation": {
+      "build": true,
+      "native_device": true,
+      "first_present": true,
+      "native_renderer": true,
+      "switch_gpu": true,
+      "no_device_lost": true,
+      "no_bridge_fault": true,
+      "renderer_log_mode_matches": true,
+      "native_fifo_requested": true,
+      "fifo_present": true,
+      "game_target": true,
+      "native_selection": true
+    },
+    "quality_mode": "game",
+    "resolution": [
+      1280,
+      720
+    ],
+    "latest_progress": {
+      "calls": 36520704,
+      "draws": 5819002,
+      "presents": 5863,
+      "maps": 0,
+      "refs": 16884,
+      "copy_bytes": 55358654464,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "last_five_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 34405867,
+        "present_fps": 17.438886222515478,
+        "mean_frame_us": 57343,
+        "min_us": 28514,
+        "max_us": 134555,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 32424526,
+        "present_fps": 18.50451106054719,
+        "mean_frame_us": 54040,
+        "min_us": 30990,
+        "max_us": 119048,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 35387271,
+        "present_fps": 16.9552492476744,
+        "mean_frame_us": 58978,
+        "min_us": 28129,
+        "max_us": 119016,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 26400158,
+        "present_fps": 22.72713670880303,
+        "mean_frame_us": 44000,
+        "min_us": 27635,
+        "max_us": 90888,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 31332017,
+        "present_fps": 19.14974066304126,
+        "mean_frame_us": 52220,
+        "min_us": 23678,
+        "max_us": 110530,
+        "scene_identified": false
+      }
+    ],
+    "last_five_pooled_present_fps": 18.755880085631095,
+    "last_progress_delta": {
+      "calls": 838144,
+      "draws": 135695,
+      "presents": 87,
+      "copy_bytes": 821035008,
+      "failures": 0
+    },
+    "last_interval_copy_bytes_per_present": 9437184.0,
+    "native_map_cache_marker_present": true,
+    "clean_exit_observed": false,
+    "last_interval_calls_per_present": 9633.83908045977,
+    "last_interval_draws_per_present": 1559.712643678161
+  },
+  "supplied_xml": {
+    "version": 1,
+    "resolution": [
+      1280,
+      720
+    ],
+    "global_setting": -1,
+    "all_seven_individual_quality_values_zero": true,
+    "exact_current_in_memory_quality_authenticated": false,
+    "light_v8_rejection": "Only GlobalSetting=-1 is rejected among the supplied target values; unsigned-only helper test is too restrictive for this file.",
+    "static_global_setting_audit": "reports/original-game-global-setting-audit.json",
+    "static_global_setting_audit_sha256": "09e785b25e18b68db2c65cc6ca6203de93d81012c7f840ef2f003b3ba72327e8"
+  },
+  "supplied_com": {
+    "build": "native-dxvk-h4-v3",
+    "fresh_v8_com_validated": false
+  },
+  "same_scene_and_clock_comparison": false,
+  "running_binary_authenticated": false,
+  "stable_30fps_proven": false,
+  "next_candidate": {
+    "build": "native-dxvk-h4-v8.1",
+    "scope": "Remove repeated guest endpoint-discovery locking after safe acquire/release publication; accept GlobalSetting=-1 with exact restore and field diagnostics; preserve native gate, Map copies and 720p.",
+    "hardware_tested": false,
+    "game_fps_measured": false
+  }
+}

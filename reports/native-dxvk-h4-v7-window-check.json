@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "cases": {
+    "old-game-order": "PASS old-game-order",
+    "gui": "PASS gui",
+    "debug": "PASS debug",
+    "com-console": "PASS com-console",
+    "handoff-failed": "PASS handoff-failed",
+    "wrong-applet": "PASS wrong-applet",
+    "invalid-window": "PASS invalid-window",
+    "other-owner-busy": "PASS other-owner-busy",
+    "dimension-failure-retry": "PASS dimension-failure-retry",
+    "cached-window": "PASS cached-window"
+  },
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "real_pthread_join": true,
+  "runtime_source_sha256": "3c3cd578a1b7f1e6d52d4efeeee71a548c332d5dd54d6ff399a48b4cab948d63",
+  "runtime_functions": [
+    "static int fx_owned(void) {",
+    "static int fx_handoff(void) {",
+    "void wine_nx_screen_leave_console(void)\n{",
+    "static int sd_com_prepare_screen(void) {"
+  ],
+  "source_files": {
+    "tests/native_dxvk_window_host.cpp": "f52a4ac0823aae89813898206c2757785c5eba3ad4fff49a943cee161b593e58",
+    "src/native_dxvk_com/com_horizon.cpp": "dbd963d053eb389f1f001c6ef145e8f60854b5db9b549f515d78a4dd25990b49",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996"
+  },
+  "runner_sha256": "f615b1cc80872e25d747180dad0416ea49a4c3d5e9404a1fddddf7cf53894f45",
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pthread",
+    "-no-pie",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-I/home/blekjek/sleepingdogs-native-dxvk-h4-v7/window-checks",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_window_host.cpp",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com/com_horizon.cpp",
+    "-o",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v7/window-checks/window-check"
+  ],
+  "fixture_sha256": "5b26fbeea80959a56003c02f80a17a71558c5cea66109bd8d8c9284cdeb7d495",
+  "mock_header_sha256": "9fa6c78bea75170b4cd8f7350c4a45e3f625348740b082f0974b7bfa0a2c68cc",
+  "native_wine_surface_guards_source_checked": [
+    "if (sd_com_enabled || fx_owned()) return -1;",
+    "if (sd_com_enabled || fx_owned()) return NULL;",
+    "if (sd_com_enabled || fx_owned() || !wine_nx_compositor_mode) return 0;",
+    "if (sd_com_enabled || !fx_handoff()) return NULL;"
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Actual overlaid runtime handoff functions and com_horizon.cpp; real pthread stop/join with modeled UI cleanup and libnx window/console. Synthetic Result codes. No Horizon display, Wine/FEX, device or game execution."
+}

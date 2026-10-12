@@ -1,0 +1,47 @@
+{
+  "status": "STATIC_ORIGINAL_EXECUTABLE_AUDIT",
+  "game_sha256": "3c2eaa260ee29dfb464a0321aa9c7dc74e343894b663fac4fdd11d40fab0bacc",
+  "image_base": "0x400000",
+  "reviewed_code_ranges": {
+    "settings_initializer": {
+      "start_va": "0x4e8500",
+      "end_va_exclusive": "0x4e8543",
+      "sha256": "1a8690a12ac3e61516e779e53b665f57b683a48b79e2d4fec8e994454153159b"
+    },
+    "global_setting_read_and_apply": {
+      "start_va": "0x8ad46b",
+      "end_va_exclusive": "0x8ad487",
+      "sha256": "a496b821093578345d0aae4416d008024647f496529f61ba1639af0dc3020237"
+    },
+    "xml_unsigned_scalar": {
+      "start_va": "0x707790",
+      "end_va_exclusive": "0x7077be",
+      "sha256": "1c03a968580a761ab4b44b885c74518a817bbb6e06d0c0478cd45c16e8930a15"
+    },
+    "unsigned_text_fallback": {
+      "start_va": "0x75c540",
+      "end_va_exclusive": "0x75c573",
+      "sha256": "c81546a36e809a0f67158f7a13ab02da20ab33541d236b9672011506d15495f7"
+    },
+    "preset_switch": {
+      "start_va": "0x4d72a0",
+      "end_va_exclusive": "0x4d7360",
+      "sha256": "e132ff92330e7da7cc87ebc7bbd7cb286603e9db9624a6f74d1a4f6f5e854354"
+    }
+  },
+  "supplied_xml_sha256": "27bdc2ab3d16dfad4ee0078349a855fef43985351c89c73f72cdc25d5e350c89",
+  "observed_code_path": [
+    "Initializer sets GlobalSetting at offset 0x54 to 2.",
+    "XML GlobalSetting reader passes existing value 2 as fallback to unsigned scalar helper 0x707790.",
+    "Helper calls unsigned-text parser 0x75c540, which accepts a leading decimal digit or plus; a leading minus returns the supplied fallback.",
+    "Reader stores returned value and calls preset switch 0x4d72a0 after individual quality fields have been read.",
+    "Preset 2 writes AAQuality=0, HighResTextures=0, ShadowRes=1, ShadowFilter=1, MotionBlur=1, SSAO=0, WorldDensity=1.",
+    "GlobalSetting=0 parses successfully and leaves the individually read quality values unchanged."
+  ],
+  "inference": "Loading the supplied -1 text through this inspected path uses preset 2 despite seven zero individual fields. This does not prove the currently running game used this path or had those in-memory values.",
+  "live_game_quality_authenticated": false,
+  "undefined_label_root_cause_confirmed": false,
+  "game_executed": false,
+  "game_fps_measured": false,
+  "binary_bytes_distributed": false
+}

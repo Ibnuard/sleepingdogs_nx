@@ -10,31 +10,42 @@ The **Switch port and Horizon/Wine integration of FEX-Emu** are developed by
 translation engine is upstream FEX-Emu; the Wine/Horizon runtime foundation
 comes from Wine-NX / Autorun. See [credits and source provenance](THIRD_PARTY.md).
 
-**Provide your own installed original PC game.** Game executables, game data
-and saves are not supplied. The x64 **Definitive Edition is not supported**.
+**Provide your own installed original PC game.** Game executables, game data,
+saves, `lossless.dll` and proprietary LSFG shaders are not supplied in this
+repository or release packages. The x64 **Definitive Edition is not supported**.
 
 [Installation](docs/INSTALL.md) · [Settings](docs/CONFIGURATION.md) ·
 [Troubleshooting](docs/TROUBLESHOOTING.md) · [All documentation](docs/README.md)
 
 ## Current status
 
-This is an **experimental port** with gameplay confirmed on a Switch OLED.
-Recent 720p testing reports roughly **20–23 FPS**, with scene-dependent drops
-and peaks around 25 FPS. **Stable 30 FPS has not been achieved.**
+Gameplay is confirmed on a Switch OLED. The user reports the latest
+[launcher v4](docs/launcher-v4.md) working well and supplied the screenshots
+below. Its native COM and Present optimizations are retained in
+[production v1](docs/production-v1.md), which removes normal diagnostic writes
+while preserving system persistence and last played.
+
+Production v1 passes build, host and binary checks; its new quiet-launch
+policy still needs a Switch test. Earlier Light 720p reports were around
+20–22 FPS with scene-dependent drops and confined-view peaks near 30.
+**Stable 30 FPS is not established; screenshots are not a benchmark.**
 
 | Area | Status |
 | --- | --- |
-| Runtime | v18 APC test build, retaining the v17 scheduler improvement |
-| Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
-| Distribution | Source and test records; no packaged GitHub release as of 2026-10-11 |
+| Runtime | Wine/FEX, v17 scheduler, FEX context improvements, native inline COM |
+| Graphics | Native ARM64 DXVK over Mesa/NVK; retained x86 renderer comparisons |
+| Game detail | Mandatory Light 1280×720 |
+| Normal Play | No diagnostic files; settings, caches, saves and last played retained |
+| Launcher | Cached System Check, required low-memory patch, keyboard, DXVK HUD, optional LSFG |
+| Debug | Enable **Settings → Show debug launch**, then select **Launch Debug** |
+| Distribution | Complete runtime packaging and automatic release after a PR merges to `main`; [pipeline details](docs/RELEASE.md) |
 
 See [current status and test evidence](docs/STATUS.md) for known issues,
 hardware conditions and the difference between native FPS and frame generation.
 
 ## Setup
 
-1. Obtain a **complete Sleeping Dogs test runtime package** and its matching
+1. Obtain a **complete Sleeping Dogs runtime package** and its matching
    forwarder. A GitHub source ZIP, standalone NRO or update ZIP does not contain
    everything needed for a fresh installation. See [package types](docs/INSTALL.md#packages).
 2. Extract the package's `switch/` folder to the SD root. Copy your own game
@@ -44,7 +55,7 @@ hardware conditions and the difference between native FPS and frame generation.
    **39-bit + guest low-window** forwarder. Its target is
    `sdmc:/switch/sleepingdogs-fex/sleepingdogs-fex.nro`. Follow the
    [boot and forwarder requirements](docs/INSTALL.md#boot-and-forwarder).
-4. Launch Sleeping Dogs from HOME. For a native-FPS baseline, use DXVK 3.1.1,
+4. Launch Sleeping Dogs from HOME. For a native-FPS baseline, use DXVK Native ARM64,
    FEX Fastest, LSFG OFF and 1280×720. Close the application from HOME before
    applying an update.
 
@@ -64,21 +75,42 @@ switch/sleepingdogs-fex/
 │   │   ├── d3d9.dll                  # package-supplied DXVK
 │   │   ├── d3d11.dll
 │   │   ├── dxgi.dll
+│   │   ├── sdndx4.dll                # x86 → native COM bridge
 │   │   └── dxvk.conf
 │   └── windows/                      # package-supplied Wine/FEX modules
 └── share/wine/                       # runtime fonts and NLS data
 ```
 
-The launcher graphics profiles configure DXVK; game quality is controlled in
-the game's own menus. The `Graphics Level: undefined` label remains unresolved.
+For an existing compatible installation, close from HOME and copy **only the
+main `switch/` folder** to the SD root, replacing supplied files. No `start-game`
+folder is needed. Keep your game, saves and existing personal LSFG pack.
+
+The launcher graphics profiles configure DXVK. Production always applies
+Light 720p to the game's display options before Play/Debug; there is no quality
+selector. The `Graphics Level: undefined` label remains unresolved.
 Installation details, updates and log locations are in the
 [documentation index](docs/README.md).
+
+## Screenshots
+
+Captured by the tester on Switch; the original supplied images are unchanged.
+
+| Main menu | Night market |
+| --- | --- |
+| ![Sleeping Dogs main menu](assets/screenshots/main-menu.jpg) | ![Crowded night market](assets/screenshots/night-market.jpg) |
+| Market crowd | Neon street |
+| ![Walking through the market](assets/screenshots/market-crowd.jpg) | ![Hong Kong neon street](assets/screenshots/neon-street.jpg) |
+| Combat | Street vendor |
+| ![Environmental attack in combat](assets/screenshots/combat.jpg) | ![Approaching a street vendor](assets/screenshots/street-vendor.jpg) |
 
 ## Development
 
 Start with the [build guide](docs/BUILD.md) and [contributing guide](CONTRIBUTING.md).
 The current build recipes depend on prepared local Wine/FEX/Mesa inputs and
-versioned build receipts; a clean clone is not yet a self-contained v18 build.
+versioned build receipts; a clean clone is not yet a self-contained runtime
+build. [GitHub Actions](.github/workflows/release.yml) packages a hash-pinned
+prebuilt runtime, verifies its source fingerprints and public file inventory,
+and generates release assets. It does not rebuild Wine/FEX/Mesa from scratch.
 
 [Development history](docs/HISTORY.md) indexes the original experiments without
 mixing their installation instructions into the current setup guide.

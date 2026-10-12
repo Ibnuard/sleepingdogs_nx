@@ -1,0 +1,197 @@
+{
+  "status": "PASS",
+  "baseline_commit": "e0995ccfc2819d20b5df8f60bff784996fb479c1",
+  "original_guest_sources": {
+    "v7": {
+      "com_guest.c": "97e8c673f979d9b4b4156aa31c5d38ffcf3e84d2ce6c62d5a629628ed4004770",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    },
+    "current": {
+      "com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    }
+  },
+  "runner_sha256": "3f208734c1e04bd1ab3c3575222b8f3cb8406e39a1b6ffb1e59ab5251017da54",
+  "source_files": {
+    "tests/native_dxvk_guest_maps.c": "dc3e86f9870868a513507e1e82e92e5a682218857aa337c70f529bc42c526131",
+    "src/native_dxvk_com/com_native.cpp": "1ffa9c5065c3c48a6ec071709cd1f7701f63b489c12a8036315e354a48fdd42b",
+    "src/native_dxvk_com/com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+    "src/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "src/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "src/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+  },
+  "compile_argv": {
+    "v7": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-map-check/v7",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_maps.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-map-check/v7.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_SHADOW_CACHE",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-map-check/current",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_maps.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-map-check/current.exe",
+      "-lkernel32",
+      "-luser32"
+    ]
+  },
+  "executables": {
+    "v7": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-map-check\\v7.exe",
+      "sha256": "83b53e8184a0f4b91017404db0dc1a2be87029d620ef0b282b03b2d74fa6a514"
+    },
+    "current": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-map-check\\current.exe",
+      "sha256": "8b3410190618ba0b0d8948f0f5a90df6130374cc35c80a5712aefa93789227fc"
+    }
+  },
+  "cases": {
+    "v7": [
+      {
+        "status": "PASS",
+        "checks": 326578,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 1427742,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 4.46169375
+      },
+      {
+        "status": "PASS",
+        "checks": 326578,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 1110934,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 3.47166875
+      },
+      {
+        "status": "PASS",
+        "checks": 326578,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 995462,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 3.11081875
+      }
+    ],
+    "current": [
+      {
+        "status": "PASS",
+        "checks": 326710,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 885638,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.76761875
+      },
+      {
+        "status": "PASS",
+        "checks": 326710,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 869598,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.71749375
+      },
+      {
+        "status": "PASS",
+        "checks": 326710,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 763422,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.38569375
+      }
+    ]
+  },
+  "median_ms_per_4_plus_5_mib_cycle": {
+    "v7": 3.47166875,
+    "current": 2.71749375
+  },
+  "relative_modeled_cycle_speedup": 1.2775259372721648,
+  "pe32_proxy_executed_on_windows": true,
+  "modeled_native_endpoint": true,
+  "hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "coverage": [
+    "READ/WRITE/READ_WRITE/WRITE_DISCARD/WRITE_NO_OVERWRITE copy direction",
+    "zeroed reused DISCARD shadows before exposure",
+    "exact-size reuse",
+    "overlapping and concurrent active maps never alias",
+    "16 MiB and four-entry idle caps",
+    "oversized uncached mapping",
+    "allocation failure evicts idle memory and retries once",
+    "native Map E_OUTOFMEMORY drains idle memory and retries once without changing active mappings",
+    "persistent allocation and BindMap failures abort native maps",
+    "other native Map failures and null output",
+    "empty active maps, proxies, native refs and allocations after cache drain"
+  ],
+  "scope": "Real PE32 Map/Unmap wrappers execute on Windows against a modeled native endpoint, which validates ranges and mirrors each version's BindMap initialization: v7 fresh VirtualAlloc zeros, current native zero for DISCARD, full copy-in for other modes. The 32-frame diagnostic workload maps overlapping 4 MiB and 5 MiB buffers, writes 64 bytes in each, then models full Unmap copies. Timings exclude game rendering and do not measure Wine/FEX, ARM64 DXVK, Switch, or game FPS."
+}

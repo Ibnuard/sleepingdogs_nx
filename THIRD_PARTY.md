@@ -28,6 +28,17 @@ including LGPL-2.1-or-later and MIT where marked. Helper names beginning with
 `f1_` are retained for traceability; they do not make F1 game data part of this
 port.
 
+The release-preparation keyboard and checker adaptation uses PES13 commit
+[`38750c20`](https://github.com/Ibnuard/pes13_nx/tree/38750c20a303f9fc6c373edaada0fad3c86d5b4b).
+Imported headers/tests retain LGPL-2.1-or-later notices; exact hashes are in
+[vendor/pes13-launcher.json](vendor/pes13-launcher.json). The in-frame keyboard
+design also credits Wine-NX / Autorun. The Sleeping Dogs host Vulkan adapter,
+offline file catalog and mandatory low-window gate are documented in
+[the candidate notes](docs/launcher-compact-v1.md). Native LSFG host-loader
+adaptation is GPL-3.0-or-later, following the existing LSFG glue/backend;
+see [launcher v2](docs/launcher-v2.md). The personal shader pack remains
+outside source control and public releases.
+
 ## Runtime components
 
 | Component | Origin and notices |
@@ -48,6 +59,21 @@ The [inherited notice snapshot](docs/PES13-THIRD-PARTY.md) records these origins
 its PES-specific optional components and paths do not imply that every one is
 active in Sleeping Dogs. Exact runtime inputs vary by experiment and are
 recorded in the corresponding build/package receipts.
+
+The [native DXVK probe v1](docs/native-dxvk-probe-v1.md) uses DXVK's existing
+native implementation and headers with the retained licenses above. Its
+original `src/native_dxvk/probe_*` sources, original test shaders and
+`tests/native_dxvk_abi.c` carry MIT notices; see the
+[probe license](src/native_dxvk/LICENSE). This experiment does not use LSFG
+or game shader payloads.
+
+The [H4 COM bridge](docs/native-dxvk-h4-v1.md) adds original MIT-marked proxy,
+dispatch and fixture code in `src/native_dxvk_com/`. Its generated signatures
+and GUID inventory are derived from the pinned DXVK native headers and Wine
+IDL files; their respective upstream notices still apply. The ready folder
+retains the inherited native renderer/driver source bundle, exact H4 overlays
+and both legacy renderer origins. No game or proprietary LSFG shader bytes
+are included.
 
 ## Attributed backports
 

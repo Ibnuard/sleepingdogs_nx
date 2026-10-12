@@ -1,0 +1,30 @@
+--- a/src/util/util_env.cpp
++++ b/src/util/util_env.cpp
+@@ -13,6 +13,9 @@
+ #endif
+ 
+ #include "util_env.h"
++#ifdef __SWITCH__
++extern "C" void sd_com_native_worker(const char*);
++#endif
+ 
+ #include "./com/com_include.h"
+ 
+@@ -103,7 +106,7 @@
+ 
+     return std::string(exePath.begin(), exePath.begin() + count);
+ #elif defined(__SWITCH__)
+-    return "sd-dxvk-native-probe";
++    return "HKShip.exe";
+ #elif defined(__FreeBSD__)
+     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, getpid()};
+     char exePath[PATH_MAX] = {};
+@@ -141,7 +144,7 @@
+ #ifndef __SWITCH__
+     ::pthread_setname_np(pthread_self(), posixName.data());
+ #else
+-    (void)posixName; // libnx has no optional POSIX thread-name API.
++    sd_com_native_worker(posixName.data());
+ #endif
+ #endif
+   }

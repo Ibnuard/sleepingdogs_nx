@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-h3-v1",
+  "validation": {
+    "result_pass": true,
+    "build": true,
+    "actual_guest": true,
+    "guest_completed": true,
+    "native_device": true,
+    "trusted_window": true,
+    "arena_match": true,
+    "buffer_readback": true,
+    "offscreen_readback": true,
+    "backbuffer_readback": true,
+    "native_presents": true,
+    "present_timing": true,
+    "payload_checks_retained": true,
+    "negative_tests": true,
+    "native_closed": true,
+    "native_renderer": true,
+    "actual_gpu": true,
+    "no_device_lost": true,
+    "no_game_claim": true
+  },
+  "result": {
+    "status": "PASS",
+    "build": "native-dxvk-h3-v1",
+    "stage": "PASS",
+    "error": 0,
+    "checks": 2331,
+    "rejected_requests": 7,
+    "bridge_calls": 651,
+    "guest_arena": 27787264,
+    "buffer_bytes_verified": 1024,
+    "draw_pixels_verified": 921600,
+    "bad_pixels": 0,
+    "backbuffer_pixels_verified": 921600,
+    "present_calls": 300,
+    "present_elapsed_us": 5034225,
+    "full_arena_scans": 11,
+    "native_bridge_validation_us": 1890,
+    "native_renderer_dispatch_us": 5900428,
+    "guest_execution": true,
+    "game_integration": false,
+    "game_fps_measured": false,
+    "com_proxy": false
+  },
+  "evidence": {
+    "result": {
+      "path": "reports/native-dxvk-h3-36d3933d1d46/result.json",
+      "sha256": "26edcb1c876dc3ec266c4ecf92384cfa02527aafa4378a250ed651971ab213cc",
+      "bytes": 496
+    },
+    "guest": {
+      "path": "reports/native-dxvk-h3-36d3933d1d46/guest.txt",
+      "sha256": "5835d3bd2b00aea3b88d03ca5cb5c1974194ff2e3672f5c64ad6882c4fdf8e24",
+      "bytes": 6060
+    },
+    "runtime": {
+      "path": "reports/native-dxvk-h3-36d3933d1d46/runtime.txt",
+      "sha256": "36d3933d1d4673a217a525cbcee8990a2757d4c2441983ac250b738b130d2682",
+      "bytes": 21566
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h3-36d3933d1d46/dxvk.txt",
+      "sha256": "6f3eb3754bd38d90c56b0666b7ea0dc843b3bc7338bfd74b74eb99999681a17b",
+      "bytes": 14224
+    }
+  },
+  "hardware_tested": true,
+  "real_pe32_native_present_api_passed": true,
+  "visual_scanout_confirmed": null,
+  "clocks_mhz": null,
+  "game_integration": false,
+  "game_fps_measured": false,
+  "analyzer_sha256": "4df0f371d451e2c058e7fe8638c4e072aae1e44407510f5f56140717fe8227e8",
+  "limits": [
+    "Synthetic bounded packet subset, not COM/game integration.",
+    "API success and backbuffer readback do not authenticate visible scanout; report blue-screen observation separately.",
+    "Native dispatch includes readback/waits; it is not a GPU timestamp.",
+    "Single controlled arena owner; no concurrent unmap or production mapping guarantee.",
+    "Clocks and running binary hash are not authenticated by these logs."
+  ]
+}

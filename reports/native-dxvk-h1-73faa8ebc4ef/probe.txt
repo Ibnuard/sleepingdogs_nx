@@ -1,0 +1,25 @@
+[SD-NDX-H1] 0.005 BEGIN native-dxvk-horizon-v1; game_integration=0 guest_execution=0
+[SD-NDX-H1] 0.069 applet_type=0 operation_mode=0
+[SD-NDX-H1] 0.091 PASS native window 1280x720; default libnx heap
+[SD-NDX-H1] 0.094 arena native=0x8b530de20 guest=0x10000000 bytes=8388608
+[SD-NDX-H1] 0.096 dispatch op=1 object=0x00000000
+[SD-NDX-H1] 0.209 Mesa: [SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity
+[SD-NDX-H1] 0.261 Mesa: [SD-NVK-V14] shader compiler SM53: texture/global-load priority=200 select_limit=8 FADD.SAT=correct; v13 private GPU memory and ZCULL guards retained
+[SD-NDX-H1] 1.920 Mesa: [SD-NVK-V14] shader=1 stage=4 gprs=24 slm_bytes=0 code_bytes=32
+[SD-NDX-H1] 1.957 PASS device FL11_0
+[SD-NDX-H1] 1.964 dispatch op=3 object=0x00000101
+[SD-NDX-H1] 1.965 dispatch op=3 object=0x00000102
+[SD-NDX-H1] 1.969 PASS buffer shadow Map/Unmap/copy/readback bytes=1024
+[SD-NDX-H1] 1.986 dispatch op=3 object=0x00000105
+[SD-NDX-H1] 2.041 draw readback pixels=921600 bad=0 row_pitch=5120
+[SD-NDX-H1] 2.043 dispatch op=13 object=0x00000000
+[SD-NDX-H1] 2.055 present begin frames=300 interval=1; expected blue screen; PLUS cancels
+[SD-NDX-H1] 2.137 present progress frames=1
+[SD-NDX-H1] 3.082 present progress frames=60
+[SD-NDX-H1] 4.082 present progress frames=120
+[SD-NDX-H1] 5.082 present progress frames=180
+[SD-NDX-H1] 6.082 present progress frames=240
+[SD-NDX-H1] 7.082 present progress frames=300
+[SD-NDX-H1] 7.087 PASS present calls=300 seconds=5.029; synthetic triangle, no game FPS measurement
+[SD-NDX-H1] 7.141 PASS all checks=644 presents=300
+[SD-NDX-H1] 7.153 END; exiting diagnostic

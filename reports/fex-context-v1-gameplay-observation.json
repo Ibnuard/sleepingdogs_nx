@@ -1,0 +1,125 @@
+{
+  "status": "FEX_CONTEXT_V1_GAME_ROUTE_OBSERVED",
+  "capture_report": "reports/native-dxvk-h4-game-29bfb67e08e1.json",
+  "capture_report_sha256": "d4145ea6cb0e63beab21a32087346dcb037b31eabe4236b8dfeb8448886a269d",
+  "evidence": {
+    "runtime.txt": {
+      "path": "reports/native-dxvk-h4-game-29bfb67e08e1/runtime.txt",
+      "sha256": "29bfb67e08e1c32f1752bd60b9d1a61e2c33cbab5ae102954ac24e85ea0ae6de",
+      "bytes": 147132
+    },
+    "dxvk.txt": {
+      "path": "reports/native-dxvk-h4-game-29bfb67e08e1/dxvk.txt",
+      "sha256": "8e39843bc8289392799b1684dd0d18fc0138a87033df9af09b7be889a7c70893",
+      "bytes": 26820
+    },
+    "supplied-com-runtime.txt": {
+      "path": "reports/native-dxvk-h4-game-29bfb67e08e1/supplied-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    }
+  },
+  "fex_context_v1_marker": true,
+  "resolution": [
+    1280,
+    720
+  ],
+  "quality": "Light720p",
+  "user_feedback": "Slight improvement; ordinary views 20-23 FPS, crowded views still around 16, peak 30 only with a wall/narrow view.",
+  "requested_target": "Improve real crowded-scene FPS toward 20+ while retaining 720p.",
+  "last_five_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 32734934,
+      "mean_frame_us": 54558,
+      "min_us": 30751,
+      "max_us": 106434,
+      "total_presents": 3601,
+      "present_fps": 18.329042606287217
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28525514,
+      "mean_frame_us": 47542,
+      "min_us": 23228,
+      "max_us": 112980,
+      "total_presents": 4201,
+      "present_fps": 21.033801529395753
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 30163497,
+      "mean_frame_us": 50272,
+      "min_us": 25399,
+      "max_us": 99771,
+      "total_presents": 4801,
+      "present_fps": 19.891592808353753
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 26319095,
+      "mean_frame_us": 43865,
+      "min_us": 20914,
+      "max_us": 98332,
+      "total_presents": 5401,
+      "present_fps": 22.797136451690303
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28191168,
+      "mean_frame_us": 46985,
+      "min_us": 22818,
+      "max_us": 96537,
+      "total_presents": 6001,
+      "present_fps": 21.283261481042572
+    }
+  ],
+  "last_five_pooled_fps": 20.55720890334362,
+  "previous_v9_last_five_pooled_fps": 20.58939094433427,
+  "compared_scenes_and_clocks_authenticated": false,
+  "clean_exit_confirmed": false,
+  "fresh_com_confirmed": false,
+  "auxiliary_runtime": "Byte-identical old v3 COM runtime; not a fresh self-test.",
+  "zero_active_maps_at_endpoints_interval": {
+    "start": {
+      "calls": 28917504,
+      "draws": 4491128,
+      "presents": 6041,
+      "maps": 0,
+      "refs": 16502,
+      "copy_bytes": 57038493696,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "end": {
+      "calls": 29588832,
+      "draws": 4593541,
+      "presents": 6140,
+      "maps": 0,
+      "refs": 16502,
+      "copy_bytes": 57963337728,
+      "failures": 0,
+      "gate_waiters": 0,
+      "sample_stride": 256
+    },
+    "delta": {
+      "calls": 671328,
+      "draws": 102413,
+      "presents": 99,
+      "copy_bytes": 924844032,
+      "failures": 0
+    },
+    "calls_per_present": 6781.090909090909,
+    "draws_per_present": 1034.4747474747476,
+    "copy_bytes_per_present": 9341858.909090908
+  },
+  "next_candidate": "Guest-local reference ownership to remove avoidable FEX/Wine/native round trips, with counters and a reproduced v9 proxy rollback.",
+  "limitations": [
+    "Present windows are not labeled fixed-scene A/B benchmarks.",
+    "Similar pooled FPS neither measures the optimization in isolation nor contradicts subjective scene-specific improvement.",
+    "Sampled progress is biased toward critical methods; it cannot estimate AddRef/Release frequency.",
+    "Calls per frame and low total GPU/CPU utilization do not identify a proven bottleneck."
+  ],
+  "recorder_sha256": "ce33f9737f6e78e34c1627430c6bbe352806594b4d2e6e68fd973f3ffb607de5"
+}

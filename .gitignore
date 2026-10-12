@@ -3,3 +3,16 @@ local/
 __pycache__/
 *.pyc
 *.log
+.cache/
+# Private game, save, key and Lossless Scaling inputs never belong in Git.
+*.[eE][xX][eE]
+*.[bB][iI][gG]
+*.[bB][iI][xX]
+*.[sS][dD][pP]
+*.[dD][lL][lL]
+*.nro
+*.nsp
+*.keys
+UserOptions.dat
+drive_c/
+switch/

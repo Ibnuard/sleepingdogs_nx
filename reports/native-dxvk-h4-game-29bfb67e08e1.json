@@ -1,0 +1,4882 @@
+{
+  "status": "ROUTE_OBSERVED",
+  "mode": "game",
+  "build": "native-dxvk-h4-v9",
+  "validation": {
+    "build": true,
+    "native_device": true,
+    "first_present": true,
+    "native_renderer": true,
+    "switch_gpu": true,
+    "no_device_lost": true,
+    "no_bridge_fault": true,
+    "renderer_log_mode_matches": true,
+    "native_fifo_requested": true,
+    "fifo_present": true,
+    "game_target": true,
+    "native_selection": true
+  },
+  "result": null,
+  "hardware_capture_consistent": true,
+  "real_pe32_com_api_passed": false,
+  "game_native_present_observed": true,
+  "renderer_config_paths": [
+    "sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/dxvk.conf"
+  ],
+  "startup_trace": {
+    "begin_count": 128,
+    "completed_calls": [
+      {
+        "begin": {
+          "call": 667,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350682869",
+          "args": "00010294,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 667,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "1",
+          "bytes": "4194304",
+          "wall_us": "1339",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "0"
+        }
+      },
+      {
+        "begin": {
+          "call": 668,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "7350684772",
+          "args": "00000001,03ef0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 668,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "46",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "0"
+        }
+      },
+      {
+        "begin": {
+          "call": 671,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350686563",
+          "args": "00010294,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 671,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "1",
+          "bytes": "0",
+          "wall_us": "1213",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 675,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350690339",
+          "args": "00010295,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 675,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "2",
+          "bytes": "4194304",
+          "wall_us": "1724",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 676,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "7350692082",
+          "args": "00000002,03ef0000,00400000,00000000,00000000"
+        },
+        "end": {
+          "call": 676,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "42",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "4194304"
+        }
+      },
+      {
+        "begin": {
+          "call": 679,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350692142",
+          "args": "00010295,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 679,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "2",
+          "bytes": "0",
+          "wall_us": "1178",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 683,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350695727",
+          "args": "00010296,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 683,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "3",
+          "bytes": "5242880",
+          "wall_us": "1552",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 684,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "7350697946",
+          "args": "00000003,042f0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 684,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "56",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "8388608"
+        }
+      },
+      {
+        "begin": {
+          "call": 687,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350698322",
+          "args": "00010296,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 687,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "3",
+          "bytes": "0",
+          "wall_us": "1458",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 691,
+          "thread": "81ff",
+          "name": "Map",
+          "interface": "14",
+          "method": "14",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350702359",
+          "args": "00010297,00000000,00000004,00000000,0166f7ac"
+        },
+        "end": {
+          "call": 691,
+          "thread": "81ff",
+          "name": "Map",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "4",
+          "bytes": "5242880",
+          "wall_us": "1623",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 692,
+          "thread": "81ff",
+          "name": "BindMap",
+          "interface": "0",
+          "method": "3",
+          "object": "00000000",
+          "presents": "0",
+          "time_us": "7350703998",
+          "args": "00000004,042f0000,00500000,00000000,00000000"
+        },
+        "end": {
+          "call": 692,
+          "thread": "81ff",
+          "name": "BindMap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "48",
+          "presents": "0",
+          "maps": "1",
+          "copy_bytes": "13631488"
+        }
+      },
+      {
+        "begin": {
+          "call": 695,
+          "thread": "81ff",
+          "name": "Unmap",
+          "interface": "14",
+          "method": "15",
+          "object": "00010010",
+          "presents": "0",
+          "time_us": "7350704064",
+          "args": "00010297,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 695,
+          "thread": "81ff",
+          "name": "Unmap",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "4",
+          "bytes": "0",
+          "wall_us": "1426",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 727,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740330",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 727,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "36",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 728,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740514",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 728,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "10",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 729,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740542",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 729,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 730,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740558",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 730,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 731,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740576",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 731,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 732,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740591",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 732,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 733,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740605",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 733,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 734,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740619",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 734,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 735,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740633",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 735,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 736,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740646",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 736,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 737,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740664",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 737,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 738,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740680",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 738,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 739,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740696",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 739,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 740,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740710",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 740,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 741,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740726",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 741,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 742,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740740",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 742,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 743,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740756",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 743,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 744,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740771",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 744,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 745,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740785",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 745,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 746,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740798",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 746,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 747,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740812",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 747,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 748,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740827",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 748,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 749,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740841",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 749,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 750,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740855",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 750,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 751,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740869",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 751,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 752,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740887",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 752,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 753,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740904",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 753,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 754,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740919",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 754,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 755,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740933",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 755,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 756,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740947",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 756,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 757,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740961",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 757,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 758,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740976",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 758,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 759,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350740990",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 759,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 760,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741004",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 760,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 761,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741018",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 761,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 762,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741032",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 762,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 763,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741046",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 763,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 764,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741061",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 764,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 765,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741078",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 765,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 766,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741092",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 766,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 767,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741106",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 767,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 768,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741126",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 768,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 769,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741142",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 769,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 770,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741159",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 770,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "8",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 771,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741177",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 771,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 772,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741190",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 772,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 773,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741205",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 773,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 774,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741219",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 774,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 775,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741232",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 775,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 776,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741246",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 776,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 777,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741260",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 777,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 778,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741273",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 778,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 779,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741287",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 779,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 780,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741300",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 780,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 781,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741314",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 781,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 782,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741329",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 782,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 783,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741343",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 783,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 784,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741358",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 784,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 785,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741371",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 785,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 786,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741385",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 786,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 787,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741399",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 787,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 788,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741413",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 788,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 789,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741428",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 789,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 790,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741442",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 790,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 791,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741456",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 791,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 792,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741470",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 792,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 793,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741484",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 793,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 794,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7350741499",
+          "args": "000102ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 794,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 799,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351308959",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 799,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "27",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 800,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309003",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 800,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "8",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 801,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309021",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 801,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 802,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309037",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 802,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 803,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309051",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 803,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 804,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309065",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 804,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 805,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309079",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 805,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 806,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309093",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 806,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 807,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309108",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 807,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 808,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309122",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 808,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 809,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309136",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 809,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 810,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309150",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 810,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 811,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309164",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 811,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 812,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309177",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 812,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 813,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309192",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 813,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 814,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309205",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 814,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 815,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309219",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 815,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 816,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309232",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 816,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 817,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309246",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 817,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 818,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309259",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 818,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 819,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309273",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 819,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 820,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309286",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 820,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 821,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309300",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 821,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 822,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7351309314",
+          "args": "000202ac,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 822,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1780,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508302",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1780,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "26",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1781,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508346",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1781,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "8",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1782,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508365",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1782,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1783,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508381",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1783,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1784,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508396",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1784,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1785,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508410",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1785,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1786,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508425",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1786,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1787,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508439",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1787,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "7",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1788,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508455",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1788,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1789,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508470",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1789,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1790,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508484",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1790,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1791,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508498",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1791,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1792,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508512",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1792,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1793,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508528",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1793,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1794,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508542",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1794,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1795,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508555",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1795,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1796,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508569",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1796,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1797,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508583",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1797,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1798,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508596",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1798,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1799,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508610",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1799,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1800,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508623",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1800,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1801,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508636",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1801,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "6",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1802,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353508650",
+          "args": "00010665,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1802,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000000",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "5",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      },
+      {
+        "begin": {
+          "call": 1825,
+          "thread": "2981c0",
+          "name": "GetData",
+          "interface": "14",
+          "method": "29",
+          "object": "00010005",
+          "presents": "0",
+          "time_us": "7353542378",
+          "args": "00010677,00000000,00000000,00000000,00000000"
+        },
+        "end": {
+          "call": 1825,
+          "thread": "2981c0",
+          "name": "GetData",
+          "ret": "00000001",
+          "fault": "00000000",
+          "aux": "0",
+          "bytes": "0",
+          "wall_us": "23",
+          "presents": "0",
+          "maps": "0",
+          "copy_bytes": "18874368"
+        }
+      }
+    ],
+    "incomplete_calls": [],
+    "unmatched_ends": [],
+    "malformed_events": [],
+    "bounded_stop_observed": true,
+    "cause_confirmed": false,
+    "limits": "Missing END means no completion was captured, not proof of deadlock. V4 queued logging can drop events or lose its tail on forced restart. Wall time includes scheduling and logging (synchronous SD I/O in v3), not GPU time. Startup trace begins after packet validation and bridge lock acquisition."
+  },
+  "progress_trace": {
+    "snapshots": [
+      {
+        "calls": 0,
+        "draws": 0,
+        "presents": 0,
+        "maps": 0,
+        "refs": 0,
+        "copy_bytes": 0,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 0,
+        "draws": 0,
+        "presents": 0,
+        "maps": 0,
+        "refs": 0,
+        "copy_bytes": 0,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 840,
+        "draws": 0,
+        "presents": 0,
+        "maps": 0,
+        "refs": 700,
+        "copy_bytes": 18874368,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 5834,
+        "draws": 0,
+        "presents": 0,
+        "maps": 0,
+        "refs": 4123,
+        "copy_bytes": 18874368,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 26484,
+        "draws": 261,
+        "presents": 261,
+        "maps": 0,
+        "refs": 6535,
+        "copy_bytes": 2500859904,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 116224,
+        "draws": 6318,
+        "presents": 529,
+        "maps": 0,
+        "refs": 6563,
+        "copy_bytes": 5020588032,
+        "failures": 0,
+        "gate_waiters": 1,
+        "sample_stride": 256
+      },
+      {
+        "calls": 231424,
+        "draws": 14117,
+        "presents": 829,
+        "maps": 2,
+        "refs": 6563,
+        "copy_bytes": 7851743232,
+        "failures": 0,
+        "gate_waiters": 1,
+        "sample_stride": 256
+      },
+      {
+        "calls": 346624,
+        "draws": 21918,
+        "presents": 1129,
+        "maps": 0,
+        "refs": 6563,
+        "copy_bytes": 10682898432,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 461568,
+        "draws": 29334,
+        "presents": 1411,
+        "maps": 2,
+        "refs": 6566,
+        "copy_bytes": 13344184320,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 568365,
+        "draws": 48958,
+        "presents": 1539,
+        "maps": 0,
+        "refs": 6571,
+        "copy_bytes": 14542706688,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 769536,
+        "draws": 83833,
+        "presents": 1760,
+        "maps": 0,
+        "refs": 6656,
+        "copy_bytes": 16637761536,
+        "failures": 0,
+        "gate_waiters": 1,
+        "sample_stride": 256
+      },
+      {
+        "calls": 971692,
+        "draws": 121604,
+        "presents": 1929,
+        "maps": 0,
+        "refs": 13867,
+        "copy_bytes": 18223208448,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 1169841,
+        "draws": 153020,
+        "presents": 2160,
+        "maps": 0,
+        "refs": 16279,
+        "copy_bytes": 20403197952,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 1608448,
+        "draws": 224410,
+        "presents": 2227,
+        "maps": 0,
+        "refs": 15376,
+        "copy_bytes": 21045073920,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 2205696,
+        "draws": 320676,
+        "presents": 2326,
+        "maps": 0,
+        "refs": 15894,
+        "copy_bytes": 21988792320,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 2928721,
+        "draws": 449650,
+        "presents": 2417,
+        "maps": 2,
+        "refs": 16265,
+        "copy_bytes": 22828701696,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 3747072,
+        "draws": 602013,
+        "presents": 2505,
+        "maps": 0,
+        "refs": 16275,
+        "copy_bytes": 23668611072,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 4567029,
+        "draws": 749087,
+        "presents": 2604,
+        "maps": 2,
+        "refs": 16276,
+        "copy_bytes": 24593455104,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 5294592,
+        "draws": 871623,
+        "presents": 2710,
+        "maps": 0,
+        "refs": 16276,
+        "copy_bytes": 25603233792,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 6047744,
+        "draws": 996583,
+        "presents": 2826,
+        "maps": 0,
+        "refs": 16277,
+        "copy_bytes": 26697947136,
+        "failures": 0,
+        "gate_waiters": 1,
+        "sample_stride": 256
+      },
+      {
+        "calls": 6835968,
+        "draws": 1128436,
+        "presents": 2946,
+        "maps": 0,
+        "refs": 16108,
+        "copy_bytes": 27830409216,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 7496222,
+        "draws": 1229679,
+        "presents": 3062,
+        "maps": 2,
+        "refs": 15696,
+        "copy_bytes": 28915685376,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 8140049,
+        "draws": 1331587,
+        "presents": 3152,
+        "maps": 2,
+        "refs": 16497,
+        "copy_bytes": 29765031936,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 8966703,
+        "draws": 1470287,
+        "presents": 3236,
+        "maps": 2,
+        "refs": 16535,
+        "copy_bytes": 30557755392,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 9775189,
+        "draws": 1602651,
+        "presents": 3325,
+        "maps": 2,
+        "refs": 16568,
+        "copy_bytes": 31397664768,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 10566306,
+        "draws": 1730127,
+        "presents": 3416,
+        "maps": 1,
+        "refs": 16568,
+        "copy_bytes": 32260642816,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 11363584,
+        "draws": 1863890,
+        "presents": 3508,
+        "maps": 0,
+        "refs": 16575,
+        "copy_bytes": 33134106624,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 12892613,
+        "draws": 2112503,
+        "presents": 3706,
+        "maps": 2,
+        "refs": 16575,
+        "copy_bytes": 34993231872,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 13661928,
+        "draws": 2232721,
+        "presents": 3813,
+        "maps": 2,
+        "refs": 16575,
+        "copy_bytes": 36003010560,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 14278400,
+        "draws": 2322842,
+        "presents": 3918,
+        "maps": 0,
+        "refs": 16575,
+        "copy_bytes": 37003352064,
+        "failures": 0,
+        "gate_waiters": 1,
+        "sample_stride": 256
+      },
+      {
+        "calls": 14840948,
+        "draws": 2398975,
+        "presents": 4034,
+        "maps": 2,
+        "refs": 16575,
+        "copy_bytes": 38088628224,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 15361359,
+        "draws": 2465345,
+        "presents": 4143,
+        "maps": 2,
+        "refs": 16580,
+        "copy_bytes": 39117281280,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 16004599,
+        "draws": 2569261,
+        "presents": 4225,
+        "maps": 0,
+        "refs": 16603,
+        "copy_bytes": 39891130368,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 16666016,
+        "draws": 2673003,
+        "presents": 4309,
+        "maps": 2,
+        "refs": 16612,
+        "copy_bytes": 40683853824,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 17607049,
+        "draws": 2817829,
+        "presents": 4399,
+        "maps": 2,
+        "refs": 16612,
+        "copy_bytes": 41533200384,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 18556649,
+        "draws": 2968039,
+        "presents": 4483,
+        "maps": 2,
+        "refs": 16612,
+        "copy_bytes": 42325923840,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 19356160,
+        "draws": 3089830,
+        "presents": 4581,
+        "maps": 0,
+        "refs": 16612,
+        "copy_bytes": 43260205056,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 20046080,
+        "draws": 3186371,
+        "presents": 4707,
+        "maps": 0,
+        "refs": 16636,
+        "copy_bytes": 44449290240,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 20792258,
+        "draws": 3294490,
+        "presents": 4836,
+        "maps": 2,
+        "refs": 16636,
+        "copy_bytes": 45657249792,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 21476096,
+        "draws": 3389702,
+        "presents": 4962,
+        "maps": 0,
+        "refs": 16636,
+        "copy_bytes": 46855772160,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 22159012,
+        "draws": 3481676,
+        "presents": 5081,
+        "maps": 2,
+        "refs": 16618,
+        "copy_bytes": 47969359872,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 22854454,
+        "draws": 3580891,
+        "presents": 5198,
+        "maps": 2,
+        "refs": 16642,
+        "copy_bytes": 49073510400,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 23608320,
+        "draws": 3698041,
+        "presents": 5305,
+        "maps": 0,
+        "refs": 16642,
+        "copy_bytes": 50092726272,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 24399872,
+        "draws": 3821887,
+        "presents": 5401,
+        "maps": 0,
+        "refs": 16642,
+        "copy_bytes": 50998695936,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 25219486,
+        "draws": 3949717,
+        "presents": 5492,
+        "maps": 2,
+        "refs": 16642,
+        "copy_bytes": 51848042496,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 26023825,
+        "draws": 4075100,
+        "presents": 5582,
+        "maps": 2,
+        "refs": 16644,
+        "copy_bytes": 52697389056,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 26794341,
+        "draws": 4195606,
+        "presents": 5676,
+        "maps": 2,
+        "refs": 16644,
+        "copy_bytes": 53584484352,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 27449198,
+        "draws": 4286967,
+        "presents": 5802,
+        "maps": 2,
+        "refs": 16644,
+        "copy_bytes": 54773569536,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 28114215,
+        "draws": 4373224,
+        "presents": 5922,
+        "maps": 2,
+        "refs": 16644,
+        "copy_bytes": 55906031616,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 28917504,
+        "draws": 4491128,
+        "presents": 6041,
+        "maps": 0,
+        "refs": 16502,
+        "copy_bytes": 57038493696,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 29588832,
+        "draws": 4593541,
+        "presents": 6140,
+        "maps": 0,
+        "refs": 16502,
+        "copy_bytes": 57963337728,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 30231275,
+        "draws": 4689579,
+        "presents": 6241,
+        "maps": 1,
+        "refs": 16502,
+        "copy_bytes": 58920687616,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      {
+        "calls": 30929920,
+        "draws": 4789715,
+        "presents": 6351,
+        "maps": 0,
+        "refs": 16550,
+        "copy_bytes": 59964020736,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      }
+    ],
+    "call_states": [
+      {
+        "entry": "0",
+        "call": "0",
+        "thread": "0",
+        "phase": "idle",
+        "interface": "0",
+        "method": "0",
+        "object": "00000000",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000000,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "0",
+        "call": "0",
+        "thread": "0",
+        "phase": "idle",
+        "interface": "0",
+        "method": "0",
+        "object": "00000000",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000000,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "841",
+        "call": "841",
+        "thread": "81ff",
+        "phase": "execute",
+        "interface": "12",
+        "method": "12",
+        "object": "00010004",
+        "age_ms": "3",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "4f08fe80,000005d8,00000000,0166f378,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "5835",
+        "call": "5835",
+        "thread": "81ff",
+        "phase": "execute",
+        "interface": "12",
+        "method": "15",
+        "object": "00010004",
+        "age_ms": "6",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "4f366d00,00001b74,00000000,0166f18c,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "26499",
+        "call": "26499",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "116352",
+        "call": "116352",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "231424",
+        "call": "231424",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "33",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000004,03aaf698,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "346624",
+        "call": "346624",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "33",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "3",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000004,03aaf698,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "461760",
+        "call": "461760",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "568365",
+        "call": "568365",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "2672",
+        "completed_wall_us": "101",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "769751",
+        "call": "769751",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "2",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "971692",
+        "call": "971692",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "8",
+        "completed_wall_us": "42",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "1169841",
+        "call": "1169841",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "387",
+        "completed_wall_us": "38",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "1608448",
+        "call": "1608448",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "18",
+        "method": "1",
+        "object": "00013fcb",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000002",
+        "fault": "00000000",
+        "args": "00000000,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "2205762",
+        "call": "2205762",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "2928721",
+        "call": "2928721",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "4",
+        "completed_wall_us": "11",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166f5e0,0166f3b4,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "3747072",
+        "call": "3747072",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "18",
+        "method": "1",
+        "object": "00023969",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000002",
+        "fault": "00000000",
+        "args": "00000000,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "4567029",
+        "call": "4567029",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "6",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "5294592",
+        "call": "5294592",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "48",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010d53,00000000,00000000,330ae980,000000c0",
+        "call_in_progress": false
+      },
+      {
+        "entry": "6047744",
+        "call": "6047744",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "12",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "1",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000004,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "6835968",
+        "call": "6835968",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "12",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "1",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000a86,0000243c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "7496222",
+        "call": "7496222",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "2",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "8140049",
+        "call": "8140049",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "13",
+        "completed_wall_us": "123",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "8966703",
+        "call": "8966703",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "0",
+        "method": "3",
+        "object": "00000000",
+        "age_ms": "1",
+        "completed_wall_us": "56",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00001973,042f0000,00500000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "9775189",
+        "call": "9775189",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "0",
+        "completed_wall_us": "6",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "10566309",
+        "call": "10566309",
+        "thread": "81ff",
+        "phase": "execute",
+        "interface": "14",
+        "method": "15",
+        "object": "00010010",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010297,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "11363584",
+        "call": "11363584",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "9",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010f86,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "12892613",
+        "call": "12892613",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "239",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "13661928",
+        "call": "13661928",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "12",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166e6a0,0166e474,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "14278433",
+        "call": "14278433",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "5",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "14840948",
+        "call": "14840948",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "5",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eddc,0166ebb0,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "15361359",
+        "call": "15361359",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "8",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166ea40,0166e814,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "16004599",
+        "call": "16004599",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "6",
+        "completed_wall_us": "66",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "16666020",
+        "call": "16666020",
+        "thread": "81ff",
+        "phase": "result-copy",
+        "interface": "14",
+        "method": "15",
+        "object": "00010010",
+        "age_ms": "1",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010294,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "17607049",
+        "call": "17607049",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "3",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "18556649",
+        "call": "18556649",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "19356351",
+        "call": "19356351",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "1",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "20046080",
+        "call": "20046080",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "48",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0001062b,00000000,00000000,31d4d960,00000010",
+        "call_in_progress": false
+      },
+      {
+        "entry": "20792259",
+        "call": "20792259",
+        "thread": "81ff",
+        "phase": "execute",
+        "interface": "0",
+        "method": "3",
+        "object": "00000000",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "000025f3,042f0000,00500000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "21476096",
+        "call": "21476096",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "19",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00013434,00000039,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "22159012",
+        "call": "22159012",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "4",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166ea40,0166e814,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "22854454",
+        "call": "22854454",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "13",
+        "completed_wall_us": "4",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eb74,0166e948,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "23608320",
+        "call": "23608320",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "19",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "1",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010296,00000039,000048a0,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "24399872",
+        "call": "24399872",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "48",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00011132,00000000,00000000,31d97fc0,000000c0",
+        "call_in_progress": false
+      },
+      {
+        "entry": "25219486",
+        "call": "25219486",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "8",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "26023825",
+        "call": "26023825",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "7",
+        "completed_wall_us": "3",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166e6a0,0166e474,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "26794341",
+        "call": "26794341",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "14",
+        "completed_wall_us": "1",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "27449198",
+        "call": "27449198",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "5",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166eca8,0166ea7c,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "28114215",
+        "call": "28114215",
+        "thread": "81ff",
+        "phase": "idle",
+        "interface": "12",
+        "method": "23",
+        "object": "00010004",
+        "age_ms": "5",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0166ea40,0166e814,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "28917504",
+        "call": "28917504",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "14",
+        "method": "11",
+        "object": "00010005",
+        "age_ms": "0",
+        "completed_wall_us": "2",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "0001057b,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "29588832",
+        "call": "29588832",
+        "thread": "2981c0",
+        "phase": "idle",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "6",
+        "completed_wall_us": "41",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": false
+      },
+      {
+        "entry": "30231278",
+        "call": "30231278",
+        "thread": "81ff",
+        "phase": "execute",
+        "interface": "14",
+        "method": "15",
+        "object": "00010010",
+        "age_ms": "1",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00010296,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      },
+      {
+        "entry": "30930070",
+        "call": "30930070",
+        "thread": "2981c0",
+        "phase": "execute",
+        "interface": "46",
+        "method": "8",
+        "object": "0001000d",
+        "age_ms": "0",
+        "completed_wall_us": "0",
+        "ret": "00000000",
+        "fault": "00000000",
+        "args": "00000001,00000000,00000000,00000000,00000000",
+        "call_in_progress": true
+      }
+    ],
+    "snapshot_busy_count": 1,
+    "reported_dropped_lines": 0,
+    "async_logging_observed": true,
+    "cause_confirmed": false,
+    "limits": "Snapshots never acquire the COM gate. V6 samples ordinary calls every 256 entries; critical calls and failures retain detailed state. Totals describe the last sampled completion and idle is not proof that another unsampled call is idle. Missing snapshots may mean scheduling/I/O delay or lost queued output. These are not GPU timings."
+  },
+  "same_session_authenticated": false,
+  "native_present_windows": [
+    {
+      "intervals": 600,
+      "elapsed_us": 10579894,
+      "present_fps": 56.71134323273938,
+      "mean_frame_us": 17633,
+      "min_us": 4047,
+      "max_us": 269480,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 9999899,
+      "present_fps": 60.00060600612066,
+      "mean_frame_us": 16666,
+      "min_us": 3179,
+      "max_us": 38622,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 14883313,
+      "present_fps": 40.31360490772451,
+      "mean_frame_us": 24805,
+      "min_us": 2818,
+      "max_us": 3434030,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 22961407,
+      "present_fps": 26.13080287283789,
+      "mean_frame_us": 38269,
+      "min_us": 4049,
+      "max_us": 1251670,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28188623,
+      "present_fps": 21.28518303288529,
+      "mean_frame_us": 46981,
+      "min_us": 26356,
+      "max_us": 181379,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 32734934,
+      "present_fps": 18.329042606287217,
+      "mean_frame_us": 54558,
+      "min_us": 30751,
+      "max_us": 106434,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28525514,
+      "present_fps": 21.033801529395753,
+      "mean_frame_us": 47542,
+      "min_us": 23228,
+      "max_us": 112980,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 30163497,
+      "present_fps": 19.891592808353753,
+      "mean_frame_us": 50272,
+      "min_us": 25399,
+      "max_us": 99771,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 26319095,
+      "present_fps": 22.797136451690303,
+      "mean_frame_us": 43865,
+      "min_us": 20914,
+      "max_us": 98332,
+      "scene_identified": false
+    },
+    {
+      "intervals": 600,
+      "elapsed_us": 28191168,
+      "present_fps": 21.283261481042572,
+      "mean_frame_us": 46985,
+      "min_us": 22818,
+      "max_us": 96537,
+      "scene_identified": false
+    }
+  ],
+  "unknown_iids": [],
+  "worker_markers": [
+    "[SD-NDX-WORKER] name=dxvk-submit handle=2884027 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-queue handle=2916794 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-cs handle=2949561 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-shader-l handle=3244464 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry",
+    "[SD-NDX-WORKER] name=dxvk-cache handle=3277231 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry"
+  ],
+  "unsupported_or_faults": [],
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false,
+  "visual_scanout_confirmed": null,
+  "clocks_mhz": null,
+  "running_binary_authenticated": false,
+  "limits": [
+    "COM self-test is a synthetic client, not Sleeping Dogs FPS.",
+    "Game Present windows can include menu, loading and pause. Scene/clock matched gameplay validation remains separate.",
+    "Logs do not authenticate running binary, clocks or visible scanout.",
+    "Renderer config must match COM/game mode. This rejects a game log overwriting COM output but does not authenticate an exact session. Save COM logs before launching the game.",
+    "Resource counters are bridge-owned external references/maps; they do not prove all DXVK/driver allocations are freed."
+  ],
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-29bfb67e08e1/runtime.txt",
+      "sha256": "29bfb67e08e1c32f1752bd60b9d1a61e2c33cbab5ae102954ac24e85ea0ae6de",
+      "bytes": 147132
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-29bfb67e08e1/dxvk.txt",
+      "sha256": "8e39843bc8289392799b1684dd0d18fc0138a87033df9af09b7be889a7c70893",
+      "bytes": 26820
+    }
+  },
+  "analyzer_sha256": "215a6468f76dc5f79b22d90b3d13a4050a1ab1bfd69fcb6ba302d8b355fc0af0"
+}

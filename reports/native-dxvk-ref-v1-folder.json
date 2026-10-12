@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "build": "native-dxvk-ref-v1",
+  "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-native-dxvk-ref-v1-update",
+  "files": 73,
+  "bytes": 2955874,
+  "all_file_hashes_verified": true,
+  "zip_created": false,
+  "nro_included": false,
+  "game_data_included": false,
+  "proxy_sha256": "a03a58b6023a7b74ff0d96d0460ce247715fa1210b6f6d02428f206908541344",
+  "rollback_proxy_sha256": "886a969f68e969cc52fa7dd9b199dcb4fcf1d982d47a53ae7b81fa7c06b2a7e7",
+  "build_receipt_sha256": "7151aaeb049cf1143874cfb20782be5e45b3355b984dbcacd76e7375164bf778",
+  "test_receipt_sha256": "d870680aa0919449ab635a31037add3ef4f956d3b742027bc1c3f88469075d78",
+  "checksums_sha256": "f739334365ac7e5f78d083ce804b1d83317c31a1195fe2b5fc7209a8661ae3e1",
+  "packager_sha256": "e258b22652136e96314094951af65318976536b96c4624119ffd53253c83e7da",
+  "required_native_nro_sha256": "4b7270cc3e132966f75b84a99e6a5c872752be636af56b07b6226675fb3edeb4",
+  "resolution": [
+    1280,
+    720
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

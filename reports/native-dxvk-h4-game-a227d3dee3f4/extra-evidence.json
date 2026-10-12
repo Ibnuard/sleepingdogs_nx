@@ -1,0 +1,18 @@
+{
+  "com-runtime": {
+    "path": "reports/native-dxvk-h4-game-a227d3dee3f4/com-runtime.txt",
+    "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+    "bytes": 42026
+  },
+  "crash": {
+    "path": "reports/native-dxvk-h4-game-a227d3dee3f4/crash.txt",
+    "sha256": "a36ebcce65482646be43c23575aad78e2392686c6d05752c8afb36154acfdd59",
+    "bytes": 32768
+  },
+  "dxvk-nested-copy": {
+    "path": "reports/native-dxvk-h4-game-a227d3dee3f4/dxvk-nested-copy.txt",
+    "sha256": "c82897f1b4630499fabb478c9893b8dab75ecb53150587c068a5550afbd16190",
+    "bytes": 14911
+  },
+  "duplicate_dxvk_equal": true
+}

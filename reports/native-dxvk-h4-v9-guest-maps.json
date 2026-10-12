@@ -1,0 +1,277 @@
+{
+  "status": "PASS",
+  "baseline_commit": "e0995ccfc2819d20b5df8f60bff784996fb479c1",
+  "prior_commit": "f2d16f243e2feb5bca8f7320673445edd15c972f",
+  "original_guest_sources": {
+    "v7": {
+      "com_guest.c": "97e8c673f979d9b4b4156aa31c5d38ffcf3e84d2ce6c62d5a629628ed4004770",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    },
+    "v8.1": {
+      "com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    },
+    "current": {
+      "com_guest.c": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    }
+  },
+  "runner_sha256": "25379661d3fdf4f1280b206233112f7db6ea716ee80d90460944db310c591d3f",
+  "source_files": {
+    "tests/native_dxvk_guest_maps.c": "4aeb16d37752e8fa28bcb9a882a0600d4ce7dced5f047bc11a57c8b12e1ca8e4",
+    "src/native_dxvk_com/com_native.cpp": "ff5aecb4c20e64715b9907df11056762a30040c81bf9b76ebe321fe52cdfaadb",
+    "src/native_dxvk_com/com_guest.c": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+    "src/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "src/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "src/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+  },
+  "compile_argv": {
+    "v7": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/v7",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_maps.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/v7.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "v8.1": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_ZERO_DISCARD",
+      "-DTEST_SHADOW_CACHE",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/v8.1",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_maps.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/v8.1.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_SHADOW_CACHE",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/current",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_maps.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-map-check/current.exe",
+      "-lkernel32",
+      "-luser32"
+    ]
+  },
+  "executables": {
+    "v7": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-map-check\\v7.exe",
+      "sha256": "99c6de9ec1ca8ec62440c839185a5d5f8673cbe5709bd40272f0d0e83a9a7604"
+    },
+    "v8.1": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-map-check\\v8.1.exe",
+      "sha256": "0ba2972be714fa882592a4244e57300be93bf17a3445616aea359c44e0d94818"
+    },
+    "current": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-map-check\\current.exe",
+      "sha256": "a34919b2472b39e7c5b23a17002e9ba6f2d7b05b8f0d79e500647428bd0d4857"
+    }
+  },
+  "cases": {
+    "v7": [
+      {
+        "status": "PASS",
+        "checks": 318575,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 1013877,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 3.168365625
+      },
+      {
+        "status": "PASS",
+        "checks": 318575,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 888345,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.776078125
+      },
+      {
+        "status": "PASS",
+        "checks": 318575,
+        "frames": 32,
+        "virtual_alloc_calls": 64,
+        "heap_alloc_calls": 64,
+        "ticks": 769132,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.4035375
+      }
+    ],
+    "v8.1": [
+      {
+        "status": "PASS",
+        "checks": 318707,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 711896,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.224675
+      },
+      {
+        "status": "PASS",
+        "checks": 318707,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 599458,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 1.87330625
+      },
+      {
+        "status": "PASS",
+        "checks": 318707,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 674562,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 2.10800625
+      }
+    ],
+    "current": [
+      {
+        "status": "PASS",
+        "checks": 318579,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 378486,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 1.18276875
+      },
+      {
+        "status": "PASS",
+        "checks": 318579,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 368995,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 1.153109375
+      },
+      {
+        "status": "PASS",
+        "checks": 318579,
+        "frames": 32,
+        "virtual_alloc_calls": 2,
+        "heap_alloc_calls": 2,
+        "ticks": 373920,
+        "frequency": 10000000,
+        "bytes_copied_per_frame": 9437184,
+        "teardown_live_allocations": 0,
+        "ms_per_4_plus_5_mib_cycle": 1.1685
+      }
+    ]
+  },
+  "median_ms_per_4_plus_5_mib_cycle": {
+    "v7": 2.776078125,
+    "v8.1": 2.10800625,
+    "current": 1.1685
+  },
+  "relative_modeled_cycle_speedup": 2.375762195121951,
+  "relative_modeled_v8_1_cycle_speedup": 1.804027599486521,
+  "alternating_case_order": true,
+  "pe32_proxy_executed_on_windows": true,
+  "modeled_native_endpoint": true,
+  "hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "coverage": [
+    "READ/WRITE/READ_WRITE/WRITE_DISCARD/WRITE_NO_OVERWRITE copy direction",
+    "DISCARD permits undefined initial bytes; partial writes retained",
+    "exact-size reuse",
+    "overlapping and concurrent active maps never alias",
+    "16 MiB and four-entry idle caps",
+    "oversized uncached mapping",
+    "allocation failure evicts idle memory and retries once",
+    "native Map E_OUTOFMEMORY drains idle memory and retries once without changing active mappings",
+    "persistent allocation and BindMap failures abort native maps",
+    "other native Map failures and null output",
+    "empty active maps, proxies, native refs and allocations after cache drain"
+  ],
+  "scope": "Real PE32 Map/Unmap wrappers execute on Windows against a modeled native endpoint, which validates ranges and mirrors each version's BindMap initialization: v7 fresh VirtualAlloc zeros, current skips redundant zero-fill for DISCARD, full copy-in for other modes. The 32-frame diagnostic workload maps overlapping 4 MiB and 5 MiB buffers, writes 64 bytes in each, then models full Unmap copies. Timings exclude game rendering and do not measure Wine/FEX, ARM64 DXVK, Switch, or game FPS."
+}

@@ -1,0 +1,36 @@
+{
+  "status": "STARTUP_FAILED_BEFORE_NATIVE_DEVICE",
+  "source": "User-supplied Switch runtime and crash logs",
+  "evidence": {
+    "fex-runtime.log": {
+      "path": "reports/native-dxvk-h4-startup-95efa6101d4f/fex-runtime.txt",
+      "sha256": "95efa6101d4f75a5b26e133f6d75c9c293bf52ea1f0f8d5ee05584d1196ffe5c",
+      "bytes": 5802
+    },
+    "crash.log": {
+      "path": "reports/native-dxvk-h4-startup-95efa6101d4f/crash.txt",
+      "sha256": "1d94efa8c7b6da39e5ecdba989058e4ea1a41caa8e11067c24b1e63447f46972",
+      "bytes": 32768
+    }
+  },
+  "launch_mode": "debug",
+  "target": "HKShip.exe",
+  "renderer": "dxvk-native-h4",
+  "low_window_passed": true,
+  "last_runtime_marker": "[SD-NDX-COM] FAIL trusted native window",
+  "native_exit_code": 1,
+  "com_device_observed": false,
+  "native_present_observed": false,
+  "com_self_test_run": false,
+  "com_self_test_source": "User confirmed that start-game was used without running the H4 COM self-test.",
+  "exact_nro_build_authenticated": false,
+  "libnx_result_recorded": false,
+  "diagnosis": "Source review finds that the game route calls native-window setup before the existing fx_handoff releases launcher framebuffer slots. Host regression reproduces the old order with modeled libnx. Exact libnx failure code was not captured in this session.",
+  "misleading_legacy_header": "crash.log contains the inherited F1 build/renderer label; the runtime records native renderer selection.",
+  "hardware_capture": true,
+  "fix_hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false
+}

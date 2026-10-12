@@ -1,0 +1,12 @@
+{
+  "vendor/dxvk/dxvk-3.1.1-f1mem1.tar.gz": "2601e1475094d1c9a0188ced35f5d53e5ddccd7b9034a4f24fc61ac01bb2e607",
+  "vendor/dxvk/dxvk-3.1.1-f1mem2.tar.gz": "525c810cc298406623771bfe86772b21971413be7dcb8f27e378998bf1bbf6f9",
+  "vendor/dxvk/dxvk-3.1.1-sdmem1.tar.gz": "9a7efccf3825b41a85c4bca97cadf23f5c282c701590ce9a3c0ddd7c3738b08b",
+  "vendor/dxvk/dxvk-3.1.1-sdrecycle1.tar.gz": "d7d898bff3d722ab290b28150c5fe24e7e4a0d90da555808ca53203c352f96d5",
+  "vendor/dxvk/dxvk-3.1.1-sdstream1.tar.gz": "29c2de482524cde5366df56131202ec5693998b1dfe597015197c7dc35217eb3",
+  "vendor/dxvk/dxvk-gplasync-v2.7.1-1.tar.gz": "590050b88be7b156cf641abe762e1ad47ebbe828f7f0edb2970aa4716ee3af6d",
+  "vendor/fex/libwow64fex-f1-demand.dll": "81b1981e96883e7d07ad096f48b3d40b47038e784880fd51b515f89b5f3d89e5",
+  "vendor/fex/libwow64fex-sd-compiler.dll": "0ca926654078800bf272ba7ddf21af393fe363697151f8016a45b2e7fb75f198",
+  "vendor/fex/libwow64fex-sd-debug.dll": "583ac0d48fd5c2e3e92f8844a23f85873064cc2b1f03a2e6b6a96d224d7de130",
+  "vendor/fex/libwow64fex-sd-scene.dll": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024"
+}

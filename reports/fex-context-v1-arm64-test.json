@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "differential_calls": 15616,
+  "actual_pe_functions": true,
+  "substituted_functions": false,
+  "callee_saved_and_x18_verified": true,
+  "source_sha256": "d502155f030748a4420f8f7616194eecdd9df2d95251c6c75e84f9eb957667de",
+  "build_receipt_sha256": "98ada44bfb71564bc77cfb1db790739f0be3dd38d5b684d0c3dd5c7033bbdbfc",
+  "baseline_sha256": "48b169a80966676100c7b361343072766973809a80727cb2fcfe8bb33a300024",
+  "dll_sha256": "3660e8bce046dbf11080a7ba8397bd9af72fab6e3d6e821e029e48acc81b67b7",
+  "representative_import_instruction_counts": {
+    "normal": {
+      "old": 433,
+      "new": 198
+    },
+    "zero": {
+      "old": 209,
+      "new": 134
+    },
+    "special": {
+      "old": 335,
+      "new": 296
+    },
+    "general80": {
+      "old": 522,
+      "new": 631
+    }
+  },
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Unicorn executes the ARM64 PE import/export routines from both DLLs. Register/stack/byte canaries; no Wine callback, suspend or gameplay emulation. Instruction counts are not hardware time."
+}

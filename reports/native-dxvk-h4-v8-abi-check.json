@@ -1,0 +1,236 @@
+{
+  "status": "PASS",
+  "direct_layout_types": 45,
+  "layouts": {
+    "D3D11_BLEND_DESC": {
+      "bytes": 264,
+      "alignment": 4
+    },
+    "D3D11_BOX": {
+      "bytes": 24,
+      "alignment": 4
+    },
+    "D3D11_BUFFER_DESC": {
+      "bytes": 24,
+      "alignment": 4
+    },
+    "D3D11_CLASS_INSTANCE_DESC": {
+      "bytes": 32,
+      "alignment": 4
+    },
+    "D3D11_COUNTER_DESC": {
+      "bytes": 8,
+      "alignment": 4
+    },
+    "D3D11_COUNTER_INFO": {
+      "bytes": 12,
+      "alignment": 4
+    },
+    "D3D11_COUNTER_TYPE": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "D3D11_DEPTH_STENCIL_DESC": {
+      "bytes": 52,
+      "alignment": 4
+    },
+    "D3D11_DEPTH_STENCIL_VIEW_DESC": {
+      "bytes": 24,
+      "alignment": 4
+    },
+    "D3D11_PRIMITIVE_TOPOLOGY": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "D3D11_QUERY_DESC": {
+      "bytes": 8,
+      "alignment": 4
+    },
+    "D3D11_RASTERIZER_DESC": {
+      "bytes": 40,
+      "alignment": 4
+    },
+    "D3D11_RECT": {
+      "bytes": 16,
+      "alignment": 4
+    },
+    "D3D11_RENDER_TARGET_VIEW_DESC": {
+      "bytes": 20,
+      "alignment": 4
+    },
+    "D3D11_RESOURCE_DIMENSION": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "D3D11_SAMPLER_DESC": {
+      "bytes": 52,
+      "alignment": 4
+    },
+    "D3D11_SHADER_RESOURCE_VIEW_DESC": {
+      "bytes": 24,
+      "alignment": 4
+    },
+    "D3D11_TEXTURE1D_DESC": {
+      "bytes": 32,
+      "alignment": 4
+    },
+    "D3D11_TEXTURE2D_DESC": {
+      "bytes": 44,
+      "alignment": 4
+    },
+    "D3D11_TEXTURE3D_DESC": {
+      "bytes": 36,
+      "alignment": 4
+    },
+    "D3D11_UNORDERED_ACCESS_VIEW_DESC": {
+      "bytes": 20,
+      "alignment": 4
+    },
+    "D3D11_VIEWPORT": {
+      "bytes": 24,
+      "alignment": 4
+    },
+    "DXGI_FORMAT": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "DXGI_FRAME_STATISTICS": {
+      "bytes": 32,
+      "alignment": 8
+    },
+    "DXGI_GAMMA_CONTROL": {
+      "bytes": 12324,
+      "alignment": 4
+    },
+    "DXGI_GAMMA_CONTROL_CAPABILITIES": {
+      "bytes": 4116,
+      "alignment": 4
+    },
+    "DXGI_MODE_DESC": {
+      "bytes": 28,
+      "alignment": 4
+    },
+    "DXGI_RESIDENCY": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "DXGI_SURFACE_DESC": {
+      "bytes": 20,
+      "alignment": 4
+    },
+    "DXGI_USAGE": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "FLOAT": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "GUID": {
+      "bytes": 16,
+      "alignment": 4
+    },
+    "INT": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "LARGE_INTEGER": {
+      "bytes": 8,
+      "alignment": 8
+    },
+    "RECT": {
+      "bytes": 16,
+      "alignment": 4
+    },
+    "UINT": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "WINBOOL": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "sd_com_input32": {
+      "bytes": 28,
+      "alignment": 4
+    },
+    "sd_com_mapped32": {
+      "bytes": 12,
+      "alignment": 4
+    },
+    "sd_com_packet": {
+      "bytes": 160,
+      "alignment": 4
+    },
+    "sd_com_so32": {
+      "bytes": 16,
+      "alignment": 4
+    },
+    "sd_com_subresource32": {
+      "bytes": 12,
+      "alignment": 4
+    },
+    "sd_com_swapchain32": {
+      "bytes": 60,
+      "alignment": 4
+    },
+    "uint32_t": {
+      "bytes": 4,
+      "alignment": 4
+    },
+    "uint64_t": {
+      "bytes": 8,
+      "alignment": 8
+    }
+  },
+  "explicit_pointer_or_wchar_adapters": [
+    "D3D11_INPUT_ELEMENT_DESC",
+    "D3D11_MAPPED_SUBRESOURCE",
+    "D3D11_SO_DECLARATION_ENTRY",
+    "D3D11_SUBRESOURCE_DATA",
+    "DXGI_ADAPTER_DESC",
+    "DXGI_ADAPTER_DESC1",
+    "DXGI_OUTPUT_DESC",
+    "DXGI_SWAP_CHAIN_DESC",
+    "HANDLE",
+    "HDC",
+    "HMODULE",
+    "HMONITOR",
+    "HWND",
+    "SIZE_T"
+  ],
+  "excluded_unsupported_structures": [
+    "DXGI_MAPPED_RECT",
+    "DXGI_SHARED_RESOURCE"
+  ],
+  "compile_commands": {
+    "pe32": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-g++",
+      "-std=c++17",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com",
+      "-c",
+      "/home/blekjek/sleepingdogs-native-dxvk-h4-v8/abi/layouts.cpp",
+      "-o",
+      "/home/blekjek/sleepingdogs-native-dxvk-h4-v8/abi/pe32.o"
+    ],
+    "arm64": [
+      "/opt/devkitpro/devkitA64/bin/aarch64-none-elf-g++",
+      "-std=c++17",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/windows",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/directx",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include",
+      "-c",
+      "/home/blekjek/sleepingdogs-native-dxvk-h4-v8/abi/layouts.cpp",
+      "-o",
+      "/home/blekjek/sleepingdogs-native-dxvk-h4-v8/abi/arm64.o"
+    ]
+  },
+  "inventory_sha256": "714ef01a19d39dfe524dc9ede3c5d5daa01efbced671f8242a902928d726097f",
+  "fixture_sha256": "b5594f3797df2f5eef68e8c4a0322bfcec9c8b458cec3907393e3a98500a5c23",
+  "runner_sha256": "16800aa873195dca93faaed8892476dedde19f1d6ccec313dc0d50d3a9595624",
+  "hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "scope": "Compiled PE32/ARM64 size/alignment equality; pointer-bearing descriptors use separate adapters."
+}

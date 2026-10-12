@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "results": {
+    "ui": "PASS: memory profile rejects unpatched/wrong-title/query failures; debug defaults hidden and persists; keyboard routes/options; six real UI previews with guarded stride",
+    "fextendo_keyboard.c": "PASS: Unicode scalars, native queue/cancel/drain/reconnect, Wine focus/IME/Edit/custom delivery, horizontal shortcut",
+    "fextendo_osk.c": "PASS: live Nunu -> Bejo, middle edits, Enter/close, focus/reconnect release, P1/P2 ownership, native Edit, touch, queue/repeat, horizontal controls",
+    "options": "PASS: all shortcut/delay/position combinations, read-only legacy migration, invalid values, recovery, instant edge, exact hold thresholds, no repeat and focus rearm",
+    "files": "PASS: missing/invalid PE32 and game files, exact runtime digest, approved A/B digest, corruption, cancellation, symlink/directory rejection",
+    "cache": "PASS: first full hash, cached repeat without hashing, manual recheck, timestamp/size/update invalidation, approved A/B file, corruption, truncated/mismatched cache, cancellation and missing file",
+    "vulkan": "PASS: native/Wine loader hooks; closed OSK no allocation/copy/submit; per-image fences and original wait chain; API failure injection; cached/moved pixels; timeout; invalid queue; full cleanup",
+    "lsfg_model": "PASS: native feature enable without input mutation; OFF/missing pack; keyboard/multiple/concurrent acquire bypass; both acquire APIs; retired swapchain; no retry after consumed present error; full lifetime cleanup",
+    "wire": "PASS: 46 methods, 376832 compact validation/round-trip cases",
+    "present_policy": "PASS: FIFO metadata accepted, non-FIFO persists, invalid count/pointer bypass, 5034 bypasses -> 13 logs"
+  },
+  "source_files": {
+    "src/launcher/boot_memory.h": "b529490cd48dd2cf36bb03355356bfb6eca0dadb3a4101dc1abdb3027c243d75",
+    "src/launcher/checker_runtime.h": "4ac8a9c5bc09b1e5584a9ea808f9d529a565fc0a101a6fc2a3e3a6e92920ab32",
+    "src/launcher/checker_ui.h": "55e83bca0ab562c11ec3239ada61c91508806d19f623e67487d6c9fe516f7c2d",
+    "src/launcher/check_cache.h": "7f63814154814dbe48e14007eb2744a61d0c2c03ae3cda4dec47a5edb5153500",
+    "src/launcher/keyboard_runtime.h": "3a05ffb78993e749738a1877c4e09fc81e08600149b953a75415b7e6b3ef9b8b",
+    "src/launcher/lsfg_present_policy.h": "d9c2265f31272531d00d0d320d124706d390ba7a1fb2adb7a931f61ab92e5ed9",
+    "src/launcher/lsfg_vulkan.cpp": "e044a889f5f7f3fc81b0fc8174cc1a50ae189d9e1870a8f063e3909497a5c84d",
+    "src/launcher/lsfg_vulkan.h": "18230fea68e418884da8f56121960728c67ff03106dc92940f65f17862d065e8",
+    "src/launcher/osk_vulkan.cpp": "8868e2f59b58b5db24c236dfab572dc2f9c977fba774e247be67f269ec36b535",
+    "src/launcher/preferences.h": "5b5016fe9a2b223b217cf81e908ea224f8026bc625c2faa8cc31c93dbd611f24",
+    "src/launcher/startup_heap.h": "0ce7167662e9a69bd97096068cb1df867e4a79eb08f911a05e3e539d853cf27e",
+    "src/launcher/system_check.h": "a570f67591ddb67703d2afb9ea43edecb39f1ebc61036cc043dae958e5f5a18e",
+    "src/launcher/pes13/fextendo_gamepad.h": "396e017d13b2673f0f04fe44abba6ae010b26fe4633b09d75e733e6f7fd940de",
+    "src/launcher/pes13/fextendo_keyboard.h": "a069333ffb899a6b01036e336d10255c752cf37a55ed5b247971d6f69150d4ba",
+    "src/launcher/pes13/fextendo_keyboard_capture.h": "758e050b26c510cd18893f5aafed95b24ba67fa8293a1778bca683f723e9f8d0",
+    "src/launcher/pes13/fextendo_keyboard_options.h": "87aaa166a13016275923c8103c8520c1250fad6fd7d6e52ff800ebb384e07881",
+    "src/launcher/pes13/fextendo_keyboard_switch.h": "86e32eef282ef7d4f54a608c27f61bdcda909bd59683d0cac0237489bb0fc7b1",
+    "src/launcher/pes13/fextendo_keyboard_wine.h": "e6997ab6874ec9693fd4e742dbc55c3dbdf2740e7902ab96108c05c4d9123bf9",
+    "src/launcher/pes13/fextendo_osk.h": "bdebc799861a3774974a58e25c6ceaca4da74a253fcbe14507c656d786b8af85",
+    "src/launcher/pes13/fextendo_osk_display.h": "1aff63a6092555a05f4bb0c90a683588f51d77dbccf22bdc518c3de92cab6515",
+    "src/launcher/pes13/fextendo_osk_frame.h": "6691d0f6f58a4710a7c800ec5bdf85a34f614e53c321a3501756d7f0b7c85698",
+    "src/launcher/pes13/fextendo_osk_sprites.h": "7e7f4a55c239ecba68361447169b42fe0bf3c0a2eaccbdca04b0375976de6d5d",
+    "src/launcher/pes13/fextendo_osk_switch.h": "0becfd300d7ebe353169dd50f4d34e7a812cd0853ece8ab9130f70cf1b699633",
+    "src/launcher/pes13/fextendo_osk_ui.h": "3686d354900726c8fc2b7c0634fddcbb30b6e16070f0c46f40ad147dac615af0",
+    "src/launcher/pes13/fextendo_osk_vulkan.h": "30d2e9d85286bc52becae07e8b7d0badbc38e83c2ed776b61c0842b63ce9fb28"
+  },
+  "preview_files": {
+    "debug-enabled.png": "3cf5cc9c6edb12070e49f085ea3cef9478e6e1729463a0b30ca0f691bdb3d285",
+    "home.png": "e65bc9176b106d380a7a3d744a5042c3c4ec0d798214a8036644418ec0cbb225",
+    "keyboard.png": "ff71a63493a054965006b461aa29f3817f8745339550e296421756bb9a0b81e0",
+    "lsfg.png": "600907afcf33acbb39bf0fb94e9b72c3f68f86af496a2346db9ecda3bb5c1163",
+    "patch-check.png": "8607c1e2042b0491c68232c6cc5af7b543b69faf33778582ecc975b463e3d314",
+    "patch-required.png": "c6af29ca74b0d2bb244cc74aa925890ba83b990d197302c32878798bda345f00",
+    "settings.png": "b8c5ba439eba1e1a56413d169b760902165e79e047b9b64d1e7752de234fe0f5"
+  },
+  "hardware_tested": false,
+  "scope": "Actual C UI rendering/navigation/persistence and imported keyboard under ASan/UBSan; simulated platform services. Physical Switch input/display not tested."
+}

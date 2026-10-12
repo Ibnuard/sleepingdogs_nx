@@ -2,6 +2,11 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
+Production v1 does not create or refresh logs during normal Play. For the
+checks below, enable **Settings → Show debug launch**, then reproduce with
+**Launch Debug**. An old log can remain from a previous build; preserve it if
+needed and verify the timestamp/build before treating it as a new capture.
+
 ## Launcher will not start or memory preflight fails
 
 Confirm that the current boot environment and Sleeping Dogs forwarder match
@@ -63,11 +68,25 @@ That observation alone does not prove a single CPU or GPU bottleneck. Existing
 frame and wait counters include waiting and scheduling; they are not GPU
 timestamp measurements.
 
+[Launcher v4](launcher-v4.md) targets repeated COM memory probes and render
+workers blocked behind Present. `[SD-NDX-INLINE]` and `[SD-NDX-OVERLAP]` show
+whether those paths are exercised. A rising avoided-probe/admitted-work count
+does not itself demonstrate an FPS gain; compare the same crowded route.
+The update preserves the saved LSFG switch for manual comparison.
+
 ## LSFG is on but does not help
 
-Check for a generated-frame marker rather than relying on the launcher toggle.
-The latest analyzed v18 session repeatedly bypassed generation for its present
-path. See [LSFG settings and limits](CONFIGURATION.md#optional-lsfg).
+H4 through launcher v1 forced LSFG OFF on native DXVK even when the stored
+launcher preference was ON. Launcher v2 connects that route, but its first
+hardware capture bypassed all interpolation because DXVK passed FIFO mode
+metadata. [Launcher v3](launcher-v3.md) fixes that rejection.
+Its subsequent hardware capture confirms generated submissions, but the user
+reports worse native performance. The generated-frame count is not a scanout
+or smoothness measurement.
+Check for `first interpolated present submitted`; requested/initialized alone
+is insufficient, and repeated bypass reasons mean interpolation is being
+skipped. DXVK HUD reports real game FPS. See
+[LSFG settings and limits](CONFIGURATION.md#optional-lsfg).
 
 Compare native performance with LSFG OFF first. Frame generation cannot repair
 slow game simulation caused by low native FPS.

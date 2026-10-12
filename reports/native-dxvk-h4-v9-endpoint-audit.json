@@ -1,0 +1,47 @@
+{
+  "status": "STATIC_CODEGEN_AND_PINNED_FEX_AUDIT",
+  "guest_sha256": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+  "proxy_sha256": "886a969f68e969cc52fa7dd9b199dcb4fcf1d982d47a53ae7b81fa7c06b2a7e7",
+  "checker_sha256": "8e7aec0f93ea5b2dc414dd37e8809c55e1d66da07de18ee778e0e60531887cea",
+  "disassembly_sha256": "bae0de4c82df27de9f177b899371e00a23fb4df486ebcb9adf09b93247b9c563",
+  "compiler_objdump_sha256": "99063046a639049cb95031d7e4d3a45d0d5d38175b3400341c7ffb423b85cd71",
+  "published_pointer_address": "0x1003a01c",
+  "hot_path_instructions": [
+    "pushl\t%esi",
+    "pushl\t$0x0",
+    "pushl\t0x4(%edi)",
+    "pushl\t(%edi)",
+    "calll\t*0x8(%edi)",
+    "testl\t%eax, %eax",
+    "js\t0x10001809 <_proxy_call+0x59>",
+    "movl\t0x14(%esi), %eax",
+    "leal\t-0xc(%ebp), %esp",
+    "popl\t%esi",
+    "popl\t%edi",
+    "popl\t%ebx",
+    "popl\t%ebp",
+    "retl"
+  ],
+  "cold_publication_instruction": "xchgl\t%eax, 0x1003a01c",
+  "observed_hot_path": "Nonzero descriptor pointer bypasses discovery, critical-section calls and XCHG; both handle halves and the indirect function load depend on that pointer.",
+  "observed_publication": "One XCHG instruction publishes the pointer on the cold initialization path.",
+  "fex_source_files": {
+    "FEXCore/Source/Interface/Core/OpcodeDispatcher.cpp": {
+      "path": "/home/blekjek/sleepingdogs-scene-memory-v1/fex/source/FEXCore/Source/Interface/Core/OpcodeDispatcher.cpp",
+      "sha256": "c70f4bda926c2e2d9627c9ca3c35ec8bf3ea9099a061c3880c852559b107c091",
+      "reviewed_fragment_sha256": "96f4a2da464ccef3f695c14b1077cc05d6be7c1b02069327ca9a549a179ce9cc"
+    },
+    "FEXCore/Source/Interface/Core/JIT/AtomicOps.cpp": {
+      "path": "/home/blekjek/sleepingdogs-scene-memory-v1/fex/source/FEXCore/Source/Interface/Core/JIT/AtomicOps.cpp",
+      "sha256": "159645830b7e2bda65291957b4917cd05f58af40264312a4b829443ddce7b6c4",
+      "reviewed_fragment_sha256": "ce21c4b481da1374c85f34735fc550eda682ec971ee273584bf6b3693d829e47"
+    }
+  },
+  "fex_vendor_receipt_sha256": "6faa34d5e1ea0f218f690605ce3bc48662ccd0a907beea85d67c1f1c7522a7ca",
+  "fex_interpretation": "Pinned normal memory XCHG path emits AtomicSwap, using SWPAL or LDAXR/STLXR independently of optional ordinary-load/store TSO. Existing MonoBackpatcher special path is not modeled or executed in this audit.",
+  "log_preset": "fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack",
+  "reference": "https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/Learn%20the%20Architecture/Armv8-A%20memory%20model%20guide.pdf?revision=58b1dd0a-3800-4218-b21a-f95a0332034c",
+  "limits": "Static checks of pinned compiler output and FEX source, not FEX execution or hardware concurrency proof. Switch COM/game validation remains required.",
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

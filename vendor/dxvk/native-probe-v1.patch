@@ -1,0 +1,139 @@
+--- a/src/dxgi/dxgi_main.cpp
++++ b/src/dxgi/dxgi_main.cpp
+@@ -3,7 +3,7 @@
+ 
+ namespace dxvk {
+   
+-  Logger Logger::s_instance("dxgi.log");
++  // Unified static probe uses the D3D11 logger singleton.
+   
+   HRESULT createDxgiFactory(UINT Flags, REFIID riid, void **ppFactory) {
+     try {
+--- a/src/util/thread.h
++++ b/src/util/thread.h
+@@ -372,7 +372,11 @@
+         case ThreadPriority::Lowest: policy = SCHED_IDLE;  break;
+ #endif
+       }
++#ifndef __SWITCH__
+       ::pthread_setschedparam(this->native_handle(), policy, &param);
++#else
++      (void)policy; (void)param; // Probe retains default Horizon priority.
++#endif
+     }
+   };
+ 
+--- a/src/util/util_env.cpp
++++ b/src/util/util_env.cpp
+@@ -102,6 +102,8 @@
+     size_t count = readlink("/proc/self/exe", exePath.data(), exePath.size());
+ 
+     return std::string(exePath.begin(), exePath.begin() + count);
++#elif defined(__SWITCH__)
++    return "sd-dxvk-native-probe";
+ #elif defined(__FreeBSD__)
+     int mib[4] = {CTL_KERN, KERN_PROC, KERN_PROC_PATHNAME, getpid()};
+     char exePath[PATH_MAX] = {};
+@@ -136,7 +138,11 @@
+ #else
+     std::array<char, 16> posixName = {};
+     dxvk::str::strlcpy(posixName.data(), name.c_str(), 16);
++#ifndef __SWITCH__
+     ::pthread_setname_np(pthread_self(), posixName.data());
++#else
++    (void)posixName; // libnx has no optional POSIX thread-name API.
++#endif
+ #endif
+   }
+ 
+--- a/src/util/util_win32_compat.h
++++ b/src/util/util_win32_compat.h
+@@ -3,23 +3,37 @@
+ #if defined(__unix__)
+ 
+ #include <windows.h>
++#ifndef __SWITCH__
+ #include <dlfcn.h>
++#endif
+ 
+ #include "log/log.h"
+ 
+ inline HMODULE LoadLibraryA(LPCSTR lpLibFileName) {
++#ifdef __SWITCH__
++  (void)lpLibFileName; return nullptr;
++#else
+   return dlopen(lpLibFileName, RTLD_NOW);
++#endif
+ }
+ 
+ inline void FreeLibrary(HMODULE module) {
++#ifndef __SWITCH__
+   dlclose(module);
++#else
++  (void)module;
++#endif
+ }
+ 
+ inline void* GetProcAddress(HMODULE module, LPCSTR lpProcName) {
+   if (!module)
+     return nullptr;
+ 
++#ifdef __SWITCH__
++  (void)lpProcName; return nullptr;
++#else
+   return dlsym(module, lpProcName);
++#endif
+ }
+ 
+ inline HANDLE CreateSemaphoreA(
+--- a/src/vulkan/vulkan_loader.cpp
++++ b/src/vulkan/vulkan_loader.cpp
+@@ -1,6 +1,9 @@
+ #include <tuple>
+ 
+ #include "vulkan_loader.h"
++#ifdef SD_NATIVE_STATIC_VULKAN
++extern "C" PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance, const char*);
++#endif
+ 
+ #include "../util/log/log.h"
+ 
+@@ -10,6 +13,9 @@
+ namespace dxvk::vk {
+ 
+   static std::pair<HMODULE, PFN_vkGetInstanceProcAddr> loadVulkanLibrary() {
++#ifdef SD_NATIVE_STATIC_VULKAN
++    return {nullptr, &vkGetInstanceProcAddr};
++#else
+     static const std::array<const char*, 2> dllNames = {{
+ #ifdef _WIN32
+       "winevulkan.dll",
+@@ -39,6 +45,7 @@
+ 
+     Logger::err("Vulkan: vkGetInstanceProcAddr not found");
+     return { };
++#endif
+   }
+ 
+   LibraryLoader::LibraryLoader() {
+--- a/src/wsi/wsi_platform.cpp
++++ b/src/wsi/wsi_platform.cpp
+@@ -9,6 +9,7 @@
+   static int s_refcount = 0;
+ 
+   static const WsiBootstrap *wsiBootstrap[] = {
++    &ProbeWSI,
+ #if defined(DXVK_WSI_WIN32)
+     &Win32WSI,
+ #endif
+--- a/src/wsi/wsi_platform.h
++++ b/src/wsi/wsi_platform.h
+@@ -124,6 +124,8 @@
+   extern WsiBootstrap GlfwWSI;
+ #endif
+ 
++  extern WsiBootstrap ProbeWSI;
++
+   void init();
+   void quit();
+   std::vector<const char *> getInstanceExtensions();

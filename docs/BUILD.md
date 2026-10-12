@@ -8,7 +8,12 @@ The repository contains runtime overlays, pinned vendor inputs and versioned
 build/packaging scripts. It does **not yet provide a self-contained build of
 v18 from a clean clone**. The current recipes reuse prepared Wine/FEX/Mesa
 trees, compiled dependencies and hash-checked receipts from the development
-workspace. There is no automated GitHub runtime-release workflow.
+workspace. [GitHub release automation](RELEASE.md) packages the hash-pinned
+production input after merged PRs; it does not perform a clean runtime build.
+
+The current production recipe is [production v1](production-v1.md), based on
+the pinned launcher-v4 ELF and link inputs. The older recipes below are kept
+for source provenance and reproducing their specific experiments.
 
 There are two distinct entry points:
 
@@ -109,6 +114,26 @@ These are update/rollback artifacts for an existing installation. The
 [v18 experiment note](apc-v18.md) describes the code change; [Current status](STATUS.md)
 records subsequent hardware results.
 
+## Native DXVK H4 candidate
+
+The [H4 v9 recipe](native-dxvk-h4-v9-memory-batching.md#rebuild) overlays the pinned
+v18 link inputs and native H1 DXVK archive, first reproducing the baseline ELF.
+It builds PE32 COM DLLs, a real COM self-test client and the ARM64 runtime with
+three renderer choices. Separate host, compiled-ABI, window-handoff,
+logging/progress, PE32 transport/output/lookup/Map, game-quality persistence/UI, inline arrays,
+dispatcher measurement, Wine-probe page protections, native batch tracking,
+launcher-transaction and static-game-import checks feed its
+folder packager.
+
+Run the listed checks before `tools/package_native_dxvk_h4.py`. The output is
+`dist/sd-dxvk-native-h4-v9-update/` with two-phase COM/game activation and the
+verified v8.1 and v18 rollbacks plus batching ON/OFF overlays; no ZIP is created. Prepared sources/objects/SDK and pinned
+legacy DLLs remain necessary. Run the PE32 transport, output, lookup and Map checks with Windows Python;
+other build/package steps run in WSL. The dispatcher benchmark requires the
+v6 commit recorded in its receipt; the Map comparison uses v7 and v8.1. Transport and
+captured-XML controls use v8. Local PASS receipts do not establish v9
+Switch guest execution, game API coverage, gameplay or a Switch FPS improvement.
+
 ## Forwarder and distribution
 
 [forwarder/build_forwarder.py](../forwarder/build_forwarder.py) builds the
@@ -130,8 +155,9 @@ derived from a proprietary input also remain personal test inputs.
 Preserve component notices and the matching modified sources/build recipes in
 any distributed runtime package. [THIRD_PARTY.md](../THIRD_PARTY.md) is the
 current project overview; the original baseline packager still copies the
-inherited PES13 notice snapshot. A future consolidated release must account
-for the later renderer, Mesa and optional LSFG components as well.
+inherited PES13 notice snapshot. Production v1 retains the current project
+notices, generated native/launcher units, attributed LSFG backend source and
+pinned build receipts; its public runtime omits the proprietary shader pack.
 
 ## Validation boundaries
 

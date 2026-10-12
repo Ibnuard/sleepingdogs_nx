@@ -1,0 +1,287 @@
+[SD-NDX-H2] BUILD native-dxvk-h2-v1; PE32/Wine/FEX/native-DXVK; no game, no present
+[FEX3-SHORT] v1 enabled=0 threshold_us=20000 rows=256 jit_rows=128; fex_short_trace_off=1 disables; kinds 0=acquire 1=submit 2=fence 3=semaphore 5=alert_wait 6=present_map
+[SD-INIT] v2 preparing memory before launch validation
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-LOWVA] v1 host=200000+7fffe00000 quota=3444572160 title=059a3db219b42000 query=00000000/00000000/00000000/00000000
+[SD-LOWVA] RX execute low=400000 PASS rc=00000000
+[SD-LOWVA] RW/NONE/RW alias low=ffff0000 PASS rc=00000000
+[SD-LOWVA] PASS: native above 4 GiB; guest low window available
+[SD-ALIAS] v1 requested=1048576000 reserved=1048576000 low=0x30000000 high=0x5bdee20000 rc=00000000 unmap=00000000 physical_copies=1
+[SD-INIT] v2 ready probe=1 arena=1048576000
+[SD-GPU-ARENA] init requested=268435456 reserved=268435456 unit=65536 source=ordinary-heap
+[SD-GPU-BUDGET] v1 paired_loader=1 heap=3342950400 target_mib=256 reserved_mib=256
+[SD-GPU-STREAM] v1 total_mib=256 large_mib=64 threshold_mib=2 borrow_guard_mib=16
+[SD-GPU-PRESSURE] v1 soft_reserve=1; reuse idle GPU space before OOM
+[CONFIG] configuration.ini loaded entries=10; legacy boolean fallback enabled
+[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=0 guest_tests=1
+[FEX3-GAME] enabled=0; read-only 5s snapshots, periodic log batching
+[FEX3-SYNC] startup targeted=0; shared start gates preserved; self-suspend isolated
+[FEX3-RESUME] isolated self-suspend wake; final start-gate broadcast; 20ms recheck
+[FEX3-SCALED] no diagnostic readback; blit submit failures propagate
+[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved
+[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change
+[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet
+[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query
+[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups
+[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay
+[FEX3] isolated exception context preflight
+[FEX3-YIELD] same-core Sleep(0) experiment
+[FEX2-HOST] PASS full register/NEON/NZCV/FPCR/FPSR exception roundtrip
+[FEX3-MEMBUDGET] client_extension=0; 0 uses standard DXVK no-budget fallback, 1 restores driver queries
+[FEX3-GAP] v1 enabled=0 threshold_us=50000 capacity=32; one thread tick query per Present
+[FEX3-MEMQUERY] v1 enabled=0 threshold_us=1000 capacity=32; native memory-properties2 queries, two CPU queries per call
+[FEX3-YIELD] v1 enabled=1 burst=64 window_us=2000 ineffective_us=2 pause_us=50
+[FEX3-JITLOG] v1 mode=async; bounded statistics queue; faults keep original path
+[FEX3-CORES] v1 automatic=prefer 0-2 (fallback if unavailable); explicit guest affinity preserved
+[FEX3-BALANCE] v1 stable=1 max_moves=1 pair_gain_gt_permille=50; projected registered loads only
+[FEX3-FASTAPI] v1 enabled=0 QPC/delay native gateway; live handler check; original clock, APC and deadlines
+[FEX3-POLL] v1 enabled=0 counters=256 retained per-thread slots; yield shares 100ns monotonic samples; no clock scaling
+[FEX3-DXVKCORE] v1 requested=0 enabled=0 cores=f priorities=fffffffff0000000 core_rc=0 priority_rc=0 auto_core3=0; exact dxvk-cs only, core=3 priority=63
+[FEX3-DXVKPOLICY] v2 balance=1 legacy_core3=0 effective_offload=0; balanced uses ordinary application worker placement and priority
+[INIT] core balancing on (no-balance.txt)
+[SD-SCHED-V17] mode=v16-pinned coremask=v16-policy periodic=1; explicit affinity, shader and core3 helpers preserved; no-balance.txt disables periodic updates
+[SD-SHADER] v1 affinity=0 cache=0; application cores 0-2, priority unchanged, scoped NAK allocation reuse
+[SD-PERF] v1 requested=1 active=1 interval_ms=10000; normal Launch only; existing thread/driver/wait/compiler/IO counters
+[SD-APC-V18] enabled=0 active=0; accepted user APC wakes target queued waiters; legacy broad paths unchanged
+[SD-SYNC-V16] filter=0 active=0; IOCP/timer notices skip event/mutex/semaphore/thread queues; global APC/resume/exit unchanged
+[SD-DIAG] v1 enabled=0 capture_ms=30000 trigger=two-slow-windows sampler=off; timing only, 720p unchanged
+[SD-SYNC-MODE] v1 mode=0 profile=1; 0=server 1=direct 2=direct-queued; original startup/APC handlers
+[SD-INPUT] policy=gamepad-only trace=off production=on (max 128 changes per source)
+[SD-INPUT] keyboard VK: B=58 A=44 Y=41 X=57 Plus=1b Minus=0d
+[INIT] display devices registered (no-display-devices.txt)
+[INIT] windows shown by the framebuffer (framebuffer.txt)
+[SD-VK] build=sleepingdogs-native-dxvk-h2-v1 Mesa=26.2.2 commit=b297e230ef88c6c88df2561becf864f979f494a6
+[INIT] Mesa from mesa-switch: OpenGL through nvc0, Vulkan through NVK; Vulkan probe off (vulkan-probe.txt)
+[FEX3] mode=guest-stress; one NRO; target=sdmc:/switch/sleepingdogs-fex/drive_c/sd-native-dxvk-guest.exe
+wine-nx-runtime: generic Wine ntdll PE loader path
+[BUILD] sleepingdogs-native-dxvk-h2-v1
+[SD-VA] base=0x400000 size=0x10e5000 hook_calls=1 guard=held range=free
+[SD-VA] Wine preload exclusion=400000-14e5000
+[SDCACHE] sdmc reads cached: 128 KB chunks, 8 per file, 8 MB in all
+[INIT] verbose traces off (verbose.txt)
+[FEX3-HOT] enabled=0 sample_period_ms=50 targets=2; sampled residency includes waits; diagnostic only
+[INIT] profiler off (profile.txt)
+[INIT] windows shown by the framebuffer
+[TARGET] sdmc:/switch/sleepingdogs-fex/drive_c/sd-native-dxvk-guest.exe
+[SD-REG] installation metadata disabled
+[FEX-CACHE] path=sdmc:/switch/sleepingdogs-fex/drive_c/dxvk-cache status=existing errno=0 persistence=unverified; continuing
+[NET] socketInitializeDefault OK
+[INIT] Wine paths/unix bridge ready
+[SD-ALIAS] low arena Wine guard registered before guest allocations
+[INIT] virtual memory ready
+[INIT] Wine NLS/environment ready
+[INIT] processors=4 reported_memory=3285 MB reported_used=3249 MB (launcher/report-memory-mb.txt, default 1280, 0=real; real totals in [SD-MEMBUDGET])
+[INIT] shared data clock initialized
+[INIT] server process initialized
+[SD-CRYPTO] rsaenh provider registry views=1 status=00000000
+[SD-AUDIO] DirectSound8/XAudio2.7 COM registration status=00000000
+[SD-REGISTRY] Sleeping Dogs installed flag status=00000000
+[IMAGE] base=0x400000 size=0x8000 preferred=0x400000 entry_rva=0x1130 machine=0x14c
+[IMAGE] subsystem=3 dll_char=0x8140 imports=0x47ec/0x28 sections=5
+[ARGS] no args.txt; CommandLine='C:\sd-native-dxvk-guest.exe'
+[STDIO] stdin=0x110 stdout=0x114 stderr=0x118 (sdmc:/switch/sleepingdogs-fex/std*.txt)
+[PEB] image=C:\sd-native-dxvk-guest.exe nt=\??\C:\sd-native-dxvk-guest.exe
+[WOW64] PEB32 status=00000000
+[WOW64] api set schema=0x220000
+[LDR] alloc_module basename='sd-native-dxvk-guest.exe' len=24 base=0x400000
+[WOW64] native loader bootstrap status=00000000
+[WOW64] loading native module 0
+[TR] open \??\C:\ntdll.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\ntdll.dll
+[TR] map_view -> 00000000 base=0x180000000
+[TR] build_module \??\C:\windows\system32\ntdll.dll base=0x180000000
+[TR] relocs base=0x180000000 size=0x360000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='ntdll.dll' len=9 base=0x180000000
+[LDR] captured PE ntdll base=0x180000000
+[TR] fixup_imports enter ntdll.dll
+[WOW64] native module 0 status=00000000
+[WOW64] loading native module 1
+[TR] open \??\C:\wow64.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\wow64.dll
+[TR] map_view -> 00000000 base=0x7fffee0000
+[TR] build_module \??\C:\windows\system32\wow64.dll base=0x7fffee0000
+[TR] relocs base=0x7fffee0000 size=0x120000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='wow64.dll' len=9 base=0x7fffee0000
+[TR] fixup_imports enter wow64.dll
+[TR] fixup_imports 1 deps
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 1 status=00000000
+[WOW64] loading native module 2
+[TR] open \??\C:\wow64win.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\wow64win.dll
+[TR] map_view -> 00000000 base=0x7fffdb0000
+[TR] build_module \??\C:\windows\system32\wow64win.dll base=0x7fffdb0000
+[TR] relocs base=0x7fffdb0000 size=0x130000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='wow64win.dll' len=12 base=0x7fffdb0000
+[TR] fixup_imports enter wow64win.dll
+[TR] fixup_imports 3 deps
+[TR] import wow64.dll -> wow64.dll build=00000000
+[TR] load_dll wow64.dll -> 00000000
+[TR] import win32u.dll -> win32u.dll build=00000000
+[TR] open \??\C:\win32u.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\win32u.dll
+[TR] map_view -> 00000000 base=0x7fffcc0000
+[TR] build_module \??\C:\windows\system32\win32u.dll base=0x7fffcc0000
+[TR] relocs base=0x7fffcc0000 size=0xf0000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='win32u.dll' len=10 base=0x7fffcc0000
+[TR] fixup_imports enter win32u.dll
+[TR] fixup_imports 1 deps
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[TR] load_dll win32u.dll -> 00000000
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 2 status=00000000
+[WOW64] loading native module 3
+[TR] open \??\C:\libwow64fex.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\libwow64fex.dll
+[TR] map_view -> 00000000 base=0x7fff8a0000
+[TR] build_module \??\C:\windows\system32\libwow64fex.dll base=0x7fff8a0000
+[TR] relocs base=0x7fff8a0000 size=0x414000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='libwow64fex.dll' len=15 base=0x7fff8a0000
+[TR] fixup_imports enter libwow64fex.dll
+[TR] fixup_imports 2 deps
+[TR] import wow64.dll -> wow64.dll build=00000000
+[TR] load_dll wow64.dll -> 00000000
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 3 status=00000000
+[LDR] patching PE ntdll dispatchers; ntdll base=0x180000000
+[LDR] PE ntdll dispatchers patched syscall=0x10c83ceb18 unix=0x10c83cec4c handle=0x10ca451370 teb=0x7ffc0000
+[LDR] swapping ProcessHeap shim=0x1000 -> real=0x240000
+[LDR] version_init() done
+[NLS] Init: trying unix path=/switch/sleepingdogs-fex/share/wine/nls/locale.nls system_dir_prefix='\??\C:\windows\system32\'
+[NLS] open_nls_data_file -> status=0x00000000 file_handle=0x15c
+[NLS] NtCreateSection -> status=0x00000000 section=0x160
+[NLS] map_section -> status=0x00000000 *ptr=0x260000 mapsize=0xc3000
+[NLS] NtInitializeNlsFiles return status=0x00000000 lcid=0x00000409
+[LDR] locale_init() done
+[LDR] PE ntdll hash_table initialized (32 buckets at 0x1800c0bf0, 6 modules inserted)
+[SD-CODE-MEM] eager_spare=unverified; install the matching libwow64fex.dll from the full update
+[SD-SCRATCH] reserve slots=4 bytes=33685504; protected=1; live code unchanged
+[FEX-HOST] ABI 3 installed; native heap/scratch, dual mapping; x18 guarded
+[FEX2] host ABI and exception bridge installed before CPU init
+[FEX3-UNWIND] PASS shared module index; ntdll/FEX/WOW64 unwind tables found
+[ATTACH] enter ntdll.dll flags=0x80000004 entry=0x1800801b0
+[ATTACH] calling DllMain ntdll.dll entry=0x1800801b0
+[ATTACH] DllMain ntdll.dll returned status=0x00000000
+[ATTACH] enter wow64.dll flags=0x80000004 entry=0x7ffff01720
+[ATTACH] calling DllMain wow64.dll entry=0x7ffff01720
+[ATTACH] DllMain wow64.dll returned status=0x00000000
+[ATTACH] enter wow64win.dll flags=0x80000004 entry=0x7fffdcde14
+[ATTACH] enter win32u.dll flags=0x80000004 entry=0x7fffcf0778
+[ATTACH] calling DllMain win32u.dll entry=0x7fffcf0778
+[ATTACH] DllMain win32u.dll returned status=0x00000000
+[ATTACH] calling DllMain wow64win.dll entry=0x7fffdcde14
+[ATTACH] DllMain wow64win.dll returned status=0x00000000
+[ATTACH] enter libwow64fex.dll flags=0x80000004 entry=0x7fffa723e0
+[ATTACH] calling DllMain libwow64fex.dll entry=0x7fffa723e0
+[ATTACH] DllMain libwow64fex.dll returned status=0x00000000
+[FEX2] selected libwow64fex.dll through native bootstrap
+[WOW64] native DLLs status=00000000
+[WOW64] guest ntdll=0x7bc00000 init block status=00000000
+[WOW64] loader ready: TEB32=0x7ffc2000 stack=015efff0 entry=00401130
+[WOW64] main thread priority 44 -> 59 rc=0
+[WOW64] entering Wine's x86 LdrInitializeThunk via ARM64 wow64.dll
+[SD-CPU-TOPOLOGY] v1 logical=4 cores=4 mask=f legacy_records=6 ex_bytes=368
+[WINE] [NXLDR] enter name=\??\C:\windows\system32\libwow64fex.dll search=0000007FFFF10428 flags_ptr=0000000000000000 module_ptr=00000074C77C6858 teb=000000007FFC0000
+[WINE] [NXLDR] load name=\??\C:\windows\system32\libwow64fex.dll status=00000000 wm=0000005BDEE12648
+[WINE] [NXLDR] attach name=\??\C:\windows\system32\libwow64fex.dll status=00000000 base=0000007FFF8A0000
+[WINE] [NXLDR] return name=\??\C:\windows\system32\libwow64fex.dll status=00000000 module=0000007FFF8A0000
+[WINE] [NXLDR] enter name=\??\C:\windows\system32\wow64win.dll search=0000007FFFF10428 flags_ptr=0000000000000000 module_ptr=00000074C77C6858 teb=000000007FFC0000
+[WINE] [NXLDR] load name=\??\C:\windows\system32\wow64win.dll status=00000000 wm=0000005BDD012C58
+[WINE] [NXLDR] attach name=\??\C:\windows\system32\wow64win.dll status=00000000 base=0000007FFFDB0000
+[WINE] [NXLDR] return name=\??\C:\windows\system32\wow64win.dll status=00000000 module=0000007FFFDB0000
+[FEX2-ABI] v4 checking PE/native callback preserves x18
+[FEX2-ABI] PASS callback preserves Wine TEB
+[FEX2] process CRT
+[FEX2-ALLOC] v2 Wine-managed address limits; checking before CRT
+[FEX2-ALLOC] PASS reserve/commit/write/free and extended alignment
+[FEX2-TIMER] v3 physical counter CNTPCT_EL0; checking before CRT
+[FEX2-TIMER] PASS physical counter frequency=0x000000000124f800
+[FEX2] process CRT ready
+[FEX3-HEAP] v8 native private CRT/container heap; no guest spans
+[FEX3-HEAP] PASS native small/large/aligned allocation, write and free
+[FEX2] thread handlers
+[FEX3-DECODE] v1 inline worklists=64; ordered-tree overflow; no persistent cache required
+[FEX3-JIT-CONFIG] maxinst=5000 multiblock=1; control
+[FEX3-PRESET] control x87=80 scalar_tso=1 vector_tso=1 memcpy_tso=1 multiblock=1 maxinst=5000 smc=mtrack
+[FEX3-JIT] v1 cumulative completed-call timing; nested stages overlap; reports after compilation locks unwind
+[FEX3-EMIT] v1 cached writable buffer; bounded stores, RX cursors preserved
+[SD-DB] execution-breakpoints v1 DR0-DR3 per-thread
+[SD-COMPILER-MEM] fex=v2 compile_slots=2 decoder=instruction-limit ir_mib=16
+[FEX3-FP] context v1 MXCSR, x87 TOP/F64, legacy registers
+[FEX3-ALIAS] generation-validated PE alias snapshots
+[FEX2] core init
+[FEX3-SMC] v2 static game/D3D9 text entry guards; dynamic code keeps instruction guards
+[FEX3-MEM] v3 resident native L1; enabled L2 lazy commit<=64 KiB
+[FEX3-SCRATCH] v1 reuse disowned compiler buffers before growth; capacities unchanged
+[FEX3-CODE] v1 negotiate fresh cache size; preserve live code references
+[FEX3-CALLRET] v1 prediction stack=256 KiB/thread; guard recovery retained
+[FEX3-GEX] v1 bounded exception-route diagnostics; behavior unchanged
+[FEX-JIT] slot=0 size=16384 rw=0x75f8f1b000 rx=0x7ae5d43000
+[FEX2] images mapped
+[FEX2] thread create
+[FEX3-LOOKUP] v3 index=rip-xor-rip16 dispatcher=L1-first L2=off native=1 MiB/thread; full resident L1
+[FEX-JIT] slot=1 size=134217728 rw=0xae1fd5000 rx=0x63fe955000
+[FEX2] thread ready
+[FEX2] first x86 dispatch
+[FEX3-SCRATCH] native size=16777216 ptr=0x5c2eeb7000
+[FEX3-SMC2] blocks=1 full=0 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=4096 full=0 entry=0 guard_branches_avoided=0
+[NLS] Init: trying unix path=/switch/sleepingdogs-fex/share/wine/nls/locale.nls system_dir_prefix='\??\C:\windows\system32\'
+[NLS] open_nls_data_file -> status=0x00000000 file_handle=0x1c0
+[NLS] NtCreateSection -> status=0x00000000 section=0x1c4
+[NLS] map_section -> status=0x00000000 *ptr=0x15f0000 mapsize=0xc3000
+[NLS] NtInitializeNlsFiles return status=0x00000000 lcid=0x00000409
+[WINE] [NXLDR] enter name=sdndx.dll search=00000001 flags_ptr=015EFE8C module_ptr=015EFE90 teb=7FFC2000
+[WINE] [NXLDR] path name=sdndx.dll status=00000000 path=00392870
+[WINE] [NXLDR] load name=sdndx.dll status=00000000 wm=00392960
+[WINE] [NXLDR] attach name=sdndx.dll status=00000000 base=10000000
+[WINE] [NXLDR] return name=sdndx.dll status=00000000 module=10000000
+[SD-NDX-H2] INIT guest/native shared arena value=0x01a80000 calls=0; real guest pointers, offscreen only
+[SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity
+[SD-NVK-V14] shader compiler SM53: texture/global-load priority=200 select_limit=8 FADD.SAT=correct; v13 private GPU memory and ZCULL guards retained
+[SD-NVK-V14] shader=1 stage=4 gprs=24 slm_bytes=0 code_bytes=32
+[SD-NDX-H2] DEVICE value=0x00000000 calls=1; real guest pointers, offscreen only
+[SD-NDX-H2] D3D failure value=0x80004001 calls=2; real guest pointers, offscreen only
+[SD-NDX-H2] D3D failure value=0x80070057 calls=11; real guest pointers, offscreen only
+[SD-NDX-H2] CLOSE value=0x00000001 calls=28; real guest pointers, offscreen only
+[SD-NDX-H2] INIT guest/native shared arena value=0x01a80000 calls=0; real guest pointers, offscreen only
+[SD-NDX-H2] CLOSE value=0x00000002 calls=0; real guest pointers, offscreen only
+[LIFECYCLE] final tid=4 code=00000000 running=1 objects=1 connections=1 zombies=0 reaped=0 pipes=4 tebs=0 pthreads=0 exits=0 engines=-1
+[FEX3-LAST] tid=4 stage=4 pc=63fe9c3f28 address=40611d status=00000001
+[EXIT] NtTerminateProcess(self) exit_code=0x00000000
+[EXIT] parked after self-terminate; close from HOME
+[SD-EXIT] code=00000000 first_present=0
+[BALANCE] busiest core 0.0% -> 2.3%: 4w any->0 2.3%; policy=single tick=50932523651 cost_us=19
+[SD-STATE] guest-exited code=00000000; circuit loading stopped; remaining audio/presents may continue
+[SD-RESOURCE] reason=guest-exited free_threads=90 query_rc=00000000 heap_used=1558565328 arena_free=22097456 heap_arena=1580662784 heap_capacity=3342950400 heap_unclaimed=1762287616 heap_available=1784385072
+[SD-MEMBUDGET] reason=guest-exited total=3444572160 used=3406897152 free=37675008 sysres_total=16777216 sysres_used=3203072 rc=00000000/00000000/00000000/00000000
+[SD-MEMMAP] reason=guest-exited wine_backing=35885056 backing_peak=44273664 pooled=13828096 sections=16384 sections_peak=16384 page_arenas=14680064 sd_cache=0 reported_total=3444572160 reported_used=3406897152
+[SD-SCRATCH] active=1 peak=1 fallbacks=0 failures=0
+[SD-SCRATCH-RESERVE] live=16777216 idle=16908288 released=0 slots_released=0
+[SD-SCRATCH-PAGES] attempts=0 recovered=0 failed=0 live=0 peak=0 owners=0 pieces=0
+[SD-SCRATCH-PAGES] returned=0 map_failed=0 unmap_failed=0 quarantined=0 rc=00000000 requested=0 budget_refusals=0
+[SD-VIRTMEM] scans=0 recovered=0 failed=0 largest=0
+[SD-VKMEM-STATS] oom=0 recovered=0 wine_returned=0 scratch_returned=0 last_bytes=0 last_result=0
+[SD-GPU-ARENA] capacity=268435456 used=0 free=268435456 largest=268435456 peak=19726336 live=0 takes=24 misses=0 returned=24 invalid=0
+[SD-GPU-STREAM-STATS] general_largest=201326592 large_largest=67108864 heap_free=22097456 heap_unclaimed=1762287616
+[SD-GPU-PRESSURE-STATS] emergency_borrows=0 requested_bytes=0
+[SD-GPU-HEAP-STATS] attempts=0 recovered=0 failed=0 bytes=0 largest_examined=0 last_bytes=0 last_align=0 scanned=0
+[SD-GPU-SCAN] size_bins=1 limit_hits=0
+[SD-RUST-HEAP] attempts=0 recovered=0 failed=0 returned=0 realloc=0 last_bytes=0 last_align=0
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-AUDIO] connected=0 stream=0 running=0 failed=0 held=0 submitted=0 played=0 nonzero=0
+[SD-PAGES] recovered=0 bytes=0 live=0 pieces=0 failed=0 rollback_failed=0 peak=0 released=0

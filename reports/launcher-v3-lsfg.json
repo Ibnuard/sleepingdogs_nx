@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "validation_errors": 0,
+  "generated_sessions": 4,
+  "real_host_loader": true,
+  "wine_osk_route_preserved": true,
+  "source_files": {
+    "/home/blekjek/sleepingdogs-launcher-v3/tests/lsfg-native.cpp": "b189b9e269e8f24a55c7a9e72a50bd418c9a69f005b67563a7be7e92f95d4e39",
+    "/home/blekjek/sleepingdogs-launcher-v3/source/osk.cpp": "d26d7c2cc82d851914bc5227e71fd5c942e97344c5e1c512aaf2b72621129eb8",
+    "/home/blekjek/sleepingdogs-launcher-v3/source/lsfg.cpp": "08a158c8fd364a34a1d212b47015af7b6d5dccdb38114c55d7fd251e87bed7c0",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/launcher/lsfg_vulkan.cpp": "e044a889f5f7f3fc81b0fc8174cc1a50ae189d9e1870a8f063e3909497a5c84d"
+  },
+  "output": "[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] configured off; native presentation\n[SD-LSFG-NATIVE] inactive for this swapchain; see capability/pack reason\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 12.5%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\n[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending\n[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending\n[SD-LSFG-V15] FIFO present metadata accepted; generation eligible\n[SD-LSFG-V15] 2x initialized, 1280x720, motion 25.0%, performance; warming history\n[SD-LSFG-V15] 2x generating; first interpolated present submitted\nPASS: real native host-loader + OSK + LSFG bridge; off, 2x, recreate, warmup, generated presents; validation_errors=0\n",
+  "hardware_tested": false,
+  "switch_fps_measured": false
+}

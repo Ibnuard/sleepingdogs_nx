@@ -1,0 +1,2 @@
+# Keep the Windows-generated receipt byte-identical to its packaged checksum.
+fex-context-v1-arm64-test.json -text whitespace=cr-at-eol

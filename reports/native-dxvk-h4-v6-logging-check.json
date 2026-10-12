@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "queue_slots": 512,
+  "batch_lines": 32,
+  "actual_overlay_log_functions_tested": true,
+  "blocked_sink_does_not_block_producer": true,
+  "legacy_logging_preserved": true,
+  "overflow_and_contention_reported": true,
+  "truncation_keeps_newline": true,
+  "concurrent_producers": 4,
+  "snapshot_publications": 20000,
+  "runtime_source_sha256": "5054e5bdd4ac6673ca758a063aff3f7c7dd5695b33ec9a68c96cda32403298fa",
+  "source_files": {
+    "tests/native_dxvk_logging_host.cpp": "3bd610aa8205bb71ffa87f100c4b2573a5f5849d367969a1cc44bab9620da5d5",
+    "src/native_dxvk_com/native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4",
+    "src/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf"
+  },
+  "runner_sha256": "33f62752fefeb8bf37cb9dc0252117eea4ddebb9ec21b7b828f1d72d192deaf7",
+  "fixture_sha256": "577bc2f0b2b36737fd221c9644deb2f6874cb778439b324ff1fe940f58d92a5e",
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O1",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-pthread",
+    "-no-pie",
+    "-fsanitize=address,undefined",
+    "-fno-sanitize-recover=all",
+    "-I/home/blekjek/sleepingdogs-native-dxvk-h4-v6/logging-checks",
+    "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_logging_host.cpp",
+    "-o",
+    "/home/blekjek/sleepingdogs-native-dxvk-h4-v6/logging-checks/logging-check"
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Actual overlaid log functions and queue; blocked output callback and concurrent writers. Atomic snapshot consistency. No Horizon SD latency or Switch scheduling measurement."
+}

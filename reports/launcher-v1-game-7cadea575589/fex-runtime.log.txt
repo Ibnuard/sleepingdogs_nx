@@ -1,0 +1,1310 @@
+[SD-FEX] target=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe
+[SD-FEX] launch_mode=gui
+[SD-FIRSTFAULT] build=v3 first 4 faults; skip debug/thread-name; code bytes; first snapshot also in crash.log
+[SD-TEB-DEBUG] build=v1 exception debug cache sync
+[SD-THREAD-DEBUG] build=v1 suspended thread debug context
+[SD-MEMORY-BUDGET] build=v2 gpu_reserve_max_mib=256 stack_reserve_max_kib=1024
+[SD-COMPILER-MEM] native=v2 decoder_reserve_kib=64 ir_reserve_mib=16 pairs=2
+[SD-PIPE] local named pipes v1; event/IOCP completion; per-request WoW64 IOSB
+[SD-FEX] live debug active; startup log=fex-runtime.log
+[FEXTENDO-TIME] origin_tick=425228823285 enabled=0 units=19200000_ticks_per_second; T+ starts at Play
+[SD-INIT] v2 preparing memory before launch validation
+[SD-NATIVE-STACKS] reserved=16 idle=16 inuse=0 quarantine=0 bytes=16842752 recoveries=0 exhausted=0
+[SD-ALIAS] v1 requested=1048576000 reserved=1048576000 low=0x30000000 high=0xbd7f20000 rc=00000000 unmap=00000000 physical_copies=1
+[SD-INIT] v2 ready probe=1 arena=1048576000
+[SD-ADDRESS] low-window-v2 host=200000+7fffe00000 query=00000000/00000000 probe=1 arena=1048576000
+[SD-GAME-QUALITY] mode=Light720p resolution=1280x720 WorldDensity=0 ShadowRes=0 ShadowFilter=0 MotionBlur=0 SSAO=0 AAQuality=0 HighResTextures=0 GlobalSetting=0; original preserved
+[SD-THREAD-BUDGET] stage=already-available ready=1 before=252 before_rc=00000000 after=252 after_rc=00000000 pm_rc=00000000 self_rc=00000000 app_rc=00000000 self_pid=0 app_pid=0 boost_rc=00000000 required_free=128
+[SD-RESTART] armed rc=00000000; HOME application restart; private recovery worker
+[SD-LSFG-V15] configured off; native presentation
+[SD-NDX-COM] game selection native ARM64; LSFG OFF; measured FPS pending
+[SD-NATIVE-V15] fullscreen geometry correction=1; target=1280x720; FPS gain unmeasured
+[SD-GRAPHICS] game-owned UserOptions.dat; optional Light720p DisplaySettings profile; display modes 1280x720/960x540
+[SD-CRASH] init_rc=00000000 path=crash.log previous=crash-previous.log renderer=2 profile=4
+[SD-DXVK-CONFIG] profile=performance renderer=dxvk-native-h4 hud=FPS
+[FEXTENDO-RENDERER] selected=dxvk-native-h4 verified=1 dlls=d3d9,d3d11,dxgi
+[SD-FEX] launch requested; UserOptions/save preserved; selected game-detail profile applied before launch
+[SD-KEYBOARD] launcher-v1 PES13 38750c20; shortcut=0 hold_ms=0 top=0; native + Wine Vulkan
+[SD-GPU-ARENA] init requested=268435456 reserved=268435456 unit=65536 source=ordinary-heap
+[SD-GPU-BUDGET] v1 paired_loader=1 heap=3341787136 target_mib=256 reserved_mib=256
+[SD-GPU-STREAM] v1 total_mib=256 large_mib=64 threshold_mib=2 borrow_guard_mib=16
+[SD-GPU-PRESSURE] v1 soft_reserve=1; reuse idle GPU space before OOM
+[SD-FEX-MODE] source=launcher/fex-mode.txt: fastest profile=2 guest_tests=0
+[FEX3-GAME] enabled=0; read-only 5s snapshots, periodic log batching
+[FEX3-SYNC] startup targeted=0; shared start gates preserved; self-suspend isolated
+[FEX3-RESUME] isolated self-suspend wake; final start-gate broadcast; 20ms recheck
+[FEX3-SCALED] no diagnostic readback; blit submit failures propagate
+[FEX3-SLEEP] v1 monotonic relative deadlines; no pre-sleep yield; zero/APC waits preserved
+[FEX3-WARM] v1 routine FEX flush batching; pipeline CPU and driver-cache counters; no persistent FEX cache change
+[SD-WATCH] v4 normal=frame-summary-only; Launch Debug detail=600s; heartbeat=5s before present/15s after; snapshots=30s; latest syscall/file boundaries and saved guest PCs; active status=ffffffff means no return yet
+[SD-NDX-COM] BUILD native-dxvk-h4-v9 mode=SleepingDogs target=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe; x86 COM to ARM64 DXVK
+[SD-NDX-LOG] async queue=512 batch=32; native progress=5s; bulk observer disabled; missing tail possible after forced restart
+[SD-NDX-PERF] progress_stride=256 critical_calls=full stats_clock_stride=1024; sampled call state is not every active call
+[SD-NDX-PERF] proxy_lookup=hash native_pointer_array_inline=128; game FPS requires hardware comparison
+[SD-NDX-PERF] map_shadow_cache=16MiB/4 exact-size idle entries; discard zeroing=off; full copies preserved
+[SD-NDX-PERF] guest_endpoint=acquire-release; hot dispatch skips discovery lock; native gate and pointer guards preserved
+[SD-NDX-PERF] memory_probe=single-readwrite discard_zero_fill=off; preserving Map copies and pointer guards retained
+[FEXTENDO] menu frames=1858 mean_draw_present_us=16535 max_draw_present_us=1449930 target_hz=60
+[FEXTENDO] launcher stopped and framebuffer released before 3D handoff
+[SD-NDX-WINDOW] handoff complete launcher_owned=0 console_active=0
+[SD-NDX-WINDOW] dimensions rc=00000000 slots=0 connected=0 size=1280x720
+[SD-NDX-COM] trusted Horizon NWindow 1280x720; guest HWND is metadata only
+[FEX3-MEM] v1 reserved-range recovery and self-thread cleanup query
+[FEX3-FD] v1 startup descriptors matched by original fd; keyed wakeups
+[FEX3-SUSPEND] Box64-style status passthrough; no injected 1ms delay
+[FEX3] isolated exception context preflight
+[FEX3-YIELD] same-core Sleep(0) experiment
+[FEX2-HOST] PASS full register/NEON/NZCV/FPCR/FPSR exception roundtrip
+[FEX3-MEMBUDGET] client_extension=0; 0 uses standard DXVK no-budget fallback, 1 restores driver queries
+[FEX3-GAP] v1 enabled=0 threshold_us=50000 capacity=32; one thread tick query per Present
+[FEX3-MEMQUERY] v1 enabled=0 threshold_us=1000 capacity=32; native memory-properties2 queries, two CPU queries per call
+[FEX3-YIELD] v1 enabled=1 burst=64 window_us=2000 ineffective_us=2 pause_us=50
+[FEX3-JITLOG] v1 mode=async; bounded statistics queue; faults keep original path
+[FEX3-CORES] v1 automatic=prefer 0-2 (fallback if unavailable); explicit guest affinity preserved
+[FEX3-BALANCE] v1 stable=1 max_moves=1 pair_gain_gt_permille=50; projected registered loads only
+[FEX3-FASTAPI] v1 enabled=1 QPC/delay native gateway; live handler check; original clock, APC and deadlines
+[FEX3-POLL] v1 enabled=1 counters=256 retained per-thread slots; yield shares 100ns monotonic samples; no clock scaling
+[FEX3-DXVKCORE] v1 requested=0 enabled=0 cores=f priorities=fffffffff0000000 core_rc=0 priority_rc=0 auto_core3=0; exact dxvk-cs only, core=3 priority=63
+[FEX3-DXVKPOLICY] v2 balance=1 legacy_core3=0 effective_offload=0; balanced uses ordinary application worker placement and priority
+[INIT] core balancing on (no-balance.txt)
+[SD-SCHED-V17] mode=auto coremask=process&7 periodic=1; explicit affinity, shader and core3 helpers preserved; no-balance.txt disables periodic updates
+[SD-SHADER] v1 affinity=1 cache=1; application cores 0-2, priority unchanged, scoped NAK allocation reuse
+[SD-PERF] v1 requested=1 active=1 interval_ms=10000; normal Launch only; existing thread/driver/wait/compiler/IO counters
+[SD-APC-V18] enabled=1 active=1; accepted user APC wakes target queued waiters; legacy broad paths unchanged
+[SD-SYNC-V16] filter=1 active=1; IOCP/timer notices skip event/mutex/semaphore/thread queues; global APC/resume/exit unchanged
+[SD-DIAG] v1 enabled=1 capture_ms=30000 trigger=two-slow-windows sampler=off; timing only, 720p unchanged
+[SD-SYNC-MODE] v1 mode=2 profile=1; 0=server 1=direct 2=direct-queued; original startup/APC handlers
+[SD-INPUT] policy=gamepad-only trace=off production=on (max 128 changes per source)
+[SD-INPUT] keyboard VK: B=58 A=44 Y=41 X=57 Plus=1b Minus=0d
+[INIT] display devices registered (no-display-devices.txt)
+[INIT] windows shown by the framebuffer (framebuffer.txt)
+[SD-VK] build=sleepingdogs-launcher-v1-native-h4-v9 Mesa=26.2.2 commit=b297e230ef88c6c88df2561becf864f979f494a6
+[INIT] Mesa from mesa-switch: OpenGL through nvc0, Vulkan through NVK; Vulkan probe off (vulkan-probe.txt)
+[FEX3] mode=Sleeping Dogs; one NRO; target=sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe
+wine-nx-runtime: generic Wine ntdll PE loader path
+[BUILD] sleepingdogs-launcher-v1-native-h4-v9
+[SD-VA] base=0x400000 size=0x10e5000 hook_calls=1 guard=held range=free
+[SD-VA] Wine preload exclusion=400000-14e5000
+[SDCACHE] sdmc reads cached: 128 KB chunks, 8 per file, 8 MB in all
+[INIT] verbose traces off (verbose.txt)
+[FEX3-HOT] enabled=0 sample_period_ms=50 targets=2; sampled residency includes waits; diagnostic only
+[INIT] profiler off (profile.txt)
+[INIT] windows shown by the framebuffer
+[TARGET] sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/HKShip.exe
+[SD-REG] installation metadata disabled
+[FEX-CACHE] path=sdmc:/switch/sleepingdogs-fex/drive_c/dxvk-cache status=existing errno=0 persistence=unverified; continuing
+[NET] socketInitializeDefault OK
+[INIT] Wine paths/unix bridge ready
+[SD-ALIAS] low arena Wine guard registered before guest allocations
+[INIT] virtual memory ready
+[INIT] Wine NLS/environment ready
+[INIT] processors=4 reported_memory=3285 MB reported_used=3249 MB (launcher/report-memory-mb.txt, default 1280, 0=real; real totals in [SD-MEMBUDGET])
+[INIT] shared data clock initialized
+[INIT] server process initialized
+[SD-CRYPTO] rsaenh provider registry views=1 status=00000000
+[SD-AUDIO] DirectSound8/XAudio2.7 COM registration status=00000000
+[SD-REGISTRY] Sleeping Dogs installed flag status=00000000
+[IMAGE] base=0x400000 size=0x10e5000 preferred=0x400000 entry_rva=0xbd80 machine=0x14c
+[IMAGE] subsystem=2 dll_char=0x8000 imports=0xf74874/0x1b8 sections=7
+[ARGS] no args.txt; CommandLine='C:\SleepingDogs\HKShip.exe'
+[STDIO] stdin=0x110 stdout=0x114 stderr=0x118 (sdmc:/switch/sleepingdogs-fex/std*.txt)
+[PEB] image=C:\SleepingDogs\HKShip.exe nt=\??\C:\SleepingDogs\HKShip.exe
+[WOW64] PEB32 status=00000000
+[WOW64] api set schema=0x220000
+[LDR] alloc_module basename='HKShip.exe' len=10 base=0x400000
+[WOW64] native loader bootstrap status=00000000
+[WOW64] loading native module 0
+[TR] open \??\C:\SleepingDogs\ntdll.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\ntdll.dll
+[TR] map_view -> 00000000 base=0x180000000
+[TR] build_module \??\C:\windows\system32\ntdll.dll base=0x180000000
+[TR] relocs base=0x180000000 size=0x360000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='ntdll.dll' len=9 base=0x180000000
+[LDR] captured PE ntdll base=0x180000000
+[TR] fixup_imports enter ntdll.dll
+[WOW64] native module 0 status=00000000
+[WOW64] loading native module 1
+[TR] open \??\C:\SleepingDogs\wow64.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\wow64.dll
+[TR] map_view -> 00000000 base=0x7fffee0000
+[TR] build_module \??\C:\windows\system32\wow64.dll base=0x7fffee0000
+[TR] relocs base=0x7fffee0000 size=0x120000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='wow64.dll' len=9 base=0x7fffee0000
+[TR] fixup_imports enter wow64.dll
+[TR] fixup_imports 1 deps
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 1 status=00000000
+[WOW64] loading native module 2
+[TR] open \??\C:\SleepingDogs\wow64win.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\wow64win.dll
+[TR] map_view -> 00000000 base=0x7fffdb0000
+[TR] build_module \??\C:\windows\system32\wow64win.dll base=0x7fffdb0000
+[TR] relocs base=0x7fffdb0000 size=0x130000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='wow64win.dll' len=12 base=0x7fffdb0000
+[TR] fixup_imports enter wow64win.dll
+[TR] fixup_imports 3 deps
+[TR] import wow64.dll -> wow64.dll build=00000000
+[TR] load_dll wow64.dll -> 00000000
+[TR] import win32u.dll -> win32u.dll build=00000000
+[TR] open \??\C:\SleepingDogs\win32u.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\win32u.dll
+[TR] map_view -> 00000000 base=0x7fffcc0000
+[TR] build_module \??\C:\windows\system32\win32u.dll base=0x7fffcc0000
+[TR] relocs base=0x7fffcc0000 size=0xf0000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='win32u.dll' len=10 base=0x7fffcc0000
+[TR] fixup_imports enter win32u.dll
+[TR] fixup_imports 1 deps
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[TR] load_dll win32u.dll -> 00000000
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 2 status=00000000
+[WOW64] loading native module 3
+[TR] open \??\C:\SleepingDogs\libwow64fex.dll -> c0000034
+[TR] qsection->00000000 machine=0xaa64 cur=0xaa64 contains_code=1
+[TR] map_view \??\C:\windows\system32\libwow64fex.dll
+[TR] map_view -> 00000000 base=0x7fff8a0000
+[TR] build_module \??\C:\windows\system32\libwow64fex.dll base=0x7fff8a0000
+[TR] relocs base=0x7fff8a0000 size=0x415000
+[TR] relocs done; fixup imports next
+[LDR] alloc_module basename='libwow64fex.dll' len=15 base=0x7fff8a0000
+[TR] fixup_imports enter libwow64fex.dll
+[TR] fixup_imports 2 deps
+[TR] import wow64.dll -> wow64.dll build=00000000
+[TR] load_dll wow64.dll -> 00000000
+[TR] import ntdll.dll -> ntdll.dll build=00000000
+[TR] load_dll ntdll.dll -> 00000000
+[WOW64] native module 3 status=00000000
+[LDR] patching PE ntdll dispatchers; ntdll base=0x180000000
+[LDR] PE ntdll dispatchers patched syscall=0x62b5234ff8 unix=0x62b523512c handle=0x62b73332d0 teb=0x7ffc0000
+[LDR] swapping ProcessHeap shim=0x1000 -> real=0x240000
+[LDR] version_init() done
+[NLS] Init: trying unix path=/switch/sleepingdogs-fex/share/wine/nls/locale.nls system_dir_prefix='\??\C:\windows\system32\'
+[NLS] open_nls_data_file -> status=0x00000000 file_handle=0x15c
+[NLS] NtCreateSection -> status=0x00000000 section=0x160
+[NLS] map_section -> status=0x00000000 *ptr=0x260000 mapsize=0xc3000
+[NLS] NtInitializeNlsFiles return status=0x00000000 lcid=0x00000409
+[LDR] locale_init() done
+[LDR] PE ntdll hash_table initialized (32 buckets at 0x1800c0bf0, 6 modules inserted)
+[SD-CODE-MEM] eager_spare=unverified; install the matching libwow64fex.dll from the full update
+[SD-SCRATCH] reserve slots=4 bytes=33685504; protected=1; live code unchanged
+[FEX-HOST] ABI 3 installed; native heap/scratch, dual mapping; x18 guarded
+[FEX2] host ABI and exception bridge installed before CPU init
+[FEX3-UNWIND] PASS shared module index; ntdll/FEX/WOW64 unwind tables found
+[ATTACH] enter ntdll.dll flags=0x80000004 entry=0x1800801b0
+[ATTACH] calling DllMain ntdll.dll entry=0x1800801b0
+[ATTACH] DllMain ntdll.dll returned status=0x00000000
+[ATTACH] enter wow64.dll flags=0x80000004 entry=0x7ffff01720
+[ATTACH] calling DllMain wow64.dll entry=0x7ffff01720
+[ATTACH] DllMain wow64.dll returned status=0x00000000
+[ATTACH] enter wow64win.dll flags=0x80000004 entry=0x7fffdcde14
+[ATTACH] enter win32u.dll flags=0x80000004 entry=0x7fffcf0778
+[ATTACH] calling DllMain win32u.dll entry=0x7fffcf0778
+[ATTACH] DllMain win32u.dll returned status=0x00000000
+[ATTACH] calling DllMain wow64win.dll entry=0x7fffdcde14
+[ATTACH] DllMain wow64win.dll returned status=0x00000000
+[ATTACH] enter libwow64fex.dll flags=0x80000004 entry=0x7fffa72684
+[ATTACH] calling DllMain libwow64fex.dll entry=0x7fffa72684
+[ATTACH] DllMain libwow64fex.dll returned status=0x00000000
+[FEX2] selected libwow64fex.dll through native bootstrap
+[WOW64] native DLLs status=00000000
+[WOW64] guest ntdll=0x7bc00000 init block status=00000000
+[WOW64] loader ready: TEB32=0x7ffc2000 stack=0166fff0 entry=0040bd80
+[WOW64] main thread priority 44 -> 59 rc=0
+[WOW64] entering Wine's x86 LdrInitializeThunk via ARM64 wow64.dll
+[SD-CPU-TOPOLOGY] v1 logical=4 cores=4 mask=f legacy_records=6 ex_bytes=368
+[WINE] [NXLDR] enter name=\??\C:\windows\system32\libwow64fex.dll search=0000007FFFF10428 flags_ptr=0000000000000000 module_ptr=0000000563B37828 teb=000000007FFC0000
+[WINE] [NXLDR] load name=\??\C:\windows\system32\libwow64fex.dll status=00000000 wm=0000000BD49B4178
+[WINE] [NXLDR] attach name=\??\C:\windows\system32\libwow64fex.dll status=00000000 base=0000007FFF8A0000
+[WINE] [NXLDR] return name=\??\C:\windows\system32\libwow64fex.dll status=00000000 module=0000007FFF8A0000
+[WINE] [NXLDR] enter name=\??\C:\windows\system32\wow64win.dll search=0000007FFFF10428 flags_ptr=0000000000000000 module_ptr=0000000563B37828 teb=000000007FFC0000
+[WINE] [NXLDR] load name=\??\C:\windows\system32\wow64win.dll status=00000000 wm=0000000BD4312078
+[WINE] [NXLDR] attach name=\??\C:\windows\system32\wow64win.dll status=00000000 base=0000007FFFDB0000
+[WINE] [NXLDR] return name=\??\C:\windows\system32\wow64win.dll status=00000000 module=0000007FFFDB0000
+[FEX2-ABI] v4 checking PE/native callback preserves x18
+[FEX2-ABI] PASS callback preserves Wine TEB
+[FEX2] process CRT
+[FEX2-ALLOC] v2 Wine-managed address limits; checking before CRT
+[FEX2-ALLOC] PASS reserve/commit/write/free and extended alignment
+[FEX2-TIMER] v3 physical counter CNTPCT_EL0; checking before CRT
+[FEX2-TIMER] PASS physical counter frequency=0x000000000124f800
+[FEX2] process CRT ready
+[FEX3-HEAP] v8 native private CRT/container heap; no guest spans
+[FEX3-HEAP] PASS native small/large/aligned allocation, write and free
+[FEX2] thread handlers
+[FEX3-DECODE] v1 inline worklists=64; ordered-tree overflow; no persistent cache required
+[FEX3-JIT-CONFIG] maxinst=500 multiblock=1; latency candidate
+[FEX3-PRESET] fastest x87=64 scalar_tso=0 vector_tso=0 memcpy_tso=0 multiblock=1 smc=mtrack
+[FEX3-JIT] v1 cumulative completed-call timing; nested stages overlap; reports after compilation locks unwind
+[FEX3-EMIT] v1 cached writable buffer; bounded stores, RX cursors preserved
+[SD-DB] execution-breakpoints v1 DR0-DR3 per-thread
+[SD-COMPILER-MEM] fex=v2 compile_slots=2 decoder=instruction-limit ir_mib=16
+[FEX3-FP] context v1 MXCSR, x87 TOP/F64, legacy registers
+[SD-FEX-CONTEXT] v1 exact x87 import; normal/zero shortcut; all rounding modes; full context/suspend preserved
+[FEX3-ALIAS] generation-validated PE alias snapshots
+[FEX2] core init
+[FEX3-SMC] v2 static game/D3D9 text entry guards; dynamic code keeps instruction guards
+[FEX3-MEM] v3 resident native L1; enabled L2 lazy commit<=64 KiB
+[FEX3-SCRATCH] v1 reuse disowned compiler buffers before growth; capacities unchanged
+[FEX3-CODE] v1 negotiate fresh cache size; preserve live code references
+[FEX3-CALLRET] v1 prediction stack=256 KiB/thread; guard recovery retained
+[FEX3-GEX] v1 bounded exception-route diagnostics; behavior unchanged
+[FEX-JIT] slot=0 size=16384 rw=0x2388054000 rx=0x3e34b04000
+[FEX2] images mapped
+[HMAP] views of sections with no file stay read-write: Horizon cannot change the protection of memory mapped from other pages
+[FEX2] thread create
+[FEX3-LOOKUP] v3 index=rip-xor-rip16 dispatcher=L1-first L2=off native=1 MiB/thread; full resident L1
+[FEX-JIT] slot=1 size=134217728 rw=0x69ede5d000 rx=0x3f988a000
+[FEX2] thread ready
+[FEX2] first x86 dispatch
+[FEX3-SCRATCH] native size=16777216 ptr=0xbd4a5e000
+[FEX3-SMC2] blocks=1 full=0 entry=0 guard_branches_avoided=0
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=0 call=0 thread=0 phase=idle interface=0 method=0 object=00000000 age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00000000,00000000,00000000,00000000,00000000
+[FEX3-SMC2] blocks=4096 full=0 entry=0 guard_branches_avoided=0
+[NLS] Init: trying unix path=/switch/sleepingdogs-fex/share/wine/nls/locale.nls system_dir_prefix='\??\C:\windows\system32\'
+[NLS] open_nls_data_file -> status=0x00000000 file_handle=0x1b0
+[NLS] NtCreateSection -> status=0x00000000 section=0x1b4
+[NLS] map_section -> status=0x00000000 *ptr=0x1670000 mapsize=0xc3000
+[NLS] NtInitializeNlsFiles return status=0x00000000 lcid=0x00000409
+[FEX3-SMC2] blocks=8192 full=0 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=12288 full=0 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=imm32.dll search=00000001 flags_ptr=0166FA00 module_ptr=0166FA04 teb=7FFC2000
+[WINE] [NXLDR] path name=imm32.dll status=00000000 path=00398648
+[WINE] [NXLDR] load name=imm32.dll status=00000000 wm=00394870
+[WINE] [NXLDR] attach name=imm32.dll status=00000000 base=FC1C0000
+[WINE] [NXLDR] return name=imm32.dll status=00000000 module=FC1C0000
+[FEX3-SMC2] blocks=16384 full=0 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=uxtheme.dll search=00000001 flags_ptr=0166F6E8 module_ptr=0166F6EC teb=7FFC2000
+[WINE] [NXLDR] path name=uxtheme.dll status=00000000 path=00398648
+[WINE] [NXLDR] load name=uxtheme.dll status=00000000 wm=00394930
+[WINE] [NXLDR] attach name=uxtheme.dll status=00000000 base=FC150000
+[WINE] [NXLDR] return name=uxtheme.dll status=00000000 module=FC150000
+[WINE] [NXLDR] enter name=msacm32.dll search=00000001 flags_ptr=0166DB94 module_ptr=0166DB98 teb=7FFC2000
+[WINE] [NXLDR] path name=msacm32.dll status=00000000 path=003986D8
+[WINE] [NXLDR] load name=msacm32.dll status=00000000 wm=00393C70
+[WINE] [NXLDR] attach name=msacm32.dll status=00000000 base=FD5A0000
+[WINE] [NXLDR] return name=msacm32.dll status=00000000 module=FD5A0000
+[WINE] [NXLDR] enter name=msacm32.dll search=00000001 flags_ptr=0166DB60 module_ptr=0166DB64 teb=7FFC2000
+[WINE] [NXLDR] path name=msacm32.dll status=00000000 path=003986D8
+[WINE] [NXLDR] load name=msacm32.dll status=00000000 wm=00393C70
+[WINE] [NXLDR] attach name=msacm32.dll status=00000000 base=FD5A0000
+[WINE] [NXLDR] return name=msacm32.dll status=00000000 module=FD5A0000
+[FEX3-SMC2] blocks=20480 full=0 entry=0 guard_branches_avoided=0
+[LIFECYCLE] baseline tid=0 code=00000000 running=1 objects=1 connections=1 zombies=0 reaped=0 pipes=4 tebs=0 pthreads=0 exits=0 engines=-1
+[THREAD] NtCreateThreadEx tid=8 start=0xfd5715ab param=0x0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0xfd5715ab TEB32=0x7ffb2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-COMPILER-WAIT] slots=2 waits=1
+[FEX3-SCRATCH] native size=16777216 ptr=0xbd5a5f000
+[SD-COMPILER-WAIT] slots=2 waits=2
+[SD-COMPILER-WAIT] slots=2 waits=3
+[WINE] [NXLDR] enter name=overlayrender.dll search=00000009 flags_ptr=0166F774 module_ptr=0166F778 teb=7FFC2000
+[WINE] [NXLDR] path name=overlayrender.dll status=00000000 path=00398768
+[WINE] [NXLDR] load name=overlayrender.dll status=c0000135 wm=00000000
+[WINE] [NXLDR] return name=overlayrender.dll status=c0000135 module=00000000
+[WINE] 0004:err:dnsapi:DllMain No libresolv support, expect problems
+[FEX3-SMC2] blocks=24576 full=0 entry=0 guard_branches_avoided=0
+[SD-COMPILER-WAIT] slots=2 waits=4
+[SD-COMPILER-WAIT] slots=2 waits=8
+[WINE] [NXLDR] enter name=pandoraclient.dll search=00000001 flags_ptr=020DFF04 module_ptr=020DFF08 teb=7FFB2000
+[WINE] [NXLDR] path name=pandoraclient.dll status=00000000 path=0039FE00
+[SD-COMPILER-WAIT] slots=2 waits=16
+[SD-DB] arm tid=4 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[WINE] [NXLDR] load name=pandoraclient.dll status=00000000 wm=020F0C78
+[FEX3-SMC2] blocks=28672 full=9 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] attach name=pandoraclient.dll status=00000000 base=FC0C0000
+[WINE] [NXLDR] return name=pandoraclient.dll status=00000000 module=FC0C0000
+[SD-COMPILER-WAIT] slots=2 waits=32
+[FEX3-SMC2] blocks=32768 full=10 entry=0 guard_branches_avoided=0
+[SD-COMPILER-WAIT] slots=2 waits=64
+[SD-DIRECT] allocated 1000 MiB RW; low guest alias; high backing; one physical copy
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=00000002
+[FEX3-SEH] ticket=1 tid=4 stage=enter code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=1 tid=4 stage=stack-ready code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=1 tid=4 stage=continue-dispatcher code=80000004 address=5b2e92 pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=36864 full=14 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=0061ce88 mask=4 dr6=00000006
+[FEX3-SEH] ticket=2 tid=4 stage=enter code=80000004 address=61ce88 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=2 tid=4 stage=stack-ready code=80000004 address=61ce88 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=2 tid=4 stage=continue-dispatcher code=80000004 address=61ce88 pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=40960 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=45056 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=49152 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=53248 full=14 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=0061ce88 mask=4 dr6=00000006
+[FEX3-SEH] ticket=3 tid=4 stage=enter code=80000004 address=61ce88 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=3 tid=4 stage=stack-ready code=80000004 address=61ce88 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=3 tid=4 stage=continue-dispatcher code=80000004 address=61ce88 pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=57344 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=61440 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=65536 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=69632 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=73728 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=77824 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=81920 full=14 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=86016 full=14 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=00000006
+[FEX3-SEH] ticket=4 tid=4 stage=enter code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=4 tid=4 stage=stack-ready code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=4 tid=4 stage=continue-dispatcher code=80000004 address=5b2e92 pc=180067d60 sp=563b37410
+[SD-DB] hit tid=4 eip=0068d35a mask=8 dr6=0000000e
+[FEX3-SEH] ticket=5 tid=4 stage=enter code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=5 tid=4 stage=stack-ready code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=5 tid=4 stage=continue-dispatcher code=80000004 address=68d35a pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=90112 full=14 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=0000000e
+[FEX3-SEH] ticket=6 tid=4 stage=enter code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=6 tid=4 stage=stack-ready code=80000004 address=5b2e92 pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=6 tid=4 stage=continue-dispatcher code=80000004 address=5b2e92 pc=180067d60 sp=563b37410
+[SD-DB] hit tid=4 eip=0068d35a mask=8 dr6=0000000e
+[FEX3-SEH] ticket=7 tid=4 stage=enter code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=7 tid=4 stage=stack-ready code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=7 tid=4 stage=continue-dispatcher code=80000004 address=68d35a pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=94208 full=14 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=004c0a8a mask=1 dr6=0000000f
+[FEX3-SEH] ticket=8 tid=4 stage=enter code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=8 tid=4 stage=stack-ready code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=8 tid=4 stage=continue-dispatcher code=80000004 address=4c0a8a pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=98304 full=14 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=advapi32.dll search=00000001 flags_ptr=0166F834 module_ptr=0166F838 teb=7FFC2000
+[WINE] [NXLDR] path name=advapi32.dll status=00000000 path=020E1F68
+[WINE] [NXLDR] load name=advapi32.dll status=00000000 wm=00391C68
+[WINE] [NXLDR] attach name=advapi32.dll status=00000000 base=FF9D0000
+[WINE] [NXLDR] return name=advapi32.dll status=00000000 module=FF9D0000
+[FEX3-SMC2] blocks=102400 full=21 entry=0 guard_branches_avoided=0
+[FEX3-JIT] phase=dispatch_compile uptime_ms=5000 calls=26925 total_us=2657913 peak_us=6199 over20ms=0 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=5000 calls=26427 total_us=2368974 peak_us=6111 over20ms=0 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=5000 calls=566 total_us=1181 peak_us=170 over20ms=0 over50ms=0
+[FEX3-SMC2] blocks=106496 full=21 entry=0 guard_branches_avoided=0
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=0 call=0 thread=0 phase=idle interface=0 method=0 object=00000000 age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00000000,00000000,00000000,00000000,00000000
+[WINE] [NXLDR] enter name=pandora_api.dll search=00000001 flags_ptr=0166F948 module_ptr=0166F94C teb=7FFC2000
+[WINE] [NXLDR] path name=pandora_api.dll status=00000000 path=020FD000
+[WINE] [NXLDR] load name=pandora_api.dll status=00000000 wm=00394930
+[WINE] [NXLDR] attach name=pandora_api.dll status=00000000 base=FBF10000
+[WINE] [NXLDR] return name=pandora_api.dll status=00000000 module=FBF10000
+[FEX3-SMC2] blocks=110592 full=21 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=12 start=0x500ca0 param=0x14b68c8 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=12 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x500ca0 TEB32=0x7ffa2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=12 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-COMPILER-WAIT] slots=2 waits=128
+[SD-DB] hit tid=4 eip=0068d35a mask=8 dr6=0000000f
+[FEX3-SEH] ticket=9 tid=4 stage=enter code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=9 tid=4 stage=stack-ready code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=9 tid=4 stage=continue-dispatcher code=80000004 address=68d35a pc=180067d60 sp=563b37410
+[FEX3-SMC2] blocks=114688 full=25 entry=0 guard_branches_avoided=0
+[SD-DB] hit tid=4 eip=004c0a8a mask=1 dr6=0000000f
+[FEX3-SEH] ticket=10 tid=4 stage=enter code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=10 tid=4 stage=stack-ready code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=10 tid=4 stage=continue-dispatcher code=80000004 address=4c0a8a pc=180067d60 sp=563b37410
+[SD-DB] hit tid=4 eip=0068d35a mask=8 dr6=0000000f
+[FEX3-SEH] ticket=11 tid=4 stage=enter code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=11 tid=4 stage=stack-ready code=80000004 address=68d35a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=11 tid=4 stage=continue-dispatcher code=80000004 address=68d35a pc=180067d60 sp=563b37410
+[SD-DB] hit tid=4 eip=004c0a8a mask=1 dr6=0000000f
+[FEX3-SEH] ticket=12 tid=4 stage=enter code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=12 tid=4 stage=stack-ready code=80000004 address=4c0a8a pc=7fff9e5b08 sp=563b37880
+[FEX3-SEH] ticket=12 tid=4 stage=continue-dispatcher code=80000004 address=4c0a8a pc=180067d60 sp=563b37410
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=0000000f
+[SD-DB] hit tid=4 eip=004c0a8a mask=1 dr6=0000000f
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166EAD8 module_ptr=0166EADC teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=020FD000
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=0000000f
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166EADC module_ptr=0166EAE0 teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=020FD000
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[SD-DB] hit tid=4 eip=005b2e92 mask=2 dr6=0000000f
+[THREAD] NtCreateThreadEx tid=16 start=0xa813a0 param=0x3017a000 flags=0x1 stack_reserve=0x0 err=0
+[THREAD] NtCreateThreadEx tid=20 start=0xa813a0 param=0x3017a000 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=20 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xa813a0 TEB32=0x7ff82000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=20 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[THREAD] NtCreateThreadEx tid=24 start=0xa813a0 param=0x3017a000 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=24 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xa813a0 TEB32=0x7ff72000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=24 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-THREAD-DEBUG] apply tid=16 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xa813a0 TEB32=0x7ff92000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=16 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[THREAD] NtCreateThreadEx tid=28 start=0x9b7ef0 param=0x14b7148 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=28 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x9b7ef0 TEB32=0x7ff62000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=28 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[FEX3-SMC2] blocks=118784 full=25 entry=0 guard_branches_avoided=0
+[NXWIN] thread 001c shows hwnd 0x20030 with 3 (style 0x4cb0000, visible 0) owner=0x0 class=L"OrangeLotusWindowClass" title=L"Sleeping Dogs"
+[NXWIN] thread 001c activates hwnd 0x20030 (style 0x15cb0000), previous 0x0, mouse 0 focus 1
+[NXWIN] WM_ACTIVATEAPP 1 to hwnd 0x20030 (thread 0000 -> 001c)
+[NXWIN] WM_ACTIVATEAPP 1 to hwnd 0x1003a (thread 0000 -> 001c)
+[WINE] [NXDELAY] enter base=FC1C0000 desc=FC1D2344 addr=FC1D50EC flags=00000000
+[WINE] [NXDELAY] dll=ole32.dll id=1 phmod=FC1D50E0 current=00000000
+[WINE] [NXDELAY] loading dll=ole32.dll
+[WINE] [NXLDR] enter name=ole32.dll search=00000000 flags_ptr=00000000 module_ptr=FC1D50E0 teb=7FF62000
+[WINE] [NXLDR] path name=ole32.dll status=00000000 path=02108CC8
+[WINE] [NXLDR] load name=ole32.dll status=00000000 wm=00393370
+[WINE] [NXLDR] attach name=ole32.dll status=00000000 base=FEDA0000
+[WINE] [NXLDR] return name=ole32.dll status=00000000 module=FEDA0000
+[WINE] [NXDELAY] loaded dll=ole32.dll status=00000000 module=FEDA0000
+[WINE] [NXDELAY] resolve dll=ole32.dll proc=CoRegisterInitializeSpy
+[WINE] [NXDELAY] success dll=ole32.dll id=1 proc=FECBBCD0
+[WINE] [NXDELAY] enter base=FC1C0000 desc=FC1D2344 addr=FC1D50E8 flags=00000000
+[WINE] [NXDELAY] dll=ole32.dll id=0 phmod=FC1D50E0 current=FEDA0000
+[WINE] [NXDELAY] resolve dll=ole32.dll proc=CoInitializeEx
+[WINE] [NXDELAY] success dll=ole32.dll id=0 proc=FECBCE40
+[WINE] [NXLDR] enter name=imm32 search=00000001 flags_ptr=03AAF3DC module_ptr=03AAF3E0 teb=7FF62000
+[WINE] [NXLDR] path name=imm32 status=00000000 path=02108F28
+[WINE] [NXLDR] load name=imm32 status=00000000 wm=00394870
+[WINE] [NXLDR] attach name=imm32 status=00000000 base=FC1C0000
+[WINE] [NXLDR] return name=imm32 status=00000000 module=FC1C0000
+[SD-NVK-V14.1] instance/disk cache_id=1e3909c6aaf647614822cc8a3ee58d9e99a9e3e1; matches v14.1 pipeline identity
+[SD-NVK-V14] shader compiler SM53: texture/global-load priority=200 select_limit=8 FADD.SAT=correct; v13 private GPU memory and ZCULL guards retained
+[FEX3-SMC2] blocks=122880 full=25 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=nvapi.dll search=00000001 flags_ptr=03AAFD4C module_ptr=03AAFD50 teb=7FF62000
+[WINE] [NXLDR] path name=nvapi.dll status=00000000 path=02109C38
+[WINE] [NXLDR] load name=nvapi.dll status=c0000135 wm=00000000
+[WINE] [NXLDR] return name=nvapi.dll status=c0000135 module=00000000
+[SD-NDX-WORKER] name=dxvk-submit handle=2916794 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry
+[SD-NDX-WORKER] name=dxvk-queue handle=2949561 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry
+[SD-NDX-WORKER] name=dxvk-cs handle=2982328 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry
+[SD-NDX-COM] D3D11CreateDevice hr=00000000 device=00010004 context=00010005 feature=b000 native=ARM64
+[WINE] [NXLDR] enter name=user32.dll search=00000001 flags_ptr=03AAFAF0 module_ptr=03AAFAF4 teb=7FF62000
+[WINE] [NXLDR] path name=user32.dll status=00000000 path=02109C38
+[WINE] [NXLDR] load name=user32.dll status=00000000 wm=00391920
+[WINE] [NXLDR] attach name=user32.dll status=00000000 base=FFBE0000
+[WINE] [NXLDR] return name=user32.dll status=00000000 module=FFBE0000
+[WINE] [NXLDR] enter name=gdi32.dll search=00000001 flags_ptr=03AAFAF0 module_ptr=03AAFAF4 teb=7FF62000
+[WINE] [NXLDR] path name=gdi32.dll status=00000000 path=02109C38
+[WINE] [NXLDR] load name=gdi32.dll status=00000000 wm=00391AC0
+[WINE] [NXLDR] attach name=gdi32.dll status=00000000 base=FFA70000
+[WINE] [NXLDR] return name=gdi32.dll status=00000000 module=FFA70000
+[STDOUT] ERROR: Could Not Get Primary Adapter Handle
+[SD-NDX-COM] SWAPCHAIN native 1280x720; trusted window; guest HWND retained as metadata
+[SD-NDX-CALL] BEGIN call=667 thread=81ff name=Map interface=14 method=14 object=00010010 presents=0 time_us=22158810990 args=00010294,00000000,00000004,00000000,0166f7ac
+[SD-NDX-CALL] END call=667 thread=81ff name=Map ret=00000000 fault=00000000 aux=1 bytes=4194304 wall_us=2765 presents=0 maps=1 copy_bytes=0
+[SD-NDX-CALL] BEGIN call=668 thread=81ff name=BindMap interface=0 method=3 object=00000000 presents=0 time_us=22158814330 args=00000001,03ef0000,00400000,00000000,00000000
+[SD-NDX-CALL] END call=668 thread=81ff name=BindMap ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=46 presents=0 maps=1 copy_bytes=0
+[SD-NDX-CALL] BEGIN call=669 thread=81ff name=Unmap interface=14 method=15 object=00010010 presents=0 time_us=22158816095 args=00010294,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=669 thread=81ff name=Unmap ret=00000000 fault=00000000 aux=1 bytes=0 wall_us=1207 presents=0 maps=0 copy_bytes=4194304
+[SD-NDX-CALL] BEGIN call=671 thread=81ff name=Map interface=14 method=14 object=00010010 presents=0 time_us=22158819790 args=00010295,00000000,00000004,00000000,0166f7ac
+[SD-NDX-CALL] END call=671 thread=81ff name=Map ret=00000000 fault=00000000 aux=2 bytes=4194304 wall_us=1256 presents=0 maps=1 copy_bytes=4194304
+[SD-NDX-CALL] BEGIN call=672 thread=81ff name=BindMap interface=0 method=3 object=00000000 presents=0 time_us=22158821063 args=00000002,03ef0000,00400000,00000000,00000000
+[SD-NDX-CALL] END call=672 thread=81ff name=BindMap ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=42 presents=0 maps=1 copy_bytes=4194304
+[SD-NDX-CALL] BEGIN call=673 thread=81ff name=Unmap interface=14 method=15 object=00010010 presents=0 time_us=22158821121 args=00010295,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=673 thread=81ff name=Unmap ret=00000000 fault=00000000 aux=2 bytes=0 wall_us=1192 presents=0 maps=0 copy_bytes=8388608
+[SD-NDX-CALL] BEGIN call=675 thread=81ff name=Map interface=14 method=14 object=00010010 presents=0 time_us=22158824670 args=00010296,00000000,00000004,00000000,0166f7ac
+[SD-NDX-CALL] END call=675 thread=81ff name=Map ret=00000000 fault=00000000 aux=3 bytes=5242880 wall_us=2930 presents=0 maps=1 copy_bytes=8388608
+[SD-NDX-CALL] BEGIN call=676 thread=81ff name=BindMap interface=0 method=3 object=00000000 presents=0 time_us=22158828269 args=00000003,042f0000,00500000,00000000,00000000
+[SD-NDX-CALL] END call=676 thread=81ff name=BindMap ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=53 presents=0 maps=1 copy_bytes=8388608
+[SD-NDX-CALL] BEGIN call=677 thread=81ff name=Unmap interface=14 method=15 object=00010010 presents=0 time_us=22158828646 args=00010296,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=677 thread=81ff name=Unmap ret=00000000 fault=00000000 aux=3 bytes=0 wall_us=1429 presents=0 maps=0 copy_bytes=13631488
+[SD-NDX-CALL] BEGIN call=679 thread=81ff name=Map interface=14 method=14 object=00010010 presents=0 time_us=22158832758 args=00010297,00000000,00000004,00000000,0166f7ac
+[SD-NDX-CALL] END call=679 thread=81ff name=Map ret=00000000 fault=00000000 aux=4 bytes=5242880 wall_us=1657 presents=0 maps=1 copy_bytes=13631488
+[SD-NDX-CALL] BEGIN call=680 thread=81ff name=BindMap interface=0 method=3 object=00000000 presents=0 time_us=22158834431 args=00000004,042f0000,00500000,00000000,00000000
+[SD-NDX-CALL] END call=680 thread=81ff name=BindMap ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=50 presents=0 maps=1 copy_bytes=13631488
+[SD-NDX-CALL] BEGIN call=681 thread=81ff name=Unmap interface=14 method=15 object=00010010 presents=0 time_us=22158834495 args=00010297,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=681 thread=81ff name=Unmap ret=00000000 fault=00000000 aux=4 bytes=0 wall_us=1439 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=711 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872183 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=711 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=45 presents=0 maps=0 copy_bytes=18874368
+[SD-NVK-V14] ZCULL active=transient
+[SD-NDX-CALL] BEGIN call=712 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872350 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=712 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=10 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=713 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872370 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=713 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=714 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872385 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=714 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=715 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872399 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=715 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=716 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872413 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=716 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=717 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872427 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=717 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=718 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872448 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=718 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=8 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=719 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872468 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=719 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=720 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872484 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=720 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=721 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872498 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=721 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=722 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872513 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=722 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=723 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872526 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=723 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=724 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872540 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=724 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=725 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872554 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=725 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=726 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872570 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=726 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=727 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872584 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=727 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=728 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872600 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=728 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=729 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872614 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=729 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=730 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872630 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=730 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=731 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872645 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=731 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=732 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872658 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=732 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=733 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872671 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=733 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=734 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872685 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=734 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=735 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872699 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=735 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=736 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872713 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=736 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=737 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872727 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=737 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=738 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872741 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=738 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=739 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872755 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=739 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=740 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872770 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=740 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=741 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872788 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=741 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=742 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872807 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=742 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=743 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872825 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=743 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=744 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872839 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=744 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=745 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872853 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=745 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=746 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872866 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=746 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=747 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872880 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=747 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=748 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872894 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=748 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=749 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872908 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=749 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=750 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872923 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=750 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=751 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872937 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=751 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=752 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872952 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=752 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=753 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872967 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=753 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=754 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872981 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=754 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=755 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158872996 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=755 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=756 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873010 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=756 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=757 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873029 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=757 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=758 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873045 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=758 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=759 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873059 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=759 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=9 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=760 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873078 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=760 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=761 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873092 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=761 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=762 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873106 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=762 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=763 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873120 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=763 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=764 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873134 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=764 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=765 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873148 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=765 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=766 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873161 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=766 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=767 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873175 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=767 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=768 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873190 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=768 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=769 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873205 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=769 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=770 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873219 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=770 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=771 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873233 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=771 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=772 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873247 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=772 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=773 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873262 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=773 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=774 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873277 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=774 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=775 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873291 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=775 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=776 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873305 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=776 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=777 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873320 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=777 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=778 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873334 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=778 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=779 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873348 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=779 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=780 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873362 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=780 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=781 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873376 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=781 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=782 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873391 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=782 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=783 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22158873405 args=000102ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=783 thread=2a01bf name=GetData ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[FEX3-SMC2] blocks=126976 full=26 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=131072 full=30 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=C:\windows\system32\rsaenh.dll search=00000001 flags_ptr=0166F194 module_ptr=0166F198 teb=7FFC2000
+[WINE] [NXLDR] path name=C:\windows\system32\rsaenh.dll status=00000000 path=02117158
+[WINE] [NXLDR] load name=C:\windows\system32\rsaenh.dll status=00000000 wm=003949F0
+[WINE] [NXLDR] attach name=C:\windows\system32\rsaenh.dll status=00000000 base=FBE40000
+[WINE] [NXLDR] return name=C:\windows\system32\rsaenh.dll status=00000000 module=FBE40000
+[FEX3-SMC2] blocks=135168 full=30 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=iphlpapi.dll search=00000001 flags_ptr=0166F708 module_ptr=0166F70C teb=7FFC2000
+[WINE] [NXLDR] path name=iphlpapi.dll status=00000000 path=02112958
+[WINE] [NXLDR] load name=iphlpapi.dll status=00000000 wm=00394270
+[WINE] [NXLDR] attach name=iphlpapi.dll status=00000000 base=FD180000
+[WINE] [NXLDR] return name=iphlpapi.dll status=00000000 module=FD180000
+[WINE] [NXLDR] enter name=C:\windows\system32\rsaenh.dll search=00000001 flags_ptr=0166F60C module_ptr=0166F610 teb=7FFC2000
+[WINE] [NXLDR] path name=C:\windows\system32\rsaenh.dll status=00000000 path=021129D0
+[WINE] [NXLDR] load name=C:\windows\system32\rsaenh.dll status=00000000 wm=021131A8
+[WINE] [NXLDR] attach name=C:\windows\system32\rsaenh.dll status=00000000 base=FBE40000
+[WINE] [NXLDR] return name=C:\windows\system32\rsaenh.dll status=00000000 module=FBE40000
+[THREAD] NtCreateThreadEx tid=32 start=0xe4c6ee param=0x6cd96480 flags=0x1 stack_reserve=0x0 err=0
+[THREAD] NtCreateThreadEx tid=36 start=0x53ee40 param=0x1459a80 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=36 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x53ee40 TEB32=0x7ff42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=36 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-THREAD-DEBUG] apply tid=32 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xe4c6ee TEB32=0x7ff52000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=32 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[THREAD] NtCreateThreadEx tid=40 start=0x9bbf40 param=0x1459c18 flags=0x1 stack_reserve=0x0 err=0
+[THREAD] NtCreateThreadEx tid=44 start=0x97a690 param=0x1459b88 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=40 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x9bbf40 TEB32=0x7ff32000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=40 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-THREAD-DEBUG] apply tid=44 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x97a690 TEB32=0x7ff22000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=44 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-COMPILER-WAIT] slots=2 waits=256
+[FEX3-SMC2] blocks=139264 full=30 entry=0 guard_branches_avoided=0
+[SD-NDX-CALL] BEGIN call=788 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457192 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=788 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=27 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=789 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457241 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=789 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=9 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=790 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457262 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=790 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=791 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457278 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=791 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=792 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457293 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=792 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=793 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457308 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=793 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=794 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457322 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=794 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=795 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457336 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=795 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=796 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457350 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=796 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=797 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457364 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=797 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=798 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457378 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=798 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=799 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457393 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=799 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=800 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457406 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=800 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=801 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457420 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=801 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=802 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457435 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=802 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=803 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457448 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=803 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=804 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457462 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=804 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=5 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=805 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457475 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=805 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=806 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457489 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=806 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=807 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457502 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=807 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=808 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457516 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=808 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=809 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457530 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=809 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=810 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457543 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=810 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=811 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22159457563 args=000202ac,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=811 thread=2a01bf name=GetData ret=00000000 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-WORKER] name=dxvk-shader-l handle=3277231 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry
+[SD-NDX-COM] calls=1024 draws=0 presents=0 live_interfaces=895 maps=0 map_copy_bytes=18874368 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=4 zero_fill_skipped_bytes=18874368; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=0 native_copy_bytes_saved=0; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-CALL] BEGIN call=1769 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717747 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1769 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=28 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1770 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717793 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1770 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=10 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1771 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717813 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1771 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1772 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717829 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1772 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1773 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717845 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1773 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1774 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717860 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1774 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1775 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717876 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1775 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1776 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717891 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1776 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1777 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717906 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1777 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1778 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717922 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1778 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1779 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717937 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1779 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1780 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717952 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1780 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1781 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717967 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1781 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1782 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717983 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1782 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1783 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161717998 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1783 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1784 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161718013 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1784 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=6 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1785 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161718028 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1785 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1786 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161718043 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1786 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] BEGIN call=1787 thread=2a01bf name=GetData interface=14 method=29 object=00010005 presents=0 time_us=22161718058 args=00010665,00000000,00000000,00000000,00000000
+[SD-NDX-CALL] END call=1787 thread=2a01bf name=GetData ret=00000001 fault=00000000 aux=0 bytes=0 wall_us=7 presents=0 maps=0 copy_bytes=18874368
+[SD-NDX-CALL] startup trace complete; three Presents or 128 traced calls reached; normal logging continues
+[FEX3-JIT] phase=dispatch_compile uptime_ms=10029 calls=30735 total_us=3721071 peak_us=27976 over20ms=1 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=10029 calls=28691 total_us=3187645 peak_us=27694 over20ms=1 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=10029 calls=1018 total_us=8050 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=2521 draws=0 presents=0 maps=0 refs=2038 copy_bytes=18874368 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=2522 call=2522 thread=81ff phase=execute interface=12 method=15 object=00010004 age_ms=1 completed_wall_us=0 ret=00000000 fault=00000000 args=4f241c20,0000136c,00000000,0166f18c,00000000
+[SD-NDX-WORKER] name=dxvk-cache handle=3309998 ideal=-1 mask=f priority=59 query=00000000/00000000; native host thread, outside FEX guest registry
+[FEX3-SMC2] blocks=143360 full=30 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=48 start=0x4d8f30 param=0x0 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=48 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x4d8f30 TEB32=0x7ff12000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=48 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[FEX3-SMC2] blocks=147456 full=30 entry=0 guard_branches_avoided=0
+[SD-NDX-COM] FIRST_PRESENT real COM path; game/probe identified by runtime target
+[FEX3-SMC2] blocks=151552 full=30 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=155648 full=30 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E860 module_ptr=0166E864 teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[THREAD] NtCreateThreadEx tid=52 start=0xbbacd0 param=0x6e45e978 flags=0x1 stack_reserve=0x0 err=0
+[FEX3-DXVKCORE] tid=52 handle=3473833 name=HavokWorkerThread fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425590061742 shader_mode=0
+[FEX3-DXVKCORE] tid=52 handle=3473833 name=HavokWorkerThread fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425590092036 shader_mode=0
+[SD-THREAD-DEBUG] apply tid=52 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xbbacd0 TEB32=0x7ff02000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=52 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E874 module_ptr=0166E878 teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E858 module_ptr=0166E85C teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E858 module_ptr=0166E85C teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[FEX3-SMC2] blocks=159744 full=30 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=163840 full=30 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=56 start=0x549430 param=0x30180c30 flags=0x1 stack_reserve=0x0 err=0
+[SD-THREAD-DEBUG] apply tid=56 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0x549430 TEB32=0x7fef2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=56 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[FEX3-SMC2] blocks=167936 full=30 entry=0 guard_branches_avoided=0
+[SD-NDX-PROGRESS] calls=10599 draws=88 presents=87 maps=0 refs=4871 copy_bytes=858783744 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=10600 call=10600 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=5 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=15035 calls=43007 total_us=4803770 peak_us=27976 over20ms=1 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=15035 calls=30352 total_us=4056277 peak_us=27694 over20ms=1 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=15035 calls=1115 total_us=10620 peak_us=287 over20ms=0 over50ms=0
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E894 module_ptr=0166E898 teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E878 module_ptr=0166E87C teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166E878 module_ptr=0166E87C teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[FEX3-SMC2] blocks=172032 full=30 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=176128 full=30 entry=0 guard_branches_avoided=0
+[WINE] [NXLDR] enter name=kernel32.dll search=00000001 flags_ptr=0166F5F4 module_ptr=0166F5F8 teb=7FFC2000
+[WINE] [NXLDR] path name=kernel32.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=kernel32.dll status=00000000 wm=00390790
+[WINE] [NXLDR] attach name=kernel32.dll status=00000000 base=7B800000
+[WINE] [NXLDR] return name=kernel32.dll status=00000000 module=7B800000
+[FEX3-SMC2] blocks=180224 full=30 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=184320 full=30 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=188416 full=30 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=60 start=0xdf52c0 param=0x6c1ba1a8 flags=0x1 stack_reserve=0x0 err=0
+[FEX3-DXVKCORE] tid=60 handle=3604901 name=AK::IOThread fixed=0 tried=0 active=0 core=1 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662187933 shader_mode=0
+[FEX3-DXVKCORE] tid=60 handle=3604901 name=AK::IOThread fixed=0 tried=0 active=0 core=1 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662189772 shader_mode=0
+[THREAD] NtCreateThreadEx tid=64 start=0xdf52c0 param=0x6c1ba660 flags=0x1 stack_reserve=0x0 err=0
+[FEX3-DXVKCORE] tid=64 handle=3670435 name=AK::IOThread fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662222362 shader_mode=0
+[SD-THREAD-DEBUG] apply tid=64 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xdf52c0 TEB32=0x7fed2000 status=00000000
+[FEX2] thread create
+[FEX3-DXVKCORE] tid=64 handle=3670435 name=AK::IOThread fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662223543 shader_mode=0
+[FEX2] thread ready
+[SD-DB] arm tid=64 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-THREAD-DEBUG] apply tid=60 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xdf52c0 TEB32=0x7fee2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=60 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[SD-COMPILER-WAIT] slots=2 waits=512
+[THREAD] NtCreateThreadEx tid=68 start=0xdc1b90 param=0x6a065aec flags=0x1 stack_reserve=0x0 err=0
+[FEX3-DXVKCORE] tid=68 handle=3735969 name=AK::BankManager fixed=0 tried=0 active=0 core=0 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662465933 shader_mode=0
+[FEX3-DXVKCORE] tid=68 handle=3735969 name=AK::BankManager fixed=0 tried=0 active=0 core=0 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425662468045 shader_mode=0
+[SD-THREAD-DEBUG] apply tid=68 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xdc1b90 TEB32=0x7fec2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-DB] arm tid=68 mask=f dr0=004c0a8a dr1=005b2e92 dr2=0061ce88 dr3=0068d35a
+[WINE] [NXLDR] enter name=mmdevapi.dll search=00000009 flags_ptr=0166F164 module_ptr=0166F168 teb=7FFC2000
+[WINE] [NXLDR] path name=mmdevapi.dll status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=mmdevapi.dll status=00000000 wm=04F4BD98
+[WINE] [NXLDR] attach name=mmdevapi.dll status=00000000 base=FBDA0000
+[WINE] [NXLDR] return name=mmdevapi.dll status=00000000 module=FBDA0000
+[WINE] [NXLDR] enter name=winenxaudio.drv search=00000001 flags_ptr=0166E95C module_ptr=0166E960 teb=7FFC2000
+[WINE] [NXLDR] path name=winenxaudio.drv status=00000000 path=0500C1A8
+[WINE] [NXLDR] load name=winenxaudio.drv status=00000000 wm=04F4BF18
+[WINE] [NXLDR] attach name=winenxaudio.drv status=00000000 base=FBD70000
+[WINE] [NXLDR] return name=winenxaudio.drv status=00000000 module=FBD70000
+[SD-AUDIO] connect priority=3 initialized=1
+[THREAD] NtCreateThreadEx tid=72 start=0xfbdab7b0 param=0x0 flags=0x1 stack_reserve=0x0 err=0
+[WINE] [NXLDR] enter name=dsound.dll search=00000009 flags_ptr=0166F16C module_ptr=0166F170 teb=7FFC2000
+[WINE] [NXLDR] path name=dsound.dll status=00000000 path=0500C1A8
+[SD-THREAD-DEBUG] apply tid=72 dr0=004c0a8a dr1=005b2e92 dr7=00000155
+[WOW64 THREAD] entry=0xfbdab7b0 TEB32=0x7feb2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[WINE] [NXLDR] load name=dsound.dll status=00000000 wm=04F4BFD8
+[WINE] [NXLDR] attach name=dsound.dll status=00000000 base=FBC80000
+[WINE] [NXLDR] return name=dsound.dll status=00000000 module=FBC80000
+[FEX3-DXVKCORE] tid=72 handle=3899804 name=wine_mmdevapi_notification fixed=0 tried=0 active=0 core=1 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425665342453 shader_mode=0
+[FEX3-SMC2] blocks=192512 full=31 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=76 start=0xfbda35c0 param=0xb84 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0xfbda35c0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-DXVKCORE] tid=76 handle=3965338 name=audio_client_main fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425665728201 shader_mode=0
+[SD-AUDIO] create result=00000000 rate=48000 channels=2 bits=32 share=0 flags=800c0000
+[LIFECYCLE] exit tid=76 code=00000000 running=19 objects=19 connections=19 zombies=0 reaped=0 pipes=58 tebs=18 pthreads=18 exits=1 engines=-1
+[SD-AUDIO] start result=00000000
+[THREAD] NtCreateThreadEx tid=80 start=0xfbda7160 param=0x5001280 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0xfbda7160 TEB32=0x7fe92000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-DXVKCORE] tid=80 handle=4030873 name=audio_client_timer fixed=0 tried=0 active=0 core=0 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425666741613 shader_mode=0
+[THREAD] NtCreateThreadEx tid=84 start=0xfbc8df40 param=0x503a348 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0xfbc8df40 TEB32=0x7fe82000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-DXVKCORE] tid=84 handle=4096407 name=wine_dsound_mixer fixed=0 tried=0 active=0 core=1 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425666984407 shader_mode=0
+[THREAD] NtCreateThreadEx tid=88 start=0xdde0a0 param=0x6a0674c8 flags=0x1 stack_reserve=0x0 err=0
+[FEX3-DXVKCORE] tid=88 handle=4161941 name=AK::EventManager fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425667328810 shader_mode=0
+[WOW64 THREAD] entry=0xdde0a0 TEB32=0x7fe72000 status=00000000
+[FEX2] thread create
+[FEX3-DXVKCORE] tid=88 handle=4161941 name=AK::EventManager fixed=0 tried=0 active=0 core=2 mask=7 priority=59 rc=0 rollback_rc=0 read_core_rc=0 read_priority_rc=0 tick=425667331019 shader_mode=0
+[FEX2] thread ready
+[THREAD] NtCreateThreadEx tid=92 start=0xa388d0 param=0x303c5050 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0xa388d0 TEB32=0x7fe62000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-SMC2] blocks=196608 full=31 entry=0 guard_branches_avoided=0
+[SD-NDX-COM] calls=24576 draws=290 presents=290 live_interfaces=6535 maps=0 map_copy_bytes=2774538240 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=589 zero_fill_skipped_bytes=2774538240; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=4937 native_copy_bytes_saved=1311496; synchronous, checked; gameplay FPS requires hardware comparison
+[LIFECYCLE] exit tid=48 code=00000000 running=22 objects=23 connections=22 zombies=0 reaped=1 pipes=67 tebs=21 pthreads=21 exits=2 engines=-1
+[FEX3-SMC2] blocks=200704 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=204800 full=31 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=96 start=0x9b2ad0 param=0x6c28c000 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[THREAD] NtCreateThreadEx tid=100 start=0x9b2ad0 param=0x6c28c160 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe52000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-SMC2] blocks=208896 full=31 entry=0 guard_branches_avoided=0
+[SD-COMPILER-WAIT] slots=2 waits=1024
+[FEX3-SMC2] blocks=212992 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=217088 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=221184 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=225280 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=229376 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=233472 full=31 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=237568 full=31 entry=0 guard_branches_avoided=0
+[SD-NDX-PROGRESS] calls=50688 draws=2265 presents=370 maps=0 refs=6550 copy_bytes=3520075776 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=50711 call=50711 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=5 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=20035 calls=50640 total_us=9154040 peak_us=27976 over20ms=5 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=20035 calls=34853 total_us=6953637 peak_us=27694 over20ms=5 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=20035 calls=1243 total_us=15804 peak_us=287 over20ms=0 over50ms=0
+[LIFECYCLE] exit tid=100 code=00009601 running=23 objects=25 connections=23 zombies=0 reaped=2 pipes=70 tebs=22 pthreads=22 exits=3 engines=-1
+[FEX3-SMC2] blocks=241664 full=32 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=104 start=0x18018790 param=0x180233d0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x18018790 TEB32=0x7ff12000 status=00000000
+[FEX2] thread create
+[THREAD] NtCreateThreadEx tid=108 start=0x18018790 param=0x180233f4 flags=0x1 stack_reserve=0x0 err=0
+[FEX2] thread ready
+[WOW64 THREAD] entry=0x18018790 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=96 code=0000cb01 running=24 objects=27 connections=24 zombies=0 reaped=3 pipes=73 tebs=23 pthreads=23 exits=4 engines=-1
+[FEX3-SMC2] blocks=245760 full=32 entry=0 guard_branches_avoided=0
+[LIFECYCLE] exit tid=108 code=00000000 running=23 objects=27 connections=23 zombies=1 reaped=3 pipes=70 tebs=22 pthreads=22 exits=5 engines=-1
+[LIFECYCLE] exit tid=104 code=00000000 running=22 objects=27 connections=22 zombies=1 reaped=4 pipes=67 tebs=21 pthreads=21 exits=6 engines=-1
+[THREAD] NtCreateThreadEx tid=112 start=0x18018790 param=0x180233d0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x18018790 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-SMC2] blocks=249856 full=32 entry=0 guard_branches_avoided=0
+[THREAD] NtCreateThreadEx tid=116 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=116 code=00006501 running=23 objects=27 connections=23 zombies=0 reaped=6 pipes=70 tebs=22 pthreads=22 exits=7 engines=-1
+[FEX3-SMC2] blocks=253952 full=32 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=258048 full=32 entry=0 guard_branches_avoided=0
+[FEX3-SMC2] blocks=262144 full=32 entry=0 guard_branches_avoided=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=11020968 mean_frame_us=18368 min_us=1644 max_us=278534 total_presents=601 LSFG=OFF
+[SD-NDX-PROGRESS] calls=186985 draws=20002 presents=603 maps=0 refs=6571 copy_bytes=5709502464 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=186985 call=186985 thread=2a01bf phase=idle interface=46 method=8 object=0001000d age_ms=477 completed_wall_us=21942 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=25075 calls=54528 total_us=9899781 peak_us=27976 over20ms=7 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=25075 calls=36381 total_us=7567346 peak_us=27694 over20ms=6 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=25075 calls=1520 total_us=31549 peak_us=287 over20ms=0 over50ms=0
+[LIFECYCLE] exit tid=112 code=00000000 running=22 objects=27 connections=22 zombies=1 reaped=6 pipes=67 tebs=21 pthreads=21 exits=8 engines=-1
+[THREAD] NtCreateThreadEx tid=120 start=0x9b2ad0 param=0x6c28c160 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=120 code=0000b201 running=22 objects=27 connections=22 zombies=0 reaped=8 pipes=67 tebs=21 pthreads=21 exits=9 engines=-1
+[THREAD] NtCreateThreadEx tid=124 start=0x18018790 param=0x180233d0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x18018790 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[WINE] [NXDELAY] enter base=FD010000 desc=FD050194 addr=FD0542F4 flags=00000000
+[WINE] [NXDELAY] dll=iphlpapi.dll id=0 phmod=FD054280 current=00000000
+[WINE] [NXDELAY] loading dll=iphlpapi.dll
+[WINE] [NXLDR] enter name=iphlpapi.dll search=00000000 flags_ptr=00000000 module_ptr=FD054280 teb=7FF52000
+[WINE] [NXLDR] path name=iphlpapi.dll status=00000000 path=0505A498
+[WINE] [NXLDR] load name=iphlpapi.dll status=00000000 wm=00394270
+[WINE] [NXLDR] attach name=iphlpapi.dll status=00000000 base=FD180000
+[WINE] [NXLDR] return name=iphlpapi.dll status=00000000 module=FD180000
+[WINE] [NXDELAY] loaded dll=iphlpapi.dll status=00000000 module=FD180000
+[WINE] [NXDELAY] resolve dll=iphlpapi.dll proc=GetAdaptersAddresses
+[WINE] [NXDELAY] success dll=iphlpapi.dll id=0 proc=FD1849B0
+[SD-NDX-COM] calls=196608 draws=20650 presents=628 live_interfaces=6611 maps=0 map_copy_bytes=5954869248 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=1263 zero_fill_skipped_bytes=5954869248; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=139868 native_copy_bytes_saved=36876796; synchronous, checked; gameplay FPS requires hardware comparison
+[THREAD] NtCreateThreadEx tid=128 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7ff12000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=128 code=0000d901 running=23 objects=29 connections=23 zombies=0 reaped=9 pipes=70 tebs=22 pthreads=22 exits=10 engines=-1
+[SD-COMPILER-WAIT] slots=2 waits=2048
+[SD-NDX-PROGRESS] calls=261888 draws=33198 presents=705 maps=2 refs=6614 copy_bytes=6681532416 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=262005 call=262005 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=4 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=30085 calls=60806 total_us=10763921 peak_us=27976 over20ms=9 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=30085 calls=39720 total_us=8262469 peak_us=27694 over20ms=8 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=30085 calls=1654 total_us=38639 peak_us=287 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=132 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=132 code=0000ec01 running=23 objects=30 connections=23 zombies=0 reaped=10 pipes=70 tebs=22 pthreads=22 exits=11 engines=-1
+[LIFECYCLE] exit tid=124 code=00000000 running=22 objects=30 connections=22 zombies=1 reaped=10 pipes=67 tebs=21 pthreads=21 exits=12 engines=-1
+[THREAD] NtCreateThreadEx tid=136 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=136 code=00007b01 running=22 objects=30 connections=22 zombies=0 reaped=12 pipes=67 tebs=21 pthreads=21 exits=13 engines=-1
+[SD-NDX-PROGRESS] calls=541184 draws=88703 presents=971 maps=0 refs=6868 copy_bytes=9201260544 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=541215 call=541215 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=35085 calls=65163 total_us=11492209 peak_us=27976 over20ms=10 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=35085 calls=41181 total_us=8838982 peak_us=27694 over20ms=8 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=35085 calls=1817 total_us=48730 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=653312 draws=108930 presents=1072 live_interfaces=14604 maps=0 map_copy_bytes=10144978944 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=2151 zero_fill_skipped_bytes=10144978944; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=537812 native_copy_bytes_saved=141420084; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=714382 draws=119248 presents=1144 maps=2 refs=16241 copy_bytes=10815019008 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=714383 call=714383 thread=81ff phase=execute interface=14 method=15 object=00010010 age_ms=1 completed_wall_us=0 ret=00000000 fault=00000000 args=00010295,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=40088 calls=68422 total_us=12544445 peak_us=27976 over20ms=12 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=40088 calls=43124 total_us=9698870 peak_us=27694 over20ms=9 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=40088 calls=2312 total_us=77129 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=16561082 mean_frame_us=27601 min_us=3591 max_us=3306303 total_presents=1201 LSFG=OFF
+[SD-NDX-PROGRESS] calls=1028864 draws=173726 presents=1239 maps=0 refs=15129 copy_bytes=11721099264 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=1028864 call=1028864 thread=2a01bf phase=idle interface=14 method=48 object=00010005 age_ms=0 completed_wall_us=2 ret=00000000 fault=00000000 args=00010d76,00000000,00000000,4fdaa300,00000010
+[THREAD] NtCreateThreadEx tid=140 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[FEX3-JIT] phase=dispatch_compile uptime_ms=45092 calls=76043 total_us=15612764 peak_us=36327 over20ms=15 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=45092 calls=47431 total_us=12115038 peak_us=36289 over20ms=10 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=45092 calls=2541 total_us=91410 peak_us=287 over20ms=0 over50ms=0
+[LIFECYCLE] exit tid=140 code=00004a01 running=22 objects=31 connections=22 zombies=0 reaped=13 pipes=67 tebs=21 pthreads=21 exits=14 engines=-1
+[SD-NDX-COM] calls=1360896 draws=221748 presents=1309 live_interfaces=15259 maps=0 map_copy_bytes=12381702144 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=2625 zero_fill_skipped_bytes=12381591552; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=1092932 native_copy_bytes_saved=287706704; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=1492992 draws=242013 presents=1334 maps=2 refs=15249 copy_bytes=12617631744 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=1493226 call=1493226 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=10 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=50095 calls=79195 total_us=16148941 peak_us=42855 over20ms=20 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=50095 calls=47952 total_us=12413761 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=50095 calls=2671 total_us=98911 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=2198016 draws=369664 presents=1431 maps=2 refs=16272 copy_bytes=13533038592 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=2198038 call=2198038 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=4 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=55104 calls=81314 total_us=16822081 peak_us=42855 over20ms=21 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=55104 calls=48872 total_us=12949173 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=55104 calls=2908 total_us=115170 peak_us=287 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=144 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=144 code=0000bd01 running=22 objects=32 connections=22 zombies=0 reaped=14 pipes=67 tebs=21 pthreads=21 exits=15 engines=-1
+[SD-NDX-COM] calls=2725888 draws=467270 presents=1494 live_interfaces=16291 maps=2 map_copy_bytes=14127581184 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=2997 zero_fill_skipped_bytes=14136907776; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=2122387 native_copy_bytes_saved=558957828; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=2957312 draws=510597 presents=1520 maps=2 refs=16298 copy_bytes=14363510784 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=2957312 call=2957312 thread=81ff phase=idle interface=14 method=48 object=00010010 age_ms=6 completed_wall_us=48 ret=00000000 fault=00000000 args=0001163e,00000000,00000000,6c1f1a60,00000080
+[FEX3-JIT] phase=dispatch_compile uptime_ms=60105 calls=84787 total_us=17358126 peak_us=42855 over20ms=25 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=60105 calls=49486 total_us=13253848 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=60105 calls=3040 total_us=122717 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=3781073 draws=666608 presents=1613 maps=2 refs=16300 copy_bytes=15241168896 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=3781073 call=3781073 thread=81ff phase=idle interface=0 method=3 object=00000000 age_ms=1 completed_wall_us=55 ret=00000000 fault=00000000 args=00000cbc,042f0000,00500000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=65105 calls=87489 total_us=17534243 peak_us=42855 over20ms=26 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=65105 calls=49685 total_us=13348113 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=65105 calls=3135 total_us=127649 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=4319232 draws=763236 presents=1687 live_interfaces=16300 maps=0 map_copy_bytes=15948957696 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=3381 zero_fill_skipped_bytes=15948847104; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=3344978 native_copy_bytes_saved=880860656; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=4516016 draws=797896 presents=1715 maps=2 refs=16300 copy_bytes=16203761664 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=4516016 call=4516016 thread=81ff phase=idle interface=12 method=23 object=00010004 age_ms=5 completed_wall_us=1 ret=00000000 fault=00000000 args=0166eca8,0166ea7c,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=70107 calls=90531 total_us=17705947 peak_us=42855 over20ms=27 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=70107 calls=49838 total_us=13455006 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=70107 calls=3220 total_us=131996 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=32858591 mean_frame_us=54764 min_us=10952 max_us=1230353 total_presents=1801 LSFG=OFF
+[SD-NDX-PROGRESS] calls=5267953 draws=932101 presents=1826 maps=2 refs=16301 copy_bytes=17251289088 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=5267953 call=5267953 thread=81ff phase=idle interface=12 method=23 object=00010004 age_ms=2 completed_wall_us=2 ret=00000000 fault=00000000 args=0166eca8,0166ea7c,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=75107 calls=93661 total_us=17754615 peak_us=42855 over20ms=27 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=75107 calls=49875 total_us=13474399 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=75107 calls=3317 total_us=137132 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=5852160 draws=1030418 presents=1912 live_interfaces=16304 maps=0 map_copy_bytes=18072324096 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=3831 zero_fill_skipped_bytes=18072213504; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=4536989 native_copy_bytes_saved=1194895260; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=6088448 draws=1069528 presents=1948 maps=0 refs=16304 copy_bytes=18412062720 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=6088448 call=6088448 thread=2a01bf phase=idle interface=14 method=18 object=00010005 age_ms=0 completed_wall_us=1 ret=00000000 fault=00000000 args=00000000,00000008,03aaf690,03aafd08,03aafd28
+[FEX3-JIT] phase=dispatch_compile uptime_ms=80112 calls=97104 total_us=17792658 peak_us=42855 over20ms=27 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=80112 calls=49884 total_us=13482570 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=80112 calls=3413 total_us=142334 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=6749184 draws=1178580 presents=2062 maps=0 refs=16266 copy_bytes=19487901696 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=6749363 call=6749363 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=85112 calls=100499 total_us=17957409 peak_us=42855 over20ms=30 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=85112 calls=49989 total_us=13526802 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=85112 calls=3575 total_us=151872 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=7145472 draws=1239568 presents=2137 live_interfaces=16301 maps=0 map_copy_bytes=20195690496 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=4281 zero_fill_skipped_bytes=20195579904; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=5544952 native_copy_bytes_saved=1460546596; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=7301376 draws=1264154 presents=2165 maps=0 refs=16534 copy_bytes=20459931648 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=7301585 call=7301585 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=3 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=90115 calls=103605 total_us=18061369 peak_us=42855 over20ms=30 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=90115 calls=50124 total_us=13595465 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=90115 calls=3742 total_us=162085 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=7805110 draws=1341627 presents=2263 maps=1 refs=16534 copy_bytes=21379532800 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=7805111 call=7805111 thread=81ff phase=execute interface=14 method=15 object=00010010 age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00010296,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=95118 calls=106211 total_us=18089295 peak_us=42855 over20ms=30 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=95118 calls=50136 total_us=13601545 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=95118 calls=3835 total_us=166677 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=8146944 draws=1392731 presents=2335 live_interfaces=16536 maps=0 map_copy_bytes=22064252928 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=4677 zero_fill_skipped_bytes=22064142336; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=6342586 native_copy_bytes_saved=1670803980; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=8278286 draws=1412543 presents=2363 maps=1 refs=16543 copy_bytes=22323251200 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=8278287 call=8278287 thread=81ff phase=execute interface=14 method=15 object=00010010 age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00010296,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=100120 calls=109022 total_us=18239931 peak_us=42855 over20ms=31 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=100120 calls=50276 total_us=13670561 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=100120 calls=3925 total_us=171294 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=28025467 mean_frame_us=46709 min_us=28014 max_us=94675 total_presents=2401 LSFG=OFF
+[SD-NDX-PROGRESS] calls=8858624 draws=1501196 presents=2452 maps=2 refs=16556 copy_bytes=23168403456 failures=0 gate_waiters=2 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=8858624 call=8858624 thread=2a01bf phase=idle interface=14 method=9 object=00010005 age_ms=2 completed_wall_us=2 ret=00000000 fault=00000000 args=000104ef,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=105120 calls=111834 total_us=18360912 peak_us=42855 over20ms=33 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=105120 calls=50337 total_us=13704188 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=105120 calls=4026 total_us=176778 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=9457664 draws=1602517 presents=2514 live_interfaces=16587 maps=0 map_copy_bytes=23753508864 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=5035 zero_fill_skipped_bytes=23753398272; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=7350400 native_copy_bytes_saved=1936431776; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=9691904 draws=1643970 presents=2537 maps=0 refs=16587 copy_bytes=23970564096 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=9691904 call=9691904 thread=2a01bf phase=idle interface=14 method=17 object=00010005 age_ms=0 completed_wall_us=2 ret=00000000 fault=00000000 args=00023c22,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=110132 calls=114718 total_us=18410173 peak_us=42855 over20ms=33 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=110132 calls=50369 total_us=13724660 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=110132 calls=4127 total_us=182076 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=10532189 draws=1789091 presents=2624 maps=2 refs=16588 copy_bytes=24782161920 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=10532189 call=10532189 thread=81ff phase=idle interface=12 method=23 object=00010004 age_ms=4 completed_wall_us=2 ret=00000000 fault=00000000 args=0166eb74,0166e948,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=115135 calls=117663 total_us=18548521 peak_us=42855 over20ms=33 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=115135 calls=50448 total_us=13813711 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=115135 calls=4235 total_us=188385 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=11131904 draws=1891143 presents=2689 live_interfaces=16597 maps=0 map_copy_bytes=25405016064 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=5385 zero_fill_skipped_bytes=25404905472; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=8623726 native_copy_bytes_saved=2271781196; synchronous, checked; gameplay FPS requires hardware comparison
+[FEX3-SCRATCH] native size=16777216 ptr=0xbd4a5e000
+[THREAD] NtCreateThreadEx tid=148 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=148 code=00005e01 running=22 objects=33 connections=22 zombies=0 reaped=15 pipes=67 tebs=21 pthreads=21 exits=16 engines=-1
+[SD-NDX-PROGRESS] calls=11342848 draws=1924866 presents=2714 maps=2 refs=16604 copy_bytes=25640945664 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=11343019 call=11343019 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=16 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=120145 calls=121204 total_us=18737828 peak_us=42855 over20ms=34 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=120145 calls=50533 total_us=13883448 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=120145 calls=4346 total_us=194329 peak_us=287 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=152 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[SD-NDX-PROGRESS] calls=12152064 draws=2062069 presents=2803 maps=0 refs=16604 copy_bytes=26480855040 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=12152064 call=12152064 thread=2a01bf phase=idle interface=14 method=12 object=00010005 age_ms=0 completed_wall_us=2 ret=00000000 fault=00000000 args=00000108,000000f6,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=125148 calls=122402 total_us=18775920 peak_us=42855 over20ms=34 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=125148 calls=50569 total_us=13901543 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=125148 calls=4430 total_us=198663 peak_us=287 over20ms=0 over50ms=0
+[LIFECYCLE] exit tid=152 code=00002501 running=22 objects=34 connections=22 zombies=0 reaped=16 pipes=67 tebs=21 pthreads=21 exits=17 engines=-1
+[THREAD] NtCreateThreadEx tid=156 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=156 code=00009201 running=22 objects=35 connections=22 zombies=0 reaped=17 pipes=67 tebs=21 pthreads=21 exits=18 engines=-1
+[SD-NDX-COM] calls=12705792 draws=2151364 presents=2868 live_interfaces=16604 maps=2 map_copy_bytes=27094272000 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=5745 zero_fill_skipped_bytes=27103598592; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=9843170 native_copy_bytes_saved=2593033556; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=12928768 draws=2189279 presents=2892 maps=0 refs=16605 copy_bytes=27330201600 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=12928768 call=12928768 thread=2a01bf phase=idle interface=14 method=45 object=00010005 age_ms=0 completed_wall_us=1 ret=00000000 fault=00000000 args=00000001,03aafdec,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=130151 calls=125240 total_us=18858648 peak_us=42855 over20ms=34 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=130151 calls=50610 total_us=13918342 peak_us=42775 over20ms=11 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=130151 calls=4534 total_us=204647 peak_us=287 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=160 start=0x9b2ad0 param=0x6c28c160 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=160 code=0000af01 running=22 objects=36 connections=22 zombies=0 reaped=18 pipes=67 tebs=21 pthreads=21 exits=19 engines=-1
+[SD-NDX-PROGRESS] calls=13736704 draws=2324669 presents=2980 maps=0 refs=16504 copy_bytes=28160673792 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=13736783 call=13736783 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=6 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=135162 calls=127067 total_us=19004269 peak_us=42855 over20ms=36 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=135162 calls=50649 total_us=13973880 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=135162 calls=4616 total_us=208880 peak_us=287 over20ms=0 over50ms=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=34223268 mean_frame_us=57038 min_us=29137 max_us=117030 total_presents=3001 LSFG=OFF
+[SD-NDX-COM] calls=14333952 draws=2423440 presents=3045 live_interfaces=16503 maps=0 map_copy_bytes=28764653568 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=6097 zero_fill_skipped_bytes=28764542976; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=11114635 native_copy_bytes_saved=2927931448; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=14556928 draws=2460431 presents=3068 maps=2 refs=16503 copy_bytes=28981708800 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=14557073 call=14557073 thread=2a01bf phase=execute interface=46 method=8 object=0001000d age_ms=2 completed_wall_us=0 ret=00000000 fault=00000000 args=00000001,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=140173 calls=127736 total_us=19012110 peak_us=42855 over20ms=36 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=140173 calls=50654 total_us=13976190 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=140173 calls=4698 total_us=213022 peak_us=287 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=164 start=0x9b2ad0 param=0x6c28c420 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=164 code=0000d701 running=22 objects=37 connections=22 zombies=0 reaped=19 pipes=67 tebs=21 pthreads=21 exits=20 engines=-1
+[SD-NDX-PROGRESS] calls=15344384 draws=2589569 presents=3156 maps=2 refs=16503 copy_bytes=29812180992 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=15344384 call=15344384 thread=2a01bf phase=idle interface=14 method=8 object=00010005 age_ms=3 completed_wall_us=2 ret=00000000 fault=00000000 args=00000000,0000000c,03aaf698,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=145178 calls=129236 total_us=19044902 peak_us=42855 over20ms=36 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=145178 calls=50658 total_us=13978988 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=145178 calls=4779 total_us=217729 peak_us=348 over20ms=0 over50ms=0
+[THREAD] NtCreateThreadEx tid=168 start=0x9b2ad0 param=0x6c28c420 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fea2000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=168 code=00006b01 running=22 objects=38 connections=22 zombies=0 reaped=20 pipes=67 tebs=21 pthreads=21 exits=21 engines=-1
+[SD-NDX-COM] calls=15916032 draws=2683469 presents=3222 live_interfaces=16373 maps=0 map_copy_bytes=30435035136 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=6451 zero_fill_skipped_bytes=30434924544; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=12342185 native_copy_bytes_saved=3251321760; synchronous, checked; gameplay FPS requires hardware comparison
+[THREAD] NtCreateThreadEx tid=172 start=0x9b2ad0 param=0x6c28c2c0 flags=0x1 stack_reserve=0x0 err=0
+[WOW64 THREAD] entry=0x9b2ad0 TEB32=0x7fe42000 status=00000000
+[FEX2] thread create
+[FEX2] thread ready
+[LIFECYCLE] exit tid=172 code=0000d101 running=22 objects=39 connections=22 zombies=0 reaped=21 pipes=67 tebs=21 pthreads=21 exits=22 engines=-1
+[SD-NDX-PROGRESS] calls=16089069 draws=2710746 presents=3243 maps=2 refs=16585 copy_bytes=30623778816 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=16089069 call=16089069 thread=81ff phase=idle interface=12 method=23 object=00010004 age_ms=11 completed_wall_us=9 ret=00000000 fault=00000000 args=0166f5e0,0166f3b4,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=150179 calls=132209 total_us=19203815 peak_us=42855 over20ms=37 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=150179 calls=50751 total_us=14035986 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=150179 calls=4875 total_us=222952 peak_us=348 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=16859034 draws=2834578 presents=3336 maps=2 refs=16585 copy_bytes=31501436928 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=16859034 call=16859034 thread=81ff phase=idle interface=0 method=3 object=00000000 age_ms=3 completed_wall_us=59 ret=00000000 fault=00000000 args=00001a32,042f0000,00500000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=155184 calls=135135 total_us=19234051 peak_us=42855 over20ms=37 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=155184 calls=50759 total_us=14040821 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=155184 calls=4977 total_us=228584 peak_us=348 over20ms=0 over50ms=0
+[SD-NDX-COM] calls=17427456 draws=2928497 presents=3404 live_interfaces=16585 maps=0 map_copy_bytes=32152602624 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=6815 zero_fill_skipped_bytes=32152492032; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=13471600 native_copy_bytes_saved=3548946124; synchronous, checked; gameplay FPS requires hardware comparison
+[SD-NDX-PROGRESS] calls=17623583 draws=2960453 presents=3429 maps=1 refs=16585 copy_bytes=32383289344 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=17623584 call=17623584 thread=81ff phase=execute interface=14 method=15 object=00010010 age_ms=0 completed_wall_us=0 ret=00000000 fault=00000000 args=00010296,00000000,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=160187 calls=137947 total_us=19264207 peak_us=42855 over20ms=37 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=160187 calls=50764 total_us=14044930 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=160187 calls=5069 total_us=234058 peak_us=348 over20ms=0 over50ms=0
+[SD-NDX-PROGRESS] calls=18325803 draws=3072273 presents=3530 maps=2 refs=16585 copy_bytes=33332250624 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-ACTIVE] entry=18325803 call=18325803 thread=81ff phase=idle interface=12 method=23 object=00010004 age_ms=8 completed_wall_us=2 ret=00000000 fault=00000000 args=0166eb74,0166e948,00000000,00000000,00000000
+[FEX3-JIT] phase=dispatch_compile uptime_ms=165188 calls=140882 total_us=19292076 peak_us=42855 over20ms=37 over50ms=0
+[FEX3-JIT] phase=compile_code uptime_ms=165188 calls=50768 total_us=14048258 peak_us=42775 over20ms=12 over50ms=0
+[FEX3-JIT] phase=invalidate uptime_ms=165188 calls=5154 total_us=239149 peak_us=348 over20ms=0 over50ms=0
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=32407299 mean_frame_us=54012 min_us=31405 max_us=145483 total_presents=3601 LSFG=OFF
+[SD-NDX-COM] calls=18866176 draws=3159912 presents=3603 live_interfaces=16585 maps=0 map_copy_bytes=34030602240 failures=0; ARM64 DXVK, real COM
+[SD-NDX-MAP] discard_maps=7213 zero_fill_skipped_bytes=34030491648; preserving copy-in and full copy-out retained
+[SD-NDX-WIRE] compact-v1 calls=14546509 native_copy_bytes_saved=3832162360; synchronous, checked; gameplay FPS requires hardware comparison

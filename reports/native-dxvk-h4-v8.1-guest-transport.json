@@ -1,0 +1,272 @@
+{
+  "status": "PASS",
+  "baseline_commit": "951ffdc4192b01a88a8fc51224ea02804f5776ab",
+  "original_guest_sources": {
+    "v8": {
+      "com_guest.c": "3c1a7a5dd54e721e92148190b90dab268fb44a43c7e755457c95b203e5f5eeaa",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    },
+    "current": {
+      "com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    }
+  },
+  "runner_sha256": "bf1d31145071a1a892c436a475ebc31f9c53d72c7ea86bf0dbcf6958e815e1ca",
+  "source_files": {
+    "tests/native_dxvk_guest_transport.c": "ad0bfeb8629b7c87f85b7216194e02d54fb1820d8d649e6f654ae859a56f552a",
+    "src/native_dxvk_com/com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+    "src/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "src/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "src/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+  },
+  "compile_argv": {
+    "v8-correctness": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_COUNT_LOCKS",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/v8",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_transport.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/v8-correctness.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "v8-timing": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/v8",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_transport.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/v8-timing.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current-correctness": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_FAST_ENDPOINT",
+      "-DTEST_COUNT_LOCKS",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/current",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_transport.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/current-correctness.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current-timing": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_FAST_ENDPOINT",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/current",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_transport.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v8.1/guest-transport-check/current-timing.exe",
+      "-lkernel32",
+      "-luser32"
+    ]
+  },
+  "executables": {
+    "v8-correctness": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-transport-check\\v8-correctness.exe",
+      "sha256": "119b83f76e8e9604f837f0d3c9167095b176d5be99a6ee83caf6fc2ab3312326"
+    },
+    "v8-timing": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-transport-check\\v8-timing.exe",
+      "sha256": "5379b146e4a98358fc23f4e8bdb0419f8f60645dfcea3a37f3a52c39b5b42067"
+    },
+    "current-correctness": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-transport-check\\current-correctness.exe",
+      "sha256": "e080a30fa767654ca38eff85a988c24d9efbf6d2f53fccb197d053f2c091220a"
+    },
+    "current-timing": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v8.1\\guest-transport-check\\current-timing.exe",
+      "sha256": "c650a7de8031fcbf38d4c963c360ce5ef06b03cbb806ac176b2e97a37fedcaeb"
+    }
+  },
+  "cases": {
+    "v8-correctness": {
+      "status": "PASS",
+      "checks": 1209979,
+      "race_threads": 12,
+      "race_rounds": 8,
+      "race_calls": 393216,
+      "hot_calls": 10000,
+      "hot_lock_pairs": 10000
+    },
+    "current-correctness": {
+      "status": "PASS",
+      "checks": 1209985,
+      "race_threads": 12,
+      "race_rounds": 8,
+      "race_calls": 393216,
+      "hot_calls": 10000,
+      "hot_lock_pairs": 0
+    },
+    "v8-timing": [
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 464276,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 23.2138
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 472190,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 23.6095
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 457635,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 22.88175
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 473313,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 23.66565
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 475135,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 23.75675
+      }
+    ],
+    "current-timing": [
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 143939,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 7.19695
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 181382,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 9.0691
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 178567,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 8.92835
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 154912,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 7.7456
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 224981,
+        "frequency": 10000000,
+        "ns_per_draw_wrapper": 11.24905
+      }
+    ]
+  },
+  "median_ns_per_draw_wrapper": {
+    "v8": 23.6095,
+    "current": 8.92835
+  },
+  "relative_draw_wrapper_speedup": 2.6443295793735686,
+  "hot_lock_pairs_per_10000_calls": {
+    "v8": 10000,
+    "current": 0
+  },
+  "pe32_proxy_executed_on_windows": true,
+  "modeled_discovery_and_native_endpoint": true,
+  "hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "coverage": [
+    "eight 12-thread first-call races with a split 64-bit handle",
+    "missing query and endpoint symbols",
+    "failed query after writing a handle",
+    "zero-handle success rejection",
+    "successful retry after each discovery failure",
+    "native packet fault and transport error precedence",
+    "warm dispatch while another thread holds the proxy lock",
+    "unchanged complete generated DrawIndexed wrapper with 160-byte packet"
+  ],
+  "scope": "Windows PE32 actual guest code, modeled Wine endpoint discovery and native work. Timing has no lock-count instrumentation. Demonstrates removed synchronization on this path, not total frame cost or Switch performance."
+}

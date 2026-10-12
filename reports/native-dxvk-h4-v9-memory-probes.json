@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "checks": 233256,
+  "protection_layouts": 27,
+  "iterations": 100000,
+  "old_read_probes": 100000,
+  "old_write_probes": 100000,
+  "current_read_probes": 0,
+  "current_write_probes": 100000,
+  "old_ns_per_check": 234.702,
+  "current_ns_per_check": 114.3,
+  "baseline_commit": "f2d16f243e2feb5bca8f7320673445edd15c972f",
+  "runner_sha256": "e2dc79911952872fe4904509acd6ac4f6b8e0e5b002ccbe6f1428e1bc6fbdffe",
+  "compile_argv": [
+    "g++",
+    "-std=c++17",
+    "-O2",
+    "-g",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/memory-probe-check",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_memory_probes.cpp",
+    "-lpthread",
+    "-o",
+    "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/memory-probe-check/memory-probes"
+  ],
+  "source_files": {
+    "src/native_dxvk_com/com_native.cpp": "ff5aecb4c20e64715b9907df11056762a30040c81bf9b76ebe321fe52cdfaadb",
+    "tests/native_dxvk_memory_probes.cpp": "f709ae8a097a600bd611f4aca398e324e3149a4b5247f831f7ab6ccd7148c3b0",
+    "vendor/wine/native-dxvk-h3-inputs.json": "033ce45e4b77e03ce46f5f6a9e545e5b26cb4a0d8a2743c55c8820870ff8f781"
+  },
+  "pinned_wine_source": {
+    "path": "/home/blekjek/sleepingdogs-low-window-v1/native-source/dlls/ntdll/unix/virtual.c",
+    "sha256": "2aeee24edb241f142697f3c315b05e88a59bf3b7e04e3aff34b71f6c851626bd"
+  },
+  "extracted_body_sha256": {
+    "wine_probe_bodies.inc": "fd703168fc1ba3811cab0beb43f78a0b136109d141f43f67bd1438b1e55d1e3a",
+    "bridge_ranges.inc": "01228f2ffb63fcb1915d20169dae13a29fd1c2adb48e4829ce340cb1356461e5"
+  },
+  "executable_sha256": "8d785c264be1c8c3f8c9a9a07dcefc6318173e2895ff5b096b7dab7dfbe012fb",
+  "sanitizers": [
+    "undefined"
+  ],
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Actual bridge range methods and pinned Wine volatile probe bodies (names and explicit C-to-C++ void-pointer casts adapted); real mmap/mprotect faults with modeled POSIX recovery replacing Wine SEH. Timings are host check cost, not FEX/Horizon or game FPS."
+}

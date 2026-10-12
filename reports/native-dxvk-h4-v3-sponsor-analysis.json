@@ -1,0 +1,255 @@
+{
+  "status": "V3_COM_PASS_OBSERVED_GAME_SPONSOR_FREEZE",
+  "build": "native-dxvk-h4-v3",
+  "game_capture_report": "reports/native-dxvk-h4-game-a227d3dee3f4.json",
+  "game_capture_report_sha256": "75c7dfdc0873e15a9a1ce9ae645c8a3971931b6505c1bab2b014d0879431e38f",
+  "additional_evidence": {
+    "com-runtime": {
+      "path": "reports/native-dxvk-h4-game-a227d3dee3f4/com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    },
+    "crash": {
+      "path": "reports/native-dxvk-h4-game-a227d3dee3f4/crash.txt",
+      "sha256": "a36ebcce65482646be43c23575aad78e2392686c6d05752c8afb36154acfdd59",
+      "bytes": 32768
+    },
+    "dxvk-nested-copy": {
+      "path": "reports/native-dxvk-h4-game-a227d3dee3f4/dxvk-nested-copy.txt",
+      "sha256": "c82897f1b4630499fabb478c9893b8dab75ecb53150587c068a5550afbd16190",
+      "bytes": 14911
+    },
+    "duplicate_dxvk_equal": true
+  },
+  "prior_com_evidence": {
+    "result.json": {
+      "path": "reports/native-dxvk-h4-v3-com-9678e556e955/result.json",
+      "sha256": "9678e556e955b87678bedb2d4ea2b6f9b580413c7bba26569c10103edd2e4813",
+      "bytes": 426
+    },
+    "guest.txt": {
+      "path": "reports/native-dxvk-h4-v3-com-9678e556e955/guest.txt",
+      "sha256": "0f78b79613f8d73e0fbcdd4a9987effbe475196745f318dacceddd234c53c3f6",
+      "bytes": 935
+    }
+  },
+  "com_result": {
+    "status": "PASS",
+    "build": "native-dxvk-h4-v3",
+    "stage": "PASS",
+    "error": 0,
+    "checks": 1845687,
+    "buffer_bytes_verified": 2048,
+    "mip_array_bytes_verified": 80,
+    "pixels_verified": 1843200,
+    "bad_pixels": 0,
+    "present_calls": 300,
+    "present_elapsed_ms": 5049,
+    "bridge_calls": 1773,
+    "native_draws": 302,
+    "live_interfaces": 0,
+    "live_maps": 0,
+    "bridge_failures": 0,
+    "guest_execution": true,
+    "com_proxy": true,
+    "game_integration_tested": false,
+    "game_fps_measured": false
+  },
+  "com_runtime_separate_from_game": true,
+  "com_runtime_clean_exit": true,
+  "com_runtime_counters_match_prior_guest_result": true,
+  "com_renderer_log_available": false,
+  "exact_com_session_authenticated": false,
+  "user_observation": {
+    "launch_mode": "GUI",
+    "black_screen_seconds_approx": 30,
+    "sponsor_screen_seconds_approx": 30,
+    "animated_splash_reached": false,
+    "console_unresponsive": true,
+    "forced_restart": true,
+    "screen_times_approximate_not_log_alignment": true
+  },
+  "game_observation": {
+    "native_window_handoff_completed": true,
+    "native_device_created": true,
+    "resolution": [
+      1280,
+      720
+    ],
+    "swapchain_images": 3,
+    "dxgi_sync_interval": 1,
+    "present_mode": "VK_PRESENT_MODE_FIFO_KHR",
+    "traced_calls_begun": 128,
+    "traced_calls_completed": 128,
+    "incomplete_traced_calls": 0,
+    "trace_cap_reached": true,
+    "presents_observed": 2,
+    "present_calls": [
+      {
+        "call": 4790,
+        "thread": "2a81c0",
+        "name": "Present",
+        "interface": 46,
+        "method": 8,
+        "wall_us": 7579015,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 4858,
+        "thread": "2a81c0",
+        "name": "Present",
+        "interface": 46,
+        "method": 8,
+        "wall_us": 3892,
+        "ret": "00000000",
+        "fault": "00000000"
+      }
+    ],
+    "longest_completed_calls": [
+      {
+        "call": 4795,
+        "thread": "2a81c0",
+        "name": "ClearRenderTargetView",
+        "interface": 14,
+        "method": 50,
+        "wall_us": 11689507,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 4860,
+        "thread": "2a81c0",
+        "name": "ExecuteCommandList",
+        "interface": 14,
+        "method": 58,
+        "wall_us": 11008905,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 3945,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 9786542,
+        "ret": "00000001",
+        "fault": "00000000"
+      },
+      {
+        "call": 4790,
+        "thread": "2a81c0",
+        "name": "Present",
+        "interface": 46,
+        "method": 8,
+        "wall_us": 7579015,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 1740,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 6088385,
+        "ret": "00000001",
+        "fault": "00000000"
+      },
+      {
+        "call": 3946,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 5852925,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 4812,
+        "thread": "2a81c0",
+        "name": "IASetInputLayout",
+        "interface": 14,
+        "method": 17,
+        "wall_us": 4497431,
+        "ret": "00000000",
+        "fault": "00000000"
+      },
+      {
+        "call": 1716,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 4454302,
+        "ret": "00000001",
+        "fault": "00000000"
+      },
+      {
+        "call": 3438,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 3879303,
+        "ret": "00000001",
+        "fault": "00000000"
+      },
+      {
+        "call": 1692,
+        "thread": "2a81c0",
+        "name": "GetData",
+        "interface": 14,
+        "method": 29,
+        "wall_us": 2713447,
+        "ret": "00000001",
+        "fault": "00000000"
+      }
+    ],
+    "last_regular_bridge_totals": {
+      "calls": 5188,
+      "draws": 2,
+      "presents": 2,
+      "live_interfaces": 4753,
+      "maps": 0,
+      "map_copy_bytes": 47185920,
+      "failures": 0
+    },
+    "last_traced_call": 5213,
+    "last_trace_live_maps": 2,
+    "heavy_observer_us": [
+      31643012,
+      493566
+    ],
+    "device_lost_observed": false,
+    "bridge_fault_observed": false,
+    "allocator_oom_observed": false,
+    "clean_game_exit_observed": false
+  },
+  "code_findings": [
+    "V3 log_line takes fx_debug_file_lock and fprintf/fflush for each line. Native trace and periodic bridge reporting call it while holding the bridge-wide recursive mutex.",
+    "The heavy startup observer reports wall time including its output. A 31,643,012 us observer interval is observed; the capture cannot isolate SD I/O from scheduling or compilation.",
+    "All captured calls returned. After 128 traces, v3 has no ongoing call-state sampler; the last traced method cannot identify the later freeze."
+  ],
+  "v4_changes": [
+    "Bounded nonwaiting native log producers with one existing maintenance-thread batch writer",
+    "Compact atomic progress and call-phase sampling every five seconds without acquiring the bridge gate",
+    "Skip heavy startup observer in native mode; retain existing x86 renderer observer"
+  ],
+  "root_cause_confirmed": false,
+  "fix_hardware_tested": false,
+  "running_binary_authenticated": false,
+  "clocks_authenticated": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "stable_30fps_proven": false,
+  "limits": [
+    "Both supplied DXVK files are byte-identical game logs, not the COM renderer log.",
+    "COM result/guest were supplied previously; the newly supplied runtime agrees, but exact session pairing cannot be authenticated.",
+    "Call and observer durations include synchronous logging/scheduling, not isolated GPU timings.",
+    "Counter snapshots do not prove OOM/deadlock or the cause of an unresponsive console.",
+    "V4 fixes a logging dependency found in source; only another Switch test can measure its effect."
+  ]
+}

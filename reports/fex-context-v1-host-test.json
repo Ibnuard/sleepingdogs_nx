@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "results": {
+    "sanitized": {
+      "status": "PASS",
+      "checks": 9698949,
+      "x87_oracle": 160000,
+      "benchmark": [],
+      "checksum": 0,
+      "hardware_tested": false,
+      "game_fps_measured": false
+    },
+    "benchmark": {
+      "status": "PASS",
+      "checks": 9698949,
+      "x87_oracle": 160000,
+      "benchmark": [
+        {
+          "case": "normal",
+          "old_ns": 34.465,
+          "new_ns": 16.082,
+          "ratio": 2.1431
+        },
+        {
+          "case": "zero",
+          "old_ns": 12.574,
+          "new_ns": 14.555,
+          "ratio": 0.8639
+        },
+        {
+          "case": "mixed_special",
+          "old_ns": 23.38,
+          "new_ns": 23.383,
+          "ratio": 0.9999
+        },
+        {
+          "case": "general80",
+          "old_ns": 18.418,
+          "new_ns": 26.661,
+          "ratio": 0.6908
+        }
+      ],
+      "checksum": 0,
+      "hardware_tested": false,
+      "game_fps_measured": false
+    }
+  },
+  "compile_commands": {
+    "sanitized": [
+      "g++",
+      "-std=c++17",
+      "-frounding-math",
+      "-O1",
+      "-g",
+      "-fsanitize=address,undefined",
+      "-fno-sanitize-recover=all",
+      "-I/home/blekjek/sleepingdogs-fex-context-v1/host",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/fex_context",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/fex_context_exact.cpp",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/old.cpp",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/new.cpp",
+      "-o",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/sanitized"
+    ],
+    "benchmark": [
+      "g++",
+      "-std=c++17",
+      "-frounding-math",
+      "-O3",
+      "-I/home/blekjek/sleepingdogs-fex-context-v1/host",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/fex_context",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/fex_context_exact.cpp",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/old.cpp",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/new.cpp",
+      "-o",
+      "/home/blekjek/sleepingdogs-fex-context-v1/host/benchmark"
+    ]
+  },
+  "pinned_sources": {
+    "/home/blekjek/sleepingdogs-scene-memory-v1/fex/adapter/module_fpu.cpp": "587dd67545e724c4c7c35c6236d5e74c94efae468e1f85668e2324ed96c314b4",
+    "/home/blekjek/sleepingdogs-scene-memory-v1/fex/adapter/horizon_fpu.h": "6a86f793bf72a5961caf7eaf24020523c196bcdbc665822d30e3da4c5ef6f7b3"
+  },
+  "source_files": {
+    "tests/fex_context_exact.cpp": "3a1f944b808a98d5204c52f3d9c61d4ff53a5f44e85ead778b5027970c092c8e",
+    "src/fex_context/exact_x87.h": "f9a2261c720aaf1e4879e0558ab8fc2e56ea17009023068eb550938a6b38689c",
+    "tools/test_fex_context.py": "748ebd9924d8b5a0595c6d99408becaf2d420b5621db3e2de2953f653d1ff061"
+  },
+  "candidate_source_sha256": "0091ba1631c4a16eb76d51244c9f18cc6ec039ee81696dfe509f42bc1ae9ea68",
+  "scope": "Host numerical/byte comparison with actual pinned serializer and x87 oracle; host benchmark excludes FEX execution, Wine and Horizon.",
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

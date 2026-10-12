@@ -1,0 +1,51 @@
+{
+  "status": "BUILT",
+  "target": "host",
+  "library": "/home/blekjek/sleepingdogs-dxvk-arm64-v1/build-host/libsd_native_dxvk.a",
+  "sha256": "766204e07bea416d7cd66793567e70516ddfb005b4ee82971e93b2aab83082d7",
+  "bytes": 16615124,
+  "source_base": "DXVK 3.1.1-sdbatch2",
+  "adapted_files": {
+    "src/wsi/wsi_platform.cpp": "ca40872c3bdafcafa01495e004e46b51b59cee31ba17a5fc33146330ba589392",
+    "src/wsi/wsi_platform.h": "3d6e87e36cf18da43aa79f7f0721a76f960ec9cb0666a524452c48652e41e458",
+    "src/vulkan/vulkan_loader.cpp": "6e7838a039994a80c274f8be7a67c1c361543e65a52bc0a77db79e1e97367bf9",
+    "src/util/util_env.cpp": "9830c52f2bc835281885e94b9f0a35e1b7024c86c94682a98bb2c8e8c73e78c4",
+    "src/util/util_win32_compat.h": "0b82fc95bcb8227c992105b8c60fc39bb45856f9abefa5e386183025cd09a695",
+    "src/util/thread.h": "4fd8403999cfa60cba8f00721c9b4762660750925238f7299b8ea9a4ae9a5644",
+    "src/dxgi/dxgi_main.cpp": "da37198c175dad26780717eb10265323d400fd5f13092b9d2f8d9597970f0645"
+  },
+  "compiled_sources": 202,
+  "compile_commands_sha256": "246ed8cc4aae399ac58c0a5df3a1f0ef639c48c108f580352991e76e70c70d5e",
+  "fex_bypassed_for_renderer": true,
+  "game_integration": false,
+  "hardware_tested": false,
+  "fps_gain_measured": false,
+  "baseline_receipt_sha256": "2e5021eb1f0213a8bcfc12b695b057cb5ae7d2465152b9af694b42e4780ce060",
+  "input_manifest_sha256": "4d93d4b45ecdc33b3a1e31db2a03cd282d0ef84b007d076fcb37d4283a1aa8ea",
+  "probe_sources": {
+    "src/native_dxvk/LICENSE": "bca355f3d918e18794246d12530855486cf88c51d2ef0a64a3b913a2771b1031",
+    "src/native_dxvk/probe_backend.cpp": "e351799e2c20ac68a9ea3ce75a4a96b21c8d3c3243012a27822d649d697e97c3",
+    "src/native_dxvk/probe_horizon_main.cpp": "3838bcfaba2ae32369b57221b14c511a5321ae54c1b7aaba56100725416f3fe4",
+    "src/native_dxvk/probe_host_main.cpp": "d8d2c0cfa98c02a380c76229d10190cce561a8e6acfa1a10fde7134c3ab56966",
+    "src/native_dxvk/probe_protocol.h": "1d800c1aae46ebec77238e5d365da8a6f8596f1dd697101c4678a4759eb157b9",
+    "src/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+    "src/native_dxvk/probe_wsi.cpp": "04ba7d9023ff564b0b2782eaf54dd375433280bf3a2756c143719a440ed89183"
+  },
+  "builder_sha256": "5094754cebbf660fc321924321ef078453b46c72024a343f6c2064f064d9c20f",
+  "compiler": "g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "elf_members": 202,
+  "elf_machine": "Advanced Micro Devices X86-64",
+  "static_vulkan_import": false,
+  "guest32_wire_layout": {
+    "status": "PASS",
+    "pointer_bytes": 4,
+    "packet_bytes": 64,
+    "object_sha256": "127a4eb32a848788f633a2d2d99595af9141b9f2a7206fa3d2a3cd9ee5b3f28a"
+  },
+  "host_wire_layout": {
+    "status": "PASS",
+    "pointer_bytes": 8,
+    "packet_bytes": 64,
+    "object_sha256": "653db9a8597e15c66ff72fd20f605df9bba859a3a7596402edd17495afef4d54"
+  }
+}

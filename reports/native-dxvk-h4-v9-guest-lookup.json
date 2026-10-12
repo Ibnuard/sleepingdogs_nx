@@ -1,0 +1,270 @@
+{
+  "status": "PASS",
+  "baseline_commit": "b98557b28f0011c5eb75d934b20fe60b29cc1a18",
+  "original_guest_sources": {
+    "v6": {
+      "com_guest.c": "8d445e944a6df7d4ac98ccbc552be5c88c3a2f98bcf6fb8f610dacde278c90b8",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    },
+    "current": {
+      "com_guest.c": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+      "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+      "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+      "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+      "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+      "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+    }
+  },
+  "runner_sha256": "511d7c8b707a860425c14e2510121529eaf168b82207c490f283b3801e9c5acd",
+  "source_files": {
+    "tests/native_dxvk_guest_lookup.c": "bcdd2a772731256e2b50f3064c59999d1c38a303983aa78d22b67fdf24e6724d",
+    "src/native_dxvk_com/com_guest.c": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5",
+    "src/native_dxvk_com/com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "src/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "src/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf"
+  },
+  "compile_argv": {
+    "v6-timing": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/v6-timing",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_lookup.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/v6-timing.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "v6-visits": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/v6-visits",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_lookup.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/v6-visits.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current-timing": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_HASH_LOOKUP",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/current-timing",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_lookup.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/current-timing.exe",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "current-visits": [
+      "wsl",
+      "-d",
+      "Ubuntu",
+      "-u",
+      "root",
+      "--exec",
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-DTEST_HASH_LOOKUP",
+      "-std=c11",
+      "-DINITGUID",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--entry,start@0",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/current-visits",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_guest_lookup.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v9/guest-lookup-check/current-visits.exe",
+      "-lkernel32",
+      "-luser32"
+    ]
+  },
+  "executables": {
+    "v6-timing": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-lookup-check\\v6-timing.exe",
+      "sha256": "5d2ce780974fa51149bf2133d2fc1a0b513ff145843cd6d7eee85409fc3eaae1",
+      "compiled_guest_sha256": "8d445e944a6df7d4ac98ccbc552be5c88c3a2f98bcf6fb8f610dacde278c90b8"
+    },
+    "v6-visits": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-lookup-check\\v6-visits.exe",
+      "sha256": "814ff795380ace6120ed1dbba512625f58a0380e9700316b559deb6b0a90cd8c",
+      "compiled_guest_sha256": "f259a96a02d8fb41184071a7b1b4b7c6b8348f9918375ada2e8ed7db2803b452"
+    },
+    "current-timing": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-lookup-check\\current-timing.exe",
+      "sha256": "6c399c6f1778d60d80d80e00cdd26fbc13e8999df439db9d4398c060a9ee037c",
+      "compiled_guest_sha256": "3f337c57352f505f9348e68dae5bb028991015af94e7cbfdcc7e8f3333b451e5"
+    },
+    "current-visits": {
+      "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\local\\native-dxvk-h4-v9\\guest-lookup-check\\current-visits.exe",
+      "sha256": "6ca6574e89b23d9068a18d8d84e6779a8c6a0f03d5245e8999218407e724fdbd",
+      "compiled_guest_sha256": "3966ce297007ce522f0eaec44bb880e55ae2973b7b97ea709154b0a9271eb9d0"
+    }
+  },
+  "cases": {
+    "v6-timing": [
+      {
+        "status": "PASS",
+        "checks": 587738,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 7986045,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 24371.475219726562
+      },
+      {
+        "status": "PASS",
+        "checks": 587738,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 8940188,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 27283.28857421875
+      },
+      {
+        "status": "PASS",
+        "checks": 587738,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 8254825,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 25191.726684570312
+      }
+    ],
+    "current-timing": [
+      {
+        "status": "PASS",
+        "checks": 779775,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 33401,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 101.9317626953125
+      },
+      {
+        "status": "PASS",
+        "checks": 779775,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 46261,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 141.1773681640625
+      },
+      {
+        "status": "PASS",
+        "checks": 779775,
+        "live_proxies": 16000,
+        "timed_lookups": 32768,
+        "ticks": 31835,
+        "frequency": 10000000,
+        "lookup_visits": 0,
+        "removal_visits": 0,
+        "ns_per_lookup": 97.1527099609375
+      }
+    ],
+    "v6-visits": {
+      "status": "PASS",
+      "checks": 587738,
+      "live_proxies": 16000,
+      "timed_lookups": 32768,
+      "ticks": 9121911,
+      "frequency": 10000000,
+      "lookup_visits": 262195072,
+      "removal_visits": 63988875
+    },
+    "current-visits": {
+      "status": "PASS",
+      "checks": 779775,
+      "live_proxies": 16000,
+      "timed_lookups": 32768,
+      "ticks": 46091,
+      "frequency": 10000000,
+      "lookup_visits": 90212,
+      "removal_visits": 0
+    }
+  },
+  "median_ns_per_lookup": {
+    "v6": 25191.726684570312,
+    "current": 101.9317626953125
+  },
+  "relative_output_wrapper_speedup": 247.14304960929314,
+  "pe32_proxy_executed_on_windows": true,
+  "modeled_native_endpoint": true,
+  "hardware_tested": false,
+  "com_guest_execution_tested": false,
+  "game_integration_tested": false,
+  "game_fps_measured": false,
+  "coverage": [
+    "16000 simultaneously live tokens",
+    "full token generation and interface keys",
+    "repeated proxy identity",
+    "IUnknown alias roundtrip",
+    "null token",
+    "failed allocation native-reference rollback",
+    "concurrent same-token insertion and repeated lookup",
+    "permuted final release",
+    "global and hash backlink invariants",
+    "zero guest/native references at teardown"
+  ],
+  "scope": "Actual PE32 guest wrappers execute on Windows. Native endpoint and token-bearing sampler descriptors are modeled. Separate instrumented builds count visited nodes; uninstrumented timings include complete CreateSamplerState output publication and nonfinal Release with 16000 live sampler proxies. Does not execute Wine/FEX, ARM64 DXVK, Switch, or the game."
+}

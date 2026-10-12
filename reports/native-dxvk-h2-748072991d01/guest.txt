@@ -1,0 +1,8 @@
+{"status":"RUNNING","build":"native-dxvk-h2-v1","stage":"startup","error":0,"checks":0,"rejected_requests":0,"bridge_calls":0,"guest_arena":0,"buffer_bytes_verified":0,"draw_pixels_verified":0,"bad_pixels":0,"guest_execution":true,"game_integration":false,"present_calls":0,"game_fps_measured":false}
+[SD-NDX-H2-GUEST] load static WOW64 gate arena=0x00000000 checks=0 calls=0
+[SD-NDX-H2-GUEST] native device arena=0x01a80000 checks=7 calls=2
+[SD-NDX-H2-GUEST] buffer shadow map arena=0x01a80000 checks=11 calls=4
+[SD-NDX-H2-GUEST] 720p shader draw and readback arena=0x01a80000 checks=1057 calls=15
+[SD-NDX-H2-GUEST] close and stale-session rejection arena=0x01a80000 checks=1091 calls=31
+[SD-NDX-H2-GUEST] PASS arena=0x01a80000 checks=1096 calls=35
+{"status":"PASS","build":"native-dxvk-h2-v1","stage":"PASS","error":0,"checks":1096,"rejected_requests":5,"bridge_calls":35,"guest_arena":27787264,"buffer_bytes_verified":1024,"draw_pixels_verified":921600,"bad_pixels":0,"guest_execution":true,"game_integration":false,"present_calls":0,"game_fps_measured":false}

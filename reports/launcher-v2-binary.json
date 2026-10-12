@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "elf_sha256": "1c212bee322658e1b3d0236d6b378f39e01da977d77c60f2b2db8649b35a3b5a",
+  "nro_sha256": "5f8dfae7208fef6450489f97b1135bb4e90e2c57933a02003d2467e67c7b9677",
+  "required_symbols": [
+    "__libnx_initheap",
+    "__wrap_vkGetInstanceProcAddr",
+    "__wrap_vkGetDeviceProcAddr",
+    "sd_keyboard_present_gate",
+    "fx_keyboard_input_blocked",
+    "fx_osk_frame_visible",
+    "fx_osk_frame_presented",
+    "fx_osk_frame_reject",
+    "sd_lsfg_present",
+    "sd_lsfg_create_device",
+    "sd_lsfg_create_chain",
+    "sd_lsfg_intercept",
+    "wine_nx_lsfg_present",
+    "wine_nx_sd_com_wow64_unix_funcs",
+    "vkGetInstanceProcAddr",
+    "nvk_CreateDevice",
+    "D3D11CreateDevice"
+  ],
+  "unresolved_strong_symbols": [],
+  "actual_arm64_heap_cases": [
+    {
+      "name": "patched",
+      "sizes": [
+        268435456
+      ],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "unpatched",
+      "sizes": [
+        134217728
+      ],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "wrong-title",
+      "sizes": [
+        134217728
+      ],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "query-failed",
+      "sizes": [
+        134217728
+      ],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "small-applet",
+      "sizes": [
+        134217728,
+        67108864,
+        33554432
+      ],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "loader-owned",
+      "sizes": [],
+      "exited": false,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    },
+    {
+      "name": "no-memory",
+      "sizes": [
+        134217728,
+        67108864,
+        33554432,
+        16777216,
+        8388608,
+        4194304,
+        2097152
+      ],
+      "exited": true,
+      "query_types": [
+        12,
+        13,
+        6,
+        18
+      ]
+    }
+  ],
+  "closed_keyboard_gate_executed": true,
+  "hardware_tested": false,
+  "scope": "Actual linked ARM64 heap policy under Unicorn; modeled svc/env APIs. No physical mapping or GPU test."
+}

@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "baseline_commit": "b51f1aa9f2388e43926430a2f311d05c3cff3729",
+  "baseline_sha256": {
+    "com_guest.c": "8d445e944a6df7d4ac98ccbc552be5c88c3a2f98bcf6fb8f610dacde278c90b8",
+    "com_guest_test.c": "af43b76971a61a5da0b185891532ae7f1858da015014937d1957922e4d9e5cf7",
+    "com_guest_vtables.inc": "89402dc60672adaa6ac0a4891a281c87bda9966c62b9e160acaa19af31fd5e6f",
+    "com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "com_horizon.cpp": "dbd963d053eb389f1f001c6ef145e8f60854b5db9b549f515d78a4dd25990b49",
+    "com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1",
+    "com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "com_inventory.json": "41742efa74f889d6e3023ee1807b8925d96ba55af7d6396068a758875b9b09b9",
+    "com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+    "com_native.cpp": "dd527d65333265a4dd61344861c0f6700db576d14d722defa1ba8be380cc28b5",
+    "com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+    "com_native_dispatch.inc": "d98224f02370365bf72e2269058e64b46130a1894f6e8513fa9dd9584b088fb0",
+    "com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+    "com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "d3d11_guest.c": "a3f6aa246040b1d64ae83d2060ac428083f28cf9b4ba2617585f50131554cc2e",
+    "dxgi_guest.c": "4fba37ec5b008c5cec1ff0208b013296a7d1d915018515b6c13f1b63dc787533",
+    "native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4"
+  },
+  "runs": {
+    "v5": [
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 592401520,
+        "ns_per_call": 592.402,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 599536148,
+        "ns_per_call": 599.536,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 620138586,
+        "ns_per_call": 620.139,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 607260922,
+        "ns_per_call": 607.261,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 652673661,
+        "ns_per_call": 652.674,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 628540305,
+        "ns_per_call": 628.54,
+        "game_fps_measured": false
+      }
+    ],
+    "current": [
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 59947054,
+        "ns_per_call": 59.947,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 67428782,
+        "ns_per_call": 67.429,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 59740851,
+        "ns_per_call": 59.741,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 63187233,
+        "ns_per_call": 63.187,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 97788263,
+        "ns_per_call": 97.788,
+        "game_fps_measured": false
+      },
+      {
+        "status": "PASS",
+        "iterations": 1000000,
+        "elapsed_ns": 66536275,
+        "ns_per_call": 66.536,
+        "game_fps_measured": false
+      }
+    ]
+  },
+  "warm_median_ns_per_call": {
+    "v5": 620.139,
+    "current": 66.536
+  },
+  "warmup_runs_discarded_per_case": 1,
+  "alternating_case_order": true,
+  "relative_dispatch_speedup": 9.32035289166767,
+  "sampled_snapshot_freshness_verified": true,
+  "unsampled_call_failure_snapshot_verified": true,
+  "executable_sha256": {
+    "v5": "8897e06d4d4bb70e3720b17ff937d30f0c0f1bf2b9a690c2aed957618dd7d82d",
+    "current": "5a54c0ed8176041af5f70ff38dfd4ad626b097216fc62f9eb7a5a7bd961c55d0"
+  },
+  "compile_argv": {
+    "v5": [
+      "g++",
+      "-O2",
+      "-std=c++17",
+      "-DSD_COM_HOST_FAULT_TESTS",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v6/dispatch-benchmark/v5",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/windows",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/directx",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/host-deps/usr/include",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_com_host.cpp",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v6/dispatch-benchmark/v5/com_native.cpp",
+      "/home/blekjek/sleepingdogs-dxvk-arm64-v1/build-host/libsd_native_dxvk.a",
+      "-ldl",
+      "-lpthread",
+      "/usr/lib/x86_64-linux-gnu/libxcb.so.1",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v6/dispatch-benchmark/v5/dispatch-bench"
+    ],
+    "current": [
+      "g++",
+      "-DSD_COM_PROGRESS_TEST",
+      "-O2",
+      "-std=c++17",
+      "-DSD_COM_HOST_FAULT_TESTS",
+      "-I/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/windows",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native/directx",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include/native",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/source/include",
+      "-I/home/blekjek/sleepingdogs-dxvk-arm64-v1/host-deps/usr/include",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/tests/native_dxvk_com_host.cpp",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/src/native_dxvk_com/com_native.cpp",
+      "/home/blekjek/sleepingdogs-dxvk-arm64-v1/build-host/libsd_native_dxvk.a",
+      "-ldl",
+      "-lpthread",
+      "/usr/lib/x86_64-linux-gnu/libxcb.so.1",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-h4-v6/dispatch-benchmark/current/dispatch-bench"
+    ]
+  },
+  "native_dxvk_sha256": "766204e07bea416d7cd66793567e70516ddfb005b4ee82971e93b2aab83082d7",
+  "runner_sha256": "cfd9a01016818a888f4565a6049d5bd1c2fe87ccc8ec7ad38fe47a7e9f34e00d",
+  "source_files": {
+    "tests/native_dxvk_com_host.cpp": "8b1164161a12de7f845693d425a80cd43322a1993dfd237b46cea93915ed24a4",
+    "src/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+    "src/native_dxvk_com/com_native.cpp": "87e5f06ce9161154c8c5107eba5cc5dc5e9db94d2325fabf243e4650a7aa2877",
+    "src/native_dxvk_com/com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+    "src/native_dxvk_com/com_native_dispatch.inc": "d98224f02370365bf72e2269058e64b46130a1894f6e8513fa9dd9584b088fb0",
+    "src/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+    "src/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "src/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "src/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+    "src/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "src/native_dxvk_com/com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1"
+  },
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "scope": "Actual native dispatcher and DXVK context GetType; host CPU, modeled Wine permissions. GPU creation outside timing. No PE32/FEX, Horizon scheduling, GPU timing or gameplay benchmark."
+}
