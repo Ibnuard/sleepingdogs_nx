@@ -1,6 +1,6 @@
 # Documentation
 
-Latest test candidate: [Launcher v3: guest binding filter and FIFO LSFG fix](launcher-v3.md).
+Latest test candidate: [Launcher v4: inline COM and deferred work during Present](launcher-v4.md).
 
 [Project home](../README.md)
 
@@ -9,6 +9,7 @@ installation for a first setup, or current status before comparing test builds.
 
 | Guide | What it covers |
 | --- | --- |
+| [Launcher v4](launcher-v4.md) | Inline COM input, deferred work during Present, native counter policy, exhaustive host checks and unmeasured hardware target |
 | [Launcher v3](launcher-v3.md) | Redundant binding filter before FEX, corrected FIFO LSFG handling, test evidence and paired comparison |
 | [Launcher v2](launcher-v2.md) | Cached verification, mandatory Light 720p and native LSFG; latest real-FPS result and host-validation limits |
 | [Installation](INSTALL.md) | Required game edition, complete packages, forwarder, SD layout and updates |

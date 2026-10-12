@@ -5,15 +5,17 @@
 Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
-The newest [launcher v3 candidate](launcher-v3.md) filters 25 independent
-binding setters in the x86 proxy before FEX transport. It also fixes the
-launcher-v2 LSFG backend rejecting FIFO present metadata. The latest hardware
-capture requested LSFG ON but bypassed all 5,034 Presents, with no generated
-frames; gameplay windows were roughly 18–23 real FPS. V3 passes PE32, native
-DXVK and Vulkan host tests, including FIFO metadata and present fences.
-Its Switch speedup, LSFG generation/scanout and crowded-scene result remain
-unverified. Cached checks, mandatory Light 720p, keyboard and prior native
-optimizations remain in place.
+The newest [launcher v4 candidate](launcher-v4.md) reuses validated packet
+storage for small COM input arrays, admits deferred-context work during
+Present, and removes native diagnostic accounting that had no report consumer.
+The latest [v3 capture](../reports/launcher-v3-game-499c25d436b6.json) confirms
+LSFG-generated submissions, but the user reports worse performance. Later
+game-Present windows pool to 18.59 FPS versus 21.01 in the preceding capture;
+the scenes and LSFG activity differ, so this does not isolate a cause.
+V3's broad binding filter skipped only 2.3859% of examined bindings and is
+not retained in v4. Saved LSFG settings remain under the user's control.
+**The v4 target of 25–40 real FPS at 720p is unmeasured on Switch.** Cached
+checks, mandatory Light 720p, keyboard and prior native optimizations remain.
 
 ## What works
 

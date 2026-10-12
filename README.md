@@ -24,11 +24,12 @@ drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
 20–22 FPS, with crowded-area lows near 16 and confined-view peaks near 30.
 **Stable 30 FPS has not been achieved.**
 
-The latest [launcher v3 test update](docs/launcher-v3.md) filters redundant
-render bindings before FEX transport and fixes LSFG rejecting FIFO metadata.
-It retains cached verification and mandatory Light 720p. The previous capture
-shows roughly 18–23 real FPS and no generated frames; v3 hardware gains remain
-unmeasured.
+The latest [launcher v4 test update](docs/launcher-v4.md) reduces repeated
+COM memory probes, allows deferred rendering work during Present, and removes
+unused native diagnostic accounting. It retains cached verification, mandatory
+Light 720p and saved LSFG choices. The v3 capture confirms LSFG submissions
+but reports a regression: later game-frame windows pool to 18.59 FPS, against
+21.01 in the preceding unpaired capture. **V4 hardware FPS is unmeasured.**
 
 | Area | Status |
 | --- | --- |
@@ -36,7 +37,7 @@ unmeasured.
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
 | Native DXVK research | [H4 v9 gameplay](docs/native-dxvk-h4-v9-memory-batching.md#subsequent-game-capture) confirms Light 720p and batching, with no meaningful improvement reported; last five Present windows pool to 20.59 FPS |
 | FEX research | [Context v1](docs/fex-context-v1.md) is active in the latest Light 720p capture; slight improvement reported, final Present windows 20.56 FPS, crowded lows remain |
-| Current candidate | [Native Ref v1](docs/native-dxvk-ref-v1.md) handles temporary COM references locally to avoid FEX/Wine/native crossings; PE32 lifetime/concurrency checks pass, Switch FPS pending |
+| Current candidate | [Launcher v4](docs/launcher-v4.md): synchronous inline COM, deferred work during Present, native accounting policy; target 25–40 real FPS remains unverified |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 

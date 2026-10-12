@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "build": "launcher-v4",
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "nro_sha256": "c7c8b5a4def6b89f2dac4fe47f280b06008cfe634a4543d8a4b95a7b8f442c76",
+  "proxy_sha256": "f3829faeabf41b76bca7c77ca1f3533026a46175f02b6853da7f830018940ba2",
+  "native": {
+    "checks": 7388534,
+    "pixels_verified": 1843200,
+    "present_calls": 63,
+    "concurrent_reference_pairs": 2000,
+    "inline_permission_cases": 9,
+    "overlapped_gpu_readback_bytes": 1024,
+    "live_interfaces": 0,
+    "live_maps": 0,
+    "scope": "Actual DXVK/lavapipe and low mmap; modeled Wine permission checks and host-only allocation failures; direct table entry. No PE32/FEX execution or game test."
+  },
+  "pe32": {
+    "methods": 32,
+    "array_lengths": 129,
+    "mutated_bindings": 1000,
+    "scope": "Actual PE32 wrappers with a modeled native endpoint."
+  },
+  "range_scope": {
+    "status": "PASS",
+    "checks": 18,
+    "nested_exception_scope": true,
+    "concurrent_scope": true
+  },
+  "present_gate": {
+    "status": "PASS",
+    "checks": 41029,
+    "concurrency_rounds": 100,
+    "hardware_tested": false
+  },
+  "runtime_policy_cases": 160,
+  "launcher_results": {
+    "ui": "PASS: memory profile rejects unpatched/wrong-title/query failures; debug defaults hidden and persists; keyboard routes/options; six real UI previews with guarded stride",
+    "fextendo_keyboard.c": "PASS: Unicode scalars, native queue/cancel/drain/reconnect, Wine focus/IME/Edit/custom delivery, horizontal shortcut",
+    "fextendo_osk.c": "PASS: live Nunu -> Bejo, middle edits, Enter/close, focus/reconnect release, P1/P2 ownership, native Edit, touch, queue/repeat, horizontal controls",
+    "options": "PASS: all shortcut/delay/position combinations, read-only legacy migration, invalid values, recovery, instant edge, exact hold thresholds, no repeat and focus rearm",
+    "files": "PASS: missing/invalid PE32 and game files, exact runtime digest, approved A/B digest, corruption, cancellation, symlink/directory rejection",
+    "cache": "PASS: first full hash, cached repeat without hashing, manual recheck, timestamp/size/update invalidation, approved A/B file, corruption, truncated/mismatched cache, cancellation and missing file",
+    "vulkan": "PASS: native/Wine loader hooks; closed OSK no allocation/copy/submit; per-image fences and original wait chain; API failure injection; cached/moved pixels; timeout; invalid queue; full cleanup",
+    "lsfg_model": "PASS: native feature enable without input mutation; OFF/missing pack; keyboard/multiple/concurrent acquire bypass; both acquire APIs; retired swapchain; no retry after consumed present error; full lifetime cleanup",
+    "wire": "PASS: 46 methods, 376832 compact validation/round-trip cases",
+    "present_policy": "PASS: FIFO metadata accepted, non-FIFO persists, invalid count/pointer bypass, 5034 bypasses -> 13 logs"
+  },
+  "arm64_heap_cases": 7,
+  "unresolved_strong_symbols": [],
+  "candidate_sources": {
+    "source/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+    "source/native_dxvk_com/com_compact.h": "75661178dfa06a696d6318e6a36d87ef09b7aca1fc3d80d36ee9881f4137f2b4",
+    "source/native_dxvk_com/com_guest.c": "2bdaaca0b957f1ed064b38659100762fa94a20e8a3aee6cebcc50f21e4c7eb3d",
+    "source/native_dxvk_com/com_guest_test.c": "22207b534b02ce05de44f4f0300a4a29f22fbc2cbf9406e418c8684fb80c46a0",
+    "source/native_dxvk_com/com_guest_vtables.inc": "955e1c479cb3678ce1252da13d80d2f6cb8d91bdb40f15ab6e8ef631f7ee29a5",
+    "source/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "source/native_dxvk_com/com_horizon.cpp": "dbd963d053eb389f1f001c6ef145e8f60854b5db9b549f515d78a4dd25990b49",
+    "source/native_dxvk_com/com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1",
+    "source/native_dxvk_com/com_inline.h": "dd387d44d1e733fe547769153c57a04d4e47da5035b37263edff1019a138ec05",
+    "source/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "source/native_dxvk_com/com_inventory.json": "714ef01a19d39dfe524dc9ede3c5d5daa01efbced671f8242a902928d726097f",
+    "source/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+    "source/native_dxvk_com/com_native.cpp": "35dde9c604a5cf92087710f266b30e1eaa2691e7f5bd3fee6bbbabbc9d1d2487",
+    "source/native_dxvk_com/com_native_adapters.inc": "679b7a7263fb8c51d178522fc09486ab11b68140a2d5455924bf5c511bbdcc1e",
+    "source/native_dxvk_com/com_native_array.h": "3e49d05f3272578fd3d854cf05fc8b1ec5490b9433a43e795ee298b97ed678bc",
+    "source/native_dxvk_com/com_native_dispatch.inc": "9e577038c3e2e81dcb89c592154e488ae4a88b8615fb6e8d94822ec34cf6c044",
+    "source/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+    "source/native_dxvk_com/com_protocol.h": "6ced8f95b17f769f4c197fef85881cab05a91019ae2a5b5f747304770ccdf318",
+    "source/native_dxvk_com/d3d11_guest.c": "a3f6aa246040b1d64ae83d2060ac428083f28cf9b4ba2617585f50131554cc2e",
+    "source/native_dxvk_com/dxgi_guest.c": "4fba37ec5b008c5cec1ff0208b013296a7d1d915018515b6c13f1b63dc787533",
+    "source/native_dxvk_com/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f",
+    "source/native_dxvk_com/native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4",
+    "source/native_dxvk_com/present_overlap.h": "6d976f321dfd0d8847dc3433f0708b75e14ebe5308eb045526cceaac0bbc364e"
+  },
+  "builder_sources": {
+    "tools/build_launcher_v4.py": "c2f5162338d886015971ef81f1c7c4b2d0292e4b8dfd5c0ba7980ea2434200ed",
+    "tools/launcher_v4_overlay.py": "12b019f3f525d1d31478f538025d14e65300bb8edc0ad0cf5baac5e79bff22af",
+    "tools/launcher_v4_runtime.py": "445e52fb9b9d39a6e4954b3e5801be9441514da885da8b62cd611d0b906c6cef",
+    "tools/launcher_v3_overlay.py": "2196dd1c91e915ade89173a4437177a87177dfda7c1c5d4f324c80d9ef477d82",
+    "tools/launcher_v2_overlay.py": "26afccace9c0668d0839b1727dfe87fc6d4f6795ad4c01de525a5ec0d6e96965",
+    "tools/launcher_v1_overlay.py": "3d19457c7ef2592a44127198177971a124a744814ad3d6d5d70153341a367ab6",
+    "tools/build_launcher_v2.py": "ba39b2b7f45dbfe494deeac25b965d5f3ad4f5d4b00a38b8a1d32b6c2fb3a943",
+    "tools/native_dxvk_compact.py": "9a0254b93aa344a872611fa239427e78b38283b0d701bc85ecb28b7dc8a5bbee",
+    "tools/native_dxvk_inline.py": "f424b7ebecbab54a12236c4cce3753b631e0e3b6c61380b98526ef3056ee8145",
+    "tools/build_native_dxvk_inline.py": "98373e4cdf39a03faa813ec386af20c145f77e410f410594c3178c1af5073072",
+    "tools/native_dxvk_present_overlap.py": "94cd4c6af143f0d82cb67b24f7e81c8d45afd08d08b251a99486a147f87f7411"
+  },
+  "receipts": {
+    "local/launcher-v4/build.json": "eb4e8e4977617c536bb62ed33888ca8673e3629967eaa98d6023772a3bf0fd2d",
+    "local/launcher-v4/test.json": "493eaf681e8f89a8e4391746ca62f624a3161c47ac35f8da454e511dc8ed19bf",
+    "local/launcher-v4/binary-test.json": "871b7bbaa031624f6adba1cb094d39ef5e13a8e6ba1d42d3f60fd16c3db282ce",
+    "local/native-dxvk-inline-v1/build.json": "15a7a3cf7659abcf34e2e9d487b4f7d1a822fba78b6d8c047f87ade5345f80c3",
+    "local/native-dxvk-inline-v1/guest-test.json": "aba3a9b4f9842da29fa719302ce1acca9d9da85c14656f30ccd239f432ec39a2",
+    "local/native-dxvk-inline-v1/host-test.json": "b5099ffc1138904a3f98e59d1943664af2cab9b661f63ae1e7e739c6b7a9ef1d",
+    "local/native-dxvk-inline-v1/scope-test.json": "0896ed01a5c9147da1c6777e68d58e293546fbfd8f26fb94e041ab36b69d6ac7",
+    "local/native-dxvk-present-overlap-v1/test.json": "045ac9a3c350e8ea2cff5c9675677fcaa7db259c038d5b1910412918f8a7239a",
+    "local/launcher-v4-runtime/test.json": "57233595c3860599b816bf68494111cfd4fa843adbfa5843404f299095546b0d"
+  }
+}

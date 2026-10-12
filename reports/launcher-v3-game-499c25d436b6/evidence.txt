@@ -1,0 +1,101 @@
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] configured 2x; shader pack validated; GPU initialization pending
+[SD-LSFG-NATIVE] requested=1 route=native motion=2; initialization/generation logged separately
+[SD-DXVK-CONFIG] profile=performance renderer=dxvk-native-h4 hud=FPS
+[BUILD] sleepingdogs-launcher-v3-state-v1
+[SD-NDX-PROGRESS] calls=0 draws=0 presents=0 maps=0 refs=0 copy_bytes=0 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=782 draws=0 presents=0 maps=0 refs=684 copy_bytes=18874368 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=5679 draws=0 presents=0 maps=0 refs=4085 copy_bytes=18874368 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-NATIVE] swapchain attached; GPU initialization/history pending
+[SD-LSFG-V15] FIFO present metadata accepted; generation eligible
+[SD-NDX-STATE] v1 presents=1 attempts=11 skipped=0 disabled_contexts=0 contexts=5 cb=0 sampler=0 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-PROGRESS] calls=7121 draws=1 presents=1 maps=0 refs=4517 copy_bytes=47185920 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] 2x initialized, 1280x720, motion 50.0%, performance; warming history
+[SD-LSFG-V15] 2x generating; first interpolated present submitted
+[SD-NDX-PROGRESS] calls=11819 draws=92 presents=92 maps=0 refs=5579 copy_bytes=905969664 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=39201 draws=1184 presents=233 maps=2 refs=6562 copy_bytes=2227181568 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10037 real=293 generated=292 presented=585; submissions, not scanout
+[SD-NDX-PROGRESS] calls=99444 draws=4950 presents=374 maps=0 refs=6566 copy_bytes=3548387328 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=143714 draws=13974 presents=424 maps=2 refs=6597 copy_bytes=4029683712 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10010 real=186 generated=185 presented=371; submissions, not scanout
+[SD-NDX-PROGRESS] calls=278272 draws=39210 presents=566 maps=0 refs=6656 copy_bytes=5369763840 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-STATE] v1 presents=600 attempts=70789 skipped=4521 disabled_contexts=0 contexts=5 cb=0 sampler=4521 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=30753140 mean_frame_us=51255 min_us=8292 max_us=6299619 total_presents=601 source=game-present
+[SD-NDX-PROGRESS] calls=413184 draws=65709 presents=688 maps=0 refs=11290 copy_bytes=6521100288 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10000 real=265 generated=266 presented=531; submissions, not scanout
+[SD-NDX-PROGRESS] calls=525151 draws=83252 presents=833 maps=1 refs=16317 copy_bytes=7884249088 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=784384 draws=129010 presents=907 maps=0 refs=15078 copy_bytes=8597387264 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10035 real=199 generated=198 presented=397; submissions, not scanout
+[SD-NDX-PROGRESS] calls=1202944 draws=191995 presents=992 maps=2 refs=15250 copy_bytes=9390143488 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=1801728 draws=300890 presents=1079 maps=0 refs=16167 copy_bytes=10211178496 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10035 real=173 generated=173 presented=346; submissions, not scanout
+[SD-NDX-PROGRESS] calls=2504629 draws=432552 presents=1163 maps=2 refs=16236 copy_bytes=10994464768 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-STATE] v1 presents=1200 attempts=764706 skipped=24343 disabled_contexts=0 contexts=5 cb=0 sampler=24343 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=30759036 mean_frame_us=51265 min_us=7925 max_us=1201240 total_presents=1201 source=game-present
+[SD-NDX-PROGRESS] calls=3243604 draws=574227 presents=1247 maps=1 refs=16245 copy_bytes=11791382528 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10043 real=169 generated=169 presented=338; submissions, not scanout
+[SD-NDX-PROGRESS] calls=3958528 draws=706456 presents=1338 maps=2 refs=16269 copy_bytes=12655409152 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=4653567 draws=835064 presents=1437 maps=2 refs=16269 copy_bytes=13580253184 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10010 real=197 generated=197 presented=394; submissions, not scanout
+[SD-NDX-PROGRESS] calls=5322593 draws=951634 presents=1541 maps=2 refs=16272 copy_bytes=14561720320 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=6022600 draws=1070257 presents=1649 maps=2 refs=15804 copy_bytes=15580936192 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10032 real=212 generated=212 presented=424; submissions, not scanout
+[SD-NDX-PROGRESS] calls=6574708 draws=1160643 presents=1748 maps=2 refs=15922 copy_bytes=16515217408 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-STATE] v1 presents=1800 attempts=1924013 skipped=57010 disabled_contexts=0 contexts=5 cb=0 sampler=57010 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=30873195 mean_frame_us=51455 min_us=24605 max_us=105255 total_presents=1801 source=game-present
+[SD-NDX-PROGRESS] calls=7177984 draws=1259466 presents=1829 maps=0 refs=16614 copy_bytes=17289066496 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10044 real=168 generated=169 presented=337; submissions, not scanout
+[SD-NDX-PROGRESS] calls=7935540 draws=1388773 presents=1909 maps=0 refs=16503 copy_bytes=18034604032 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=8686788 draws=1514901 presents=1994 maps=0 refs=16503 copy_bytes=18836764672 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10013 real=172 generated=172 presented=344; submissions, not scanout
+[SD-NDX-PROGRESS] calls=9304238 draws=1615415 presents=2084 maps=2 refs=16517 copy_bytes=19686111232 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=10053632 draws=1744365 presents=2172 maps=0 refs=16517 copy_bytes=20526020608 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10017 real=179 generated=179 presented=358; submissions, not scanout
+[SD-NDX-PROGRESS] snapshot busy; retry next interval
+[SD-NDX-PROGRESS] calls=11383040 draws=1960679 presents=2353 maps=0 refs=16524 copy_bytes=22234150912 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10005 real=184 generated=184 presented=368; submissions, not scanout
+[SD-NDX-STATE] v1 presents=2400 attempts=3177022 skipped=83253 disabled_contexts=0 contexts=5 cb=0 sampler=83253 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=34317234 mean_frame_us=57195 min_us=28283 max_us=107458 total_presents=2401 source=game-present
+[SD-NDX-PROGRESS] calls=12072448 draws=2072110 presents=2453 maps=0 refs=16548 copy_bytes=23177869312 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=12688640 draws=2171778 presents=2544 maps=0 refs=16548 copy_bytes=24036653056 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10016 real=189 generated=188 presented=377; submissions, not scanout
+[SD-NDX-PROGRESS] calls=13190050 draws=2246478 presents=2636 maps=2 refs=16548 copy_bytes=24895436800 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=13690112 draws=2320381 presents=2727 maps=0 refs=16553 copy_bytes=25763657728 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10037 real=183 generated=184 presented=367; submissions, not scanout
+[SD-NDX-PROGRESS] calls=14268270 draws=2411091 presents=2815 maps=2 refs=16576 copy_bytes=26584692736 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=14861784 draws=2507147 presents=2903 maps=0 refs=16576 copy_bytes=27415164928 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10014 real=172 generated=172 presented=344; submissions, not scanout
+[SD-NDX-PROGRESS] calls=15610146 draws=2626372 presents=2985 maps=2 refs=16586 copy_bytes=28189014016 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-STATE] v1 presents=3000 attempts=4363532 skipped=106440 disabled_contexts=0 contexts=5 cb=0 sampler=106440 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=33475246 mean_frame_us=55792 min_us=33675 max_us=97675 total_presents=3001 source=game-present
+[SD-NDX-PROGRESS] calls=16514560 draws=2771938 presents=3068 maps=0 refs=16611 copy_bytes=28981737472 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10005 real=165 generated=165 presented=330; submissions, not scanout
+[SD-NDX-PROGRESS] calls=17321472 draws=2901596 presents=3154 maps=0 refs=16528 copy_bytes=29793335296 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=17910295 draws=2987977 presents=3260 maps=2 refs=16528 copy_bytes=30784239616 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10026 real=204 generated=203 presented=407; submissions, not scanout
+[SD-NDX-PROGRESS] calls=18483712 draws=3072091 presents=3366 maps=0 refs=16528 copy_bytes=31794018304 failures=0 gate_waiters=1 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=19066368 draws=3153332 presents=3468 maps=0 refs=16529 copy_bytes=32756611072 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10008 real=204 generated=204 presented=408; submissions, not scanout
+[SD-NDX-PROGRESS] calls=19640064 draws=3234399 presents=3571 maps=0 refs=16554 copy_bytes=33728641024 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-STATE] v1 presents=3600 attempts=5617077 skipped=134017 disabled_contexts=0 contexts=5 cb=0 sampler=134017 shader=0 fixed=0; redundant bindings only; draws/maps unchanged
+[SD-NDX-FPS] swapchain=0001000d intervals=600 elapsed_us=30470914 mean_frame_us=50784 min_us=27058 max_us=104203 total_presents=3601 source=game-present
+[SD-NDX-PROGRESS] calls=20166144 draws=3310109 presents=3680 maps=0 refs=16556 copy_bytes=34757294080 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10012 real=205 generated=206 presented=411; submissions, not scanout
+[SD-NDX-PROGRESS] calls=20830923 draws=3418509 presents=3770 maps=2 refs=16556 copy_bytes=35597203456 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-NDX-PROGRESS] calls=21547264 draws=3532347 presents=3869 maps=0 refs=16563 copy_bytes=36540921856 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+[SD-LSFG-V15] window_ms=10041 real=190 generated=190 presented=380; submissions, not scanout
+[SD-NDX-PROGRESS] calls=22353408 draws=3667896 presents=3952 maps=0 refs=16563 copy_bytes=37324208128 failures=0 gate_waiters=0 sample_stride=256; totals are last sampled completed call
+info:    d3d11.sdSubmissionBatching = True
+info:    d3d11.samplerAnisotropy = 0
+info:    dxvk.hud = fps
+info:    dxgi.maxFrameLatency = 3
+info:    dxvk.enableDescriptorHeap = False
+info:    dxvk.enableDescriptorBuffer = False
+info:    dxgi.maxSharedMemory = 128
+info:    dxgi.maxDeviceMemory = 256
+info:    dxvk.numCompilerThreads = 1
+info:    dxgi.syncInterval = 1
+info:    d3d9.presentInterval = 0
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: no)
+info:    Buffer size:  1280x720
+info:    Image count:  3

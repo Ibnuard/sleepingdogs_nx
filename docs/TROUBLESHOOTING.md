@@ -63,12 +63,21 @@ That observation alone does not prove a single CPU or GPU bottleneck. Existing
 frame and wait counters include waiting and scheduling; they are not GPU
 timestamp measurements.
 
+[Launcher v4](launcher-v4.md) targets repeated COM memory probes and render
+workers blocked behind Present. `[SD-NDX-INLINE]` and `[SD-NDX-OVERLAP]` show
+whether those paths are exercised. A rising avoided-probe/admitted-work count
+does not itself demonstrate an FPS gain; compare the same crowded route.
+The update preserves the saved LSFG switch for manual comparison.
+
 ## LSFG is on but does not help
 
 H4 through launcher v1 forced LSFG OFF on native DXVK even when the stored
 launcher preference was ON. Launcher v2 connects that route, but its first
 hardware capture bypassed all interpolation because DXVK passed FIFO mode
 metadata. [Launcher v3](launcher-v3.md) fixes that rejection.
+Its subsequent hardware capture confirms generated submissions, but the user
+reports worse native performance. The generated-frame count is not a scanout
+or smoothness measurement.
 Check for `first interpolated present submitted`; requested/initialized alone
 is insufficient, and repeated bypass reasons mean interpolation is being
 skipped. DXVK HUD reports real game FPS. See
