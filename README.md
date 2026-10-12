@@ -20,15 +20,15 @@ and saves are not supplied. The x64 **Definitive Edition is not supported**.
 
 This is an **experimental port** with gameplay confirmed on a Switch OLED.
 Recent 720p x86-DXVK testing reports roughly **20–23 FPS**, with scene-dependent
-drops and peaks around 25 FPS. Native H4 v8 gameplay is reported around
-17–20 FPS, with crowded-running drops to 13–16 and confined peaks near 26.
+drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
+20–22 FPS, with crowded-area lows near 16 and confined-view peaks near 30.
 **Stable 30 FPS has not been achieved.**
 
 | Area | Status |
 | --- | --- |
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
-| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. V8 gameplay is reported at 17–20 FPS. [H4 v8.1 reduces guest transport locking and fixes Light 720p](docs/native-dxvk-h4-v8.1-transport.md); local checks pass, v8.1 Switch testing is pending |
+| Native DXVK research | H1–H3 and H4 v2/v3 COM tests pass on Switch. [H4 v8.1 Light gameplay](docs/native-dxvk-h4-v8.1-transport.md#subsequent-light-720p-capture) is reported at 20–22 FPS; final five Present windows pool to 20.67 FPS. Fresh v8.1 COM and matched-scene comparison remain pending |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 

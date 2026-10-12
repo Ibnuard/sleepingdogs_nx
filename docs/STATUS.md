@@ -57,7 +57,13 @@ Map allocation reuse and reversible Light 720p game detail. Its [latest capture]
 records 18.76 FPS across the final five windows; feedback is typical 17–20,
 crowded running 13–16, peak 26. Light rejected the supplied GlobalSetting=-1.
 [H4 v8.1](native-dxvk-h4-v8.1-transport.md) removes repeated guest endpoint
-discovery locks and fixes that rejection; its hardware test is pending.
+discovery locks and fixes that rejection. Its subsequent [Light capture](../reports/native-dxvk-h4-v8.1-light-observation.json)
+logs Light at 1280×720 and the native v8.1 route. The user reports typical
+20–22 FPS, crowded lows near 16 and confined peaks near 30. The last five
+Present windows pool to 20.67 FPS. This is not a matched scene/clock/quality
+comparison with v8, so the runtime and Light contributions cannot be separated.
+The supplied COM runtime remains byte-identical to the older v3 file; fresh
+v8.1 COM, clean exit and stable 30 FPS remain unverified.
 
 ## Performance evidence
 
@@ -74,7 +80,7 @@ discovery locks and fixes that rejection; its hardware test is pending.
 | Native H4 v6 dispatcher measurement | Host scalar GetType cost 620.139 → 66.536 ns against v5; measures local dispatch, not game FPS |
 | Native H4 v7 gameplay feedback/log | User reports around 20 FPS, peak 25 and crowded-running lows near 13; final five Present windows pooled 19.07 FPS |
 | Native H4 v8 gameplay feedback/log | User reports 17–20 FPS, crowds 13–16, peak 26; final five Present windows pooled 18.76 FPS; no matched scene/clock comparison |
-| Native H4 v8.1 | Local checks pass; removes per-call endpoint locking and accepts supplied GlobalSetting=-1; hardware FPS unmeasured |
+| Native H4 v8.1 Light gameplay | User reports 20–22 FPS, crowded lows near 16, confined peak 30; final five Present windows pool to 20.67 FPS at logged 1280×720. No matched scene/clock/quality comparison |
 | Stable 30 FPS | Not achieved |
 
 The v18 figures refer to the log with SHA-256

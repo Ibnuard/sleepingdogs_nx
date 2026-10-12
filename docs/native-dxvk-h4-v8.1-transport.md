@@ -2,8 +2,59 @@
 
 This candidate removes repeated Wine critical-section calls from the initialized
 PE32-to-native dispatch path and fixes Light rejecting the supplied
-`GlobalSetting=-1`. Resolution remains 1280×720. It is an experiment; its game
-FPS and stability have not yet been measured on Switch.
+`GlobalSetting=-1`. Resolution remains 1280×720. A subsequent Light session
+reaches gameplay, with user-reported 20–22 FPS and crowded lows near 16.
+This remains an experiment; stable 30 FPS and production readiness are unproven.
+
+## Subsequent Light 720p capture
+
+The [preserved Light observation](../reports/native-dxvk-h4-v8.1-light-observation.json)
+records the supplied v8.1 native game route with Light applied at 1280×720.
+The user reports 20–22 FPS, crowded-area lows near 16, and peak 30 with a
+restricted view. The last five complete 600-interval Present windows pool
+to **20.67 FPS**; individual window averages range from 18.57 to 24.96 FPS.
+No bridge failure or device-lost error is captured. This does not establish
+a clean exit, a fresh v8.1 COM pass, or a matched scene/clock comparison.
+The separately supplied `runtime.log` is byte-identical to the old v3 COM
+runtime. The v8 normal-settings session and this Light session cannot isolate
+the endpoint optimization's contribution from quality or scene changes.
+
+The last progress interval whose endpoints both have zero active maps spans
+94 Presents: **8,609 bridge calls, 1,344 draws and 9 MiB copied per Present**,
+rounded for readability. These are sampled workload counts, not a CPU/GPU
+profiler. In particular, neither low sampled gate waiters nor high draw counts
+alone identifies the limiting thread or GPU stage.
+
+The remaining candidates, in order of investigation, are:
+
+1. **Per-call bridge work.** `Context::write` currently invokes Wine read
+   validation and then write validation. In the pinned Wine source, the write
+   helper already reads and writes each probed byte. A single validated
+   read/write probe may remove repeated exception setup and memory touches.
+   It needs actual Wine fault/protection tests, keeping overflow checks and
+   failure propagation. Further command batching could reduce transitions,
+   but must preserve guest pointer data, object lifetime, thread ordering and
+   synchronous boundaries; it is a separate, larger change.
+2. **Map shadow traffic.** Copy-out still transfers full mapped buffers;
+   WRITE_DISCARD also zero-fills the guest shadow, which is not counted in
+   `copy_bytes`. [D3D11 defines previous WRITE_DISCARD contents as undefined](https://learn.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_map),
+   making repeated zero-fill worth measuring and testing independently.
+   Preserving map modes must retain their data, and skipping zero-fill does
+   not remove the full copy-out. Zero-copy needs a guest-addressable native
+   allocation path, not simply exposing a 64-bit pointer.
+3. **Bounded automatic DXVK flushing.** The native binary already contains
+   `d3d11.sdSubmissionBatching`, but this session logs `enabled=0`. The last
+   cumulative record has 19,712 non-empty context flushes: 6,680 explicit,
+   254 synchronization, 23 strong hints and 12,755 weak hints. The existing
+   opt-in changes automatic hints only while at least two submissions are
+   pending, below 24 chunks and the cost cap. It preserves mandatory flushes.
+   Flush totals do not measure GPU time or predict a gain; compare enabled
+   and disabled at the same scene, quality and clocks before changing defaults.
+
+These candidates have not been applied by this capture review. The delivered
+v8.1 folder remains unchanged. At 20–22 FPS, reaching 30 requires roughly
+27–33% less elapsed time per frame; a 16 FPS crowded view needs about 47%
+less. A peak of 30 therefore does not imply that stable 30 is a small change.
 
 ## Evidence and change
 

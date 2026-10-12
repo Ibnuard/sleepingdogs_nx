@@ -1,0 +1,407 @@
+{
+  "status": "LIGHT_720P_GAMEPLAY_REPORTED_WITH_NATIVE_ROUTE_OBSERVED",
+  "observed_build": "native-dxvk-h4-v8.1",
+  "game_capture_report": "reports/native-dxvk-h4-game-57d78c4032a1.json",
+  "game_capture_report_sha256": "e1547b5059dbb8223972e66bba69268378cc2443805a2658227d239fe4158a5d",
+  "evidence": {
+    "runtime": {
+      "path": "reports/native-dxvk-h4-game-57d78c4032a1/runtime.txt",
+      "sha256": "57d78c4032a10ba1243214f49a24c5ac654671ab0af03c4c71b616618bb86204",
+      "bytes": 144091
+    },
+    "dxvk": {
+      "path": "reports/native-dxvk-h4-game-57d78c4032a1/dxvk.txt",
+      "sha256": "9b6c18c5995f9584cfdbdb2245f0e7c92b6650af01485c8416ffed05c70f1291",
+      "bytes": 29766
+    }
+  },
+  "user_observation": {
+    "reported_mode": "Light",
+    "reported_typical_fps": [
+      20,
+      22
+    ],
+    "reported_crowded_low_fps": 16,
+    "reported_peak_confined_fps": 30,
+    "controlled_comparison": false
+  },
+  "runtime": {
+    "route_validation": {
+      "build": true,
+      "native_device": true,
+      "first_present": true,
+      "native_renderer": true,
+      "switch_gpu": true,
+      "no_device_lost": true,
+      "no_bridge_fault": true,
+      "renderer_log_mode_matches": true,
+      "native_fifo_requested": true,
+      "fifo_present": true,
+      "game_target": true,
+      "native_selection": true
+    },
+    "quality_marker": "[SD-GAME-QUALITY] mode=Light720p resolution=1280x720 WorldDensity=0 ShadowRes=0 ShadowFilter=0 MotionBlur=0 SSAO=0 AAQuality=0 HighResTextures=0 GlobalSetting=0; original preserved",
+    "resolution": [
+      1280,
+      720
+    ],
+    "latest_progress": {
+      "calls": 30727429,
+      "draws": 4743463,
+      "presents": 6610,
+      "maps": 2,
+      "refs": 16627,
+      "copy_bytes": 62408226816,
+      "failures": 0,
+      "gate_waiters": 1,
+      "sample_stride": 256
+    },
+    "last_five_present_windows": [
+      {
+        "intervals": 600,
+        "elapsed_us": 31150795,
+        "present_fps": 19.261145662574584,
+        "mean_frame_us": 51917,
+        "min_us": 25383,
+        "max_us": 91685,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 32306741,
+        "present_fps": 18.57197542766694,
+        "mean_frame_us": 53844,
+        "min_us": 28887,
+        "max_us": 110556,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 24039933,
+        "present_fps": 24.958472222031567,
+        "mean_frame_us": 40066,
+        "min_us": 20503,
+        "max_us": 82741,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 26454395,
+        "present_fps": 22.680541361841765,
+        "mean_frame_us": 44090,
+        "min_us": 20053,
+        "max_us": 88923,
+        "scene_identified": false
+      },
+      {
+        "intervals": 600,
+        "elapsed_us": 31185057,
+        "present_fps": 19.239984073141184,
+        "mean_frame_us": 51975,
+        "min_us": 23752,
+        "max_us": 104513,
+        "scene_identified": false
+      }
+    ],
+    "last_five_pooled_present_fps": 20.670136718692,
+    "last_seven_pooled_present_fps": 20.36660588883534,
+    "last_zero_map_endpoint_interval": {
+      "start": {
+        "calls": 28413184,
+        "draws": 4393889,
+        "presents": 6294,
+        "maps": 0,
+        "refs": 16656,
+        "copy_bytes": 59426076672,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      "end": {
+        "calls": 29222400,
+        "draws": 4520267,
+        "presents": 6388,
+        "maps": 0,
+        "refs": 16613,
+        "copy_bytes": 60313171968,
+        "failures": 0,
+        "gate_waiters": 0,
+        "sample_stride": 256
+      },
+      "delta": {
+        "calls": 809216,
+        "draws": 126378,
+        "presents": 94,
+        "copy_bytes": 887095296,
+        "failures": 0
+      },
+      "calls_per_present": 8608.68085106383,
+      "draws_per_present": 1344.4468085106382,
+      "copy_bytes_per_present": 9437184.0,
+      "scene_identified": false
+    },
+    "recent_progress_intervals": [
+      {
+        "start_present": 3610,
+        "end_present": 3698,
+        "calls_per_present": 9064.727272727272,
+        "draws_per_present": 1520.0454545454545
+      },
+      {
+        "start_present": 3698,
+        "end_present": 3789,
+        "calls_per_present": 8568.967032967033,
+        "draws_per_present": 1426.8021978021977
+      },
+      {
+        "start_present": 3789,
+        "end_present": 3883,
+        "calls_per_present": 7750.563829787234,
+        "draws_per_present": 1235.6914893617022
+      },
+      {
+        "start_present": 3883,
+        "end_present": 3982,
+        "calls_per_present": 7147.545454545455,
+        "draws_per_present": 1112.3939393939395
+      },
+      {
+        "start_present": 3982,
+        "end_present": 4086,
+        "calls_per_present": 7222.153846153846,
+        "draws_per_present": 1147.5961538461538
+      },
+      {
+        "start_present": 4086,
+        "end_present": 4188,
+        "calls_per_present": 5761.725490196079,
+        "draws_per_present": 833.1372549019608
+      },
+      {
+        "start_present": 4188,
+        "end_present": 4296,
+        "calls_per_present": 4895.555555555556,
+        "draws_per_present": 655.5370370370371
+      },
+      {
+        "start_present": 4296,
+        "end_present": 4405,
+        "calls_per_present": 4728.064220183486,
+        "draws_per_present": 602.816513761468
+      },
+      {
+        "start_present": 4405,
+        "end_present": 4493,
+        "calls_per_present": 7499.136363636364,
+        "draws_per_present": 1209.2727272727273
+      },
+      {
+        "start_present": 4493,
+        "end_present": 4581,
+        "calls_per_present": 7930.329545454545,
+        "draws_per_present": 1235.2727272727273
+      },
+      {
+        "start_present": 4581,
+        "end_present": 4666,
+        "calls_per_present": 10641.011764705883,
+        "draws_per_present": 1672.2588235294118
+      },
+      {
+        "start_present": 4666,
+        "end_present": 4750,
+        "calls_per_present": 11024.011904761905,
+        "draws_per_present": 1750.3690476190477
+      },
+      {
+        "start_present": 4750,
+        "end_present": 4851,
+        "calls_per_present": 7838.663366336634,
+        "draws_per_present": 1186.881188118812
+      },
+      {
+        "start_present": 4851,
+        "end_present": 4981,
+        "calls_per_present": 5204.676923076923,
+        "draws_per_present": 723.4461538461538
+      },
+      {
+        "start_present": 4981,
+        "end_present": 5111,
+        "calls_per_present": 5027.930769230769,
+        "draws_per_present": 683.9538461538461
+      },
+      {
+        "start_present": 5111,
+        "end_present": 5228,
+        "calls_per_present": 6012.179487179487,
+        "draws_per_present": 811.2820512820513
+      },
+      {
+        "start_present": 5228,
+        "end_present": 5352,
+        "calls_per_present": 5444.129032258064,
+        "draws_per_present": 737.1048387096774
+      },
+      {
+        "start_present": 5352,
+        "end_present": 5462,
+        "calls_per_present": 6228.436363636363,
+        "draws_per_present": 934.3454545454546
+      },
+      {
+        "start_present": 5462,
+        "end_present": 5581,
+        "calls_per_present": 5448.53781512605,
+        "draws_per_present": 790.655462184874
+      },
+      {
+        "start_present": 5581,
+        "end_present": 5725,
+        "calls_per_present": 4154.666666666667,
+        "draws_per_present": 526.9097222222222
+      },
+      {
+        "start_present": 5725,
+        "end_present": 5846,
+        "calls_per_present": 5756.826446280992,
+        "draws_per_present": 772.2314049586777
+      },
+      {
+        "start_present": 5846,
+        "end_present": 5940,
+        "calls_per_present": 8300.04255319149,
+        "draws_per_present": 1293.8829787234042
+      },
+      {
+        "start_present": 5940,
+        "end_present": 6029,
+        "calls_per_present": 8308.0,
+        "draws_per_present": 1325.5505617977528
+      },
+      {
+        "start_present": 6029,
+        "end_present": 6116,
+        "calls_per_present": 9493.51724137931,
+        "draws_per_present": 1458.9885057471265
+      },
+      {
+        "start_present": 6116,
+        "end_present": 6211,
+        "calls_per_present": 7107.284210526316,
+        "draws_per_present": 1001.4947368421052
+      },
+      {
+        "start_present": 6211,
+        "end_present": 6294,
+        "calls_per_present": 9953.831325301206,
+        "draws_per_present": 1555.0722891566265
+      },
+      {
+        "start_present": 6294,
+        "end_present": 6388,
+        "calls_per_present": 8608.68085106383,
+        "draws_per_present": 1344.4468085106382
+      },
+      {
+        "start_present": 6388,
+        "end_present": 6499,
+        "calls_per_present": 7283.405405405405,
+        "draws_per_present": 1132.1801801801803
+      },
+      {
+        "start_present": 6499,
+        "end_present": 6610,
+        "calls_per_present": 6275.414414414415,
+        "draws_per_present": 878.5945945945946
+      }
+    ],
+    "native_batching_last_cumulative_counters": {
+      "enabled": 0,
+      "flushes": 19712,
+      "explicit": 6680,
+      "sync": 254,
+      "strong": 23,
+      "weak": 12755,
+      "deferred_hints": 0
+    },
+    "batch_counts_gpu_time": false,
+    "progress_reported_drops": 0,
+    "fresh_clean_exit_observed": false
+  },
+  "supplied_com_runtime": {
+    "evidence": {
+      "path": "reports/native-dxvk-h4-game-7d1ee877d066/older-com-runtime.txt",
+      "sha256": "4d42441ed2ce578f2e22d7c9f15c3891c7842f490e89da3a58834907377c7331",
+      "bytes": 42026
+    },
+    "byte_identical_to_older_v3": true,
+    "fresh_v8_1_com_validated": false
+  },
+  "previous_session": {
+    "observation": "reports/native-dxvk-h4-v8-gameplay-observation.json",
+    "observation_sha256": "dd001b1647a054cab831821dc6ea4d4e6abdbeec53846d5990fe54d4d55ef4f1",
+    "quality_mode": "Game settings",
+    "last_five_pooled_present_fps": 18.755880085631095,
+    "comparable_scene_clock_or_quality": false,
+    "gain_attributed_to_runtime_or_light": false
+  },
+  "optimization_candidates": [
+    {
+      "priority": 1,
+      "area": "Per-call bridge validation and transport",
+      "finding": "Context::write calls read validation before write validation. The pinned Wine write helper itself probes each page with a read-modify-write.",
+      "proposed_work": "Measure and test a single read/write probe retaining address/count checks, page-fault handling and error propagation; separately evaluate bounded command marshalling.",
+      "constraints": "Do not remove validation or cache permissions across VirtualProtect/VirtualFree. Queueing commands requires preserving pointer data, object lifetimes, thread ordering and synchronous boundaries.",
+      "implemented": false,
+      "measured_frame_time_saving": null
+    },
+    {
+      "priority": 2,
+      "area": "Map shadow memory traffic",
+      "finding": "9 MiB copied per Present in the last interval with no active maps at either endpoint. WRITE_DISCARD additionally zero-fills the shadow; zero-fill bytes are not in copy_bytes.",
+      "proposed_work": "Measure zero-fill and copy time; evaluate omitting repeated zero-fill only for WRITE_DISCARD, with partial-write/render correctness tests.",
+      "constraints": "Preserving modes and copy-out still need correct full contents. Direct native pointers may exceed guest 32-bit range; zero-copy needs allocator/driver work.",
+      "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/d3d11/ne-d3d11-d3d11_map",
+      "implemented": false,
+      "measured_frame_time_saving": null
+    },
+    {
+      "priority": 3,
+      "area": "Bounded DXVK submission batching",
+      "finding": "The existing native code supports d3d11.sdSubmissionBatching, but the effective native profile leaves it off. Most cumulative context flushes are weak hints.",
+      "proposed_work": "Compare opt-in batching with the current off profile at an identical scene, route, quality and clocks.",
+      "constraints": "Only defer automatic hints with at least two unfinished submissions, fewer than 24 chunks and cost below the existing cap. Keep mandatory flushes. Counter totals alone do not establish a bottleneck or expected gain.",
+      "implemented_in_binary": true,
+      "enabled_in_supplied_session": false,
+      "measured_frame_time_saving": null
+    }
+  ],
+  "target_30fps": {
+    "frame_budget_ms": 33.333333333333336,
+    "required_frame_time_reduction_percent_from_20fps": 33.333333333333336,
+    "required_frame_time_reduction_percent_from_22fps": 26.66666666666667,
+    "required_frame_time_reduction_percent_from_16fps": 46.666666666666664
+  },
+  "source_audit_inputs": {
+    "src/native_dxvk_com/com_native.cpp": "1ffa9c5065c3c48a6ec071709cd1f7701f63b489c12a8036315e354a48fdd42b",
+    "src/native_dxvk_com/com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+    "src/native_dxvk_com/com_guest.c": "c02042d42e66981841733745382e9a881ef713efb9fbbd81044fa946b7625cb3",
+    "tools/sleepingdogs_dxvk_batch.py": "50c37ffe28b2a66db13748b9efb1e733aa34b743c7106fdf32d91220573ae8d6",
+    "tools/build_dxvk_native_v15.py": "3c382a0073e59100afe62b4caf1c156622173954359e7e4c263bc9ac90a1a2f4",
+    "vendor/wine/native-dxvk-h3-inputs.json": "033ce45e4b77e03ce46f5f6a9e545e5b26cb4a0d8a2743c55c8820870ff8f781"
+  },
+  "new_runtime_build_created": false,
+  "same_scene_and_clock_comparison": false,
+  "running_binary_authenticated": false,
+  "current_in_memory_quality_authenticated": false,
+  "stable_30fps_proven": false,
+  "limits": [
+    "Present windows are not scene-labelled and may include menus, loading or camera changes.",
+    "Bridge/draw/copy/flush counts describe work, not CPU, GPU or wait-time attribution.",
+    "Sampled gate waiter counts do not prove a lock bottleneck or absence of contention.",
+    "The log does not authenticate clocks. Earlier confirmed clocks were 1728/768/1600 MHz.",
+    "Light application is logged; this does not directly inspect in-game quality values.",
+    "This capture does not validate fresh COM self-test, clean exit or production readiness."
+  ]
+}
