@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "path": "D:\\Dev\\Switch\\SwitchHub\\sleepingdogs-fex\\dist\\sd-launcher-compact-v1-update",
+  "files": 305,
+  "bytes": 276351652,
+  "all_hashes_verified": true,
+  "nro_sha256": "d3d6c8d21cf115aeedd92867e35a93658b6b73d73c86497978585ff6ffe2ccf3",
+  "proxy_sha256": "3d2154bb29f4735e8d6818deeb95c2b9554dc3e7177780199a15cdb7514bd3dd",
+  "manifest_sha256": "6841d52eeb9337c37c1f0bbcdd7264348d9f6a40ff80ecf3b8b7282417ed7ceb",
+  "zip_created": false,
+  "game_data_included": false,
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

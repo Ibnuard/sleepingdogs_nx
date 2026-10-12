@@ -1,0 +1,25 @@
+{
+  "repository": "https://github.com/Ibnuard/pes13_nx",
+  "commit": "38750c20a303f9fc6c373edaada0fad3c86d5b4b",
+  "files": {
+    "src/runtime/fextendo_gamepad.h": "396e017d13b2673f0f04fe44abba6ae010b26fe4633b09d75e733e6f7fd940de",
+    "src/runtime/fextendo_keyboard.h": "a069333ffb899a6b01036e336d10255c752cf37a55ed5b247971d6f69150d4ba",
+    "src/runtime/fextendo_keyboard_options.h": "87aaa166a13016275923c8103c8520c1250fad6fd7d6e52ff800ebb384e07881",
+    "src/runtime/fextendo_keyboard_capture.h": "758e050b26c510cd18893f5aafed95b24ba67fa8293a1778bca683f723e9f8d0",
+    "src/runtime/fextendo_keyboard_switch.h": "86e32eef282ef7d4f54a608c27f61bdcda909bd59683d0cac0237489bb0fc7b1",
+    "src/runtime/fextendo_keyboard_wine.h": "e6997ab6874ec9693fd4e742dbc55c3dbdf2740e7902ab96108c05c4d9123bf9",
+    "src/runtime/fextendo_osk.h": "bdebc799861a3774974a58e25c6ceaca4da74a253fcbe14507c656d786b8af85",
+    "src/runtime/fextendo_osk_switch.h": "0becfd300d7ebe353169dd50f4d34e7a812cd0853ece8ab9130f70cf1b699633",
+    "src/runtime/fextendo_osk_display.h": "1aff63a6092555a05f4bb0c90a683588f51d77dbccf22bdc518c3de92cab6515",
+    "src/runtime/fextendo_osk_frame.h": "6691d0f6f58a4710a7c800ec5bdf85a34f614e53c321a3501756d7f0b7c85698",
+    "src/runtime/fextendo_osk_ui.h": "3686d354900726c8fc2b7c0634fddcbb30b6e16070f0c46f40ad147dac615af0",
+    "src/runtime/fextendo_osk_sprites.h": "7e7f4a55c239ecba68361447169b42fe0bf3c0a2eaccbdca04b0375976de6d5d",
+    "src/runtime/fextendo_osk_vulkan.h": "30d2e9d85286bc52becae07e8b7d0badbc38e83c2ed776b61c0842b63ce9fb28"
+  },
+  "test_files": {
+    "fextendo_keyboard.c": "e8b3a5ac4b109e3c94c2bf3faa6df80240ac85434c2c61ea7e7af2681cc055db",
+    "fextendo_osk.c": "e5c542ae354f724cfdf5b50e2acd93077ee309ff6c36e662cc170216c168dae3",
+    "fextendo_keyboard_options.c": "6525a074709c92d29f63ecefc8c6f70a2bb050519e8e574c9877ff4ceca401ce",
+    "fextendo_osk_vulkan.c": "ce7503e162a326ef4e2c7e033ed5b2da8e8fdbbde3a4878a78bf342da01dac33"
+  }
+}

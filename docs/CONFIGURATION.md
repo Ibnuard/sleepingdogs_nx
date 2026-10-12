@@ -2,10 +2,16 @@
 
 [Documentation](README.md) · [Installation](INSTALL.md) · [Current status](STATUS.md)
 
+The [launcher/compact candidate](launcher-compact-v1.md) adds **Settings →
+Keyboard**, **System Check**, and **Show debug launch**. Debug is hidden until
+enabled. System Check requires active low-memory support and blocks Play if
+the patch, matching HOME launch, game files or runtime verification fails.
+
 ## Native-FPS baseline
 
-Use **DXVK 3.1.1**, **FEX Fastest**, **LSFG OFF**, **1280×720**, and normal
-Launch / Launch GUI. Use the same graphics profile, game quality, camera and
+The current native candidate uses **DXVK Native ARM64**, **Light 720p**,
+**FEX Fastest**, **LSFG OFF**, and normal Launch / Launch GUI. The retained
+x86 comparison uses **DXVK 3.1.1**. Use the same graphics profile, game quality, camera and
 clocks when comparing builds. Stable and Performance have not shown a
 consistent improvement over one another in the reported hardware tests.
 

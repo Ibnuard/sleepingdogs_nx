@@ -24,7 +24,7 @@ included in a clone.
 | Package | Intended use |
 | --- | --- |
 | Complete runtime package | Fresh setup: NRO, Wine/FEX modules, renderer DLLs, assets and configuration; use its matching forwarder |
-| Versioned update ZIP | Update an already working installation; follow the package's prerequisite and install notes |
+| Versioned update folder or historical ZIP | Update an already working installation; follow the package's prerequisite and install notes |
 | Rollback ZIP | Restore the corresponding earlier runtime files after a test |
 | Standalone NRO | Replace only the launcher/runtime binary in an otherwise compatible installation |
 | GitHub source ZIP | Inspect or develop the project; see [Building](BUILD.md) |

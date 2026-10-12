@@ -5,13 +5,21 @@
 Status reviewed **2026-10-12**. Version labels v7–v18 identify development
 iterations; they are not a sequence of published GitHub releases.
 
+The newest [Compact COM + launcher candidate](launcher-compact-v1.md) reduces
+packet marshalling for 46 native context methods and imports the latest PES13
+keyboard, a mandatory active-patch checker and a Settings debug toggle. It
+retains H4 v9 / FEX context v1 / Native Ref v1 and 720p. Host validation passes;
+its Switch gameplay gain and release readiness remain unverified. The user
+reports the preceding build is lighter; the latest capture's later Present
+windows remain around 19–20 FPS and are not a matched benchmark.
+
 ## What works
 
 The original x86 Sleeping Dogs PC game reaches gameplay through Wine/FEX on
 Switch. The low-window memory path, launcher settings, controller input and
 DXVK HUD have been exercised on hardware.
 
-The latest test runtime is **v18 APC**, retaining the v17 scheduler. Its
+The retained x86 comparison runtime is **v18 APC**, using the v17 scheduler. Its
 graphics path uses **x86 DXVK 3.1.1-sdbatch2** and native ARM64
 **Mesa 26.2.2-sdv14.1-cache / NVK GM20B**. The FEX Switch integration continues
 FEXTendo's own PES13-derived port of upstream FEX-Emu.

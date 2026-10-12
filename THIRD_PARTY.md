@@ -28,6 +28,14 @@ including LGPL-2.1-or-later and MIT where marked. Helper names beginning with
 `f1_` are retained for traceability; they do not make F1 game data part of this
 port.
 
+The release-preparation keyboard and checker adaptation uses PES13 commit
+[`38750c20`](https://github.com/Ibnuard/pes13_nx/tree/38750c20a303f9fc6c373edaada0fad3c86d5b4b).
+Imported headers/tests retain LGPL-2.1-or-later notices; exact hashes are in
+[vendor/pes13-launcher.json](vendor/pes13-launcher.json). The in-frame keyboard
+design also credits Wine-NX / Autorun. The Sleeping Dogs host Vulkan adapter,
+offline file catalog and mandatory low-window gate are documented in
+[the candidate notes](docs/launcher-compact-v1.md).
+
 ## Runtime components
 
 | Component | Origin and notices |

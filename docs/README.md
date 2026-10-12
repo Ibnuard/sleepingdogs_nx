@@ -1,5 +1,7 @@
 # Documentation
 
+Latest test candidate: [Compact COM v1 and launcher preparation](launcher-compact-v1.md).
+
 [Project home](../README.md)
 
 These guides describe the current Sleeping Dogs FEXTendo port. Start with

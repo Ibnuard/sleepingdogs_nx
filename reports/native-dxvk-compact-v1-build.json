@@ -1,0 +1,307 @@
+{
+  "status": "BUILT",
+  "build": "native-dxvk-compact-v1",
+  "source": "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/source/native_dxvk_com",
+  "source_files": {
+    "source/native_dxvk/probe_shaders.h": "581ef926e437a39572fb753188a93a38fa790575350db04e070f944dc222e241",
+    "source/native_dxvk_com/com_compact.h": "a9854c20448bf4f148f4b9e80de6a87e0f42a4b7de90ef57f2772e103952daa5",
+    "source/native_dxvk_com/com_guest.c": "5cc4e3875c18a76f31f4f848597b91c93e1ee22978e0a3559fcf9c0c2350cfc6",
+    "source/native_dxvk_com/com_guest_test.c": "22207b534b02ce05de44f4f0300a4a29f22fbc2cbf9406e418c8684fb80c46a0",
+    "source/native_dxvk_com/com_guest_vtables.inc": "ee8372f80232f1c345feeeb6d6c9771ca74b33f8d78d3c8aa8a759e3593780f4",
+    "source/native_dxvk_com/com_guids.inc": "3d011243a77279e721aa0aee0e7a64e932e91d5e84fa536ff7c9a7f6592648a6",
+    "source/native_dxvk_com/com_horizon.cpp": "dbd963d053eb389f1f001c6ef145e8f60854b5db9b549f515d78a4dd25990b49",
+    "source/native_dxvk_com/com_inheritance.inc": "eef1314a80ef492aeb895266368dd597c4fd41d78a081a2a4b904f85c903b3c1",
+    "source/native_dxvk_com/com_interfaces.h": "af6549650854e6719e92b87b799a61bef3bed1a9c58e8ed7d91ca2b72c4a1996",
+    "source/native_dxvk_com/com_inventory.json": "714ef01a19d39dfe524dc9ede3c5d5daa01efbced671f8242a902928d726097f",
+    "source/native_dxvk_com/com_methods.h": "7764e49446f39600247eb6d3dfddf9288544bf1102f56cd4b17cfe3a87bfe9cf",
+    "source/native_dxvk_com/com_native.cpp": "a6a9fae1a93ceb5c78d9efa173186ae56dd7a27e17e02701aa7c3d2cd9f40ec3",
+    "source/native_dxvk_com/com_native_adapters.inc": "6968455ced2d7cc75d06f3eaddda8268d2c1ad6c539c1947c3fbf164b9892d58",
+    "source/native_dxvk_com/com_native_array.h": "3e49d05f3272578fd3d854cf05fc8b1ec5490b9433a43e795ee298b97ed678bc",
+    "source/native_dxvk_com/com_native_dispatch.inc": "9e577038c3e2e81dcb89c592154e488ae4a88b8615fb6e8d94822ec34cf6c044",
+    "source/native_dxvk_com/com_progress.h": "86ae94ed03fb2f376645ea557ef233f44247cffa2304be3410644143bf6e20bf",
+    "source/native_dxvk_com/com_protocol.h": "260c1ed9bf4c4cb42bd5e0900163d6d9cfdd9350dce07d9881c4a9d9197081d6",
+    "source/native_dxvk_com/d3d11_guest.c": "a3f6aa246040b1d64ae83d2060ac428083f28cf9b4ba2617585f50131554cc2e",
+    "source/native_dxvk_com/dxgi_guest.c": "4fba37ec5b008c5cec1ff0208b013296a7d1d915018515b6c13f1b63dc787533",
+    "source/native_dxvk_com/game_quality.h": "e82a60d6298e8d3736ce25edcb964725fa411a6250cae08da37a9dd1b56e3c2f",
+    "source/native_dxvk_com/native_log_queue.h": "1e2feed252dae0de0a2a9a28a4601ebaae75da5863977db91262450a2f3e1dc4"
+  },
+  "baseline_proxy_sha256": "a03a58b6023a7b74ff0d96d0460ce247715fa1210b6f6d02428f206908541344",
+  "proxy_sha256": "3d2154bb29f4735e8d6818deeb95c2b9554dc3e7177780199a15cdb7514bd3dd",
+  "client_sha256": "9c65f6638ca102ea68997fa975968394b037cdf3bc26e73b41bae772c446db46",
+  "methods": [
+    {
+      "name": "VSSetConstantBuffers",
+      "index": 7,
+      "args": 3
+    },
+    {
+      "name": "PSSetShaderResources",
+      "index": 8,
+      "args": 3
+    },
+    {
+      "name": "PSSetShader",
+      "index": 9,
+      "args": 3
+    },
+    {
+      "name": "PSSetSamplers",
+      "index": 10,
+      "args": 3
+    },
+    {
+      "name": "VSSetShader",
+      "index": 11,
+      "args": 3
+    },
+    {
+      "name": "DrawIndexed",
+      "index": 12,
+      "args": 3
+    },
+    {
+      "name": "Draw",
+      "index": 13,
+      "args": 2
+    },
+    {
+      "name": "PSSetConstantBuffers",
+      "index": 16,
+      "args": 3
+    },
+    {
+      "name": "IASetInputLayout",
+      "index": 17,
+      "args": 1
+    },
+    {
+      "name": "IASetVertexBuffers",
+      "index": 18,
+      "args": 5
+    },
+    {
+      "name": "IASetIndexBuffer",
+      "index": 19,
+      "args": 3
+    },
+    {
+      "name": "DrawIndexedInstanced",
+      "index": 20,
+      "args": 5
+    },
+    {
+      "name": "DrawInstanced",
+      "index": 21,
+      "args": 4
+    },
+    {
+      "name": "GSSetConstantBuffers",
+      "index": 22,
+      "args": 3
+    },
+    {
+      "name": "GSSetShader",
+      "index": 23,
+      "args": 3
+    },
+    {
+      "name": "IASetPrimitiveTopology",
+      "index": 24,
+      "args": 1
+    },
+    {
+      "name": "VSSetShaderResources",
+      "index": 25,
+      "args": 3
+    },
+    {
+      "name": "VSSetSamplers",
+      "index": 26,
+      "args": 3
+    },
+    {
+      "name": "SetPredication",
+      "index": 30,
+      "args": 2
+    },
+    {
+      "name": "GSSetShaderResources",
+      "index": 31,
+      "args": 3
+    },
+    {
+      "name": "GSSetSamplers",
+      "index": 32,
+      "args": 3
+    },
+    {
+      "name": "OMSetRenderTargets",
+      "index": 33,
+      "args": 3
+    },
+    {
+      "name": "OMSetRenderTargetsAndUnorderedAccessViews",
+      "index": 34,
+      "args": 7
+    },
+    {
+      "name": "OMSetBlendState",
+      "index": 35,
+      "args": 3
+    },
+    {
+      "name": "OMSetDepthStencilState",
+      "index": 36,
+      "args": 2
+    },
+    {
+      "name": "SOSetTargets",
+      "index": 37,
+      "args": 3
+    },
+    {
+      "name": "DrawAuto",
+      "index": 38,
+      "args": 0
+    },
+    {
+      "name": "DrawIndexedInstancedIndirect",
+      "index": 39,
+      "args": 2
+    },
+    {
+      "name": "DrawInstancedIndirect",
+      "index": 40,
+      "args": 2
+    },
+    {
+      "name": "RSSetState",
+      "index": 43,
+      "args": 1
+    },
+    {
+      "name": "RSSetViewports",
+      "index": 44,
+      "args": 2
+    },
+    {
+      "name": "RSSetScissorRects",
+      "index": 45,
+      "args": 2
+    },
+    {
+      "name": "SetResourceMinLOD",
+      "index": 55,
+      "args": 2
+    },
+    {
+      "name": "HSSetShaderResources",
+      "index": 59,
+      "args": 3
+    },
+    {
+      "name": "HSSetShader",
+      "index": 60,
+      "args": 3
+    },
+    {
+      "name": "HSSetSamplers",
+      "index": 61,
+      "args": 3
+    },
+    {
+      "name": "HSSetConstantBuffers",
+      "index": 62,
+      "args": 3
+    },
+    {
+      "name": "DSSetShaderResources",
+      "index": 63,
+      "args": 3
+    },
+    {
+      "name": "DSSetShader",
+      "index": 64,
+      "args": 3
+    },
+    {
+      "name": "DSSetSamplers",
+      "index": 65,
+      "args": 3
+    },
+    {
+      "name": "DSSetConstantBuffers",
+      "index": 66,
+      "args": 3
+    },
+    {
+      "name": "CSSetShaderResources",
+      "index": 67,
+      "args": 3
+    },
+    {
+      "name": "CSSetUnorderedAccessViews",
+      "index": 68,
+      "args": 4
+    },
+    {
+      "name": "CSSetShader",
+      "index": 69,
+      "args": 3
+    },
+    {
+      "name": "CSSetSamplers",
+      "index": 70,
+      "args": 3
+    },
+    {
+      "name": "CSSetConstantBuffers",
+      "index": 71,
+      "args": 3
+    }
+  ],
+  "compile_commands": {
+    "sdndx4.dll": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-DSD_COM_BUILD=\"native-dxvk-h4-v9\"",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--kill-at",
+      "-Wl,--entry,DllMain@12",
+      "-shared",
+      "-Wl,--out-implib,/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/sdndx4.a",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/source/native_dxvk_com/com_guest.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/sdndx4.dll",
+      "-lkernel32",
+      "-luser32"
+    ],
+    "sd-native-dxvk-h4-test.exe": [
+      "/home/blekjek/pes13-build/toolchains/llvm-mingw-20260505-ucrt-ubuntu-22.04-x86_64/bin/i686-w64-mingw32-gcc",
+      "-O2",
+      "-std=c11",
+      "-DINITGUID",
+      "-DSD_COM_BUILD=\"native-dxvk-h4-v9\"",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-nostdlib",
+      "-Wl,--no-insert-timestamp",
+      "-Wl,--kill-at",
+      "-Wl,--entry,start@0",
+      "-DSD_COM_REF_TEST",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/source/native_dxvk_com/com_guest_test.c",
+      "-o",
+      "/mnt/d/Dev/Switch/SwitchHub/sleepingdogs-fex/local/native-dxvk-compact-v1/sd-native-dxvk-h4-test.exe",
+      "-lkernel32"
+    ]
+  },
+  "hardware_tested": false,
+  "game_fps_measured": false
+}

@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "real_pe32_executed": true,
+  "modeled_native_endpoint": true,
+  "hardware_tested": false,
+  "game_fps_measured": false,
+  "methods": 46,
+  "results": {
+    "transport": [
+      {
+        "status": "PASS",
+        "checks": 1613352,
+        "race_threads": 12,
+        "race_rounds": 8,
+        "race_calls": 393216,
+        "hot_calls": 10000,
+        "hot_lock_pairs": 0
+      }
+    ],
+    "baseline-bench": [
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 163316,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 198653,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 185271,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 145274,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 150149,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 141039,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 134863,
+        "frequency": 10000000
+      }
+    ],
+    "compact-bench": [
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 116026,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 126416,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 118393,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 118908,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 111686,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 120005,
+        "frequency": 10000000
+      },
+      {
+        "status": "PASS",
+        "calls": 2000000,
+        "ticks": 126044,
+        "frequency": 10000000
+      }
+    ]
+  },
+  "baseline_proxy_sha256": "a03a58b6023a7b74ff0d96d0460ce247715fa1210b6f6d02428f206908541344",
+  "candidate_sha256": "3d2154bb29f4735e8d6818deeb95c2b9554dc3e7177780199a15cdb7514bd3dd",
+  "scope": "PC microbenchmark of generated guest DrawIndexed wrapper; excludes Wine/FEX/DXVK/GPU; not a Switch FPS or speedup estimate.",
+  "pc_median_ns_per_call": {
+    "baseline-bench": 7.50745,
+    "compact-bench": 5.9454
+  }
+}
