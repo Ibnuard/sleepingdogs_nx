@@ -29,7 +29,8 @@ drops and peaks around 25 FPS. Native H4 v8.1 with Light 720p is reported at
 | Runtime | v18 APC test build, retaining the v17 scheduler improvement |
 | Graphics | x86 DXVK 3.1.1-sdbatch2 over native ARM64 Mesa/NVK |
 | Native DXVK research | [H4 v9 gameplay](docs/native-dxvk-h4-v9-memory-batching.md#subsequent-game-capture) confirms Light 720p and batching, with no meaningful improvement reported; last five Present windows pool to 20.59 FPS |
-| FEX research | [Context v1](docs/fex-context-v1.md) shortens exact x87 context imports; numerical and actual ARM64-function checks pass, Switch FPS comparison pending |
+| FEX research | [Context v1](docs/fex-context-v1.md) is active in the latest Light 720p capture; slight improvement reported, final Present windows 20.56 FPS, crowded lows remain |
+| Current candidate | [Native Ref v1](docs/native-dxvk-ref-v1.md) handles temporary COM references locally to avoid FEX/Wine/native crossings; PE32 lifetime/concurrency checks pass, Switch FPS pending |
 | Launcher | DXVK profiles, None / FPS / Full HUD, optional experimental LSFG |
 | Distribution | Source and test records; no packaged GitHub release as of 2026-10-12 |
 

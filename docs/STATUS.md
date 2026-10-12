@@ -80,7 +80,20 @@ The [FEX context v1 candidate](fex-context-v1.md) now targets repeated x87
 context import in the FEX/Wine boundary. It preserves rounding, precision,
 callbacks and suspension. Host numerical/oracle and actual ARM64-function
 checks pass. Its update folder supplies a FEX-only A/B and exact rollback on
-the existing native H4 v9 runtime; Switch performance remains unmeasured.
+the existing native H4 v9 runtime. The [subsequent capture](../reports/fex-context-v1-gameplay-observation.json)
+confirms its activation at Light 720p. The user reports slight improvement,
+ordinary views at 20–23 FPS, crowded lows still around 16 and a confined peak
+of 30. The final five complete windows pool to 20.56 FPS. This is not a
+matched A/B and does not establish a large measured gain.
+
+The current [Native Ref v1 candidate](native-dxvk-ref-v1.md) removes temporary
+COM reference round trips through FEX/Wine. Native output references remain
+owned until the corresponding guest ownership is released; the native ABI,
+NRO, rendering commands and resolution remain unchanged. PE32 ownership,
+concurrency, output, Map and transport tests pass, including 520,014 avoided
+native calls in the synthetic reference workload. That number is not a game
+profile or an FPS estimate. A new counter log and exact old-proxy rollback
+support the required Switch COM/game comparison.
 
 ## Performance evidence
 
@@ -170,8 +183,9 @@ batching in native Performance. Its COM test requires eight memory guards,
 183 partial-DISCARD bytes, 72 sampler slots and 16 scalar DSV/guard checks
 in addition to the prior coverage.
 Save COM files before the game overwrites the shared DXVK log. V9 game startup
-and native gameplay calls are now observed. A fresh v9 COM pass, the new FEX
-candidate, sustained resource lifetime and native worker behavior still need
+and native gameplay calls are now observed. FEX context v1 activation is also
+observed. A fresh COM pass with the new reference checks, the Native Ref v1
+game comparison, sustained resource lifetime and native worker behavior still need
 validation. Matched 720p gameplay and long-session evidence are required
 before production or a 30 FPS claim. See the
 [production gates](native-dxvk-h3-v1.md#production-readiness) for what remains.

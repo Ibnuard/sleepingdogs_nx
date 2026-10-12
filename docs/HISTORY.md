@@ -11,7 +11,8 @@ the notes are not a list of patches to install in sequence.
 
 | Iteration | Record |
 | --- | --- |
-| FEX context v1 | [Exact x87 import shortcut](fex-context-v1.md); FEX-only A/B on native H4 v9, local numerical and ARM64 checks pass, hardware FPS pending |
+| Native Ref v1 | [Guest-local reference ownership](native-dxvk-ref-v1.md); avoids temporary FEX/Wine/native calls with native lifetime credits; PE32 checks pass, Switch FPS pending |
+| FEX context v1 | [Exact x87 import shortcut](fex-context-v1.md); subsequent Light 720p capture confirms activation, slight improvement reported, final windows 20.56 FPS |
 | Native DXVK H4 v9 | [Bridge probes, Map traffic and batching](native-dxvk-h4-v9-memory-batching.md); later Light 720p/batching capture pools to 20.59 FPS, no meaningful gain reported |
 | Native DXVK H4 v8.1 | [Guest transport and Light fix](native-dxvk-h4-v8.1-transport.md); subsequent Light report 20–22 FPS, crowded lows 16, confined peak 30; last five Present windows 20.67 FPS |
 | Native DXVK H4 v8 | [Map reuse and Light 720p](native-dxvk-h4-v8-game-detail.md); later feedback 17–20 FPS, Light rejected GlobalSetting=-1 |

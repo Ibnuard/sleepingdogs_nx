@@ -3,8 +3,16 @@
 [Documentation](README.md) · [Current status](STATUS.md)
 
 This is a **FEX-side performance candidate for the installed native H4 v9
-runtime**, at 1280×720. Switch FPS for this candidate is not measured. The
+runtime**, at 1280×720. The subsequent capture below confirms activation. The
 ready-copy directory is `dist/sd-fex-context-v1-update/`; no ZIP is produced.
+
+The [subsequent gameplay capture](../reports/fex-context-v1-gameplay-observation.json)
+contains the FEX context v1 marker and Light 720p. The user reports a slight
+improvement, ordinary views at 20–23 FPS, crowded lows around 16 and narrow-view
+peaks of 30. Its final five complete Present windows pool to 20.56 FPS. Scenes
+and clocks are not authenticated as a matched A/B; this does not establish a
+large measured gain. The next [Native Ref v1 experiment](native-dxvk-ref-v1.md)
+targets avoidable COM crossings while retaining this FEX DLL.
 
 ## Why investigate outside DXVK
 

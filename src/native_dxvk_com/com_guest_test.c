@@ -17,6 +17,9 @@ void* memset(void *d,int v,size_t n){unsigned char*a=d;while(n--)*a++=(unsigned 
 static HANDLE log_file=INVALID_HANDLE_VALUE;
 static uint32_t checks,error,pixels,bad,presents,buffers,mip_bytes,sampler_slots,dsv_guards;
 static uint32_t memory_guards,discard_partial_bytes;
+#ifdef SD_COM_REF_TEST
+static uint32_t reference_pairs,reference_crossings_saved;
+#endif
 static uint32_t stats[8],elapsed_ms;
 static char text[2048];static unsigned used;
 static const char* stage="startup";
@@ -34,6 +37,10 @@ static void result(int passed){
     append(",\"bridge_calls\":");number(stats[0]);append(",\"native_draws\":");number(stats[1]);append(",\"live_interfaces\":");number(stats[3]);append(",\"live_maps\":");number(stats[4]);
     append(",\"sampler_roundtrip_slots_verified\":");number(sampler_slots);append(",\"dsv_guard_checks\":");number(dsv_guards);
     append(",\"memory_guard_checks\":");number(memory_guards);append(",\"discard_partial_bytes_verified\":");number(discard_partial_bytes);
+#ifdef SD_COM_REF_TEST
+    append(",\"reference_optimization\":\"native-dxvk-ref-v1\",\"reference_pairs\":");number(reference_pairs);
+    append(",\"reference_crossings_saved\":");number(reference_crossings_saved);
+#endif
     append(",\"bridge_failures\":");number(stats[6]);append(",\"guest_execution\":true,\"com_proxy\":true,\"game_integration_tested\":false,\"game_fps_measured\":false}\r\n");
     flush(file);if(file!=INVALID_HANDLE_VALUE)CloseHandle(file);
 }
@@ -119,6 +126,25 @@ static int run(void){
     HR(ID3D11Buffer_QueryInterface(dynamic,&IID_ID3D11Resource,(void**)&resource));
     HR(ID3D11Buffer_QueryInterface(dynamic,&IID_IUnknown,(void**)&unknown_a));HR(ID3D11Resource_QueryInterface(resource,&IID_IUnknown,(void**)&unknown_b));
     REQUIRE(unknown_a==unknown_b,0xe4010006u);DROP(IUnknown,unknown_a);DROP(IUnknown,unknown_b);DROP(ID3D11Resource,resource);
+#ifdef SD_COM_REF_TEST
+    record("local reference pairs and surviving mixed native/local ownership");result(-1);
+    stats_fn get_refs=(stats_fn)GetProcAddress(GetModuleHandleA("sdndx4.dll"),"SdComRefStats");
+    uint32_t before[8],after[8],ref_before[5],ref_after[5];
+    REQUIRE(get_refs!=NULL,0xe4010400u);
+    REQUIRE(get_stats(before)>=0&&get_refs(ref_before)>=0&&ref_before[0]==1,0xe4010401u);
+    for(UINT i=0;i<2048;++i){ID3D11Buffer_AddRef(dynamic);ID3D11Buffer_Release(dynamic);++reference_pairs;}
+    REQUIRE(get_stats(after)>=0&&get_refs(ref_after)>=0,0xe4010402u);
+    REQUIRE(after[0]-before[0]==1 && ref_after[1]-ref_before[1]==reference_pairs &&
+        ref_after[2]-ref_before[2]==reference_pairs && ref_after[3]==ref_before[3],0xe4010403u);
+    reference_crossings_saved=2*reference_pairs;
+    ID3D11Buffer *local_owner=dynamic,*returned_owner=NULL;
+    ID3D11Buffer_AddRef(local_owner);
+    HR(ID3D11Buffer_QueryInterface(dynamic,&IID_ID3D11Buffer,(void**)&returned_owner));
+    REQUIRE(returned_owner==dynamic,0xe4010404u);
+    ID3D11Buffer_Release(returned_owner);ID3D11Buffer_Release(dynamic);dynamic=local_owner;
+    D3D11_BUFFER_DESC still_alive={0};ID3D11Buffer_GetDesc(dynamic,&still_alive);
+    REQUIRE(still_alive.ByteWidth==1024,0xe4010405u);
+#endif
     record("guest/native multithread references and critical section");result(-1);
     HR(ID3D11DeviceContext_QueryInterface(context,&IID_ID3D10Multithread,(void**)&multithread));
     struct ref_worker workers[2]={{dynamic,NULL,0},{dynamic,NULL,0}};HANDLE threads[2]={0};int threaded_ok=1;

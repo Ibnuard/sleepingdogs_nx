@@ -15,7 +15,8 @@ installation for a first setup, or current status before comparing test builds.
 | [Native DXVK probe](native-dxvk-probe-v1.md) | ARM64 build, host correctness tests, standalone Horizon NRO and remaining game integration |
 | [Native DXVK H2](native-dxvk-h2-v1.md) | Real PE32 guest bridge diagnostic, hardware test instructions and v18 restoration |
 | [Native DXVK H3](native-dxvk-h3-v1.md) | Successful Switch guest-driven native Present capture, folder installation and production gates |
-| [FEX context v1](fex-context-v1.md) | FEX-only exact x87 import shortcut and rollback on installed native H4 v9; hardware A/B pending |
+| [Native Ref v1](native-dxvk-ref-v1.md) | Guest-local reference ownership, PE32 concurrency/Map checks, counters and exact v9 proxy rollback; hardware FPS pending |
+| [FEX context v1](fex-context-v1.md) | Exact x87 import shortcut; latest capture confirms activation, slight improvement reported, final windows 20.56 FPS |
 | [Native DXVK H4 v9](native-dxvk-h4-v9-memory-batching.md) | Light 720p gameplay/batching confirmed; no meaningful gain reported, final windows 20.59 FPS |
 | [Native DXVK H4 v8.1](native-dxvk-h4-v8.1-transport.md) | Previous candidate and Light reference: 20–22 FPS reported, crowded lows near 16, confined peak 30 |
 | [Native DXVK H4 v8](native-dxvk-h4-v8-game-detail.md) | Map reuse and Light 720p introduction; later normal-settings feedback 17–20 FPS |

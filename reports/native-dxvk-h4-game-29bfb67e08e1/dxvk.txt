@@ -1,0 +1,417 @@
+warn:  CreateDXGIFactory2: Ignoring flags
+info:  Game: HKShip.exe
+info:  DXVK: 3.1.1-sdbatch2-native-probe-v1
+info:  Build: horizon GCC recorded in receipt
+info:  Found config file: sdmc:/switch/sleepingdogs-fex/drive_c/SleepingDogs/dxvk.conf
+info:  Effective configuration:
+info:    d3d11.sdSubmissionBatching = True
+info:    d3d11.samplerAnisotropy = 0
+info:    dxvk.hud = fps
+info:    dxgi.maxFrameLatency = 3
+info:    dxvk.enableDescriptorHeap = False
+info:    dxvk.enableDescriptorBuffer = False
+info:    dxgi.maxSharedMemory = 128
+info:    dxgi.maxDeviceMemory = 256
+info:    dxvk.numCompilerThreads = 1
+info:    dxgi.syncInterval = 1
+info:    d3d9.presentInterval = 0
+info:  Extension providers:
+info:    Platform WSI
+info:  Enabled instance extensions:
+info:    VK_KHR_get_surface_capabilities2
+info:    VK_KHR_surface
+info:    VK_KHR_surface_maintenance1
+info:    VK_NN_vi_surface
+info:  Found device: NVIDIA Tegra X1 (GM20B) (NVK GM20B) (NVK 26.2.2)
+warn:  DXGI: Found monitors not associated with any adapter, using fallback
+info:  DXGI: Hiding actual GPU, reporting:
+info:    vendor ID: 0x1002
+info:    device ID: 0x73df
+info:  Adapter LUID 0: 0:1
+err:   DXGI: Failed to parse display metadata + colorimetry info, using blank.
+info:  Creating device:
+info:  NVIDIA Tegra X1 (GM20B) (NVK GM20B):
+info:    Driver   : NVK 26.2.2
+info:  Queues:
+info:    Graphics : (0, 0)
+info:    Transfer : (0, 0)
+info:    Sparse   : (4294967295, 0)
+info:  Memory:
+info:    Heap 0: 2.40 GiB (DEVICE_LOCAL)
+info:    Budget: 1.1 GiB
+info:      Type  0: DEVICE_LOCAL
+info:      Type  1: DEVICE_LOCAL | HOST_VISIBLE | HOST_CACHED
+info:      Type  2: DEVICE_LOCAL | HOST_VISIBLE | HOST_COHERENT
+info:  Enabled extensions:
+info:    VK_EXT_attachment_feedback_loop_layout
+info:    VK_EXT_border_color_swizzle
+info:    VK_EXT_conservative_rasterization
+info:    VK_EXT_custom_border_color
+info:    VK_EXT_depth_clip_enable
+info:    VK_EXT_depth_bias_control
+info:    VK_EXT_dynamic_rendering_unused_attachments
+info:    VK_EXT_extended_dynamic_state3
+info:    VK_EXT_fragment_shader_interlock
+info:    VK_EXT_graphics_pipeline_library
+info:    VK_EXT_hdr_metadata
+info:    VK_EXT_line_rasterization
+info:    VK_EXT_multi_draw
+info:    VK_EXT_non_seamless_cube_map
+info:    VK_EXT_robustness2
+info:    VK_EXT_sample_locations
+info:    VK_EXT_shader_module_identifier
+info:    VK_EXT_transform_feedback
+info:    VK_EXT_vertex_attribute_divisor
+info:    VK_KHR_dynamic_rendering_local_read
+info:    VK_KHR_incremental_present
+info:    VK_KHR_load_store_op_none
+info:    VK_KHR_maintenance5
+info:    VK_KHR_maintenance6
+info:    VK_KHR_maintenance7
+info:    VK_KHR_maintenance8
+info:    VK_KHR_maintenance9
+info:    VK_KHR_maintenance10
+info:    VK_KHR_pipeline_library
+info:    VK_KHR_shader_float_controls2
+info:    VK_KHR_shader_subgroup_uniform_control_flow
+info:    VK_KHR_shader_untyped_pointers
+info:    VK_KHR_swapchain
+info:    VK_KHR_swapchain_maintenance1
+info:    VK_KHR_swapchain_mutable_format
+info:    VK_KHR_unified_image_layouts
+info:  Enabled features:
+info:    depthBiasClamp                 : 1
+info:    depthBounds                    : 1
+info:    depthClamp                     : 1
+info:    drawIndirectFirstInstance      : 1
+info:    dualSrcBlend                   : 1
+info:    fillModeNonSolid               : 1
+info:    fragmentStoresAndAtomics       : 1
+info:    fullDrawIndexUint32            : 1
+info:    geometryShader                 : 1
+info:    imageCubeArray                 : 1
+info:    independentBlend               : 1
+info:    largePoints                    : 1
+info:    logicOp                        : 1
+info:    multiDrawIndirect              : 1
+info:    multiViewport                  : 1
+info:    occlusionQueryPrecise          : 1
+info:    pipelineStatisticsQuery        : 1
+info:    robustBufferAccess             : 1
+info:    sampleRateShading              : 1
+info:    samplerAnisotropy              : 1
+info:    shaderClipDistance             : 1
+info:    shaderCullDistance             : 1
+info:    shaderFloat64                  : 1
+info:    shaderImageGatherExtended      : 1
+info:    shaderInt16                    : 1
+info:    shaderInt64                    : 1
+info:    shaderUniformBufferArrayDynamicIndexing : 1
+info:    shaderSampledImageArrayDynamicIndexing : 1
+info:    shaderStorageBufferArrayDynamicIndexing : 1
+info:    shaderStorageImageArrayDynamicIndexing : 1
+info:    sparseBinding                  : 0
+info:    sparseResidencyBuffer          : 0
+info:    sparseResidencyImage2D         : 0
+info:    sparseResidencyImage3D         : 0
+info:    sparseResidency2Samples        : 0
+info:    sparseResidency4Samples        : 0
+info:    sparseResidency8Samples        : 0
+info:    sparseResidency16Samples       : 0
+info:    sparseResidencyAliased         : 0
+info:    shaderResourceResidency        : 0
+info:    shaderResourceMinLod           : 0
+info:    tessellationShader             : 1
+info:    textureCompressionBC           : 1
+info:    variableMultisampleRate        : 1
+info:    vertexPipelineStoresAndAtomics : 1
+info:    wideLines                      : 1
+info:    shaderDrawParameters           : 1
+info:    storageBuffer16BitAccess       : 1
+info:    storagePushConstant16          : 1
+info:    bufferDeviceAddress            : 1
+info:    descriptorIndexing             : 1
+info:    storageBuffer8BitAccess        : 1
+info:    storagePushConstant8           : 1
+info:    shaderUniformTexelBufferArrayDynamicIndexing : 1
+info:    shaderStorageTexelBufferArrayDynamicIndexing : 1
+info:    shaderUniformBufferArrayNonUniformIndexing : 1
+info:    shaderSampledImageArrayNonUniformIndexing : 1
+info:    shaderStorageBufferArrayNonUniformIndexing : 1
+info:    shaderStorageImageArrayNonUniformIndexing : 1
+info:    shaderUniformTexelBufferArrayNonUniformIndexing : 1
+info:    shaderStorageTexelBufferArrayNonUniformIndexing : 1
+info:    descriptorBindingSampledImageUpdateAfterBind : 1
+info:    descriptorBindingUpdateUnusedWhilePending : 1
+info:    descriptorBindingPartiallyBound : 1
+info:    drawIndirectCount              : 0
+info:    hostQueryReset                 : 1
+info:    runtimeDescriptorArray         : 1
+info:    samplerFilterMinmax            : 1
+info:    samplerMirrorClampToEdge       : 1
+info:    scalarBlockLayout              : 1
+info:    shaderFloat16                  : 0
+info:    shaderInt8                     : 1
+info:    shaderOutputViewportIndex      : 1
+info:    shaderOutputLayer              : 1
+info:    timelineSemaphore              : 1
+info:    uniformBufferStandardLayout    : 1
+info:    vulkanMemoryModel              : 1
+info:    inlineUniformBlock             : 1
+info:    computeFullSubgroups           : 1
+info:    dynamicRendering               : 1
+info:    maintenance4                   : 1
+info:    robustImageAccess              : 0
+info:    pipelineCreationCacheControl   : 1
+info:    shaderDemoteToHelperInvocation : 1
+info:    shaderZeroInitializeWorkgroupMemory : 1
+info:    subgroupSizeControl            : 1
+info:    synchronization2               : 1
+info:  VK_EXT_attachment_feedback_loop_layout:
+info:    attachmentFeedbackLoopLayout   : 1
+info:  VK_EXT_border_color_swizzle:
+info:    borderColorSwizzle             : 1
+info:    borderColorSwizzleFromImage    : 0
+info:  VK_EXT_conservative_rasterization:
+info:    extConservativeRasterization   : 1
+info:  VK_EXT_custom_border_color:
+info:    customBorderColors             : 1
+info:    customBorderColorWithoutFormat : 1
+info:  VK_EXT_depth_clip_enable:
+info:    depthClipEnable                : 1
+info:  VK_EXT_depth_bias_control:
+info:    depthBiasControl               : 1
+info:    leastRepresentableValueForceUnormRepresentation : 1
+info:    floatRepresentation            : 0
+info:    depthBiasExact                 : 1
+info:  VK_EXT_descriptor_buffer:
+info:    descriptorBuffer               : 0
+info:  VK_EXT_descriptor_heap:
+info:    descriptorHeap                 : 0
+info:  VK_EXT_dynamic_rendering_unused_attachments:
+info:    dynamicRenderingUnusedAttachments : 1
+info:  VK_EXT_extended_dynamic_state3:
+info:    extendedDynamicState3AlphaToCoverageEnable : 1
+info:    extendedDynamicState3DepthClipEnable : 1
+info:    extendedDynamicState3RasterizationSamples : 1
+info:    extendedDynamicState3SampleMask : 1
+info:    extendedDynamicState3LineRasterizationMode : 1
+info:    extendedDynamicState3SampleLocationsEnable : 1
+info:  VK_EXT_fragment_shader_interlock:
+info:    fragmentShaderSampleInterlock  : 1
+info:    fragmentShaderPixelInterlock   : 1
+info:  VK_EXT_full_screen_exclusive:
+info:    extFullScreenExclusive         : 0
+info:  VK_EXT_graphics_pipeline_library:
+info:    graphicsPipelineLibrary        : 1
+info:  VK_EXT_hdr_metadata:
+info:    extHdrMetadata                 : 1
+info:  VK_EXT_line_rasterization:
+info:    rectangularLines               : 1
+info:    smoothLines                    : 1
+info:  VK_EXT_memory_budget:
+info:    extMemoryBudget                : 1
+info:  VK_EXT_memory_priority:
+info:    memoryPriority                 : 0
+info:  VK_EXT_multi_draw:
+info:    multiDraw                      : 1
+info:  VK_EXT_non_seamless_cube_map:
+info:    nonSeamlessCubeMap             : 1
+info:  VK_EXT_pageable_device_local_memory:
+info:    pageableDeviceLocalMemory      : 0
+info:  VK_EXT_robustness2:
+info:    robustBufferAccess2            : 1
+info:    robustImageAccess2             : 1
+info:    nullDescriptor                 : 1
+info:  VK_EXT_sample_locations:
+info:    extSampleLocations             : 1
+info:  VK_EXT_shader_module_identifier:
+info:    shaderModuleIdentifier         : 1
+info:  VK_EXT_shader_stencil_export:
+info:    extShaderStencilExport         : 0
+info:  VK_EXT_swapchain_colorspace:
+info:    extSwapchainColorSpace         : 0
+info:  VK_EXT_swapchain_maintenance1:
+info:    swapchainMaintenance1          : 0
+info:  VK_EXT_transform_feedback:
+info:    transformFeedback              : 1
+info:    geometryStreams                : 1
+info:  VK_EXT_vertex_attribute_divisor:
+info:    vertexAttributeInstanceRateDivisor : 1
+info:    vertexAttributeInstanceRateZeroDivisor : 1
+info:  VK_KHR_device_fault:
+info:    deviceFault                    : 0
+info:    deviceFaultVendorBinary        : 0
+info:  VK_KHR_dynamic_rendering_local_read:
+info:    dynamicRenderingLocalRead      : 1
+info:  VK_KHR_external_memory_win32:
+info:    khrExternalMemoryWin32         : 0
+info:  VK_KHR_external_semaphore_win32:
+info:    khrExternalSemaphoreWin32      : 0
+info:  VK_KHR_incremental_present:
+info:    khrIncrementalPresent          : 1
+info:  VK_KHR_load_store_op_none:
+info:    khrLoadStoreOpNone             : 1
+info:  VK_KHR_maintenance5:
+info:    maintenance5                   : 1
+info:  VK_KHR_maintenance6:
+info:    maintenance6                   : 1
+info:  VK_KHR_maintenance7:
+info:    maintenance7                   : 1
+info:  VK_KHR_maintenance8:
+info:    maintenance8                   : 1
+info:  VK_KHR_maintenance9:
+info:    maintenance9                   : 1
+info:  VK_KHR_maintenance10:
+info:    maintenance10                  : 1
+info:  VK_KHR_maintenance11:
+info:    maintenance11                  : 0
+info:  VK_KHR_pipeline_library:
+info:    khrPipelineLibrary             : 1
+info:  VK_KHR_present_id:
+info:    presentId                      : 0
+info:  VK_KHR_present_id2:
+info:    presentId2                     : 0
+info:  VK_KHR_present_wait:
+info:    presentWait                    : 0
+info:  VK_KHR_present_wait2:
+info:    presentWait2                   : 0
+info:  VK_KHR_shader_float_controls2:
+info:    shaderFloatControls2           : 1
+info:  VK_KHR_shader_subgroup_uniform_control_flow:
+info:    shaderSubgroupUniformControlFlow : 1
+info:  VK_KHR_shader_untyped_pointers:
+info:    shaderUntypedPointers          : 1
+info:  VK_KHR_swapchain:
+info:    khrSwapchain                   : 1
+info:  VK_KHR_swapchain_maintenance1:
+info:    swapchainMaintenance1          : 1
+info:  VK_KHR_swapchain_mutable_format:
+info:    khrSwapchainMutableFormat      : 1
+info:  VK_KHR_unified_image_layouts:
+info:    unifiedImageLayouts            : 1
+info:  VK_KHR_win32_keyed_mutex:
+info:    khrWin32KeyedMutex             : 0
+info:  VK_AMD_buffer_marker:
+info:    amdBufferMarker                : 0
+info:  VK_NV_device_diagnostic_checkpoints:
+info:    nvDeviceDiagnosticCheckpoints  : 0
+info:  VK_NV_low_latency2:
+info:    nvLowLatency2                  : 0
+info:  VK_NV_raw_access_chains:
+info:    shaderRawAccessChains          : 0
+info:  VK_NVX_binary_import:
+info:    nvxBinaryImport                : 0
+info:  VK_NVX_image_view_handle:
+info:    nvxImageViewHandle             : 0
+info:  [SD-DXVK-MEM] v1 pool cap=2 MiB; large chunks=aligned resource
+info:  [SD-DXVK-STREAM] v1 mapped > 2 MiB dedicated; no small suballocations
+info:  [SD-DXVK-RECYCLE] v1 retired-only exact-size-type max_idle_mib=16
+info:  Memory type mask for buffer resources: 0x7, usage: 0x219ff
+info:  Graphics pipeline libraries supported
+info:  Binding model: Legacy
+warn:  D3D11DeviceFeatures: External memory features not supported
+info:  D3D11InternalCreateDevice: Maximum supported feature level: D3D_FEATURE_LEVEL_11_1
+info:  D3D11InternalCreateDevice: Using feature level D3D_FEATURE_LEVEL_11_0
+info:  [SD-DXVK-BATCH] v2 enabled=1 hint_chunks=24 min_pending=2; explicit/map/query/present flush paths retained
+warn:  D3D11DXGIDevice::QueryInterface: Unknown interface query
+warn:  0ec870a6-5d7e-4c22-8cfc-5baae07616ed
+info:  Found cache file: sdmc:/switch/sleepingdogs-fex/native-dxvk-h4/cache/4f85c8ebd4ac9ed0.dxvk.bin
+info:  Cache: 640 shaders (1.7 MB)
+info:  DXVK: Using 1 compiler threads
+info:  [SD-DXVK-MEM] compact chunk: required=256 allocated=2097152 type=2
+info:  [SD-DXVK-MEM] compact chunk: required=524288 allocated=2097152 type=0
+info:  Presenter: Actual swapchain properties:
+info:    Format:       VK_FORMAT_R8G8B8A8_UNORM
+info:    Color space:  VK_COLOR_SPACE_SRGB_NONLINEAR_KHR
+info:    Present mode: VK_PRESENT_MODE_FIFO_KHR (dynamic: no)
+info:    Buffer size:  1280x720
+info:    Image count:  3
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=4194304 idle_bytes=5242880 hits=1
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=2
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=4194304 idle_bytes=5242880 hits=3
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=4194304 hits=4
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=4194304 idle_bytes=5242880 hits=8
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=16
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=32
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=64
+info:  [SD-DXVK-MEM] compact chunk: required=1048576 allocated=2097152 type=2
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=128
+info:  [SD-DXVK-MEM] compact chunk: required=393216 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=196608 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=196608 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=131072 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-MEM] compact chunk: required=65536 allocated=2097152 type=0
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=4194304 idle_bytes=5242880 hits=256
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=256 explicit=229 sync=26 strong=1 weak=0 deferred_hints=0; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=512
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=512 explicit=483 sync=28 strong=1 weak=0 deferred_hints=252; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=4194304 idle_bytes=5242880 hits=1024
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=768 explicit=739 sync=28 strong=1 weak=0 deferred_hints=447; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=1024 explicit=995 sync=28 strong=1 weak=0 deferred_hints=630; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=2048
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=1280 explicit=1251 sync=28 strong=1 weak=0 deferred_hints=663; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=1536 explicit=1482 sync=38 strong=1 weak=15 deferred_hints=1590; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=1792 explicit=1662 sync=48 strong=1 weak=81 deferred_hints=4479; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=2048 explicit=1839 sync=56 strong=1 weak=152 deferred_hints=9876; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=2304 explicit=2090 sync=56 strong=1 weak=157 deferred_hints=10330; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=2560 explicit=2251 sync=58 strong=3 weak=248 deferred_hints=21610; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=2816 explicit=2372 sync=59 strong=3 weak=382 deferred_hints=37157; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=4096
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=3072 explicit=2450 sync=60 strong=3 weak=559 deferred_hints=47559; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=3328 explicit=2537 sync=62 strong=3 weak=726 deferred_hints=59490; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=3584 explicit=2613 sync=65 strong=3 weak=903 deferred_hints=69124; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=3840 explicit=2693 sync=77 strong=3 weak=1067 deferred_hints=79095; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=4096 explicit=2784 sync=95 strong=3 weak=1214 deferred_hints=90309; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=4352 explicit=2864 sync=105 strong=3 weak=1380 deferred_hints=99717; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=4608 explicit=2939 sync=121 strong=3 weak=1545 deferred_hints=108448; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=4864 explicit=3061 sync=139 strong=3 weak=1661 deferred_hints=123843; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=5120 explicit=3184 sync=146 strong=3 weak=1787 deferred_hints=140987; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=5376 explicit=3243 sync=162 strong=3 weak=1968 deferred_hints=148770; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=5632 explicit=3313 sync=174 strong=3 weak=2142 deferred_hints=158223; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=5888 explicit=3372 sync=190 strong=3 weak=2323 deferred_hints=165936; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=6144 explicit=3423 sync=200 strong=3 weak=2518 deferred_hints=171978; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=6400 explicit=3472 sync=216 strong=3 weak=2709 deferred_hints=177505; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=6656 explicit=3518 sync=224 strong=3 weak=2911 deferred_hints=181835; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=6912 explicit=3566 sync=225 strong=3 weak=3118 deferred_hints=186762; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=7168 explicit=3656 sync=225 strong=3 weak=3284 deferred_hints=198591; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=7424 explicit=3724 sync=225 strong=3 weak=3472 deferred_hints=206693; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=7680 explicit=3811 sync=225 strong=3 weak=3641 deferred_hints=217605; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=7936 explicit=3943 sync=226 strong=3 weak=3764 deferred_hints=234128; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=8192 explicit=4152 sync=227 strong=3 weak=3810 deferred_hints=260986; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=8448 explicit=4205 sync=227 strong=3 weak=4013 deferred_hints=266180; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=8704 explicit=4259 sync=227 strong=3 weak=4215 deferred_hints=270807; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=8960 explicit=4313 sync=233 strong=3 weak=4411 deferred_hints=276068; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=9216 explicit=4358 sync=234 strong=3 weak=4621 deferred_hints=280508; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=9472 explicit=4408 sync=238 strong=3 weak=4823 deferred_hints=287013; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=9728 explicit=4479 sync=254 strong=3 weak=4992 deferred_hints=296883; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=9984 explicit=4528 sync=255 strong=3 weak=5198 deferred_hints=302850; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=10240 explicit=4673 sync=278 strong=3 weak=5286 deferred_hints=321864; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-RECYCLE] event=reuse bytes=5242880 idle_bytes=0 hits=8192
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=10496 explicit=4816 sync=312 strong=3 weak=5365 deferred_hints=340834; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=10752 explicit=4963 sync=347 strong=3 weak=5439 deferred_hints=359919; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=11008 explicit=5094 sync=377 strong=3 weak=5534 deferred_hints=377240; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=11264 explicit=5211 sync=391 strong=3 weak=5659 deferred_hints=392456; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=11520 explicit=5309 sync=394 strong=3 weak=5814 deferred_hints=405157; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=11776 explicit=5363 sync=407 strong=3 weak=6003 deferred_hints=411464; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=12032 explicit=5430 sync=416 strong=3 weak=6183 deferred_hints=419569; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=12288 explicit=5503 sync=433 strong=3 weak=6349 deferred_hints=429157; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=12544 explicit=5581 sync=442 strong=3 weak=6518 deferred_hints=440068; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=12800 explicit=5633 sync=447 strong=3 weak=6717 deferred_hints=445597; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=13056 explicit=5683 sync=456 strong=3 weak=6914 deferred_hints=450739; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=13312 explicit=5806 sync=468 strong=3 weak=7035 deferred_hints=465549; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=13568 explicit=5949 sync=497 strong=3 weak=7119 deferred_hints=484132; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=13824 explicit=6044 sync=500 strong=3 weak=7277 deferred_hints=496260; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=14080 explicit=6102 sync=500 strong=3 weak=7475 deferred_hints=502623; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=14336 explicit=6167 sync=500 strong=3 weak=7666 deferred_hints=509797; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=14592 explicit=6226 sync=500 strong=3 weak=7863 deferred_hints=515436; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=14848 explicit=6315 sync=507 strong=3 weak=8023 deferred_hints=526142; cumulative, deferred hints are requests not eliminated submissions
+info:  [SD-DXVK-BATCH] v2 enabled=1 flushes=15104 explicit=6415 sync=525 strong=3 weak=8161 deferred_hints=538610; cumulative, deferred hints are requests not eliminated submissions

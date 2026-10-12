@@ -19,6 +19,10 @@ struct proxy {
     const void *vtbl;
     uint32_t magic, token, interface_id;
     LONG refs;
+    /* Protected by proxy_lock. Each credit owns one native reference; local
+     * AddRef does not need another. Outputs contribute both a ref and a credit.
+     * Keep 1 <= native_refs <= refs until final Release. */
+    uint32_t native_refs;
     struct proxy *next, **previous;
     struct proxy *hash_next, **hash_previous;
 };
@@ -50,6 +54,11 @@ static struct mapped_shadow *shadows;
 static struct mapped_shadow *idle_shadows;
 static uint32_t idle_shadow_bytes,idle_shadow_count;
 #define PROXY_MAGIC 0x53444334u
+
+/* Separate counters, not a hot-path clock or native call. Snapshots taken while
+ * other threads run are approximate; their deltas converge after quiescence. */
+static LONG local_addrefs,local_releases,native_releases,output_references;
+static void proxy_ref_report(int force);
 
 static uint32_t proxy_bucket(uint32_t token,uint32_t kind) {
     uint32_t key=token*0x9e3779b9u ^ kind*0x85ebca6bu;
@@ -101,6 +110,9 @@ static LONG proxy_call(struct sd_com_packet *packet) {
     }
     LONG status=endpoint->call(endpoint->handle,0,packet);
     if(status<0)return status;
+    if(!packet->fault && packet->interface_id==SD_COM_IF_IDXGISwapChain && packet->method==8 &&
+       packet->ret==S_OK && !(packet->args[1]&DXGI_PRESENT_TEST))
+        proxy_ref_report(0);
     return (LONG)packet->fault;
 }
 /* Keep wire handles private until a complete PE32 proxy can be published.
@@ -162,21 +174,21 @@ static HRESULT proxy_query(void *object,REFIID iid,void **output) {
 }
 static ULONG proxy_addref(void *object) {
     struct proxy *self=object;
-    struct sd_com_packet p={SD_COM_ABI,proxy_token(object),self->interface_id,1};
-    LONG status=proxy_call(&p);
-    if(status<0){proxy_fatal(status);return 0;}
+    proxy_token(object);
     ULONG refs=(ULONG)InterlockedIncrement(&self->refs);
+    InterlockedIncrement(&local_addrefs);
     return refs;
 }
 static ULONG proxy_release(void *object) {
     struct proxy *self=object;
-    struct sd_com_packet p={SD_COM_ABI,proxy_token(object),self->interface_id,2};
-    LONG status=proxy_call(&p);
-    if(status<0){proxy_fatal(status);return 0;}
-    /* Never hold the guest lock while entering native DXVK: another thread
-     * can be waiting in the bridge while the caller owns Multithread::Enter. */
+    uint32_t token=proxy_token(object),kind=self->interface_id;
+    int release_native=0;
+    /* Decide ownership and unlink atomically with output publication. Never
+     * enter native while holding this lock: Multithread::Enter may be held by
+     * a thread which needs to publish/release another guest proxy. */
     EnterCriticalSection(&proxy_lock);
     ULONG refs=(ULONG)InterlockedDecrement(&self->refs);
+    if(self->native_refs>refs){--self->native_refs;release_native=1;}
     if(!refs) {
         *self->previous=self->next;
         if(self->next)self->next->previous=self->previous;
@@ -186,6 +198,14 @@ static ULONG proxy_release(void *object) {
         HeapFree(GetProcessHeap(),0,self);
     }
     LeaveCriticalSection(&proxy_lock);
+    /* The detached credit stays owned even if a thread wraps the same token
+     * after unlink. No access to self is permitted after dropping the lock. */
+    if(release_native) {
+        struct sd_com_packet p={SD_COM_ABI,token,kind,2};
+        InterlockedIncrement(&native_releases);
+        LONG status=proxy_call(&p);
+        if(status<0){proxy_fatal(status);return 0;}
+    } else InterlockedIncrement(&local_releases);
     return refs;
 }
 static void *proxy_wrap(uint32_t token,uint32_t kind) {
@@ -196,12 +216,15 @@ static void *proxy_wrap(uint32_t token,uint32_t kind) {
     struct proxy **bucket=&proxy_buckets[proxy_bucket(token,kind)];
     for(struct proxy *p=*bucket;p;p=p->hash_next) {
         if(p->token==token && p->interface_id==kind) {
-            InterlockedIncrement(&p->refs);LeaveCriticalSection(&proxy_lock);return p;
+            ++p->native_refs;InterlockedIncrement(&p->refs);
+            InterlockedIncrement(&output_references);
+            LeaveCriticalSection(&proxy_lock);return p;
         }
     }
     struct proxy *p=HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*p));
     if(p){
-        p->vtbl=vtbl;p->magic=PROXY_MAGIC;p->token=token;p->interface_id=kind;p->refs=1;
+        p->vtbl=vtbl;p->magic=PROXY_MAGIC;p->token=token;p->interface_id=kind;p->refs=1;p->native_refs=1;
+        InterlockedIncrement(&output_references);
         p->next=proxies;p->previous=&proxies;
         if(p->next)p->next->previous=&p->next;
         proxies=p;
@@ -372,7 +395,46 @@ __declspec(dllexport) HRESULT WINAPI SdCreateFactory(UINT flags,REFIID iid,void 
     return status<0?status:(HRESULT)p.ret;
 }
 __declspec(dllexport) LONG WINAPI SdComStats(uint32_t *stats) {
-    struct sd_com_packet p={SD_COM_ABI,0,0,SD_COM_STATS};p.args[0]=guest_address(stats);return proxy_call(&p);
+    struct sd_com_packet p={SD_COM_ABI,0,0,SD_COM_STATS};p.args[0]=guest_address(stats);
+    LONG status=proxy_call(&p);proxy_ref_report(1);return status;
+}
+/* A guest-only diagnostic export: no native protocol or NRO change. */
+__declspec(dllexport) LONG WINAPI SdComRefStats(uint32_t *stats) {
+    if(!stats)return E_POINTER;
+    stats[0]=1;
+    stats[1]=(uint32_t)InterlockedCompareExchange(&local_addrefs,0,0);
+    stats[2]=(uint32_t)InterlockedCompareExchange(&local_releases,0,0);
+    stats[3]=(uint32_t)InterlockedCompareExchange(&native_releases,0,0);
+    stats[4]=(uint32_t)InterlockedCompareExchange(&output_references,0,0);
+    return 0;
+}
+static void ref_text(char **at,const char *s){while(*s)*(*at)++=*s++;}
+static void ref_number(char **at,uint32_t value){char digits[10];unsigned n=0;
+    do{digits[n++]=(char)('0'+value%10);value/=10;}while(value);while(n)*(*at)++=digits[--n];}
+static void proxy_ref_report(int force) {
+    static LONG present_count,reporting;
+    static int opened;
+    static HANDLE file=INVALID_HANDLE_VALUE;
+    uint32_t presents=force?(uint32_t)InterlockedCompareExchange(&present_count,0,0):(uint32_t)InterlockedIncrement(&present_count);
+    if(!force&&presents!=1&&presents%600)return;
+    if(InterlockedCompareExchange(&reporting,1,0))return;
+    /* One short buffered line per 600 Presents. No FlushFileBuffers per frame.
+     * Never called under proxy_lock or from DllMain's loader lock. */
+#ifndef SD_COM_REF_LOG_PATH
+#define SD_COM_REF_LOG_PATH "C:\\native-dxvk-ref-v1.log"
+#endif
+    if(!opened){opened=1;file=CreateFileA(SD_COM_REF_LOG_PATH,GENERIC_WRITE,FILE_SHARE_READ,NULL,CREATE_ALWAYS,FILE_ATTRIBUTE_NORMAL,NULL);}
+    if(file!=INVALID_HANDLE_VALUE){
+        uint32_t stats[5];SdComRefStats(stats);char line[384],*at=line;DWORD written;
+        ref_text(&at,"[SD-NDX-REF] v1 presents=");ref_number(&at,presents);
+        ref_text(&at," local_addrefs=");ref_number(&at,stats[1]);
+        ref_text(&at," local_releases=");ref_number(&at,stats[2]);
+        ref_text(&at," native_releases=");ref_number(&at,stats[3]);
+        ref_text(&at," output_refs=");ref_number(&at,stats[4]);
+        ref_text(&at,"; local calls skip FEX/Wine/native transport\r\n");
+        WriteFile(file,line,(DWORD)(at-line),&written,NULL);
+    }
+    InterlockedExchange(&reporting,0);
 }
 BOOL WINAPI DllMain(HINSTANCE self,DWORD reason,void *reserved) {
     (void)reserved;
