@@ -32,6 +32,13 @@ Confirm that `HKShip.exe` is the original x86 edition and is directly inside
 the installed game files were copied. Keep the package's complete renderer
 DLL set and Wine modules together.
 
+Two affected installations returned to the launcher before the first frame
+because `.pandora` startup files were missing from the game copy. Version 0.1.1
+embeds and restores missing `config.json`, `dummys.bson` and `local` defaults.
+The `local` file intentionally has zero bytes and no extension. Existing files
+are retained. If the launcher cannot restore a file, check SD free space and
+write access or recopy the complete supporting folder from your installation.
+
 Use Launch Debug for a reproduction, then save the log before another launch.
 Do not apply an older startup fix merely because its document mentions a
 similar symptom; the [history](HISTORY.md) contains multiple superseded builds.

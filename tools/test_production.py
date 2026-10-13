@@ -1,5 +1,6 @@
 """Execute quiet logging, real native Logger and independent history maintenance."""
 from pathlib import Path
+import argparse
 import hashlib,json,subprocess,tempfile
 from production_overlay import ROOT
 from test_launcher_v4_runtime import function
@@ -76,4 +77,7 @@ int main(void){
                 nro_sha256=build['nro_sha256'],normal_logs=False,last_played_independent=True,
                 optional_lsfg_not_required=True,hardware_tested=False)
     (LOCAL/'policy-test.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(results,indent=2))
-if __name__=='__main__':main()
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--build-dir',type=Path,default=LOCAL)
+    p.add_argument('--work',type=Path,default=WORK);args=p.parse_args()
+    LOCAL=args.build_dir;WORK=args.work;main()

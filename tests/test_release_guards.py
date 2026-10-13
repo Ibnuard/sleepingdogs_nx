@@ -101,6 +101,16 @@ class ReleasePackage(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,'checksum'):ci.validate_assets(out,'v0.1.0-r1',commit)
 
 class ReleaseTransport(unittest.TestCase):
+    def test_stable_version_and_legacy_revision(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);(root/'release').mkdir();output=root/'outputs'
+            for runtime,expected in (('0.1.1','v0.1.1'),('0.1.0-p1','v0.1.0-r7')):
+                (root/'release/runtime-lock.json').write_text(json.dumps({'runtime_version':runtime}))
+                output.write_text('')
+                with patch.object(ci,'ROOT',root),patch.object(ci,'merged_commit',return_value='b'*40),\
+                    patch.dict(os.environ,{'GITHUB_RUN_NUMBER':'7','GITHUB_OUTPUT':str(output)}):ci.version()
+                self.assertEqual(output.read_text(),'version='+expected+'\ncommit='+'b'*40+'\n')
+
     def test_only_closed_merged_main_same_repository(self):
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/'event.json'

@@ -66,6 +66,9 @@ or rebooting while the compatible boot environment remains active.
    `switch/sleepingdogs-fex/drive_c/SleepingDogs/`.
 3. Include `HKShip.exe`, all BIG/BIX archives, `Data/`, original game DLLs and
    other supporting files. Avoid an extra nested `Sleeping Dogs/` directory.
+   Preserve dot folders and zero-byte files when copying your installation.
+   From 0.1.1, the NRO automatically restores missing `.pandora` startup defaults
+   during System Check and before Play, while retaining existing configuration.
 4. Keep the package's `d3d9.dll`, `d3d11.dll`, `dxgi.dll`, `sdndx4.dll` and `dxvk.conf` when
    file names overlap. The game and launcher renderer copies must match.
 5. Open Sleeping Dogs from HOME. Use normal Launch / Launch GUI for play;

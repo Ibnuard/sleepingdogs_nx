@@ -1,6 +1,7 @@
 /* SPDX-License-Identifier: LGPL-2.1-or-later.
  * Adapted from PES13 fextendo_install_check.h/runtime_fixer.h. Offline only;
- * game payloads and saves are never modified. The catalog is built into NRO.
+ * Missing startup configuration is restored; game payloads and saves are
+ * preserved. The catalog is built into NRO.
  */
 #ifndef SD_SYSTEM_CHECK_H
 #define SD_SYSTEM_CHECK_H
@@ -9,6 +10,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <errno.h>
+#include "startup_config.h"
 #ifdef __SWITCH__
 #include <switch.h>
 #else
@@ -66,7 +68,7 @@ static int sd_check_game(struct sd_check_job *j){
     if(lstat(path,&st)||!S_ISDIR(st.st_mode)){
         snprintf(j->error,sizeof(j->error),"Missing SleepingDogs/Data folder. Copy the complete game folder.");return 0;
     }
-    return 1;
+    return sd_startup_config_restore(j->root,j->error,sizeof(j->error));
 }
 static int sd_check_runtime(struct sd_check_job *j){
     char path[1024],hex[65];unsigned char buffer[32768],hash[32];

@@ -6,6 +6,9 @@ the SD root and replace matching files. No start-game folder is needed.
 Keep the current game, saves and private LSFG shader pack. This package does
 not contain lsfg.txt and therefore does not change the saved LSFG preference.
 The default renderer is DXVK Native ARM64; Light 1280x720 is always applied.
+Version 0.1.1 fixes failed launch caused by missing .pandora startup config.
+The NRO restores missing config.json, dummys.bson and the empty local file
+automatically during System Check and before Play. Existing files are preserved.
 
 Fresh installation:
 Copy switch/ to the SD root. Supply your own original x86 Sleeping Dogs PC
@@ -32,6 +35,6 @@ or proprietary LSFG shader pack are included. LSFG is optional and requires
 the user's compatible personal shader pack. Source, evidence and licenses
 are for reference and do not need to be copied to the SD card.
 
-Build and host tests passed; production-v1 still needs validation on Switch.
+Build and host tests passed; automatic config recovery still needs a Switch test.
 Previous gameplay confirmation does not establish a stable FPS target.
 Documentation: https://github.com/Ibnuard/sleepingdogs_nx

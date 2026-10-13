@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "result": "PASS missing/partial repair, exact bytes incl. empty local, repeat launch, preserve overrides, ENOSPC cleanup, stale staging recovery, directory/symlink rejection",
+  "hardware_tested": false,
+  "sources": {
+    "tools/test_startup_config.py": "45d2d6b99e100c0e753a3056d592d38566074ae52d3400e03ce37d84527e3592",
+    "tests/startup_config.c": "20cec41276c71b18fb1126daae18a366caa5b97f475b12f7551bf6597a2c4bed",
+    "src/launcher/startup_config.h": "6ac84dc1dcc59cac7c0fe2ca6b15af394490ff6276cc44268536757bee4dc7e6",
+    "src/launcher/startup_config_data.h": "ea1246910a872711267a8af783e2267d477659af3bb2fbd9e2cf9773a7739219"
+  }
+}

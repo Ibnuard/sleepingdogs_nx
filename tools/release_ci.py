@@ -53,7 +53,7 @@ def version():
     run = os.environ['GITHUB_RUN_NUMBER']
     if not run.isdecimal():
         raise ValueError('Invalid workflow run number')
-    value = 'v' + match[1] + '-r' + run
+    value = 'v' + match[1] + ('-r' + run if '-p' in runtime else '')
     with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
         output.write('version=' + value + '\ncommit=' + commit + '\n')
     print(value)
@@ -150,7 +150,9 @@ def publish(folder, tag, commit):
     if not release:
         notes = gh('api', prefix + '/releases/generate-notes', '--method', 'POST',
                    data={'tag_name': tag, 'target_commitish': commit})
-        body = ('Download **SleepingDogs-FEXTendo-' + tag + '-sd.zip** for the complete runtime. '
+        notes_path=ROOT/'release/NOTES.md'
+        changes=notes_path.read_text().strip()+'\n\n' if notes_path.is_file() else ''
+        body = (changes+'Download **SleepingDogs-FEXTendo-' + tag + '-sd.zip** for the complete runtime. '
                 'It includes the NRO, NSP forwarder, Wine/FEX/DXVK runtime, launcher assets, '
                 'presets, matching modified source units and notices.\n\n'
                 'Copy your own original x86 Sleeping Dogs game into '
