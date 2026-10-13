@@ -19,14 +19,19 @@ repository or release packages. The x64 **Definitive Edition is not supported**.
 
 ## Current status
 
+Version **0.1.1** fixes failed launch when `.pandora` startup configuration was
+lost during copying. The NRO restores missing defaults automatically, including
+the intentional empty `local` file, and preserves existing configuration.
+See [release notes](release/NOTES.md).
+
 Gameplay is confirmed on a Switch OLED. The user reports the latest
 [launcher v4](docs/launcher-v4.md) working well and supplied the screenshots
 below. Its native COM and Present optimizations are retained in
 [production v1](docs/production-v1.md), which removes normal diagnostic writes
 while preserving system persistence and last played.
 
-Production v1 passes build, host and binary checks; its new quiet-launch
-policy still needs a Switch test. Earlier Light 720p reports were around
+Production v1's quiet launch is reported working by the owner. Version 0.1.1's
+automatic config repair still needs a Switch test. Earlier Light 720p reports were around
 20–22 FPS with scene-dependent drops and confined-view peaks near 30.
 **Stable 30 FPS is not established; screenshots are not a benchmark.**
 

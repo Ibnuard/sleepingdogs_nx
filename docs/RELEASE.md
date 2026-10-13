@@ -29,13 +29,16 @@ the CLI also checks merged state, base branch/repository and commit format.
 
 ## Assets
 
-Each release contains the complete `SleepingDogs-FEXTendo-v0.1.0-rN-sd.zip`,
+Each release contains the complete `SleepingDogs-FEXTendo-v0.1.1-sd.zip`,
 standalone `sleepingdogs-fex.nro`, the matching memory forwarder NSP,
-`manifest.json` and `SHA256SUMS`. The `rN` comes from the workflow run number;
-the manifest separately records the NRO's `0.1.0-p1` runtime version.
+`manifest.json` and `SHA256SUMS`. Version 0.1.1 uses the same stable version
+for the release tag and NRO. Earlier `-pN` runtime inputs retain the package
+`-rN` naming convention. Published assets remain immutable.
 
 The SD package includes Wine/FEX modules, renderer sets, launcher resources,
 Wine fonts/NLS data, configuration, notices and matching modified source units.
+The NRO embeds the small startup config defaults and restores them if absent;
+they do not depend on an extracted dot folder or zero-byte archive member.
 Game executables/data, saves, keys, `lossless.dll`, `LosslessScaling.dll` and
 proprietary LSFG shader packs are rejected. The packager uses explicit paths;
 it never mirrors a game directory or an SD card. Source and evidence directories
@@ -54,6 +57,7 @@ draft visibility to users with push access ([API reference](https://docs.github.
 Verify the downloadable bytes before pushing the final PR. Source changes
 without a matching rebuilt runtime intentionally fail CI. Never replace the
 asset under an already used immutable lock; create a new versioned input.
+The 0.1.1 input is published as the `runtime-v0.1.1` prerelease dependency.
 
 To reproduce packaging locally (Python standard library only):
 

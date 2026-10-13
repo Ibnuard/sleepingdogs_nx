@@ -1,5 +1,37 @@
 # Production v1: quiet Play and public packaging
 
+## 0.1.1 startup configuration repair
+
+The current update retains this quiet production policy and embeds the three
+small `.pandora` startup defaults in the NRO. System Check restores missing
+files before using its runtime verification cache, and Play repeats the small
+file check before starting the guest. Existing readable configuration is kept;
+the intentional zero-byte `local` marker is valid. Failed writes are staged
+and discarded rather than publishing a partial configuration file.
+
+The missing folder was confirmed as the failed-launch cause on an affected
+installation. The new recovery implementation passes host failure-injection
+tests; a Switch test of the rebuilt NRO remains outstanding.
+
+```sh
+python3 tools/test_startup_config.py
+python3 tools/build_startup_config.py
+python3 tools/test_production.py --build-dir local/startup-config-v011 \
+  --work /home/blekjek/sleepingdogs-startup-config-v011
+python3 tools/test_production_launcher.py --build-dir local/startup-config-v011 \
+  --work /home/blekjek/sleepingdogs-startup-config-v011
+python tools/test_production_binary.py --build-dir local/startup-config-v011
+python3 tools/prepare_production_runtime.py --build-dir local/startup-config-v011 \
+  --runtime-tag runtime-v0.1.1 \
+  --output local/startup-config-v011/sleepingdogs-v0.1.1-public-runtime.zip
+```
+
+The binary test command runs in Windows with the existing pyelftools/Unicorn
+environment; the other runtime commands use the prepared WSL workspace.
+NACP and public release version: `0.1.1`. See [release notes](../release/NOTES.md).
+
+## Original production v1 record
+
 This build retains launcher v4's native COM/Present work and Light 720p. The
 user accepted the preceding gameplay candidate and supplied six README
 screenshots. No new FPS measurement or Switch test of production v1 is claimed.

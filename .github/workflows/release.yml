@@ -27,6 +27,8 @@ jobs:
         run: python3 tools/check_release_repository.py
       - name: Test package and release guards
         run: python3 -m unittest discover -s tests -p 'test_release_*.py' -v
+      - name: Test embedded startup configuration recovery
+        run: python3 tools/test_startup_config.py
       - name: Set package version
         id: version
         run: python3 tools/release_ci.py version

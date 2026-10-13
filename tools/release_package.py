@@ -9,7 +9,7 @@ NSP='FEXTendo-SleepingDogs-39bit-FEXTendoMemory-v1.nsp'
 SOURCE_TOOLS=('build_production.py','production_overlay.py','build_launcher_v4.py','launcher_v4_overlay.py',
     'launcher_v4_runtime.py','build_launcher_v2.py','launcher_v3_overlay.py','launcher_v2_overlay.py',
     'launcher_v1_overlay.py','native_dxvk_compact.py','native_dxvk_inline.py','build_native_dxvk_inline.py',
-    'native_dxvk_present_overlap.py')
+    'native_dxvk_present_overlap.py','build_startup_config.py')
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def encoded(data):return (json.dumps(data,indent=2,sort_keys=True)+'\n').encode()

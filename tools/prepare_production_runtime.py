@@ -19,9 +19,11 @@ def checked(path,digest):
     if sha(data)!=digest:raise ValueError('Changed input: '+str(path))
     return data
 
-def prepare(output):
-    build=json.loads((LOCAL/'build.json').read_text())
-    reports={n:json.loads((LOCAL/n).read_text()) for n in ('policy-test.json','test.json','binary-test.json')}
+def prepare(output,build_dir=LOCAL,runtime_tag='runtime-production-v1'):
+    local=build_dir
+    work=Path(json.loads((local/'build.json').read_text())['elf']).parent
+    build=json.loads((local/'build.json').read_text())
+    reports={n:json.loads((local/n).read_text()) for n in ('policy-test.json','test.json','binary-test.json')}
     if any(r['status']!='PASS' for r in reports.values()):raise ValueError('Production tests must pass')
     for name in ('policy-test.json','binary-test.json'):
         if reports[name]['nro_sha256']!=build['nro_sha256']:raise ValueError('Stale production test')
@@ -34,8 +36,8 @@ def prepare(output):
     for group in ('source_files','scripts'):
         for name,digest in build[group].items():checked(ROOT/name,digest)
     checked(Path(build['elf']),build['elf_sha256'])
-    files={NRO:checked(LOCAL/'sleepingdogs-fex.nro',build['nro_sha256'])}
-    catalog=json.loads(checked(LOCAL/'catalog.json',build['catalog_sha256']))
+    files={NRO:checked(local/'sleepingdogs-fex.nro',build['nro_sha256'])}
+    catalog=json.loads(checked(local/'catalog.json',build['catalog_sha256']))
     for item in catalog:
         files[PREFIX+item['path']]=checked(Path(item['source']),item['sha256'])
     # The previous delivery's inventory pins all reused presets and notices.
@@ -66,7 +68,7 @@ def prepare(output):
     files['evidence/forwarder.json']=encoded(forwarder)
     # Matching generated units, adapters, build recipes and their exact receipts.
     for name,digest in build['generated_sources'].items():
-        files['source/generated/production/'+name]=checked(WORK/name,digest)
+        files['source/generated/production/'+name]=checked(work/name,digest)
     inline=ROOT/'local/native-dxvk-inline-v1'
     inline_build=json.loads((inline/'build.json').read_text())
     for name,digest in inline_build['source_files'].items():
@@ -82,12 +84,12 @@ def prepare(output):
         if p.is_file() and any(x in p.name.upper() for x in ('LICENSE','COPYING','NOTICE')):
             files['licenses/'+p.relative_to(ROOT).as_posix()]=p.read_bytes()
     for name in ('build.json','policy-test.json','test.json','binary-test.json','catalog.json'):
-        files['evidence/production/'+name]=(LOCAL/name).read_bytes()
+        files['evidence/production/'+name]=(local/name).read_bytes()
     files['evidence/inline-build.json']=(inline/'build.json').read_bytes()
     files['evidence/launcher-v4-validation.json']=(ROOT/'reports/launcher-v4-validation.json').read_bytes()
     files[PREFIX+'launcher/build-production.json']=encoded(dict(version=build['version'],
         nro_sha256=build['nro_sha256'],normal_logs=False,explicit_debug=True))
-    lock=dict(schema=1,tag='runtime-production-v1',asset=output.name,runtime_version=build['version'],
+    lock=dict(schema=1,tag=runtime_tag,asset=output.name,runtime_version=build['version'],
         files={n:sha(d) for n,d in sorted(files.items())},source_fingerprints=fingerprints(),
         forwarder_ncas={n:sha(d) for n,d in pfs_files(files[NSP]).items()})
     checks=validate_payload(files,lock)
@@ -99,9 +101,11 @@ def prepare(output):
     summary=dict(status='PASS',runtime_sha256=lock['sha256'],runtime_bytes=output.stat().st_size,
         **checks,policy=reports['policy-test.json']['results'],saved_lsfg_preserved=True,
         last_played_independent=True,explicit_debug_supported=True)
-    (ROOT/'reports/production-v1-validation.json').write_bytes(encoded(summary))
+    (ROOT/'reports'/('production-'+build['version']+'-validation.json')).write_bytes(encoded(summary))
     print(json.dumps(summary,indent=2))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True)
-    prepare(p.parse_args().output)
+    p.add_argument('--build-dir',type=Path,default=LOCAL)
+    p.add_argument('--runtime-tag',default='runtime-production-v1')
+    args=p.parse_args();prepare(args.output,args.build_dir,args.runtime_tag)

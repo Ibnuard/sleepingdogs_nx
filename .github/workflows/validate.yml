@@ -21,6 +21,8 @@ jobs:
         run: python3 tools/check_release_repository.py
       - name: Test packaging and publication guards
         run: python3 -m unittest discover -s tests -p 'test_release_*.py' -v
+      - name: Test embedded startup configuration recovery
+        run: python3 tools/test_startup_config.py
       - name: Download approved runtime for package rehearsal
         if: github.event_name == 'push'
         id: runtime
@@ -31,9 +33,10 @@ jobs:
         if: github.event_name == 'push'
         env:
           RUNTIME_ARCHIVE: ${{ steps.runtime.outputs.runtime_path }}
-          PACKAGE_VERSION: v0.1.0-ci${{ github.run_number }}
           PACKAGE_COMMIT: ${{ github.sha }}
         run: |
+          PACKAGE_VERSION="v$(python3 -c 'import json; print(json.load(open("release/runtime-lock.json"))["runtime_version"].split("-")[0])')-ci${{ github.run_number }}"
+          export PACKAGE_VERSION
           python3 tools/release_package.py --runtime "$RUNTIME_ARCHIVE" \
             --output dist/ci --version "$PACKAGE_VERSION" --commit "$PACKAGE_COMMIT"
           python3 -c 'import os,sys; from pathlib import Path; sys.path.insert(0,"tools"); from release_ci import validate_assets; validate_assets(Path("dist/ci"),os.environ["PACKAGE_VERSION"],os.environ["PACKAGE_COMMIT"])'
